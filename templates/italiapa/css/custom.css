@@ -1,0 +1,85 @@
+/** @define utilities; */
+
+@media screen and (max-width: 767px) {
+  .u-xs-hidden {
+    display: none !important;
+  }
+}
+
+.card-white img {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    background-color:white;
+    border-radius: 5px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card-white:hover img {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.Dl--striped dt:nth-of-type(odd),
+.Dl--striped dd:nth-of-type(odd) {
+	background-color: #f6f7f9;
+}
+
+.Icon-double-chevron-left:before {
+  content: "\23ee";
+}
+
+.Icon-double-chevron-right:before {
+  content: "\23ed";
+}
+
+.u-introImage {
+	width: 300px;
+}
+
+.tab-content > .tab-pane {
+	display: none;
+}
+
+.tab-content > .active {
+	display: block;
+}
+
+ul.tags li:nth-child(n+2):before {
+    content: ", ";
+}
+
+.strike {
+	text-decoration: line-through!important;
+}
+/* Megamenu sub-navigation panel */
+
+.Megamenu .Megamenu-subnav {
+  display: none;
+}
+
+.Megamenu.is-ready .Megamenu-subnav {
+  display: block;
+}
+
+.map-responsive4by3 {
+  overflow:hidden;
+  padding-bottom:75%;
+  position:relative;
+  height:0;
+}
+
+.map-responsive {
+  overflow:hidden;
+  padding-bottom:56.25%;
+  position:relative;
+  height:0;
+}
+
+.map-responsive4by3 iframe,
+.map-responsive iframe {
+  left:0;
+  top:0;
+  height:100%;
+  width:100%;
+  position:absolute;
+}

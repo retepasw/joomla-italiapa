@@ -1,0 +1,18 @@
+/* deflist.css */
+/* for deflist plugin */
+
+dt::before { content:"dt: "; color:#aaa; font-size:8px; }
+dd::before { content:"dd: "; color:#aaa; font-size:8px; }
+dl { border-left: dotted #aaa 2px; padding: 3px; }
+
+.Accordion dt::before { content:"dt: "; color:#aaa; font-size:8px; }
+.Accordion dt[aria-selected=true]::before { content:"dt: "; color:#aaa; font-size:8px; }
+.Accordion dd::before { content:"dd: "; color:#aaa; font-size:8px; }
+.Accordion dt:first-child { border-top: 1px solid black; }
+.Accordion dd { border-bottom: 1px solid black; -webkit-margin-start: 0px; padding-left: 40px; }
+
+.Accordion.Accordion--default dt::before { content:"dt: v "; color:#aaa; font-size:8px; }
+.Accordion.Accordion--default dt[aria-selected=true]::before { content:"dt: ^ "; color:#aaa; font-size:8px; }
+
+.Accordion.Accordion--plus dt::before { content:"dt: + "; color:#aaa; font-size:8px; }
+.Accordion.Accordion--plus dt[aria-selected=true]::before { content:"dt: - "; color:#aaa; font-size:8px; }
