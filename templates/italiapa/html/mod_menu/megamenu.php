@@ -27,6 +27,7 @@ if ($tagId = $params->get('tag_id', ''))
 
 ob_start();
 ?>
+<div class="Megamenu Megamenu--default js-megamenu u-background-50">
 <ul class="Megamenu-list Megamenu<?php echo $class_sfx; ?>"<?php echo $id; ?>>
 <?php 
 $buffer = ob_get_flush();
@@ -179,6 +180,7 @@ foreach ($list as $i => &$item)
 ob_start();
 ?>
 </ul>
+</div>
 <?php 
 $buffer = ob_get_flush();
 JLog::add(new JLogEntry($buffer, JLog::DEBUG, 'tpl_italiapa'));
