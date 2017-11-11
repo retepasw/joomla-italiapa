@@ -45,7 +45,7 @@ $assocParam = (JLanguageAssociations::isEnabled() && $params->get('show_associat
 			<?php echo $this->escape($this->item->title); ?>
 		</a>
 	<?php else : ?>
-		<?php echo $this->escape($this->item->title); ?>
+		<span class="u-text-h4 u-textClean u-color-black"><?php echo $this->escape($this->item->title); ?></span>
 	<?php endif; ?>
 	</h3>
 <?php endif; ?>
