@@ -61,6 +61,13 @@ ul.tags li:nth-child(n+2):before {
   display: block;
 }
 
+.map-responsive16by9 {
+  overflow:hidden;
+  padding-bottom:56.25%;
+  position:relative;
+  height:0;
+}
+
 .map-responsive4by3 {
   overflow:hidden;
   padding-bottom:75%;
@@ -70,11 +77,12 @@ ul.tags li:nth-child(n+2):before {
 
 .map-responsive {
   overflow:hidden;
-  padding-bottom:56.25%;
+  padding-bottom:25%;
   position:relative;
   height:0;
 }
 
+.map-responsive16by9 iframe,
 .map-responsive4by3 iframe,
 .map-responsive iframe {
   left:0;
