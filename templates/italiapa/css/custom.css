@@ -90,4 +90,11 @@ ul.tags li:nth-child(n+2):before {
   height:100%;
   width:100%;
   position:absolute;
+  pointer-events: none;
+}
+
+.map-responsive16by9 iframe.clicked,
+.map-responsive4by3 iframe.clicked,
+.map-responsive iframe.clicked {
+	pointer-events: auto;
 }
