@@ -37,7 +37,6 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 <html class="no-js" lang="<?php echo $this->language; ?>">
 <!--<![endif]-->
 <head>
-	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
