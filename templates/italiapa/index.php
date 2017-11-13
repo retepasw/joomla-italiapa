@@ -87,7 +87,7 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 <body class="t-Pac c-hideFocus enhanced">
 
 <?php if ($this->countModules('cookiebar')) : ?>
-	<jdoc:include type="modules" name="top" style="none" />
+	<jdoc:include type="modules" name="cookiebar" style="none" />
 <?php endif;?>
 
 <?php if ($this->countModules('menu')) : ?>
