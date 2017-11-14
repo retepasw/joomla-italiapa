@@ -85,6 +85,7 @@ ul.tags li:nth-child(n+2):before {
 		padding-bottom:75%;
 	}
 
+	.map-responsive-default,
 	.map-xs-responsive16by9 {
 		padding-bottom:56.25%;
 	}
@@ -103,6 +104,7 @@ ul.tags li:nth-child(n+2):before {
 		padding-bottom:75%;
 	}
 
+	.map-responsive-default,
 	.map-sm-responsive16by9 {
 		padding-bottom:56.25%;
 	}
@@ -125,6 +127,7 @@ ul.tags li:nth-child(n+2):before {
 		padding-bottom:56.25%;
 	}
 
+	.map-responsive-default,
 	.map-md-responsive3by1 {
 		padding-bottom:33.33%;
 	}
@@ -143,6 +146,7 @@ ul.tags li:nth-child(n+2):before {
 		padding-bottom:56.25%;
 	}
 
+	.map-responsive-default,
 	.map-lg-responsive3by1 {
 		padding-bottom:33.33%;
 	}
