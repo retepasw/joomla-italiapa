@@ -97,6 +97,8 @@ JHtml::_('behavior.formvalidator');
 		<div class="Form-field Grid-cell u-textRight">
 			<button type="submit" class="Button Button--default u-text-xs"><?php echo JText::_('JLOGIN'); ?></button>
 		</div>
+		<?php $return = $this->form->getValue('return', '', $this->params->get('login_redirect_url', $this->params->get('login_redirect_menuitem'))); ?>
+		<input type="hidden" name="return" value="<?php echo base64_encode($return); ?>" />
 		<?php echo JHtml::_('form.token'); ?>
 	</form>
 </div>
