@@ -17,6 +17,13 @@ defined('JPATH_BASE') or die;
 
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
+use Joomla\Registry\Registry;
+
+if (file_exists(JPATH_ADMINISTRATOR.'/components/com_buttons/helpers/buttons.php'))
+{
+	require_once JPATH_ADMINISTRATOR.'/components/com_buttons/helpers/buttons.php';
+}
+
 $canEdit = $displayData['params']->get('access-edit');
 ?>
 
@@ -33,6 +40,55 @@ $canEdit = $displayData['params']->get('access-edit');
 			<?php if ($displayData['params']->get('show_email_icon')) : ?>
 				<li class="u-padding-right-l"><button type="button" class="Button Button--default u-text-r-xs"><?php echo JHtml::_('icon.email', $displayData['item'], $displayData['params'], ['class' => 'u-linkClean']); ?></button></li>
 			<?php endif; ?>
+			
+			<?php
+			$item = $displayData['item'];
+			$authorisedViewLevels = JFactory::getUser()->getAuthorisedViewLevels();
+			$report_access = false;
+			$toolbars = ButtonsHelper::getToolbars($item);
+			foreach($toolbars as $catid)
+			{
+				$toolbar = JTable::getInstance('Category');
+				$toolbar->load($catid);
+				$tparams = new Registry;
+				$tparams->loadString($toolbar->params);
+				$report_access = $report_access ||
+				in_array($tparams->get('report_access', 3), $authorisedViewLevels);
+			}
+			$params = new JRegistry();
+			$params->loadString($item->attribs);
+			
+			if (JFactory::getApplication()->input->getString('buttons') != 'report')
+			{
+				if ($report_access)
+				{
+					$url  = ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language);
+					$url .= '&buttons=report';
+					$text = '<span class="u-text-r-m Icon Icon-list"></span>';
+					$attribs['title']   = JText::_('TPL_ITALIAPA_BUTTONS_REPORT');
+					$attribs['rel']     = 'nofollow';
+					$attribs['class']   = 'u-linkClean';
+					echo '<li class="u-padding-right-l"><button type="button" class="Button Button--default u-text-r-xs">' . JHtml::_('link', JRoute::_($url), $text, $attribs) . '</button></li>';
+				}
+			}
+			else 
+			{
+				$url  = 'index.php?option=com_buttons&view=extras&id=' . $item->id . '&buttons=report&format=csv';
+				$text = '<span class="u-text-r-m Icon Icon-download"></span>';
+				$attribs['title']   = JText::_('TPL_ITALIAPA_BUTTONS_CSV');
+				$attribs['rel']     = 'nofollow';
+				$attribs['class']   = 'u-linkClean';
+				echo '<li class="u-padding-right-l"><button type="button" class="Button Button--default u-text-r-xs">' . JHtml::_('link', JRoute::_($url), $text, $attribs) . '</button></li>';
+
+				$url  = ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language);
+				$text = '<span class="u-text-r-m Icon Icon-close"></span>';
+				$attribs['title']   = JText::_('TPL_ITALIAPA_BUTTONS_CLOSE');
+				$attribs['rel']     = 'nofollow';
+				$attribs['class']   = 'u-linkClean';
+				echo '<li class="u-padding-right-l"><button type="button" class="Button Button--default u-text-r-xs">' . JHtml::_('link', JRoute::_($url), $text, $attribs) . '</button></li>';
+			}
+			?>
+			
 			<?php if ($canEdit) : ?>
 				<li class="u-padding-right-l"><button type="button" class="Button Button--default u-text-r-xs"><?php echo JHtml::_('icon.edit', $displayData['item'], $displayData['params'], ['class' => 'u-linkClean']); ?></button></li>
 			<?php endif; ?>
