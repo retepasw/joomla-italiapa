@@ -1,4 +1,4 @@
-jQuery('.map-container')
+jQuery('.map-responsive')
 	.click(function(){
 		jQuery(this).find('iframe').addClass('clicked')})
 	.mouseleave(function(){
