@@ -37,7 +37,6 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 <html class="no-js" lang="<?php echo $this->language; ?>">
 <!--<![endif]-->
 <head>
-	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -88,7 +87,7 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 <body class="t-Pac c-hideFocus enhanced">
 
 <?php if ($this->countModules('cookiebar')) : ?>
-	<jdoc:include type="modules" name="top" style="none" />
+	<jdoc:include type="modules" name="cookiebar" style="none" />
 <?php endif;?>
 
 <?php if ($this->countModules('menu')) : ?>
@@ -372,6 +371,7 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/uuid.min.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/accordion.min.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/table.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/map.min.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/IWT.min.js"></script>
 
 </body>
