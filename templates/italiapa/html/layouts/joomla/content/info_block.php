@@ -79,12 +79,6 @@ $blockStyle = $displayData['params']->get('info_block_style', 'default');
 				<?php if ($blockStyle == 'inline') echo '</p>'; ?>
 			<?php //endif; ?>
 
-			<?php //if ($displayData['item']->metadata->xreference) : ?>
-				<?php if ($blockStyle == 'inline') echo '<p class="Grid-cell">'; ?>
-				<?php echo $this->sublayout('xreference', $displayData); ?>
-				<?php if ($blockStyle == 'inline') echo '</p>'; ?>
-			<?php //endif; ?>
-
 			<?php if ($displayData['params']->get('show_hits')) : ?>
 				<?php if ($blockStyle == 'inline') echo '<p class="Grid-cell">'; ?>
 				<?php echo $this->sublayout('hits', $displayData); ?>
