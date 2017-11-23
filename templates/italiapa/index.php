@@ -100,7 +100,7 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 <header class="Header u-hiddenPrint<?php if ($this->params->get('headroom', 0)) echo ' Headroom--fixed js-Headroom Headroom Headroom--top Headroom--not-bottom" style="position: fixed; top: 0px;'; ?>">
 <?php if (($afferente = $this->params->get('afferente')) || ($this->countModules('languages'))) : ?>
 <div class="Header-banner">
-	<div class="Header-owner Headroom-hideme ">
+	<div class="Header-owner Headroom-hideme">
 	<?php if ($afferente = $this->params->get('afferente')) : ?>
 		<?php if ($afferente_link = $this->params->get('afferente_link')) : ?>
 		<a href="<?php echo $this->params->get('afferente_link'); ?>"><span><?php echo $afferente; ?></span></a>
@@ -180,9 +180,7 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 <!-- Header-navbar -->
 
 <?php if ($this->countModules('mainmenu')) : ?>
-<div class="Headroom-hideme u-textCenter u-hidden u-sm-hidden u-md-block u-lg-block">
 	<jdoc:include type="modules" name="mainmenu" style="lg" />
-</div>
 <?php endif; ?>
 
 </header>

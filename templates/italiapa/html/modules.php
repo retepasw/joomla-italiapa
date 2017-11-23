@@ -44,7 +44,7 @@ function modChrome_lg($module, &$params, &$attribs)
 	elseif ($module->position == 'mainmenu')
 	{
 		$moduleTag   = 'nav';
-		$moduleClass1 = 'Megamenu Megamenu--default js-megamenu '.$moduleClass;
+		$moduleClass1 = 'u-textCenter u-hidden u-sm-hidden u-md-block u-lg-block '.$moduleClass;
 	}
 	elseif ($module->position == 'lead')
 	{
