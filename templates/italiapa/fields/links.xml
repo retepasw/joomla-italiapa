@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+  <field name="title" type="text" label="TPL_ITALIAPA_LINK_TITLE_LABEL" description="TPL_ITALIAPA_LINK_TITLE_DESC"/>
+  <field name="short" type="text" label="TPL_ITALIAPA_LINK_SHORT_LABEL" description="TPL_ITALIAPA_LINK_SHORT_DESC"/>
+  <field name="href"  type="url"  label="TPL_ITALIAPA_LINK_HREF_LABEL"  description="TPL_ITALIAPA_LINK_HREF_DESC"/>
+</form>
