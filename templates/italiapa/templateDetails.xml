@@ -77,8 +77,7 @@
         </field>
       </fieldset>
       <fieldset name="header" type="upload_func" label="Header">
-        <field name="afferente" type="text" label="TPL_ITALIAPA_FIELD_AFFERENTE_LABEL" description="TPL_ITALIAPA_FIELD_AFFERENTE_LABEL"/>
-        <field name="afferente_link" type="url" label="TPL_ITALIAPA_FIELD_AFFERENTE_LINK_LABEL" description="TPL_ITALIAPA_FIELD_AFFERENTE_LINK_LABEL" showon="afferente!:"/>
+        <field name="links" type="subform" formsource="templates/italiapa/fields/links.xml" label="TPL_ITALIAPA_FIELD_LINKS_LABEL" description="TPL_ITALIAPA_FIELD_LINKS_DESC" multiple="true" layout="joomla.form.field.subform.repeatable-table"/>
         <field name="logo" type="media" label="TPL_ITALIAPA_FIELD_LOGO_LABEL" description="TPL_ITALIAPA_FIELD_LOGO_LABEL"/>
         <field name="subtitle" type="text" label="TPL_ITALIAPA_FIELD_SUBTITLE_LABEL" description="TPL_ITALIAPA_FIELD_SUBTITLE_LABEL"/>
         <field name="headroom" type="radio" class="btn-group btn-group-yesno" default="0" description="TPL_ITALIAPA_DEBUG_HEADROOM_DESC" label="TPL_ITALIAPA_DEBUG_HEADROOM_LABEL">
