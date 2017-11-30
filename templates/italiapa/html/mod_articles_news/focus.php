@@ -20,11 +20,13 @@ JFactory::getLanguage()->load('com_content');
 ?>
 <div class="u-background-compl-10 u-layout-centerContent u-padding-r-top <?php echo $moduleclass_sfx; ?>">
 
-	<section class="u-layout-wide u-layout-r-withGutter u-text-r-s u-padding-r-top u-padding-r-bottom">
+	<section id="news<?php echo $module->id?>" class="u-layout-wide u-layout-r-withGutter u-text-r-s u-padding-r-top u-padding-r-bottom">
 
-		<h2 id="news<?php echo $module->id?>" class="u-layout-centerLeft u-text-r-s">
+		<?php if ((bool) $module->showtitle) : ?>
+		<h2 class="u-layout-centerLeft u-text-r-s">
 			<a class="u-color-50 u-textClean u-text-h3 " href=""><?php echo $module->title; ?></a>
 		</h2>
+		<?php endif; ?>
 
 		<div class="Grid Grid--withGutterM">
 
