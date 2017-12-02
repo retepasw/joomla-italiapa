@@ -78,7 +78,7 @@ $level = 1;
 		$class .= ' parent';
 	}
 
-	echo '<li role="treeitem" class="' . $class . '"'.((($level < 3) && $params->get('showAllChildren', false)) ? 'aria-expanded="true"' : '').'>';
+	echo '<li role="treeitem" class="' . $class . '">';
 
 	switch ($item->type) :
 		case 'separator':
