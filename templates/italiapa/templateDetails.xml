@@ -31,6 +31,7 @@
     <filename>js/uuid.min.js</filename>
     <filename>index.php</filename>
     <filename>error.php</filename>
+    <filename>favicon.ico</filename>
     <filename>templateDetails.xml</filename>
   </files>
   <languages folder="language">
