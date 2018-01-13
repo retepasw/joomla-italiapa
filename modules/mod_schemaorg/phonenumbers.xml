@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<field name="phoneNumber" type="text" label="MOD_SCHEMAORG_PHONENUMBER_LABEL" description="MOD_SCHEMAORG_PHONENUMBER_DESC"/>
+</form>

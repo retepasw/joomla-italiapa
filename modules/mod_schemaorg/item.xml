@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+  <field name="title" type="text" label="MOD_SCHEMAORG_ITEM_TITLE_LABEL" description="MOD_SCHEMAORG_ITEM_TITLE_DESC"/>
+  <field name="type" type="list" label="MOD_SCHEMAORG_ITEM_TYPE_LABEL" description="MOD_SCHEMAORG_ITEM_TYPE_DESC" default="none">
+    <option value="none">MOD_SCHEMAORG_ITEM_TYPE_NONE</option>
+    <option value="addressCountry">MOD_SCHEMAORG_ITEM_TYPE_ADDRESSCOUNTRY</option>
+    <option value="streetAddress">MOD_SCHEMAORG_ITEM_TYPE_STREETADDRESS</option>
+    <option value="addressLocality">MOD_SCHEMAORG_ITEM_TYPE_ADDRESSLOCALITY</option>
+    <option value="addressRegion">MOD_SCHEMAORG_ITEM_TYPE_ADDRESSREGION</option>
+    <option value="postalCode">MOD_SCHEMAORG_ITEM_TYPE_POSTALCODE</option>
+    <option value="postOfficeBoxNumber">MOD_SCHEMAORG_ITEM_TYPE_POSTOFFICEBOXNUMBER</option>
+    <option value="telephone">MOD_SCHEMAORG_ITEM_TYPE_TELEPHONE</option>
+    <option value="faxNumber">MOD_SCHEMAORG_ITEM_TYPE_FAXNUMBER</option>
+    <option value="email">MOD_SCHEMAORG_ITEM_TYPE_EMAIL</option>
+  </field>
+  <field name="text" type="text" label="MOD_SCHEMAORG_ITEM_TEXT_LABEL" description="MOD_SCHEMAORG_ITEM_TEXT_DESC"/>
+</form>

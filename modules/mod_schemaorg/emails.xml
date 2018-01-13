@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<field name="email" type="text" label="MOD_SCHEMAORG_EMAIL_LABEL" description="MOD_SCHEMAORG_EMAIL_DESC"/>
+</form>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <field name="streetAddress" type="text" label="MOD_SCHEMAORG_STREETADDRESS_LABEL" description="MOD_SCHEMAORG_STREETADDRESS_LABEL"/>
+    <field name="addressLocality" type="text" label="MOD_SCHEMAORG_ADDRESSLOCALITY_LABEL" description="MOD_SCHEMAORG_ADDRESSLOCALITY_LABEL"/>
+    <field name="addressRegion" type="text" label="MOD_SCHEMAORG_ADDRESSREGION_LABEL" description="MOD_SCHEMAORG_ADDRESSREGION_LABEL"/>
+    <field name="postalCode" type="text" label="MOD_SCHEMAORG_POSTALCODE_LABEL" description="MOD_SCHEMAORG_POSTALCODE_LABEL"/>
+</form>
