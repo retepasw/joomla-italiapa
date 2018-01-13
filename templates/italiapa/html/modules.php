@@ -67,7 +67,7 @@ function modChrome_lg($module, &$params, &$attribs)
 	$moduleClass1 = !empty($moduleClass1) ? ' class="' . htmlspecialchars($moduleClass1, ENT_COMPAT, 'UTF-8') . '"' : '';
 	$headerClass = !empty($headerClass) ? ' class="' . htmlspecialchars($headerClass, ENT_COMPAT, 'UTF-8') . '"' : '';
 
-	$plainPositions = ['footermenu'];
+	$plainPositions = ['footermenu','news'];
 	$plainModules = ['mod_carousel'];
 
 	if (!empty($module->content))
@@ -96,7 +96,7 @@ function modChrome_lg($module, &$params, &$attribs)
 				echo '<h3 ' . ($headerClass ? $headerClass : 'class="u-border-bottom-m"') . '>';
 				echo '<span class="u-block u-text-h3 ' . ($moduleClass ? $moduleClass : 'u-color-60') . ' u-textClean">' . $module->title . '</span></h3>';
 			}
-			elseif (!in_array($module->module, $plainModules))
+			elseif (!in_array($module->position, $plainPositions) && !in_array($module->module, $plainModules))
 			{
 				echo '<'. $headerTag . $headerClass . '>' . $module->title . '</' . $headerTag . '>';
 			}
