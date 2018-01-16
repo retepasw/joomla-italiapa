@@ -18,7 +18,7 @@ defined('_JEXEC') or die;
 
 if ($params->get('debug') || defined('JDEBUG') && JDEBUG)
 {
-	JLog::addLogger(array('text_file' => $params->get('log', 'eshiol.log.php'), 'extension' => 'tpl_italiapa_file'), JLog::ALL, array('mod_cookiebar'));
+	JLog::addLogger(array('text_file' => $params->get('log', 'eshiol.log.php'), 'extension' => 'mod_cookiebar_file'), JLog::ALL, array('mod_cookiebar'));
 }
 JLog::addLogger(array('logger' => (null !== $params->get('logger')) ? $params->get('logger') : 'messagequeue', 'extension' => 'mod_cookiebar'), JLOG::ALL & ~JLOG::DEBUG, array('mod_cookiebar'));
 if ($params->get('phpconsole') && class_exists('JLogLoggerPhpconsole'))
