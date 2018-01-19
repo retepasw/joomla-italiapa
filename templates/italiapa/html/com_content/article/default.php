@@ -93,7 +93,10 @@ https://italia.github.io/design-web-toolkit/components/detail/page--default.html
 		<?php else : ?>
 			<?php if ($useDefList) : ?>
 				<div id="pop-print" class="btn hidden-print">
-					<?php echo JHtml::_('icon.print_screen', $this->item, $params); ?>
+					<?php 
+					$text = JLayoutHelper::render('joomla.content.icons.print_screen', array('params' => $params, 'legacy' => $legacy));
+					echo '<a href="#" onclick="window.print();return false;" class="Button Button--default u-text-r-xs u-linkClean">' . $text . '</a>';
+					?>
 				</div>
 			<?php endif; ?>
 		<?php endif; ?>
