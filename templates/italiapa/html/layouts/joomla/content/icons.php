@@ -39,7 +39,7 @@ $class = 'Button Button--default u-text-r-xs u-linkClean';
 				<li class="u-padding-right-l"><?php echo JHtml::_('icon.print_popup', $displayData['item'], $displayData['params'], array('class' => $class)); ?></li>
 			<?php endif; ?>
 			<?php if ($displayData['params']->get('show_email_icon')) : ?>
-				<li class="u-padding-right-l"><?php echo JLayoutHelper::render('eshiol.content.share'); ?></li>
+				<li class="u-padding-right-l"><?php echo JLayoutHelper::render('eshiol.content.share', $displayData); ?></li>
 			<?php endif; ?>
 			
 			<?php
