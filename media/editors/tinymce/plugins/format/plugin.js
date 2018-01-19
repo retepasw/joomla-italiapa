@@ -42,14 +42,15 @@ tinymce.PluginManager.add('format', function (editor, url) {
 	editor.settings.table_default_attributes = {class: 'Table Table--withBorder u-text-r-xs'};
 
 	editor.on('init', function() {
-		var alignElements = 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img';
+		var alignElements = 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table';
 
 		editor.formatter.register({
 			aligncenter:  {selector: alignElements, classes: 'u-textCenter'},
 			alignleft:    {selector: alignElements, classes: 'u-textLeft'},
 			alignright:   {selector: alignElements, classes: 'u-textRight'},
-			/* alignjustify: {selector: 'img', block:'div', classes: 'Arrange-sizeFit'}, */
-			alignjustify: {selector: 'img', styles: {'max-width':'100%', 'height': 'auto', 'display': 'block', 'margin-left': 'auto', 'margin-right': 'auto'}},
+			aligncenter:  {selector: 'img', block:'div', classes: 'Grid Grid--fit Grid--withGutter Grid--alignCenter u-textCenter'},
+			alignleft:    {selector: 'img', block:'div', classes: 'Grid Grid--fit Grid--withGutter u-textLeft'},
+			alignright:   {selector: 'img', block:'div', classes: 'Grid Grid--fit Grid--withGutter Grid--alignRight u-textRight'},
 			h1:           {block: 'h1', classes: 'u-text-h1', exact: true},
 			h2:           {block: 'h2', classes: 'u-text-h2', exact: true},
 			h3:           {block: 'h3', classes: 'u-text-h3', exact: true},
