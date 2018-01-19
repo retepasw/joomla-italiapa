@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -25,6 +25,7 @@ if (JComponentHelper::getComponent('com_buttons', true)->enabled)
 }
 
 $canEdit = $displayData['params']->get('access-edit');
+$class = 'Button Button--default u-text-r-xs u-linkClean';
 ?>
 
 <div class="icons u-cf">
@@ -35,10 +36,10 @@ $canEdit = $displayData['params']->get('access-edit');
 			<ul class="u-padding-all-s u-margin-all-l">
 			<?php // Note the actions class is deprecated. Use dropdown-menu instead. ?>
 			<?php if ($displayData['params']->get('show_print_icon')) : ?>
-				<li class="u-padding-right-l"><button type="button" class="Button Button--default u-text-r-xs u-linkClean"><?php echo JHtml::_('icon.print_popup', $displayData['item'], $displayData['params'], ['class' => 'u-linkClean']); ?></button></li>
+				<li class="u-padding-right-l"><?php echo JHtml::_('icon.print_popup', $displayData['item'], $displayData['params'], array('class' => $class)); ?></li>
 			<?php endif; ?>
 			<?php if ($displayData['params']->get('show_email_icon')) : ?>
-				<li class="u-padding-right-l"><button type="button" class="Button Button--default u-text-r-xs"><?php echo JHtml::_('icon.email', $displayData['item'], $displayData['params'], ['class' => 'u-linkClean']); ?></button></li>
+				<li class="u-padding-right-l"><?php echo JLayoutHelper::render('eshiol.content.share'); ?></li>
 			<?php endif; ?>
 			
 			<?php
@@ -69,8 +70,8 @@ $canEdit = $displayData['params']->get('access-edit');
 						$text = '<span class="u-text-r-m Icon Icon-list"></span>';
 						$attribs['title']   = JText::_('TPL_ITALIAPA_BUTTONS_REPORT');
 						$attribs['rel']     = 'nofollow';
-						$attribs['class']   = 'u-linkClean';
-						echo '<li class="u-padding-right-l"><button type="button" class="Button Button--default u-text-r-xs">' . JHtml::_('link', JRoute::_($url), $text, $attribs) . '</button></li>';
+						$attribs['class']   = $class;
+						echo '<li class="u-padding-right-l">' . JHtml::_('link', JRoute::_($url), $text, $attribs) . '</li>';
 					}
 				}
 				else 
@@ -79,21 +80,21 @@ $canEdit = $displayData['params']->get('access-edit');
 					$text = '<span class="u-text-r-m Icon Icon-download"></span>';
 					$attribs['title']   = JText::_('TPL_ITALIAPA_BUTTONS_CSV');
 					$attribs['rel']     = 'nofollow';
-					$attribs['class']   = 'u-linkClean';
-					echo '<li class="u-padding-right-l"><button type="button" class="Button Button--default u-text-r-xs">' . JHtml::_('link', JRoute::_($url), $text, $attribs) . '</button></li>';
+					$attribs['class']   = $class;
+					echo '<li class="u-padding-right-l">' . JHtml::_('link', JRoute::_($url), $text, $attribs) . '</li>';
 
 					$url  = ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language);
 					$text = '<span class="u-text-r-m Icon Icon-close"></span>';
 					$attribs['title']   = JText::_('TPL_ITALIAPA_BUTTONS_CLOSE');
 					$attribs['rel']     = 'nofollow';
-					$attribs['class']   = 'u-linkClean';
-					echo '<li class="u-padding-right-l"><button type="button" class="Button Button--default u-text-r-xs">' . JHtml::_('link', JRoute::_($url), $text, $attribs) . '</button></li>';
+					$attribs['class']   = $class;
+					echo '<li class="u-padding-right-l">' . JHtml::_('link', JRoute::_($url), $text, $attribs) . '</li>';
 				}
 			}
 			?>
 
 			<?php if ($canEdit) : ?>
-				<li class="u-padding-right-l"><button type="button" class="Button Button--default u-text-r-xs"><?php echo JHtml::_('icon.edit', $displayData['item'], $displayData['params'], ['class' => 'u-linkClean']); ?></button></li>
+				<li class="u-padding-right-l"><?php echo JHtml::_('icon.edit', $displayData['item'], $displayData['params'], array('class' => $class)); ?></li>
 			<?php endif; ?>
 			</ul>
 		</nav>
