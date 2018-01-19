@@ -81,7 +81,7 @@ https://italia.github.io/design-web-toolkit/components/detail/page--default.html
 		<?php endif; ?>
 
 		<?php if (!$useDefList && $this->print) : ?>
-			<div id="pop-print" class="btn hidden-print">
+			<div id="pop-print" class="u-hiddenPrint">
 				<?php echo JHtml::_('icon.print_screen', $this->item, $params); ?>
 			</div>
 			<div class="clearfix"> </div>
@@ -92,7 +92,7 @@ https://italia.github.io/design-web-toolkit/components/detail/page--default.html
 			<?php endif; ?>
 		<?php else : ?>
 			<?php if ($useDefList) : ?>
-				<div id="pop-print" class="btn hidden-print">
+				<div id="pop-print" class="u-hiddenPrint">
 					<?php 
 					$text = JLayoutHelper::render('joomla.content.icons.print_screen', array('params' => $params, 'legacy' => $legacy));
 					echo '<a href="#" onclick="window.print();return false;" class="Button Button--default u-text-r-xs u-linkClean">' . $text . '</a>';
