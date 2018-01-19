@@ -51,7 +51,7 @@ class PlgContentIpapagebreak extends JPlugin
 	 */
 	public function onContentPrepare($context, &$row, &$params, $page = 0)
 	{
-		$canProceed = $context === 'com_content.article';
+	    $canProceed = ($context === 'com_content.article') && (!JPluginHelper::getPlugin('content', 'pagebreak'));
 
 		if (!$canProceed)
 		{
@@ -81,11 +81,12 @@ class PlgContentIpapagebreak extends JPlugin
 		// Simple performance check to determine whether bot should process further.
 		if (StringHelper::strpos($row->text, 'class="system-pagebreak') === false)
 		{
-			if ($page > 0)
+/**
+		    if ($page > 0)
 			{
 				throw new Exception(JText::_('JERROR_PAGE_NOT_FOUND'), 404);
 			}
-			
+*/			
 			return true;
 		}
 
