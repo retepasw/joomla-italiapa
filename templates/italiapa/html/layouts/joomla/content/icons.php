@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -39,7 +39,7 @@ $class = 'Button Button--default u-text-r-xs u-linkClean';
 				<li class="u-padding-right-l"><?php echo JHtml::_('icon.print_popup', $displayData['item'], $displayData['params'], array('class' => $class)); ?></li>
 			<?php endif; ?>
 			<?php if ($displayData['params']->get('show_email_icon')) : ?>
-				<li class="u-padding-right-l"><?php echo JHtml::_('icon.email', $displayData['item'], $displayData['params'], array('class' => $class)); ?></li>
+				<li class="u-padding-right-l"><?php echo JLayoutHelper::render('eshiol.content.share', $displayData); ?></li>
 			<?php endif; ?>
 			
 			<?php
@@ -103,7 +103,7 @@ $class = 'Button Button--default u-text-r-xs u-linkClean';
 	<?php else : ?>
 
 		<div class="u-floatRight">
-			<button type="button" class="Button Button--default u-text-r-xs u-linkClean"><?php echo JHtml::_('icon.print_screen', $displayData['item'], $displayData['params'], ['class' => 'u-linkClean']); ?></button>
+			<li class="u-padding-right-l"><?php echo JHtml::_('icon.print_screen', $displayData['item'], $displayData['params'], array('class' => $class)); ?></li>
 		</div>
 
 	<?php endif; ?>
