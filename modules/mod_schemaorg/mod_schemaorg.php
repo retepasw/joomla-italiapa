@@ -2,7 +2,7 @@
 /**
  * @version		3.8 modules/mod_schemaorg/mod_schemaorg.php
  * @since       3.7.1
- * @package		Template Italia PA
+ * @package		Template ItaliaPA
  * @subpackage	mod_schemaorg
  *
  * @author		Helios Ciancio <info@eshiol.it>
