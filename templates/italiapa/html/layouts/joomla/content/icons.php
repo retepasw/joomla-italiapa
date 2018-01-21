@@ -103,7 +103,7 @@ $class = 'Button Button--default u-text-r-xs u-linkClean';
 	<?php else : ?>
 
 		<div class="u-floatRight">
-			<button type="button" class="Button Button--default u-text-r-xs u-linkClean"><?php echo JHtml::_('icon.print_screen', $displayData['item'], $displayData['params'], ['class' => 'u-linkClean']); ?></button>
+			<li class="u-padding-right-l"><?php echo JHtml::_('icon.print_screen', $displayData['item'], $displayData['params'], array('class' => $class)); ?></li>
 		</div>
 
 	<?php endif; ?>
