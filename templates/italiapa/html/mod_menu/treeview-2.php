@@ -17,5 +17,5 @@ defined('_JEXEC') or die;
 
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
-$maxlevel = 2;
+$maxlevel = 3;
 require JModuleHelper::getLayoutPath('mod_menu', 'treeview');
