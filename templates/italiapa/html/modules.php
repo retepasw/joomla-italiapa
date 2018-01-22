@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -72,49 +72,42 @@ function modChrome_lg($module, &$params, &$attribs)
 
 	if (!empty($module->content))
 	{
-		if ($module->position == 'services')
+	    $div = '';
+        $slash_div = '';
+        
+	    if ($module->position == 'services')
 		{
-			echo '<div class="Grid-cell u-sizeFull u-sm-size1of2 u-md-size1of3 u-lg-size1of3 u-margin-r-bottom">';
+			$div .= '<div class="Grid-cell u-sizeFull u-sm-size1of2 u-md-size1of3 u-lg-size1of3 u-margin-r-bottom">';
+			$slash_div = '</div>' . $slash_div;
 		}
 
-		if (!in_array($module->position, $plainPositions) && !in_array($module->module, $plainModules))
-//		if (($module->position != 'footermenu') && ($module->module != 'mod_carousel'))
+		if ($module->position == 'right')
 		{
-			echo '<' . $moduleTag . $moduleClass1 . '>';
+		    $div .= '<div class="u-sizeFull u-text-r-s ' . ($moduleClass ? $moduleClass : 'u-color-70') . '">';
+		    $slash_div = '</div>' . $slash_div;
 		}
+		elseif (!in_array($module->position, $plainPositions) && !in_array($module->module, $plainModules))
+		{
+			$div .= '<' . $moduleTag . $moduleClass1 . '>';
+			$slash_div = '</' . $moduleTag . $moduleClass1 . '>' . $slash_div;
+        }
+		
 		// Get module parameters
 		//$params = new Registry($module->params);
 
-		if ($params->get('layout') == 'italiapa:linklist')
-		{
-			echo '<div class="u-sizeFull u-text-r-s ' . ($moduleClass ? $moduleClass : 'u-color-60') . '">';
-		}
 		if ((bool) $module->showtitle)
 		{
-			if ($params->get('layout') == 'italiapa:linklist')
+		    if (($module->position == 'right') || ($params->get('layout') == 'italiapa:linklist'))
 			{
-				echo '<h3 ' . ($headerClass ? $headerClass : 'class="u-border-bottom-m"') . '>';
-				echo '<span class="u-block u-text-h3 ' . ($moduleClass ? $moduleClass : 'u-color-60') . ' u-textClean">' . $module->title . '</span></h3>';
+				$div .= '<h3 ' . ($headerClass ? $headerClass : 'class="u-border-bottom-m"') . '>';
+				$div .= '<span class="u-block u-text-h3 ' . ($moduleClass ? $moduleClass : 'u-color-60') . ' u-textClean">' . $module->title . '</span></h3>';
 			}
 			elseif (!in_array($module->position, $plainPositions) && !in_array($module->module, $plainModules))
 			{
-				echo '<'. $headerTag . $headerClass . '>' . $module->title . '</' . $headerTag . '>';
+				$div .= '<'. $headerTag . $headerClass . '>' . $module->title . '</' . $headerTag . '>';
 			}
 		}
-		echo $module->content;
 
-		if ($params->get('layout') == 'italiapa:linklist')
-		{
-			echo '</div>';
-		}
-		if (!in_array($module->position, $plainPositions) && !in_array($module->module, $plainModules))
-//		if (($module->position != 'footermenu') && ($module->module != 'mod_carousel'))
-		{
-			echo '</' . $moduleTag . '>';
-		}
-		if ($module->position == 'services')
-		{
-			echo '</div>';
-		}
+		echo $div . $module->content . $slash_div;
 	}
 }
