@@ -26,17 +26,17 @@ function modChrome_lg($module, &$params, &$attribs)
 {
     JLog::add(new JLogEntry(__METHOD__, JLog::DEBUG, 'tpl_italiapa'));
     JLog::add(new JLogEntry(print_r($module, true), JLog::DEBUG, 'tpl_italiapa'));
-    
-    $moduleTag	  = $params->get('module_tag', 'div');
+
+    $moduleTag	    = $params->get('module_tag', 'div');
     $bootstrapSize  = (int) $params->get('bootstrap_size', 0);
     $moduleClass	=
-    htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8').
-    ($bootstrapSize == 0 ? '' : ' u-md-size'.$bootstrapSize.'of12 u-lg-size'.$bootstrapSize.'of12');
+        htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8').
+        ($bootstrapSize == 0 ? '' : ' u-md-size'.$bootstrapSize.'of12 u-lg-size'.$bootstrapSize.'of12');
     
     $headerTag	  = htmlspecialchars($params->get('header_tag', 'h3'), ENT_COMPAT, 'UTF-8');
     $headerClass	= htmlspecialchars($params->get('header_class'), ENT_COMPAT, 'UTF-8');
     JLog::add(new JLogEntry($moduleClass, JLog::DEBUG, 'tpl_italiapa'));
-    
+
     if ($module->position == 'menu')
     {
         $moduleTag   = 'nav';
@@ -66,7 +66,7 @@ function modChrome_lg($module, &$params, &$attribs)
     }
     $moduleClass1 = !empty($moduleClass1) ? ' class="' . htmlspecialchars($moduleClass1, ENT_COMPAT, 'UTF-8') . '"' : '';
     $headerClass = !empty($headerClass) ? ' class="' . htmlspecialchars($headerClass, ENT_COMPAT, 'UTF-8') . '"' : '';
-    
+
     $plainPositions = ['footermenu','news'];
     $plainModules = ['mod_carousel'];
     
@@ -80,7 +80,7 @@ function modChrome_lg($module, &$params, &$attribs)
             $div .= '<div class="Grid-cell u-sizeFull u-sm-size1of2 u-md-size1of3 u-lg-size1of3 u-margin-r-bottom">';
             $slash_div = '</div>' . $slash_div;
         }
-        
+
         if ($module->position == 'right')
         {
             $div .= '<div class="u-sizeFull u-text-r-s ' . ($moduleClass ? $moduleClass : 'u-color-70') . '">';
@@ -91,7 +91,7 @@ function modChrome_lg($module, &$params, &$attribs)
             $div .= '<' . $moduleTag . $moduleClass1 . '>';
             $slash_div = '</' . $moduleTag . $moduleClass1 . '>' . $slash_div;
         }
-        
+
         // Get module parameters
         //$params = new Registry($module->params);
         
