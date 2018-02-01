@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -47,7 +47,7 @@ $afterDisplayContent = trim(implode("\n", $results));
  */
 if (substr($className, -1) === 's')
 {
-	$className = rtrim($className, 's');
+    $className = rtrim($className, 's');
 }
 $tagsData = $category->tags->itemTags;
 ?>
@@ -94,10 +94,13 @@ $tagsData = $category->tags->itemTags;
 	</div>
 -->
 		<?php if ($displayData->maxLevel != 0 && $displayData->get('children')) : ?>
-			<div class="cat-children">
+		
+			<div class="u-sizeFull u-text-r-s u-color-70 cat-children">
 				<?php if ($params->get('show_category_heading_title_text', 1) == 1) : ?>
-					<h3>
-						<?php echo JText::_('JGLOBAL_SUBCATEGORIES'); ?>
+					<h3 class="u-border-bottom-m">
+						<span class="u-block u-text-h3 u-color-60 u-textClean">
+							<?php echo JText::_('JGLOBAL_SUBCATEGORIES'); ?>
+						</span>
 					</h3>
 				<?php endif; ?>
 				<?php echo $displayData->loadTemplate('children'); ?>
