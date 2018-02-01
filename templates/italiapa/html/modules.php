@@ -82,6 +82,7 @@ function modChrome_lg($module, &$params, &$attribs)
 		{
 			echo '<' . $moduleTag . $moduleClass1 . '>';
 		}
+
 		// Get module parameters
 		//$params = new Registry($module->params);
 
@@ -101,7 +102,15 @@ function modChrome_lg($module, &$params, &$attribs)
 				echo '<'. $headerTag . $headerClass . '>' . $module->title . '</' . $headerTag . '>';
 			}
 		}
-		echo $module->content;
+
+		if (($module->position == 'footer') || ($module->position == 'footerinfo'))
+		{
+		    echo '<div class="Footer-subBlock">' . $module->content . '</div>';
+		}
+		else 
+		{	
+		    echo $module->content;
+		}
 
 		if ($params->get('layout') == 'italiapa:linklist')
 		{
