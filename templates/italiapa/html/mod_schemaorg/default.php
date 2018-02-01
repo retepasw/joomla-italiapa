@@ -1,14 +1,14 @@
 <?php
 /**
- * @version		3.7.1 modules/mod_schemaorg/tmpl/default.php
+ * @version		3.8.0 modules/mod_schemaorg/tmpl/default.php
  *
- * @package		Template Italia PA
+ * @package		Template ItaliaPA
  * @subpackage	mod_schemaorg
  * @since		3.7
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template Italia PA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -19,7 +19,7 @@
 defined('_JEXEC') or die;
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'mod_schemaorg'));
 
-$text = '<div class="Footer-subBlock">';
+$text = '';
 if ($section = $params->get('section'))
 {
 	$text .= '<h3 class="Footer-subTitle">'.$section.'</h3>';
@@ -101,6 +101,6 @@ if (in_array($previous, $postalAddress))
 	$text .= '</div>';
 }
 
-$text .= '</address></div>';
+$text .= '</address>';
 
-echo $text;
+echo $params->get('prepare_content', 0) ? JHtml::_('content.prepare', $text) : $text;
