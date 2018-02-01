@@ -67,9 +67,9 @@ function modChrome_lg($module, &$params, &$attribs)
     $moduleClass1 = !empty($moduleClass1) ? ' class="' . htmlspecialchars($moduleClass1, ENT_COMPAT, 'UTF-8') . '"' : '';
     $headerClass = !empty($headerClass) ? ' class="' . htmlspecialchars($headerClass, ENT_COMPAT, 'UTF-8') . '"' : '';
 
-    $plainPositions = ['footermenu','news'];
-    $plainModules = ['mod_carousel'];
-    
+    $plainPositions = array('footermenu', 'news');
+    $plainModules = array('mod_carousel');
+
     if (!empty($module->content))
     {
         $div = '';

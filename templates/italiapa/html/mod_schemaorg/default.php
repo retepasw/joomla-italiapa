@@ -19,7 +19,7 @@
 defined('_JEXEC') or die;
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'mod_schemaorg'));
 
-$text = '<div class="Footer-subBlock">';
+$text = '';
 if ($section = $params->get('section'))
 {
 	$text .= '<h3 class="Footer-subTitle">'.$section.'</h3>';
@@ -101,6 +101,6 @@ if (in_array($previous, $postalAddress))
 	$text .= '</div>';
 }
 
-$text .= '</address></div>';
+$text .= '</address>';
 
 echo $text;
