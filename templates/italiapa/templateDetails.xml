@@ -46,6 +46,7 @@
     <filename>tinymce/plugins/deflist/deflist.css</filename>
     <filename>tinymce/plugins/deflist/plugin.min.js</filename>
     <filename>tinymce/plugins/format/plugin.min.js</filename>
+    <filename>tinymce/plugins/format/build.css</filename>
   </media>
   <positions>
     <position>breadcrumb</position>
