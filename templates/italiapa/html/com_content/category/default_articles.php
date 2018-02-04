@@ -291,3 +291,12 @@ $tot = 6 + 4 * (
 </div>
 </div>
 -->
+
+<?php 
+// Add pagination links
+if (!empty($this->items)) :
+	if ($this->params->def('show_pagination', 2) == 1  || ($this->params->get('show_pagination') == 2 && $this->pagination->pagesTotal > 1)) :
+		echo $this->pagination->getPagesLinks();
+	endif; 
+endif; 
+?>
