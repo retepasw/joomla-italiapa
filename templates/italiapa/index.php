@@ -86,6 +86,23 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 </head>
 <body class="t-Pac c-hideFocus enhanced">
 
+<?php $svg_path = JPATH_ROOT .'/templates/' . $this->template . '/src/icons/img/SVG'; ?>
+<?php if (file_exists($svg_path) && ($icons = array_diff(scandir($svg_path), array('..', '.')))) : ?>
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+	<?php foreach ($icons as $filename ) : ?>
+		<?php $path_parts = pathinfo($filename); ?>
+		<?php if ($path_parts['extension'] != 'svg') continue; ?>
+		<?php $iconname = $path_parts['filename']; ?>
+		<symbol id="Icon-<?php echo $iconname; ?>" viewBox="0 0 32 32">
+		<?php $icon = new SimpleXMLElement(file_get_contents(JPATH_ROOT .'/templates/' . $this->template . '/src/icons/img/SVG/' . $iconname . '.svg')); ?>
+		<?php echo $icon->title->asXML() . "\r" . $icon->path->asXML()  . "\r"; ?>
+		</symbol>
+	<?php endforeach; ?>
+	</defs>
+</svg>
+<?php endif; ?>
+
 <?php if ($this->countModules('cookiebar')) : ?>
 	<jdoc:include type="modules" name="cookiebar" style="none" />
 <?php endif;?>

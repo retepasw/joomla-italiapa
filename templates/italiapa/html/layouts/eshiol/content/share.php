@@ -16,8 +16,25 @@
 defined('JPATH_BASE') or die;
 
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
-?>
 
+$url = ContentHelperRoute::getArticleRoute($displayData['item']->slug, $displayData['item']->catid, $displayData['item']->language);
+if (!JPluginHelper::isEnabled('content', 'shorturl'))
+{
+    $url = JRoute::_($url, true, -1);
+}
+elseif (!file_exists(JPATH_PLUGINS . '/content/shorturl/helpers/shorturl.php'))
+{
+    $url = JRoute::_($url, true, -1);
+}
+else
+{
+    require_once JPATH_PLUGINS . '/content/shorturl/helpers/shorturl.php';
+    $shortlink = ShorturlHelper::getShortUrl($url, $displayData['item']->language);
+    $url = (ShorturlHelper::urlExists($shortlink) ? JURI::root() . ltrim($shortlink, '/') : JRoute::_($url, true, -1));
+}
+
+$metadesc = $displayData['item']->metadesc ?: JFactory::getApplication()->get('MetaDesc');
+?>
 <div class="Share Button" style="position:static!important;border:none!important;">
 <div class="Share-reveal js-Share">
 <a href="#share-options" class="Share-revealText" data-menu-trigger="share-options" data-menu-inline="" aria-controls="share-options" aria-haspopup="true" role="button">
@@ -25,16 +42,18 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 Condividi
 </a>
 </div>
+
 <ul id="share-options" class="Dropdown-menu" data-menu="" role="menu" aria-hidden="true">
-<li role="menuitem"><a href="#" onclick="javascript:window.open('http://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '', 'width=800,height=600');"><span class="Icon Icon-facebook"></span><span class="u-hiddenVisually">Facebook</span></a></li>
-<li role="menuitem"><a href="#" onclick="javascript:window.open('http://www.twitter.com/share?url=' + encodeURIComponent(window.location.href), '', 'width=800,height=600');"><span class="Icon Icon-twitter"></span><span class="u-hiddenVisually">Twitter</span></a></li>
-<li role="menuitem"><a href="#" onclick="javascript:window.open('https://plus.google.com/share?url=' + encodeURIComponent(window.location.href), '', 'width=800,height=600');"><span class="Icon Icon-googleplus"></span><span class="u-hiddenVisually">Google Plus</span></a></li>
+<li role="menuitem"><a href="#" onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($url)?>', '', 'width=800,height=600');"><span class="Icon Icon-facebook"></span><span class="u-hiddenVisually">Facebook</span></a></li>
+<li role="menuitem"><a href="#" onclick="javascript:window.open('https://www.twitter.com/share?text=<?php echo urlencode($metadesc)?>&url=<?php echo urlencode($url)?>', '', 'width=800,height=600');"><span class="Icon Icon-twitter"></span><span class="u-hiddenVisually">Twitter</span></a></li>
+<li role="menuitem"><a href="#" onclick="javascript:window.open('https://plus.google.com/share?url=<?php echo urlencode($url)?>', '', 'width=800,height=600');"><span class="Icon Icon-googleplus"></span><span class="u-hiddenVisually">Google Plus</span></a></li>
+<li role="menuitem"><a href="#" onclick="javascript:window.open('https://api.whatsapp.com/send?phone=whatsappphonenumber&text=<?php echo urlencode($url)?>', '', 'width=800,height=600');"><span class="Icon Icon-whatsapp"></span><span class="u-hiddenVisually">Whatsapp</span></a></li>
+<li role="menuitem"><a href="#" onclick="javascript:window.open('https://telegram.me/share/url?url=<?php echo urlencode($url)?>', '', 'width=800,height=600');"><svg class="Icon Icon-telegram"><use xlink:href="#Icon-telegram"></use></svg><span class="u-hiddenVisually">Telegram</span></a></li>
 <!-- 
 <li role="menuitem"><a href="#" onclick="javascript:alert('Funzione non supportata');"><span class="Icon Icon-youtube"></span><span class="u-hiddenVisually">Youtube</span></a></li>
 <li role="menuitem"><a href="#" onclick="javascript:alert('Funzione non supportata');"><span class="Icon Icon-flickr"></span><span class="u-hiddenVisually">Flickr</span></a></li>
 <li role="menuitem"><a href="#" onclick="javascript:alert('Funzione non supportata');"><span class="Icon Icon-slideshare"></span><span class="u-hiddenVisually">Slideshare</span></a></li>
 -->
-<li role="menuitem"><a href="#" onclick="javascript:window.open('https://api.whatsapp.com/send?phone=whatsappphonenumber&text=' + encodeURIComponent(window.location.href), '', 'scrollbars=0,resizable=0,width=400,height=400');" data-action="share/whatsapp/share"><span class="Icon Icon-whatsapp"></span><span class="u-hiddenVisually">Whatsapp</span></a></li>
 <?php
     JLoader::register('MailtoHelper', JPATH_SITE . '/components/com_mailto/helpers/mailto.php');
 
