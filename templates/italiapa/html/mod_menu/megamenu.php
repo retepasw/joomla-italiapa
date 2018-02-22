@@ -27,6 +27,7 @@ if ($tagId = $params->get('tag_id', ''))
 
 ob_start();
 ?>
+
 <div class="Megamenu Megamenu--default js-megamenu u-background-50">
 <ul class="Megamenu-list Megamenu<?php echo $class_sfx; ?>"<?php echo $id; ?>>
 <?php 
@@ -105,7 +106,8 @@ foreach ($list as $i => &$item)
 		$item->anchor_css = (substr($item->anchor_css, 0, 1) == ' ' ? ' ' : '') . implode(' ', $anchor_css);
 		JLog::add(new JLogEntry('anchor_css: '.print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
 	}
-	else
+
+	if (!$item->anchor_css)
 	{
 		$class = 'Megamenu-item' . $class;
 	}
@@ -130,7 +132,7 @@ foreach ($list as $i => &$item)
 	{
 		echo '<span class="' . substr($icon, 1) . '"></span> ';	
 	}
-	
+
 	switch ($item->type) :
 		case 'component':
 			require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
@@ -143,7 +145,7 @@ foreach ($list as $i => &$item)
 			require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
 			break;
 	endswitch;
-	
+
 	// The next item is deeper.
 	if ($item->deeper)
 	{
@@ -170,8 +172,8 @@ foreach ($list as $i => &$item)
 			{
 				echo '</div></li>';
 			}
-			else 
-			{	
+			else
+			{
 				echo '</ul></li>';			
 			}
 		}
