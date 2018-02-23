@@ -315,9 +315,7 @@ https://italia.github.io/design-web-toolkit/components/detail/leads.html
 <?php endif; ?>
 
 <?php if ($this->countModules('footer') + $this->countModules('footermenu')) : ?>
-<div class="u-background-grey-80 u-hiddenPrint">
-
-	<div class="u-layout-wide u-layoutCenter u-layout-r-withGutter">
+		<footer class="Footer u-padding-all-s u-background-95 u-hiddenPrint" id="footer">
 
 <?php if ($params->get('debug') || defined('JDEBUG') && JDEBUG) : ?>
 <div class="Prose Alert Alert--info Alert--withIcon u-padding-r-bottom u-padding-r-right u-margin-r-bottom">
@@ -327,9 +325,12 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 </div>
 <?php endif; ?>
 
-		<footer class="Footer u-padding-all-s" id="footer">
+			<?php if ($this->countModules('footerinfo')) : ?>
 			<div itemscope itemtype="http://schema.org/<?php echo $params->get('schema_org', 'Organization'); ?>">
 				<div class="u-cf">
+			<?php else : ?>
+				<div itemscope itemtype="http://schema.org/<?php echo $params->get('schema_org', 'Organization'); ?>" class="u-cf">
+			<?php endif; ?>				
 					<?php if ($logo) : ?>
 					<a href="<?php echo $this->baseurl; ?>/" tabindex="-1" itemprop="url">
 						<img class="Footer-logo" src="<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>" itemprop="logo">
@@ -337,14 +338,13 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 					<?php endif; ?>
 					<p class="Footer-siteName" itemprop="name"><?php echo htmlspecialchars($app->get('sitename')); ?></p>
 				</div>
-			
+			<?php if ($this->countModules('footerinfo')) : ?>
 				<div class="Grid Grid--withGutter">
-				<?php if ($this->countModules('footerinfo')) : ?>
 					<jdoc:include type="modules" name="footerinfo" style="lg" />
-				<?php endif; ?>
 				</div>
 			</div>
-									
+			<?php endif; ?>
+
 			<div class="Grid Grid--withGutter">
 			<?php if ($this->countModules('footer')) : ?>
 				<jdoc:include type="modules" name="footer" style="lg" />
@@ -357,8 +357,6 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 			<?php endif; ?>
 			</div>
 		</footer>
-	</div>
-</div>
 <?php endif; ?>
 
 <a href="#" title="torna all'inizio del contenuto" class="ScrollTop js-scrollTop js-scrollTo">
