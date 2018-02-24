@@ -155,3 +155,10 @@ ul.tags li:nth-child(n+2):before {
 		padding-bottom:25%;
 	}
 }
+
+.Linklist span[class*=" Icon-"],
+.Linklist span[class^=Icon-],
+.Treeview span[class*=" Icon-"],
+.Treeview span[class^=Icon-] {
+	padding-right: 1rem !important;
+}
