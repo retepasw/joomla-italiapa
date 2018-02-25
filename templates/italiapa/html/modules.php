@@ -61,7 +61,7 @@ function modChrome_lg($module, &$params, &$attribs)
     }
     elseif ($module->position == 'services')
     {
-        $moduleClass1 = 'u-sizeFull u-text-r-s '.$moduleClass;
+        $moduleClass1 = 'u-sizeFull u-text-r-s '.($moduleClass ?: 'u-color-60');
         $headerTag   = 'h3';
     }
     $moduleClass1 = !empty($moduleClass1) ? ' class="' . htmlspecialchars($moduleClass1, ENT_COMPAT, 'UTF-8') . '"' : '';
@@ -106,12 +106,6 @@ function modChrome_lg($module, &$params, &$attribs)
             {
                 $div .= '<'. $headerTag . $headerClass . '>' . $module->title . '</' . $headerTag . '>';
             }
-        }
-
-        if (($module->position == 'footer') || ($module->position == 'footerinfo'))
-        {
-            $div = $div . '<div class="Footer-subBlock">';
-            $slash_div = '</div>' . $slash_div;
         }
 
         echo $div . $module->content . $slash_div;
