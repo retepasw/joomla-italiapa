@@ -156,6 +156,13 @@ ul.tags li:nth-child(n+2):before {
 	}
 }
 
+.Linklist span[class*=" Icon-"],
+.Linklist span[class^=Icon-],
+.Treeview span[class*=" Icon-"],
+.Treeview span[class^=Icon-] {
+	padding-right: 1rem !important;
+}
+
 .Treeview--plus .Treeview-handler--default::after {
 	background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctitle%3Eplus%3C/title%3E%3Cpath d='M0 20h32v-8H0zm12 12h8V0h-8z'/%3E%3C/svg%3E");
 }

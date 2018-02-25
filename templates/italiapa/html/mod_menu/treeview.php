@@ -96,11 +96,11 @@ $level = 1;
 	switch ($item->type) :
 		case 'separator':
 		case 'component':
+		case 'heading':
 		case 'url':
 			require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
 			break;
 
-		case 'heading':
 		default:
 			require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
 			break;
