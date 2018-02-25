@@ -108,12 +108,6 @@ function modChrome_lg($module, &$params, &$attribs)
             }
         }
 
-        if (($module->position == 'footer') || ($module->position == 'footerinfo'))
-        {
-            $div = $div . '<div class="Footer-subBlock">';
-            $slash_div = '</div>' . $slash_div;
-        }
-
         echo $div . $module->content . $slash_div;
     }
 }
