@@ -156,6 +156,15 @@ ul.tags li:nth-child(n+2):before {
 	}
 }
 
+svg.Icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}
+
 .Linklist span[class*=" Icon-"],
 .Linklist span[class^=Icon-],
 .Treeview span[class*=" Icon-"],
