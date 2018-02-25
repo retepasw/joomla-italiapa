@@ -17,7 +17,17 @@
  */
 
 defined('_JEXEC') or die;
+
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'mod_schemaorg'));
+
+$div = '';
+$slash_div = '';
+if (($module->position == 'footer') || ($module->position == 'footerinfo'))
+{
+	$div = $div . '<div class="Footer-subBlock">';
+	$slash_div = '</div>' . $slash_div;
+}
+
 
 $text = '';
 if ($section = $params->get('section'))
@@ -103,4 +113,4 @@ if (in_array($previous, $postalAddress))
 
 $text .= '</address>';
 
-echo $params->get('prepare_content', 0) ? JHtml::_('content.prepare', $text) : $text;
+echo $div . ($params->get('prepare_content', 0) ? JHtml::_('content.prepare', $text) : $text) . $slash_div;
