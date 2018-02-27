@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		https://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -83,6 +83,10 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 	<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/tooltip.min.js"></script>
 
 	<jdoc:include type="head" />
+
+	<?php if ($css = $this->params->get('css', '')) : ?>
+		<?php  echo '<style>' . htmlspecialchars($css) . '</style>'; ?>
+	<?php endif; ?>
 </head>
 <body class="t-Pac c-hideFocus enhanced">
 
