@@ -45,7 +45,7 @@ JHtml::_('bootstrap.tooltip');
 		</a>
 		</div>
 
-		<?php if (true || count($twofactormethods) > 1) : ?>
+		<?php if (count($twofactormethods) > 1) : ?>
 		<div class="Form-field" id="form-login-secretkey">
 		<svg class="u-text-r-m Icon Icon-star-full" style="margin-right: 0.25em;"><use xlink:href="#Icon-star-full"></use></svg><span class="u-hiddenVisually"><?php echo JText::_('JGLOBAL_SECRETKEY'); ?></span>
 		<input type="text" name="secretkey" id="modlgn-secretkey" value="" class="Form-input validate-secretkey required" size="25" required="required" aria-required="true" autofocus="" aria-invalid="false" placeholder="<?php echo JText::_('JGLOBAL_SECRETKEY'); ?>"
