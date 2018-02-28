@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.7" client="site" method="upgrade">
+  <name>mod_carousel</name>
+  <author>Helios Ciancio</author>
+  <creationDate>January 2018</creationDate>
+  <copyright>(C) 2017 Helios Ciancio. All rights reserved.</copyright>
+  <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3</license>
+  <authorEmail>info@eshiol.it</authorEmail>
+  <authorUrl>www.eshiol.it</authorUrl>
+  <version>3.8.0.66</version>
+  <description>MOD_CAROUSEL_XML_DESCRIPTION</description>
+  <updateservers>
+    <server type="extension" priority="2" name="Italia Template - Carousel Module">https://www.eshiol.it/files/italiapa/mod_carousel.xml</server>
+  </updateservers>
+  <description>MOD_CAROUSEL_XML_DESCRIPTION</description>
+  <files>
+    <filename module="mod_carousel">mod_carousel.php</filename>
+    <filename>image.xml</filename>
+    <folder>tmpl</folder>
+  </files>
+  <languages folder="language">
+    <language tag="en-GB">en-GB/en-GB.mod_carousel.ini</language>
+    <language tag="en-GB">en-GB/en-GB.mod_carousel.sys.ini</language>
+    <language tag="it-IT">it-IT/it-IT.mod_carousel.ini</language>
+    <language tag="it-IT">it-IT/it-IT.mod_carousel.sys.ini</language>
+  </languages>
+  <config>
+    <fields name="params">
+      <fieldset name="basic">
+        <field name="images" type="subform" formsource="/modules/mod_carousel/image.xml" label="MOD_CAROUSEL_IMAGE_LABEL" description="" multiple="true" layout="joomla.form.field.subform.repeatable"/>
+      </fieldset>
+      <fieldset name="advanced">
+        <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" filter="SAFEHTML"/>
+        <field name="moduleclass_sfx" type="textarea" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" rows="3"/>
+        <field name="cache" type="list" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC" default="1">
+          <option value="1">JGLOBAL_USE_GLOBAL</option>
+          <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+        </field>
+        <field name="cache_time" type="text" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" default="900"/>
+        <field name="cachemode" type="hidden" default="static">
+          <option value="static"/>
+        </field>
+      </fieldset>
+      <fieldset name="debug" label="MOD_CAROUSEL_DEBUG_LABEL">        
+        <field name="debug" type="radio" class="btn-group btn-group-yesno" default="0" description="MOD_CAROUSEL_DEBUG_SYSTEM_DESC" label="MOD_CAROUSEL_DEBUG_SYSTEM_LABEL">
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
+        <field name="log" type="text" label="MOD_CAROUSEL_DEBUG_FILENAME_LABEL" description="MOD_CAROUSEL_DEBUG_FILENAME_DESC" default="eshiol.log.php" showon="debug:1"/>
+        <field name="phpconsole" type="radio" class="btn-group btn-group-yesno" default="0" description="MOD_CAROUSEL_DEBUG_PHPCONSOLE_DESC" label="MOD_CAROUSEL_DEBUG_PHPCONSOLE_LABEL">
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
+      </fieldset>
+    </fields>
+  </config>
+</extension>

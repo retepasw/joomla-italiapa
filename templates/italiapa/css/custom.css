@@ -155,3 +155,85 @@ ul.tags li:nth-child(n+2):before {
 		padding-bottom:25%;
 	}
 }
+
+svg.Icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}
+
+.Megamenu--default .Megamenu-item > span[class*=" Icon-"], 
+.Megamenu--default .Megamenu-item > span[class^=Icon-] {
+	color: #fff !important;
+}
+
+.Megamenu-item > span[class*=" Icon-"], 
+.Megamenu-item > span[class^=Icon-] {
+	padding-top: 1.6rem !important;
+}
+
+.Megamenu-item > span[class*=" Icon-"], 
+.Megamenu-item > span[class^=Icon-] {
+	padding-bottom: 1.6rem !important;
+}
+
+.Megamenu--default .Megamenu-item > span[class*=" Icon-"], 
+.Megamenu--default .Megamenu-item > span[class^=Icon-] {
+	font-size: 1.6rem !important;
+	letter-spacing: .01em !important;
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+	.Megamenu--default .Megamenu-item > span[class*=" Icon-"], 
+	.Megamenu--default .Megamenu-item > span[class^=Icon-] {
+		font-size: 1.8rem !important;
+		letter-spacing: .01em !important;
+	}
+}
+
+@media screen and (min-width: 992px) and (max-width: 1365px) {
+	.Megamenu--default .Megamenu-item > span[class*=" Icon-"], 
+	.Megamenu--default .Megamenu-item > span[class^=Icon-] {
+		font-size: 1.8rem !important;
+		letter-spacing: .01em !important;
+	}
+}
+
+@media screen and (min-width: 1366px) {
+	.Megamenu--default .Megamenu-item > span[class*=" Icon-"], 
+	.Megamenu--default .Megamenu-item > span[class^=Icon-] {
+		font-size: 1.8rem !important;
+		letter-spacing: .01em !important;
+	}
+}
+
+.Megamenu-item span[class*=" Icon-"], 
+.Megamenu-item span[class^=Icon-] {
+	padding-right: 1rem !important;
+}
+
+.Megamenu-item > a {
+	padding-left: 0 !important;
+}
+
+.Megamenu-item > *:first-child {
+	padding-left: 1.6rem !important;
+}
+
+.Megamenu-item:first-child > *:first-child {
+	padding-left: 0 !important;
+}
+
+.Linklist span[class*=" Icon-"],
+.Linklist span[class^=Icon-],
+.Treeview span[class*=" Icon-"],
+.Treeview span[class^=Icon-] {
+	padding-right: 1rem !important;
+}
+
+.Treeview--plus .Treeview-handler--default::after {
+	background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctitle%3Eplus%3C/title%3E%3Cpath d='M0 20h32v-8H0zm12 12h8V0h-8z'/%3E%3C/svg%3E");
+}

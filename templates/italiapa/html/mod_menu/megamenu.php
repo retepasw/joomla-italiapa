@@ -27,6 +27,7 @@ if ($tagId = $params->get('tag_id', ''))
 
 ob_start();
 ?>
+
 <div class="Megamenu Megamenu--default js-megamenu u-background-50">
 <ul class="Megamenu-list Megamenu<?php echo $class_sfx; ?>"<?php echo $id; ?>>
 <?php 
@@ -84,6 +85,7 @@ foreach ($list as $i => &$item)
 		$class .= ' parent';
 	}
 
+	$icon = '';
 	if ($item->anchor_css)
 	{
 		JLog::add(new JLogEntry('anchor_css: '.print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
@@ -92,33 +94,45 @@ foreach ($list as $i => &$item)
 		{
 			if (substr($anchor_css[$i], 0, 3) == 'li:')
 			{
-				$subclass = substr($anchor_css[$i], 3).' ' . $subclass;
+				$subclass = substr($anchor_css[$i], 3) . ' ' . $subclass;
+				unset($anchor_css[$i]);
+			}
+			elseif (substr($anchor_css[$i], 0, 4) == 'Icon')
+			{
+				$icon = $icon . ' ' . $anchor_css[$i];
 				unset($anchor_css[$i]);
 			}
 		}
 		$item->anchor_css = (substr($item->anchor_css, 0, 1) == ' ' ? ' ' : '') . implode(' ', $anchor_css);
 		JLog::add(new JLogEntry('anchor_css: '.print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
 	}
-	else
+
+	if (!$item->anchor_css)
 	{
 		$class = 'Megamenu-item' . $class;
 	}
-	JLog::add(new JLogEntry('li class: '.$class, JLog::DEBUG, 'tpl_italiapa'));
+	JLog::add(new JLogEntry('class: '.$class, JLog::DEBUG, 'tpl_italiapa'));
+	JLog::add(new JLogEntry('subclass: '.$subclass, JLog::DEBUG, 'tpl_italiapa'));
+	JLog::add(new JLogEntry('icon: '.$icon, JLog::DEBUG, 'tpl_italiapa'));
 
 	if ($item->level == 1)
 	{
-		echo '<li class="' . $class . ' ' . $subclass . '">';
+		echo '<li' . ($class || $subclass ? ' class="' . $class . ' ' . $subclass . '"' : '') . '>';
 	}
 	elseif ($item->level == 2)
 	{
 		echo '<ul class="Megamenu-subnavGroup">';
-		echo '<li class="' . $subclass . '">';
+		echo '<li' . ($subclass ? ' class="' . $subclass . '"' : '') . '>';
 	}
 	else 
 	{
-		echo '<li class="' . $subclass . '">';
+		echo '<li' . ($subclass ? ' class="' . $subclass . '"' : '') . '>';
 	}
-	
+	if ($icon)
+	{
+		echo '<span class="' . substr($icon, 1) . '"></span> ';	
+	}
+
 	switch ($item->type) :
 		case 'component':
 			require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
@@ -131,7 +145,7 @@ foreach ($list as $i => &$item)
 			require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
 			break;
 	endswitch;
-	
+
 	// The next item is deeper.
 	if ($item->deeper)
 	{
@@ -158,8 +172,8 @@ foreach ($list as $i => &$item)
 			{
 				echo '</div></li>';
 			}
-			else 
-			{	
+			else
+			{
 				echo '</ul></li>';			
 			}
 		}

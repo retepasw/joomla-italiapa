@@ -86,6 +86,23 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 </head>
 <body class="t-Pac c-hideFocus enhanced">
 
+<?php $svg_path = JPATH_ROOT .'/templates/' . $this->template . '/src/icons/img/SVG'; ?>
+<?php if (file_exists($svg_path) && ($icons = array_diff(scandir($svg_path), array('..', '.')))) : ?>
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+	<?php foreach ($icons as $filename ) : ?>
+		<?php $path_parts = pathinfo($filename); ?>
+		<?php if ($path_parts['extension'] != 'svg') continue; ?>
+		<?php $iconname = $path_parts['filename']; ?>
+		<symbol id="Icon-<?php echo $iconname; ?>" viewBox="0 0 32 32">
+		<?php $icon = new SimpleXMLElement(file_get_contents(JPATH_ROOT .'/templates/' . $this->template . '/src/icons/img/SVG/' . $iconname . '.svg')); ?>
+		<?php echo $icon->title->asXML() . "\r" . $icon->path->asXML()  . "\r"; ?>
+		</symbol>
+	<?php endforeach; ?>
+	</defs>
+</svg>
+<?php endif; ?>
+
 <?php if ($this->countModules('cookiebar')) : ?>
 	<jdoc:include type="modules" name="cookiebar" style="none" />
 <?php endif;?>
@@ -315,9 +332,7 @@ https://italia.github.io/design-web-toolkit/components/detail/leads.html
 <?php endif; ?>
 
 <?php if ($this->countModules('footer') + $this->countModules('footermenu')) : ?>
-<div class="u-background-grey-80 u-hiddenPrint">
-
-	<div class="u-layout-wide u-layoutCenter u-layout-r-withGutter">
+		<footer class="Footer u-padding-all-s u-background-95 u-hiddenPrint" id="footer">
 
 <?php if ($params->get('debug') || defined('JDEBUG') && JDEBUG) : ?>
 <div class="Prose Alert Alert--info Alert--withIcon u-padding-r-bottom u-padding-r-right u-margin-r-bottom">
@@ -327,9 +342,12 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 </div>
 <?php endif; ?>
 
-		<footer class="Footer u-padding-all-s" id="footer">
+			<?php if ($this->countModules('footerinfo')) : ?>
 			<div itemscope itemtype="http://schema.org/<?php echo $params->get('schema_org', 'Organization'); ?>">
 				<div class="u-cf">
+			<?php else : ?>
+				<div itemscope itemtype="http://schema.org/<?php echo $params->get('schema_org', 'Organization'); ?>" class="u-cf">
+			<?php endif; ?>				
 					<?php if ($logo) : ?>
 					<a href="<?php echo $this->baseurl; ?>/" tabindex="-1" itemprop="url">
 						<img class="Footer-logo" src="<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>" itemprop="logo">
@@ -337,14 +355,13 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 					<?php endif; ?>
 					<p class="Footer-siteName" itemprop="name"><?php echo htmlspecialchars($app->get('sitename')); ?></p>
 				</div>
-			
+			<?php if ($this->countModules('footerinfo')) : ?>
 				<div class="Grid Grid--withGutter">
-				<?php if ($this->countModules('footerinfo')) : ?>
 					<jdoc:include type="modules" name="footerinfo" style="lg" />
-				<?php endif; ?>
 				</div>
 			</div>
-									
+			<?php endif; ?>
+
 			<div class="Grid Grid--withGutter">
 			<?php if ($this->countModules('footer')) : ?>
 				<jdoc:include type="modules" name="footer" style="lg" />
@@ -357,8 +374,6 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 			<?php endif; ?>
 			</div>
 		</footer>
-	</div>
-</div>
 <?php endif; ?>
 
 <a href="#" title="torna all'inizio del contenuto" class="ScrollTop js-scrollTop js-scrollTo">

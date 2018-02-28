@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <field name="image" type="media" directory="" label="MOD_CAROUSEL_IMAGE_LABEL" required="yes"/>
+    <field name="title" type="text" label="MOD_CAROUSEL_IMAGE_TITLE_LABEL" required="yes"/>
+    <field name="description" type="text" label="MOD_CAROUSEL_IMAGE_DESCRIPTION_LABEL" required="yes"/>
+    <field name="caption" type="text" label="MOD_CAROUSEL_IMAGE_CAPTION_LABEL" required="yes"/>
+	<field name="link" type="url" label="MOD_CAROUSEL_IMAGE_LINK_LABEL" />
+	<field
+		name="target"
+		type="list"
+		label="MOD_CAROUSEL_IMAGE_LINK_BROWSERNAV_LABEL"
+		description="MOD_CAROUSEL_IMAGE_LINK_BROWSERNAV_DESC"
+		default=""
+		filter="options"
+		useglobal="true"
+		>
+		<option value="1">JBROWSERTARGET_PARENT</option>
+		<option value="2">JBROWSERTARGET_NEW</option>
+		<option value="3">JBROWSERTARGET_POPUP</option>
+		<option value="4">JBROWSERTARGET_MODAL</option>
+	</field>
+</form>

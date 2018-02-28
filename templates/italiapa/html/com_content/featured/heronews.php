@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -33,6 +33,7 @@ see <a href="https://italia.github.io/design-web-toolkit/components/detail/hero-
 <section <?php echo ($this->pageclass_sfx ? 'class="'.$this->pageclass_sfx.'" ' : ''); ?>itemscope itemtype="https://schema.org/Blog">
 	<div class="Hero">
 	<?php
+	if ($this->lead_items) :
 		$item = $this->lead_items[0];
 		$images = json_decode($item->images);
 		$document = JFactory::getDocument();
@@ -76,6 +77,7 @@ see <a href="https://italia.github.io/design-web-toolkit/components/detail/hero-
 			<span class="u-padding-r-left Icon Icon-expand"></span></a>
 			<?php endif; ?>
 		</div>
+	<?php endif; ?>
 	</div>
 
 <?php 
