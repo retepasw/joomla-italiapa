@@ -25,7 +25,7 @@ $assocParam = (JLanguageAssociations::isEnabled() && $item->params->get('show_as
 				<div class="u-nbfc u-borderShadow-xxs u-borderRadius-m u-color-gray-30 u-background-white">
 					<?php $images = json_decode($item->images); ?>
 					<?php if (isset($images->image_intro) && !empty($images->image_intro)) : ?>
-					<?php echo JLayoutHelper::render('joomla.content.image_intro', array('item' => $item, 'params' => $item->params, 'position' => 'above')); ?>
+					<?php echo JLayoutHelper::render('joomla.content.intro_image', $item); ?>
 					<?php endif; ?>
 					<div class="u-text-r-l u-padding-r-all u-layout-prose">
 						<?php
