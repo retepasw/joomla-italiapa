@@ -78,7 +78,7 @@ if ($tagId = $params->get('tag_id', ''))
 
 	if ($item->parent)
 	{
-		$class .= ' parent';
+		$class .= ' parent u-flex u-flexCol';
 	}
 	else
 	{
