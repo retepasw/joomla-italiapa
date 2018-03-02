@@ -27,7 +27,7 @@ JHtml::_('bootstrap.tooltip');
 	<?php if (!$params->get('usetext')): ?>
 		<div class="Form-field" id="form-login-username">
 		<svg class="u-text-r-m Icon Icon-User" style="margin-right: 0.25em;"><use xlink:href="#Icon-user"></use></svg><span class="u-hiddenVisually"><?php echo JText::_('MOD_LOGIN_VALUE_USERNAME'); ?></span>
-		<input type="text" name="username" id="modlgn-username" value="" class="Form-input validate-username required" size="25" required="required" aria-required="true" autofocus="" aria-invalid="false" placeholder="<?php echo JText::_('MOD_LOGIN_VALUE_USERNAME'); ?>"
+		<input type="text" name="username" id="modlgn-username" value="" class="Form-input validate-username required" size="25" required="required" aria-required="true" aria-invalid="false" placeholder="<?php echo JText::_('MOD_LOGIN_VALUE_USERNAME'); ?>"
 			style="display: unset!important; width:80%!important;"/>
 		<a href="<?php echo JRoute::_('index.php?option=com_users&view=remind'); ?>">
 			<svg class="u-text-r-m Icon Icon-question" style="margin-left: 0.25em;"><use xlink:href="#Icon-question"></use></svg>
@@ -37,7 +37,7 @@ JHtml::_('bootstrap.tooltip');
 
 		<div class="Form-field" id="form-login-password">
 		<svg class="u-text-r-m Icon Icon-Lock" style="margin-right: 0.25em;"><use xlink:href="#Icon-lock"></use></svg><span class="u-hiddenVisually"><?php echo JText::_('JGLOBAL_PASSWORD'); ?></span>
-		<input type="text" name="password" id="modlgn-passwd" value="" class="Form-input validate-password required" size="25" required="required" aria-required="true" autofocus="" aria-invalid="false" placeholder="<?php echo JText::_('JGLOBAL_PASSWORD'); ?>"
+		<input type="text" name="password" id="modlgn-passwd" value="" class="Form-input validate-password required" size="25" required="required" aria-required="true" aria-invalid="false" placeholder="<?php echo JText::_('JGLOBAL_PASSWORD'); ?>"
 			style="display: unset!important; width:80%!important;"/>
 		<a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>">
 			<svg class="u-text-r-m Icon Icon-question" style="margin-left: 0.25em;"><use xlink:href="#Icon-question"></use></svg>
@@ -48,7 +48,7 @@ JHtml::_('bootstrap.tooltip');
 		<?php if (count($twofactormethods) > 1) : ?>
 		<div class="Form-field" id="form-login-secretkey">
 		<svg class="u-text-r-m Icon Icon-star-full" style="margin-right: 0.25em;"><use xlink:href="#Icon-star-full"></use></svg><span class="u-hiddenVisually"><?php echo JText::_('JGLOBAL_SECRETKEY'); ?></span>
-		<input type="text" name="secretkey" id="modlgn-secretkey" value="" class="Form-input validate-secretkey required" size="25" required="required" aria-required="true" autofocus="" aria-invalid="false" placeholder="<?php echo JText::_('JGLOBAL_SECRETKEY'); ?>"
+		<input type="text" name="secretkey" id="modlgn-secretkey" value="" class="Form-input validate-secretkey required" size="25" required="required" aria-required="true" aria-invalid="false" placeholder="<?php echo JText::_('JGLOBAL_SECRETKEY'); ?>"
 			style="display: unset!important; width:80%!important;"/>
 		</div>
 		<?php endif; ?>
@@ -59,7 +59,7 @@ JHtml::_('bootstrap.tooltip');
 		</a>
 		<div class="Form-field" id="form-login-username">
 			<label id="username-lbl" for="modlgn-username" class="Form-label required"><?php echo JText::_('MOD_LOGIN_VALUE_USERNAME'); ?><span class="star">&nbsp;*</span></label>
-			<input type="text" name="username" id="modlgn-username" value="" class="Form-input validate-username required" size="25" required="required" aria-required="true" autofocus="" aria-invalid="false">
+			<input type="text" name="username" id="modlgn-username" value="" class="Form-input validate-username required" size="25" required="required" aria-required="true" aria-invalid="false">
 		</div>	
 
 		<a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>" class="u-floatRight">
@@ -68,13 +68,13 @@ JHtml::_('bootstrap.tooltip');
 		</a>
 		<div class="Form-field" id="form-login-password">
 			<label id="password-lbl" for="modlgn-passwd" class="Form-label required"><?php echo JText::_('JGLOBAL_PASSWORD'); ?><span class="star">&nbsp;*</span></label>
-			<input type="password" name="password" id="modlgn-passwd" value="" class="Form-input validate-username required" size="25" required="required" aria-required="true" autofocus="" aria-invalid="false">
+			<input type="password" name="password" id="modlgn-passwd" value="" class="Form-input validate-username required" size="25" required="required" aria-required="true" aria-invalid="false">
 		</div>
 
 		<?php if (count($twofactormethods) > 1) : ?>
 		<div class="Form-field" id="form-login-secretkey">
 			<label id="secretkey-lbl" for="modlgn-secretkey" class="Form-label"><?php echo JText::_('JGLOBAL_SECRETKEY'); ?></label>
-			<input type="text" name="secretkey" id="modlgn-secretkey" value="" class="Form-input validate-secretkey required" size="25" autofocus="" aria-invalid="false" autocomplete="off">
+			<input type="text" name="secretkey" id="modlgn-secretkey" value="" class="Form-input validate-secretkey required" size="25" aria-invalid="false" autocomplete="off">
 		</div>	
 		<?php endif; ?>
 	<?php endif; ?>
