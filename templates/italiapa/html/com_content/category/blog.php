@@ -67,7 +67,8 @@ https://italia.github.io/design-web-toolkit/components/detail/layout--default.ht
 						<?php endif; ?>
 					<?php endif; ?>
 					</p>
-					
+
+					<!--
 					<?php if ($this->params->get('show_modify_date') || $this->params->get('show_publish_date') || $this->params->get('show_create_date')) : ?>
 					<p class="Grid-cell u-textSecondary">
 						<?php if ($this->params->get('show_modify_date')) : ?>
@@ -80,7 +81,8 @@ https://italia.github.io/design-web-toolkit/components/detail/layout--default.ht
 						<?php endif; ?>
 					</p>
 					<?php endif; ?>
-					
+					-->
+
 				</div>
 		
 				<div class="u-text-r-l u-layout-prose">
