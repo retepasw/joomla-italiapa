@@ -94,10 +94,29 @@ if ($tagId = $params->get('tag_id', ''))
 	{
 		$moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8');
 		echo '<div class="Entrypoint-item '.($item->level == 1 ? 'u-sizeFill ' : '') .($moduleclass_sfx ? $moduleclass_sfx : 'u-background-compl-80').'"><p>';
+
+		$icon = '';
+		if ($item->anchor_css)
+		{
+			JLog::add(new JLogEntry('anchor_css: '.print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
+			$anchor_css = explode(' ', $item->anchor_css);
+			for($i = 0; $i < count($anchor_css); $i++)
+			{
+				if (substr($anchor_css[$i], 0, 4) == 'Icon')
+				{
+					$icon = $icon . ' ' . $anchor_css[$i];
+					unset($anchor_css[$i]);
+				}
+			}
+			// $item->anchor_css = (substr($item->anchor_css, 0, 1) == ' ' ? ' ' : '') . implode(' ', $anchor_css);
+			$item->anchor_css = implode(' ', $anchor_css);
+		}		
 		if (!$item->anchor_css)
 		{
 			$item->anchor_css = 'u-textClean u-text-h3 u-color-white';
 		}
+		$item->anchor_css .= $icon;
+		
 		switch ($item->type) :
 		case 'separator':
 		case 'component':
