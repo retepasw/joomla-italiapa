@@ -80,11 +80,8 @@ if ($tagId = $params->get('tag_id', ''))
 	{
 		$class .= ' parent';
 	}
-	else
-	{
-		$class .= ' u-flex';
-	}
-
+	$class .= ' u-flex u-flexCol';
+	
 	if ($item->level == 1)
 	{
 		echo '<div class="Grid-cell u-md-size1of3 u-lg-size1of3 ' . $class . '">';
