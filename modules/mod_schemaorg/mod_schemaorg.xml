@@ -26,11 +26,10 @@
   <config>
     <fields name="params">
       <fieldset name="basic">
-      	<field name="prepare_content" type="radio" label="MOD_SCHEMAORG_FIELD_PREPARE_CONTENT_LABEL" description="MOD_SCHEMAORG_FIELD_PREPARE_CONTENT_DESC" class="btn-group btn-group-yesno" default="0">
+        <field name="prepare_content" type="radio" label="MOD_SCHEMAORG_FIELD_PREPARE_CONTENT_LABEL" description="MOD_SCHEMAORG_FIELD_PREPARE_CONTENT_DESC" class="btn-group btn-group-yesno" default="0">
           <option value="1">JYES</option>
           <option value="0">JNO</option>
-       </field>
-      
+        </field>
         <field name="section" type="text" label="MOD_SCHEMAORG_SECTION_LABEL" description="MOD_SCHEMAORG_SECTION_DESC"/>
         <field name="data" type="subform" formsource="/modules/mod_schemaorg/item.xml" label="MOD_SCHEMAORG_ITEM_LABEL" description="MOD_SCHEMAORG_ITEM_DESC" multiple="true" layout="joomla.form.field.subform.repeatable-table"/>
       </fieldset>

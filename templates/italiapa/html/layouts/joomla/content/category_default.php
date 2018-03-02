@@ -51,60 +51,57 @@ if (substr($className, -1) === 's')
 }
 $tagsData = $category->tags->itemTags;
 ?>
+
 <div class="u-layout-wide u-layoutCenter u-layout-withGutter u-padding-r-top u-padding-bottom-xxl">
 <?php if ($params->get('show_page_heading')) : ?>
 	<h1 class="u-text-h2">
 		<?php echo $displayData->escape($params->get('page_heading')); ?>
 	</h1>
 <?php endif; ?>
-<?php if ($params->get('show_category_title', 1)) : ?>
-	<h2 class="u-text-h3">
-		<?php echo JHtml::_('content.prepare', $category->title, '', $extension . '.category.title'); ?>
-	</h2>
-<?php endif; ?>
-<?php echo $afterDisplayTitle; ?>
 
-<?php if ($params->get('show_cat_tags', 1)) : ?>
-	<?php echo JLayoutHelper::render('joomla.content.tags', $tagsData); ?>
-<?php endif; ?>
-<!--
-	<div class="Grid Grid--withGutter">
--->
-		<?php if ($beforeDisplayContent || $afterDisplayContent || $params->get('show_description', 1) || $params->def('show_description_image', 1)) : ?>
-<!--
-		<div class="Grid-cell u-md-size8of12 u-lg-size8of12">
-			<article class="Prose u-layout-prose">
--->
-			<article class="Prose">
-				<?php if ($params->get('show_description_image') && $category->getParams()->get('image')) : ?>
-					<img width="100%" src="<?php echo $category->getParams()->get('image'); ?>" alt="<?php echo htmlspecialchars($category->getParams()->get('image_alt'), ENT_COMPAT, 'UTF-8'); ?>"/>
+	<section class="Grid">
+	    <div class="Grid-cell u-sizeFull u-md-size1of2 u-lg-size1of2 u-text-r-s u-padding-r-all">
+	        <div class="u-text-r-l u-layout-prose">
+				<?php if ($params->get('show_cat_tags', 1)) : ?>
+					<?php echo JLayoutHelper::render('joomla.content.tags', $tagsData); ?>
 				<?php endif; ?>
+	
+				<?php if ($params->get('show_category_title', 1)) : ?>
+					<h2 class="u-text-h2 u-margin-r-bottom">
+						<?php echo JHtml::_('content.prepare', $category->title, '', $extension . '.category.title'); ?>
+					</h2>
+				<?php endif; ?>
+				<?php echo $afterDisplayTitle; ?>
+	
 				<?php echo $beforeDisplayContent; ?>
 				<?php if ($params->get('show_description') && $category->description) : ?>
 					<?php echo JHtml::_('content.prepare', $category->description, '', $extension . '.category.description'); ?>
 				<?php endif; ?>
 				<?php echo $afterDisplayContent; ?>
-			</article>
-<!--
-		</div>
--->
+	        </div>
+	    </div>
+	
+		<?php if ($params->get('show_description_image') && $category->getParams()->get('image')) : ?>
+	    <div class="Grid-cell u-sizeFull u-md-size1of2 u-lg-size1of2 u-text-r-s u-padding-r-all">
+	        <img src="<?php echo $category->getParams()->get('image'); ?>" alt="<?php echo htmlspecialchars($category->getParams()->get('image_alt'), ENT_COMPAT, 'UTF-8'); ?>" class="u-sizeFull" />
+	    </div>
 		<?php endif; ?>
+	
+		<div class="u-sizeFull">
 		<?php echo $displayData->loadTemplate($displayData->subtemplatename); ?>
-<!--
-	</div>
--->
-		<?php if ($displayData->maxLevel != 0 && $displayData->get('children')) : ?>
-		
-			<div class="u-sizeFull u-text-r-s u-color-70 cat-children">
-				<?php if ($params->get('show_category_heading_title_text', 1) == 1) : ?>
-					<h3 class="u-border-bottom-m">
-						<span class="u-block u-text-h3 u-color-60 u-textClean">
-							<?php echo JText::_('JGLOBAL_SUBCATEGORIES'); ?>
-						</span>
-					</h3>
-				<?php endif; ?>
-				<?php echo $displayData->loadTemplate('children'); ?>
-			</div>
-		<?php endif; ?>
-</div>
+		</div>
 
+		<?php if ($displayData->maxLevel != 0 && $displayData->get('children')) : ?>	
+		<div class="u-sizeFull u-text-r-s u-color-70 cat-children">
+			<?php if ($params->get('show_category_heading_title_text', 1) == 1) : ?>
+				<h3 class="u-border-bottom-m">
+					<span class="u-block u-text-h3 u-color-60 u-textClean">
+						<?php echo JText::_('JGLOBAL_SUBCATEGORIES'); ?>
+					</span>
+				</h3>
+			<?php endif; ?>
+			<?php echo $displayData->loadTemplate('children'); ?>
+		</div>
+		<?php endif; ?>
+	</section>
+</div>
