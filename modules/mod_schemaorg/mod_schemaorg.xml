@@ -7,7 +7,7 @@
   <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3</license>
   <authorEmail>info@eshiol.it</authorEmail>
   <authorUrl>www.eshiol.it</authorUrl>
-  <version>3.8.1.22</version>
+  <version>3.8.1.21</version>
   <description>mod_schemaorg_xml_description</description>
   <updateservers>
     <server type="extension" priority="2" name="Italia Template - Schema.org Module">https://www.eshiol.it/files/italiapa/mod_schemaorg.xml</server>
