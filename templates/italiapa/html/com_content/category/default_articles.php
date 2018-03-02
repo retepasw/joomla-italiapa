@@ -54,7 +54,7 @@ $class = "u-text-r-xs u-padding-all-xs";
 		<div class="Grid">
 			<legend class="u-hiddenVisually"><?php echo JText::_('COM_CONTENT_FORM_FILTER_LEGEND'); ?></legend>
 			<?php if ($this->params->get('filter_field') !== 'hide') : ?>
-			<div class="Form-field Grid-cell u-sizeFull u-sm-size6of12 u-md-size4of12 u-lg-size3of12 u-border-right-xxs u-border-top-xxs">
+			<div class="Form-field Grid-cell u-sizeFull u-sm-size6of12 u-md-size4of12 u-lg-size8of12 u-border-right-xxs u-border-top-xxs">
 			<?php if ($this->params->get('filter_field') === 'tag') : ?>
 				<label class="Form-label is-required u-hiddenVisually" for="filter_tag"><?php echo JText::_('JTAG'); ?></label>
 				<select name="filter_tag" id="filter_tag" onchange="document.adminForm.submit();" class="Form-input u-color-grey-90 <?php echo $class; ?>">
@@ -68,22 +68,23 @@ $class = "u-text-r-xs u-padding-all-xs";
 					<?php echo JHtml::_('select.options', JHtml::_('content.months', $this->state), 'value', 'text', $this->state->get('list.filter')); ?>
 				</select>
 			<?php else : ?>
-				<label class="filter-search-lbl element-invisible" for="filter-search">
-					<?php echo JText::_('COM_CONTENT_' . $this->params->get('filter_field') . '_FILTER_LABEL') . '&#160;'; ?>
+				<input class="Form-input u-text-r-s u-padding-r-all u-color-black" type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape($this->state->get('list.filter')); ?>" class="Form-input u-color-grey-90 <?php echo $class; ?>" onchange="document.adminForm.submit();" title="<?php echo JText::_('COM_CONTENT_FILTER_SEARCH_DESC'); ?>" placeholder="<?php echo JText::_('COM_CONTENT_' . $this->params->get('filter_field') . '_FILTER_LABEL'); ?>" />
+				<label class="Form-label u-color-grey-90 u-text-r-m u-hiddenVisually" for="filter-search">
+					<?php echo JText::_('COM_CONTENT_' . $this->params->get('filter_field') . '_FILTER_LABEL'); ?>
 				</label>
-				<input type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape($this->state->get('list.filter')); ?>" class="Form-input u-color-grey-90 <?php echo $class; ?>" onchange="document.adminForm.submit();" title="<?php echo JText::_('COM_CONTENT_FILTER_SEARCH_DESC'); ?>" placeholder="<?php echo JText::_('COM_CONTENT_' . $this->params->get('filter_field') . '_FILTER_LABEL'); ?>" />
 			<?php endif; ?>
 			</div>
 			<?php endif; ?>
+
 			<?php if ($this->params->get('show_pagination_limit')) : ?>
-				<div class="Form-field Grid-cell u-sizeFull u-sm-size6of12 u-md-size4of12 u-lg-size3of12 u-border-right-xxs u-border-top-xxs">
-					<label for="limit" class="Form-label is-required u-hiddenVisually">
+				<div class="Form-field Grid-cell u-sizeFull u-sm-size4of12 u-md-size3of12 u-lg-size2of12 u-border-right-xxs u-border-top-xxs">
+					<label for="limit" class="Form-label u-hiddenVisually">
 						<?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>
 					</label>
 					<?php
 						echo str_replace(
 							'class="inputbox input-mini"',
-							'class=".$class."',
+							'class="Form-input u-color-grey-90 u-text-r-s u-padding-r-all"',
 							$this->pagination->getLimitBox()
 							);
 					?>
@@ -95,7 +96,7 @@ $class = "u-text-r-xs u-padding-all-xs";
 			<input type="hidden" name="limitstart" value="" />
 			<input type="hidden" name="task" value="" />
 
-			<button type="submit" name="filter_submit" class="u-background-40 u-color-white <?php echo $class; ?> u-textNoWrap"><?php echo JText::_('COM_CONTENT_FORM_FILTER_SUBMIT'); ?></button>
+			<button type="submit" name="filter_submit" class="u-lg-size2of12 u-background-40 u-color-white u-padding-all-s u-text-r-m u-textNoWrap <?php echo $class; ?>"><?php echo JText::_('COM_CONTENT_FORM_FILTER_SUBMIT'); ?></button>
 		</div>
 	</form>
 </div>

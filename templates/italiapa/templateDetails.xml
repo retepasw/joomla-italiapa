@@ -22,6 +22,7 @@
     <folder>css</folder>
     <folder>fields</folder>
     <folder>html</folder>
+    <folder>src</folder>
     <filename>js/accordion.min.js</filename>
     <filename>js/drop.min.js</filename>
     <filename>js/map.min.js</filename>
