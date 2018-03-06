@@ -60,8 +60,8 @@ $tagsData = $category->tags->itemTags;
 <?php endif; ?>
 
 	<section class="Grid">
-	    <div class="Grid-cell u-sizeFull u-md-size1of2 u-lg-size1of2 u-text-r-s u-padding-r-all">
-	        <div class="u-text-r-l u-layout-prose">
+	    <div class="Grid-cell u-sizeFull<?php echo ($params->get('show_description_image') && $category->getParams()->get('image') ? ' u-md-size1of2 u-lg-size1of2' : ''); ?> u-text-r-s u-padding-r-all">
+	        <div class="u-text-r-l<?php echo ($params->get('show_description_image') && $category->getParams()->get('image') ? ' u-layout-prose' : ''); ?>">
 				<?php if ($params->get('show_cat_tags', 1)) : ?>
 					<?php echo JLayoutHelper::render('joomla.content.tags', $tagsData); ?>
 				<?php endif; ?>
@@ -80,7 +80,7 @@ $tagsData = $category->tags->itemTags;
 				<?php echo $afterDisplayContent; ?>
 	        </div>
 	    </div>
-	
+
 		<?php if ($params->get('show_description_image') && $category->getParams()->get('image')) : ?>
 	    <div class="Grid-cell u-sizeFull u-md-size1of2 u-lg-size1of2 u-text-r-s u-padding-r-all">
 	        <img src="<?php echo $category->getParams()->get('image'); ?>" alt="<?php echo htmlspecialchars($category->getParams()->get('image_alt'), ENT_COMPAT, 'UTF-8'); ?>" class="u-sizeFull" />
