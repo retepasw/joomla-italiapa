@@ -61,21 +61,23 @@ JHtml::_('bootstrap.tooltip');
 		</div>
 		<?php endif; ?>
 	<?php else: ?>
-		<a href="<?php echo JRoute::_('index.php?option=com_users&view=remind'); ?>" class="u-floatRight">
-			<?php echo JText::_('MOD_LOGIN_FORGOT_YOUR_USERNAME'); ?>
-			<span class="u-text-r-m Icon Icon-link"></span>
-		</a>
 		<div class="Form-field" id="form-login-username">
 			<label id="username-lbl" for="modlgn-username" class="Form-label required"><?php echo JText::_('MOD_LOGIN_VALUE_USERNAME'); ?><span class="star">&nbsp;*</span></label>
+			<div class="u-floatRight">
+				<a href="<?php echo JRoute::_('index.php?option=com_users&view=remind'); ?>">
+				<?php echo JText::_('MOD_LOGIN_FORGOT_YOUR_USERNAME'); ?></a>&nbsp;
+				<span class="u-text-r-m Icon Icon-link"></span>
+			</div>
 			<input type="text" name="username" id="modlgn-username" value="" class="Form-input validate-username required" size="25" required="required" aria-required="true" aria-invalid="false">
 		</div>	
 
-		<a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>" class="u-floatRight">
-		<?php echo JText::_('MOD_LOGIN_FORGOT_YOUR_PASSWORD'); ?>
-		<span class="u-text-r-m Icon Icon-link"></span>
-		</a>
 		<div class="Form-field" id="form-login-password">
 			<label id="password-lbl" for="modlgn-passwd" class="Form-label required"><?php echo JText::_('JGLOBAL_PASSWORD'); ?><span class="star">&nbsp;*</span></label>
+			<div class="u-floatRight">
+				<a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>">
+				<?php echo JText::_('MOD_LOGIN_FORGOT_YOUR_PASSWORD'); ?></a>&nbsp;
+				<span class="u-text-r-m Icon Icon-link"></span>
+			</div>
 			<input type="password" name="password" id="modlgn-passwd" value="" class="Form-input validate-username required" size="25" required="required" aria-required="true" aria-invalid="false">
 		</div>
 
