@@ -98,7 +98,8 @@ JHtml::_('bootstrap.tooltip');
 		<?php $usersConfig = JComponentHelper::getParams('com_users'); ?>
 		<?php if ($usersConfig->get('allowUserRegistration')) : ?>
 		<a href="<?php echo JRoute::_('index.php?option=com_users&view=registration'); ?>">
-		<?php echo JText::_('MOD_LOGIN_REGISTER'); ?> <span class="u-text-r-m Icon Icon-link"></span></a>
+		<?php echo JText::_('MOD_LOGIN_REGISTER'); ?></a>&nbsp;
+		<span class="u-text-r-m Icon Icon-link"></span>
 		<?php endif; ?>
 		<div id="form-login-submit" class="Form-field Grid-cell u-textRight">
 			<button type="submit" class="Button Button--default u-text-xs"><?php echo JText::_('JLOGIN'); ?></button>
