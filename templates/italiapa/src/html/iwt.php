@@ -22,7 +22,7 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
  *
  * @since  3.8
  */
-abstract class JHtmlWebtoolkit
+abstract class JHtmlIwt
 {
 	/**
 	 * @var    array  Array containing information for loaded files
