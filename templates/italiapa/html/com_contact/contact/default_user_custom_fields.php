@@ -41,9 +41,9 @@ $userFieldGroups    = array();
 <?php foreach ($userFieldGroups as $groupTitle => $fields) : ?>
 	<?php $id = JApplicationHelper::stringURLSafe($groupTitle); ?>
 	<?php if ($presentation_style == 'sliders') : ?>
-		<?php echo JHtml::_('webtoolkit.addSlide', 'slide-contact', $groupTitle ?: JText::_('COM_CONTACT_USER_FIELDS'), 'display-profile-' . $id); ?>
+		<?php echo JHtml::_('iwt.addSlide', 'slide-contact', $groupTitle ?: JText::_('COM_CONTACT_USER_FIELDS'), 'display-profile-' . $id); ?>
 	<?php elseif ($presentation_style == 'tabs') : ?>
-		<?php echo JHtml::_('webtoolkit.addTab', 'myTab', 'display-profile-' . $id, $groupTitle ?: JText::_('COM_CONTACT_USER_FIELDS')); ?>
+		<?php echo JHtml::_('iwt.addTab', 'myTab', 'display-profile-' . $id, $groupTitle ?: JText::_('COM_CONTACT_USER_FIELDS')); ?>
 	<?php elseif ($presentation_style == 'plain') : ?>
 		<?php echo '<h3 class="u-text-h3">' . ($groupTitle ?: JText::_('COM_CONTACT_USER_FIELDS')) . '</h3>'; ?>
 	<?php endif; ?>
@@ -65,8 +65,8 @@ $userFieldGroups    = array();
 	</div>
 
 	<?php if ($presentation_style == 'sliders') : ?>
-		<?php echo JHtml::_('webtoolkit.endSlide'); ?>
+		<?php echo JHtml::_('iwt.endSlide'); ?>
 	<?php elseif ($presentation_style == 'tabs') : ?>
-		<?php echo JHtml::_('webtoolkit.endTab'); ?>
+		<?php echo JHtml::_('iwt.endTab'); ?>
 	<?php endif; ?>
 <?php endforeach; ?>

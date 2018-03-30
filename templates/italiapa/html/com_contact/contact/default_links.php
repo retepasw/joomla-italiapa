@@ -20,10 +20,10 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 ?>
 
 <?php if ($this->params->get('presentation_style') === 'sliders') : ?>
-	<?php echo JHtml::_('webtoolkit.addSlide', 'slide-contact', JText::_('COM_CONTACT_LINKS'), 'display-links'); ?>
+	<?php echo JHtml::_('iwt.addSlide', 'slide-contact', JText::_('COM_CONTACT_LINKS'), 'display-links'); ?>
 <?php endif; ?>
 <?php if ($this->params->get('presentation_style') === 'tabs') : ?>
-	<?php echo JHtml::_('webtoolkit.addTab', 'myTab', 'display-links', JText::_('COM_CONTACT_LINKS')); ?>
+	<?php echo JHtml::_('iwt.addTab', 'myTab', 'display-links', JText::_('COM_CONTACT_LINKS')); ?>
 <?php endif; ?>
 <?php if ($this->params->get('presentation_style') === 'plain') : ?>
 	<?php echo '<h3 class="u-text-h3">' . JText::_('COM_CONTACT_LINKS') . '</h3>'; ?>
@@ -57,8 +57,8 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 </div>
 
 <?php if ($this->params->get('presentation_style') === 'sliders') : ?>
-	<?php echo JHtml::_('webtoolkit.endSlide'); ?>
+	<?php echo JHtml::_('iwt.endSlide'); ?>
 <?php endif; ?>
 <?php if ($this->params->get('presentation_style') === 'tabs') : ?>
-	<?php echo JHtml::_('webtoolkit.endTab'); ?>
+	<?php echo JHtml::_('iwt.endTab'); ?>
 <?php endif; ?>

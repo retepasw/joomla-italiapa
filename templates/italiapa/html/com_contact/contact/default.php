@@ -17,7 +17,7 @@ defined('_JEXEC') or die;
 
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
-require_once JPATH_BASE . '/templates/' . JFactory::getApplication()->getTemplate() . '/src/html/webtoolkit.php';
+require_once JPATH_BASE . '/templates/' . JFactory::getApplication()->getTemplate() . '/src/html/iwt.php';
 
 $cparams = JComponentHelper::getParams('com_media');
 $tparams = $this->item->params;
@@ -111,13 +111,13 @@ JFactory::getDocument()->addStyleDeclaration('
 
 	<?php if ($this->params->get('show_info', 1)) : ?>
 		<?php if ($presentation_style === 'sliders') : ?>
-			<?php echo JHtml::_('webtoolkit.startAccordion', 'slide-contact', array('active' => 'basic-details')); ?>
+			<?php echo JHtml::_('iwt.startAccordion', 'slide-contact', array('active' => 'basic-details')); ?>
 			<?php $accordionStarted = true; ?>
-			<?php echo JHtml::_('webtoolkit.addSlide', 'slide-contact', JText::_('COM_CONTACT_DETAILS'), 'basic-details'); ?>
+			<?php echo JHtml::_('iwt.addSlide', 'slide-contact', JText::_('COM_CONTACT_DETAILS'), 'basic-details'); ?>
 		<?php elseif ($presentation_style === 'tabs') : ?>
-			<?php echo JHtml::_('webtoolkit.startTabSet', 'myTab', array('active' => 'basic-details')); ?>
+			<?php echo JHtml::_('iwt.startTabSet', 'myTab', array('active' => 'basic-details')); ?>
 			<?php $tabSetStarted = true; ?>
-			<?php echo JHtml::_('webtoolkit.addTab', 'myTab', 'basic-details', JText::_('COM_CONTACT_DETAILS')); ?>
+			<?php echo JHtml::_('iwt.addTab', 'myTab', 'basic-details', JText::_('COM_CONTACT_DETAILS')); ?>
 		<?php elseif ($presentation_style === 'plain') : ?>
 			<?php echo '<h3 class="u-text-h3">' . JText::_('COM_CONTACT_DETAILS') . '</h3>'; ?>
 		<?php endif; ?>
@@ -140,9 +140,9 @@ JFactory::getDocument()->addStyleDeclaration('
 		<?php endif; ?>
 
 		<?php if ($presentation_style === 'sliders') : ?>
-			<?php echo JHtml::_('webtoolkit.endSlide'); ?>
+			<?php echo JHtml::_('iwt.endSlide'); ?>
 		<?php elseif ($presentation_style === 'tabs') : ?>
-			<?php echo JHtml::_('webtoolkit.endTab'); ?>
+			<?php echo JHtml::_('iwt.endTab'); ?>
 		<?php endif; ?>
 	<?php endif; ?>
 
@@ -150,19 +150,19 @@ JFactory::getDocument()->addStyleDeclaration('
 		<?php if ($presentation_style === 'sliders') : ?>
 			<?php if (!$accordionStarted)
 			{
-				echo JHtml::_('webtoolkit.startAccordion', 'slide-contact', array('active' => 'display-form'));
+				echo JHtml::_('iwt.startAccordion', 'slide-contact', array('active' => 'display-form'));
 				$accordionStarted = true;
 			}
 			?>
-			<?php echo JHtml::_('webtoolkit.addSlide', 'slide-contact', JText::_('COM_CONTACT_EMAIL_FORM'), 'display-form'); ?>
+			<?php echo JHtml::_('iwt.addSlide', 'slide-contact', JText::_('COM_CONTACT_EMAIL_FORM'), 'display-form'); ?>
 		<?php elseif ($presentation_style === 'tabs') : ?>
 			<?php if (!$tabSetStarted)
 			{
-				echo JHtml::_('webtoolkit.startTabSet', 'myTab', array('active' => 'display-form'));
+				echo JHtml::_('iwt.startTabSet', 'myTab', array('active' => 'display-form'));
 				$tabSetStarted = true;
 			}
 			?>
-			<?php echo JHtml::_('webtoolkit.addTab', 'myTab', 'display-form', JText::_('COM_CONTACT_EMAIL_FORM')); ?>
+			<?php echo JHtml::_('iwt.addTab', 'myTab', 'display-form', JText::_('COM_CONTACT_EMAIL_FORM')); ?>
 		<?php elseif ($presentation_style === 'plain') : ?>
 			<?php echo '<h3 class="u-text-h3">' . JText::_('COM_CONTACT_EMAIL_FORM') . '</h3>'; ?>
 		<?php endif; ?>
@@ -170,21 +170,21 @@ JFactory::getDocument()->addStyleDeclaration('
 		<?php echo $this->loadTemplate('form'); ?>
 
 		<?php if ($presentation_style === 'sliders') : ?>
-			<?php echo JHtml::_('webtoolkit.endSlide'); ?>
+			<?php echo JHtml::_('iwt.endSlide'); ?>
 		<?php elseif ($presentation_style === 'tabs') : ?>
-			<?php echo JHtml::_('webtoolkit.endTab'); ?>
+			<?php echo JHtml::_('iwt.endTab'); ?>
 		<?php endif; ?>
 	<?php endif; ?>
 
 	<?php if ($tparams->get('show_links')) : ?>
 		<?php if ($presentation_style === 'sliders') : ?>
 			<?php if (!$accordionStarted) : ?>
-				<?php echo JHtml::_('webtoolkit.startAccordion', 'slide-contact', array('active' => 'display-links')); ?>
+				<?php echo JHtml::_('iwt.startAccordion', 'slide-contact', array('active' => 'display-links')); ?>
 				<?php $accordionStarted = true; ?>
 			<?php endif; ?>
 		<?php elseif ($presentation_style === 'tabs') : ?>
 			<?php if (!$tabSetStarted) : ?>
-				<?php echo JHtml::_('webtoolkit.startTabSet', 'myTab', array('active' => 'display-links')); ?>
+				<?php echo JHtml::_('iwt.startTabSet', 'myTab', array('active' => 'display-links')); ?>
 				<?php $tabSetStarted = true; ?>
 			<?php endif; ?>
 		<?php endif; ?>
@@ -195,19 +195,19 @@ JFactory::getDocument()->addStyleDeclaration('
 		<?php if ($presentation_style === 'sliders') : ?>
 			<?php if (!$accordionStarted)
 			{
-				echo JHtml::_('webtoolkit.startAccordion', 'slide-contact', array('active' => 'display-articles'));
+				echo JHtml::_('iwt.startAccordion', 'slide-contact', array('active' => 'display-articles'));
 				$accordionStarted = true;
 			}
 			?>
-			<?php echo JHtml::_('webtoolkit.addSlide', 'slide-contact', JText::_('JGLOBAL_ARTICLES'), 'display-articles'); ?>
+			<?php echo JHtml::_('iwt.addSlide', 'slide-contact', JText::_('JGLOBAL_ARTICLES'), 'display-articles'); ?>
 		<?php elseif ($presentation_style === 'tabs') : ?>
 			<?php if (!$tabSetStarted)
 			{
-				echo JHtml::_('webtoolkit.startTabSet', 'myTab', array('active' => 'display-articles'));
+				echo JHtml::_('iwt.startTabSet', 'myTab', array('active' => 'display-articles'));
 				$tabSetStarted = true;
 			}
 			?>
-			<?php echo JHtml::_('webtoolkit.addTab', 'myTab', 'display-articles', JText::_('JGLOBAL_ARTICLES')); ?>
+			<?php echo JHtml::_('iwt.addTab', 'myTab', 'display-articles', JText::_('JGLOBAL_ARTICLES')); ?>
 		<?php elseif ($presentation_style === 'plain') : ?>
 			<?php echo '<h3 class="u-text-h3">' . JText::_('JGLOBAL_ARTICLES') . '</h3>'; ?>
 		<?php endif; ?>
@@ -215,9 +215,9 @@ JFactory::getDocument()->addStyleDeclaration('
 		<?php echo $this->loadTemplate('articles'); ?>
 
 		<?php if ($presentation_style === 'sliders') : ?>
-			<?php echo JHtml::_('webtoolkit.endSlide'); ?>
+			<?php echo JHtml::_('iwt.endSlide'); ?>
 		<?php elseif ($presentation_style === 'tabs') : ?>
-			<?php echo JHtml::_('webtoolkit.endTab'); ?>
+			<?php echo JHtml::_('iwt.endTab'); ?>
 		<?php endif; ?>
 	<?php endif; ?>
 
@@ -225,19 +225,19 @@ JFactory::getDocument()->addStyleDeclaration('
 		<?php if ($presentation_style === 'sliders') : ?>
 			<?php if (!$accordionStarted)
 			{
-				echo JHtml::_('webtoolkit.startAccordion', 'slide-contact', array('active' => 'display-profile'));
+				echo JHtml::_('iwt.startAccordion', 'slide-contact', array('active' => 'display-profile'));
 				$accordionStarted = true;
 			}
 			?>
-			<?php echo JHtml::_('webtoolkit.addSlide', 'slide-contact', JText::_('COM_CONTACT_PROFILE'), 'display-profile'); ?>
+			<?php echo JHtml::_('iwt.addSlide', 'slide-contact', JText::_('COM_CONTACT_PROFILE'), 'display-profile'); ?>
 		<?php elseif ($presentation_style === 'tabs') : ?>
 			<?php if (!$tabSetStarted)
 			{
-				echo JHtml::_('webtoolkit.startTabSet', 'myTab', array('active' => 'display-profile'));
+				echo JHtml::_('iwt.startTabSet', 'myTab', array('active' => 'display-profile'));
 				$tabSetStarted = true;
 			}
 			?>
-			<?php echo JHtml::_('webtoolkit.addTab', 'myTab', 'display-profile', JText::_('COM_CONTACT_PROFILE')); ?>
+			<?php echo JHtml::_('iwt.addTab', 'myTab', 'display-profile', JText::_('COM_CONTACT_PROFILE')); ?>
 		<?php elseif ($presentation_style === 'plain') : ?>
 			<?php echo '<h3 class="u-text-h3">' . JText::_('COM_CONTACT_PROFILE') . '</h3>'; ?>
 		<?php endif; ?>
@@ -245,9 +245,9 @@ JFactory::getDocument()->addStyleDeclaration('
 		<?php echo $this->loadTemplate('profile'); ?>
 
 		<?php if ($presentation_style === 'sliders') : ?>
-			<?php echo JHtml::_('webtoolkit.endSlide'); ?>
+			<?php echo JHtml::_('iwt.endSlide'); ?>
 		<?php elseif ($presentation_style === 'tabs') : ?>
-			<?php echo JHtml::_('webtoolkit.endTab'); ?>
+			<?php echo JHtml::_('iwt.endTab'); ?>
 		<?php endif; ?>
 	<?php endif; ?>
 
@@ -259,19 +259,19 @@ JFactory::getDocument()->addStyleDeclaration('
 		<?php if ($presentation_style === 'sliders') : ?>
 			<?php if (!$accordionStarted)
 			{
-				echo JHtml::_('webtoolkit.startAccordion', 'slide-contact', array('active' => 'display-misc'));
+				echo JHtml::_('iwt.startAccordion', 'slide-contact', array('active' => 'display-misc'));
 				$accordionStarted = true;
 			}
 			?>
-			<?php echo JHtml::_('webtoolkit.addSlide', 'slide-contact', JText::_('COM_CONTACT_OTHER_INFORMATION'), 'display-misc'); ?>
+			<?php echo JHtml::_('iwt.addSlide', 'slide-contact', JText::_('COM_CONTACT_OTHER_INFORMATION'), 'display-misc'); ?>
 		<?php elseif ($presentation_style === 'tabs') : ?>
 			<?php if (!$tabSetStarted)
 			{
-				echo JHtml::_('webtoolkit.startTabSet', 'myTab', array('active' => 'display-misc'));
+				echo JHtml::_('iwt.startTabSet', 'myTab', array('active' => 'display-misc'));
 				$tabSetStarted = true;
 			}
 			?>
-			<?php echo JHtml::_('webtoolkit.addTab', 'myTab', 'display-misc', JText::_('COM_CONTACT_OTHER_INFORMATION')); ?>
+			<?php echo JHtml::_('iwt.addTab', 'myTab', 'display-misc', JText::_('COM_CONTACT_OTHER_INFORMATION')); ?>
 		<?php elseif ($presentation_style === 'plain') : ?>
 			<?php echo '<h3 class="u-text-h3">' . JText::_('COM_CONTACT_OTHER_INFORMATION') . '</h3>'; ?>
 		<?php endif; ?>
@@ -287,16 +287,16 @@ JFactory::getDocument()->addStyleDeclaration('
 			</dl>
 
 		<?php if ($presentation_style === 'sliders') : ?>
-			<?php echo JHtml::_('webtoolkit.endSlide'); ?>
+			<?php echo JHtml::_('iwt.endSlide'); ?>
 		<?php elseif ($presentation_style === 'tabs') : ?>
-			<?php echo JHtml::_('webtoolkit.endTab'); ?>
+			<?php echo JHtml::_('iwt.endTab'); ?>
 		<?php endif; ?>
 	<?php endif; ?>
 
 	<?php if ($accordionStarted) : ?>
-		<?php echo JHtml::_('webtoolkit.endAccordion'); ?>
+		<?php echo JHtml::_('iwt.endAccordion'); ?>
 	<?php elseif ($tabSetStarted) : ?>
-		<?php echo JHtml::_('webtoolkit.endTabSet'); ?>
+		<?php echo JHtml::_('iwt.endTabSet'); ?>
 	<?php endif; ?>
 
 	<?php echo $this->item->event->afterDisplayContent; ?>

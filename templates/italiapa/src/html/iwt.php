@@ -1,24 +1,32 @@
 <?php
 /**
- * @package     Joomla.Libraries
- * @subpackage  HTML
+ * @package		Template ItaliaPA
+ * @subpackage	tpl_italiapa
  *
- * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @author		Helios Ciancio <info@eshiol.it>
+ * @link		http://www.eshiol.it
+ * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
+ * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
+ * Template ItaliaPA is free software. This version may have been modified
+ * pursuant to the GNU General Public License, and as distributed it includes
+ * or is derivative of works licensed under the GNU General Public License or
+ * other free or open source software licenses.
  */
 
 defined('JPATH_PLATFORM') or die;
 
+JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
+
 /**
  * Utility class for Webtoolkit elements.
  *
- * @since  3.0
+ * @since  3.8
  */
 abstract class JHtmlWebtoolkit
 {
 	/**
 	 * @var    array  Array containing information for loaded files
-	 * @since  3.0
+	 * @since  3.8
 	 */
 	protected static $loaded = array();
 
@@ -42,7 +50,7 @@ abstract class JHtmlWebtoolkit
 	 *
 	 * @return  string  HTML for the accordian
 	 *
-	 * @since   3.0
+	 * @since   3.8
 	 */
 	public static function startAccordion($selector = 'myAccordian', $params = array())
 	{
@@ -77,7 +85,7 @@ abstract class JHtmlWebtoolkit
 	 *
 	 * @return  string  HTML to close the accordian
 	 *
-	 * @since   3.0
+	 * @since   3.8
 	 */
 	public static function endAccordion()
 	{
@@ -94,12 +102,11 @@ abstract class JHtmlWebtoolkit
 	 *
 	 * @return  string  HTML to add the slide
 	 *
-	 * @since   3.0
+	 * @since   3.8
 	 */
 	public static function addSlide($selector, $text, $id, $class = '')
 	{
 		$html = '<h2 class="Accordion-header js-fr-accordion__header fr-accordion__header" id="accordion-header-' . $id . '"'
-//			. ((static::$loaded[__CLASS__ . '::startAccordion'][$selector]['active'] == $id) ? '' : ' aria-selected="true" aria-expanded="true"')
 			. '>'
 			. '<span class="Accordion-link">'
 			. $text
@@ -108,7 +115,6 @@ abstract class JHtmlWebtoolkit
 			. '<div id="accordion-panel-' . $id . '"'
 			. ' class="Accordion-panel fr-accordion__panel js-fr-accordion__panel' . (!empty($class) ? ' ' . $class : '') . '"'
 			. ' role="tabpanel"'
-//			. ((static::$loaded[__CLASS__ . '::startAccordion'][$selector]['active'] == $id) ? '' : ' aria-hidden="false"')
 			. '>';
 
 		return $html;
@@ -119,7 +125,7 @@ abstract class JHtmlWebtoolkit
 	 *
 	 * @return  string  HTML to close the slide
 	 *
-	 * @since   3.0
+	 * @since   3.8
 	 */
 	public static function endSlide()
 	{
@@ -134,7 +140,7 @@ abstract class JHtmlWebtoolkit
 	 *
 	 * @return  string
 	 *
-	 * @since   3.1
+	 * @since   3.8
 	 */
 	public static function startTabSet($selector = 'myTab', $params = array())
 	{
@@ -147,31 +153,27 @@ abstract class JHtmlWebtoolkit
 
 	        // Inject tab into UL
 	        JFactory::getDocument()->addScriptDeclaration('jQuery(function($){
-        	    $(' . json_encode('#accordion-' . $selector . ' button.fr-accordion__header') . ').each(function( index, element ) {
-                    $(' . json_encode('#accordion-' . $selector . ' div') . ').first().before( this );
-        	    });
-            });');
+	    	    $(' . json_encode('#accordion-' . $selector . ' button.fr-accordion__header') . ').each(function( index, element ) {
+	                $(' . json_encode('#accordion-' . $selector . ' div') . ').first().before( this );
+	    	    });
+	        });');
 
-	        return '<div class="fr-accordion js-fr-accordion" id="accordion-' . $selector . '" role="tablist">'
-//	           . '<ul class="Grid Grid--withGutter nav nav-tabs" id="' . $selector . 'Tabs"></ul>'
-//    	       . '<div class="tab-content" id="' . $selector . 'Content">'
-                ;
+	        return '<div class="fr-accordion js-fr-accordion" id="accordion-' . $selector . '" role="tablist">';
 	    }
 	}
-	
+
 	/**
 	 * Close the current tab pane
 	 *
 	 * @return  string  HTML to close the pane
 	 *
-	 * @since   3.1
+	 * @since   3.8
 	 */
 	public static function endTabSet()
 	{
-//	    return '</div></div>';
 	    return '</div>';
 	}
-	
+
 	/**
 	 * Begins the display of a new tab content panel.
 	 *
@@ -181,23 +183,22 @@ abstract class JHtmlWebtoolkit
 	 *
 	 * @return  string  HTML to start a new panel
 	 *
-	 * @since   3.1
+	 * @since   3.8
 	 */
 	public static function addTab($selector, $id, $title)
 	{
 	    return '<button type="button"'
 	        . ((static::$loaded[__CLASS__ . '::startTabSet'][$selector]['active'] == $id) ? ' aria-selected="true"' : '')
-            . ' class="Button Button--default u-text-r-xs'
-//            . ((static::$loaded[__CLASS__ . '::startTabSet'][$selector]['active'] == $id) ? ' is-pressed' : '')
-            . ' js-fr-accordion__header fr-accordion__header" id="accordion-header-' . $id . '"'
-            . '">'
-            . $title
-            . '</button>'
-            . '<div id="accordion-panel-' . $id . '"'
-            . ((static::$loaded[__CLASS__ . '::startTabSet'][$selector]['active'] == $id) ? ' aria-hidden="false"' : '')
-            . ' class="Accordion-panel fr-accordion__panel js-fr-accordion__panel"'
-            . ' role="tabpanel"'
-            . '>';
+	        . ' class="Button Button--default u-text-r-xs'
+	        . ' js-fr-accordion__header fr-accordion__header" id="accordion-header-' . $id . '"'
+	        . '">'
+	        . $title
+	        . '</button>'
+	        . '<div id="accordion-panel-' . $id . '"'
+	        . ((static::$loaded[__CLASS__ . '::startTabSet'][$selector]['active'] == $id) ? ' aria-hidden="false"' : '')
+	        . ' class="Accordion-panel fr-accordion__panel js-fr-accordion__panel"'
+	        . ' role="tabpanel"'
+	        . '>';
 	}
 
 	/**
@@ -205,7 +206,7 @@ abstract class JHtmlWebtoolkit
 	 *
 	 * @return  string  HTML to close the pane
 	 *
-	 * @since   3.1
+	 * @since   3.8
 	 */
 	public static function endTab()
 	{
