@@ -80,7 +80,7 @@ JFactory::getDocument()->addStyleDeclaration('
 		<h3 class="u-text-h3">
 			<span class="Dot u-background-70"></span>
 	<?php if ($show_contact_category === 'show_no_link') : ?>
-			<span class="contact-category"><?php echo $this->contact->category_title; ?></span>
+			<span class="u-textClean u-textWeight-700 u-text-r-xs u-color-50 contact-category"><?php echo $this->contact->category_title; ?></span>
 	<?php elseif ($show_contact_category === 'show_with_link') : ?>
 		<?php $contactLink = ContactHelperRoute::getCategoryRoute($this->contact->catid); ?>
 			<span class="contact-category"><a href="<?php echo $contactLink; ?>" class="u-textClean u-textWeight-700 u-text-r-xs u-color-50">
