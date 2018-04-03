@@ -18,7 +18,6 @@ defined('_JEXEC') or die;
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 JHtml::_('behavior.core');
-require_once JPATH_THEMES . '/' . JFactory::getApplication()->getTemplate() . '/html/iwt.php';
 
 $listOrder = $this->escape($this->state->get('list.ordering'));
 $listDirn  = $this->escape($this->state->get('list.direction'));
