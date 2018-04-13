@@ -34,38 +34,53 @@ $limit = $app->getUserStateFromRequest('global.list.limit', 'limit', $app->get('
 <div class="u-color-grey-30 u-border-top-xxs u-border-bottom-xxs">
 	<form action="<?php echo htmlspecialchars(JUri::getInstance()->toString()); ?>" method="post" name="adminForm" id="adminForm" class="Form Form--ultraLean u-margin-bottom-l">
 		<div class="Grid">
-			<?php if ($this->params->get('filter_field') || $this->params->get('show_pagination_limit')) : ?>
-			<div class="Form-field Grid-cell u-sizeFull u-sm-size6of12 u-md-size4of12 u-lg-size8of12 u-border-right-xxs u-border-top-xxs">
+			<?php if ($this->params->get('filter_field') || ($this->params->get('show_pagination_limit'))) : ?>
 				<?php if ($this->params->get('filter_field')) : ?>
-					<input class="Form-input u-text-r-s u-padding-r-all u-color-black" type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape($this->state->get('list.filter')); ?>" class="Form-input u-color-grey-90 <?php echo $class; ?>" onchange="document.adminForm.submit();" title="<?php echo JText::_('COM_CONTACT_FILTER_SEARCH_DESC'); ?>" placeholder="<?php echo JText::_('COM_CONTACT_FILTER_LABEL'); ?>" />
-					<label class="Form-label u-color-grey-90 u-text-r-m u-hiddenVisually" for="filter-search">
-						<?php echo JText::_('COM_CONTACT_FILTER_LABEL'); ?>
-					</label>
+					<?php if ($this->params->get('show_pagination_limit')) : ?>
+						<?php $size = "u-sizeFull u-sm-size8of12 u-md-size8of12 u-lg-size8of12"; ?>
+					<?php else : ?>
+						<?php $size = "u-size8of12 u-sm-size10of12 u-md-size10of12 u-lg-size10of12"; ?>
+					<?php endif; ?>
+				<div class="Form-field Grid-cell <?php echo $size; ?> u-border-right-xxs u-border-top-xxs">
+						<input class="Form-input u-text-r-s u-padding-r-all u-color-black" type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape($this->state->get('list.filter')); ?>" class="Form-input u-color-grey-90 <?php echo $class; ?>" onchange="document.adminForm.submit();" title="<?php echo JText::_('COM_CONTACT_FILTER_SEARCH_DESC'); ?>" placeholder="<?php echo JText::_('COM_CONTACT_FILTER_LABEL'); ?>" />
+						<label class="Form-label u-color-grey-90 u-text-r-m u-hiddenVisually" for="filter-search">
+							<?php echo JText::_('COM_CONTACT_FILTER_LABEL'); ?>
+						</label>
+				</div>
+				<?php else : ?>
+				<div class="Form-field Grid-cell u-size6of12 u-sm-size10of12 u-md-size10of12 u-lg-size10of12 u-border-right-xxs u-border-top-xxs">
+				</div>
 				<?php endif; ?>
-			</div>
 
-			<div class="Form-field Grid-cell u-sizeFull u-sm-size4of12 u-md-size3of12 u-lg-size2of12 u-border-right-xxs u-border-top-xxs">
 				<?php if ($this->params->get('show_pagination_limit')) : ?>
-				<label for="limit" class="Form-label u-hiddenVisually">
-					<?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>
-				</label>
-				<?php
-					echo str_replace(
-						'class="inputbox input-mini"',
-						'class="Form-input u-color-grey-90 u-text-r-s u-padding-r-all"',
-						$this->pagination->getLimitBox()
-						);
-				?>
+				<div class="Form-field Grid-cell u-size6of12 u-sm-size2of12 u-md-size2of12 u-lg-size2of12 u-border-right-xxs u-border-top-xxs">
+					<label for="limit" class="Form-label u-hiddenVisually">
+						<?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>
+					</label>
+					<?php
+						echo str_replace(
+							'class="inputbox input-mini"',
+							'class="Form-input u-color-grey-90 u-text-r-s u-padding-r-all"',
+							$this->pagination->getLimitBox()
+							);
+					?>
+				</div>
 				<?php endif; ?>
-			</div>
+
+				<?php if ($this->params->get('filter_field')) : ?>
+					<?php if ($this->params->get('show_pagination_limit')) : ?>
+						<?php $size = "u-size6of12"; ?>
+					<?php else : ?>
+						<?php $size = "u-size4of12"; ?>
+					<?php endif; ?>
+				<button type="submit" name="filter_submit" class="<?php echo $size; ?> u-sm-size2of12 u-md-size2of12 u-lg-size2of12 u-background-40 u-color-white u-padding-all-s u-text-r-m u-textNoWrap <?php echo $class; ?>"><?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?></button>
+				<?php endif; ?>
 			<?php endif; ?>
 
 			<input type="hidden" name="filter_order" value="<?php echo $listOrder; ?>" />
 			<input type="hidden" name="filter_order_Dir" value="<?php echo $listDirn; ?>" />
 			<input type="hidden" name="limitstart" value="" />
 			<input type="hidden" name="task" value="" />
-
-			<button type="submit" name="filter_submit" class="u-lg-size2of12 u-background-40 u-color-white u-padding-all-s u-text-r-m u-textNoWrap <?php echo $class; ?>"><?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?></button>		
 		</div>
 	</form>
 
@@ -92,7 +107,7 @@ $limit = $app->getUserStateFromRequest('global.list.limit', 'limit', $app->get('
 					<?php endif; ?>
 					</h3>
 					<?php echo $item->event->afterDisplayTitle; ?>
-			
+
 					<div class="u-text-p u-textSecondary">
 					<?php echo $item->event->beforeDisplayContent; ?>
 
@@ -128,7 +143,7 @@ $limit = $app->getUserStateFromRequest('global.list.limit', 'limit', $app->get('
 						<?php echo JText::sprintf('COM_CONTACT_FAX_NUMBER', $item->fax); ?><br />
 					<?php endif; ?>
 					</div>
-				
+
 				<?php echo $item->event->afterDisplayContent; ?>
 
 				</div>
@@ -137,7 +152,7 @@ $limit = $app->getUserStateFromRequest('global.list.limit', 'limit', $app->get('
 		</div>
 		<?php endforeach; ?>
 
-<!-- 	
+<!--
 			<?php if ($this->params->get('show_pagination', 2)) : ?>
 			<div class="pagination">
 				<?php if ($this->params->def('show_pagination_results', 1)) : ?>
