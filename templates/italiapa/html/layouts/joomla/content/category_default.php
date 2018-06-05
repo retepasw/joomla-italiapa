@@ -61,7 +61,7 @@ $tagsData = $category->tags->itemTags;
 
 	<section class="Grid">
 	    <div class="Grid-cell u-sizeFull<?php echo ($params->get('show_description_image') && $category->getParams()->get('image') ? ' u-md-size1of2 u-lg-size1of2' : ''); ?> u-text-r-s u-padding-r-all">
-	        <div class="u-text-r-l<?php echo ($params->get('show_description_image') && $category->getParams()->get('image') ? ' u-layout-prose' : ''); ?>">
+	        <div class="u-text-r-l Prose<?php echo ($params->get('show_description_image') && $category->getParams()->get('image') ? ' u-layout-prose' : ''); ?>">
 				<?php if ($params->get('show_cat_tags', 1)) : ?>
 					<?php echo JLayoutHelper::render('joomla.content.tags', $tagsData); ?>
 				<?php endif; ?>
