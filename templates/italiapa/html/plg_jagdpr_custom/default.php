@@ -45,7 +45,7 @@ $generalParams = new Registry( $general->params );
 					<button 
 						type="button" 
 						class="Button Button--default u-text-r-xs<?php echo $this->isPending ? ' is-disabled ': ' js-fr-dialogmodal-open'; ?>"
-						<?php echo $this->isPending ? '': 'aria-controls="#customRequestModal"'; ?>
+						<?php echo $this->isPending ? '': 'aria-controls="customRequestModal"'; ?>
 						>
 						<?php echo JText::_('JA_GDPR_REQUEST_CUSTOM'); ?>
 					</button>
