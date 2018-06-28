@@ -138,7 +138,7 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 		}
 		$links[] = $x;
 	}
-	echo implode('<span class="u-color-white">&nbsp;+&nbsp;</span>', $links) . '&nbsp;';
+	echo implode('<span class="u-color-white">&nbsp;&nbsp;&nbsp;</span>', $links) . '&nbsp;';
 	?>	
 	<?php if ($this->countModules('languages')) : ?>
 		<div class="Header-languages ">
