@@ -51,7 +51,7 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 
 	<!-- <link rel="preload" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/IWT.min.js" as="script"> -->
 	<!--
-		In alternativa a WebFontLoader ÃƒÆ’Ã‚Â¨ possibile caricare il font direttamente da Google
+		In alternativa a WebFontLoader è possibile caricare il font direttamente da Google
 		<link href='//fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700,' rel='stylesheet' type='text/css' />
 		o dal repository locale (src/fonts)
 	-->
@@ -382,7 +382,7 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 
 <a href="#" title="torna all'inizio del contenuto" class="ScrollTop js-scrollTop js-scrollTo">
 	<i class="ScrollTop-icon Icon-collapse" aria-hidden="true"></i>
-	<span class="u-hiddenVisually">torna all'inizio del contenuto</span>
+	<span class="u-hiddenVisually">Torna all'inizio del contenuto</span>
 </a>
 
 <!--[if IE 8]>
