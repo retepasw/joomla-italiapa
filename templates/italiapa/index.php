@@ -262,14 +262,16 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 		</div>
 		<?php endif; ?>
 
-		<?php if ($this->countModules('services') || $this->countModules('featured') || $this->countModules('news') || $this->countModules('lead') || $this->countModules('footer')) : ?>
+		<?php $countFooter = $this->countModules('footer') + $this->countModules('footerinfo') + $this->countModules('footermenu'); ?>
+
+		<?php if ($this->countModules('services') || $this->countModules('featured') || $this->countModules('news') || $this->countModules('lead') || $countFooter) : ?>
 			<?php if ($this->countModules('services') || $this->countModules('featured')) : ?>
 		<a href="#featured" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 			<?php elseif ($this->countModules('news')) : ?>
 		<a href="#news" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 			<?php elseif ($this->countModules('lead')) : ?>
 		<a href="#lead" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
-			<?php elseif ($this->countModules('footer')) : ?>
+			<?php elseif ($countFooter) : ?>
 		<a href="#footer" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 			<?php endif; ?>
 			<span class="Icon Icon-expand u-color-grey-40"></span>
@@ -289,12 +291,12 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 	</div>
 	<?php endif; ?>
 	<jdoc:include type="modules" name="featured" />
-	<?php if ($this->countModules('news') || $this->countModules('lead') || $this->countModules('footer')) : ?>
+	<?php if ($this->countModules('news') || $this->countModules('lead') || $countFooter) : ?>
 	<?php if ($this->countModules('news')) : ?>
 	<a href="#news" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 	<?php elseif ($this->countModules('lead')) : ?>
 	<a href="#lead" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
-	<?php elseif ($this->countModules('footer')) : ?>
+	<?php elseif ($countFooter) : ?>
 	<a href="#footer" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 	<?php endif; ?>
 		<span class="Icon Icon-expand u-color-grey-40"></span>
@@ -306,10 +308,10 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 <?php if ($this->countModules('news')) : ?>
 <div class="u-background-compl-10 u-layout-centerContent u-padding-r-top" id="news">
 	<jdoc:include type="modules" name="news" style="lg" />
-	<?php if ($this->countModules('lead') || $this->countModules('footer')) : ?>
+	<?php if ($this->countModules('lead') || $countFooter) : ?>
 	<?php if ($this->countModules('lead')) : ?>
 	<a href="#lead" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
-	<?php elseif ($this->countModules('footer')) : ?>
+	<?php elseif ($countFooter) : ?>
 	<a href="#footer" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 	<?php endif; ?>
 		<span class="Icon Icon-expand u-color-grey-40"></span>
@@ -335,7 +337,7 @@ https://italia.github.io/design-web-toolkit/components/detail/leads.html
 </div>
 <?php endif; ?>
 
-<?php if ($this->countModules('footer') + $this->countModules('footermenu')) : ?>
+<?php if ($countFooter) : ?>
 		<footer class="Footer u-padding-all-s u-background-95 u-hiddenPrint" id="footer">
 
 <?php if ($params->get('debug') || defined('JDEBUG') && JDEBUG) : ?>
