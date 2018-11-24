@@ -17,14 +17,17 @@ defined('JPATH_BASE') or die;
 
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
+$uri  = JUri::getInstance();
+$base = $uri->toString(array('scheme', 'host', 'port'));
+
 $url = ContentHelperRoute::getArticleRoute($displayData['item']->slug, $displayData['item']->catid, $displayData['item']->language);
 if (!JPluginHelper::isEnabled('content', 'shorturl'))
 {
-    $url = JRoute::_($url, true, -1);
+    $url  = $base . JRoute::_($url, true);
 }
 elseif (!file_exists(JPATH_PLUGINS . '/content/shorturl/helpers/shorturl.php'))
 {
-    $url = JRoute::_($url, true, -1);
+    $url  = $base . JRoute::_($url, true);
 }
 else
 {
@@ -57,8 +60,6 @@ Condividi
 <?php
     JLoader::register('MailtoHelper', JPATH_SITE . '/components/com_mailto/helpers/mailto.php');
 
-	$uri      = JUri::getInstance();
-	$base     = $uri->toString(array('scheme', 'host', 'port'));
 	$template = JFactory::getApplication()->getTemplate();
 	$link     = $base . JRoute::_(ContentHelperRoute::getArticleRoute($displayData['item']->slug, $displayData['item']->catid, $displayData['item']->language), false);
 	$url      = 'index.php?option=com_mailto&tmpl=component&template=' . $template . '&link=' . MailtoHelper::addLink($link);
