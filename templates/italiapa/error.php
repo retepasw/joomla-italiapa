@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -87,7 +87,8 @@ $search_modules = JModuleHelper::getModules('search');
 $menu_modules = JModuleHelper::getModules('menu');
 ?>
 
-<header class="Header u-hiddenPrint">
+<header class="Header u-hiddenPrint<?php if ($this->params->get('headroom', 0)) echo ' Headroom--fixed js-Headroom Headroom Headroom--top Headroom--not-bottom" style="position: fixed; top: 0px;'; ?>">
+
 <?php if ($afferente = $this->params->get('afferente')) : ?>
 <div class="Header-banner">
 	<div class="Header-owner Headroom-hideme ">
@@ -121,7 +122,7 @@ non funzionante</div></li>
 		<?php if ($logo = $this->params->get('logo')) : ?>
 		<div class="Header-logo Grid-cell" aria-hidden="true">
 			<a href="<?php echo $this->baseurl; ?>/" tabindex="-1">
-				<img src="<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>">
+				<img src="<?php echo $this->baseurl; ?>/<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>">
 			</a>
 		</div>
 		<?php endif; ?>

@@ -51,7 +51,7 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 
 	<!-- <link rel="preload" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/IWT.min.js" as="script"> -->
 	<!--
-		In alternativa a WebFontLoader ÃƒÆ’Ã‚Â¨ possibile caricare il font direttamente da Google
+		In alternativa a WebFontLoader è possibile caricare il font direttamente da Google
 		<link href='//fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700,' rel='stylesheet' type='text/css' />
 		o dal repository locale (src/fonts)
 	-->
@@ -262,14 +262,16 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 		</div>
 		<?php endif; ?>
 
-		<?php if ($this->countModules('services') || $this->countModules('featured') || $this->countModules('news') || $this->countModules('lead') || $this->countModules('footer')) : ?>
+		<?php $countFooter = $this->countModules('footer') + $this->countModules('footerinfo') + $this->countModules('footermenu'); ?>
+
+		<?php if ($this->countModules('services') || $this->countModules('featured') || $this->countModules('news') || $this->countModules('lead') || $countFooter) : ?>
 			<?php if ($this->countModules('services') || $this->countModules('featured')) : ?>
 		<a href="#featured" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 			<?php elseif ($this->countModules('news')) : ?>
 		<a href="#news" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 			<?php elseif ($this->countModules('lead')) : ?>
 		<a href="#lead" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
-			<?php elseif ($this->countModules('footer')) : ?>
+			<?php elseif ($countFooter) : ?>
 		<a href="#footer" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 			<?php endif; ?>
 			<span class="Icon Icon-expand u-color-grey-40"></span>
@@ -289,12 +291,12 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 	</div>
 	<?php endif; ?>
 	<jdoc:include type="modules" name="featured" />
-	<?php if ($this->countModules('news') || $this->countModules('lead') || $this->countModules('footer')) : ?>
+	<?php if ($this->countModules('news') || $this->countModules('lead') || $countFooter) : ?>
 	<?php if ($this->countModules('news')) : ?>
 	<a href="#news" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 	<?php elseif ($this->countModules('lead')) : ?>
 	<a href="#lead" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
-	<?php elseif ($this->countModules('footer')) : ?>
+	<?php elseif ($countFooter) : ?>
 	<a href="#footer" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 	<?php endif; ?>
 		<span class="Icon Icon-expand u-color-grey-40"></span>
@@ -306,10 +308,10 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 <?php if ($this->countModules('news')) : ?>
 <div class="u-background-compl-10 u-layout-centerContent u-padding-r-top" id="news">
 	<jdoc:include type="modules" name="news" style="lg" />
-	<?php if ($this->countModules('lead') || $this->countModules('footer')) : ?>
+	<?php if ($this->countModules('lead') || $countFooter) : ?>
 	<?php if ($this->countModules('lead')) : ?>
 	<a href="#lead" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
-	<?php elseif ($this->countModules('footer')) : ?>
+	<?php elseif ($countFooter) : ?>
 	<a href="#footer" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 	<?php endif; ?>
 		<span class="Icon Icon-expand u-color-grey-40"></span>
@@ -335,7 +337,7 @@ https://italia.github.io/design-web-toolkit/components/detail/leads.html
 </div>
 <?php endif; ?>
 
-<?php if ($this->countModules('footer') + $this->countModules('footermenu')) : ?>
+<?php if ($countFooter) : ?>
 		<footer class="Footer u-padding-all-s u-background-95 u-hiddenPrint" id="footer">
 
 <?php if ($params->get('debug') || defined('JDEBUG') && JDEBUG) : ?>
@@ -382,7 +384,7 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 
 <a href="#" title="torna all'inizio del contenuto" class="ScrollTop js-scrollTop js-scrollTo">
 	<i class="ScrollTop-icon Icon-collapse" aria-hidden="true"></i>
-	<span class="u-hiddenVisually">torna all'inizio del contenuto</span>
+	<span class="u-hiddenVisually">Torna all'inizio del contenuto</span>
 </a>
 
 <!--[if IE 8]>

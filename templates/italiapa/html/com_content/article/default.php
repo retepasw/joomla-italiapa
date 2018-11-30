@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -139,7 +139,6 @@ https://italia.github.io/design-web-toolkit/components/detail/page--default.html
 						<?php echo $this->item->text; ?>
 					</div>
 			<?php if (isset($this->item->toc) && $this->item->toc) : ?>
-					<?php echo $this->item->pagenavcounter; ?>
 				</div>
 
 				<aside class="Grid-cell u-sizeFull u-md-size1of4 u-lg-size1of4 u-text-r-s u-padding-r-all">
