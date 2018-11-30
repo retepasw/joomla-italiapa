@@ -5,6 +5,7 @@
     <field name="description" type="text" label="MOD_CAROUSEL_IMAGE_DESCRIPTION_LABEL" required="yes"/>
     <field name="caption" type="text" label="MOD_CAROUSEL_IMAGE_CAPTION_LABEL" required="yes"/>
 	<field name="link" type="url" label="MOD_CAROUSEL_IMAGE_LINK_LABEL" />
+    <field name="icon" type="text" directory="" label="MOD_CAROUSEL_ICON_LABEL" required="no"/>
 	<field
 		name="target"
 		type="list"
