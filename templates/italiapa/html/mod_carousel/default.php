@@ -29,7 +29,7 @@ $span = ($n == 1) ? '' : ' class="span' . ( ( int ) 12 / $n ) . '"';
 ?>
 
 <?php if (!empty($list)) : ?>
-	<div id="carousel<?php echo $module->id; ?>" class="carousel slide multi-item-carousel mootools-noconflict"<?php echo $params->get('auto_sliding', 1) ? ' data-ride="carousel" data-interval="' . (int) $params->get('interval', 5000) . '"' : ' data-interval="false"'; ?>>
+	<div id="carousel<?php echo $module->id; ?>" class="carousel slide multi-item-carousel"<?php echo $params->get('auto_sliding', 1) ? ' data-ride="carousel"' : ' data-interval="false"'; ?>>
 		<?php if ($params->get('show_indicators', 1)) : ?>
 			<ol class="carousel-indicators">
 			<?php $class = ' class="active"'; ?>
@@ -104,7 +104,7 @@ $span = ($n == 1) ? '' : ' class="span' . ( ( int ) 12 / $n ) . '"';
 					<figcaption>
 						<h3><?php echo $item->caption; ?></h3>
 						<p>
-							<?php if (isset($item->icon) && $item->icon) : ?>
+							<?php if ($item->icon) : ?>
 								<span class="icon-<?php echo $item->icon; ?>"></span>
 							<?php endif; ?>						
 							<?php echo $item->description; ?>

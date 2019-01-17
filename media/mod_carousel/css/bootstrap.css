@@ -1,0 +1,91 @@
+/**
+ * @copyright   Copyright (C) 2017, 2019 Helios Ciancio. All rights reserved.
+ * @license     GNU General Public License version 3 or later
+ */
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0,0,0,0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.carousel {
+	background-color: #444e57;
+	padding: 3.5em 80px 3em;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+	display: inline-block;
+	width: 32px;
+	height: 32px;
+	background: center center/100% 100% no-repeat;
+}
+
+.carousel-control-prev-icon {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23505E6C' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+}
+
+.carousel-control-next-icon {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23505E6C' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+}
+
+.carousel-indicators {
+	position: absolute;
+	right: 0;
+	top: unset!important;
+	bottom: 10px;
+	left: 0;
+	z-index: 15;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	padding-left: 0;
+	margin-right: auto;
+	margin-left: auto;
+	list-style: none;
+}
+
+.carousel-indicators li.active {
+	background-color: #fff;
+}
+
+.carousel-indicators li {
+	display: block;
+	float: left;
+	width: 10px;
+	height: 10px;
+	margin-left: 5px;
+	text-indent: -999px;
+	border-radius: 5px;
+	background-color: #333333;
+}
+
+.carousel-inner figure {
+    display: block;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+
+.carousel-inner figcaption {
+	display: block!important;
+}
+
+.carousel-inner figcaption h3 {
+	color: #65dcdf!important;
+}
+
+.carousel-inner figcaption p {
+	color: #fff!important;
+	font-weight: 700!important;
+}
+	

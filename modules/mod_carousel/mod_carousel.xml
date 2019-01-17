@@ -2,12 +2,12 @@
 <extension type="module" version="3.7" client="site" method="upgrade">
   <name>mod_carousel</name>
   <author>Helios Ciancio</author>
-  <creationDate>January 2018</creationDate>
-  <copyright>(C) 2017 Helios Ciancio. All rights reserved.</copyright>
+  <creationDate>January 2019</creationDate>
+  <copyright>(C) 2017 - 2019 Helios Ciancio. All rights reserved.</copyright>
   <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3</license>
   <authorEmail>info@eshiol.it</authorEmail>
   <authorUrl>www.eshiol.it</authorUrl>
-  <version>3.8.0.66</version>
+  <version>3.8.2</version>
   <description>MOD_CAROUSEL_XML_DESCRIPTION</description>
   <updateservers>
     <server type="extension" priority="2" name="Italia Template - Carousel Module">https://www.eshiol.it/files/italiapa/mod_carousel.xml</server>
@@ -24,9 +24,27 @@
     <language tag="it-IT">it-IT/it-IT.mod_carousel.ini</language>
     <language tag="it-IT">it-IT/it-IT.mod_carousel.sys.ini</language>
   </languages>
+  <media destination="mod_carousel" folder="media">
+    <filename>css/bootstrap.css</filename>
+    <filename>js/bootstrap.js</filename>
+  </media>
   <config>
     <fields name="params">
       <fieldset name="basic">
+        <field name="show_controls" type="radio" label="MOD_CAROUSEL_SHOW_CONTROLS_LABEL" description="MOD_CAROUSEL_SHOW_CONTROLS_DESC" class="btn-group btn-group-yesno" default="1">
+          <option value="1">JSHOW</option>
+          <option value="0">JHIDE</option>
+        </field>
+        <field name="show_indicators" type="radio" label="MOD_CAROUSEL_SHOW_INDICATORS_LABEL" description="MOD_CAROUSEL_SHOW_INDICATORS_DESC" class="btn-group btn-group-yesno" default="1">
+          <option value="1">JSHOW</option>
+          <option value="0">JHIDE</option>
+        </field>
+        <field name="auto_sliding" type="radio" label="MOD_CAROUSEL_AUTO_SLIDING_LABEL" description="MOD_CAROUSEL_AUTO_SLIDING_DESC" class="btn-group btn-group-yesno" default="1">
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
+        <field name="interval" type="text" label="MOD_CAROUSEL_INTERVAL_LABEL" description="MOD_CAROUSEL_INTERVAL_DESC" default="5000" filter="integer" showon="auto_sliding:1" />
+        <field name="count" type="integer" label="MOD_CAROUSEL_COUNT_LABEL" description="MOD_CAROUSEL_COUNT_DESC" first="1" last="12" step="1" />
         <field name="images" type="subform" formsource="/modules/mod_carousel/image.xml" label="MOD_CAROUSEL_IMAGE_LABEL" description="" multiple="true" layout="joomla.form.field.subform.repeatable"/>
       </fieldset>
       <fieldset name="advanced">
@@ -41,7 +59,7 @@
           <option value="static"/>
         </field>
       </fieldset>
-      <fieldset name="debug" label="MOD_CAROUSEL_DEBUG_LABEL">        
+      <fieldset name="debug" label="MOD_CAROUSEL_DEBUG_LABEL">
         <field name="debug" type="radio" class="btn-group btn-group-yesno" default="0" description="MOD_CAROUSEL_DEBUG_SYSTEM_DESC" label="MOD_CAROUSEL_DEBUG_SYSTEM_LABEL">
           <option value="1">JYES</option>
           <option value="0">JNO</option>
