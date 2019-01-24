@@ -82,9 +82,6 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 	<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/drop.min.js"></script>
 	<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/tooltip.min.js"></script>
 
-	<?php JHtml::_('stylesheet', 'user.css', array('version' => 'auto', 'relative' => true)); // Check for a custom CSS file ?>
-	<?php JHtml::_('script', 'user.js', array('version' => 'auto','relative' => true));	// Check for a custom js file ?>
-
 	<jdoc:include type="head" />
 
 	<?php if ($css = $this->params->get('css', '')) : ?>
