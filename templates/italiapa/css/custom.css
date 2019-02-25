@@ -227,6 +227,11 @@ svg.Icon {
 	padding-left: 0 !important;
 }
 
+header.Headroom .Megamenu-subnav {
+	overflow-y: auto;
+	max-height: calc(100vh - 100px);
+}
+
 .Linklist span[class*=" Icon-"],
 .Linklist span[class^=Icon-],
 .Treeview span[class*=" Icon-"],
