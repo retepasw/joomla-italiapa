@@ -36,6 +36,7 @@ JLog::add(new JLogEntry($buffer, JLog::DEBUG, 'tpl_italiapa'));
 
 foreach ($list as $i => &$item)
 {
+	$item->level = $item->level - $params->get('startLevel', 1) + 1;
 	JLog::add(new JLogEntry(print_r($item, true), JLog::DEBUG, 'tpl_italiapa'));
 	ob_start();
 	
