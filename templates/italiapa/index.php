@@ -401,6 +401,7 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/table.min.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/map.min.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/IWT.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/italiapa.min.js"></script>
 
 </body>
 </html>
