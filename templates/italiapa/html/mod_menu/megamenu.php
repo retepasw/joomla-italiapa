@@ -15,6 +15,8 @@
 
 defined('_JEXEC') or die;
 
+JHtml::_('bootstrap.popover');
+
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 JLog::add(new JLogEntry($module->position, JLog::DEBUG, 'tpl_italiapa'));
 
