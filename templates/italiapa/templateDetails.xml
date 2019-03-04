@@ -22,16 +22,18 @@
     <folder>css</folder>
     <folder>html</folder>
     <folder>src</folder>
+    <filename>component.php</filename>
+    <filename>error.php</filename>
+    <filename>favicon.ico</filename>
+    <filename>index.php</filename>
     <filename>js/accordion.min.js</filename>
     <filename>js/drop.min.js</filename>
     <filename>js/map.min.js</filename>
+    <filename>js/italiapa.min.js</filename>
     <filename>js/table.min.js</filename>
     <filename>js/tether.min.js</filename>
     <filename>js/tooltip.min.js</filename>
     <filename>js/uuid.min.js</filename>
-    <filename>index.php</filename>
-    <filename>error.php</filename>
-    <filename>favicon.ico</filename>
     <filename>templateDetails.xml</filename>
   </files>
   <languages folder="language">
