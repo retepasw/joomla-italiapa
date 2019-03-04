@@ -127,6 +127,11 @@ foreach ($list as $i => &$item)
 		{
 			$item->anchor_css = 'u-textClean u-text-h3 u-color-white';
 		}
+		if ($icon && ! $item->menu_image)
+		{
+			$icon .= ' ' . $item->menu_image_css;
+			$item->menu_image_css = '';
+		}
 		$item->anchor_css .= $icon;
 
 		switch ($item->type)
