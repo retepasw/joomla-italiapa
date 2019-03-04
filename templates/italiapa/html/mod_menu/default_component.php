@@ -21,7 +21,9 @@ $attributes = array();
 
 if ($item->anchor_title)
 {
-	$attributes['title'] = $item->anchor_title;
+	$attributes['title'] = $item->title;
+	$item->anchor_css .= ' hasPopover';
+	$attributes['data-content'] = $item->anchor_title;
 }
 
 $icon = '';

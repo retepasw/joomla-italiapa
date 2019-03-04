@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.0" type="template" method="upgrade">
   <name>italiapa</name>
-  <creationDate>March 2018</creationDate>
+  <creationDate>November 2018</creationDate>
   <author>Helios Ciancio</author>
   <copyright>Copyright © 2017, 2018 Helios Ciancio (eshiol.it). All rights reserved.</copyright>
   <authorEmail>info@eshiol.it</authorEmail>
   <authorUrl>https://www.eshiol.it</authorUrl>
-  <version>3.8.0.7</version>
+  <version>3.8.0.8</version>
   <description><![CDATA[
 		<h1>Template ItaliaPA for Joomla! 3.8</h1>
 		<p>Implementazione delle
@@ -20,7 +20,6 @@
   <files>
     <folder>build</folder>
     <folder>css</folder>
-    <folder>fields</folder>
     <folder>html</folder>
     <folder>src</folder>
     <filename>component.php</filename>
@@ -63,6 +62,7 @@
     <position>mainmenu</position>
     <position>menu</position>
     <position>news</position>
+    <position>owner</position>
     <position>right</position>
     <position>search</position>
     <position>services</position>
@@ -86,7 +86,6 @@
         </field>
       </fieldset>
       <fieldset name="header" type="upload_func" label="Header">
-        <field name="links" type="subform" formsource="templates/italiapa/fields/links.xml" label="TPL_ITALIAPA_FIELD_LINKS_LABEL" description="TPL_ITALIAPA_FIELD_LINKS_DESC" multiple="true" layout="joomla.form.field.subform.repeatable-table"/>
         <field name="logo" type="media" label="TPL_ITALIAPA_FIELD_LOGO_LABEL" description="TPL_ITALIAPA_FIELD_LOGO_LABEL"/>
         <field name="subtitle" type="text" label="TPL_ITALIAPA_FIELD_SUBTITLE_LABEL" description="TPL_ITALIAPA_FIELD_SUBTITLE_LABEL"/>
         <field name="headroom" type="radio" class="btn-group btn-group-yesno" default="0" description="TPL_ITALIAPA_DEBUG_HEADROOM_DESC" label="TPL_ITALIAPA_DEBUG_HEADROOM_LABEL">
