@@ -5,15 +5,14 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
  * or is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
  */
-
-defined('_JEXEC') or die;
+defined('_JEXEC') or die();
 
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 JLog::add(new JLogEntry($module->position, JLog::DEBUG, 'tpl_italiapa'));
@@ -26,8 +25,12 @@ if ($tagId = $params->get('tag_id', ''))
 }
 ?>
 
-<div class="Grid Grid--withGutter u-padding-r-top u-padding-r-bottom u-text-r-s <?php echo $class_sfx; ?>"<?php echo $id; ?>>
-<?php foreach ($list as $i => &$item)
+<div
+	class="Grid Grid--withGutter u-padding-r-top u-padding-r-bottom u-text-r-s <?php echo $class_sfx; ?>"
+	<?php echo $id; ?>>
+<?php
+
+foreach ($list as $i => &$item)
 {
 	JLog::add(new JLogEntry(print_r($item, true), JLog::DEBUG, 'tpl_italiapa'));
 	if ($item->level > 2)
@@ -80,62 +83,75 @@ if ($tagId = $params->get('tag_id', ''))
 	{
 		$class .= ' parent';
 	}
-	$class .= ' u-flex u-flexCol';
-	
+
+	$icon = '';
+	if ($item->anchor_css)
+	{
+		JLog::add(new JLogEntry('anchor_css: ' . print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
+		$anchor_css = explode(' ', $item->anchor_css);
+		for ($i = count($anchor_css) - 1; $i >= 0; $i--)
+		{
+			if ($anchor_css[$i] == 'u-flex')
+			{
+				$class .= ' u-flex';
+				unset($anchor_css[$i]);
+			}
+			elseif ($anchor_css[$i] == 'u-flexCol')
+			{
+				$class .= ' u-flexCol';
+				unset($anchor_css[$i]);
+			}
+			elseif (substr($anchor_css[$i], 0, 4) == 'Icon')
+			{
+				$icon = $icon . ' ' . $anchor_css[$i];
+				unset($anchor_css[$i]);
+			}
+		}
+		// $item->anchor_css = (substr($item->anchor_css, 0, 1) == ' ' ? ' '
+		// : '') . implode(' ', $anchor_css);
+		$item->anchor_css = implode(' ', $anchor_css);
+	}
+
 	if ($item->level == 1)
 	{
 		echo '<div class="Grid-cell u-md-size1of3 u-lg-size1of3 ' . $class . '">';
 	}
 
-	if (!$item->parent)
+	if (! $item->parent)
 	{
 		$moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8');
-		echo '<div class="Entrypoint-item '.($item->level == 1 ? 'u-sizeFill ' : '') .($moduleclass_sfx ? $moduleclass_sfx : 'u-background-compl-80').'"><p>';
+		echo '<div class="Entrypoint-item ' . ($item->level == 1 ? 'u-sizeFill ' : '') .
+				 ($moduleclass_sfx ? $moduleclass_sfx : 'u-background-compl-80') . '"><p>';
 
-		$icon = '';
-		if ($item->anchor_css)
-		{
-			JLog::add(new JLogEntry('anchor_css: '.print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
-			$anchor_css = explode(' ', $item->anchor_css);
-			for($i = 0; $i < count($anchor_css); $i++)
-			{
-				if (substr($anchor_css[$i], 0, 4) == 'Icon')
-				{
-					$icon = $icon . ' ' . $anchor_css[$i];
-					unset($anchor_css[$i]);
-				}
-			}
-			// $item->anchor_css = (substr($item->anchor_css, 0, 1) == ' ' ? ' ' : '') . implode(' ', $anchor_css);
-			$item->anchor_css = implode(' ', $anchor_css);
-		}		
-		if (!$item->anchor_css)
+		if (! $item->anchor_css)
 		{
 			$item->anchor_css = 'u-textClean u-text-h3 u-color-white';
 		}
 		$item->anchor_css .= $icon;
-		
-		switch ($item->type) :
-		case 'separator':
-		case 'component':
-		case 'heading':
-		case 'url':
-			require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
-			break;
 
-		default:
-			require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
-			break;
-		endswitch;
+		switch ($item->type)
+		{
+			case 'separator':
+			case 'component':
+			case 'heading':
+			case 'url':
+				require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
+				break;
+
+			default:
+				require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
+				break;
+		}
 		echo '</p></div>';
 	}
 
 	if ($item->shallower)
 	{
-//		echo '</div>';
+		// echo '</div>';
 		echo str_repeat('</div>', $item->level_diff);
 	}
 	// The next item is on the same level.
-	elseif ($item->level == 1 && !$item->parent)
+	elseif ($item->level == 1 && ! $item->parent)
 	{
 		echo '</div>';
 	}
