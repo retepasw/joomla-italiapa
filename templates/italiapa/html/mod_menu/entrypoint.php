@@ -83,7 +83,34 @@ foreach ($list as $i => &$item)
 	{
 		$class .= ' parent';
 	}
-	$class .= ' u-flex u-flexCol';
+
+	$icon = '';
+	if ($item->anchor_css)
+	{
+		JLog::add(new JLogEntry('anchor_css: ' . print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
+		$anchor_css = explode(' ', $item->anchor_css);
+		for ($i = count($anchor_css) - 1; $i >= 0; $i--)
+		{
+			if ($anchor_css[$i] == 'u-flex')
+			{
+				$class .= ' u-flex';
+				unset($anchor_css[$i]);
+			}
+			elseif ($anchor_css[$i] == 'u-flexCol')
+			{
+				$class .= ' u-flexCol';
+				unset($anchor_css[$i]);
+			}
+			elseif (substr($anchor_css[$i], 0, 4) == 'Icon')
+			{
+				$icon = $icon . ' ' . $anchor_css[$i];
+				unset($anchor_css[$i]);
+			}
+		}
+		// $item->anchor_css = (substr($item->anchor_css, 0, 1) == ' ' ? ' '
+		// : '') . implode(' ', $anchor_css);
+		$item->anchor_css = implode(' ', $anchor_css);
+	}
 
 	if ($item->level == 1)
 	{
@@ -96,23 +123,6 @@ foreach ($list as $i => &$item)
 		echo '<div class="Entrypoint-item ' . ($item->level == 1 ? 'u-sizeFill ' : '') .
 				 ($moduleclass_sfx ? $moduleclass_sfx : 'u-background-compl-80') . '"><p>';
 
-		$icon = '';
-		if ($item->anchor_css)
-		{
-			JLog::add(new JLogEntry('anchor_css: ' . print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
-			$anchor_css = explode(' ', $item->anchor_css);
-			for ($i = count($anchor_css) - 1; $i >= 0; $i --)
-			{
-				if (substr($anchor_css[$i], 0, 4) == 'Icon')
-				{
-					$icon = $icon . ' ' . $anchor_css[$i];
-					unset($anchor_css[$i]);
-				}
-			}
-			// $item->anchor_css = (substr($item->anchor_css, 0, 1) == ' ' ? ' '
-			// : '') . implode(' ', $anchor_css);
-			$item->anchor_css = implode(' ', $anchor_css);
-		}
 		if (! $item->anchor_css)
 		{
 			$item->anchor_css = 'u-textClean u-text-h3 u-color-white';
@@ -125,7 +135,7 @@ foreach ($list as $i => &$item)
 		$item->anchor_css .= $icon;
 
 		switch ($item->type)
-		:
+		{
 			case 'separator':
 			case 'component':
 			case 'heading':
@@ -136,8 +146,7 @@ foreach ($list as $i => &$item)
 			default:
 				require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
 				break;
-		endswitch
-		;
+		}
 		echo '</p></div>';
 	}
 

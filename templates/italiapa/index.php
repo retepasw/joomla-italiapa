@@ -120,26 +120,12 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 
 <header class="Header u-hiddenPrint<?php if ($this->params->get('headroom', 0)) echo ' Headroom--fixed js-Headroom Headroom Headroom--top Headroom--not-bottom" style="position: fixed; top: 0px;'; ?>">
 
-<?php if ($this->params->get('links') || ($this->countModules('languages'))) : ?>
+<?php if ($this->countModules('owner') || $this->countModules('languages')) : ?>
 <div class="Header-banner">
 	<div class="Header-owner Headroom-hideme">
-	<?php 
-	$links = array();
-	foreach($this->params->get('links', array()) as $item) {
-		$x = '';
-		if ($item->short) {
-			$x .= '<span class="u-inline u-md-hidden u-lg-hidden u-sm-hidden">'. $item->short . '</span>';
-		}
-		if ($item->title) {
-			$x .= '<span class="u-hidden u-md-inline u-lg-inline u-sm-inline">' . $item->title. '</span>';
-		}
-		if ($item->href) {
-			$x = '<a href="' . $item->href . '">' . $x . '</a>';
-		}
-		$links[] = $x;
-	}
-	echo implode('<span class="u-color-white">&nbsp;+&nbsp;</span>', $links) . '&nbsp;';
-	?>	
+	<?php if ($this->countModules('owner')) : ?>
+		<jdoc:include type="modules" name="owner" />
+	<?php endif; ?> 
 	<?php if ($this->countModules('languages')) : ?>
 		<div class="Header-languages ">
 			<jdoc:include type="modules" name="languages" />
@@ -403,6 +389,7 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/table.min.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/map.min.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/IWT.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/italiapa.min.js"></script>
 
 </body>
 </html>

@@ -20,19 +20,20 @@
   <files>
     <folder>build</folder>
     <folder>css</folder>
-    <folder>fields</folder>
     <folder>html</folder>
     <folder>src</folder>
+    <filename>component.php</filename>
+    <filename>error.php</filename>
+    <filename>favicon.ico</filename>
+    <filename>index.php</filename>
     <filename>js/accordion.min.js</filename>
     <filename>js/drop.min.js</filename>
     <filename>js/map.min.js</filename>
+    <filename>js/italiapa.min.js</filename>
     <filename>js/table.min.js</filename>
     <filename>js/tether.min.js</filename>
     <filename>js/tooltip.min.js</filename>
     <filename>js/uuid.min.js</filename>
-    <filename>index.php</filename>
-    <filename>error.php</filename>
-    <filename>favicon.ico</filename>
     <filename>templateDetails.xml</filename>
   </files>
   <languages folder="language">
@@ -61,6 +62,7 @@
     <position>mainmenu</position>
     <position>menu</position>
     <position>news</position>
+    <position>owner</position>
     <position>right</position>
     <position>search</position>
     <position>services</position>
@@ -84,7 +86,6 @@
         </field>
       </fieldset>
       <fieldset name="header" type="upload_func" label="Header">
-        <field name="links" type="subform" formsource="templates/italiapa/fields/links.xml" label="TPL_ITALIAPA_FIELD_LINKS_LABEL" description="TPL_ITALIAPA_FIELD_LINKS_DESC" multiple="true" layout="joomla.form.field.subform.repeatable-table"/>
         <field name="logo" type="media" label="TPL_ITALIAPA_FIELD_LOGO_LABEL" description="TPL_ITALIAPA_FIELD_LOGO_LABEL"/>
         <field name="subtitle" type="text" label="TPL_ITALIAPA_FIELD_SUBTITLE_LABEL" description="TPL_ITALIAPA_FIELD_SUBTITLE_LABEL"/>
         <field name="headroom" type="radio" class="btn-group btn-group-yesno" default="0" description="TPL_ITALIAPA_DEBUG_HEADROOM_DESC" label="TPL_ITALIAPA_DEBUG_HEADROOM_LABEL">
