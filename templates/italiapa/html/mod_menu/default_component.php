@@ -12,8 +12,7 @@
  * or is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
  */
-
-defined('_JEXEC') or die;
+defined('_JEXEC') or die();
 
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
@@ -29,9 +28,9 @@ if ($item->anchor_title)
 $icon = '';
 if ($item->anchor_css)
 {
-	JLog::add(new JLogEntry('anchor_css: '.print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
+	JLog::add(new JLogEntry('anchor_css: ' . print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
 	$anchor_css = explode(' ', $item->anchor_css);
-	for($i = 0; $i < count($anchor_css); $i++)
+	for ($i = count($anchor_css) - 1; $i >= 0; $i --)
 	{
 		if (substr($anchor_css[$i], 0, 4) == 'Icon')
 		{
@@ -40,9 +39,9 @@ if ($item->anchor_css)
 		}
 	}
 	$item->anchor_css = (substr($item->anchor_css, 0, 1) == ' ' ? ' ' : '') . implode(' ', $anchor_css);
-	JLog::add(new JLogEntry('anchor_css: '.print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
-	JLog::add(new JLogEntry('icon: '.$icon, JLog::DEBUG, 'tpl_italiapa'));
-
+	JLog::add(new JLogEntry('anchor_css: ' . print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
+	JLog::add(new JLogEntry('icon: ' . $icon, JLog::DEBUG, 'tpl_italiapa'));
+	
 	$attributes['class'] = $item->anchor_css;
 }
 
@@ -51,7 +50,11 @@ if ($item->anchor_rel)
 	$attributes['rel'] = $item->anchor_rel;
 }
 
-$linktype = ($icon ? '<span class="' . substr($icon, 1) . '"></span> ' : '') . $item->title;
+if ($icon && ! $item->menu_image)
+{
+	$icon .= ' ' . $item->menu_image_css;
+}
+$linktype = ($icon ? '<span class="' . trim($icon) . '"></span> ' : '') . $item->title;
 
 if ($item->menu_image)
 {
@@ -64,7 +67,7 @@ if ($item->menu_image)
 	{
 		$linktype = JHtml::_('image', $item->menu_image, $item->title);
 	}
-
+	
 	if ($item->params->get('menu_text', 1))
 	{
 		$linktype .= '<span class="image-title">' . $item->title . '</span>';
@@ -78,7 +81,7 @@ if ($item->browserNav == 1)
 elseif ($item->browserNav == 2)
 {
 	$options = 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes';
-
+	
 	$attributes['onclick'] = "window.open(this.href, 'targetWindow', '" . $options . "'); return false;";
 }
 

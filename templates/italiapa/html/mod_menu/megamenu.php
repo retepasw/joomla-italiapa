@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -93,7 +93,7 @@ foreach ($list as $i => &$item)
 	{
 		JLog::add(new JLogEntry('anchor_css: '.print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
 		$anchor_css = explode(' ', $item->anchor_css);
-		for($i = 0; $i < count($anchor_css); $i++)
+		for($i = count($anchor_css) - 1; $i >= 0; $i--)
 		{
 			if (substr($anchor_css[$i], 0, 3) == 'li:')
 			{
@@ -109,7 +109,12 @@ foreach ($list as $i => &$item)
 		$item->anchor_css = (substr($item->anchor_css, 0, 1) == ' ' ? ' ' : '') . implode(' ', $anchor_css);
 		JLog::add(new JLogEntry('anchor_css: '.print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
 	}
-
+	if ($icon && ! $item->menu_image)
+	{
+		$icon .= ' ' . $item->menu_image_css;
+		$item->menu_image_css = '';
+	}
+	
 	if (!$item->anchor_css)
 	{
 		$class = 'Megamenu-item' . $class;
@@ -133,7 +138,7 @@ foreach ($list as $i => &$item)
 	}
 	if ($icon)
 	{
-		echo '<span class="' . substr($icon, 1) . '"></span> ';	
+		echo '<span class="' . trim($icon) . '"></span> ';	
 	}
 
 	switch ($item->type) :
