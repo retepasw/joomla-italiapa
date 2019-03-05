@@ -24,6 +24,12 @@
 							eshiol = {};
 						}
 
+						// Version
+						if (typeof (eshiol.italiapa) === 'undefined') {
+							eshiol.italiapa = {};
+						}
+						eshiol.italiapa.version = '3.8.0.9';
+
 						// Share
 						if (typeof (eshiol.location) === 'undefined') {
 							eshiol.location = {};
