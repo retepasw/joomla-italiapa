@@ -71,9 +71,6 @@
   </positions>
   <config>
     <fields name="params">
-      <fieldset name="basic">
-        <field name="css" type="textarea" default="" description="TPL_ITALIAPA_FIELD_CSS_DESC" label="TPL_ITALIAPA_FIELD_CSS_LABEL" />
-      </fieldset>
       <fieldset name="advanced">
         <field name="debug" type="radio" class="btn-group btn-group-yesno" default="0" description="TPL_ITALIAPA_DEBUG_SYSTEM_DESC" label="TPL_ITALIAPA_DEBUG_SYSTEM_LABEL">
           <option value="1">JYES</option>

@@ -28,7 +28,7 @@ https://italia.github.io/design-web-toolkit/components/detail/layout--masonry.ht
 </a>
 </div>
 <?php endif; ?>
-<div class="u-background-grey-20 u-layout-centerContent u-padding-r-top u-cf">
+<div class="u-background-grey-20 u-layout-centerContent u-cf u-padding-r-top">
     <section class="js-Masonry-container u-layout-medium" data-columns>
 	<?php
 		echo $this->loadTemplate('items');
