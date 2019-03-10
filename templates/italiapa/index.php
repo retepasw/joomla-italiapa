@@ -77,8 +77,8 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 		})();
 	</script>
 
-	<?php $theme = $this->params->get('theme', 'build'); ?>
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/<?php echo $theme; ?>.css">
+	<?php $theme = $this->params->get('theme', 'italia'); ?>
+	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/build.<?php echo $theme; ?>.css">
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/italiapa.css">
