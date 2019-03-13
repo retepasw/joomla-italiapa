@@ -14,53 +14,7 @@
  */
 defined('_JEXEC') or die();
 
-$title = $item->anchor_title ? ' title="' . $item->anchor_title . '"' : '';
-
-$icon = '';
-if ($item->anchor_css)
-{
-	JLog::add(new JLogEntry('anchor_css: ' . print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
-	$anchor_css = explode(' ', $item->anchor_css);
-	for ($i = count($anchor_css) - 1; $i >= 0; $i --)
-	{
-		if (substr($anchor_css[$i], 0, 4) == 'Icon')
-		{
-			$icon = $icon . ' ' . $anchor_css[$i];
-			unset($anchor_css[$i]);
-		}
-	}
-	$item->anchor_css = (substr($item->anchor_css, 0, 1) == ' ' ? ' ' : '') . implode(' ', $anchor_css);
-	JLog::add(new JLogEntry('anchor_css: ' . print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
-	JLog::add(new JLogEntry('icon: ' . $icon, JLog::DEBUG, 'tpl_italiapa'));
-}
-
-if ($icon && ! $item->menu_image)
-{
-	$icon .= ' ' . $item->menu_image_css;
-	$item->menu_image_css = '';
-}
-
-$linktype = ($icon ? '<span class="' . trim($icon) . '"></span> ' : '') . $item->title;
-
-if ($item->menu_image)
-{
-	if ($item->menu_image_css)
-	{
-		$image_attributes['class'] = $item->menu_image_css;
-		$linktype = JHtml::_('image', $item->menu_image, $item->title, $image_attributes);
-	}
-	else
-	{
-		$linktype = JHtml::_('image', $item->menu_image, $item->title);
-	}
-
-	if ($item->params->get('menu_text', 1))
-	{
-		$linktype .= '<span class="image-title">' . $item->title . '</span>';
-	}
-}
-
+JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 ?>
-<a href> <span class="separator <?php echo $item->anchor_css; ?>"
-	<?php echo $title; ?>><?php echo $linktype; ?></span>
-</a>
+<span class="separator <?php echo $item->anchor_css; ?>"
+	<?php echo $item->anchor_title ? ' title="' . $item->anchor_title . '"' : ''; ?>><?php echo JHtml::_('iwt.linkType', $item); ?></span>
