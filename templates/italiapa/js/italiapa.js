@@ -45,5 +45,11 @@
 							eshiol.location.href = $(location).attr('href');
 						}
 
+						if ($("#right")) {
+							$(".ipa-Right").prependTo("#right");
+							$(".ipa-Right nav").removeClass("u-floatRight");
+						}
 					});
 })(jQuery);
+
+
