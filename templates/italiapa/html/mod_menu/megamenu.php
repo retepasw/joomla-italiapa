@@ -100,21 +100,11 @@ foreach ($list as $i => &$item)
 				$subclass = substr($anchor_css[$i], 3) . ' ' . $subclass;
 				unset($anchor_css[$i]);
 			}
-			elseif (substr($anchor_css[$i], 0, 4) == 'Icon')
-			{
-				$icon = $icon . ' ' . $anchor_css[$i];
-				unset($anchor_css[$i]);
-			}
 		}
 		$item->anchor_css = (substr($item->anchor_css, 0, 1) == ' ' ? ' ' : '') . implode(' ', $anchor_css);
 		JLog::add(new JLogEntry('anchor_css: '.print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
 	}
-	if ($icon && ! $item->menu_image)
-	{
-		$icon .= ' ' . $item->menu_image_css;
-		$item->menu_image_css = '';
-	}
-	
+
 	if (!$item->anchor_css)
 	{
 		$class = 'Megamenu-item' . $class;
