@@ -16,6 +16,8 @@ defined('_JEXEC') or die();
 
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
+$attributes = JHtml::_('iwt.getLinkAttributes', $item);
+
 if ($item->browserNav == 1)
 {
 	$attributes['target'] = '_blank';
@@ -27,5 +29,4 @@ elseif ($item->browserNav == 2)
 	$attributes['onclick'] = "window.open(this.href, 'targetWindow', '" . $options . "'); return false;";
 }
 
-echo JHtml::_('link', JFilterOutput::ampReplace(htmlspecialchars($item->flink, ENT_COMPAT, 'UTF-8', false)), JHtml::_('iwt.linkType', $item),
-		JHtml::_('iwt.getLinkAttributes', $item));
+echo JHtml::_('link', JFilterOutput::ampReplace(htmlspecialchars($item->flink, ENT_COMPAT, 'UTF-8', false)), JHtml::_('iwt.linkType', $item), $attributes);
