@@ -45,7 +45,7 @@
 							eshiol.location.href = $(location).attr('href');
 						}
 
-						if ($("#right")) {
+						if ($("#right").length) {
 							$(".ipa-Right").prependTo("#right");
 							$(".ipa-Right nav").removeClass("u-floatRight");
 						}
