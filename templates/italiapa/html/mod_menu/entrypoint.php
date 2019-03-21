@@ -101,14 +101,7 @@ foreach ($list as $i => &$item)
 				$class .= ' u-flexCol';
 				unset($anchor_css[$i]);
 			}
-			elseif (substr($anchor_css[$i], 0, 4) == 'Icon')
-			{
-				$icon = $icon . ' ' . $anchor_css[$i];
-				unset($anchor_css[$i]);
-			}
 		}
-		// $item->anchor_css = (substr($item->anchor_css, 0, 1) == ' ' ? ' '
-		// : '') . implode(' ', $anchor_css);
 		$item->anchor_css = implode(' ', $anchor_css);
 	}
 
@@ -127,12 +120,6 @@ foreach ($list as $i => &$item)
 		{
 			$item->anchor_css = 'u-textClean u-text-h3 u-color-white';
 		}
-		if ($icon && ! $item->menu_image)
-		{
-			$icon .= ' ' . $item->menu_image_css;
-			$item->menu_image_css = '';
-		}
-		$item->anchor_css .= $icon;
 
 		switch ($item->type)
 		{
