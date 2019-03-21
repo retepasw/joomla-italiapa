@@ -18,6 +18,8 @@ defined('_JEXEC') or die;
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 JLog::add(new JLogEntry($module->position, JLog::DEBUG, 'tpl_italiapa'));
 
+require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
+
 if ($module->position == 'menu')
 {
 	require JModuleHelper::getLayoutPath('mod_menu', 'treeview');
@@ -29,6 +31,10 @@ elseif ($module->position == 'mainmenu')
 elseif ($module->position == 'socials')
 {
 	require JModuleHelper::getLayoutPath('mod_menu', 'socials');
+}
+elseif ($module->position == 'owner')
+{
+	require JModuleHelper::getLayoutPath('mod_menu', 'owner');
 }
 else
 {

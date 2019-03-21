@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		https://www.eshiol.it
- * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -29,6 +29,12 @@ if ($params->get('phpconsole') && class_exists('JLogLoggerPhpconsole'))
 	JLog::addLogger(array('logger' => 'phpconsole', 'extension' => 'tpl_italiapa_phpconsole'),  JLOG::DEBUG, array('tpl_italiapa'));
 }
 JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
+
+// Check for a custom CSS file
+JHtml::_('stylesheet', 'user.css', array('version' => 'auto', 'relative' => true));
+
+// Check for a custom JS file
+JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js ie89 ie8" lang="<?php echo $this->language; ?>"><![endif]-->
@@ -75,7 +81,7 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/<?php echo $theme; ?>.css">
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/custom.css">
+	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/italiapa.css">
 
 	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/tooltip-theme-arrows.css" />
 	<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/tether.min.js"></script>
@@ -120,26 +126,12 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 
 <header class="Header u-hiddenPrint<?php if ($this->params->get('headroom', 0)) echo ' Headroom--fixed js-Headroom Headroom Headroom--top Headroom--not-bottom" style="position: fixed; top: 0px;'; ?>">
 
-<?php if ($this->params->get('links') || ($this->countModules('languages'))) : ?>
+<?php if ($this->countModules('owner') || $this->countModules('languages')) : ?>
 <div class="Header-banner">
 	<div class="Header-owner Headroom-hideme">
-	<?php 
-	$links = array();
-	foreach($this->params->get('links', array()) as $item) {
-		$x = '';
-		if ($item->short) {
-			$x .= '<span class="u-inline u-md-hidden u-lg-hidden u-sm-hidden">'. $item->short . '</span>';
-		}
-		if ($item->title) {
-			$x .= '<span class="u-hidden u-md-inline u-lg-inline u-sm-inline">' . $item->title. '</span>';
-		}
-		if ($item->href) {
-			$x = '<a href="' . $item->href . '">' . $x . '</a>';
-		}
-		$links[] = $x;
-	}
-	echo implode('<span class="u-color-white">&nbsp;+&nbsp;</span>', $links) . '&nbsp;';
-	?>	
+	<?php if ($this->countModules('owner')) : ?>
+		<jdoc:include type="modules" name="owner" />
+	<?php endif; ?> 
 	<?php if ($this->countModules('languages')) : ?>
 		<div class="Header-languages ">
 			<jdoc:include type="modules" name="languages" />
@@ -256,7 +248,7 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 	
 		<?php if ($this->countModules('right')) : ?>
 			</div>
-			<div class="Grid-cell u-sizeFull u-md-size4of12 u-lg-size4of12">
+			<div id="right" class="Grid-cell u-sizeFull u-md-size4of12 u-lg-size4of12">
 				<jdoc:include type="modules" name="right" style="lg" />
 			</div>
 		</div>
@@ -403,6 +395,7 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/table.min.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/map.min.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/IWT.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/italiapa.min.js"></script>
 
 </body>
 </html>

@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		https://www.eshiol.it
- * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -29,6 +29,12 @@ if ($params->get('phpconsole') && class_exists('JLogLoggerPhpconsole'))
     JLog::addLogger(array('logger' => 'phpconsole', 'extension' => 'tpl_italiapa_phpconsole'),  JLOG::DEBUG, array('tpl_italiapa'));
 }
 JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
+
+// Check for a custom CSS file
+JHtml::_('stylesheet', 'user.css', array('version' => 'auto', 'relative' => true));
+
+// Check for a custom JS file
+JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js ie89 ie8" lang="<?php echo $this->language; ?>"><![endif]-->
@@ -45,11 +51,11 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 	<?php endif; ?>
 	<!--[if lt IE 9]><script src="<?php echo JUri::root(true); ?>/media/jui/js/html5.js"></script><![endif]-->
 	<!-- include html5shim per Explorer 8 -->
-	<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/vendor/modernizr.js"></script>
+	<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/modernizr.js"></script>
 
-	<script>__PUBLIC_PATH__ = '<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/'</script>
+	<script>__PUBLIC_PATH__ = '<?php echo $this->baseurl ?>/templates/italiapa/build/'</script>
 
-	<!-- <link rel="preload" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/IWT.min.js" as="script"> -->
+	<!-- <link rel="preload" href="<?php echo $this->baseurl ?>/templates/italiapa/build/IWT.min.js" as="script"> -->
 	<!--
 		In alternativa a WebFontLoader ÃƒÆ’Ã‚Â¨ possibile caricare il font direttamente da Google
 		<link href='//fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700,' rel='stylesheet' type='text/css' />
@@ -72,15 +78,15 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 	</script>
 
 	<?php $theme = $this->params->get('theme', 'build'); ?>
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/<?php echo $theme; ?>.css">
+	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/<?php echo $theme; ?>.css">
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/custom.css">
+	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/italiapa.css">
 
-	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/tooltip-theme-arrows.css" />
-	<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/tether.min.js"></script>
-	<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/drop.min.js"></script>
-	<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/tooltip.min.js"></script>
+	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/tooltip-theme-arrows.css" />
+	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tether.min.js"></script>
+	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/drop.min.js"></script>
+	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tooltip.min.js"></script>
 
 	<jdoc:include type="head" />
 </head>
@@ -90,17 +96,18 @@ JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 	<jdoc:include type="component" />
 </div>
 <!--[if IE 8]>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/vendor/respond.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/vendor/rem.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/vendor/selectivizr.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/vendor/slice.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/respond.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/rem.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/selectivizr.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/slice.js"></script>
 <![endif]-->
 
 <!--[if lte IE 9]>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/vendor/polyfill.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/polyfill.min.js"></script>
 <![endif]-->
 
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/IWT.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/IWT.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/italiapa.min.js"></script>
 
 </body>
 </html>

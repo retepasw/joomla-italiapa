@@ -227,6 +227,11 @@ svg.Icon {
 	padding-left: 0 !important;
 }
 
+header.Headroom .Megamenu-subnav {
+	overflow-y: auto;
+	max-height: calc(100vh - 100px);
+}
+
 .Linklist span[class*=" Icon-"],
 .Linklist span[class^=Icon-],
 .Treeview span[class*=" Icon-"],
@@ -363,3 +368,10 @@ svg.Icon {
 	border-left-color: #fff;
 	bottom: -10px;
 }
+
+.Header-socialIcons span[class*=" Icon-"], 
+.Header-socialIcons span[class^=Icon-] {
+	width: 1.5em;
+	height: 1.5em;
+}
+

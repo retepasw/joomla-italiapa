@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -28,12 +28,12 @@ $canEdit = $displayData['params']->get('access-edit');
 $class = 'Button Button--default u-text-r-xs u-linkClean';
 ?>
 
-<div class="icons u-cf">
+<div class="icons u-cf ipa-Right">
 	<?php if (empty($displayData['print'])) : ?>
 
 		<?php if ($canEdit || $displayData['params']->get('show_print_icon') || $displayData['params']->get('show_email_icon')) : ?>
-		<nav class="Navscroll Navscroll--withHint u-floatRight">
-			<ul class="u-padding-all-s u-margin-all-l">
+		<nav class="Navscroll u-floatRight">
+			<ul>
 			<?php // Note the actions class is deprecated. Use dropdown-menu instead. ?>
 			<?php if ($displayData['params']->get('show_print_icon')) : ?>
 				<li class="u-padding-right-l"><?php echo JHtml::_('icon.print_popup', $displayData['item'], $displayData['params'], array('class' => $class)); ?></li>

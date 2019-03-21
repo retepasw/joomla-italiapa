@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -23,10 +23,9 @@ if ($tagId = $params->get('tag_id', ''))
 {
 	$id = ' id="' . $tagId . '"';
 }
+
+// The menu class is deprecated. Use nav instead
 ?>
-<p><?php echo $module->title; ?></p>
-<ul class="Header-socialIcons<?php echo $class_sfx; ?>"
-	<?php echo $id; ?>>
 <?php
 
 foreach ($list as $i => &$item)
@@ -76,10 +75,6 @@ foreach ($list as $i => &$item)
 		$class .= ' parent';
 	}
 	
-	echo '<li class="' . $class . '">';
-	
-	$item->params->set('menu_text', 0);
-	
 	switch ($item->type)
 	:
 		case 'separator':
@@ -94,23 +89,5 @@ foreach ($list as $i => &$item)
 			break;
 	endswitch
 	;
-	
-	// The next item is deeper.
-	if ($item->deeper)
-	{
-		echo '<ul role="group">';
-	}
-	// The next item is shallower.
-	elseif ($item->shallower)
-	{
-		echo '</li>';
-		echo str_repeat('</ul></li>', $item->level_diff);
-	}
-	// The next item is on the same level.
-	else
-	{
-		echo '</li>';
-	}
 }
 ?>
-</ul>
