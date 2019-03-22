@@ -51,11 +51,11 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 	<?php endif; ?>
 	<!--[if lt IE 9]><script src="<?php echo JUri::root(true); ?>/media/jui/js/html5.js"></script><![endif]-->
 	<!-- include html5shim per Explorer 8 -->
-	<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/vendor/modernizr.js"></script>
+	<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/modernizr.js"></script>
 
-	<script>__PUBLIC_PATH__ = '<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/'</script>
+	<script>__PUBLIC_PATH__ = '<?php echo $this->baseurl ?>/templates/italiapa/build/'</script>
 
-	<!-- <link rel="preload" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/IWT.min.js" as="script"> -->
+	<!-- <link rel="preload" href="<?php echo $this->baseurl ?>/templates/italiapa/build/IWT.min.js" as="script"> -->
 	<!--
 		In alternativa a WebFontLoader è possibile caricare il font direttamente da Google
 		<link href='//fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700,' rel='stylesheet' type='text/css' />
@@ -77,16 +77,21 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 		})();
 	</script>
 
-	<?php $theme = $this->params->get('theme', 'italia'); ?>
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/build.<?php echo $theme; ?>.css">
-
+	<?php $theme = $this->params->get('theme', 'default'); ?>
+	<?php if ($theme != 'default') : ?>
+		<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.<?php echo $theme; ?>.css">
+	<?php elseif (file_exists(JPATH_ROOT . '/templates/italiapa/build/build.css')) : ?>
+		<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.css">	
+	<?php else: ?>
+		<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.italia.css">
+	<?php endif; ?>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/italiapa.css">
+	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/italiapa.css">
 
-	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/tooltip-theme-arrows.css" />
-	<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/tether.min.js"></script>
-	<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/drop.min.js"></script>
-	<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/tooltip.min.js"></script>
+	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/tooltip-theme-arrows.css" />
+	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tether.min.js"></script>
+	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/drop.min.js"></script>
+	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tooltip.min.js"></script>
 
 	<jdoc:include type="head" />
 
@@ -248,7 +253,7 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 	
 		<?php if ($this->countModules('right')) : ?>
 			</div>
-			<div class="Grid-cell u-sizeFull u-md-size4of12 u-lg-size4of12">
+			<div id="right" class="Grid-cell u-sizeFull u-md-size4of12 u-lg-size4of12">
 				<jdoc:include type="modules" name="right" style="lg" />
 			</div>
 		</div>
@@ -380,22 +385,22 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 </a>
 
 <!--[if IE 8]>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/vendor/respond.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/vendor/rem.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/vendor/selectivizr.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/vendor/slice.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/respond.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/rem.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/selectivizr.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/slice.js"></script>
 <![endif]-->
 
 <!--[if lte IE 9]>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/vendor/polyfill.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/polyfill.min.js"></script>
 <![endif]-->
 
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/uuid.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/accordion.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/table.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/map.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/IWT.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/italiapa.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/uuid.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/accordion.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/table.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/map.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/IWT.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/italiapa.min.js"></script>
 
 </body>
 </html>
