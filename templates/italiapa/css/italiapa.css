@@ -375,3 +375,21 @@ header.Headroom .Megamenu-subnav {
 	height: 1.5em;
 }
 
+.ScrollTop {
+    bottom: 4em!important;
+}
+
+.ipa-copyright {
+	color: rgba(255, 255, 255, 0.7);
+    font-size: 0.7em;
+    text-align: right;
+    padding-top: 2em;
+}
+
+.ipa-copyright a {
+	text-decoration: none;
+}
+
+.ipa-copyright>a:nth-of-type(1) {
+	float:left;
+}
