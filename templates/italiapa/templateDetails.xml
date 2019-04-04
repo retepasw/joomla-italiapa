@@ -95,6 +95,7 @@
             <option value="purple">TPL_ITALIAPA_THEME_PURPLE</option>
             <option value="red">TPL_ITALIAPA_THEME_RED</option>
             <option value="redaccessible">TPL_ITALIAPA_THEME_REDACCESSIBLE</option>
+            <option value="squola">TPL_ITALIAPA_THEME_SCHOOLUNOFFICIAL</option>
             <option value="teal">TPL_ITALIAPA_THEME_TEAL</option>
             <option value="yellow">TPL_ITALIAPA_THEME_YELLOW</option>
             <option value="yellowaccessible">TPL_ITALIAPA_THEME_YELLOWACCESSIBLE</option>
