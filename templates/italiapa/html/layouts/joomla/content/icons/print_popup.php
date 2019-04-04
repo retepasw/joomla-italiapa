@@ -18,8 +18,12 @@ defined('JPATH_BASE') or die;
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 $params = $displayData['params'];
+
 ?>
-<?php if ($params->get('show_icons')) : ?>
-	<span class="u-text-r-m Icon Icon-print"></span>
-<?php endif; ?>
-<?php // echo JText::_('JGLOBAL_PRINT'); ?>
+<span data-tooltip="<?php echo JHtml::tooltipText(JText::_('JGLOBAL_PRINT'), 0); ?>" data-tooltip-position="bottom center">
+	<?php if ($params->get('show_icons')) : ?>
+		<span class="u-text-r-m Icon Icon-print"></span>
+	<?php else : ?>
+		<?php echo JText::_('JGLOBAL_PRINT'); ?>
+	<?php endif; ?>
+</span>

@@ -17,7 +17,7 @@ defined('JPATH_BASE') or die;
 
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
-JHtml::_('bootstrap.tooltip');
+//JHtml::_('bootstrap.tooltip');
 
 $article = $displayData['article'];
 $overlib = $displayData['overlib'];
@@ -30,7 +30,7 @@ if (strtotime($article->publish_up) > strtotime(JFactory::getDate())
 	$icon = 'lock';
 }
 ?>
-<span data-tooltip="<?php echo JHtml::tooltipText(JText::_('COM_CONTENT_EDIT_ITEM'), $overlib, 0, 0); ?>">
+<span data-tooltip="<?php echo JHtml::tooltipText(JText::_('COM_CONTENT_EDIT_ITEM'), $overlib, 0, 0); ?>" data-tooltip-position="bottom right">
 	<span class="u-text-r-m Icon Icon-<?php echo $icon; ?>"></span>
-<?php // echo JText::_('JGLOBAL_EDIT'); ?>
+	<?php // echo JText::_('JGLOBAL_EDIT'); ?>
 </span>
