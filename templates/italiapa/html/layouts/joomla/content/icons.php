@@ -19,6 +19,10 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 use Joomla\Registry\Registry;
 
+require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
+
+JHtml::_('bootstrap.tooltip');
+
 if (JComponentHelper::getComponent('com_buttons', true)->enabled)
 {
 	require_once JPATH_ADMINISTRATOR.'/components/com_buttons/helpers/buttons.php';
@@ -36,7 +40,7 @@ $class = 'Button Button--default u-text-r-xs u-linkClean';
 			<ul>
 			<?php // Note the actions class is deprecated. Use dropdown-menu instead. ?>
 			<?php if ($displayData['params']->get('show_print_icon')) : ?>
-				<li class="u-padding-right-l"><?php echo JHtml::_('icon.print_popup', $displayData['item'], $displayData['params'], array('class' => $class)); ?></li>
+				<li class="u-padding-right-l"><?php echo preg_replace("/title=\"[\\s\\S]*?\"/", '', JHtml::_('icon.print_popup', $displayData['item'], $displayData['params'], array('class' => $class))); ?></li>
 			<?php endif; ?>
 			<?php if ($displayData['params']->get('show_email_icon')) : ?>
 				<li class="u-padding-right-l"><?php echo JLayoutHelper::render('eshiol.content.share', $displayData); ?></li>
@@ -94,7 +98,7 @@ $class = 'Button Button--default u-text-r-xs u-linkClean';
 			?>
 
 			<?php if ($canEdit) : ?>
-				<li class="u-padding-right-l"><?php echo JHtml::_('icon.edit', $displayData['item'], $displayData['params'], array('class' => $class)); ?></li>
+				<li class="u-padding-right-l"><?php echo preg_replace("/title=\"[\\s\\S]*?\"/", '', JHtml::_('icon.edit', $displayData['item'], $displayData['params'], array('class' => $class))); ?></li>
 			<?php endif; ?>
 			</ul>
 		</nav>
