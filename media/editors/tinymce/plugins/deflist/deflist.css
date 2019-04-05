@@ -1,18 +1,50 @@
 /* deflist.css */
 /* for deflist plugin */
 
+@font-face {
+	font-family: 'IcoMoon';
+	src: url('../../../../../media/jui/fonts/IcoMoon.eot');
+	src: url('../../../../../media/jui/fonts/IcoMoon.eot?#iefix') format('embedded-opentype'), url('../../../../../media/jui/fonts/IcoMoon.woff') format('woff'), url('../../../../../media/jui/fonts/IcoMoon.ttf') format('truetype'), url('../../../../../media/jui/fonts/IcoMoon.svg#IcoMoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
 dt::before { content:"dt: "; color:#aaa; font-size:8px; }
-dd::before { content:"dd: "; color:#aaa; font-size:8px; }
+dd::before { content:"dd: "; color:#aaa; font-size:8px; padding-left: 40px; }
 dl { border-left: dotted #aaa 2px; padding: 3px; }
 
-.Accordion dt::before { content:"dt: "; color:#aaa; font-size:8px; }
-.Accordion dt[aria-selected=true]::before { content:"dt: "; color:#aaa; font-size:8px; }
-.Accordion dd::before { content:"dd: "; color:#aaa; font-size:8px; }
-.Accordion dt:first-child { border-top: 1px solid black; }
-.Accordion dd { border-bottom: 1px solid black; -webkit-margin-start: 0px; padding-left: 40px; }
+dl.Accordion dt::before { content:"dt: "; color:#aaa; font-size:8px; }
+dl.Accordion dt[aria-selected=true]::before { content:"dt: "; color:#aaa; font-size:8px; }
+dl.Accordion dd::before { content:"dd: "; color:#aaa; font-size:8px; }
+dl.Accordion dt:first-child { border-top: 1px solid black; }
+dl.Accordion dd { border-bottom: 1px solid black; -webkit-margin-start: 0px; }
 
-.Accordion.Accordion--default dt::before { content:"dt: v "; color:#aaa; font-size:8px; }
-.Accordion.Accordion--default dt[aria-selected=true]::before { content:"dt: ^ "; color:#aaa; font-size:8px; }
+dl.Accordion.Accordion--default dt::before { 
+	font-family: 'IcoMoon';
+	content: "\e007"" ";
+	speak: none;
+}
 
-.Accordion.Accordion--plus dt::before { content:"dt: + "; color:#aaa; font-size:8px; }
-.Accordion.Accordion--plus dt[aria-selected=true]::before { content:"dt: - "; color:#aaa; font-size:8px; }
+dl.Accordion.Accordion--default dt[aria-selected=true]::before {
+	font-family: 'IcoMoon';
+	content: "\e005"" ";
+	speak: none;
+}
+
+dl.Accordion.Accordion--plus dt::before {
+	font-family: 'IcoMoon';
+	content: "\5d"" ";
+	speak: none;
+}
+
+dl.Accordion.Accordion--plus dt[aria-selected=true]::before {
+	font-family: 'IcoMoon';
+	content: "\5e"" ";
+	speak: none;
+}
+	
+dl.Timeline dt::before {
+	font-family: 'IcoMoon';
+	content: "\43"" ";
+	speak: none;
+}

@@ -134,7 +134,7 @@ tinymce.PluginManager.add('deflist', function (editor, url) {
 		return items;
 	}
 
-	var default_deflist_styles = 'default,Accordion,Accordion--default,Accordion--plus';
+	var default_deflist_styles = 'default,Accordion,Accordion--default,Accordion--plus,Timeline';
 
 	dlMenuItems = buildMenuItems('DL', editor.getParam('deflist_styles', default_deflist_styles));
 

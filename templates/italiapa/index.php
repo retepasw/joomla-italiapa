@@ -398,6 +398,7 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 <script src="<?php echo $this->baseurl ?>/templates/italiapa/js/uuid.min.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/italiapa/js/accordion.min.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/italiapa/js/table.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/timeline.min.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/italiapa/js/map.min.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/italiapa/build/IWT.min.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/italiapa/js/italiapa.min.js"></script>
