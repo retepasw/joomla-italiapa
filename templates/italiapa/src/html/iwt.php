@@ -320,7 +320,7 @@ abstract class JHtmlIwt
 
 			if ($svg)
 			{
-				$link = '<svg class="' . trim($icon . ' ' . $item->menu_image_css) . '"><use xlink:href="#' . trim($svg) . '"></use></svg>';
+				$link = '<span class="' . trim($svg) . '"><svg class="' . trim($icon . ' ' . $item->menu_image_css) . '"><use xlink:href="#' . trim($svg) . '"></use></svg></span>';
 			}
 			elseif ($icon)
 			{
