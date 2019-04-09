@@ -393,3 +393,51 @@ header.Headroom .Megamenu-subnav {
 .ipa-copyright>a:nth-of-type(1) {
 	float:left;
 }
+
+@font-face {
+	font-family: 'IcoMoon';
+	src: url('../../../media/jui/fonts/IcoMoon.eot');
+	src: url('../../../media/jui/fonts/IcoMoon.eot?#iefix') format('embedded-opentype'), url('../../../media/jui/fonts/IcoMoon.woff') format('woff'), url('../../../media/jui/fonts/IcoMoon.ttf') format('truetype'), url('../../../media/jui/fonts/IcoMoon.svg#IcoMoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+div.dt::before { content:"dt: "; color:#aaa; font-size:8px; }
+div.dd::before { content:"dd: "; color:#aaa; font-size:8px; padding-left: 40px; }
+div.dl { border-left: dotted #aaa 2px; padding: 3px; }
+
+div.dl.Accordion div.dt::before { content:"dt: "; color:#aaa; font-size:8px; }
+div.dl.Accordion div.dt[aria-selected=true]::before { content:"dt: "; color:#aaa; font-size:8px; }
+div.dl.Accordion div.dd::before { content:"dd: "; color:#aaa; font-size:8px; }
+div.dl.Accordion div.dt:first-child { border-top: 1px solid black; }
+div.dl.Accordion div.dd { border-bottom: 1px solid black; -webkit-margin-start: 0px; }
+
+div.dl.Accordion.Accordion--default div.dt::before { 
+	font-family: 'IcoMoon';
+	content: "\e007"" ";
+	speak: none;
+}
+
+div.dl.Accordion.Accordion--default div.dt[aria-selected=true]::before {
+	font-family: 'IcoMoon';
+	content: "\e005"" ";
+	speak: none;
+}
+
+div.dl.Accordion.Accordion--plus div.dt::before {
+	font-family: 'IcoMoon';
+	content: "\5d"" ";
+	speak: none;
+}
+
+div.dl.Accordion.Accordion--plus div.dt[aria-selected=true]::before {
+	font-family: 'IcoMoon';
+	content: "\5e"" ";
+	speak: none;
+}
+
+div.dl.Timeline div.dt::before {
+	font-family: 'IcoMoon';
+	content: "\43"" ";
+	speak: none;
+}

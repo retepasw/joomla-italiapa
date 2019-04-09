@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -19,7 +19,7 @@
  */
 
 tinymce.PluginManager.add('format', function (editor, url) {
-	editor.contentCSS.push(url + '/build.css');
+	editor.contentCSS.push(url + '/css/format.css');
 
     editor.addButton('blockquote', {
     	text: null,
@@ -29,22 +29,24 @@ tinymce.PluginManager.add('format', function (editor, url) {
     		tinyMCE.activeEditor.selection.setContent('<blockquote class=\"Prose-blockquote\"><p class=\"u-layout-prose u-color-grey-90 u-text-p u-padding-r-all\">'+((text = tinyMCE.activeEditor.selection.getContent()) ? text : 'Citazione')+'</p></blockquote>');
     	}
     });
+
     editor.addButton('codesample', {
     	text: null,
     	icon: 'code',
         tooltip: 'Code',
     	onclick: function() {
-			tinyMCE.activeEditor.selection.setContent('<pre class=\"u-textPreformatted u-textOverflow\"><code class=\"u-text-r-xxs\">'+((text = tinyMCE.activeEditor.selection.getContent()) ? text : 'Codice')+'</code></pre>');    	
+			tinyMCE.activeEditor.selection.setContent('<pre class=\"u-textPreformatted u-textOverflow\"><code class=\"u-text-r-xxs\">'+((text = tinyMCE.activeEditor.selection.getContent()) ? text : 'Codice')+'</code></pre>');
     	}
     });
 
-    editor.settings.inline_styles = false;
-	editor.settings.table_default_attributes = {class: 'Table Table--withBorder u-text-r-xs'};
 
 	editor.on('init', function() {
 		var alignElements = 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table';
 
-		editor.formatter.register({
+	    editor.settings.inline_styles = false;
+		editor.settings.table_default_attributes = {'class': 'Table Table--withBorder u-text-r-xs'};
+
+	    editor.formatter.register({
 			aligncenter:  [
 				{selector: alignElements, classes: 'u-textCenter'},
 				{selector: 'img', styles: {'max-width':'100%', 'height': 'auto', 'display': 'block', 'margin-left': 'auto', 'margin-right': 'auto'}}

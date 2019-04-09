@@ -4,7 +4,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
@@ -20,7 +20,7 @@
  */
 
 tinymce.PluginManager.add('deflist', function (editor, url) {
-	editor.contentCSS.push(url + '/deflist.css');
+	editor.contentCSS.push(url + '/css/deflist.css');
 
 	var dlMenuItems;
 

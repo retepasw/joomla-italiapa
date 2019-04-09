@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.0" type="template" method="upgrade">
   <name>italiapa</name>
-  <creationDate>March 2019</creationDate>
+  <creationDate>April 2019</creationDate>
   <author>Helios Ciancio</author>
   <copyright>Copyright © 2017 - 2019 Helios Ciancio (eshiol.it). All rights reserved.</copyright>
   <authorEmail>info@eshiol.it</authorEmail>
@@ -32,6 +32,7 @@
     <filename>js/italiapa.min.js</filename>
     <filename>js/table.min.js</filename>
     <filename>js/tether.min.js</filename>
+    <filename>js/timeline.min.js</filename>
     <filename>js/tooltip.min.js</filename>
     <filename>js/uuid.min.js</filename>
     <filename>templateDetails.xml</filename>
@@ -42,14 +43,6 @@
     <language tag="it-IT">it-IT/it-IT.tpl_italiapa.ini</language>
     <language tag="it-IT">it-IT/it-IT.tpl_italiapa.sys.ini</language>
   </languages>
-  <media destination="editors" folder="media">
-    <filename>tinymce/plugins/alert/plugin.min.js</filename>
-    <filename>tinymce/plugins/callout/plugin.min.js</filename>
-    <filename>tinymce/plugins/deflist/deflist.css</filename>
-    <filename>tinymce/plugins/deflist/plugin.min.js</filename>
-    <filename>tinymce/plugins/format/plugin.min.js</filename>
-    <filename>tinymce/plugins/format/build.css</filename>
-  </media>
   <positions>
     <position>breadcrumb</position>
     <position>cookiebar</position>
