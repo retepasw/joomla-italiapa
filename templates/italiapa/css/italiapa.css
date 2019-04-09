@@ -448,6 +448,10 @@ div.dl.Accordion.Accordion--plus div.dt[aria-selected=true]::before {
 	speak: none;
 }
 
+div.dl.Timeline {
+	display: block!important;
+}
+
 div.dl.Timeline div.dt::before {
 	font-family: 'IcoMoon';
 	content: "\43"" ";
