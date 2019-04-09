@@ -165,6 +165,15 @@ svg.Icon {
     fill: currentColor;
 }
 
+svg.Icon-large {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}
+
 .Megamenu--default .Megamenu-item > span[class*=" Icon-"], 
 .Megamenu--default .Megamenu-item > span[class^=Icon-] {
 	color: #fff !important;
@@ -369,12 +378,6 @@ header.Headroom .Megamenu-subnav {
 	bottom: -10px;
 }
 
-.Header-socialIcons span[class*=" Icon-"], 
-.Header-socialIcons span[class^=Icon-] {
-	width: 1.5em;
-	height: 1.5em;
-}
-
 .ScrollTop {
     bottom: 4em!important;
 }
@@ -392,6 +395,15 @@ header.Headroom .Megamenu-subnav {
 
 .ipa-copyright>a:nth-of-type(1) {
 	float:left;
+}
+
+.icons nav.Navscroll ul {
+	overflow-x: hidden;
+}
+
+.Share {
+	padding-left: 0!important;
+	padding-right: 0!important;
 }
 
 @font-face {

@@ -40,10 +40,10 @@ $class = 'Button Button--default u-text-r-xs u-linkClean';
 			<ul>
 			<?php // Note the actions class is deprecated. Use dropdown-menu instead. ?>
 			<?php if ($displayData['params']->get('show_print_icon')) : ?>
-				<li class="u-padding-right-l"><?php echo preg_replace("/title=\"[\\s\\S]*?\"/", '', JHtml::_('icon.print_popup', $displayData['item'], $displayData['params'], array('class' => $class))); ?></li>
+				<li class="u-padding-right-xs"><?php echo preg_replace("/title=\"[\\s\\S]*?\"/", '', JHtml::_('icon.print_popup', $displayData['item'], $displayData['params'], array('class' => $class))); ?></li>
 			<?php endif; ?>
 			<?php if ($displayData['params']->get('show_email_icon')) : ?>
-				<li class="u-padding-right-l"><?php echo JLayoutHelper::render('eshiol.content.share', $displayData); ?></li>
+				<li class="u-padding-right-xs"><?php echo JLayoutHelper::render('eshiol.content.share', $displayData); ?></li>
 			<?php endif; ?>
 			
 			<?php
@@ -75,7 +75,7 @@ $class = 'Button Button--default u-text-r-xs u-linkClean';
 						$attribs['title']   = JText::_('TPL_ITALIAPA_BUTTONS_REPORT');
 						$attribs['rel']     = 'nofollow';
 						$attribs['class']   = $class;
-						echo '<li class="u-padding-right-l">' . JHtml::_('link', JRoute::_($url), $text, $attribs) . '</li>';
+						echo '<li class="u-padding-right-xs">' . JHtml::_('link', JRoute::_($url), $text, $attribs) . '</li>';
 					}
 				}
 				else 
@@ -85,20 +85,20 @@ $class = 'Button Button--default u-text-r-xs u-linkClean';
 					$attribs['title']   = JText::_('TPL_ITALIAPA_BUTTONS_CSV');
 					$attribs['rel']     = 'nofollow';
 					$attribs['class']   = $class;
-					echo '<li class="u-padding-right-l">' . JHtml::_('link', JRoute::_($url), $text, $attribs) . '</li>';
+					echo '<li class="u-padding-right-xs">' . JHtml::_('link', JRoute::_($url), $text, $attribs) . '</li>';
 
 					$url  = ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language);
 					$text = '<span class="u-text-r-m Icon Icon-close"></span>';
 					$attribs['title']   = JText::_('TPL_ITALIAPA_BUTTONS_CLOSE');
 					$attribs['rel']     = 'nofollow';
 					$attribs['class']   = $class;
-					echo '<li class="u-padding-right-l">' . JHtml::_('link', JRoute::_($url), $text, $attribs) . '</li>';
+					echo '<li class="u-padding-right-xs">' . JHtml::_('link', JRoute::_($url), $text, $attribs) . '</li>';
 				}
 			}
 			?>
 
 			<?php if ($canEdit) : ?>
-				<li class="u-padding-right-l"><?php echo preg_replace("/title=\"[\\s\\S]*?\"/", '', JHtml::_('icon.edit', $displayData['item'], $displayData['params'], array('class' => $class))); ?></li>
+				<li class="u-padding-right-xs"><?php echo preg_replace("/title=\"[\\s\\S]*?\"/", '', JHtml::_('icon.edit', $displayData['item'], $displayData['params'], array('class' => $class))); ?></li>
 			<?php endif; ?>
 			</ul>
 		</nav>
@@ -107,7 +107,7 @@ $class = 'Button Button--default u-text-r-xs u-linkClean';
 	<?php else : ?>
 
 		<div class="u-floatRight">
-			<li class="u-padding-right-l"><?php echo JHtml::_('icon.print_screen', $displayData['item'], $displayData['params'], array('class' => $class)); ?></li>
+			<li class="u-padding-right-xs"><?php echo JHtml::_('icon.print_screen', $displayData['item'], $displayData['params'], array('class' => $class)); ?></li>
 		</div>
 
 	<?php endif; ?>
