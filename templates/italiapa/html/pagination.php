@@ -169,7 +169,7 @@ function pagination_item_active(&$item)
 	if ($item->text == JText::_('JLIB_HTML_START'))
 	{
 		$direction = $lang->isRtl() ? 'right' : 'left';
-		$display = '<i class="material-icons u-text-r-m" role="presentation">'.($lang->isRtl() ? 'last_page' : 'first_page').'</i><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
+		$display = '<span class="material-icons u-text-r-m" role="presentation">'.($lang->isRtl() ? 'last_page' : 'first_page').'</span><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
 	}
 
 	// Check for "Prev" item
@@ -177,7 +177,7 @@ function pagination_item_active(&$item)
 	{
 		//$display = '<span class="icon-previous"></span>';
 		$direction = $lang->isRtl() ? 'right' : 'left';
-		$display = '<i class="material-icons u-text-r-m" role="presentation">chevron_'.$direction.'</i><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
+		$display = '<span class="material-icons u-text-r-m" role="presentation">chevron_'.$direction.'</span><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
 	}
 
 	// Check for "Next" item
@@ -185,7 +185,7 @@ function pagination_item_active(&$item)
 	{
 		//$display = '<span class="icon-next"></span>';
 		$direction = $lang->isRtl() ? 'left' : 'right';
-		$display = '<i class="material-icons u-text-r-m" role="presentation">chevron_'.$direction.'</i><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
+		$display = '<span class="material-icons u-text-r-m" role="presentation">chevron_'.$direction.'</span><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
 	}
 
 	// Check for "End" item
@@ -193,7 +193,7 @@ function pagination_item_active(&$item)
 	{
 		//$display = '<span class="icon-last"></span>';
 		$direction = $lang->isRtl() ? 'left' : 'right';
-		$display = '<i class="material-icons u-text-r-m" role="presentation">'.($lang->isRtl() ? 'first_page' : 'last_page').'</i><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
+		$display = '<span class="material-icons u-text-r-m" role="presentation">'.($lang->isRtl() ? 'first_page' : 'last_page').'</span><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
 	}
 
 	// If the display object isn't set already, just render the item with its text
