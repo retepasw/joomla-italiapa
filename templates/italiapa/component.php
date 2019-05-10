@@ -77,8 +77,14 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 		})();
 	</script>
 
-	<?php $theme = $this->params->get('theme', 'build'); ?>
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/<?php echo $theme; ?>.css">
+	<?php $theme = $this->params->get('theme', 'default'); ?>
+	<?php if ($theme != 'default') : ?>
+		<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.<?php echo $theme; ?>.css">
+	<?php elseif (file_exists(JPATH_ROOT . '/templates/italiapa/build/build.css')) : ?>
+		<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.css">	
+	<?php else: ?>
+		<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.italia.css">
+	<?php endif; ?>
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/italiapa.css">
