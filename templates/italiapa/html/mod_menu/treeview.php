@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -25,18 +25,6 @@ if ($tagId = $params->get('tag_id', ''))
     $id = ' id="' . $tagId . '"';
 }
 if (!isset($maxlevel)) $maxlevel = 1;
-/**
- $tmp_class_sfx = explode(' ', $class_sfx);
- for($i = 0; $i < count($tmp_class_sfx); $i++)
- {
- if (substr($tmp_class_sfx[$i], 0, 6) == 'level:')
- {
- $maxlevel = (int)substr($tmp_class_sfx[$i], 6);
- unset($tmp_class_sfx[$i]);
- }
- }
- $class_sfx = implode(' ', $tmp_class_sfx);
- */
 if (empty($class_sfx))
 {
     $class_sfx = 'Treeview--default';
@@ -96,9 +84,12 @@ $level = 1;
 	switch ($item->type) :
 		case 'separator':
 		case 'component':
-		case 'heading':
 		case 'url':
 			require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
+			break;
+		
+		case 'heading':
+			require JModuleHelper::getLayoutPath('mod_menu', 'treeview_' . $item->type);
 			break;
 
 		default:
