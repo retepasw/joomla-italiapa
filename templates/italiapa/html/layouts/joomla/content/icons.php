@@ -19,8 +19,6 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 use Joomla\Registry\Registry;
 
-require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
-
 JHtml::_('bootstrap.tooltip');
 
 if (JComponentHelper::getComponent('com_buttons', true)->enabled)

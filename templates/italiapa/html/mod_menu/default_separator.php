@@ -15,6 +15,8 @@
 defined('_JEXEC') or die();
 
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
+
+require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 ?>
 <span class="separator <?php echo $item->anchor_css; ?>"
 	<?php echo $item->anchor_title ? ' title="' . $item->anchor_title . '"' : ''; ?>><?php echo JHtml::_('iwt.linkType', $item); ?></span>
