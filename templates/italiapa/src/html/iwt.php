@@ -162,11 +162,9 @@ abstract class JHtmlIwt
 
 			// Inject tab into UL
 			JFactory::getDocument()->addScriptDeclaration(
-					'jQuery(function($){
-	    	    $(' .
-							 json_encode('#accordion-' . $selector . ' button.fr-accordion__header') . ').each(function( index, element ) {
-	                $(' . json_encode(
-									'#accordion-' . $selector . ' div') . ').first().before( this );
+				'jQuery(function($){
+	    	    $(' . json_encode('#accordion-' . $selector . ' button.fr-accordion__header') . ').each(function( index, element ) {
+	            $(' . json_encode('#accordion-' . $selector . ' div') . ').first().before( this );
 	    	    });
 	        });');
 

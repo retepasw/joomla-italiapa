@@ -31,40 +31,59 @@ see <a href="https://italia.github.io/design-web-toolkit/components/detail/layou
 </div>
 <?php endif; ?>
 
-<div class="u-layout-centerContent u-background-grey-20">
-	<section class="u-layout-wide u-padding-top-xxl u-padding-bottom-xxl <?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Blog">
-		<?php if ($this->params->get('show_page_heading') != 0) : ?>
-		<h2 class="u-text-r-l u-padding-r-bottom">
-		<?php echo $this->escape($this->params->get('page_heading')); ?>
-		</h2>
-		<?php endif; ?>
-	
-		<div class="Grid Grid--withGutter">
-		<?php $i = 0; ?>
-		<?php foreach(array_merge($this->lead_items, $this->intro_items) as $item) : ?>
-			<?php $i++; ?>
-			<?php if ($i > (int) $this->columns) : ?>
-		</div>
-		<div class="Grid Grid--withGutter">
-				<?php $i = 0; ?>
-			<?php endif; ?>			 
-			<div class="Grid-cell u-md-size1of<?php echo (int) $this->columns; ?> u-lg-size1of<?php echo (int) $this->columns; ?>
-				<?php echo $item->state == 0 ? ' system-unpublished' : null; ?>"
-				itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-				<?php
-					$this->item = &$item;
-					echo $this->loadTemplate('tile');
-				?>
-			</div>
-			<?php ?>
-		<?php endforeach; ?>
-		</div>
-	
-	<?php 
-	if ($this->params->def('show_pagination', 2) == 1  || ($this->params->get('show_pagination') == 2 && $this->pagination->pagesTotal > 1)) :
-		echo $this->pagination->getPagesLinks();
-	endif; 
-	?>
+<section class="u-layout-wide u-padding-top-xxl u-padding-bottom-xxl <?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Blog">
+	<?php if ($this->params->get('show_page_heading') != 0) : ?>
+	<h2 class="u-text-r-l u-padding-r-bottom">
+	<?php echo $this->escape($this->params->get('page_heading')); ?>
+	</h2>
+	<?php endif; ?>
 
-	</section>
-</div>
+	<?php $app = JFactory::getApplication(); ?>
+	<?php $limitstart = $app->input->get('limitstart', 0, 'uint'); ?>
+
+	<?php if ($limitstart == 0) : ?>
+	<div class="owl-carousel news-theme" role="region" id="carousel-main" data-carousel-options='{"items":1,"responsive":false,"autoplay":true,"loop":true,"dots":true,"nav":true}'>
+		<?php foreach($this->lead_items as $item) : ?>
+		<div<?php echo $item->state == 0 ? ' class=\"system-unpublished\"' : null; ?> itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+			<?php $this->item = &$item; ?>
+			<?php echo $this->loadTemplate('item'); ?>
+		</div>
+		<?php endforeach; ?>
+	</div>
+	<?php endif; ?>
+	
+	<?php $items = ($limitstart == 0) ? $this->intro_items : array_merge($this->lead_items, $this->intro_items); ?>
+	<?php if (count($items)) : ?>
+		<div class="u-layout-centerContent u-background-grey-20">
+			<div class="Grid Grid--withGutter">
+				<?php $c = (int) $this->columns; ?>
+				<?php $i = 1; ?>
+				<?php foreach ($items as $item) : ?>
+				<div class="Grid-cell u-md-size1of<?php echo $c; ?> u-lg-size1of<?php echo $c; ?> u-padding-r-left<?php echo $item->state == 0 ? ' system-unpublished' : null; ?>"
+					itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+					<?php $this->item = &$item; ?>
+					<?php echo $this->loadTemplate('tile'); ?>
+				</div>
+				<?php if ($i == $c) : ?>
+					</div><div class="Grid Grid--withGutter">
+					<?php $i = 1; ?>
+				<?php else : ?>
+					<?php $i++; ?>
+				<?php endif; ?>
+				<?php endforeach; ?>
+				</div>
+			</div>
+		</div>
+	<?php endif; ?>
+	
+	<?php if (!empty($this->link_items)) : ?>
+	<div class="u-layout-wide u-layoutCenter u-layout-withGutter u-padding-r-top u-padding-bottom-xxl">
+	<?php echo $this->loadTemplate('links'); ?>
+	</div>
+	<?php endif; ?>
+
+	<?php if ($this->params->def('show_pagination', 2) == 1  || ($this->params->get('show_pagination') == 2 && $this->pagination->pagesTotal > 1)) : ?>
+		<?php echo $this->pagination->getPagesLinks(); ?>
+	<?php endif; ?>
+
+</section>

@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -38,14 +38,59 @@ see <a href="https://italia.github.io/design-web-toolkit/components/detail/layou
 	</h2>
 	<?php endif; ?>
 
-	<?php foreach(array_merge($this->lead_items, $this->intro_items) as $item) : ?>
-	<div<?php echo $item->state == 0 ? ' class=\"system-unpublished\"' : null; ?> itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-		<?php
-			$this->item = &$item;
-			echo $this->loadTemplate('item');
-		?>
+	<div class="Grid">
+		<!-- <next / prev buttons> -->
+		<!-- <div class="Grid-cell u-layout-centerRight">
+			<button class="owl-prev u-padding-bottom-xl u-padding-right-xxl u-text-r-xl u-color-teal-50" aria-controls="carousel-main">
+				<span class="u-hiddenVisually">Precedente</span>
+				<span class="u-alignMiddle Icon Icon-arrow-left" role="presentation"></span>
+			</button>
+			<button class="owl-next u-padding-bottom-xl u-padding-left u-text-r-xl u-color-teal-50" aria-controls="carousel-main">
+			  <span class="u-hiddenVisually">Successiva</span>
+			  <span class="u-alignMiddle Icon Icon-arrow-right" role="presentation"></span>
+			</button>
+			<p class="u-hiddenVisually">&Egrave; possibile navigare le news utilizzando i tasti freccia</p>
+		</div> -->
+		<!-- </next / prev buttons> -->
 	</div>
-	<?php endforeach; ?>
+
+	<?php $app = JFactory::getApplication(); ?>
+	<?php $limitstart = $app->input->get('limitstart', 0, 'uint'); ?>
+
+	<?php if ($limitstart == 0) : ?>
+	<div class="owl-carousel news-theme" role="region" id="carousel-main" data-carousel-options='{"items":1,"responsive":false,"autoplay":true,"loop":true,"dots":true,"nav":true}'>
+		<?php foreach($this->lead_items as $item) : ?>
+		<div<?php echo $item->state == 0 ? ' class=\"system-unpublished\"' : null; ?> itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+			<?php $this->item = &$item; ?>
+			<?php echo $this->loadTemplate('item'); ?>
+		</div>
+		<?php endforeach; ?>
+	</div>
+	<?php endif; ?>
+
+	<?php $items = ($limitstart == 0) ? $this->intro_items : array_merge($this->lead_items, $this->intro_items); ?>
+	<?php if (count($items)) : ?>
+		<div class="u-layout-centerContent u-background-grey-20">
+			<div class="Grid Grid--withGutter">
+				<?php $c = (int) $this->columns; ?>
+				<?php $i = 1; ?>
+				<?php foreach ($items as $item) : ?>
+				<div class="Grid-cell u-md-size1of<?php echo $c; ?> u-lg-size1of<?php echo $c; ?> u-padding-r-left<?php echo $item->state == 0 ? ' system-unpublished' : null; ?>"
+					itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+					<?php $this->item = &$item; ?>
+					<?php echo $this->loadTemplate('tile'); ?>
+				</div>
+				<?php if ($i == $c) : ?>
+					</div><div class="Grid Grid--withGutter">
+					<?php $i = 1; ?>
+				<?php else : ?>
+					<?php $i++; ?>
+				<?php endif; ?>
+				<?php endforeach; ?>
+				</div>
+			</div>
+		</div>
+	<?php endif; ?>
 
 	<?php 
 	if ($this->params->def('show_pagination', 2) == 1  || ($this->params->get('show_pagination') == 2 && $this->pagination->pagesTotal > 1)) :

@@ -18,10 +18,12 @@ JHtml::_('bootstrap.framework');
 
 $app	= JFactory::getApplication();
 $params = $app->getTemplate(true)->params;
+$min = '.min';
 
 if ($params->get('debug') || defined('JDEBUG') && JDEBUG)
 {
 	JLog::addLogger(array('text_file' => $params->get('log', 'eshiol.log.php'), 'extension' => 'tpl_italiapa_file'), JLog::ALL, array('tpl_italiapa'));
+	$min = '';
 }
 JLog::addLogger(array('logger' => (null !== $params->get('logger')) ?$params->get('logger') : 'messagequeue', 'extension' => 'tpl_italiapa'), JLOG::ALL & ~JLOG::DEBUG, array('tpl_italiapa'));
 if ($params->get('phpconsole') && class_exists('JLogLoggerPhpconsole'))
@@ -87,11 +89,13 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 	<?php endif; ?>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/italiapa.css">
-
+	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/prism<?php echo $min; ?>.css">
 	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/tooltip-theme-arrows.css" />
-	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tether.min.js"></script>
-	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/drop.min.js"></script>
-	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tooltip.min.js"></script>
+	
+	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tether<?php echo $min; ?>.js"></script>
+	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/drop<?php echo $min; ?>.js"></script>
+	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tooltip<?php echo $min; ?>.js"></script>
+	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/prism<?php echo $min; ?>.js"></script>
 
 	<jdoc:include type="head" />
 
@@ -263,13 +267,13 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 
 		<?php if ($this->countModules('services') || $this->countModules('featured') || $this->countModules('news') || $this->countModules('lead') || $countFooter) : ?>
 			<?php if ($this->countModules('services') || $this->countModules('featured')) : ?>
-		<a href="#featured" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+		<a href="#featured" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 			<?php elseif ($this->countModules('news')) : ?>
-		<a href="#news" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+		<a href="#news" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 			<?php elseif ($this->countModules('lead')) : ?>
-		<a href="#lead" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+		<a href="#lead" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 			<?php elseif ($countFooter) : ?>
-		<a href="#footer" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+		<a href="#footer" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 			<?php endif; ?>
 			<span class="Icon Icon-expand u-color-grey-40"></span>
 		</a>
@@ -290,11 +294,11 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 	<jdoc:include type="modules" name="featured" />
 	<?php if ($this->countModules('news') || $this->countModules('lead') || $countFooter) : ?>
 	<?php if ($this->countModules('news')) : ?>
-	<a href="#news" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+	<a href="#news" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 	<?php elseif ($this->countModules('lead')) : ?>
-	<a href="#lead" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+	<a href="#lead" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 	<?php elseif ($countFooter) : ?>
-	<a href="#footer" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+	<a href="#footer" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 	<?php endif; ?>
 		<span class="Icon Icon-expand u-color-grey-40"></span>
 	</a>
@@ -307,9 +311,9 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 	<jdoc:include type="modules" name="news" style="lg" />
 	<?php if ($this->countModules('lead') || $countFooter) : ?>
 	<?php if ($this->countModules('lead')) : ?>
-	<a href="#lead" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+	<a href="#lead" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 	<?php elseif ($countFooter) : ?>
-	<a href="#footer" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+	<a href="#footer" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 	<?php endif; ?>
 		<span class="Icon Icon-expand u-color-grey-40"></span>
 	</a>
@@ -380,7 +384,7 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 <?php endif; ?>
 
 <a href="#" title="torna all'inizio del contenuto" class="ScrollTop js-scrollTop js-scrollTo">
-	<i class="ScrollTop-icon Icon-collapse" aria-hidden="true"></i>
+	<span class="ScrollTop-icon Icon-collapse" aria-hidden="true"></span>
 	<span class="u-hiddenVisually">Torna all'inizio del contenuto</span>
 </a>
 
@@ -396,11 +400,12 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 <![endif]-->
 
 <script src="<?php echo $this->baseurl ?>/templates/italiapa/js/uuid.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/accordion.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/table.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/map.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/accordion<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/table<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/map<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/timeline<?php echo $min; ?>.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/italiapa/build/IWT.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/italiapa.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/italiapa<?php echo $min; ?>.js"></script>
 
 </body>
 </html>
