@@ -18,18 +18,8 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 
+$item->flink = '#';
 $attributes = JHtml::_('iwt.getLinkAttributes', $item);
-
-if ($item->browserNav == 1)
-{
-	$attributes['target'] = '_blank';
-}
-elseif ($item->browserNav == 2)
-{
-	$options = 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,' . $params->get('window_open');
-
-	$attributes['onclick'] = "window.open(this.href, 'targetWindow', '" . $options . "'); return false;";
-}
 
 echo JHtml::_('link', JFilterOutput::ampReplace(htmlspecialchars($item->flink, ENT_COMPAT, 'UTF-8', false)), JHtml::_('iwt.linkType', $item), $attributes);
 ?>
