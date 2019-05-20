@@ -57,21 +57,13 @@ see <a href="https://italia.github.io/design-web-toolkit/components/detail/layou
 		<div class="u-layout-centerContent u-background-grey-20">
 			<div class="Grid Grid--withGutter">
 				<?php $c = (int) $this->columns; ?>
-				<?php $i = 1; ?>
 				<?php foreach ($items as $item) : ?>
-				<div class="Grid-cell u-md-size1of<?php echo $c; ?> u-lg-size1of<?php echo $c; ?> u-padding-r-left<?php echo $item->state == 0 ? ' system-unpublished' : null; ?>"
-					itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-					<?php $this->item = &$item; ?>
-					<?php echo $this->loadTemplate('tile'); ?>
-				</div>
-				<?php if ($i == $c) : ?>
-					</div><div class="Grid Grid--withGutter">
-					<?php $i = 1; ?>
-				<?php else : ?>
-					<?php $i++; ?>
-				<?php endif; ?>
+					<div class="Grid-cell u-md-size1of<?php echo $c; ?> u-lg-size1of<?php echo $c; ?> u-padding-r-left<?php echo $item->state == 0 ? ' system-unpublished' : null; ?>"
+						itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+						<?php $this->item = &$item; ?>
+						<?php echo $this->loadTemplate('tile'); ?>
+					</div>
 				<?php endforeach; ?>
-				</div>
 			</div>
 		</div>
 	<?php endif; ?>
