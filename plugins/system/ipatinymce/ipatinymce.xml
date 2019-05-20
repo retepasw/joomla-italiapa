@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="system" method="upgrade">
+	<name>plg_system_ipatinymce</name>
+	<author>Helios Ciancio</author>
+	<creationDate>May 2019</creationDate>
+	<copyright>(C) 2017 - 2019 Helios Ciancio. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3</license>
+	<authorEmail>info@eshiol.it</authorEmail>
+	<authorUrl>www.eshiol.it</authorUrl>
+	<version>3.8.0.10</version>
+	<description>PLG_SYSTEM_IPATINYMCE_XML_DESCRIPTION</description>
+	<scriptfile>script.php</scriptfile>
+	<updateservers>
+		<server type="extension" priority="2" name="Template ItaliaPA - System - TinyMCE for ItaliaPA">https://www.eshiol.it/files/italiapa/plg_system_ipatinymce.xml</server>
+	</updateservers>
+	<files>
+		<filename plugin="ipatinymce">ipatinymce.php</filename>
+	</files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_system_ipatinymce.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_system_ipatinymce.sys.ini</language>
+		<language tag="it-IT">it-IT/it-IT.plg_system_ipatinymce.ini</language>
+		<language tag="it-IT">it-IT/it-IT.plg_system_ipatinymce.sys.ini</language>
+	</languages>
+	<media destination="plg_system_ipatinymce" folder="media">
+		<filename>css/content.min.css</filename>
+		<filename>css/editor.min.css</filename>
+		<filename>js/plugin.js</filename>
+		<filename>js/plugin.min.js</filename>
+		<filename>js/uuid.min.js</filename>
+	</media>  
+	<config>
+		<fields name="params">
+			<fieldset name="advanced">
+				<field
+					name="debug"
+					type="radio"
+					default="0"
+					class="btn-group btn-group-yesno"
+					description="PLG_SYSTEM_IPATINYMCE_DEBUG_SYSTEM_DESC"
+					label="PLG_SYSTEM_IPATINYMCE_DEBUG_SYSTEM_LABEL"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+
+				<field
+					name="log"
+					type="text"
+					label="PLG_SYSTEM_IPATINYMCE_DEBUG_FILENAME_LABEL"
+					description="PLG_SYSTEM_IPATINYMCE_DEBUG_FILENAME_DESC"
+					default="eshiol.log.php"
+					showon="debug:1"
+					/>
+
+				<field
+					name="phpconsole"
+					type="radio"
+					class="btn-group btn-group-yesno"
+					default="0"
+					description="PLG_SYSTEM_IPATINYMCE_DEBUG_PHPCONSOLE_DESC"
+					label="PLG_SYSTEM_IPATINYMCE_DEBUG_PHPCONSOLE_LABEL"
+					>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

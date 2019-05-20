@@ -1,0 +1,73 @@
+@font-face {
+	font-family: 'IcoMoon';
+	src: url('../../jui/fonts/IcoMoon.eot');
+	src: url('../../jui/fonts/IcoMoon.eot?#iefix') format('embedded-opentype'), 
+		 url('../../jui/fonts/IcoMoon.woff') format('woff'), 
+		 url('../../jui/fonts/IcoMoon.ttf') format('truetype'), 
+		 url('../../jui/fonts/IcoMoon.svg#IcoMoon') format('svg');
+	font-weight: normal;
+	font-style: normal
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-family: 'IcoMoon';
+    font-style: normal;
+    speak: none
+}
+
+.icon-ipa {
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4gMECiMbZsHG9QAAARdQTFRFAAAAAGbMTLMAAGrVAGbMAWbMB2rNC2zODm7OEG/PEnDPFHLQFnPQHnjSL4LVP4vZQ47YRpDaSZHbTpTcT5TbWZrdX5/fYqDgZaPga6bgbabhcanjcqnifK/kfbHlf7LkgLLmjrjfj7vpkbnfl77mmtBxnMDjnMPqndJ1nsXrpMjtpcntptWBqMvtqszuq8rprNiJr8/vtNLwutXwut+fv+GlwNjxw9vzxNzyxdvvxdvyyNzvyaivydnrzOD1z+Hx0tDb05yc1OX23O3N4e354smF5/D66s2P8Pb88fb79vn893xm94l09/vz+Pr++aeG+btw+fv++qmC+sB8+seI+vz4+71z/fjy/f7//vLx/vTx//nz////UIn+hQAAAAR0Uk5TAAUKDEYBANAAAAABYktHRFzq2ACXAAAAn0lEQVQYGZXByw7BQABA0dsaj1Q9IqSIR22UpYoPsPH/sRWZBElLQ9BMkRq1tHYO/zPAHGvcckFnL0ieApa3DpYgnxVBnQWcWocL1uRotUEjMGTnfCW4m6HdG33I4d9mQ88LklU1DqX9FuwdNtssqdNVj1iZIqfmRHHNma5lWvPzkVgcmpTKK9i5/QYSY+EW+ZGReGxwKpBquAZ8BvzvC3jbOrmcu22LAAAAAElFTkSuQmCC')!important
+}
+
+
+.icon-ipa-tooltip:before {
+	content: '\e259';
+}
+
+.icon-alert:before {
+	content: '\e225';
+}
+
+.icon-error:before {
+	content: '\e217';
+	color: red;
+}
+
+.icon-warning:before {
+	content: '\e225';
+	color: #d1ae00;
+}
+
+.icon-success:before {
+	content: '\e219';
+	color: #65b446;
+}
+
+.icon-info:before {
+	content: '\e221';
+	color: #24c3cc;
+}
+
+.icon-callout:before {
+	content: '\24';
+}
+
+.icon-must:before {
+	content: '\24';
+	color: pink;
+}
+
+.icon-should:before {
+	content: '\24';
+	color: lightblue;
+}
+
+.icon-could:before {
+	content: '\24';
+	color: lightgreen;
+}
+
+.icon-example:before {
+	content: '\24';
+	color: gray;
+}
