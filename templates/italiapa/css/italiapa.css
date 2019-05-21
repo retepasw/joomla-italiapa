@@ -379,8 +379,7 @@ header.Headroom .Megamenu-subnav {
 }
 
 .ScrollTop {
-    /* bottom: 4em!important; */
-    background: rgba(255,255,255,0.25)!important;
+    bottom: 4em!important;
 }
 
 .ipa-copyright {
