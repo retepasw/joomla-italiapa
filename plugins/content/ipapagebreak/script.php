@@ -16,6 +16,8 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access.');
 
+use Joomla\CMS\Factory;
+
 class PlgContentIpapagebreakInstallerScript
 {
 	/**
@@ -34,11 +36,21 @@ class PlgContentIpapagebreakInstallerScript
 	
 		if (($action === 'install') or ($action === 'update'))
 		{
-			JTable::addIncludePath(JPATH_ROOT.'/administrator/components/com_fields/tables');
+			if ((new JVersion())->isCompatible('4'))
+			{
+				$db = Factory::getDbo();
+				
+				/** @type  FieldTable  $field  */
+				$field = new \Joomla\Component\Fields\Administrator\Table\FieldTable($db);
+			}
+			elseif ((new JVersion())->isCompatible('3.7'))
+			{
+				JTable::addIncludePath(JPATH_ROOT.'/administrator/components/com_fields/tables');
 
-			// Initialize a new field
-			/** @type  FieldsTableField  $field  */
-			$field = JTable::getInstance('Field', 'FieldsTable');
+				// Initialize a new field
+				/** @type  FieldsTableField  $field  */
+				$field = JTable::getInstance('Field', 'FieldsTable');
+			}
 
 			// Check if the field archive_up exists before adding it
 			if (!$field->load(array('context' => 'com_content.article', 'name' => 'plg-content-ipapagebreak-style')))
@@ -63,13 +75,17 @@ class PlgContentIpapagebreakInstallerScript
 				// Check to make sure our data is valid
 				if (!$field->check())
 				{
+					JLog::add(new JLogEntry(JText::sprintf('PLG_CONTENT_IPAPAGEBREAK_CREATE_FIELD_ERROR', $field->getError()), JLog::DEBUG, 'plg_content_ipapagebreak'));
 					JFactory::getApplication()->enqueueMessage(JText::sprintf('PLG_CONTENT_IPAPAGEBREAK_CREATE_FIELD_ERROR', $field->getError()));
+
 					return false;
 				}
 				// Now store the category
 				if (!$field->store(true))
 				{
+					JLog::add(new JLogEntry(JText::sprintf('PLG_CONTENT_IPAPAGEBREAK_CREATE_FIELD_ERROR', $field->getError()), JLog::DEBUG, 'plg_content_ipapagebreak'));
 					JFactory::getApplication()->enqueueMessage(JText::sprintf('PLG_CONTENT_IPAPAGEBREAK_CREATE_FIELD_ERROR', $field->getError()));
+
 					return false;
 				}
 				JLog::add(new JLogEntry(JText::sprintf('PLG_CONTENT_IPAPAGEBREAK_CREATE_FIELD_OK', $field->title), JLog::DEBUG, 'plg_content_ipapagebreak'));
@@ -80,17 +96,20 @@ class PlgContentIpapagebreakInstallerScript
 				// Enable plugin
 				$db = JFactory::getDbo();
 				$query = $db->getQuery(true);
-				$query->update('#__extensions')
-					->set($db->qn('enabled') . ' = 0')
-					->where($db->qn('type') . ' = ' . $db->q('plugin'))
-					->where($db->qn('folder') . ' = ' . $db->q('content'))
-					->where($db->qn('element') . ' = ' . $db->q('pagebreak'));
+				$query->update($db->quoteName('#__extensions'))
+					->set($db->quoteName('enabled') . ' = 0')
+					->where($db->quoteName('type') . ' = ' . $db->quote('plugin'))
+					->where($db->quoteName('folder') . ' = ' . $db->quote('content'))
+					->where($db->quoteName('element') . ' = ' . $db->quote('pagebreak'));
+				JLog::add(new JLogEntry($query, JLog::DEBUG, 'plg_content_ipapagebreak'));
 				$db->setQuery($query)->execute();
 				$query->clear()
-					->set($db->qn('enabled') . ' = 1')
-					->where($db->qn('type') . ' = ' . $db->q('plugin'))
-					->where($db->qn('folder') . ' = ' . $db->q('content'))
-					->where($db->qn('element') . ' = ' . $db->q('ipapagebreak'));
+					->update($db->quoteName('#__extensions'))
+					->set($db->quoteName('enabled') . ' = 1')
+					->where($db->quoteName('type') . ' = ' . $db->quote('plugin'))
+					->where($db->quoteName('folder') . ' = ' . $db->quote('content'))
+					->where($db->quoteName('element') . ' = ' . $db->quote('ipapagebreak'));
+				JLog::add(new JLogEntry($query, JLog::DEBUG, 'plg_content_ipapagebreak'));
 				$db->setQuery($query)->execute();
 			}
 		}
