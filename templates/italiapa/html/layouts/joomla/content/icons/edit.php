@@ -32,5 +32,5 @@ if (strtotime($article->publish_up) > strtotime(JFactory::getDate())
 ?>
 <span data-tooltip="<?php echo JHtml::tooltipText(JText::_('COM_CONTENT_EDIT_ITEM'), $overlib, 0, 0); ?>" data-tooltip-position="bottom right">
 	<span class="u-text-r-m Icon Icon-<?php echo $icon; ?>"></span>
-	<?php // echo JText::_('JGLOBAL_EDIT'); ?>
+	<span class="u-hidden"><?php echo JText::_('JGLOBAL_EDIT'); ?></span>
 </span>

@@ -378,20 +378,20 @@ header.Headroom .Megamenu-subnav {
 	bottom: -10px;
 }
 
-.ScrollTop {
-    /* bottom: 4em!important; */
-    background: rgba(255,255,255,0.25)!important;
-}
-
 .ipa-copyright {
 	color: rgba(255, 255, 255, 0.7);
     font-size: 0.7em;
     text-align: right;
     padding-top: 2em;
+    padding-right: 5em;
 }
 
 .ipa-copyright a {
 	text-decoration: none;
+}
+
+.ipa-copyright img {
+	vertical-align: bottom;
 }
 
 .ipa-copyright>a:nth-of-type(1) {
@@ -405,6 +405,19 @@ header.Headroom .Megamenu-subnav {
 .Share {
 	padding-left: 0!important;
 	padding-right: 0!important;
+}
+
+.Share.is-pressed, .Share:active {
+    box-shadow: none;
+}
+
+.Share-revealText {
+    padding-left: 1.3em!important;
+    padding-right: 1.3em!important;
+}
+
+.icons nav.Navscroll ul {
+    overflow: hidden;
 }
 
 .news-theme .owl-nav {
@@ -544,4 +557,8 @@ div.current dd.tabs {
 	clear: both;
 	border: 1px solid #CCC;
 	background-color: #FFF;
+}
+
+.Entrypoint-item.u-imageTitleNoWrap span.image-title {
+	white-space: nowrap;
 }

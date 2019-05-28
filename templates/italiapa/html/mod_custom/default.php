@@ -16,7 +16,7 @@
 
 defined('_JEXEC') or die;
 
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'mod_schemaorg'));
+JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 $div = '<div class="custom' . $moduleclass_sfx . '"' . ($params->get('backgroundimage') ? 'style="background-image:url(' . $params->get('backgroundimage') . ')"' : '') . '>';
 $slash_div = '</div>';

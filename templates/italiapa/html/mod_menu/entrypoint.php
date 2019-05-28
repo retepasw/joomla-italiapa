@@ -23,6 +23,21 @@ if ($tagId = $params->get('tag_id', ''))
 {
 	$id = ' id="' . $tagId . '"';
 }
+
+$u_flex = false;
+if ($class_sfx)
+{
+	$class_sfx = explode(' ', $class_sfx);
+	for ($i = count($class_sfx) - 1; $i >= 0; $i--)
+	{
+		if ($class_sfx[$i] == 'u-flex')
+		{
+			$u_flex = true;
+			unset($class_sfx[$i]);
+		}
+	}
+	$class_sfx = trim(implode(' ', $class_sfx));
+}
 ?>
 
 <div
@@ -85,9 +100,9 @@ foreach ($list as $i => &$item)
 	}
 
 	$icon = '';
+	$subclass = '';
 	if ($item->anchor_css)
 	{
-		JLog::add(new JLogEntry('anchor_css: ' . print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
 		$anchor_css = explode(' ', $item->anchor_css);
 		for ($i = count($anchor_css) - 1; $i >= 0; $i--)
 		{
@@ -101,20 +116,25 @@ foreach ($list as $i => &$item)
 				$class .= ' u-flexCol';
 				unset($anchor_css[$i]);
 			}
+			elseif (substr($anchor_css[$i], 0, 3) == 'li:')
+			{
+				$subclass = substr($anchor_css[$i], 3) . ' ' . $subclass;
+				unset($anchor_css[$i]);
+			}
 		}
 		$item->anchor_css = implode(' ', $anchor_css);
 	}
 
 	if ($item->level == 1)
-	{
-		echo '<div class="Grid-cell u-md-size1of3 u-lg-size1of3 ' . $class . '">';
+	{		
+		echo '<div class="Grid-cell u-md-size1of3 u-lg-size1of3 ' . $class . ($u_flex ? ' u-flex' . (($item->parent == 1) ? ' u-flexCol' : '') : '') . '">';
 	}
 
 	if (! $item->parent)
 	{
 		$moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8');
 		echo '<div class="Entrypoint-item ' . ($item->level == 1 ? 'u-sizeFill ' : '') .
-				 ($moduleclass_sfx ? $moduleclass_sfx : 'u-background-compl-80') . '"><p>';
+				 ($moduleclass_sfx ? $moduleclass_sfx . $subclass : ($subclass ? $subclass : 'u-background-compl-80')) . '"><p>';
 
 		if (! $item->anchor_css)
 		{
@@ -149,6 +169,5 @@ foreach ($list as $i => &$item)
 	}
 
 	$buffer = ob_get_flush();
-	JLog::add(new JLogEntry($buffer, JLog::DEBUG, 'tpl_italiapa'));
 }
 ?></div>
