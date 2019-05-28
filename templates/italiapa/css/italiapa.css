@@ -517,23 +517,23 @@ header.Headroom .Megamenu-subnav {
 
 dl.tabs {
 	float: left;
-	margin-bottom: -1px;
+	margin-bottom: 1rem;
 }
 dl.tabs dt.tabs {
 	float: left;
-	margin-left: 3px;
-	padding: 4px 10px;
-	background-color: #F0F0F0;
-	border-top: 1px solid #CCC;
-	border-left: 1px solid #CCC;
-	border-right: 1px solid #CCC;
+	padding: .6em 1.2em;
+	margin-right:1rem;
+	text-transform: uppercase;
 }
-dl.tabs dt:hover {
-	background-color: #F9F9F9;
+dl.tabs dt.closed:hover {
+	background-color: #e6e6e6;
 }
 dl.tabs dt.open {
-	background-color: #FFF;
-	border-bottom: 1px solid #FFF;
+	background-color: rgb(0, 62, 84);
+	border: 1px solid rgb(0, 62, 84);
+}
+dl.tabs dt.closed {
+	border: 1px solid #b3b3b3;
 }
 dl.tabs dt.tabs h3 {
 	margin: 0;
@@ -541,15 +541,15 @@ dl.tabs dt.tabs h3 {
 	font-weight: normal;
 }
 dl.tabs dt.tabs h3 a {
-	color: #0088CC;
-}
-dl.tabs dt.tabs h3 a:hover {
-	color: #005580;
+	color: #003e54;
 	text-decoration: none;
 }
-dl.tabs dt.open h3 a {
-	color: #000;
-	text-decoration: none;
+dl.tabs dt h3 a, dl.tabs dt h3 a:hover {
+	text-decoration: none!important;
+}
+dl.tabs dt.open h3 a, dl.tabs dt.open h3 a:hover {
+	color: #FFF;
+	text-decoration: none!important;
 }
 div.current dd.tabs {
 	margin: 0;
