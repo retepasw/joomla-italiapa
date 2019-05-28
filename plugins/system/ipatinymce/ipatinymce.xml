@@ -23,11 +23,8 @@
 		<language tag="it-IT">it-IT/it-IT.plg_system_ipatinymce.sys.ini</language>
 	</languages>
 	<media destination="plg_system_ipatinymce" folder="media">
-		<filename>css/content.min.css</filename>
-		<filename>css/editor.min.css</filename>
-		<filename>js/plugin.js</filename>
-		<filename>js/plugin.min.js</filename>
-		<filename>js/uuid.min.js</filename>
+		<folder>css</folder>
+		<folder>js</folder>
 	</media>  
 	<config>
 		<fields name="params">
