@@ -2,7 +2,7 @@
 /**
  * @package		Template ItaliaPA
  * @subpackage	mod_carousel
- * @version		3.8.2
+ * @version		3.8.3
  * @since		3.8
  *
  * @author		Helios Ciancio <info@eshiol.it>
@@ -18,10 +18,12 @@
 defined('_JEXEC') or die;
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'mod_carousel'));
 
+$min = ($params->get('debug') || defined('JDEBUG') && JDEBUG) ? '' : '.min';
+
 $document = JFactory::getDocument();
 $document->addStyleSheet('media/jui/css/icomoon.css','text/css');
 $document->addStyleSheet('media/mod_carousel/css/bootstrap.css','text/css');
-$document->addScript('media/mod_carousel/js/bootstrap.js');
+$document->addScript("media/mod_carousel/js/bootstrap{$min}.js");
 
 $n = (int) $params->get('count', 1);
 JLog::add(new JLogEntry('n: ' . $n, JLog::DEBUG, 'mod_carousel'));

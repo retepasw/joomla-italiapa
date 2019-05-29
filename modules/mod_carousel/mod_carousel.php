@@ -2,7 +2,7 @@
 /**
  * @package		Template ItaliaPA
  * @subpackage	mod_carousel
- * @version		3.8
+ * @version		3.8.3
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
@@ -29,5 +29,16 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'mod_carousel'));
 
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8');
 
-$list = $params->get('images');
+$list = (array) $params->get('images');
+
+$orderby = $params->get('orderby', 'order');
+if ($orderby == 'rorder')
+{
+	$list = array_reverse($list);
+}
+elseif ($orderby == 'random')
+{
+	shuffle($list);
+}
+
 require JModuleHelper::getLayoutPath('mod_carousel', $params->get('layout', 'default'));

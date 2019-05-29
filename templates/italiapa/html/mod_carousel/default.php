@@ -2,7 +2,7 @@
 /**
  * @package		Template ItaliaPA
  * @subpackage	mod_carousel
- * @version		3.8.2
+ * @version		3.8.0.11
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
@@ -22,11 +22,6 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 <?php if (!empty($list)) : ?>
 <section class="u-background-grey-60 u-padding-r-all <?php echo htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8'); ?>">
 	<div class="u-layout-medium u-layoutCenter">
-	<?php if ($params->get('debug') || defined('JDEBUG') && JDEBUG) : ?>
-	<div class="Prose Alert Alert--info Alert--withIcon u-padding-r-bottom u-padding-r-right u-margin-r-bottom">
-	see <a href="https://italia.github.io/design-web-toolkit/components/detail/carousel.html">https://italia.github.io/design-web-toolkit/components/detail/carousel.html</a>
-	</div>
-	<?php endif; ?>
 		<div class="Grid">
 			<?php if ((bool) $module->showtitle) : ?>
 			<h2 id="carousel-heading-<?php echo $module->id; ?>" class="Grid-cell u-text-h2 u-color-white u-layout-centerLeft"><?php echo $module->title; ?></h2>
@@ -46,7 +41,10 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 			<!-- </next / prev buttons> -->
 		</div>
 		
-		<div class="owl-carousel owl-theme" role="region" id="carousel-<?php echo $module->id; ?>">
+		<div class="owl-carousel owl-theme" role="region" id="carousel-<?php echo $module->id; ?>" 
+		class="owl-carousel owl-theme" data-carousel-options='{"items":<?php echo $params->get('count', 1); ?><?php
+		echo $params->get('auto_sliding', 1) ? ',"autoplay":true,"autoplaySpeed":' . $params->get('speed', 1000) . ',"autoplayTimeout":' . $params->get('interval', 5000) : '';
+		?>,"responsive":false,"dots":true}'>
 			<?php 
 			$i = 1000 * (int)$module->id; 
 			$target_default = $params->get('target', 2);
