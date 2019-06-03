@@ -1,5 +1,6 @@
 ;(typeof(tinymce) !== 'undefined') && tinymce.PluginManager.add('ipa', function (editor, url) {
-	console.log('TinyMCE for ItaliaPA v.3.8.0.4');
+	console.log('TinyMCE for ItaliaPA v.3.8.0.11');
+
 	var pluginOptions = Joomla.getOptions ? Joomla.getOptions('plg_system_ipatinymce', {})
 			:  (Joomla.optionsStorage.plg_system_ipatinymce || {}),
 		jsurl = pluginOptions.jsurl || url,
@@ -245,10 +246,6 @@
 	menuItems.push({
 		icon: 'none icon-alert',
 		text: 'Alert',
-		context: 'insert',
-		onclick: function() {
-			insertAlert(lastAlert || defaultAlert);
-		},
 		menu: menuAlerts
 	});
 
@@ -322,10 +319,6 @@
 	menuItems.push({
 		icon: 'none icon-callout',
 		text: 'Callout',
-		context: 'insert',
-		onclick: function() {
-			insertCallout(lastCallout || defaultCallout);
-		},
 		menu: menuCallouts
 	});
 
@@ -347,9 +340,9 @@
 		return node && (/^(OL|UL|DL)$/).test(node.nodeName) && isChildOfBody(node);
 	}
 
-	function handleDisabledState(ctrl, selector, sameParts) {
+	function handleDisabledState(ctrl, selector) {
 		function bindStateListener() {
-			var selectedElm, selectedCells, parts = {}, sum = 0, state;
+			var selectedElm, selectedCells, state;
 
 			selectedCells = editor.dom.select('dt[data-mce-selected]');
 			selectedElm = selectedCells[0];
@@ -357,25 +350,45 @@
 				selectedElm = editor.selection.getStart();
 			}
 
-			// Make sure that we don't have a selection inside thead and tbody at the same time
-			if (sameParts && selectedCells.length > 0) {
-				each(selectedCells, function(cell) {
-					return parts[cell.parentNode.parentNode.nodeName] = 1;
-				});
-
-				each(parts, function(value) {
-					sum += value;
-				});
-
-				state = sum !== 1;
-			} else {
-				state = !editor.dom.getParent(selectedElm, selector);
-			}
-
+			state = !editor.dom.getParent(selectedElm, selector);
 			ctrl.disabled(state);
 
 			editor.selection.selectorChanged(selector, function(state) {
 				ctrl.disabled(!state);
+			});
+		}
+
+		if (editor.initialized) {
+			bindStateListener();
+		} else {
+			editor.on('init', bindStateListener);
+		}
+	}
+
+	function handleDisabledAccordionState(ctrl, selector) {
+		function bindStateListener() {
+			var selectedElm, state, active;
+
+			selectedElm = editor.selection.getStart();
+
+			parent = editor.dom.getParent(selectedElm, selector);
+			
+			state = !parent;
+			ctrl.disabled(state);
+
+			active = isMulti(parent);
+			ctrl.active(!state && active);
+			
+			editor.selection.selectorChanged(selector, function(state) {
+				selectedElm = editor.selection.getStart();
+
+				parent = editor.dom.getParent(selectedElm, selector);
+				
+				state = !parent;
+				ctrl.disabled(state);
+
+				active = isMulti(parent);				
+				ctrl.active(!state && active);
 			});
 		}
 
@@ -396,6 +409,33 @@
 		handleDisabledState(this, 'dl.Accordion>dt[aria-selected=true]');
 	}
 
+	function postRenderMulti() {
+		/*jshint validthis:true*/
+		handleDisabledAccordionState(this, 'dl.Accordion');
+	}
+
+	function isAccordion(elm) {
+		return elm && elm.nodeName === 'DL' && editor.dom.hasClass(elm, 'Accordion');
+	}
+
+	function hasAccordions(elements) {
+		return tinymce.util.Tools.grep(elements, isAccordion).length > 0;
+	}
+
+	function isMulti(elm) {
+		var multi;	
+		if (elm && elm.nodeName === 'DL' && editor.dom.hasClass(elm, 'Accordion')) {
+			if (!elm.hasAttribute('aria-multiselectable')) {
+				multi = true;
+			} else {
+				multi = elm.getAttribute('aria-multiselectable') !== 'false';
+			}
+		} else {
+			multi = false;
+		}
+		return multi;
+	}
+
 	function buildMenuItems(listName, styleValues) {
 		var items = [];
 		if (styleValues) {
@@ -411,6 +451,34 @@
 				text: '-'
 			});
 			items.push({
+				text: 'Multi',
+		    	onclick: function () {
+		    		var ctrl = this;
+					editor.undoManager.transact(function () {
+						var list, dom = editor.dom, sel = editor.selection;
+						// Check for existing term element
+						list = dom.getParent(sel.getNode(), 'dl');
+						if (list && list.nodeName == 'DL') {
+							if (!list.hasAttribute('aria-multiselectable')) {
+								list.setAttribute('aria-multiselectable', 'false');
+								ctrl.active(false);
+							} else if (list.getAttribute('aria-multiselectable') === 'false') {
+								list.removeAttribute('aria-multiselectable');
+								ctrl.active(true);
+							} else {
+								list.setAttribute('aria-multiselectable', 'false');
+								ctrl.active(false);
+							}
+						}
+					});
+		    	},
+		    	selectable: true,
+		    	onpostrender: postRenderMulti
+			});
+			items.push({
+				text: '-'
+			});
+			items.push({
 				icon: 'none icon-arrow-up',
 				text: 'Open',
 		    	onclick: function () {
@@ -420,6 +488,7 @@
 						term = dom.getParent(sel.getNode(), 'dt');
 						if (term && term.nodeName == 'DT') {
 							dom.setAttrib(term, 'aria-selected', 'true');
+							dom.setAttrib(term, 'aria-expanded', 'true');
 						}
 					});
 		    	},
@@ -435,6 +504,7 @@
 						term = dom.getParent(sel.getNode(), 'dt');
 						if (term && term.nodeName == 'DT') {
 							dom.setAttrib(term, 'aria-selected', '');
+							dom.setAttrib(term, 'aria-expanded', '');
 						}
 					});
 		    	},
@@ -486,18 +556,25 @@
 	}
 
 	function updateSelection(e) {
-		var dom = editor.dom,
+		var dom = editor.dom, items = [],
 			list = dom.getParent(editor.selection.getNode(), 'dl');
+
+		tinymce.util.Tools.each(default_deflist_styles.split(/[ ,]/), function (styleValue) {
+			items.push(styleValue.replace(/\-/g, ' ').replace(/\b\w/g, function (chr) {
+				return chr.toUpperCase();
+			}));
+		});
 		if (list) {
 			var active_ctrl = null;
 			e.control.items().each(function (ctrl) {
-				ctrl.active(false);
-				if (ctrl.settings.data) {
+				if (tinymce.util.Tools.inArray(items, ctrl.settings.text) !== -1) {
+					ctrl.active(false);
 					if (dom.hasClass(list, ctrl.settings.data)) {
 						active_ctrl = ctrl;
 					}
-				} else if (!active_ctrl) {
-					active_ctrl = ctrl;
+				}
+				if (ctrl.settings.data == '') {
+					active_ctrl = active_ctrl || ctrl;
 				}
 			});
 			active_ctrl.active(true);
@@ -551,10 +628,10 @@
 		});
 	}
 
-/*
 	menuItems.push({
 		icon: 'none icon-list-2',
-		type: (dlMenuItems.length > 0) ? 'splitbutton' : 'button',
+//		type: (dlMenuItems.length > 0) ? 'splitbutton' : 'button',
+		text: 'DL',
 		title: 'Definition list',
 		onselect: function (e) {
 			applyListFormat('DL', e.control.settings.data);
@@ -565,6 +642,16 @@
 		onPostRender: listState('DL'),
 		onshow: updateSelection,
 		menu: dlMenuItems
+	});
+/*
+	menuItems.push({
+		icon: 'none icon-callout',
+		text: 'Callout',
+		context: 'insert',
+		onclick: function() {
+			insertCallout(lastCallout || defaultCallout);
+		},
+		menu: menuCallouts
 	});
 */
 
