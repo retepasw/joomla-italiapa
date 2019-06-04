@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -146,7 +146,7 @@ abstract class JHtmlIwt
 	 *        	The pane identifier.
 	 * @param array $params
 	 *        	The parameters for the pane
-	 *        
+	 *
 	 * @return string
 	 *
 	 * @since 3.8
@@ -159,16 +159,15 @@ abstract class JHtmlIwt
 
 			// Set static array
 			static::$loaded[__METHOD__][$selector] = $opt;
-
+			
 			// Inject tab into UL
 			JFactory::getDocument()->addScriptDeclaration(
 				'jQuery(function($){
-	    	    $(' . json_encode('#accordion-' . $selector . ' button.fr-accordion__header') . ').each(function( index, element ) {
-	            $(' . json_encode('#accordion-' . $selector . ' div') . ').first().before( this );
+		    	    $(' . json_encode('#accordion-' . $selector . ' button.fr-accordion__header') . ').each(function( index, element ) {
+		            $(' . json_encode('#accordion-' . $selector . ' div') . ').first().before( this );
 	    	    });
 	        });');
-
-			return '<div class="fr-accordion js-fr-accordion" id="accordion-' . $selector . '" role="tablist">';
+			return '<div class="fr-accordion js-fr-accordion" id="accordion-' . $selector . '" role="tablist" aria-multiselectable="false">';
 		}
 	}
 
@@ -176,7 +175,7 @@ abstract class JHtmlIwt
 	 * Close the current tab pane
 	 *
 	 * @return string HTML to close the pane
-	 *        
+	 *
 	 * @since 3.8
 	 */
 	public static function endTabSet ()
@@ -185,38 +184,45 @@ abstract class JHtmlIwt
 	}
 
 	/**
-	 * Begins the display of a new tab content panel.
+	 * Begins the display of a new tab.
 	 *
 	 * @param string $selector
-	 *        	Identifier of the panel.
+	 *        	Identifier of the accordion group.
+	 * @param string $text
+	 *        	Text to display.
 	 * @param string $id
-	 *        	The ID of the div element
-	 * @param string $title
-	 *        	The title text for the new UL tab
-	 *        
+	 *        	Identifier of the slide.
+	 *
 	 * @return string HTML to start a new panel
-	 *        
+	 *
 	 * @since 3.8
 	 */
-	public static function addTab ($selector, $id, $title)
+	public static function addTab ($selector, $text, $id)
 	{
-		return '<button type="button"' . ((static::$loaded[__CLASS__ . '::startTabSet'][$selector]['active'] == $id) ? ' aria-selected="true"' : '') .
-				 ' class="Button Button--default u-text-r-xs' . ' js-fr-accordion__header fr-accordion__header" id="accordion-header-' . $id . '"' .
-				 '">' . $title . '</button>' . '<div id="accordion-panel-' . $id . '"' .
-				 ((static::$loaded[__CLASS__ . '::startTabSet'][$selector]['active'] == $id) ? ' aria-hidden="false"' : '') .
-				 ' class="Accordion-panel fr-accordion__panel js-fr-accordion__panel"' . ' role="tabpanel"' . '>';
+		return '<button type="button"' . ((static::$loaded[__CLASS__ . '::startTabSet'][$selector]['active'] == $id) ? ' aria-selected="true" aria-expanded="true"' : '') .
+				' class="Button Button--info u-text-r-xs' . ' js-fr-accordion__header fr-accordion__header" id="accordion-header-' . $id . '"' .
+				' role="tab">' . $text . '</button>';
 	}
 
 	/**
-	 * Close the current tab content panel
+	 * Begins the display of a new tab content panel.
 	 *
-	 * @return string HTML to close the pane
-	 *        
+	 * @param string $selector
+	 *        	Identifier of the accordion group.
+	 * @param string $text
+	 *        	Text to display.
+	 * @param string $id
+	 *        	Identifier of the slide.
+	 *
+	 * @return string HTML to start a new panel
+	 *
 	 * @since 3.8
 	 */
-	public static function endTab ()
+	public static function addTabPanel ($selector, $id)
 	{
-		return '</div>';
+		return '<div id="accordion-panel-' . $id . '"' .
+				((static::$loaded[__CLASS__ . '::startTabSet'][$selector]['active'] == $id) ? ' aria-hidden="false"' : '') .
+				' class="Accordion-panel fr-accordion__panel js-fr-accordion__panel"' . ' role="tabpanel"' . '>';
 	}
 
 	/**
@@ -255,8 +261,7 @@ abstract class JHtmlIwt
 		{
 			$attributes['rel'] = $item->anchor_rel;
 		}
-		
-		return $attributes;
+			return $attributes;
 	}
 
 	/**
@@ -278,9 +283,7 @@ abstract class JHtmlIwt
 				}
 				else
 				{
-					$link = JHtml::_('image', $item->menu_image, $item->anchor_title, array(
-							'class' => $item->menu_image_css
-					));
+					$link = JHtml::_('image', $item->menu_image, $item->anchor_title, array('class' => $item->menu_image_css));
 				}
 			}
 			else

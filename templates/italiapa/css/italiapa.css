@@ -562,3 +562,7 @@ div.current dd.tabs {
 .Entrypoint-item.u-imageTitleNoWrap span.image-title {
 	white-space: nowrap;
 }
+
+button[role=tab] {
+	margin-right:1rem;
+}
