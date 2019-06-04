@@ -24,7 +24,8 @@ require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 	<?php echo JHtml::_('iwt.addSlide', 'slide-contact', JText::_('COM_CONTACT_LINKS'), 'display-links'); ?>
 <?php endif; ?>
 <?php if ($this->params->get('presentation_style') === 'tabs') : ?>
-	<?php echo JHtml::_('iwt.addTab', 'myTab', 'display-links', JText::_('COM_CONTACT_LINKS')); ?>
+	<?php echo JHtml::_('iwt.addTab', 'tab-contact', JText::_('COM_CONTACT_LINKS'), 'display-links'); ?>
+	<?php echo JHtml::_('iwt.startTabPanel', 'tab-contact', 'display-links'); ?>
 <?php endif; ?>
 <?php if ($this->params->get('presentation_style') === 'plain') : ?>
 	<?php echo '<h3 class="u-text-h3">' . JText::_('COM_CONTACT_LINKS') . '</h3>'; ?>
@@ -61,5 +62,5 @@ require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 	<?php echo JHtml::_('iwt.endSlide'); ?>
 <?php endif; ?>
 <?php if ($this->params->get('presentation_style') === 'tabs') : ?>
-	<?php echo JHtml::_('iwt.endTab'); ?>
+	<?php echo JHtml::_('iwt.endTabPanel'); ?>
 <?php endif; ?>

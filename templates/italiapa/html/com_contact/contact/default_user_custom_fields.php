@@ -45,7 +45,8 @@ $userFieldGroups    = array();
 	<?php if ($presentation_style == 'sliders') : ?>
 		<?php echo JHtml::_('iwt.addSlide', 'slide-contact', $groupTitle ?: JText::_('COM_CONTACT_USER_FIELDS'), 'display-profile-' . $id); ?>
 	<?php elseif ($presentation_style == 'tabs') : ?>
-		<?php echo JHtml::_('iwt.addTab', 'myTab', 'display-profile-' . $id, $groupTitle ?: JText::_('COM_CONTACT_USER_FIELDS')); ?>
+		<?php echo JHtml::_('iwt.addTab', 'tab-contact', $groupTitle ?: JText::_('COM_CONTACT_USER_FIELDS'), 'display-profile-' . $id); ?>
+		<?php echo JHtml::_('iwt.startTabPanel', 'tab-contact', 'display-profile-' . $id); ?>
 	<?php elseif ($presentation_style == 'plain') : ?>
 		<?php echo '<h3 class="u-text-h3">' . ($groupTitle ?: JText::_('COM_CONTACT_USER_FIELDS')) . '</h3>'; ?>
 	<?php endif; ?>
@@ -69,6 +70,6 @@ $userFieldGroups    = array();
 	<?php if ($presentation_style == 'sliders') : ?>
 		<?php echo JHtml::_('iwt.endSlide'); ?>
 	<?php elseif ($presentation_style == 'tabs') : ?>
-		<?php echo JHtml::_('iwt.endTab'); ?>
+		<?php echo JHtml::_('iwt.endTabPanel'); ?>
 	<?php endif; ?>
 <?php endforeach; ?>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * @package		Template ItaliaPA
  * @subpackage	tpl_italiapa
@@ -76,17 +76,20 @@ JFactory::getDocument()->addStyleDeclaration('
 
 	<?php $show_contact_category = $tparams->get('show_contact_category'); ?>
 
+	<?php if ($show_contact_category === 'show_no_link') : ?>
 		<h3 class="u-text-h3">
 			<span class="Dot u-background-70"></span>
-	<?php if ($show_contact_category === 'show_no_link') : ?>
 			<span class="u-textClean u-textWeight-700 u-text-r-xs u-color-50 contact-category"><?php echo $this->contact->category_title; ?></span>
+		</h3>
 	<?php elseif ($show_contact_category === 'show_with_link') : ?>
-		<?php $contactLink = ContactHelperRoute::getCategoryRoute($this->contact->catid); ?>
+		<h3 class="u-text-h3">
+			<span class="Dot u-background-70"></span>
+			<?php $contactLink = ContactHelperRoute::getCategoryRoute($this->contact->catid); ?>
 			<span class="contact-category"><a href="<?php echo $contactLink; ?>" class="u-textClean u-textWeight-700 u-text-r-xs u-color-50">
 				<?php echo $this->escape($this->contact->category_title); ?></a>
 			</span>
-	<?php endif; ?>
 		</h3>
+	<?php endif; ?>
 
 	<?php echo $this->item->event->afterDisplayTitle; ?>
 
@@ -114,9 +117,10 @@ JFactory::getDocument()->addStyleDeclaration('
 			<?php $accordionStarted = true; ?>
 			<?php echo JHtml::_('iwt.addSlide', 'slide-contact', JText::_('COM_CONTACT_DETAILS'), 'basic-details'); ?>
 		<?php elseif ($presentation_style === 'tabs') : ?>
-			<?php echo JHtml::_('iwt.startTabSet', 'myTab', array('active' => 'basic-details')); ?>
+			<?php echo JHtml::_('iwt.startTabSet', 'tab-contact', array('active' => 'basic-details')); ?>
 			<?php $tabSetStarted = true; ?>
-			<?php echo JHtml::_('iwt.addTab', 'myTab', 'basic-details', JText::_('COM_CONTACT_DETAILS')); ?>
+			<?php echo JHtml::_('iwt.addTab', 'tab-contact', JText::_('COM_CONTACT_DETAILS'), 'basic-details'); ?>
+			<?php echo JHtml::_('iwt.startTabPanel', 'tab-contact', 'basic-details'); ?>
 		<?php elseif ($presentation_style === 'plain') : ?>
 			<?php echo '<h3 class="u-text-h3">' . JText::_('COM_CONTACT_DETAILS') . '</h3>'; ?>
 		<?php endif; ?>
@@ -141,7 +145,7 @@ JFactory::getDocument()->addStyleDeclaration('
 		<?php if ($presentation_style === 'sliders') : ?>
 			<?php echo JHtml::_('iwt.endSlide'); ?>
 		<?php elseif ($presentation_style === 'tabs') : ?>
-			<?php echo JHtml::_('iwt.endTab'); ?>
+			<?php echo JHtml::_('iwt.endTabPanel'); ?>
 		<?php endif; ?>
 	<?php endif; ?>
 
@@ -157,11 +161,12 @@ JFactory::getDocument()->addStyleDeclaration('
 		<?php elseif ($presentation_style === 'tabs') : ?>
 			<?php if (!$tabSetStarted)
 			{
-				echo JHtml::_('iwt.startTabSet', 'myTab', array('active' => 'display-form'));
+				echo JHtml::_('iwt.startTabSet', 'tab-contact', array('active' => 'display-form'));
 				$tabSetStarted = true;
 			}
 			?>
-			<?php echo JHtml::_('iwt.addTab', 'myTab', 'display-form', JText::_('COM_CONTACT_EMAIL_FORM')); ?>
+			<?php echo JHtml::_('iwt.addTab', 'tab-contact', JText::_('COM_CONTACT_EMAIL_FORM'), 'display-form'); ?>
+			<?php echo JHtml::_('iwt.startTabPanel', 'tab-contact', 'display-form'); ?>
 		<?php elseif ($presentation_style === 'plain') : ?>
 			<?php echo '<h3 class="u-text-h3">' . JText::_('COM_CONTACT_EMAIL_FORM') . '</h3>'; ?>
 		<?php endif; ?>
@@ -171,7 +176,7 @@ JFactory::getDocument()->addStyleDeclaration('
 		<?php if ($presentation_style === 'sliders') : ?>
 			<?php echo JHtml::_('iwt.endSlide'); ?>
 		<?php elseif ($presentation_style === 'tabs') : ?>
-			<?php echo JHtml::_('iwt.endTab'); ?>
+			<?php echo JHtml::_('iwt.endTabPanel'); ?>
 		<?php endif; ?>
 	<?php endif; ?>
 
@@ -183,7 +188,7 @@ JFactory::getDocument()->addStyleDeclaration('
 			<?php endif; ?>
 		<?php elseif ($presentation_style === 'tabs') : ?>
 			<?php if (!$tabSetStarted) : ?>
-				<?php echo JHtml::_('iwt.startTabSet', 'myTab', array('active' => 'display-links')); ?>
+				<?php echo JHtml::_('iwt.startTabSet', 'tab-contact', array('active' => 'display-links')); ?>
 				<?php $tabSetStarted = true; ?>
 			<?php endif; ?>
 		<?php endif; ?>
@@ -202,11 +207,12 @@ JFactory::getDocument()->addStyleDeclaration('
 		<?php elseif ($presentation_style === 'tabs') : ?>
 			<?php if (!$tabSetStarted)
 			{
-				echo JHtml::_('iwt.startTabSet', 'myTab', array('active' => 'display-articles'));
+				echo JHtml::_('iwt.startTabSet', 'tab-contact', array('active' => 'display-articles'));
 				$tabSetStarted = true;
 			}
 			?>
-			<?php echo JHtml::_('iwt.addTab', 'myTab', 'display-articles', JText::_('JGLOBAL_ARTICLES')); ?>
+			<?php echo JHtml::_('iwt.addTab', 'tab-contact', JText::_('JGLOBAL_ARTICLES'), 'display-articles'); ?>
+			<?php echo JHtml::_('iwt.startTabPanel', 'tab-contact', 'display-articles'); ?>
 		<?php elseif ($presentation_style === 'plain') : ?>
 			<?php echo '<h3 class="u-text-h3">' . JText::_('JGLOBAL_ARTICLES') . '</h3>'; ?>
 		<?php endif; ?>
@@ -216,7 +222,7 @@ JFactory::getDocument()->addStyleDeclaration('
 		<?php if ($presentation_style === 'sliders') : ?>
 			<?php echo JHtml::_('iwt.endSlide'); ?>
 		<?php elseif ($presentation_style === 'tabs') : ?>
-			<?php echo JHtml::_('iwt.endTab'); ?>
+			<?php echo JHtml::_('iwt.endTabPanel'); ?>
 		<?php endif; ?>
 	<?php endif; ?>
 
@@ -232,11 +238,12 @@ JFactory::getDocument()->addStyleDeclaration('
 		<?php elseif ($presentation_style === 'tabs') : ?>
 			<?php if (!$tabSetStarted)
 			{
-				echo JHtml::_('iwt.startTabSet', 'myTab', array('active' => 'display-profile'));
+				echo JHtml::_('iwt.startTabSet', 'tab-contact', array('active' => 'display-profile'));
 				$tabSetStarted = true;
 			}
 			?>
-			<?php echo JHtml::_('iwt.addTab', 'myTab', 'display-profile', JText::_('COM_CONTACT_PROFILE')); ?>
+			<?php echo JHtml::_('iwt.addTab', 'tab-contact', JText::_('COM_CONTACT_PROFILE'), 'display-profile'); ?>
+			<?php echo JHtml::_('iwt.startTabPanel', 'tab-contact', 'display-profile'); ?>
 		<?php elseif ($presentation_style === 'plain') : ?>
 			<?php echo '<h3 class="u-text-h3">' . JText::_('COM_CONTACT_PROFILE') . '</h3>'; ?>
 		<?php endif; ?>
@@ -246,7 +253,7 @@ JFactory::getDocument()->addStyleDeclaration('
 		<?php if ($presentation_style === 'sliders') : ?>
 			<?php echo JHtml::_('iwt.endSlide'); ?>
 		<?php elseif ($presentation_style === 'tabs') : ?>
-			<?php echo JHtml::_('iwt.endTab'); ?>
+			<?php echo JHtml::_('iwt.endTabPanel'); ?>
 		<?php endif; ?>
 	<?php endif; ?>
 
@@ -266,11 +273,12 @@ JFactory::getDocument()->addStyleDeclaration('
 		<?php elseif ($presentation_style === 'tabs') : ?>
 			<?php if (!$tabSetStarted)
 			{
-				echo JHtml::_('iwt.startTabSet', 'myTab', array('active' => 'display-misc'));
+				echo JHtml::_('iwt.startTabSet', 'tab-contact', array('active' => 'display-misc'));
 				$tabSetStarted = true;
 			}
 			?>
-			<?php echo JHtml::_('iwt.addTab', 'myTab', 'display-misc', JText::_('COM_CONTACT_OTHER_INFORMATION')); ?>
+			<?php echo JHtml::_('iwt.addTab', 'tab-contact', JText::_('COM_CONTACT_OTHER_INFORMATION'), 'display-misc'); ?>
+			<?php echo JHtml::_('iwt.startTabPanel', 'tab-contact', 'display-misc'); ?>
 		<?php elseif ($presentation_style === 'plain') : ?>
 			<?php echo '<h3 class="u-text-h3">' . JText::_('COM_CONTACT_OTHER_INFORMATION') . '</h3>'; ?>
 		<?php endif; ?>
@@ -288,7 +296,7 @@ JFactory::getDocument()->addStyleDeclaration('
 		<?php if ($presentation_style === 'sliders') : ?>
 			<?php echo JHtml::_('iwt.endSlide'); ?>
 		<?php elseif ($presentation_style === 'tabs') : ?>
-			<?php echo JHtml::_('iwt.endTab'); ?>
+			<?php echo JHtml::_('iwt.endTabPanel'); ?>
 		<?php endif; ?>
 	<?php endif; ?>
 

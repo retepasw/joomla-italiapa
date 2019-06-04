@@ -45,7 +45,7 @@ abstract class JHtmlIwt
 	 *        	behavior)
 	 *        	- toggle boolean Toggles the collapsible element on invocation
 	 *        	- active string Sets the active slide during load
-	 *        
+	 *
 	 *        	- onShow function This event fires immediately when the show
 	 *        	instance method is called.
 	 *        	- onShown function This event is fired when a collapse element
@@ -56,9 +56,9 @@ abstract class JHtmlIwt
 	 *        	- onHidden function This event is fired when a collapse
 	 *        	element has been hidden from the user
 	 *        	(will wait for css transitions to complete).
-	 *        
+	 *
 	 * @return string HTML for the accordian
-	 *        
+	 *
 	 * @since 3.8
 	 */
 	public static function startAccordion ($selector = 'myAccordian', $params = array())
@@ -85,7 +85,7 @@ abstract class JHtmlIwt
 			// Set static array
 			static::$loaded[__METHOD__][$selector] = $opt;
 
-			return '<div class="Accordion Accordion--default fr-accordion js-fr-accordion" id="accordion-' . $selector . '" role="tablist">';
+			return '<div class="Accordion Accordion--default fr-accordion js-fr-accordion" id="accordion-' . $selector . '" role="tablist"' . ($params['multiselectable'] ? ' aria-multiselectable="' . $params['multiselectable'] . '"': '') . '>';
 		}
 	}
 
@@ -93,7 +93,7 @@ abstract class JHtmlIwt
 	 * Close the current accordion
 	 *
 	 * @return string HTML to close the accordian
-	 *        
+	 *
 	 * @since 3.8
 	 */
 	public static function endAccordion ()
@@ -112,9 +112,9 @@ abstract class JHtmlIwt
 	 *        	Identifier of the slide.
 	 * @param string $class
 	 *        	Class of the accordion group.
-	 *        
+	 *
 	 * @return string HTML to add the slide
-	 *        
+	 *
 	 * @since 3.8
 	 */
 	public static function addSlide ($selector, $text, $id, $class = '')
@@ -131,7 +131,7 @@ abstract class JHtmlIwt
 	 * Close the current slide
 	 *
 	 * @return string HTML to close the slide
-	 *        
+	 *
 	 * @since 3.8
 	 */
 	public static function endSlide ()
@@ -159,14 +159,15 @@ abstract class JHtmlIwt
 
 			// Set static array
 			static::$loaded[__METHOD__][$selector] = $opt;
-			
+
 			// Inject tab into UL
 			JFactory::getDocument()->addScriptDeclaration(
 				'jQuery(function($){
-		    	    $(' . json_encode('#accordion-' . $selector . ' button.fr-accordion__header') . ').each(function( index, element ) {
-		            $(' . json_encode('#accordion-' . $selector . ' div') . ').first().before( this );
+	    	    $(' . json_encode('#accordion-' . $selector . ' button.fr-accordion__header') . ').each(function( index, element ) {
+	            $(' . json_encode('#accordion-' . $selector . ' div') . ').first().before( this );
 	    	    });
 	        });');
+
 			return '<div class="fr-accordion js-fr-accordion" id="accordion-' . $selector . '" role="tablist" aria-multiselectable="false">';
 		}
 	}
@@ -200,8 +201,8 @@ abstract class JHtmlIwt
 	public static function addTab ($selector, $text, $id)
 	{
 		return '<button type="button"' . ((static::$loaded[__CLASS__ . '::startTabSet'][$selector]['active'] == $id) ? ' aria-selected="true" aria-expanded="true"' : '') .
-				' class="Button Button--info u-text-r-xs' . ' js-fr-accordion__header fr-accordion__header" id="accordion-header-' . $id . '"' .
-				' role="tab">' . $text . '</button>';
+				 ' class="Button Button--info u-text-r-xs' . ' js-fr-accordion__header fr-accordion__header" id="accordion-header-' . $id . '"' .
+				 ' role="tab">' . $text . '</button>';
 	}
 
 	/**
@@ -218,7 +219,7 @@ abstract class JHtmlIwt
 	 *
 	 * @since 3.8
 	 */
-	public static function addTabPanel ($selector, $id)
+	public static function startTabPanel ($selector, $id)
 	{
 		return '<div id="accordion-panel-' . $id . '"' .
 				((static::$loaded[__CLASS__ . '::startTabSet'][$selector]['active'] == $id) ? ' aria-hidden="false"' : '') .
@@ -226,8 +227,20 @@ abstract class JHtmlIwt
 	}
 
 	/**
+	 * Close the current tab content panel
+	 *
+	 * @return string HTML to close the pane
+	 *
+	 * @since 3.8
+	 */
+	public static function endTabPanel ()
+	{
+		return '</div>';
+	}
+
+	/**
 	 * Get link attributes
-	 * 
+	 *
 	 * @param unknown $item
 	 * @param array $attributes
 	 * @return array
@@ -261,7 +274,8 @@ abstract class JHtmlIwt
 		{
 			$attributes['rel'] = $item->anchor_rel;
 		}
-			return $attributes;
+		
+		return $attributes;
 	}
 
 	/**
@@ -283,7 +297,9 @@ abstract class JHtmlIwt
 				}
 				else
 				{
-					$link = JHtml::_('image', $item->menu_image, $item->anchor_title, array('class' => $item->menu_image_css));
+					$link = JHtml::_('image', $item->menu_image, $item->anchor_title, array(
+							'class' => $item->menu_image_css
+					));
 				}
 			}
 			else
@@ -335,6 +351,17 @@ abstract class JHtmlIwt
 			$link = $item->title;
 		}
 
+		$anchor_css = explode(' ', $item->anchor_css);
+		for ($i = count($anchor_css) - 1; $i >= 0; $i --)
+		{
+			if ($anchor_css[$i] == 'del')
+			{
+				$link = '<del>' . $link . '</del>';
+				unset($anchor_css[$i]);
+			}
+		}
+		$item->anchor_css = implode(' ', $anchor_css);
+		
 		return $link;
 	}
 }

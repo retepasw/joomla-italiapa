@@ -2,7 +2,7 @@
 /**
  * @package		Template ItaliaPA
  * @subpackage	tpl_italiapa
- * 
+ *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
  * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
@@ -30,7 +30,7 @@ foreach ($text as $key => $subtext)
 {
 	$match = $matches[$key];
 	$match = (array) JUtility::parseAttributes($match[0]);
-	
+
 	if (isset($match['alt']))
 	{
 		$title = stripslashes($match['alt']);
@@ -43,9 +43,9 @@ foreach ($text as $key => $subtext)
 	{
 		$title = JText::sprintf('PLG_CONTENT_PAGEBREAK_PAGE_NUM', $key + 1);
 	}
-	
+
 	$t[] = (string) JHtml::_('iwt.addTab', 'article-' . $row->id, $title, 'article-' . $row->id . '-' . $key);
-	$p[] = (string) JHtml::_('iwt.addTabPanel', 'article-' . $row->id, 'article-' . $row->id . '-' . $key);
+	$p[] = (string) JHtml::_('iwt.startTabPanel', 'article-' . $row->id, 'article-' . $row->id . '-' . $key);
 	$p[] = (string) $subtext;
 	$p[] = (string) JHtml::_('iwt.endTabPanel');
 }
