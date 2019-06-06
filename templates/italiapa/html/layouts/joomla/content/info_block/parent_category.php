@@ -18,9 +18,9 @@ defined('_JEXEC') or die;
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 ?>
 <span class="Dot u-background-50"></span><strong>
-<?php $title = $this->escape($displayData['item']->category_title); ?>
-<?php if ($displayData['params']->get('link_category') && $displayData['item']->catslug) : ?>
-	<a class="u-textClean u-text-r-xs" href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($displayData['item']->catslug)); ?>" itemprop="genre"><?php echo $title; ?></a>
+<?php $title = $this->escape($displayData['item']->parent_title); ?>
+<?php if ($displayData['params']->get('link_parent_category') && $displayData['item']->parent_slug) : ?>
+	<a class="u-textClean u-text-r-xs" href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($displayData['item']->parent_slug)); ?>" itemprop="genre"><?php echo $title; ?></a>
 <?php else : ?>
 	<span itemprop="genre"><?php echo $title; ?></span>
 <?php endif; ?>

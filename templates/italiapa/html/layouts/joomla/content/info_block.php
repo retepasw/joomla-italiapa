@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -30,14 +30,16 @@ $blockStyle = $displayData['params']->get('info_block_style', 'default');
 				|| $displayData['position'] === 'below' && ($blockPosition == 1)
 				) : ?>
 
-			<?php if ($displayData['params']->get('show_parent_category') && !empty($displayData['item']->parent_slug)) : ?>
-				<?php // echo $this->sublayout('parent_category', $displayData); ?>
-			<?php endif; ?>
+			<?php if ($displayData['params']->get('show_category') || $displayData['params']->get('show_parent_category') && !empty($displayData['item']->parent_slug)) : ?>
+				<?php if ($displayData['params']->get('show_parent_category') && !empty($displayData['item']->parent_slug)) : ?>
+					<?php echo $this->sublayout('parent_category', $displayData); ?>
+				<?php endif; ?>
 
-			<?php if ($displayData['params']->get('show_category')) : ?>
-				<?php if ($blockStyle == 'inline') echo '<p class="Grid-cell">'; ?>
-				<?php echo $this->sublayout('category', $displayData); ?>
-				<?php if ($blockStyle == 'inline') echo '</p>'; ?>
+				<?php if ($displayData['params']->get('show_category')) : ?>
+					<?php if ($blockStyle == 'inline') echo '<p class="Grid-cell">'; ?>
+					<?php echo $this->sublayout('category', $displayData); ?>
+					<?php if ($blockStyle == 'inline') echo '</p>'; ?>
+				<?php endif; ?>
 			<?php endif; ?>
 
 			<?php if ($displayData['params']->get('show_associations')) : ?>
