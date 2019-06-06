@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.0" type="template" method="upgrade">
 	<name>italiapa</name>
-	<creationDate>May 2019</creationDate>
+	<creationDate>June 2019</creationDate>
 	<author>Helios Ciancio</author>
 	<copyright>Copyright © 2017 - 2019 Helios Ciancio (eshiol.it). All
 		rights reserved.</copyright>
 	<authorEmail>info@eshiol.it</authorEmail>
 	<authorUrl>https://www.eshiol.it</authorUrl>
-	<version>3.8.0.10</version>
+	<version>3.8.0.11</version>
 	<description><![CDATA[
 		<h1>Template ItaliaPA for Joomla! 3.8</h1>
 		<p>Implementazione delle
@@ -82,6 +82,17 @@
 					<option value="yellow">TPL_ITALIAPA_THEME_YELLOW</option>
 					<option value="yellowaccessible">TPL_ITALIAPA_THEME_YELLOWACCESSIBLE</option>
 				</field>
+				<field 
+					name="num_columns" 
+					type="number"
+					label="JGLOBAL_NUM_COLUMNS_LABEL"
+					description="JGLOBAL_NUM_COLUMNS_DESC"
+					size="3"
+					useglobal="true"
+					min="1"
+					max="6"
+					step="1"
+				/>
 			</fieldset>
 			<fieldset name="advanced">
 				<field name="debug" type="radio" class="btn-group btn-group-yesno"
