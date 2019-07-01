@@ -33,10 +33,21 @@ see <a href="https://italia.github.io/design-web-toolkit/components/detail/layou
 
 <section class="u-layout-wide u-layout-r-withGutter u-text-r-s u-padding-r-top u-padding-r-bottom <?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Blog">
 	<?php if ($this->params->get('show_page_heading') != 0) : ?>
-	<h2 class="u-layout-centerLeft u-text-r-s">
-		<span class="u-color-50 u-textClean u-text-h3"><?php echo $this->escape($this->params->get('page_heading')); ?></span>
-	</h2>
+	<div class="page-header">
+		<h2 class="u-layout-centerLeft u-text-r-s">
+			<span class="u-color-50 u-textClean u-text-h3"><?php echo $this->escape($this->params->get('page_heading')); ?></span>
+		</h2>
+	</div>
 	<?php endif; ?>
+
+	<?php if ($this->params->get('show_category_title', 1) or $this->params->get('page_subheading')) : ?>
+		<h3 class="u-layout-centerLeft u-text-r-s"> <?php echo $this->escape($this->params->get('page_subheading')); ?>
+			<?php if ($this->params->get('show_category_title')) : ?>
+				<span class="subheading-category u-color-50 u-textClean u-text-h4"><?php echo $this->category->title; ?></span>
+			<?php endif; ?>
+		</h3>
+	<?php endif; ?>
+	<?php echo $afterDisplayTitle; ?>
 
 	<?php $app = JFactory::getApplication(); ?>
 	<?php $limitstart = $app->input->get('limitstart', 0, 'uint'); ?>

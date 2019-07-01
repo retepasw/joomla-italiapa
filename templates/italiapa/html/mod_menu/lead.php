@@ -94,7 +94,7 @@ if ($tagId = $params->get('tag_id', ''))
 	// The next item is deeper.
 	if ($item->deeper)
 	{
-		echo '<ul role="group">';
+		echo '<ul>';
 	}
 	// The next item is shallower.
 	elseif ($item->shallower)

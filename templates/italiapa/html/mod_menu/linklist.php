@@ -74,7 +74,7 @@ if ($tagId = $params->get('tag_id', ''))
 		$class .= ' parent';
 	}
 
-	echo '<li role="treeitem" class="' . $class . '">';
+	echo '<li class="' . $class . '">';
 
 	switch ($item->type) :
 		case 'separator':
@@ -95,7 +95,7 @@ if ($tagId = $params->get('tag_id', ''))
 	// The next item is deeper.
 	if ($item->deeper)
 	{
-		echo '<ul role="group">';
+		echo '<ul>';
 	}
 	// The next item is shallower.
 	elseif ($item->shallower)

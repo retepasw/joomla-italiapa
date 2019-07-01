@@ -7,13 +7,13 @@
 		rights reserved.</copyright>
 	<authorEmail>info@eshiol.it</authorEmail>
 	<authorUrl>https://www.eshiol.it</authorUrl>
-	<version>3.8.0.11</version>
+	<version>3.8.0.12</version>
 	<description><![CDATA[
 		<h1>Template ItaliaPA for Joomla! 3.8</h1>
 		<p>Implementazione delle
 		<a href="http://www.agid.gov.it/tags/linee-guida-design-pa" target="_blank">Linee guida di design per i servizi web della PA</a> basato su
 		<a href="https://italia.github.io/design-web-toolkit/" target="_blank">it Web Toolkit</a>.</p>
-		<p>Created by <a href="http://www.eshiol.it" target="_blank">Helios Ciancio </a></p>
+		<p>Created by <a href="http://www.eshiol.it" target="_blank">Helios Ciancio <img src="https://www.eshiol.it/files/italiapa/eshiol.png" alt="eshiol.it"/></a></p>
 	]]></description>
 	<updateservers>
 		<server type="extension" priority="2" name="Template ItaliaPA">https://www.eshiol.it/files/italiapa/tpl_italiapa.xml
@@ -77,6 +77,7 @@
 					<option value="purple">TPL_ITALIAPA_THEME_PURPLE</option>
 					<option value="red">TPL_ITALIAPA_THEME_RED</option>
 					<option value="redaccessible">TPL_ITALIAPA_THEME_REDACCESSIBLE</option>
+					<option value="scuola">TPL_ITALIAPA_THEME_SCHOOL</option>
 					<option value="squola">TPL_ITALIAPA_THEME_SCHOOLUNOFFICIAL</option>
 					<option value="teal">TPL_ITALIAPA_THEME_TEAL</option>
 					<option value="yellow">TPL_ITALIAPA_THEME_YELLOW</option>

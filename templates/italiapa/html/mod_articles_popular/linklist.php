@@ -18,18 +18,13 @@ defined('_JEXEC') or die;
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 ?>
 <?php if (!empty($list)) : ?>
-	<ul class="relateditems<?php echo $moduleclass_sfx; ?> mod-list" itemscope itemtype="http://schema.org/ItemList">
+	<ul class="Linklist Prose u-text-r-xs mostread<?php echo $moduleclass_sfx; ?> mod-list" itemscope itemtype="http://schema.org/ItemList">
 		<?php $i = 1; ?>
 		<?php foreach ($list as $item) : ?>
 			<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 				<meta itemprop="position" content="<?php echo $i++; ?>"/>
-				<a href="<?php echo $item->route; ?>" itemprop="url">
-					<?php if ($showDate) : ?>
-						<time datetime="<?php echo JHtml::_('date', $item->created, JText::_('DATE_FORMAT_LC4')); ?>" itemprop="dateCreated">
-							<?php echo JHtml::_('date', $item->created, JText::_('DATE_FORMAT_LC3')); ?>
-						</time> -
-					<?php endif; ?>	
-					<span itemprop="name">
+				<a href="<?php echo $item->link; ?>" itemprop="url">
+					<span itemprop="name" class="u-text-r-xs">
 						<?php echo $item->title; ?>
 					</span>
 				</a>
@@ -37,3 +32,4 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 		<?php endforeach; ?>
 	</ul>
 <?php endif; ?>
+

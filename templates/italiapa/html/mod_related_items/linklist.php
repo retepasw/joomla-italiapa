@@ -18,7 +18,7 @@ defined('_JEXEC') or die;
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 ?>
 <?php if (!empty($list)) : ?>
-	<ul class="relateditems<?php echo $moduleclass_sfx; ?> mod-list" itemscope itemtype="http://schema.org/ItemList">
+	<ul class="Linklist Prose u-text-r-xs relateditems<?php echo $moduleclass_sfx; ?> mod-list" itemscope itemtype="http://schema.org/ItemList">
 		<?php $i = 1; ?>
 		<?php foreach ($list as $item) : ?>
 			<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
@@ -29,7 +29,7 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 							<?php echo JHtml::_('date', $item->created, JText::_('DATE_FORMAT_LC3')); ?>
 						</time> -
 					<?php endif; ?>	
-					<span itemprop="name">
+					<span itemprop="name" class="u-text-r-xs">
 						<?php echo $item->title; ?>
 					</span>
 				</a>

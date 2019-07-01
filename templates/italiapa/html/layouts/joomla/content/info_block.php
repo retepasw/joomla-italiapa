@@ -22,7 +22,7 @@ $blockStyle = $displayData['params']->get('info_block_style', 'default');
 
 ?>
 <?php if ($blockStyle == 'inline'): ?>
-<div class="Grid Grid--fit u-margin-r-bottom u-margin-r-top">
+<div class="Grid Grid--fit u-margin-r-bottom u-margin-r-top u-sizeFull">
 <?php else: ?>
 <p class="u-padding-r-bottom">
 <?php endif; ?>

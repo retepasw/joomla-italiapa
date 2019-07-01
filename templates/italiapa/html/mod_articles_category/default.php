@@ -17,13 +17,13 @@ defined('_JEXEC') or die;
 
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 ?>
-<ul class="Linklist Linklist--padded Treeview js-Treeview u-text-r-xs category-module<?php echo $moduleclass_sfx; ?> mod-list"<?php echo ($params->get('link_titles') == 1) ? ' itemscope itemtype="http://schema.org/ItemList"' : ''; ?>>
+<ul class="category-module<?php echo $moduleclass_sfx; ?> mod-list"<?php echo ($params->get('link_titles') == 1) ? ' itemscope itemtype="http://schema.org/ItemList"' : ''; ?>>
 	<?php $i = 1; ?>
 	<?php if (!$grouped) $list = array('default' => $list); ?>
 	<?php foreach ($list as $group_name => $group) : ?>
 		<?php if ($grouped) : ?>
 		<li>
-			<a href="#" class="mod-articles-category-group"><?php echo $group_name; ?></a>
+			<div class="mod-articles-category-group"><?php echo $group_name; ?></div>
 			<ul>
 		<?php endif; ?>
 
@@ -33,28 +33,33 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 				<?php if ($item->displayCategoryTitle) : ?>
 					<span class="Dot u-background-50"></span>
 					<span class="mod-articles-category-category">
-						<?php // FIXME use class instead of style ?>
-						<?php echo str_replace('<a href="', '<a style="display:inline!important" href="', $item->displayCategoryTitle); ?>
+						<?php echo $item->displayCategoryTitle; ?>
 					</span>
+				<?php endif; ?>
+
+				<?php if ($params->get('show_tags', 0) && $item->tags->itemTags) : ?>
+					<div class="mod-articles-category-tags">
+						<?php echo JLayoutHelper::render('joomla.content.tags', $item->tags->itemTags); ?>
+					</div>
 				<?php endif; ?>
 
 				<?php if ($params->get('link_titles') == 1) : ?>
 					<a class="mod-articles-category-title <?php echo $item->active; ?>" href="<?php echo $item->link; ?>" itemprop="url">
-						<span itemprop="name" class="u-text-r-xs"><?php echo $item->title; ?></span>
+						<span itemprop="name" class="u-cf"><?php echo $item->title; ?></span>
 					</a>
 				<?php else : ?>
-					<span itemprop="name" class="u-text-r-xs"><?php echo $item->title; ?></span>
+					<span itemprop="name" class="u-cf"><?php echo $item->title; ?></span>
 				<?php endif; ?>
 
 				<?php if ($item->displayHits) : ?>
-					<span class="u-textSecondary mod-articles-category-hits">
+					<span class="mod-articles-category-hits">
 						<meta itemprop="interactionCount" content="UserPageVisits:<?php echo $item->displayHits; ?>" />
 						[<?php echo $item->displayHits; ?>]
 					</span>
 				<?php endif; ?>
 
 				<?php if ($params->get('show_author')) : ?>
-					<span class="u-textSecondary mod-articles-category-writtenby">
+					<span class="mod-articles-category-writtenby">
 						<span itemprop="author"><?php echo $item->displayAuthorName; ?></span>
 					</span>
 				<?php endif; ?>
@@ -76,17 +81,11 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 						break;
 					endswitch;
 					?>
-					<span class="u-textSecondary mod-articles-category-date">
+					<span class="mod-articles-category-date">
 						<time datetime="<?php echo JHtml::_('date', $date, JText::_('DATE_FORMAT_LC4')); ?>" itemprop="<?php echo $prop; ?>">
 							<?php echo $item->displayDate; ?>
 						</time>
 					</span>
-				<?php endif; ?>
-
-				<?php if ($params->get('show_tags', 0) && $item->tags->itemTags) : ?>
-					<div class="mod-articles-category-tags">
-						<?php echo JLayoutHelper::render('joomla.content.tags', $item->tags->itemTags); ?>
-					</div>
 				<?php endif; ?>
 
 				<?php if ($params->get('show_introtext')) : ?>
@@ -104,7 +103,7 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 								<?php echo $readmore; ?>
 								<?php echo JHtml::_('string.truncate', $item->title, $params->get('readmore_limit')); ?>
 									<?php if ($params->get('show_readmore_title', 0) != 0) : ?>
-										<?php echo JHtml::_('string.truncate', $this->item->title, $params->get('readmore_limit')); ?>
+										<?php echo JHtml::_('string.truncate', $item->title, $params->get('readmore_limit')); ?>
 									<?php endif; ?>
 							<?php elseif ($params->get('show_readmore_title', 0) == 0) : ?>
 								<?php echo JText::sprintf('MOD_ARTICLES_CATEGORY_READ_MORE_TITLE'); ?>

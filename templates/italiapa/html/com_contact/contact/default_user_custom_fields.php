@@ -48,28 +48,27 @@ $userFieldGroups    = array();
 		<?php echo JHtml::_('iwt.addTab', 'tab-contact', $groupTitle ?: JText::_('COM_CONTACT_USER_FIELDS'), 'display-profile-' . $id); ?>
 		<?php echo JHtml::_('iwt.startTabPanel', 'tab-contact', 'display-profile-' . $id); ?>
 	<?php elseif ($presentation_style == 'plain') : ?>
-		<?php echo '<h3 class="u-text-h3">' . ($groupTitle ?: JText::_('COM_CONTACT_USER_FIELDS')) . '</h3>'; ?>
+		<div class="u-size1of2">
+			<h3 class="u-text-h3"><?php echo ($groupTitle ?: JText::_('COM_CONTACT_USER_FIELDS')); ?></h3>
 	<?php endif; ?>
 
-	<div class="contact-profile" id="user-custom-fields-<?php echo $id; ?>">
-		<dl class="dl-horizontal">
+	<dl class="contact-profile dl-horizontal" id="user-custom-fields-<?php echo $id; ?>">
 		<?php foreach ($fields as $field) : ?>
-			<?php if (!$field->value) : ?>
-				<?php continue; ?>
+			<?php if ($field->value) : ?>
+				<?php if ($field->params->get('showlabel')) : ?>
+					<dt><?php echo JText::_($field->label); ?></dt>
+				<?php endif; ?>
+	
+				<dd><?php echo $field->value; ?></dd>
 			<?php endif; ?>
-
-			<?php if ($field->params->get('showlabel')) : ?>
-				<?php echo '<dt>' . JText::_($field->label) . '</dt>'; ?>
-			<?php endif; ?>
-
-			<?php echo '<dd>' . $field->value . '</dd>'; ?>
 		<?php endforeach; ?>
-		</dl>
-	</div>
+	</dl>
 
 	<?php if ($presentation_style == 'sliders') : ?>
 		<?php echo JHtml::_('iwt.endSlide'); ?>
 	<?php elseif ($presentation_style == 'tabs') : ?>
 		<?php echo JHtml::_('iwt.endTabPanel'); ?>
+	<?php elseif ($presentation_style == 'plain') : ?>
+		</div>
 	<?php endif; ?>
 <?php endforeach; ?>

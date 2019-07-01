@@ -30,7 +30,7 @@ if ($tagId = $params->get('tag_id', ''))
 ob_start();
 ?>
 
-<div class="Megamenu Megamenu--default js-megamenu u-background-50">
+<div class="Megamenu Megamenu--default js-megamenu">
 <ul class="Megamenu-list Megamenu<?php echo $class_sfx; ?>"<?php echo $id; ?>>
 <?php 
 $buffer = ob_get_flush();
@@ -165,11 +165,11 @@ foreach ($list as $i => &$item)
 	}
 
 	switch ($item->type) :
+		case 'separator':
 		case 'component':
 			require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
 			break;
 
-		case 'separator':
 		case 'heading':
 		case 'url':
 		default:
@@ -193,7 +193,7 @@ foreach ($list as $i => &$item)
 	elseif ($item->shallower)
 	{
 		echo '</li>';
-		for ($i = 0, $l = $item->level; $i < $item->level_diff; $i++, $l--) 
+		for ($i = 0, $l = $item->level; $i < $item->level_diff; $i++, $l--)
 		{
 			if ($l == 3)
 			{
@@ -205,7 +205,7 @@ foreach ($list as $i => &$item)
 			}
 			else
 			{
-				echo '</ul></li>';			
+				echo '</ul></li>';
 			}
 		}
 	}
@@ -226,6 +226,6 @@ ob_start();
 ?>
 </ul>
 </div>
-<?php 
+<?php
 $buffer = ob_get_flush();
 JLog::add(new JLogEntry($buffer, JLog::DEBUG, 'tpl_italiapa'));

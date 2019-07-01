@@ -22,17 +22,27 @@ require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 
 <div class="contact-links">
 	<ul>
-		<?php if ($this->contact->webpage && $this->contact->params->get('show_webpage')) : ?>
+		<?php if ($this->item->webpage && $this->params->get('show_webpage')) : ?>
 			<li class="u-inlineBlock u-margin-right-xxs">
-				<a href="<?php echo $this->contact->webpage; ?>" target="_blank" rel="noopener noreferrer" itemprop="url">
-					<span data-tooltip="<?php echo JHtml::tooltipText('webpage: ' . $this->contact->webpage, null, 0, 0); ?>"
+				<a href="<?php echo $this->item->webpage; ?>" target="_blank" rel="noopener noreferrer" itemprop="url">
+					<span data-tooltip="<?php echo JHtml::tooltipText('webpage: ' . $this->item->webpage, null, 0, 0); ?>"
 					class="Icon-earth u-color-50"><svg class="Icon"><use xlink:href="#Icon-earth"></use></svg></span>
 					<span class="u-hiddenVisually">webpage</span>
 				</a>
 			</li>
 		<?php endif; ?>		
-		<?php if ($this->contact->email_to && $this->contact->params->get('show_email')) : ?>			
+		<?php //if ($this->item->email_to && $this->item->params->get('show_email')) : ?>
+		<?php if ($this->item->email_to && $this->params->get('show_email_headings')) : ?>
 			<li class="u-inlineBlock u-margin-right-xxs">
+				<?php 
+				$db = JFactory::getDbo();
+				$query = $db->getQuery(true)
+					->select($db->quoteName('email_to'))
+					->from('#__contact_details')
+					->where($db->quoteName('id') . ' = ' . $this->item->id);
+				$db->setQuery($query);
+				$this->item->email_raw = $db->loadResult();
+				?>
 				<?php $icon = "<span class='Icon-mail Icon u-borderRadius-circle u-background-50 u-color-white u-padding-all-xxs'></span><span class='u-hiddenVisually'>e-mail</span>"; ?>
 				<?php echo JHtml::_('iwt.cloak', $this->item->email_raw, true, $icon, false); ?>
 			</li>
@@ -40,8 +50,8 @@ require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 		<?php
 		// Letters 'a' to 'e'
 		foreach (range('a', 'e') as $char) :
-			$link = $this->contact->params->get('link' . $char);
-			$label = $this->contact->params->get('link' . $char . '_name');
+			$link = $this->item->params->get('link' . $char);
+			$label = $this->item->params->get('link' . $char . '_name');
 
 			if (!$link) :
 				continue;
@@ -77,30 +87,30 @@ require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 			</li>
 		<?php endforeach; ?>
 		
-		<?php if ($this->contact->params->get('show_telephone_headings') && !empty($this->contact->telephone)) : ?>
+		<?php if ($this->item->params->get('show_telephone_headings') && !empty($this->item->telephone)) : ?>
 			<li class="u-inlineBlock u-margin-right-xxs">
 				<span class="Icon-phone u-color-white u-background-50 u-borderRadius-circle u-padding-all-xxs u-inlineBlock"
-					data-tooltip="<?php echo JHtml::tooltipText(JText::sprintf('COM_CONTACT_TELEPHONE_NUMBER', $this->contact->telephone), null, 0, 0); ?>">
+					data-tooltip="<?php echo JHtml::tooltipText(JText::sprintf('COM_CONTACT_TELEPHONE_NUMBER', $this->item->telephone), null, 0, 0); ?>">
 					<svg class="Icon"><use xlink:href="#Icon-phone"></use></svg></span>
-				<span class="u-hiddenVisually"><?php echo JText::sprintf('COM_CONTACT_TELEPHONE_NUMBER', $this->contact->telephone); ?></span>
+				<span class="u-hiddenVisually"><?php echo JText::sprintf('COM_CONTACT_TELEPHONE_NUMBER', $this->item->telephone); ?></span>
 			</li>
 		<?php endif; ?>
 		
-		<?php if ($this->contact->params->get('show_mobile_headings') && !empty($this->contact->mobile)) : ?>
+		<?php if ($this->item->params->get('show_mobile_headings') && !empty($this->item->mobile)) : ?>
 			<li class="u-inlineBlock u-margin-right-xxs">
 				<span class="Icon-mobile u-color-white u-background-50 u-borderRadius-circle u-padding-all-xxs u-inlineBlock"
-					data-tooltip="<?php echo JHtml::tooltipText(JText::sprintf('COM_CONTACT_MOBILE_NUMBER', $this->contact->mobile), null, 0, 0); ?>">
+					data-tooltip="<?php echo JHtml::tooltipText(JText::sprintf('COM_CONTACT_MOBILE_NUMBER', $this->item->mobile), null, 0, 0); ?>">
 					<svg class="Icon"><use xlink:href="#Icon-mobile"></use></svg></span>
-				<span class="u-hiddenVisually"><?php echo JText::sprintf('COM_CONTACT_MOBILE_NUMBER', $this->contact->mobile); ?></span>
+				<span class="u-hiddenVisually"><?php echo JText::sprintf('COM_CONTACT_MOBILE_NUMBER', $this->item->mobile); ?></span>
 			</li>
 		<?php endif; ?>
 
-		<?php if ($this->contact->params->get('show_fax_headings') && !empty($this->contact->fax)) : ?>
+		<?php if ($this->item->params->get('show_fax_headings') && !empty($this->item->fax)) : ?>
 			<li class="u-inlineBlock u-margin-right-xxs">
 				<span class="Icon-fax u-color-white u-background-50 u-borderRadius-circle u-padding-all-xxs u-inlineBlock"
-					data-tooltip="<?php echo JHtml::tooltipText(JText::sprintf('COM_CONTACT_FAX_NUMBER', $this->contact->fax), null, 0, 0); ?>">
+					data-tooltip="<?php echo JHtml::tooltipText(JText::sprintf('COM_CONTACT_FAX_NUMBER', $this->item->fax), null, 0, 0); ?>">
 					<svg class="Icon"><use xlink:href="#Icon-fax"></use></svg></span>
-				<span class="u-hiddenVisually"><?php echo JText::sprintf('COM_CONTACT_FAX_NUMBER', $this->contact->fax); ?></span>
+				<span class="u-hiddenVisually"><?php echo JText::sprintf('COM_CONTACT_FAX_NUMBER', $this->item->fax); ?></span>
 			</li>
 		<?php endif; ?>
 

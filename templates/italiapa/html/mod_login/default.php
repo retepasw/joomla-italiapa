@@ -21,22 +21,23 @@ JLoader::register('UsersHelperRoute', JPATH_SITE . '/components/com_users/helper
 
 JHtml::_('behavior.keepalive');
 JHtml::_('bootstrap.tooltip');
-
 ?>
 <form action="<?php echo JRoute::_('index.php', true, $params->get('usesecure')); ?>" method="post" id="login-form" 
-	class="form-validate form-horizontal well Form Form--spaced u-padding-all-xl u-background-grey-10 u-text-r-xs u-layout-prose">
+	class="form-validate form-horizontal well Form Form--spaced u-padding-all-xl u-text-r-xs u-layout-prose<?php echo ($module->position == 'footer') ? '' : '  u-background-grey-10'; ?>">
 	<?php if ($params->get('pretext')) : ?>
 		<div class="Prose Alert Alert--info">
-			<p><?php echo $params->get('pretext'); ?></p>
+			<p<?php echo ($module->position == 'footer') ? ' class="u-color-white"' : ''; ?>><?php echo $params->get('pretext'); ?></p>
 		</div>
 	<?php endif; ?>
 	<div class="userdata">
 
 	<?php if (!$params->get('usetext')): ?>
 		<div class="Form-field" id="form-login-username">
-		<svg class="u-text-r-m Icon Icon-User" style="margin-right: 0.25em;"><use xlink:href="#Icon-user"></use></svg><span class="u-hiddenVisually"><?php echo JText::_('MOD_LOGIN_VALUE_USERNAME'); ?></span>
+		<span data-tooltip="<?php echo JHtml::tooltipText(JText::_('MOD_LOGIN_VALUE_USERNAME'), 0); ?>" data-tooltip-position="bottom center">
+			<svg class="u-text-r-m Icon Icon-User" style="margin-right: 0.25em;"><use xlink:href="#Icon-user"></use></svg><span class="u-hiddenVisually"><?php echo JText::_('MOD_LOGIN_VALUE_USERNAME'); ?></span>
+		</span>
 		<input type="text" name="username" id="modlgn-username" value="" class="Form-input validate-username required" size="25" required="required" aria-required="true" aria-invalid="false" placeholder="<?php echo JText::_('MOD_LOGIN_VALUE_USERNAME'); ?>"
-			style="display: unset!important; width:80%!important;"/>
+			style="display: unset!important; width: calc(100% - 66px);"/>
 		<a href="<?php echo JRoute::_('index.php?option=com_users&view=remind'); ?>">
 			<svg class="u-text-r-m Icon Icon-question" style="margin-left: 0.25em;"><use xlink:href="#Icon-question"></use></svg>
 			<span class="u-hiddenVisually"><?php echo JText::_('MOD_LOGIN_FORGOT_YOUR_USERNAME'); ?></span>
@@ -44,9 +45,11 @@ JHtml::_('bootstrap.tooltip');
 		</div>
 
 		<div class="Form-field" id="form-login-password">
-		<svg class="u-text-r-m Icon Icon-Lock" style="margin-right: 0.25em;"><use xlink:href="#Icon-lock"></use></svg><span class="u-hiddenVisually"><?php echo JText::_('JGLOBAL_PASSWORD'); ?></span>
+		<span data-tooltip="<?php echo JHtml::tooltipText(JText::_('JGLOBAL_PASSWORD'), 0); ?>" data-tooltip-position="bottom center">
+			<svg class="u-text-r-m Icon Icon-Lock" style="margin-right: 0.25em;"><use xlink:href="#Icon-lock"></use></svg><span class="u-hiddenVisually"><?php echo JText::_('JGLOBAL_PASSWORD'); ?></span>
+		</span>
 		<input type="password" name="password" id="modlgn-passwd" value="" class="Form-input validate-password required" size="25" required="required" aria-required="true" aria-invalid="false" placeholder="<?php echo JText::_('JGLOBAL_PASSWORD'); ?>"
-			style="display: unset!important; width:80%!important;"/>
+			style="display: unset!important; width: calc(100% - 66px);"/>
 		<a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>">
 			<svg class="u-text-r-m Icon Icon-question" style="margin-left: 0.25em;"><use xlink:href="#Icon-question"></use></svg>
 			<span class="u-hiddenVisually"><?php echo JText::_('MOD_LOGIN_FORGOT_YOUR_PASSWORD'); ?></span>
@@ -55,9 +58,11 @@ JHtml::_('bootstrap.tooltip');
 
 		<?php if (count($twofactormethods) > 1) : ?>
 		<div class="Form-field" id="form-login-secretkey">
-		<svg class="u-text-r-m Icon Icon-star-full" style="margin-right: 0.25em;"><use xlink:href="#Icon-star-full"></use></svg><span class="u-hiddenVisually"><?php echo JText::_('JGLOBAL_SECRETKEY'); ?></span>
+		<span data-tooltip="<?php echo JHtml::tooltipText(JText::_('JGLOBAL_SECRETKEY'), 0); ?>" data-tooltip-position="bottom center">
+			<svg class="u-text-r-m Icon Icon-star-full" style="margin-right: 0.25em;"><use xlink:href="#Icon-star-full"></use></svg><span class="u-hiddenVisually"><?php echo JText::_('JGLOBAL_SECRETKEY'); ?></span>
+		</span>
 		<input type="password" name="secretkey" id="modlgn-secretkey" value="" class="Form-input validate-secretkey required" size="25" required="required" aria-required="true" aria-invalid="false" placeholder="<?php echo JText::_('JGLOBAL_SECRETKEY'); ?>"
-			style="display: unset!important; width:80%!important;"/>
+			style="display: unset!important; width: calc(100% - 66px);"/>
 		</div>
 		<?php endif; ?>
 	<?php else: ?>
@@ -111,7 +116,7 @@ JHtml::_('bootstrap.tooltip');
 	</div>
 	<?php if ($params->get('posttext')) : ?>
 		<div class="Prose Alert Alert--info">
-			<p><?php echo $params->get('posttext'); ?></p>
+			<p<?php echo ($module->position == 'footer') ? ' class="u-color-white"' : ''; ?>><?php echo $params->get('posttext'); ?></p>
 		</div>
 	<?php endif; ?>
 </form>

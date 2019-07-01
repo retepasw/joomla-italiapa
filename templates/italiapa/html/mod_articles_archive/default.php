@@ -18,13 +18,13 @@ defined('_JEXEC') or die;
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 ?>
 <?php if (!empty($list)) : ?>
-	<ul class="Linklist Prose u-text-r-xs archive-module<?php echo $moduleclass_sfx; ?> mod-list" itemscope itemtype="http://schema.org/ItemList">
+	<ul class="archive-module<?php echo $moduleclass_sfx; ?> mod-list" itemscope itemtype="http://schema.org/ItemList">
 		<?php $i = 1; ?>
 		<?php foreach ($list as $item) : ?>
 			<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 				<meta itemprop="position" content="<?php echo $i++; ?>"/>
 				<a href="<?php echo $item->link; ?>" itemprop="url">
-					<span itemprop="name" class="u-text-r-xs <?php echo $moduleclass_sfx; ?>">
+					<span itemprop="name">
 						<?php echo $item->text; ?>
 					</span>
 				</a>

@@ -17,6 +17,26 @@ defined('_JEXEC') or die();
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
+
+if ($item->anchor_css)
+{
+	JLog::add(new JLogEntry('anchor_css: '.print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
+	$anchor_css = explode(' ', $item->anchor_css);
+	for($i = count($anchor_css) - 1; $i >= 0; $i--)
+	{
+		if (substr($anchor_css[$i], 0, 4) == 'ipa:')
+		{
+			if (substr($anchor_css[$i], 4) == 'user-username')
+			{
+				$item->title = $user = JFactory::getUser()->name;
+			}
+			unset($anchor_css[$i]);
+		}
+	}
+	$item->anchor_css = (substr($item->anchor_css, 0, 1) == ' ' ? ' ' : '') . implode(' ', $anchor_css);
+	JLog::add(new JLogEntry('anchor_css: '.print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
+}
+
 ?>
 <span class="nav-header <?php echo $item->anchor_css; ?>"
 	<?php echo $item->anchor_title ? ' title="' . $item->anchor_title . '"' : ''; ?>><?php echo JHtml::_('iwt.linkType', $item); ?></span>

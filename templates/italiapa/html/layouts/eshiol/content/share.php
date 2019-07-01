@@ -30,10 +30,12 @@ Condividi
 <ul id="share-options" class="Dropdown-menu" data-menu="" role="menu" aria-hidden="true">
 <li role="menuitem"><a href="#" onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(eshiol.location.href), '', 'width=800,height=600');"><span class="Icon Icon-facebook"></span><span class="u-hiddenVisually">Facebook</span></a></li>
 <li role="menuitem"><a href="#" onclick="javascript:window.open('https://www.twitter.com/share?text=<?php echo urlencode($metadesc)?>&url=' + encodeURIComponent(eshiol.location.href), '', 'width=800,height=600');"><span class="Icon Icon-twitter"></span><span class="u-hiddenVisually">Twitter</span></a></li>
-<!--
+<?php /**
 <li role="menuitem"><a href="#" onclick="javascript:window.open('https://plus.google.com/share?url=' + encodeURIComponent(eshiol.location.href), '', 'width=800,height=600');"><span class="Icon Icon-googleplus"></span><span class="u-hiddenVisually">Google Plus</span></a></li>
--->
 <li role="menuitem"><a href="#" onclick="javascript:window.open('https://api.whatsapp.com/send?phone=whatsappphonenumber&text=' + encodeURIComponent(eshiol.location.href), '', 'width=800,height=600');"><span class="Icon Icon-whatsapp"></span><span class="u-hiddenVisually">Whatsapp</span></a></li>
+<li role="menuitem"><a href="#" onclick="javascript:window.open('https://' + ( Modernizr.touch ? 'api.whatsapp.com/send?phone=whatsappphonenumber&' : 'wa.me/?' ) + 'text=' + encodeURIComponent(eshiol.location.href), '', 'width=800,height=600');"><span class="Icon Icon-whatsapp"></span><span class="u-hiddenVisually">Whatsapp</span></a></li>
+*/ ?>
+<li role="menuitem"><a href="#" onclick="javascript:window.open('https://wa.me/?text=' + encodeURIComponent(eshiol.location.href), '', 'width=800,height=600');"><span class="Icon Icon-whatsapp"></span><span class="u-hiddenVisually">Whatsapp</span></a></li>
 <li role="menuitem"><a href="#" onclick="javascript:window.open('https://telegram.me/share/url?url=' + encodeURIComponent(eshiol.location.href), '', 'width=800,height=600');"><svg class="Icon Icon-telegram"><use xlink:href="#Icon-telegram"></use></svg><span class="u-hiddenVisually">Telegram</span></a></li>
 <!-- 
 <li role="menuitem"><a href="#" onclick="javascript:alert('Funzione non supportata');"><span class="Icon Icon-youtube"></span><span class="u-hiddenVisually">Youtube</span></a></li>

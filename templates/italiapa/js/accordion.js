@@ -36,7 +36,7 @@ $('dl.Accordion').replaceWith(function(){
 		{
 			$x.append(
 				$('<p/>')
-				.addClass('u-layout-prose u-color-grey-90 u-text-p u-padding-r-all')
+//				.addClass('u-layout-prose u-color-grey-90 u-text-p u-padding-r-all')
 				.append($(this).contents())
 			)
 			;

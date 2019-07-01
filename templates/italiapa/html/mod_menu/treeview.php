@@ -79,7 +79,7 @@ $level = 1;
 		$class .= ' parent';
 	}
 
-	echo '<li role="treeitem" class="' . $class . '"'.((($level < $maxlevel) && $params->get('showAllChildren', false)) ? 'aria-expanded="true"' : '').'>';
+	echo '<li class="' . $class . '"'.((($level < $maxlevel) && $params->get('showAllChildren', false)) ? 'aria-expanded="true"' : '').'>';
 
 	switch ($item->type) :
 		case 'separator':
@@ -101,7 +101,7 @@ $level = 1;
 	if ($item->deeper)
 	{
 		$level++;
-		echo '<ul role="group">';
+		echo '<ul>';
 	}
 	// The next item is shallower.
 	elseif ($item->shallower)

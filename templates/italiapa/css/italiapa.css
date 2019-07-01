@@ -1,4 +1,4 @@
-/** @define utilities; */
+@import url('https://fonts.googleapis.com/css?family=Iceland&display=swap');
 
 @media screen and (max-width: 767px) {
   .u-xs-hidden {
@@ -51,10 +51,12 @@ ul.tags li:nth-child(n+2):before {
 .strike {
 	text-decoration: line-through!important;
 }
+
 /* Megamenu sub-navigation panel */
 
 .Megamenu .Megamenu-subnav {
   display: none;
+  overflow-x: hidden;
 }
 
 .Megamenu.is-ready .Megamenu-subnav {
@@ -220,7 +222,9 @@ svg.Icon-large {
 }
 
 .Megamenu-item span[class*=" Icon-"], 
-.Megamenu-item span[class^=Icon-] {
+.Megamenu-item span[class^=Icon-],
+.Entrypoint-item span[class*=" Icon-"], 
+.Entrypoint-item span[class^=Icon-] {
 	padding-right: 1rem !important;
 }
 
@@ -234,6 +238,19 @@ svg.Icon-large {
 
 .Megamenu-item:first-child > *:first-child {
 	padding-left: 0 !important;
+}
+
+.Megamenu--default ul>li ul>li {
+    padding-bottom: .8rem!important;
+}
+
+.Megamenu--default ul>li ul>li {
+    padding-top: .4rem!important;
+}
+
+.Megamenu--default ul>li ul>li a {
+    color: #30373d!important;
+    text-decoration: none!important;
 }
 
 header.Headroom .Megamenu-subnav {
@@ -380,10 +397,10 @@ header.Headroom .Megamenu-subnav {
 
 .ipa-copyright {
 	color: rgba(255, 255, 255, 0.7);
-    font-size: 0.7em;
     text-align: right;
     padding-top: 2em;
     padding-right: 5em;
+	font-family: Iceland;
 }
 
 .ipa-copyright a {
@@ -394,8 +411,21 @@ header.Headroom .Megamenu-subnav {
 	vertical-align: bottom;
 }
 
-.ipa-copyright>a:nth-of-type(1) {
-	float:left;
+@media screen and (min-width:768px) {
+	.ipa-copyright>a:nth-of-type(1) {
+		float:left;
+	}
+}
+
+@media screen and (max-width:767px) {
+	.ipa-copyright {
+		text-align:left;
+	}
+	
+	.ipa-copyright>span {
+		display:block;
+		margin-top:1em
+	}
 }
 
 .icons nav.Navscroll ul {
@@ -565,4 +595,114 @@ div.current dd.tabs {
 
 button[role=tab] {
 	margin-right:1rem;
+}
+
+footer input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #CCC;
+  opacity: 1; /* Firefox */
+}
+
+footer input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #CCC;
+}
+
+footer input::-ms-input-placeholder { /* Microsoft Edge */
+  color: #CCC;
+}
+
+.mod-languages .Navscroll ul li a.lang-active {
+	border-bottom: solid 3px #ff8c00;	
+}
+
+.mod-languages .Navscroll ul {
+	height: 2em;
+}
+
+.contact dt {
+    clear: left;
+	float: left;
+    line-height: 2em;
+    width: 50%;
+    padding-right: 1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.contact dd {
+	line-height: 2em;
+	margin-left: 50%;
+}
+
+.contact-address dt,
+.contact-misc dt {
+    text-align: right;
+	width: 64px;
+}
+
+.contact-address dd,
+.contact-misc dd {
+	line-height: 32px;
+	margin-left: 64px;
+}
+
+.contact-fields dt {
+	width: 33%;
+}
+
+.contact-fields dd {
+	margin-left: 33%;
+}
+
+@media screen and (min-width:992px) {
+	li.contact-item>div>div {
+		-webkit-flex-basis: auto!important;
+		-ms-flex-preferred-size: auto!important;
+		flex-basis: auto!important;
+		width: 33.33333%!important;
+	}
+	li.contact-item .contact-image {
+		width: 128px!important;
+		height: 128px!important;
+	}
+}
+
+.contact-links {
+	font-size: 1.8rem!important;
+}
+
+.contact-links a {
+	text-decoration: none
+}
+
+.contact-links .Icon-earth {
+	background: transparent!important;
+    margin: 0!important;
+    padding: 0!important;
+}
+
+.contact-links .Icon-earth svg.Icon {
+    width: 26px;
+    height: 26px;
+    top: 5px;
+    position: relative;
+}
+
+.contact .fr-accordion {
+    margin-top: 2rem;
+}
+
+.contact .fr-accordion button {
+    margin-right: 1em;
+    margin-bottom: 0.5em;
+}
+
+.contact .fr-accordion button[aria-selected="true"] {
+    background-color: #004a4d;
+    border-color: #000;
+    color: #65dde0;
+}
+
+header {
+	box-shadow: 0px 5px 5px 0px rgba(54, 54, 54, 0.3);
 }
