@@ -2,12 +2,12 @@
 <extension type="module" version="3.7" client="site" method="upgrade">
   <name>mod_cookiebar</name>
   <author>Helios Ciancio</author>
-  <creationDate>November 2017</creationDate>
-  <copyright>(C) 2017 Helios Ciancio. All rights reserved.</copyright>
+  <creationDate>May 2019</creationDate>
+  <copyright>(C) 2017 - 2019 Helios Ciancio. All rights reserved.</copyright>
   <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3</license>
   <authorEmail>info@eshiol.it</authorEmail>
   <authorUrl>www.eshiol.it</authorUrl>
-  <version>3.8.0.36</version>
+  <version>3.8.1</version>
   <description>MOD_COOKIEBAR_XML_DESCRIPTION</description>
   <updateservers>
     <server type="extension" priority="2" name="Template ItaliaPA - Cookiebar Module">https://www.eshiol.it/files/italiapa/mod_cookiebar.xml</server>
@@ -24,32 +24,8 @@
     <language tag="it-IT">it-IT/it-IT.mod_cookiebar.sys.ini</language>
   </languages>
   <config>
-    <fields name="params" addfieldpath="/administrator/components/com_content/models/fields">
-      <fieldset name="basic">
-        <field name="text" type="textarea" label="MOD_COOKIEBAR_FIELD_TEXT_LABEL" description="MOD_COOKIEBAR_FIELD_TEXT_DESC"/>
-        <field name="articleid" type="modal_article" label="MOD_COOKIEBAR_FIELD_POLICY_LABEL" description="MOD_COOKIEBAR_FIELD_POLICY_DESC"/>
-      </fieldset>
-      <fieldset name="advanced">
-        <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" filter="SAFEHTML"/>
-        <field name="moduleclass_sfx" type="textarea" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" rows="3"/>
-        <field name="cache" type="list" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC" default="1">
-          <option value="1">JGLOBAL_USE_GLOBAL</option>
-          <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
-        </field>
-        <field name="cache_time" type="text" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" default="900"/>
-        <field name="cachemode" type="hidden" default="static">
-          <option value="static"/>
-        </field>
-        <field name="debug" type="radio" class="btn-group btn-group-yesno" default="0" description="MOD_COOKIEBAR_DEBUG_SYSTEM_DESC" label="MOD_COOKIEBAR_DEBUG_SYSTEM_LABEL">
+    <fields name="params" addfieldpath="/administrator/components/com_content/models/fields">      <fieldset name="basic">        <field name="text" type="textarea" label="MOD_COOKIEBAR_FIELD_TEXT_LABEL" description="MOD_COOKIEBAR_FIELD_TEXT_DESC"/>        <field name="articleid" type="modal_article" label="MOD_COOKIEBAR_FIELD_POLICY_LABEL" description="MOD_COOKIEBAR_FIELD_POLICY_DESC"/>        <field name="decline" type="radio" class="btn-group btn-group-yesno" default="1" description="MOD_COOKIEBAR_FIELD_DECLINE_DESC" label="MOD_COOKIEBAR_FIELD_DECLINE_LABEL">
           <option value="1">JYES</option>
           <option value="0">JNO</option>
         </field>
-        <field name="log" type="text" label="MOD_COOKIEBAR_DEBUG_FILENAME_LABEL" description="MOD_COOKIEBAR_DEBUG_FILENAME_DESC" default="eshiol.log.php" showon="debug:1"/>
-        <field name="phpconsole" type="radio" class="btn-group btn-group-yesno" default="0" description="MOD_COOKIEBAR_DEBUG_PHPCONSOLE_DESC" label="MOD_COOKIEBAR_DEBUG_PHPCONSOLE_LABEL">
-          <option value="1">JYES</option>
-          <option value="0">JNO</option>
-        </field>
-      </fieldset>
-    </fields>
-  </config>
-</extension>
+      </fieldset>      <fieldset name="advanced">        <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" filter="SAFEHTML"/>        <field name="moduleclass_sfx" type="textarea" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" rows="3"/>        <field name="cache" type="list" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC" default="1">          <option value="1">JGLOBAL_USE_GLOBAL</option>          <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>        </field>        <field name="cache_time" type="text" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" default="900"/>        <field name="cachemode" type="hidden" default="static">          <option value="static"/>        </field>        <field name="debug" type="radio" class="btn-group btn-group-yesno" default="0" description="MOD_COOKIEBAR_DEBUG_SYSTEM_DESC" label="MOD_COOKIEBAR_DEBUG_SYSTEM_LABEL">          <option value="1">JYES</option>          <option value="0">JNO</option>        </field>        <field name="log" type="text" label="MOD_COOKIEBAR_DEBUG_FILENAME_LABEL" description="MOD_COOKIEBAR_DEBUG_FILENAME_DESC" default="eshiol.log.php" showon="debug:1"/>        <field name="phpconsole" type="radio" class="btn-group btn-group-yesno" default="0" description="MOD_COOKIEBAR_DEBUG_PHPCONSOLE_DESC" label="MOD_COOKIEBAR_DEBUG_PHPCONSOLE_LABEL">          <option value="1">JYES</option>          <option value="0">JNO</option>        </field>      </fieldset>    </fields>  </config></extension>
