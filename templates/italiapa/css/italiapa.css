@@ -52,17 +52,6 @@ ul.tags li:nth-child(n+2):before {
 	text-decoration: line-through!important;
 }
 
-/* Megamenu sub-navigation panel */
-
-.Megamenu .Megamenu-subnav {
-  display: none;
-  overflow-x: hidden;
-}
-
-.Megamenu.is-ready .Megamenu-subnav {
-  display: block;
-}
-
 .map-responsive {
   overflow:hidden;
   position:relative;
@@ -176,25 +165,33 @@ svg.Icon-large {
     fill: currentColor;
 }
 
-.Megamenu--default .Megamenu-item > span[class*=" Icon-"], 
-.Megamenu--default .Megamenu-item > span[class^=Icon-] {
-	color: #fff !important;
+/* Megamenu sub-navigation panel */
+
+.Megamenu .Megamenu-subnav {
+  display: none;
+  overflow-x: hidden;
 }
 
-.Megamenu-item > span[class*=" Icon-"], 
-.Megamenu-item > span[class^=Icon-] {
-	padding-top: 1.6rem !important;
+.Megamenu.is-ready .Megamenu-subnav {
+  display: block;
 }
 
+.Megamenu-item > span.separator, 
 .Megamenu-item > span[class*=" Icon-"], 
 .Megamenu-item > span[class^=Icon-] {
 	padding-bottom: 1.6rem !important;
+	padding-top: 1.6rem !important;
 }
 
 .Megamenu--default .Megamenu-item > span[class*=" Icon-"], 
 .Megamenu--default .Megamenu-item > span[class^=Icon-] {
 	font-size: 1.6rem !important;
 	letter-spacing: .01em !important;
+}
+
+.Megamenu--default .Megamenu-item>span.separator {
+    font-weight: 600!important
+    padding-top: 1.6rem!important
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -228,10 +225,12 @@ svg.Icon-large {
 	padding-right: 1rem !important;
 }
 
+.Megamenu-area > a,
 .Megamenu-item > a {
 	padding-left: 0 !important;
 }
 
+.Megamenu-area > *:first-child,
 .Megamenu-item > *:first-child {
 	padding-left: 1.6rem !important;
 }
@@ -666,6 +665,10 @@ footer input::-ms-input-placeholder { /* Microsoft Edge */
 		height: 128px!important;
 	}
 }
+.contact-image {
+	width: 150px;
+	height: 150px;
+}
 
 .contact-links {
 	font-size: 1.8rem!important;
@@ -703,6 +706,32 @@ footer input::-ms-input-placeholder { /* Microsoft Edge */
     color: #65dde0;
 }
 
-header {
-	box-shadow: 0px 5px 5px 0px rgba(54, 54, 54, 0.3);
+.Header-owner {
+	float: left;
+	padding-bottom: 0.8em !important;
+	padding-top: 0.8em !important
+}
+
+/* SPiD */
+@media screen and (max-width:991px) {
+	.italia-it-button-size-m {
+		width: 54.5px!important;
+	}
+	.italia-it-button-text {
+		display: none!important;
+	}
+}
+
+.Header-languages>* {
+	color: #fff;
+	text-decoration: none
+}
+
+.Header-languages span[class*=" Icon-"],
+.Header-languages span[class^=Icon-] {
+	padding-right: 1rem !important;
+}
+
+.tooltip {
+    z-index: 999999
 }

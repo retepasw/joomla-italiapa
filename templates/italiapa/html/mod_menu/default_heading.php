@@ -33,10 +33,11 @@ if ($item->anchor_css)
 			unset($anchor_css[$i]);
 		}
 	}
-	$item->anchor_css = (substr($item->anchor_css, 0, 1) == ' ' ? ' ' : '') . implode(' ', $anchor_css);
+	$item->anchor_css = implode(' ', $anchor_css);
 	JLog::add(new JLogEntry('anchor_css: '.print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
 }
-
 ?>
-<span class="nav-header <?php echo $item->anchor_css; ?>"
-	<?php echo $item->anchor_title ? ' title="' . $item->anchor_title . '"' : ''; ?>><?php echo JHtml::_('iwt.linkType', $item); ?></span>
+
+<<?php echo $item->deeper ? 'a href="#"' : 'span'; ?> class="nav-header <?php echo $item->anchor_css; ?>"
+	<?php echo $item->anchor_title ? ' title="' . $item->anchor_title . '"' : ''; ?>><?php echo JHtml::_('iwt.linkType', $item); ?>
+</<?php echo $item->deeper ? 'a' : 'span'; ?>>

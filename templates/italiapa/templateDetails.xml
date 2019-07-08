@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.0" type="template" method="upgrade">
 	<name>italiapa</name>
-	<creationDate>June 2019</creationDate>
+	<creationDate>July 2019</creationDate>
 	<author>Helios Ciancio</author>
 	<copyright>Copyright © 2017 - 2019 Helios Ciancio (eshiol.it). All
 		rights reserved.</copyright>
@@ -62,26 +62,10 @@
 				<field name="theme" type="list" label="TPL_ITALIAPA_FIELD_THEME_LABEL"
 					description="TPL_ITALIAPA_FIELD_THEME_DESC" default="default"
 					filter="word">
-					<option value="blue">TPL_ITALIAPA_THEME_BLUE</option>
-					<option value="cyan">TPL_ITALIAPA_THEME_CYAN</option>
-					<option value="dark">TPL_ITALIAPA_THEME_DARK</option>
 					<option value="default">TPL_ITALIAPA_THEME_DEFAULT</option>
-					<option value="green">TPL_ITALIAPA_THEME_GREEN</option>
-					<option value="greenaccessible">TPL_ITALIAPA_THEME_GREENACCESSIBLE</option>
-					<option value="indigo">TPL_ITALIAPA_THEME_INDIGO</option>
 					<option value="italia">TPL_ITALIAPA_THEME_ITALIA</option>
-					<option value="light">TPL_ITALIAPA_THEME_LIGHT</option>
-					<option value="orange">TPL_ITALIAPA_THEME_ORANGE</option>
-					<option value="orangeaccessible">TPL_ITALIAPA_THEME_ORANGEACCESSIBLE</option>
-					<option value="pink">TPL_ITALIAPA_THEME_PINK</option>
-					<option value="purple">TPL_ITALIAPA_THEME_PURPLE</option>
-					<option value="red">TPL_ITALIAPA_THEME_RED</option>
-					<option value="redaccessible">TPL_ITALIAPA_THEME_REDACCESSIBLE</option>
 					<option value="scuola">TPL_ITALIAPA_THEME_SCHOOL</option>
 					<option value="squola">TPL_ITALIAPA_THEME_SCHOOLUNOFFICIAL</option>
-					<option value="teal">TPL_ITALIAPA_THEME_TEAL</option>
-					<option value="yellow">TPL_ITALIAPA_THEME_YELLOW</option>
-					<option value="yellowaccessible">TPL_ITALIAPA_THEME_YELLOWACCESSIBLE</option>
 				</field>
 				<field 
 					name="num_columns" 

@@ -34,6 +34,10 @@ elseif ($module->position == 'owner')
 {
 	require JModuleHelper::getLayoutPath('mod_menu', 'owner');
 }
+elseif ($module->position == 'languages')
+{
+	require JModuleHelper::getLayoutPath('mod_menu', 'dropdown');
+}
 else
 {
 	$id = '';

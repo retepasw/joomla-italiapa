@@ -16,6 +16,8 @@ defined('_JEXEC') or die();
 
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
+JHtml::_('bootstrap.tooltip');
+
 require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 
 if ($item->anchor_css)
@@ -37,7 +39,7 @@ if ($item->anchor_css)
 	JLog::add(new JLogEntry('anchor_css: '.print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
 }
 
-$attributes = JHtml::_('iwt.getLinkAttributes', $item);
+$attributes = JHtml::_('iwt.getLinkAttributes', $item, isset($item->attributes) && is_array($item->attributes) ? $item->attributes : array());
 
 if ($item->browserNav == 1)
 {
@@ -50,5 +52,28 @@ elseif ($item->browserNav == 2)
 	$attributes['onclick'] = "window.open(this.href, 'targetWindow', '" . $options . "'); return false;";
 }
 
-echo JHtml::_('link', JFilterOutput::ampReplace(htmlspecialchars($item->flink, ENT_COMPAT, 'UTF-8', false)), JHtml::_('iwt.linkType', $item), $attributes);
+unset($attributes['title']);
+if (isset($item->anchor_title) && $item->anchor_title)
+{
+	$attributes['data-tooltip'] = $item->anchor_title;
+}
+
+if ($item->menu_text)
+{
+	$title = JHtml::_('iwt.linkType', $item) . $item->deeper ? '<span class="Icon Icon-expand u-padding-left-xs"></span>' : '';
+}
+elseif ($item->menu_image_css)
+{
+	$title = JHtml::_('iwt.linkType', $item);
+}
+elseif ($item->deeper)
+{
+	$title =  '<span class="Icon Icon-expand u-padding-left-xs"></span>';
+}
+else 
+{
+	$title = JHtml::_('iwt.linkType', $item);
+}
+
+echo JHtml::_('link', JFilterOutput::ampReplace(htmlspecialchars($item->flink, ENT_COMPAT, 'UTF-8', false)), $title, $attributes);
 ?>

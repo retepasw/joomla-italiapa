@@ -36,6 +36,7 @@ ob_start();
 $buffer = ob_get_flush();
 JLog::add(new JLogEntry($buffer, JLog::DEBUG, 'tpl_italiapa'));
 
+$parent_id = 0;
 foreach ($list as $i => &$item)
 {
 	$item->level = $item->level - $params->get('startLevel', 1) + 1;
@@ -91,7 +92,6 @@ foreach ($list as $i => &$item)
 	$icon = '';
 	if ($item->anchor_css)
 	{
-		JLog::add(new JLogEntry('anchor_css: '.print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
 		$anchor_css = explode(' ', $item->anchor_css);
 		for($i = count($anchor_css) - 1; $i >= 0; $i--)
 		{
@@ -148,11 +148,23 @@ foreach ($list as $i => &$item)
 
 	if ($item->level == 1)
 	{
-		echo '<li' . ($class || $subclass ? ' class="' . $class . ' ' . $subclass . '"' : '') . '>';
+		echo '<li' . ($class || $subclass ? ' class="' . $class . ' ' . $subclass . '"' : '') .
+			(!$item->deeper ? ' role="presentation"' : '') .
+			($item->type == 'separator' ? ' role="presentation"' : '') . 
+			'>';
 	}
 	elseif ($item->level == 2)
 	{
-		echo '<ul class="Megamenu-subnavGroup">';
+		if ($item->deeper)
+		{
+			echo '<ul class="Megamenu-subnavGroup">';
+		}
+		elseif ($item->parent_id != $parent_id)
+		{
+			echo '<ul>';
+			$parent_id = $item->parent_id;
+		}
+
 		echo '<li' . ($subclass ? ' class="' . $subclass . '"' : '') . '>';
 	}
 	else 
@@ -166,11 +178,11 @@ foreach ($list as $i => &$item)
 
 	switch ($item->type) :
 		case 'separator':
+		case 'heading':
 		case 'component':
 			require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
 			break;
 
-		case 'heading':
 		case 'url':
 		default:
 			require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
@@ -212,7 +224,11 @@ foreach ($list as $i => &$item)
 	// The next item is on the same level.
 	elseif ($item->level == 2)
 	{
-		echo '</li></ul>';
+		echo '</li>';
+		if ($item->shallower)
+		{
+			echo '</ul>';
+		}
 	}
 	else
 	{

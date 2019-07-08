@@ -19,4 +19,12 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 ?>
 <span class="separator <?php echo $item->anchor_css; ?>"
-	<?php echo $item->anchor_title ? ' title="' . $item->anchor_title . '"' : ''; ?>><?php echo JHtml::_('iwt.linkType', $item); ?></span>
+	<?php echo $item->anchor_title ? ' title="' . $item->anchor_title . '"' : ''; ?>>
+	<?php if ($item->level == 1) : ?>
+		|
+	<?php elseif ($item->level == 2) : ?>
+	<?php else : ?>
+		<hr/>
+	<?php endif; ?>
+	<?php //echo JHtml::_('iwt.linkType', $item); ?>
+	</span>

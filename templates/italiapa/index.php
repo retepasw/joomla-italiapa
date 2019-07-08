@@ -37,12 +37,20 @@ JHtml::_('stylesheet', 'user.css', array('version' => 'auto', 'relative' => true
 
 // Check for a custom JS file
 JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
+
+$theme_default = $this->params->get('theme', 'italia');
+$theme = (isset($_COOKIE['theme']) && $_COOKIE['theme']) ? $_COOKIE['theme'] : $theme_default;
+$theme_path = JPATH_ROOT . '/templates/italiapa/build/build.' . $theme . '.css';
+
+if (!file_exists($theme_path)) {
+	$theme = 'italia';	
+}
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js ie89 ie8" lang="<?php echo $this->language; ?>"><![endif]-->
 <!--[if IE 9]><html class="no-js ie89 ie9" lang="<?php echo $this->language; ?>"><![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
-<html class="no-js" lang="<?php echo $this->language; ?>">
+<html class="no-js theme-<?php echo $theme; ?>" lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
 <!--<![endif]-->
 <head>
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -79,14 +87,10 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 		})();
 	</script>
 
-	<?php $theme = $this->params->get('theme', 'default'); ?>
-	<?php if ($theme != 'default') : ?>
-		<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.<?php echo $theme; ?>.css">
-	<?php elseif (file_exists(JPATH_ROOT . '/templates/italiapa/build/build.css')) : ?>
-		<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.css">	
-	<?php else: ?>
-		<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.italia.css">
-	<?php endif; ?>
+	<script>__DEFAULT_THEME__ = '<?php echo $theme_default; ?>'</script>
+	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.css">
+	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.<?php echo $theme; ?>.css" id="theme">
+
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/italiapa.css">
 	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/prism<?php echo $min; ?>.css">
@@ -136,17 +140,17 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 <header class="Header u-hiddenPrint<?php if ($this->params->get('headroom', 0)) echo ' Headroom--fixed js-Headroom Headroom Headroom--top Headroom--not-bottom" style="position: fixed; top: 0px;'; ?>">
 
 <?php if ($this->countModules('owner') || $this->countModules('languages')) : ?>
-<div class="Header-banner">
-	<div class="Header-owner Headroom-hideme">
+<div class="Header-banner Headroom-hideme">
 	<?php if ($this->countModules('owner')) : ?>
-		<jdoc:include type="modules" name="owner" />
+		<div class="Header-owner">
+			<jdoc:include type="modules" name="owner" />
+		</div>
 	<?php endif; ?> 
 	<?php if ($this->countModules('languages')) : ?>
 		<div class="Header-languages ">
 			<jdoc:include type="modules" name="languages" />
 		</div>
 	<?php endif; ?>
-	</div>
 </div>
 <?php endif; ?>
 
