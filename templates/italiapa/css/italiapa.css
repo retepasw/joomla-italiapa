@@ -220,9 +220,20 @@ svg.Icon-large {
 
 .Megamenu-item span[class*=" Icon-"], 
 .Megamenu-item span[class^=Icon-],
+.Megamenu-item svg[class^="Icon "],
+.Megamenu-item svg[class*=" Icon "], 
+.Megamenu-item svg[class$=" Icon"],
+.Megamenu-item svg[class=Icon],
 .Entrypoint-item span[class*=" Icon-"], 
 .Entrypoint-item span[class^=Icon-] {
-	padding-right: 1rem !important;
+	padding-right: .5em !important;
+}
+
+.Megamenu-item svg[class^="Icon "],
+.Megamenu-item svg[class*=" Icon "], 
+.Megamenu-item svg[class$=" Icon"],
+.Megamenu-item svg[class=Icon] {
+	width: 1.5em;
 }
 
 .Megamenu-area > a,
