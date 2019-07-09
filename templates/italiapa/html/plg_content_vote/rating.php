@@ -71,10 +71,10 @@ $rcount = (int) $row->rating_count;
 	.rating > legend {
 		display: inline-block;
 		color: currentColor;
-		font-size: 2rem;
+		font-size: 1.5rem;
 		float: right;
 		width: auto;
-		margin: 4px 0 0 16px;
+		margin-left: 16px;
 		font-weight: 500;
 	}
 
@@ -93,7 +93,7 @@ $rcount = (int) $row->rating_count;
 		</legend>
 		<?php for ($i = 5; $i > 0; $i--): ?>
 			<label class = "u-floatRight" for="content_vote_<?php echo (int) $row->id; ?>_<?php echo $i; ?>">
-				<svg class="Icon Icon-large<?php echo ($rating < $i ? ' blank' : '') ?>"><use xlink:href="#Icon-star-full"></use></svg>
+				<svg class="Icon<?php echo ($rating < $i ? ' blank' : '') ?>"><use xlink:href="#Icon-star-full"></use></svg>
 			</label>
 		<?php endfor; ?>
 	</fieldset>
