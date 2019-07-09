@@ -7,7 +7,7 @@
 		rights reserved.</copyright>
 	<authorEmail>info@eshiol.it</authorEmail>
 	<authorUrl>https://www.eshiol.it</authorUrl>
-	<version>3.8.0.12</version>
+	<version>3.8.0.13</version>
 	<description><![CDATA[
 		<h1>Template ItaliaPA for Joomla! 3.8</h1>
 		<p>Implementazione delle
@@ -30,6 +30,8 @@
 		<filename>favicon.ico</filename>
 		<filename>index.php</filename>
 		<filename>templateDetails.xml</filename>
+		<filename>template_preview.png</filename>
+		<filename>template_thumbnail.png</filename>
 	</files>
 	<languages folder="language">
 		<language tag="en-GB">en-GB/en-GB.tpl_italiapa.ini</language>
