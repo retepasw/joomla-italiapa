@@ -1775,7 +1775,6 @@ ul {
 }
 
 .Footer-block ul,
-.Footer-links,
 .Form-fieldset>legend,
 .Forward--floating,
 .Header-banner,
@@ -3517,7 +3516,6 @@ ul {
 .Accordion--default .Accordion-header,
 .Accordion--plus .Accordion-header,
 .Footer-block li,
-.Footer-links,
 .Footer-subBlock,
 .Leads-link,
 .Linklist li,
@@ -4308,7 +4306,6 @@ ul {
     margin-top: 2rem !important
 }
 
-.Footer-links,
 .u-margin-top-l {
     margin-top: 2.4rem !important
 }
@@ -4437,7 +4434,6 @@ ul {
     padding-left: 0 !important
 }
 
-.Header-socialIcons,
 .Header-titleLink a,
 .u-padding-left-xxs {
     padding-left: .4rem !important

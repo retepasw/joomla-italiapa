@@ -373,17 +373,17 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 			</div>
 			<?php endif; ?>
 
-			<div class="Grid Grid--withGutter">
 			<?php if ($this->countModules('footer')) : ?>
-				<jdoc:include type="modules" name="footer" style="lg" />
+				<div class="Grid Grid--withGutter">
+					<jdoc:include type="modules" name="footer" style="lg" />
+				</div>
 			<?php endif; ?>
-			</div>
 
-			<div class="Grid Grid--withGutter">
 			<?php if ($this->countModules('footermenu')) : ?>
-				<jdoc:include type="modules" name="footermenu" style="none" />
+				<div class="Grid Grid--withGutter u-border-top-xxs">
+					<jdoc:include type="modules" name="footermenu" style="none" />
+				</div>
 			<?php endif; ?>
-			</div>
 		</footer>
 <?php endif; ?>
 
