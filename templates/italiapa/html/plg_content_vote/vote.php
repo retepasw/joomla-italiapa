@@ -35,24 +35,24 @@ $uri->setVar('hitcount', '0');
 	.rating svg.Icon.blank:hover {
 	    fill: currentColor;
 	}
-	
+
 	.rating > label:hover {
 	    cursor: pointer;
 	}
-	
+
 	.rating > label:hover svg {
 	    -webkit-transform: scale(1.1);
 	    transform: scale(1.1);
 	}
-	
+
 	.rating svg:hover {
 		cursor: pointer;
 	}
-	
+
 	.rating svg:hover svg {
 		transform: scale(1.1);
 	}
-	
+
 	.rating:not(:checked)>label:hover svg,
 	.rating:not(:checked)>label:hover~label svg,
 	.rating>input:checked+label:hover+svg,
@@ -69,7 +69,7 @@ $uri->setVar('hitcount', '0');
 		<input type="radio" id="content_vote_<?php echo (int) $row->id; ?>_<?php echo $i; ?>" name="user_rating" value="<?php echo $i; ?>"
 			onchange="Joomla.submitform('article.vote', document.getElementById('voteForm'), false);"<?php echo $rating == $i ? ' checked' : ''; ?>/>
 	<?php endfor; ?>
-	
+
 	<input type="hidden" name="task" value="article.vote" />
 	<input type="hidden" name="hitcount" value="0" />
 	<input type="hidden" name="url" value="<?php echo htmlspecialchars($uri->toString(), ENT_COMPAT, 'UTF-8'); ?>" />

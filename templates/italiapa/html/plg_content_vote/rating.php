@@ -42,28 +42,32 @@ $rcount = (int) $row->rating_count;
 	  border: none;
 	  float: left;
 	}
-	
+
 	.rating > input {
 		position: absolute;
 		left: -9999px;
 	}
-	
+
 	.rating > label {
 		float: right;
 		margin: 0 2px 0 0;
 		margin: 0;
 		padding-right: 2px;
 	}
-	
+
 	.rating > label:first-of-type {
 		margin-right: 0;
 	}
-	
+
+	.rating svg {
+		pointer-events: none;
+	}
+
 	.rating svg.Icon.blank {
 	    stroke-width: 1px;
 	    fill: transparent;
 	}
-	
+
 	.rating > legend {
 		display: inline-block;
 		color: currentColor;
@@ -73,7 +77,7 @@ $rcount = (int) $row->rating_count;
 		margin: 4px 0 0 16px;
 		font-weight: 500;
 	}
-	
+
 	.rating.rating-read-only > input,
 	.rating.rating-read-only > label {
 		pointer-events: none;
