@@ -23,13 +23,14 @@ if ($module->position == 'socials') :
 	require 'ul.php';
 elseif ($module->position == 'footermenu') :
 	$moduleclass_pfx = 'Footer-links ';
+	$textclass = '';
 	require 'ul.php';
 else :
 ?>
 	<a href="<?php echo $link; ?>" class="syndicate-module<?php echo $moduleclass_sfx; ?>">
 		<span class="Icon-rss Icon"></span>
 		<?php if ($params->get('display_text', 1)) : ?>
-			<span<?php echo $textclass ? ' class="' . $textclass .  '"' : ''; ?>>
+			<span>
 			<?php if (str_replace(' ', '', $text) !== '') : ?>
 				<?php echo $text; ?>
 			<?php else : ?>

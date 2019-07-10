@@ -23,7 +23,7 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 		<a href="<?php echo $link; ?>">
 			<span class="Icon-rss Icon"></span>
 			<?php if ($params->get('display_text', 1)) : ?>
-				<span<?php echo $textclass ? ' class="' . $textclass .  '"' : ''; ?>>
+				<span<?php echo isset($textclass) && $textclass ? ' class="' . $textclass .  '"' : ''; ?>>
 				<?php if (str_replace(' ', '', $text) !== '') : ?>
 					<?php echo $text; ?>
 				<?php else : ?>
