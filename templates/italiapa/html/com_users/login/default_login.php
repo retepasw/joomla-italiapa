@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -19,6 +19,8 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 JHtml::_('behavior.keepalive');
 JHtml::_('behavior.formvalidator');
+
+$trusted = (JPluginHelper::isEnabled('twofactorauth', 'trust') && PlgTwofactorauthTrust::checkCookie());
 ?>
 
 <div class="login<?php echo $this->pageclass_sfx; ?>">
@@ -67,22 +69,57 @@ JHtml::_('behavior.formvalidator');
 			$password->class = 'Form-input ' . $password->class;
 			echo $password->renderField();
 
-			if ($this->tfa)
-			{
+			if ($this->tfa) :
+			/*
 				$secretkey = $this->form->getField('secretkey');
 				$secretkey->class = 'Form-input ' . $secretkey->class;
+				$secretkey->readonly = 'readonly';
+				$secretkey->placeholder = JText::_('PLG_TWOFACTORAUTH_TRUST_TRUSTED_DEVICE');
+				JFactory::getApplication()->enqueueMessage('<pre>'.print_r($secretkey, true).'</pre>');
 				echo '<div class="Form-field">' . $secretkey->renderField() . '</div>';
-			}
+			*/
 			?>
+				<div class="Form-field">
+					<div class="control-group">
+						<div class="control-label">
+							<?php if ($trusted) : ?>
+								<div class="u-floatRight">
+									<a href="#" onclick="plg_twofactorauth_trust_untrust(this)">
+										<?php echo JText::_('PLG_TWOFACTORAUTH_TRUST_UNTRUST_THIS_DEVICE'); ?>
+										<svg class="u-text-r-m Icon Icon-unlink" style="margin-right: 0.25em;"><use xlink:href="#Icon-unlink"></use></svg>
+										<span class="u-hiddenVisually"><?php echo JText::_('PLG_TWOFACTORAUTH_TRUST_UNTRUST_THIS_DEVICE'); ?></span>
+										</a>
+								</div>
+							<?php endif; ?>
+							<label id="secretkey-lbl" for="secretkey" class="Form-label">Secret Key</label>
+							<span class="optional">(optional)</span>
+						</div>
+						<div class="controls">
+							<input type="text" name="secretkey" id="secretkey" value="" class="Form-input Form-input" size="25"
+							<?php echo $trusted ? 'readonly' : ''; ?> 
+							placeholder="<?php echo JText::_($trusted ? 'PLG_TWOFACTORAUTH_TRUST_TRUSTED_DEVICE' : 'JGLOBAL_SECRETKEY'); ?>"
+							aria-invalid="false">
+						</div>
+					</div>
+				</div>
+			<?php endif; ?>			
 		</fieldset>
 
+		<?php if (JPluginHelper::isEnabled('twofactorauth', 'trust') && !PlgTwofactorauthTrust::checkCookie()) : ?>
+			<fieldset id="form-login-trust" class="Form-field Form-field--choose Grid-cell">
+				<label class="Form-label" for="modlgn-trust">
+				<input type="checkbox" class="Form-input" id="modlgn-trust" name="trust">
+				<span class="Form-fieldIcon" role="presentation"></span><?php echo JText::_('PLG_TWOFACTORAUTH_TRUST_TRUST_THIS_DEVICE'); ?></label>
+			</fieldset>		
+		<?php endif; ?>
+
 		<?php if (JPluginHelper::isEnabled('system', 'remember')) : ?>
-		<fieldset class="Form-field Form-field--choose Grid-cell">
-		<label class="Form-label<?php // Form-label--block ?>" for="remember">
-		<input type="checkbox" class="Form-input" id="remember">
-		<span class="Form-fieldIcon" role="presentation"></span> <?php echo JText::_('COM_USERS_LOGIN_REMEMBER_ME') ?>
-		</label>
-		</fieldset>
+			<fieldset class="Form-field Form-field--choose Grid-cell">
+				<label class="Form-label<?php // Form-label--block ?>" for="remember">
+					<input type="checkbox" class="Form-input" id="remember">
+					<span class="Form-fieldIcon" role="presentation"></span> <?php echo JText::_('COM_USERS_LOGIN_REMEMBER_ME') ?>
+				</label>
+			</fieldset>
 		<?php endif; ?>
 
 		<?php 
