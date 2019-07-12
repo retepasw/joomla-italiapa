@@ -20,6 +20,41 @@ JHtml::_('bootstrap.popover');
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 JLog::add(new JLogEntry($module->position, JLog::DEBUG, 'tpl_italiapa'));
 
+function hierarchical_array_from_array ($farray)
+{
+	$tree = array();
+	$nodes = array();
+
+	foreach ($farray as $node)
+	{
+		$node->child = array();
+		$node->cols = 1;
+		$node->depth = 1;
+		//		$node->grandchild = array();
+		if (!array_key_exists($node->parent_id, $nodes))
+		{
+			$tree[$node->id] = $node;
+			$nodes[$node->id] = $node;
+		}
+		else
+		{
+			$nodes[$node->parent_id]->child[] = $node;
+			$nodes[$node->parent_id]->depth = max(array_map(function($o) { return $o->depth; }, $nodes[$node->parent_id]->child)) + 1;
+
+			if (($node->type == 'separator') && ($node->anchor_css == 'megacolumn'))
+			{
+				$nodes[$node->parent_id]->cols = $nodes[$node->parent_id]->cols + 1;
+			}
+
+			$nodes[$node->id] = $node;
+		}
+	}
+
+	return $tree;
+}
+
+$menu = hierarchical_array_from_array($list);
+
 $id = '';
 
 if ($tagId = $params->get('tag_id', ''))
@@ -42,10 +77,10 @@ foreach ($list as $i => &$item)
 	$item->level = $item->level - $params->get('startLevel', 1) + 1;
 	JLog::add(new JLogEntry(print_r($item, true), JLog::DEBUG, 'tpl_italiapa'));
 	ob_start();
-	
+
 	$class = ' item-' . $item->id;
 	$subclass = '';
-	
+
 	if ($item->id == $default_id)
 	{
 		$class .= ' default';
@@ -109,7 +144,7 @@ foreach ($list as $i => &$item)
 	{
 		$class = 'Megamenu-item' . $class;
 	}
-	
+
 	if (preg_match_all('/(^|\s)Icon-/', $item->menu_image_css, $matches, PREG_SET_ORDER, 0))
 	{
 		$icon = '';
@@ -131,7 +166,7 @@ foreach ($list as $i => &$item)
 			}
 		}
 		$item->menu_image_css = implode(' ', $menu_image_css);
-		
+
 		if ($svg)
 		{
 			$icon = '<svg class="' . trim($icon . ' ' . $item->menu_image_css) . '"><use xlink:href="#' . trim($svg) . '"></use></svg>';
@@ -140,7 +175,7 @@ foreach ($list as $i => &$item)
 		{
 			$icon = '<span class="' . trim($icon . ' ' . $item->menu_image_css) . '"></span>';
 		}
-	}	
+	}
 
 	JLog::add(new JLogEntry('class: '.$class, JLog::DEBUG, 'tpl_italiapa'));
 	JLog::add(new JLogEntry('subclass: '.$subclass, JLog::DEBUG, 'tpl_italiapa'));
@@ -155,16 +190,15 @@ foreach ($list as $i => &$item)
 	}
 	elseif ($item->level == 2)
 	{
-		if ($item->deeper)
+		if (($item->deeper) || ($menu[$item->parent_id]->depth > 2))
 		{
 			echo '<ul class="Megamenu-subnavGroup">';
 		}
 		elseif ($item->parent_id != $parent_id)
 		{
-			echo '<ul>';
+			echo '<ul class="Megamenu-subnavGroup">';
 			$parent_id = $item->parent_id;
 		}
-
 		echo '<li' . ($subclass ? ' class="' . $subclass . '"' : '') . '>';
 	}
 	else 
@@ -173,7 +207,7 @@ foreach ($list as $i => &$item)
 	}
 	if ($icon)
 	{
-		echo $icon;	
+		echo $icon;
 	}
 
 	switch ($item->type) :
@@ -225,7 +259,7 @@ foreach ($list as $i => &$item)
 	elseif ($item->level == 2)
 	{
 		echo '</li>';
-		if ($item->shallower)
+		if (($item->shallower) || ($menu[$item->parent_id]->depth > 2))
 		{
 			echo '</ul>';
 		}
@@ -234,7 +268,7 @@ foreach ($list as $i => &$item)
 	{
 		echo '</li>';
 	}
-	
+
 	$buffer = ob_get_flush();
 	JLog::add(new JLogEntry($buffer, JLog::DEBUG, 'tpl_italiapa'));
 }
