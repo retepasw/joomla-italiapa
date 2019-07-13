@@ -20,7 +20,9 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 JHtml::_('behavior.keepalive');
 JHtml::_('behavior.formvalidator');
 
-$trusted = (JPluginHelper::isEnabled('twofactorauth', 'trust') && PlgTwofactorauthTrust::checkCookie());
+$trusted = (JPluginHelper::isEnabled('twofactorauth', 'trust') 
+		&& PlgTwofactorauthTrust::isActive()
+		&& PlgTwofactorauthTrust::checkCookie());
 ?>
 
 <div class="login<?php echo $this->pageclass_sfx; ?>">
@@ -84,7 +86,7 @@ $trusted = (JPluginHelper::isEnabled('twofactorauth', 'trust') && PlgTwofactorau
 						<div class="control-label">
 							<?php if ($trusted) : ?>
 								<div class="u-floatRight">
-									<a href="#" onclick="plg_twofactorauth_trust_untrust(this)">
+									<a href="#" class="2fa-untrust">
 										<?php echo JText::_('PLG_TWOFACTORAUTH_TRUST_UNTRUST_THIS_DEVICE'); ?>
 										<svg class="u-text-r-m Icon Icon-unlink" style="margin-right: 0.25em;"><use xlink:href="#Icon-unlink"></use></svg>
 										<span class="u-hiddenVisually"><?php echo JText::_('PLG_TWOFACTORAUTH_TRUST_UNTRUST_THIS_DEVICE'); ?></span>
@@ -97,7 +99,7 @@ $trusted = (JPluginHelper::isEnabled('twofactorauth', 'trust') && PlgTwofactorau
 						<div class="controls">
 							<input type="text" name="secretkey" id="secretkey" value="" class="Form-input Form-input" size="25"
 							<?php echo $trusted ? 'readonly' : ''; ?> 
-							placeholder="<?php echo JText::_($trusted ? 'PLG_TWOFACTORAUTH_TRUST_TRUSTED_DEVICE' : 'JGLOBAL_SECRETKEY'); ?>"
+							placeholder="<?php echo $trusted ? JText::_('PLG_TWOFACTORAUTH_TRUST_TRUSTED_DEVICE') : ''; ?>"
 							aria-invalid="false">
 						</div>
 					</div>
@@ -105,10 +107,10 @@ $trusted = (JPluginHelper::isEnabled('twofactorauth', 'trust') && PlgTwofactorau
 			<?php endif; ?>			
 		</fieldset>
 
-		<?php if (JPluginHelper::isEnabled('twofactorauth', 'trust') && !PlgTwofactorauthTrust::checkCookie()) : ?>
-			<fieldset id="form-login-trust" class="Form-field Form-field--choose Grid-cell">
-				<label class="Form-label" for="modlgn-trust">
-				<input type="checkbox" class="Form-input" id="modlgn-trust" name="trust">
+		<?php if (JPluginHelper::isEnabled('twofactorauth', 'trust') && PlgTwofactorauthTrust::isActive()) : ?>
+			<fieldset id="form-login-trust" class="Form-field Form-field--choose Grid-cell<?php echo PlgTwofactorauthTrust::checkCookie() ? ' u-hiddenVisually' : ''; ?>">
+				<label class="Form-label" for="trust">
+				<input type="checkbox" class="Form-input" id="trust" name="trust"<?php echo PlgTwofactorauthTrust::checkCookie() ? ' checked' : ''; ?>>
 				<span class="Form-fieldIcon" role="presentation"></span><?php echo JText::_('PLG_TWOFACTORAUTH_TRUST_TRUST_THIS_DEVICE'); ?></label>
 			</fieldset>		
 		<?php endif; ?>
@@ -116,7 +118,7 @@ $trusted = (JPluginHelper::isEnabled('twofactorauth', 'trust') && PlgTwofactorau
 		<?php if (JPluginHelper::isEnabled('system', 'remember')) : ?>
 			<fieldset class="Form-field Form-field--choose Grid-cell">
 				<label class="Form-label<?php // Form-label--block ?>" for="remember">
-					<input type="checkbox" class="Form-input" id="remember">
+					<input type="checkbox" class="Form-input" id="remember" name="remember">
 					<span class="Form-fieldIcon" role="presentation"></span> <?php echo JText::_('COM_USERS_LOGIN_REMEMBER_ME') ?>
 				</label>
 			</fieldset>
