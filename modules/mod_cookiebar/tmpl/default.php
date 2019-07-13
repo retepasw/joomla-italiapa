@@ -22,7 +22,7 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 <div id="cookie-bar" class="CookieBar js-CookieBar u-background-95 u-padding-r-all" aria-hidden="true">
 	<p class="u-color-white u-text-r-xs u-lineHeight-m u-padding-r-bottom"><?php echo $text; ?></p>
 	<p>
-		<?php if ($params->get('decline', 1)) : ?>
+		<?php if ($params->get('decline', 0)) : ?>
 			<button class="Button Button--danger u-text-r-xxs js-cookieBarDecline u-inlineBlock u-margin-r-all"><?php echo JText::_('MOD_COOKIEBAR_DECLINE'); ?></button>
 		<?php endif; ?>
 		<button class="Button Button--default u-text-r-xxs js-cookieBarAccept u-inlineBlock u-margin-r-all"><?php echo JText::_('MOD_COOKIEBAR_ACCEPT'); ?></button>

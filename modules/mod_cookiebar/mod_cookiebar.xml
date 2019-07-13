@@ -24,7 +24,7 @@
     <language tag="it-IT">it-IT/it-IT.mod_cookiebar.sys.ini</language>
   </languages>
   <config>
-    <fields name="params" addfieldpath="/administrator/components/com_content/models/fields">      <fieldset name="basic">        <field name="text" type="textarea" label="MOD_COOKIEBAR_FIELD_TEXT_LABEL" description="MOD_COOKIEBAR_FIELD_TEXT_DESC"/>        <field name="articleid" type="modal_article" label="MOD_COOKIEBAR_FIELD_POLICY_LABEL" description="MOD_COOKIEBAR_FIELD_POLICY_DESC"/>        <field name="decline" type="radio" class="btn-group btn-group-yesno" default="1" description="MOD_COOKIEBAR_FIELD_DECLINE_DESC" label="MOD_COOKIEBAR_FIELD_DECLINE_LABEL">
+    <fields name="params" addfieldpath="/administrator/components/com_content/models/fields">      <fieldset name="basic">        <field name="text" type="textarea" label="MOD_COOKIEBAR_FIELD_TEXT_LABEL" description="MOD_COOKIEBAR_FIELD_TEXT_DESC"/>        <field name="articleid" type="modal_article" label="MOD_COOKIEBAR_FIELD_POLICY_LABEL" description="MOD_COOKIEBAR_FIELD_POLICY_DESC"/>        <field name="decline" type="radio" class="btn-group btn-group-yesno" default="0" description="MOD_COOKIEBAR_FIELD_DECLINE_DESC" label="MOD_COOKIEBAR_FIELD_DECLINE_LABEL">
           <option value="1">JYES</option>
           <option value="0">JNO</option>
         </field>

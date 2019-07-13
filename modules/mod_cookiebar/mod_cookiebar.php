@@ -31,7 +31,7 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'mod_cookiebar'));
 JLoader::register('ContentHelperRoute', JPATH_ROOT . '/components/com_content/helpers/route.php');
 
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8');
-$text = $params->get('text', JText::_('MOD_COOKIEBAR_FIELD_TEXT_DESC'));
+$text = $params->get('text', JText::_('MOD_COOKIEBAR_FIELD_TEXT'));
 
 $item = JTable::getInstance('Content', 'JTable');
 $item->load($params->get('articleid'));
