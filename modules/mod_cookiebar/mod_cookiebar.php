@@ -2,7 +2,7 @@
 /**
  * @package		Template ItaliaPA
  * @subpackage	mod_cookiebar
- * @version		3.8.1
+ * @version		3.8.2
  * @since		3.8
  *
  * @author		Helios Ciancio <info@eshiol.it>

@@ -27,7 +27,7 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 		<?php endif; ?>
 		<button class="Button Button--default u-text-r-xxs js-cookieBarAccept u-inlineBlock u-margin-r-all"><?php echo JText::_('MOD_COOKIEBAR_ACCEPT'); ?></button>
 		<?php if ($item->id): ?>
-		<a href="<?php echo  $item->link; ?>" class="u-text-r-xs u-color-teal-50"><?php echo JText::_('MOD_COOKIEBAR_POLICY'); ?></a>
+			<a href="<?php echo  $item->link; ?>" class="u-text-r-xs u-color-teal-50"><?php echo JText::_('MOD_COOKIEBAR_POLICY'); ?></a>
 		<?php endif; ?>
 	</p>
 </div>
