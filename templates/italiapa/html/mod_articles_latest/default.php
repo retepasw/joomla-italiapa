@@ -17,19 +17,26 @@ defined('_JEXEC') or die;
 
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 ?>
-<?php if (!empty($list)) : ?>
-	<ul class="latestnews<?php echo $moduleclass_sfx; ?> mod-list" itemscope itemtype="http://schema.org/ItemList">
-		<?php $i = 1; ?>
-		<?php foreach ($list as $item) : ?>
-			<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-				<meta itemprop="position" content="<?php echo $i++; ?>"/>
-				<a href="<?php echo $item->link; ?>" itemprop="url">
-					<span itemprop="name">
-						<?php echo $item->title; ?>
-					</span>
-				</a>
-			</li>
-		<?php endforeach; ?>
-	</ul>
-<?php endif; ?>
 
+<?php if ($module->position == 'owner') : ?>
+	<?php require 'dropdown.php'; ?>
+<?php elseif ($module->position == 'languages') : ?>
+	<?php $moduleclass_sfx .= ' u-padding-top-s'; ?>
+	<?php require 'dropdown.php'; ?>
+<?php elseif ($module->position == 'right') : ?>
+	<?php require 'linklist.php'; ?>
+<?php elseif ($module->position == 'services') : ?>
+	<?php require 'linklist.php'; ?>
+<?php elseif ($module->position == 'featured') : ?>
+	<?php require 'entrypoint.php'; ?>
+<?php elseif ($module->position == 'news') : ?>
+	<?php require 'linklist.php'; ?>
+<?php elseif ($module->position == 'lead') : ?>
+	<?php require 'lead.php'; ?>
+<?php elseif ($module->position == 'footermenu') : ?>
+	<?php $moduleclass_sfx .= ' Footer-links u-cf'; ?> 
+	<?php require 'list.php'; ?>
+<?php else : ?>
+	<?php require 'list.php'; ?>
+<?php endif; ?>
+	

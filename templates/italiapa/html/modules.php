@@ -36,7 +36,7 @@ function modChrome_lg($module, &$params, &$attribs)
     $headerTag	  = htmlspecialchars($params->get('header_tag', 'h3'), ENT_COMPAT, 'UTF-8');
     $headerClass	= htmlspecialchars($params->get('header_class'), ENT_COMPAT, 'UTF-8');
     JLog::add(new JLogEntry($moduleClass, JLog::DEBUG, 'tpl_italiapa'));
-
+    
     if ($module->position == 'menu')
     {
         $moduleTag   = 'nav';
@@ -48,6 +48,17 @@ function modChrome_lg($module, &$params, &$attribs)
     }
     elseif ($module->position == 'lead')
     {
+    	$moduleClass = explode(' ', $moduleClass);
+    	for ($i = count($moduleClass) - 1; $i >= 0; $i--)
+    	{
+    		if ((substr($moduleClass[$i], 0, 6) == 'u-size') || (substr($moduleClass[$i], 4, 5) == '-size'))
+    		{
+    			$li_css = $moduleClass[$i] . ' ' . $li_css;
+    			unset($moduleClass[$i]);
+    		}
+    	}
+    	$moduleClass = implode(' ', $moduleClass);
+
         $moduleTag   = 'section';
         $moduleClass1 = 'u-padding-r-top u-padding-r-bottom '.$moduleClass;
         $headerTag   = 'h2';
@@ -94,10 +105,12 @@ function modChrome_lg($module, &$params, &$attribs)
 
         // Get module parameters
         //$params = new Registry($module->params);
-        
+
         if ((bool) $module->showtitle)
         {
-            if (($module->position == 'right') || ($params->get('layout') == 'italiapa:linklist'))
+            if (($params->get('layout') == 'italiapa:linklist')
+            		|| ($module->position == 'right') &&  ($params->get('layout') == '_:default')
+            		|| ($module->position == 'services') &&  ($params->get('layout') == '_:default'))
             {
                 $div .= '<h3 ' . ($headerClass ? $headerClass : 'class="u-border-bottom-m"') . '>';
                 $div .= '<span class="u-block u-text-h3 ' . ($moduleClass ? $moduleClass : 'u-color-60') . ' u-textClean">' . $module->title . '</span></h3>';
