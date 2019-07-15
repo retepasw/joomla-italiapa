@@ -26,7 +26,7 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 	</a>
 	<div id="module_<?php echo $module->id; ?>" data-menu="" class="Dropdown-menu Header-language-other u-jsVisibilityHidden u-nojsDisplayNone" x-placement="bottom" role="menu" aria-hidden="true" style="position: absolute; transform: translate3d(1323px, -245px, 0px); top: 0px; left: 0px; will-change: transform;">
 		<span class="Icon-drop-down Dropdown-arrow u-color-white" style="left: 58px;"></span>
-		<ul class="latestnews<?php echo $moduleclass_sfx; ?> mod-list" itemscope itemtype="http://schema.org/ItemList">
+		<ul class="archive-module<?php echo $moduleclass_sfx; ?> mod-list" itemscope itemtype="http://schema.org/ItemList">
 			<?php $i = 1; ?>
 			<?php foreach ($list as $item) : ?>
 				<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
