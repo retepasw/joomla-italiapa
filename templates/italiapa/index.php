@@ -159,7 +159,7 @@ if (!file_exists($theme_path)) {
 	<div class="u-layout-wide Grid Grid--alignMiddle u-layoutCenter">
 		<?php if ($logo = $this->params->get('logo')) : ?>
 		<div class="Header-logo Grid-cell" aria-hidden="true">
-			<a href="<?php echo $this->baseurl; ?>/" tabindex="-1">
+			<a href="<?php echo $this->baseurl; ?>/" itemprop="url">
 				<img src="<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>">
 			</a>
 		</div>
@@ -360,7 +360,7 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 				<div itemscope itemtype="http://schema.org/<?php echo $params->get('schema_org', 'Organization'); ?>" class="u-cf">
 			<?php endif; ?>				
 					<?php if ($logo) : ?>
-					<a href="<?php echo $this->baseurl; ?>/" tabindex="-1" itemprop="url">
+					<a href="<?php echo $this->baseurl; ?>/" itemprop="url">
 						<img class="Footer-logo" src="<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>" itemprop="logo">
 					</a>
 					<?php endif; ?>
@@ -411,5 +411,6 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 <script src="<?php echo $this->baseurl ?>/templates/italiapa/build/IWT.min.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/italiapa/js/italiapa<?php echo $min; ?>.js"></script>
 
+	<jdoc:include type="modules" name="debug" style="none" />
 </body>
 </html>
