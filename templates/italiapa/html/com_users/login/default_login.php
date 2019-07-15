@@ -23,6 +23,8 @@ JHtml::_('behavior.formvalidator');
 $trusted = (JPluginHelper::isEnabled('twofactorauth', 'trust') 
 		&& PlgTwofactorauthTrust::isActive()
 		&& PlgTwofactorauthTrust::checkCookie());
+
+JText::script('TPL_ITALIAPA_UNTRUST_THIS_BROWSER');
 ?>
 
 <div class="login<?php echo $this->pageclass_sfx; ?>">
@@ -76,7 +78,7 @@ $trusted = (JPluginHelper::isEnabled('twofactorauth', 'trust')
 				$secretkey = $this->form->getField('secretkey');
 				$secretkey->class = 'Form-input ' . $secretkey->class;
 				$secretkey->readonly = 'readonly';
-				$secretkey->placeholder = JText::_('PLG_TWOFACTORAUTH_TRUST_TRUSTED_DEVICE');
+				$secretkey->placeholder = JText::_('PLG_TWOFACTORAUTH_TRUST_TRUSTED_BROWSER');
 				JFactory::getApplication()->enqueueMessage('<pre>'.print_r($secretkey, true).'</pre>');
 				echo '<div class="Form-field">' . $secretkey->renderField() . '</div>';
 			*/
@@ -87,9 +89,9 @@ $trusted = (JPluginHelper::isEnabled('twofactorauth', 'trust')
 							<?php if ($trusted) : ?>
 								<div class="u-floatRight">
 									<a href="#" class="2fa-untrust">
-										<?php echo JText::_('PLG_TWOFACTORAUTH_TRUST_UNTRUST_THIS_DEVICE'); ?>
+										<?php echo JText::_('TPL_ITALIAPA_UNTRUST_THIS_BROWSER'); ?>
 										<svg class="u-text-r-m Icon Icon-unlink" style="margin-right: 0.25em;"><use xlink:href="#Icon-unlink"></use></svg>
-										<span class="u-hiddenVisually"><?php echo JText::_('PLG_TWOFACTORAUTH_TRUST_UNTRUST_THIS_DEVICE'); ?></span>
+										<span class="u-hiddenVisually"><?php echo JText::_('TPL_ITALIAPA_UNTRUST_THIS_BROWSER'); ?></span>
 										</a>
 								</div>
 							<?php endif; ?>
@@ -99,7 +101,7 @@ $trusted = (JPluginHelper::isEnabled('twofactorauth', 'trust')
 						<div class="controls">
 							<input type="text" name="secretkey" id="secretkey" value="" class="Form-input Form-input" size="25"
 							<?php echo $trusted ? 'readonly' : ''; ?> 
-							placeholder="<?php echo $trusted ? JText::_('PLG_TWOFACTORAUTH_TRUST_TRUSTED_DEVICE') : ''; ?>"
+							placeholder="<?php echo $trusted ? JText::_('PLG_TWOFACTORAUTH_TRUST_TRUSTED_BROWSER') : ''; ?>"
 							aria-invalid="false">
 						</div>
 					</div>
@@ -108,10 +110,10 @@ $trusted = (JPluginHelper::isEnabled('twofactorauth', 'trust')
 		</fieldset>
 
 		<?php if (JPluginHelper::isEnabled('twofactorauth', 'trust') && PlgTwofactorauthTrust::isActive()) : ?>
-			<fieldset id="form-login-trust" class="Form-field Form-field--choose Grid-cell<?php echo PlgTwofactorauthTrust::checkCookie() ? ' u-hiddenVisually' : ''; ?>">
+			<fieldset id="form-login-trust" class="Form-field Form-field--choose Grid-cell">
 				<label class="Form-label" for="trust">
-				<input type="checkbox" class="Form-input" id="trust" name="trust"<?php echo PlgTwofactorauthTrust::checkCookie() ? ' checked' : ''; ?>>
-				<span class="Form-fieldIcon" role="presentation"></span><?php echo JText::_('PLG_TWOFACTORAUTH_TRUST_TRUST_THIS_DEVICE'); ?></label>
+				<input type="checkbox" class="Form-input" id="trust" name="trust" value="yes"<?php echo $trusted ? ' checked onclick="return false;"' : ''; ?>>
+				<span class="Form-fieldIcon" role="presentation"></span><?php echo JText::_('PLG_TWOFACTORAUTH_TRUST_TRUSTED_BROWSER'); ?></label>
 			</fieldset>		
 		<?php endif; ?>
 
