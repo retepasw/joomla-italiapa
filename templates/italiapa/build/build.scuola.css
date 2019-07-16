@@ -329,8 +329,7 @@ mark {
     background-color: #51758d
 }
 
-.Header-owner>a,
-.Header-owner>span {
+.Header-owner>* {
     color: #fff
 }
 
