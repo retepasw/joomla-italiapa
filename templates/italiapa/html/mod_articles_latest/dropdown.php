@@ -21,7 +21,9 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 <?php if (!empty($list)) : ?>
 <div class="latestnews<?php echo $moduleclass_sfx; ?> mod-list">
 	<a href="#module_<?php echo $module->id; ?>" data-menu-trigger="module_<?php echo $module->id; ?>" class="Header-language u-border-none u-zindex-max u-inlineBlock" aria-controls="module_<?php echo $module->id; ?>" aria-haspopup="true" role="button">
-		<?php echo $module->title; ?>
+		<?php if ($module->showtitle) : ?>
+			<?php echo $module->title; ?>
+		<?php endif; ?>
 		<span class="Icon Icon-expand u-padding-left-xs"></span>
 	</a>
 	<div id="module_<?php echo $module->id; ?>" data-menu="" class="Dropdown-menu Header-language-other u-jsVisibilityHidden u-nojsDisplayNone" x-placement="bottom" role="menu" aria-hidden="true" style="position: absolute; transform: translate3d(1323px, -245px, 0px); top: 0px; left: 0px; will-change: transform;">
