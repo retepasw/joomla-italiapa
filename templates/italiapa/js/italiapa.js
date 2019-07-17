@@ -74,5 +74,8 @@
 		    });
     		$('html').addClass('theme-' + theme);
 		}
+		
+		// merge footer menus
+		$('footer ul.Footer-links:gt(0)').remove().children('li').appendTo('footer ul.Footer-links:eq(0)');
 	});
 })(jQuery);
