@@ -15,16 +15,22 @@
 
 defined('_JEXEC') or die;
 
-foreach ($list as $item) : ?>
-	<li <?php if ($_SERVER['REQUEST_URI'] === JRoute::_(ContentHelperRoute::getCategoryRoute($item->id))) echo ' class="active"'; ?>> <?php $levelup = $item->level - $startLevel - 1; ?>
-		<!-- <h<?php echo $params->get('item_heading') + $levelup; ?>> -->
-		<a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($item->id)); ?>">
-		<?php echo $item->title; ?>
+$itemClass = !empty($itemClass) ? $itemClass : '';
+$linkClass = !empty($linkClass) ? $linkClass : '';
+?>
+
+<?php foreach ($list as $item) : ?>
+	<?php $class = trim($itemClass . (($_SERVER['REQUEST_URI'] === JRoute::_(ContentHelperRoute::getCategoryRoute($item->id))) ? ' active' : '')); ?> 
+	<?php $levelup = $item->level - $startLevel - 1; ?>
+	<li<?php echo $class ? ' class="' . $class . '"' : ''; ?>>
+		<a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($item->id)); ?>"<?php echo $linkClass ? ' class="' . $linkClass . '"' : ''; ?>>
+			<span itemprop="name">
+				<?php echo $item->title; ?>
+			</span>
 			<?php if ($params->get('numitems')) : ?>
 				(<?php echo $item->numitems; ?>)
 			<?php endif; ?>
 		</a>
-   		<!-- </h<?php echo $params->get('item_heading') + $levelup; ?>> -->
 
 		<?php if ($params->get('show_description', 0)) : ?>
 			<?php echo JHtml::_('content.prepare', $item->description, $item->getParams(), 'mod_articles_categories.content'); ?>
@@ -35,7 +41,7 @@ foreach ($list as $item) : ?>
 			<?php echo '<ul>'; ?>
 			<?php $temp = $list; ?>
 			<?php $list = $item->getChildren(); ?>
-			<?php require JModuleHelper::getLayoutPath('mod_articles_categories', $params->get('layout', 'default') . '_items'); ?>
+			<?php require JModuleHelper::getLayoutPath('mod_articles_categories', basename(__FILE__)); ?>
 			<?php $list = $temp; ?>
 			<?php echo '</ul>'; ?>
 		<?php endif; ?>
