@@ -196,7 +196,7 @@ foreach ($list as $i => &$item)
 		}
 		elseif ($item->parent_id != $parent_id)
 		{
-			echo '<ul class="Megamenu-subnavGroup">';
+			echo '<ul>';
 			$parent_id = $item->parent_id;
 		}
 		echo '<li' . ($subclass ? ' class="' . $subclass . '"' : '') . '>';
