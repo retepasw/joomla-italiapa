@@ -36,8 +36,8 @@ if ($module->position == 'footer')
 	<form action="<?php echo JRoute::_('index.php'); ?>" method="post" class="Form">
 		<div class="Form-field Form-field--withPlaceholder Grid" role="search">
 		<?php
-			$output = '<input name="searchword" class="Form-input Grid-cell u-sizeFill u-text-r-s" required="" id="mod-search-searchword' . $module->id . '" type="search">';
-			$output .= '<label class="Form-label" for="mod-search-searchword' . $module->id . '">'.$text.'</label>';
+			$output = '<input name="searchword" class="Form-input Grid-cell u-sizeFill u-text-r-s" required="" id="mod-search-searchword' . $module->id . '" type="search" placeholder="' . $text . '">';
+			//$output .= '<label class="Form-label" for="mod-search-searchword' . $module->id . '">'.$text.'</label>';
 
 			if ($button) :
 				if ($imagebutton) :
@@ -57,8 +57,9 @@ if ($module->position == 'footer')
 						break;
 */
 					case 'left' :
-						$output = $btn_output . '<div class="u-posRelative">' . $output . '</div>';
-						break;
+//						$output = $btn_output . '<div class="u-posRelative">' . $output . '</div>';
+						$output = $btn_output . $output;
+					break;
 
 					case 'right' :
 					default :
