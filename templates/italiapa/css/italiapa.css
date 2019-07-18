@@ -176,6 +176,20 @@ svg.Icon-large {
   display: block;
 }
 
+/* Megamenu multi-column */
+
+.Megamenu ul.Megamenu-subnavGroup.columns>li {
+	width: 100%;
+}
+
+.Megamenu ul.Megamenu-subnavGroup.columns>li>a {
+	display: block;
+}
+
+.Megamenu ul.Megamenu-subnavGroup.columns>li>ul {
+	float: left;
+}
+
 .Megamenu-item > span.separator, 
 .Megamenu-item > span[class*=" Icon-"], 
 .Megamenu-item > span[class^=Icon-] {

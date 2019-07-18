@@ -77,5 +77,31 @@
 		
 		// merge footer menus
 		$('footer ul.Footer-links:gt(0)').remove().children('li').appendTo('footer ul.Footer-links:eq(0)');
+
+		// megamenu multi-column
+		$( 'ul.cols[data-columns]' ).each( function() {
+			columns = $( this ).attr( 'data-columns' );
+			colWidth = $( this ).width();
+			$( this ).width( columns * colWidth );
+
+			// split the first ul
+			var ul = $( this ).find( 'ul' ).eq( 0 );
+			var colSize = Math.ceil( ul.find( 'li' ).size() / columns);
+
+			ul.find( 'li' ).each( function( i ) {
+				j = Math.floor( i / colSize );
+				if ( j > 0 ) {
+					$( this ).addClass( 'column-' + j );
+				}
+			} );
+
+			for (j = columns - 1; j > 0; j--) {
+				ul.find( '.column-' + j ).removeClass( 'column-' + j ).insertAfter( ul ).wrapAll( '<ul></ul>' );
+			}
+
+			// fix style
+			$( this ).find( 'li' ).eq( 0 ).width( columns * colWidth );
+			$( this ).find( 'li ul' ).width( colWidth );
+		} );
 	});
 })(jQuery);

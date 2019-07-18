@@ -76,6 +76,7 @@ foreach ($list as $i => &$item)
 {
 	$item->level = $item->level - $params->get('startLevel', 1) + 1;
 	JLog::add(new JLogEntry(print_r($item, true), JLog::DEBUG, 'tpl_italiapa'));
+
 	ob_start();
 
 	$class = ' item-' . $item->id;
@@ -125,6 +126,7 @@ foreach ($list as $i => &$item)
 	}
 
 	$icon = '';
+	$columns = '';
 	if ($item->anchor_css)
 	{
 		$anchor_css = explode(' ', $item->anchor_css);
@@ -133,6 +135,11 @@ foreach ($list as $i => &$item)
 			if (substr($anchor_css[$i], 0, 3) == 'li:')
 			{
 				$subclass = substr($anchor_css[$i], 3) . ' ' . $subclass;
+				unset($anchor_css[$i]);
+			}
+			elseif (substr($anchor_css[$i], 0, 12) == 'ipa:columns-')
+			{
+				$columns = substr($anchor_css[$i], 12);
 				unset($anchor_css[$i]);
 			}
 		}
@@ -192,11 +199,11 @@ foreach ($list as $i => &$item)
 	{
 		if (($item->deeper) || ($menu[$item->parent_id]->depth > 2))
 		{
-			echo '<ul class="Megamenu-subnavGroup">';
+			echo '<ul class="Megamenu-subnavGroup' . (!empty($columns) ? ' columns" data-columns="' . $columns : '') . '">';
 		}
 		elseif ($item->parent_id != $parent_id)
 		{
-			echo '<ul>';
+			echo '<ul class="Megamenu-subnavGroup' . (!empty($columns) ? ' columns" data-columns="' . $columns : '') . '">';
 			$parent_id = $item->parent_id;
 		}
 		echo '<li' . ($subclass ? ' class="' . $subclass . '"' : '') . '>';
