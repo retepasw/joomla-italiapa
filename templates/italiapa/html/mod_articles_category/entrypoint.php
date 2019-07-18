@@ -19,13 +19,13 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 ?>
 
 <?php if (!$grouped) : ?>
-<div class="<?echo $columnClass; ?>">
+<div class="<?php echo $columnClass; ?>">
 <?php endif; ?>
 	<?php $i = 1; ?>
 	<?php if (!$grouped) $list = array('default' => $list); ?>
 	<?php foreach ($list as $group_name => $group) : ?>
 		<?php if ($grouped) : ?>
-			<div class="mod-articles-category-group<?php echo $moduleclass_sfx; ?> <?echo $columnClass; ?>">
+			<div class="mod-articles-category-group<?php echo $moduleclass_sfx; ?> <?php echo $columnClass; ?>">
 				<h3 class="u-block u-text-h3 u-color-60 u-textClean"><?php echo $group_name; ?></h3>
 		<?php endif; ?>
 
