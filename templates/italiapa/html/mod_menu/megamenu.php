@@ -203,7 +203,7 @@ foreach ($list as $i => &$item)
 		}
 		elseif ($item->parent_id != $parent_id)
 		{
-			echo '<ul class="Megamenu-subnavGroup' . (!empty($columns) ? ' columns" data-columns="' . $columns : '') . '">';
+			echo '<ul' . (!empty($columns) ? ' class="columns" data-columns="' . $columns . '"' : '') . '>';
 			$parent_id = $item->parent_id;
 		}
 		echo '<li' . ($subclass ? ' class="' . $subclass . '"' : '') . '>';
