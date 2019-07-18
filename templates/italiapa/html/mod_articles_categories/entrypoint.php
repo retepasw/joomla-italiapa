@@ -22,12 +22,12 @@ $columnClass = !empty($columnClass) ? ' ' . $columnClass : '';
 
 <?php if ($params->get('show_children', 0)) : ?>
 	<?php foreach ($list as $item) : ?>
-		<div class="categories-module<?echo $columnClass; ?>">
+		<div class="categories-module<?php echo $columnClass; ?>">
 			<?php require JModuleHelper::getLayoutPath('mod_articles_categories', 'entrypoint_item'); ?>
 		</div>
 	<?php endforeach; ?>
 <?php else : ?>
-	<div class="<?echo $columnClass; ?>">
+	<div class="<?php echo $columnClass; ?>">
 		<?php foreach ($list as $item) : ?>
 			<?php require JModuleHelper::getLayoutPath('mod_articles_categories', 'entrypoint_item'); ?>
 		<?php endforeach; ?>
