@@ -79,10 +79,12 @@
 		$('footer ul.Footer-links:gt(0)').remove().children('li').appendTo('footer ul.Footer-links:eq(0)');
 
 		// megamenu multi-column
-		$( 'ul.cols[data-columns]' ).each( function() {
+		$( 'ul.columns[data-columns]' ).each( function() {
 			columns = $( this ).attr( 'data-columns' );
 			colWidth = $( this ).width();
 			$( this ).width( columns * colWidth );
+
+			$( this ).find( 'li' ).eq( 0 ).children().not( 'ul' ).wrapAll( '<div></div>' );
 
 			// split the first ul
 			var ul = $( this ).find( 'ul' ).eq( 0 );
@@ -102,6 +104,7 @@
 			// fix style
 			$( this ).find( 'li' ).eq( 0 ).width( columns * colWidth );
 			$( this ).find( 'li ul' ).width( colWidth );
+			// $( this ).find( 'li ul' ).wrapAll( '<div></div>' );
 		} );
 	});
 })(jQuery);

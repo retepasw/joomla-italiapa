@@ -643,6 +643,7 @@ ul {
 
 .Footer-logo,
 .Header-languages>*,
+.Megamenu--default ul.Megamenu-subnavGroup.columns>li>ul,
 .Share-reveal,
 .Share-revealIcon,
 .Share>ul>li,
@@ -1546,6 +1547,7 @@ ul {
 .Hero-content,
 .Megamenu--default .Megamenu-item>a,
 .Megamenu--default .Megamenu-subnavGroup>li>a,
+.Megamenu--default .Megamenu-subnavGroup>li>div>a,
 .Megamenu-list,
 .ScrollTop-icon,
 .Separator,
@@ -4775,6 +4777,7 @@ ul {
 .Footer-socialIcons [class*=" Icon-"],
 .Footer-socialIcons [class^=Icon-],
 .Megamenu--default .Megamenu-subnavGroup>li>a,
+.Megamenu--default .Megamenu-subnavGroup>li>div>a,
 .Prose>h5,
 .u-text-h5,
 .u-text-r-s,
@@ -4876,6 +4879,7 @@ ul {
     .Footer-socialIcons [class*=" Icon-"],
     .Footer-socialIcons [class^=Icon-],
     .Megamenu--default .Megamenu-subnavGroup>li>a,
+    .Megamenu--default .Megamenu-subnavGroup>li>div>a,
     .Prose>h5,
     .u-text-h5,
     .u-text-r-s,
@@ -4984,6 +4988,7 @@ ul {
     .Headroom--fixed.Headroom--not-top .Header-titleLink a,
     .Headroom--pinned.Headroom--not-top .Header-titleLink a,
     .Megamenu--default .Megamenu-subnavGroup>li>a,
+    .Megamenu--default .Megamenu-subnavGroup>li>div>a,
     .Prose>h5,
     .u-text-h5,
     .u-text-md-s,
@@ -5090,6 +5095,7 @@ ul {
     .Footer-socialIcons [class*=" Icon-"],
     .Footer-socialIcons [class^=Icon-],
     .Megamenu--default .Megamenu-subnavGroup>li>a,
+    .Megamenu--default .Megamenu-subnavGroup>li>div>a,
     .Prose>h5,
     .u-text-h5,
     .u-text-lg-s,
@@ -5211,6 +5217,7 @@ ul {
 .Megamenu--default .Megamenu-area>a,
 .Megamenu--default .Megamenu-item>a,
 .Megamenu--default .Megamenu-subnavGroup>li>a,
+.Megamenu--default .Megamenu-subnavGroup>li>div>a,
 .Megamenu--default .Megamenu-subnavGroup>li>ul>li>ul>li>a,
 .Megamenu--default .Megamenu-subnavGroup>li>ul>li a,
 .Share-reveal>a>span,
@@ -5235,6 +5242,7 @@ ul {
 .Linklist a:hover,
 .Megamenu--default .Megamenu-item>a:hover,
 .Megamenu--default .Megamenu-subnavGroup>li>a:hover,
+.Megamenu--default .Megamenu-subnavGroup>li>div>a:hover,
 .Megamenu--default .Megamenu-subnavGroup>li>ul>li>ul>li>a:hover,
 .Megamenu--default .Megamenu-subnavGroup>li>ul>li a:hover,
 .Share-reveal>a>span:hover,
@@ -5271,6 +5279,7 @@ ul {
 .Header-language,
 .Megamenu--default .Megamenu-item>a,
 .Megamenu--default .Megamenu-subnavGroup>li>a,
+.Megamenu--default .Megamenu-subnavGroup>li>div>a,
 .u-textWeight-600 {
     font-weight: 600!important
 }
@@ -5283,6 +5292,7 @@ ul {
 .Header-titleLink a,
 .Header-toggleText,
 .Megamenu--default .Megamenu-subnavGroup>li>a,
+.Megamenu--default .Megamenu-subnavGroup>li>div>a,
 .Prose>h1,
 .Prose>h2,
 .Prose>h3,
@@ -5317,6 +5327,7 @@ ul {
 }
 
 .Megamenu--default .Megamenu-subnavGroup>li>a,
+.Megamenu--default .Megamenu-subnavGroup>li>div>a,
 .u-textUppercase {
     text-transform: uppercase !important
 }

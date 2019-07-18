@@ -176,6 +176,7 @@ mark {
 .Linklist-link.Linklist-link--lev3,
 .Linklist a:hover,
 .Megamenu--default .Megamenu-subnavGroup>li>a,
+.Megamenu--default .Megamenu-subnavGroup>li>div>a,
 .Treeview--default li[aria-expanded=true] li a,
 .Treeview--default li[aria-expanded=true] li a:hover,
 .Treeview--default li[aria-expanded=true] li li a,
@@ -230,7 +231,7 @@ mark {
 .Prose>h5,
 .u-text-h5,
 .u-textSecondary {
-    color: #5a6772 !important
+    color: #5a6772
 }
 
 .Button--default {
