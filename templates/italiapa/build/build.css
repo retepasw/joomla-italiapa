@@ -6342,7 +6342,6 @@ option:hover {
 .Hamburger-toggle,
 .Hamburger-toggle:after,
 .Hamburger-toggle:before {
-    background: #1c2024;
     border-radius: 4px;
     content: " ";
     display: block;

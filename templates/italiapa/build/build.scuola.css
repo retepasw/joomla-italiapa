@@ -327,6 +327,12 @@ mark {
     color: #6d1825
 }
 
+.Hamburger-toggle,
+.Hamburger-toggle:after,
+.Hamburger-toggle:before {
+    background: #1c2024
+}
+
 .Header-banner {
     background-color: #51758d
 }
