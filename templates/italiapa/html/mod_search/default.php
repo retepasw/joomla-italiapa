@@ -35,15 +35,16 @@ if ($module->position == 'footer')
 <div class="search<?php echo $moduleclass_sfx; ?>">
 	<form action="<?php echo JRoute::_('index.php'); ?>" method="post" class="Form">
 		<div class="Form-field Form-field--withPlaceholder Grid" role="search">
+		<label class="u-hidden" id="mod-search-searchword<?php echo $module->id; ?>-label" for="mod-search-searchword<?php echo $module->id; ?>"><?php echo $label; ?></label>
 		<?php
 			$output = '<input name="searchword" class="Form-input Grid-cell u-sizeFill u-text-r-s" required="" id="mod-search-searchword' . $module->id . '" type="search" placeholder="' . $text . '">';
 			//$output .= '<label class="Form-label" for="mod-search-searchword' . $module->id . '">'.$text.'</label>';
 
 			if ($button) :
 				if ($imagebutton) :
-					$btn_output = '<button class="Grid-cell u-sizeFit Icon-' . $button_text . ' u-background-60 u-color-white u-padding-all-s u-textWeight-700" data-tooltip="' . JHtml::tooltipText($label, null, 0, 0) . '"></button>';
+					$btn_output = '<button class="Grid-cell u-sizeFit Icon-' . $button_text . ' u-background-60 u-color-white u-padding-all-s u-textWeight-700" aria-labelledby="mod-search-searchword' . $module->id . '-label" data-tooltip="' . JHtml::tooltipText($label, null, 0, 0) . '"></button>';
 				else :
-					$btn_output = '<button class="Grid-cell u-sizeFit Icon-search u-background-60 u-color-white u-padding-all-s u-textWeight-700" data-tooltip="' . JHtml::tooltipText($label, null, 0, 0) . '"></button>';
+					$btn_output = '<button class="Grid-cell u-sizeFit Icon-search u-background-60 u-color-white u-padding-all-s u-textWeight-700" aria-labelledby="mod-search-searchword' . $module->id . '-label" data-tooltip="' . JHtml::tooltipText($label, null, 0, 0) . '"></button>';
 				endif;
 
 				switch ($button_pos) :
