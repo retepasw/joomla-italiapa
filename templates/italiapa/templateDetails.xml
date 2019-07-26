@@ -65,6 +65,7 @@
 					description="TPL_ITALIAPA_FIELD_THEME_DESC" default="default"
 					filter="word">
 					<option value="default">TPL_ITALIAPA_THEME_DEFAULT</option>
+					<option value="none">TPL_ITALIAPA_THEME_NONE</option>
 					<option value="italia">TPL_ITALIAPA_THEME_ITALIA</option>
 					<option value="scuola">TPL_ITALIAPA_THEME_SCHOOL</option>
 					<option value="squola">TPL_ITALIAPA_THEME_SCHOOLUNOFFICIAL</option>
