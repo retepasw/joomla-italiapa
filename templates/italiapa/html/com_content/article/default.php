@@ -161,7 +161,7 @@ https://italia.github.io/design-web-toolkit/components/detail/page--default.html
 			<?php if (isset($this->item->toc) && $this->item->toc) : ?>
 				</div>
 
-				<aside class="Grid-cell u-sizeFull u-md-size1of4 u-lg-size1of4 u-text-r-s u-padding-r-all">
+				<aside class="ipa-Right Grid-cell u-sizeFull u-md-size1of4 u-lg-size1of4 u-text-r-s u-padding-r-all">
 					<?php echo $this->item->toc; ?>
 				</aside>
 			</div>

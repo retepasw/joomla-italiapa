@@ -52,9 +52,25 @@
 		}
 
 		// right aside
-		if ($("#right").length) {
-			$(".ipa-Right").prependTo("#right");
-			$(".ipa-Right nav").removeClass("u-floatRight");
+		if ($( '#right' ).length) {
+			// pagebreak
+			$( 'article div div aside.ipa-Right' ).closest( 'div' ).children().each( function( index ) {
+				x = $( this );
+				$( this )
+					.attr( 'class' ).split( ' ' ).each( function( element ) {
+						if ( element.includes( '-size' ) ) {
+							x.removeClass( element );
+						}
+					} );
+			} );
+			if ($( '#right > img:first' ).length) {
+				$( '.ipa-Right:not(aside)' ).prependTo( '#right' );
+				$( 'aside.ipa-Right' ).insertAfter( '#right > img:first' );
+			} else {
+				$( '.ipa-Right' ).prependTo( '#right' );
+			}
+			// icons
+			$( '.ipa-Right nav' ).removeClass( 'u-floatRight' ).addClass( 'u-padding-bottom-s' );
 		}
 
 		// theme
