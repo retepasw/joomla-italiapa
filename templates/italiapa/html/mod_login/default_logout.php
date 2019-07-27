@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -17,7 +17,7 @@ defined('_JEXEC') or die;
 
 JHtml::_('behavior.keepalive');
 ?>
-<form action="<?php echo JRoute::_('index.php', true, $params->get('usesecure')); ?>" method="post" id="login-form" class="form-vertical Form Form--spaced u-padding-all-xl u-background-grey-10 u-text-r-xs u-layout-prose">
+<form action="<?php echo JRoute::_('index.php', true, $params->get('usesecure')); ?>" method="post" id="login-form" class="form-vertical Form Form--spaced u-padding-all-xl u-text-r-xs u-layout-prose<?php echo ($module->position == 'footer') ? '' : '  u-background-grey-10'; ?>">
 <?php if ($params->get('greeting')) : ?>
 	<div class="login-greeting Form-field Grid-cell">
 	<?php if ($params->get('name') == 0) : ?>

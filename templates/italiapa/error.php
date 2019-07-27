@@ -32,9 +32,17 @@ JHtml::_('stylesheet', 'user.css', array('version' => 'auto', 'relative' => true
 
 // Check for a custom JS file
 JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
+
+$theme_default = $this->params->get('theme', 'italia');
+$theme = (isset($_COOKIE['theme']) && $_COOKIE['theme']) ? $_COOKIE['theme'] : $theme_default;
+$theme_path = JPATH_ROOT . '/templates/italiapa/build/build.' . $theme . '.css';
+
+if (!file_exists($theme_path)) {
+	$theme = 'italia';
+}
 ?>
 <!DOCTYPE html>
-<html lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
+<html class="no-js theme-<?php echo $theme; ?>" lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
 <head>
 	<meta charset="utf-8" />
 	<title><?php echo $this->error->getCode(); ?> - <?php echo htmlspecialchars($this->error->getMessage(), ENT_QUOTES, 'UTF-8'); ?></title>
@@ -73,16 +81,9 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 		})();
 	</script>
 
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor.css">
-
-	<?php $theme = $this->params->get('theme', 'default'); ?>
-	<?php if ($theme != 'default') : ?>
-		<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.<?php echo $theme; ?>.css">
-	<?php elseif (file_exists(JPATH_ROOT . '/templates/italiapa/build/build.css')) : ?>
-		<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.css">	
-	<?php else: ?>
-		<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.italia.css">
-	<?php endif; ?>
+	<script>__DEFAULT_THEME__ = '<?php echo $theme_default; ?>'</script>
+	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.css">
+	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.<?php echo $theme; ?>.css" id="theme">
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/italiapa.css">

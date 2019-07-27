@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -23,6 +23,7 @@ $params = $displayData['params'];
 <span data-tooltip="<?php echo JHtml::tooltipText(JText::_('JGLOBAL_PRINT'), 0); ?>" data-tooltip-position="bottom center">
 	<?php if ($params->get('show_icons')) : ?>
 		<span class="u-text-r-m Icon Icon-print"></span>
+		<span class="u-hidden"><?php echo JText::_('JGLOBAL_PRINT'); ?></span>
 	<?php else : ?>
 		<?php echo JText::_('JGLOBAL_PRINT'); ?>
 	<?php endif; ?>

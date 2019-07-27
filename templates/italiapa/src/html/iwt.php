@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -45,7 +45,7 @@ abstract class JHtmlIwt
 	 *        	behavior)
 	 *        	- toggle boolean Toggles the collapsible element on invocation
 	 *        	- active string Sets the active slide during load
-	 *        
+	 *
 	 *        	- onShow function This event fires immediately when the show
 	 *        	instance method is called.
 	 *        	- onShown function This event is fired when a collapse element
@@ -56,9 +56,9 @@ abstract class JHtmlIwt
 	 *        	- onHidden function This event is fired when a collapse
 	 *        	element has been hidden from the user
 	 *        	(will wait for css transitions to complete).
-	 *        
+	 *
 	 * @return string HTML for the accordian
-	 *        
+	 *
 	 * @since 3.8
 	 */
 	public static function startAccordion ($selector = 'myAccordian', $params = array())
@@ -85,7 +85,7 @@ abstract class JHtmlIwt
 			// Set static array
 			static::$loaded[__METHOD__][$selector] = $opt;
 
-			return '<div class="Accordion Accordion--default fr-accordion js-fr-accordion" id="accordion-' . $selector . '" role="tablist">';
+			return '<div class="Accordion Accordion--default fr-accordion js-fr-accordion" id="accordion-' . $selector . '" role="tablist"' . ($params['multiselectable'] ? ' aria-multiselectable="' . $params['multiselectable'] . '"': '') . '>';
 		}
 	}
 
@@ -93,7 +93,7 @@ abstract class JHtmlIwt
 	 * Close the current accordion
 	 *
 	 * @return string HTML to close the accordian
-	 *        
+	 *
 	 * @since 3.8
 	 */
 	public static function endAccordion ()
@@ -112,9 +112,9 @@ abstract class JHtmlIwt
 	 *        	Identifier of the slide.
 	 * @param string $class
 	 *        	Class of the accordion group.
-	 *        
+	 *
 	 * @return string HTML to add the slide
-	 *        
+	 *
 	 * @since 3.8
 	 */
 	public static function addSlide ($selector, $text, $id, $class = '')
@@ -131,7 +131,7 @@ abstract class JHtmlIwt
 	 * Close the current slide
 	 *
 	 * @return string HTML to close the slide
-	 *        
+	 *
 	 * @since 3.8
 	 */
 	public static function endSlide ()
@@ -146,7 +146,7 @@ abstract class JHtmlIwt
 	 *        	The pane identifier.
 	 * @param array $params
 	 *        	The parameters for the pane
-	 *        
+	 *
 	 * @return string
 	 *
 	 * @since 3.8
@@ -162,15 +162,13 @@ abstract class JHtmlIwt
 
 			// Inject tab into UL
 			JFactory::getDocument()->addScriptDeclaration(
-					'jQuery(function($){
-	    	    $(' .
-							 json_encode('#accordion-' . $selector . ' button.fr-accordion__header') . ').each(function( index, element ) {
-	                $(' . json_encode(
-									'#accordion-' . $selector . ' div') . ').first().before( this );
+				'jQuery(function($){
+	    	    $(' . json_encode('#accordion-' . $selector . ' button.fr-accordion__header') . ').each(function( index, element ) {
+	            $(' . json_encode('#accordion-' . $selector . ' div') . ').first().before( this );
 	    	    });
 	        });');
 
-			return '<div class="fr-accordion js-fr-accordion" id="accordion-' . $selector . '" role="tablist">';
+			return '<div class="fr-accordion js-fr-accordion" id="accordion-' . $selector . '" role="tablist" aria-multiselectable="false">';
 		}
 	}
 
@@ -178,7 +176,7 @@ abstract class JHtmlIwt
 	 * Close the current tab pane
 	 *
 	 * @return string HTML to close the pane
-	 *        
+	 *
 	 * @since 3.8
 	 */
 	public static function endTabSet ()
@@ -187,43 +185,62 @@ abstract class JHtmlIwt
 	}
 
 	/**
+	 * Begins the display of a new tab.
+	 *
+	 * @param string $selector
+	 *        	Identifier of the accordion group.
+	 * @param string $text
+	 *        	Text to display.
+	 * @param string $id
+	 *        	Identifier of the slide.
+	 *
+	 * @return string HTML to start a new panel
+	 *
+	 * @since 3.8
+	 */
+	public static function addTab ($selector, $text, $id)
+	{
+		return '<button type="button"' . ((static::$loaded[__CLASS__ . '::startTabSet'][$selector]['active'] == $id) ? ' aria-selected="true" aria-expanded="true"' : '') .
+				 ' class="Button Button--info u-text-r-xs' . ' js-fr-accordion__header fr-accordion__header" id="accordion-header-' . $id . '"' .
+				 ' role="tab">' . $text . '</button>';
+	}
+
+	/**
 	 * Begins the display of a new tab content panel.
 	 *
 	 * @param string $selector
-	 *        	Identifier of the panel.
+	 *        	Identifier of the accordion group.
+	 * @param string $text
+	 *        	Text to display.
 	 * @param string $id
-	 *        	The ID of the div element
-	 * @param string $title
-	 *        	The title text for the new UL tab
-	 *        
+	 *        	Identifier of the slide.
+	 *
 	 * @return string HTML to start a new panel
-	 *        
+	 *
 	 * @since 3.8
 	 */
-	public static function addTab ($selector, $id, $title)
+	public static function startTabPanel ($selector, $id)
 	{
-		return '<button type="button"' . ((static::$loaded[__CLASS__ . '::startTabSet'][$selector]['active'] == $id) ? ' aria-selected="true"' : '') .
-				 ' class="Button Button--default u-text-r-xs' . ' js-fr-accordion__header fr-accordion__header" id="accordion-header-' . $id . '"' .
-				 '">' . $title . '</button>' . '<div id="accordion-panel-' . $id . '"' .
-				 ((static::$loaded[__CLASS__ . '::startTabSet'][$selector]['active'] == $id) ? ' aria-hidden="false"' : '') .
-				 ' class="Accordion-panel fr-accordion__panel js-fr-accordion__panel"' . ' role="tabpanel"' . '>';
+		return '<div id="accordion-panel-' . $id . '"' .
+				((static::$loaded[__CLASS__ . '::startTabSet'][$selector]['active'] == $id) ? ' aria-hidden="false"' : '') .
+				' class="Accordion-panel fr-accordion__panel js-fr-accordion__panel"' . ' role="tabpanel"' . '>';
 	}
 
 	/**
 	 * Close the current tab content panel
 	 *
 	 * @return string HTML to close the pane
-	 *        
+	 *
 	 * @since 3.8
 	 */
-	public static function endTab ()
+	public static function endTabPanel ()
 	{
 		return '</div>';
 	}
 
 	/**
 	 * Get link attributes
-	 * 
+	 *
 	 * @param unknown $item
 	 * @param array $attributes
 	 * @return array
@@ -334,6 +351,132 @@ abstract class JHtmlIwt
 			$link = $item->title;
 		}
 
+		$anchor_css = explode(' ', $item->anchor_css);
+		for ($i = count($anchor_css) - 1; $i >= 0; $i --)
+		{
+			if ($anchor_css[$i] == 'del')
+			{
+				$link = '<del>' . $link . '</del>';
+				unset($anchor_css[$i]);
+			}
+		}
+		$item->anchor_css = implode(' ', $anchor_css);
+		
 		return $link;
+	}
+
+	/**
+	 * Simple JavaScript email cloaker
+	 *
+	 * By default replaces an email with a mailto link with email cloaked
+	 *
+	 * @param   string   $mail    The -mail address to cloak.
+	 * @param   boolean  $mailto  True if text and mailing address differ
+	 * @param   string   $text    Text for the link
+	 * @param   boolean  $email   True if text is an email address
+	 *
+	 * @return  string  The cloaked email.
+	 *
+	 * @since   3.8.0.12
+	 */
+	public static function cloak($mail, $mailto = true, $text = '', $email = true)
+	{
+		// Handle IDN addresses: punycode for href but utf-8 for text displayed.
+		if ($mailto && (empty($text) || $email))
+		{
+			// Use dedicated $text whereas $mail is used as href and must be punycoded.
+			$text = JStringPunycode::emailToUTF8($text ?: $mail);
+		}
+		elseif (!$mailto)
+		{
+			// In that case we don't use link - so convert $mail back to utf-8.
+			$mail = JStringPunycode::emailToUTF8($mail);
+		}
+		
+		// Convert mail
+		$mail = static::convertEncoding($mail);
+		
+		// Random hash
+		$rand = md5($mail . mt_rand(1, 100000));
+		
+		// Split email by @ symbol
+		$mail       = explode('@', $mail);
+		$mail_parts = explode('.', $mail[1]);
+		
+		if ($mailto)
+		{
+			// Special handling when mail text is different from mail address
+			if ($text)
+			{
+				// Convert text - here is the right place
+				//				$text = static::convertEncoding($text);
+				$text = str_replace('\'', '\\\'', $text);
+				
+				if ($email)
+				{
+					// Split email by @ symbol
+					$text = explode('@', $text);
+					$text_parts = explode('.', $text[1]);
+					$tmpScript = "var addy_text" . $rand . " = '" . @$text[0] . "' + '&#64;' + '" . implode("' + '&#46;' + '", @$text_parts)
+					. "';";
+				}
+				else
+				{
+					$tmpScript = "var addy_text" . $rand . " = '" . $text . "';";
+				}
+				
+				$tmpScript .= "document.getElementById('cloak" . $rand . "').innerHTML += '<a data-tooltip=\'<strong>e-mail: ' + addy" . $rand
+				. " + '</strong>\' ' + path + '\'' + prefix + ':' + addy"
+						. $rand . " + '\'>' + addy_text" . $rand . " + '<\/a>';";
+			}
+			else
+			{
+				$tmpScript = "document.getElementById('cloak" . $rand . "').innerHTML += '<a data-tooltip=\'<strong>e-mail: ' + addy" . $rand
+				. " + '</strong>\' ' + path + '\'' + prefix + ':' + addy"
+						. $rand . " + '\'>' +addy" . $rand . "+'<\/a>';";
+			}
+		}
+		else
+		{
+			$tmpScript = "document.getElementById('cloak" . $rand . "').innerHTML += addy" . $rand . ";";
+		}
+		
+		$script       = "
+				document.getElementById('cloak" . $rand . "').innerHTML = '';
+				var prefix = '&#109;a' + 'i&#108;' + '&#116;o';
+				var path = 'hr' + 'ef' + '=';
+				var addy" . $rand . " = '" . @$mail[0] . "' + '&#64;';
+				addy" . $rand . " = addy" . $rand . " + '" . implode("' + '&#46;' + '", $mail_parts) . "';
+				$tmpScript
+		";
+				
+				// TODO: Use inline script for now
+				$inlineScript = "<script type='text/javascript'>" . $script . "</script>";
+				
+				return '<span id="cloak' . $rand . '">' . JText::_('JLIB_HTML_CLOAKING') . '</span>' . $inlineScript;
+	}
+	
+	/**
+	 * Convert encoded text
+	 *
+	 * @param   string  $text  Text to convert
+	 *
+	 * @return  string  The converted text.
+	 *
+	 * @since   1.5
+	 */
+	protected static function convertEncoding($text)
+	{
+		$text = html_entity_decode($text);
+		
+		// Replace vowels with character encoding
+		$text = str_replace('a', '&#97;', $text);
+		$text = str_replace('e', '&#101;', $text);
+		$text = str_replace('i', '&#105;', $text);
+		$text = str_replace('o', '&#111;', $text);
+		$text = str_replace('u', '&#117;', $text);
+		$text = htmlentities($text, ENT_QUOTES, 'UTF-8', false);
+		
+		return $text;
 	}
 }

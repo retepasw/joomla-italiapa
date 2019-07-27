@@ -18,4 +18,5 @@ defined('_JEXEC') or die;
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 $this->subtemplatename = 'items';
+$this->params->set('show_category_heading_title_text', 0);
 echo JLayoutHelper::render('joomla.content.category_default', $this);

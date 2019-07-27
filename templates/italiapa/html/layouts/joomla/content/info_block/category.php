@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -20,8 +20,8 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 <span class="Dot u-background-50"></span><strong>
 <?php $title = $this->escape($displayData['item']->category_title); ?>
 <?php if ($displayData['params']->get('link_category') && $displayData['item']->catslug) : ?>
-<a class="u-textClean u-text-r-xs" href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($displayData['item']->catslug)); ?>" itemprop="genre"><?php echo $title; ?></a>
+	<a class="u-textClean u-text-r-xs" href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($displayData['item']->catslug)); ?>" itemprop="genre"><?php echo $title; ?></a>
 <?php else : ?>
-<span itemprop="genre"><?php echo $title; ?></span>
+	<span itemprop="genre"><?php echo $title; ?></span>
 <?php endif; ?>
 </strong>

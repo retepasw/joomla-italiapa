@@ -22,4 +22,4 @@ $params = $displayData['params'];
 <?php if ($params->get('show_icons')) : ?>
 	<span class="u-text-r-m Icon Icon-mail"></span>
 <?php endif; ?>
-<?php // echo JText::_('JGLOBAL_EMAIL'); ?>
+<span class="u-hidden"><?php echo JText::_('JGLOBAL_EMAIL'); ?></span>

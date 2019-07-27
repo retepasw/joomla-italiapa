@@ -17,13 +17,30 @@ defined('JPATH_BASE') or die;
 
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
-$params = $displayData->params;
+if (is_array($displayData))
+{
+	$images = json_decode($displayData['item']->images);
+	$params  = $displayData['item']->params;
+
+	// Receive overridable options
+	$displayData['options'] = !empty($displayData['options']) ? $displayData['options'] : array();
+	
+	if (is_array($displayData['options']))
+	{
+		$displayData['options'] = new JRegistry($displayData['options']);
+	}
+	// Options
+	$class = "u-sizeFull item-image " . $displayData['options']->get('class');
+}
+else
+{
+	$images = json_decode($displayData->images);
+	$params  = $displayData->params;
+	$class = "u-sizeFull item-image";
+}
 ?>
-<?php $images = json_decode($displayData->images); ?>
 <?php if (isset($images->image_fulltext) && !empty($images->image_fulltext)) : ?>
 	<?php $imgfloat = empty($images->float_fulltext) ? $params->get('float_fulltext') : $images->float_fulltext; ?>
-	<img class="u-sizeFull<?php if ($images->image_fulltext_caption) :
-		echo 'caption"' . ' title="' . htmlspecialchars($images->image_fulltext_caption) . '"';
-	endif; ?>"
+	<img class="<?php echo $class . ($images->image_fulltext_caption ? ' caption"' . ' title="' . htmlspecialchars($images->image_fulltext_caption) : ''); ?>"
 	src="<?php echo htmlspecialchars($images->image_fulltext); ?>" alt="<?php echo htmlspecialchars($images->image_fulltext_alt); ?>" itemprop="image"/>
 <?php endif; ?>

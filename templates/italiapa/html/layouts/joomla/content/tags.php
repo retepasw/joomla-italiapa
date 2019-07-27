@@ -23,19 +23,27 @@ $authorised = JFactory::getUser()->getAuthorisedViewLevels();
 
 ?>
 <?php if (!empty($displayData)) : ?>
-<div class="Prose u-layout-prose u-margin-r-bottom">
-<small class="u-textWeight-900"><?php echo JText::_('JTAG'); ?>: </small>
-<span class="u-color-70">
+<div class="u-margin-r-top u-margin-r-bottom">
+	<!--
+	<small class="u-textWeight-900"><?php echo JText::_('JTAG'); ?>: </small>
+	<span>
+	-->
 		<?php $tags = array(); ?>
 		<?php foreach ($displayData as $i => $tag) : ?>
 			<?php if (in_array($tag->access, $authorised)) : ?>
 				<?php $tagParams = new Registry($tag->params); ?>
 				<?php $link_class = $tagParams->get('tag_link_class', 'label label-info'); ?>
-				<?php $tags[] = '<a href="' . JRoute::_(TagsHelperRoute::getTagRoute($tag->tag_id . ':' . $tag->alias)) . 
-						'" class="' . $link_class .'" itemprop="keywords" rel="tag">' . $this->escape($tag->title) . '</a>'; ?>
+				<?php $link_class .= (($link_class == 'label label-info') ? ' u-textNoWrap u-textClean u-color-white' : ''); ?>
+				<?php $tags[] = '<li class="u-inlineBlock u-padding-top-xxs u-padding-right-xs u-padding-bottom-xxs u-padding-left-xs u-borderRadius-m u-background-50 u-margin-right-xs u-margin-bottom-xs">' .
+						'<a href="' . JRoute::_(TagsHelperRoute::getTagRoute($tag->tag_id . ':' . $tag->alias)) . 
+						'" class="' . $link_class .'" itemprop="keywords" rel="tag" style="background-color:transparent!important;padding:0!important;color:white!important;display:inline!important">' . $this->escape($tag->title) . '</a></li>'; ?>
 			<?php endif; ?>
 		<?php endforeach; ?>
-		<?php echo implode(', ', $tags); ?>
-</span>
+		<?php if ($tags) : ?>
+			<ul role="presentation"><?php echo implode('', $tags); ?></ul>
+		<?php endif; ?>
+	<!--
+	</span>
+	-->
 </div>
 <?php endif; ?>

@@ -21,5 +21,5 @@ $tooltip = $displayData['tooltip'];
 ?>
 <span data-tooltip="<?php echo JHtml::tooltipText($tooltip . '', 0); ?>" data-tooltip-position="bottom center">
 	<span class="u-text-r-m Icon Icon-lock"></span>
-	<?php //echo JText::_('JLIB_HTML_CHECKED_OUT'); ?>
+	<span class="u-hidden"><?php echo JText::_('JLIB_HTML_CHECKED_OUT'); ?></span>
 </span>

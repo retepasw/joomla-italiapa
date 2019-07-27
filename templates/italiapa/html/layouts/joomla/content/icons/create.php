@@ -20,6 +20,6 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 $params = $displayData['params'];
 ?>
 <?php if ($params->get('show_icons')) : ?>
-<i class="material-icons">add</i>
+	<span class="material-icons">add</span>
 <?php endif; ?>
-<?php // echo JText::_('JNEW'); ?>
+<span class="u-hidden"><?php echo JText::_('JNEW'); ?></span>

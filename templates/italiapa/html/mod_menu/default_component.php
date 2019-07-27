@@ -16,6 +16,8 @@ defined('_JEXEC') or die();
 
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
+require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
+
 $attributes = JHtml::_('iwt.getLinkAttributes', $item);
 
 if ($item->browserNav == 1)
@@ -29,4 +31,5 @@ elseif ($item->browserNav == 2)
 	$attributes['onclick'] = "window.open(this.href, 'targetWindow', '" . $options . "'); return false;";
 }
 
-echo JHtml::_('link', JFilterOutput::ampReplace(htmlspecialchars($item->flink, ENT_COMPAT, 'UTF-8', false)), JHtml::_('iwt.linkType', $item), $attributes);
+echo JHtml::_('link', JFilterOutput::ampReplace(htmlspecialchars($item->flink . '#', ENT_COMPAT, 'UTF-8', false)), JHtml::_('iwt.linkType', $item), $attributes);
+?>

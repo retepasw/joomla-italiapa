@@ -54,25 +54,25 @@ $class = "u-text-r-xs u-padding-all-xs";
 		<div class="Grid">
 			<legend class="u-hiddenVisually"><?php echo JText::_('COM_CONTENT_FORM_FILTER_LEGEND'); ?></legend>
 			<?php if ($this->params->get('filter_field') !== 'hide') : ?>
-			<div class="Form-field Grid-cell u-sizeFull u-sm-size6of12 u-md-size4of12 u-lg-size8of12 u-border-right-xxs u-border-top-xxs">
-			<?php if ($this->params->get('filter_field') === 'tag') : ?>
-				<label class="Form-label is-required u-hiddenVisually" for="filter_tag"><?php echo JText::_('JTAG'); ?></label>
-				<select name="filter_tag" id="filter_tag" onchange="document.adminForm.submit();" class="Form-input u-color-grey-90 <?php echo $class; ?>">
-					<option value=""><?php echo JText::_('JOPTION_SELECT_TAG'); ?></option>
-					<?php echo JHtml::_('select.options', JHtml::_('tag.options', true, true), 'value', 'text', $this->state->get('filter.tag')); ?>
-				</select>
-			<?php elseif ($this->params->get('filter_field') === 'month') : ?>
-				<label class="Form-label is-required u-hiddenVisually" for="filter-search"><?php echo JText::_('JMONTH'); ?></label>
-				<select name="filter-search" id="filter-search" onchange="document.adminForm.submit();" class="Form-input u-color-grey-90 <?php echo $class; ?>">
-					<option value=""><?php echo JText::_('JOPTION_SELECT_MONTH'); ?></option>
-					<?php echo JHtml::_('select.options', JHtml::_('content.months', $this->state), 'value', 'text', $this->state->get('list.filter')); ?>
-				</select>
-			<?php else : ?>
-				<input class="Form-input u-text-r-s u-padding-r-all u-color-black" type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape($this->state->get('list.filter')); ?>" class="Form-input u-color-grey-90 <?php echo $class; ?>" onchange="document.adminForm.submit();" title="<?php echo JText::_('COM_CONTENT_FILTER_SEARCH_DESC'); ?>" placeholder="<?php echo JText::_('COM_CONTENT_' . $this->params->get('filter_field') . '_FILTER_LABEL'); ?>" />
-				<label class="Form-label u-color-grey-90 u-text-r-m u-hiddenVisually" for="filter-search">
-					<?php echo JText::_('COM_CONTENT_' . $this->params->get('filter_field') . '_FILTER_LABEL'); ?>
-				</label>
-			<?php endif; ?>
+			<div class="Form-field Grid-cell u-sizeFull u-sm-size6of12 u-md-size8of12 u-lg-size9of12 u-border-right-xxs u-border-top-xxs">
+				<?php if ($this->params->get('filter_field') === 'tag') : ?>
+					<label class="Form-label is-required u-hiddenVisually" for="filter_tag"><?php echo JText::_('JTAG'); ?></label>
+					<select name="filter_tag" id="filter_tag" onchange="document.adminForm.submit();" class="Form-input u-color-grey-90 <?php echo $class; ?>">
+						<option value=""><?php echo JText::_('JOPTION_SELECT_TAG'); ?></option>
+						<?php echo JHtml::_('select.options', JHtml::_('tag.options', true, true), 'value', 'text', $this->state->get('filter.tag')); ?>
+					</select>
+				<?php elseif ($this->params->get('filter_field') === 'month') : ?>
+					<label class="Form-label is-required u-hiddenVisually" for="filter-search"><?php echo JText::_('JMONTH'); ?></label>
+					<select name="filter-search" id="filter-search" onchange="document.adminForm.submit();" class="Form-input u-color-grey-90 <?php echo $class; ?>">
+						<option value=""><?php echo JText::_('JOPTION_SELECT_MONTH'); ?></option>
+						<?php echo JHtml::_('select.options', JHtml::_('content.months', $this->state), 'value', 'text', $this->state->get('list.filter')); ?>
+					</select>
+				<?php else : ?>
+					<input class="Form-input u-text-r-s u-padding-r-all u-color-black" type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape($this->state->get('list.filter')); ?>" class="Form-input u-color-grey-90 <?php echo $class; ?>" onchange="document.adminForm.submit();" title="<?php echo JText::_('COM_CONTENT_FILTER_SEARCH_DESC'); ?>" placeholder="<?php echo JText::_('COM_CONTENT_' . $this->params->get('filter_field') . '_FILTER_LABEL'); ?>" />
+					<label class="Form-label u-color-grey-90 u-text-r-m u-hiddenVisually" for="filter-search">
+						<?php echo JText::_('COM_CONTENT_' . $this->params->get('filter_field') . '_FILTER_LABEL'); ?>
+					</label>
+				<?php endif; ?>
 			</div>
 			<?php endif; ?>
 
@@ -96,7 +96,7 @@ $class = "u-text-r-xs u-padding-all-xs";
 			<input type="hidden" name="limitstart" value="" />
 			<input type="hidden" name="task" value="" />
 
-			<button type="submit" name="filter_submit" class="u-lg-size2of12 u-background-40 u-color-white u-padding-all-s u-text-r-m u-textNoWrap <?php echo $class; ?>"><?php echo JText::_('COM_CONTENT_FORM_FILTER_SUBMIT'); ?></button>
+	        <button type="submit" name="filter_submit" class="u-background-40 u-color-white u-padding-all-s u-text-r-m u-textNoWrap u-sizeFull u-sm-size2of12 u-md-size1of12 u-lg-size1of12 <?php echo $class; ?>"><?php echo JText::_('COM_CONTENT_FORM_FILTER_SUBMIT'); ?></button>
 		</div>
 	</form>
 </div>

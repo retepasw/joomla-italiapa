@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -17,10 +17,29 @@ defined('_JEXEC') or die;
 
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
+require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
+
 JHtml::_('behavior.keepalive');
 JHtml::_('behavior.formvalidator');
 
+$params             = $this->item->params;
+$presentation_style = $params->get('presentation_style');
+
 ?>
+<?php if ($presentation_style === 'sliders') : ?>
+	<?php echo JHtml::_('iwt.startAccordion', 'slide-contact', array('active' => 'display-form')); ?>
+	<?php $accordionStarted = true; ?>
+	<?php echo JHtml::_('iwt.addSlide', 'slide-contact', JText::_('COM_CONTACT_EMAIL_FORM'), 'display-form'); ?>
+<?php elseif ($presentation_style === 'tabs') : ?>
+	<?php echo JHtml::_('iwt.startTabSet', 'tab-contact', array('active' => 'display-form')); ?>
+	<?php $tabSetStarted = true; ?>
+	<?php echo JHtml::_('iwt.addTab', 'tab-contact', JText::_('COM_CONTACT_EMAIL_FORM'), 'display-form'); ?>
+	<?php echo JHtml::_('iwt.startTabPanel', 'tab-contact', 'display-form'); ?>
+<?php elseif ($presentation_style === 'plain') : ?>
+	<div class="u-sizeFull u-md-size1of2 u-lg-size1of2">
+		<h3 class="u-text-h3"><?php echo JText::_('COM_CONTACT_EMAIL_FORM'); ?></h3>
+<?php endif; ?>
+
 <div class="contact-form">
 	<form id="contact-form" action="<?php echo JRoute::_('index.php'); ?>" method="post" class="Form Form--spaced u-padding-all-xl u-background-grey-10 u-text-r-xs form-validate form-horizontal well">
 		<?php foreach ($this->form->getFieldsets() as $fieldset) : ?>
@@ -54,3 +73,12 @@ JHtml::_('behavior.formvalidator');
 		</div>
 	</form>
 </div>
+
+<?php if ($presentation_style == 'sliders') : ?>
+	<?php echo JHtml::_('iwt.endSlide'); ?>
+<?php elseif ($presentation_style == 'tabs') : ?>
+	<?php echo JHtml::_('iwt.endTabPanel'); ?>
+<?php elseif ($presentation_style === 'plain') : ?>
+	</div>
+<?php endif; ?>
+

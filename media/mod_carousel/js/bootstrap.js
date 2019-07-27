@@ -13,7 +13,7 @@ jQuery(document).ready(function(){
 			jQuery(element).find('.carousel-inner').height(h);
 		}
 	});
-	jQuery('.carousel[data-ride=="carousel"]').carousel('cycle');
+	jQuery('.carousel[data-ride=\'carousel\']').carousel('cycle');
 });
 
 
@@ -54,6 +54,7 @@ if (typeof Element.implement == 'function'){
 	    }
 	});
 }
+
 // Mootools-more.js conflicting with Bootstrap Carousel
 /*
 (function(){

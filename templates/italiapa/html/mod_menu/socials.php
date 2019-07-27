@@ -98,7 +98,7 @@ foreach ($list as $i => &$item)
 	// The next item is deeper.
 	if ($item->deeper)
 	{
-		echo '<ul role="group">';
+		echo '<ul>';
 	}
 	// The next item is shallower.
 	elseif ($item->shallower)

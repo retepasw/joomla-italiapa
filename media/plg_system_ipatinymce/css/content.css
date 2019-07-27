@@ -1,0 +1,227 @@
+@font-face {
+	font-family: 'IcoMoon';
+	src: url('../../jui/fonts/IcoMoon.eot');
+	src: url('../../jui/fonts/IcoMoon.eot?#iefix') format('embedded-opentype'), 
+		 url('../../jui/fonts/IcoMoon.woff') format('woff'), 
+		 url('../../jui/fonts/IcoMoon.ttf') format('truetype'), 
+		 url('../../jui/fonts/IcoMoon.svg#IcoMoon') format('svg');
+	font-weight: normal;
+	font-style: normal
+}
+
+.Dropdown-menu {
+	vertical-align: super;
+	font-size: smaller;
+	border: 1px solid black;
+	margin-left: 0.5em;
+	padding: 0.2em;
+}
+
+.Dialog.js-fr-dialogmodal {
+	padding: 0.5em;
+	border: 1px solid black;
+	position: relative;
+}
+
+.Dialog.js-fr-dialogmodal .Button.js-fr-dialogmodal-close {
+	position: absolute;
+	right: 0.2em;
+	bottom: 0.2em;
+}
+
+.Alert {
+	border-left-style: solid;
+	border-left-width: .5em;
+	padding-left: 1em;
+}
+
+.Alert--withIcon {
+	background-size: 1em 1em;
+	min-height: 3em;
+	padding-left: 4em;
+	padding-top: .5em;
+}
+
+.Alert--error {
+	border-left-color: red;
+	color: #1e1212;
+}
+
+.Alert--error.Alert--withBg {
+	background-color: #ffcbcb;
+}
+
+.Alert--error.Alert--withIcon {
+	background:
+		url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctitle%3Eerror%3C/title%3E%3Cpath d='M16 1.6C24 1.6 30.4 8 30.4 16S24 30.4 16 30.4 1.6 24 1.6 16 8 1.6 16 1.6zM16 0C7.2 0 0 7.2 0 16s7.2 16 16 16 16-7.2 16-16S24.8 0 16 0z'/%3E%3Cpath d='M14.4 24c0-.96.64-1.6 1.6-1.6s1.6.64 1.6 1.6c0 .96-.64 1.6-1.6 1.6s-1.6-.64-1.6-1.6zM15.04 20.8l-.32-14.4h2.56l-.32 14.4z'/%3E%3C/svg%3E")
+		no-repeat 1em .5em;
+}
+
+.Alert--warning {
+	border-left-color: #d1ae00;
+	color: #4f4310;
+}
+
+.Alert--warning.Alert--withBg {
+	background-color: #ffef9f;
+}
+
+.Alert--warning.Alert--withIcon {
+	background:
+		url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctitle%3Ewarning%3C/title%3E%3Cpath d='M14.333 26c0-1 .667-1.667 1.667-1.667S17.667 25 17.667 26 17 27.667 16 27.667 14.333 27 14.333 26zM15 22.667l-.333-15h2.667l-.333 15z'/%3E%3Cpath d='M16 2.667c1 0 2 .5 2.5 1.333l10.333 20.833c.5.833.5 2 0 2.833s-1.5 1.5-2.5 1.5H5.666c-1 0-2-.5-2.5-1.5-.5-.833-.5-2 0-2.833L13.499 4c.5-.833 1.5-1.333 2.5-1.333zM16 1c-1.5 0-3 .833-4 2.333L1.667 24.166c-1.667 3 .5 6.833 4 6.833h20.667c3.5 0 5.667-3.833 4-6.833L20.001 3.333c-1-1.667-2.5-2.333-4-2.333z'/%3E%3C/svg%3E")
+		no-repeat 1em .5em
+}
+
+.Alert--success {
+	border-left-color: #65b446;
+	color: #274d28;
+}
+
+.Alert--success.Alert--withBg {
+	background-color: #dff0d8;
+}
+
+.Alert--success.Alert--withIcon {
+	background:
+		url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctitle%3Echeck%3C/title%3E%3Cpath d='M32 6.682l-2.824-2.635-18.447 18.635-8.094-8.094L0 17.412l8.094 7.906h-.188l2.824 2.635 2.635-2.635z'/%3E%3C/svg%3E")
+		no-repeat 1em .5em
+}
+
+.Alert--info {
+	border-left-color: #24c3cc;
+	color: #004446;
+}
+
+.Alert--info.Alert--withIcon {
+	background:
+		url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctitle%3Einfo%3C/title%3E%3Cpath d='M16 1.6C24 1.6 30.4 8 30.4 16S24 30.4 16 30.4 1.6 24 1.6 16 8.16 1.6 16 1.6zM16 0C7.2 0 0 7.2 0 16s7.2 16 16 16 16-7.2 16-16S24.8 0 16 0z'/%3E%3Cpath d='M14.72 9.76V6.72h2.88v3.04h-2.88zm0 15.84V12h2.88v13.6h-2.88z'/%3E%3C/svg%3E")
+		no-repeat 1em .5em
+}
+
+.Alert--info.Alert--withBg {
+	background-color: #c6f3f5;
+}
+
+.Callout {
+	border-top: 1px solid #aaa;
+	padding: 1em;
+}
+
+.Callout-title {
+	background: transparent;
+	display: block;
+	font-weight: 700;
+	margin-bottom: 1em;
+	width: 100%;
+}
+
+.Callout--must {
+	background: #f4e6f5;
+	border-top-color: #512154;
+}
+
+.Callout--must>.Callout-title {
+	color: #512154;
+}
+
+.Callout--should {
+	background: #d1e7ff;
+	border-top-color: #00346b;
+}
+
+.Callout--should>.Callout-title {
+	color: #00346b;
+}
+
+.Callout--could {
+	background: #ebf5ef;
+	border-top-color: #295139;
+}
+
+.Callout--could>.Callout-title {
+	color: #295139;
+}
+
+.Callout--example {
+	background: #e6e5e3;
+	border-top-color: #363430;
+}
+
+.Callout--example>.Callout-title {
+	color: #363430;
+}
+
+dt::before {
+	content: "dt: ";
+	color: #aaa;
+	font-size: 8px;
+}
+
+dd::before {
+	content: "dd: ";
+	color: #aaa;
+	font-size: 8px;
+	padding-left: 40px;
+}
+
+dl {
+	border-left: dotted #aaa 2px;
+	padding: 3px;
+}
+
+dl.Accordion dt::before {
+	content: "dt: ";
+	color: #aaa;
+	font-size: 8px;
+}
+
+dl.Accordion dt[aria-selected=true]::before {
+	content: "dt: ";
+	color: #aaa;
+	font-size: 8px;
+}
+
+dl.Accordion dd::before {
+	content: "dd: ";
+	color: #aaa;
+	font-size: 8px;
+}
+
+dl.Accordion dt:first-child {
+	border-top: 1px solid black;
+}
+
+dl.Accordion dd {
+	border-bottom: 1px solid black;
+	-webkit-margin-start: 0px;
+}
+
+dl.Accordion.Accordion--default dt::before {
+	font-family: 'IcoMoon';
+	content: "\e007" " ";
+	speak: none;
+}
+
+dl.Accordion.Accordion--default dt[aria-selected=true]::before {
+	font-family: 'IcoMoon';
+	content: "\e005" " ";
+	speak: none;
+}
+
+dl.Accordion.Accordion--plus dt::before {
+	font-family: 'IcoMoon';
+	content: "\5d" " ";
+	speak: none;
+}
+
+dl.Accordion.Accordion--plus dt[aria-selected=true]::before {
+	font-family: 'IcoMoon';
+	content: "\5e" " ";
+	speak: none;
+}
+
+dl.Timeline dt::before {
+	font-family: 'IcoMoon';
+	content: "\43" " ";
+	speak: none;
+}

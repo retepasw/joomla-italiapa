@@ -26,7 +26,7 @@ $params = $this->item->params;
 if ($urls && (!empty($urls->urla) || !empty($urls->urlb) || !empty($urls->urlc))) :
 ?>
 <div class="content-links">
-	<ul class="nav nav-tabs nav-stacked">
+	<ul class="Linklist Prose u-text-r-s ">
 		<?php
 			$urlarray = array(
 				array($urls->urla, $urls->urlatext, $urls->targeta, 'a'),
@@ -58,7 +58,7 @@ if ($urls && (!empty($urls->urla) || !empty($urls->urlb) || !empty($urls->urlc))
 						case 1:
 							// Open in a new window
 							echo '<a href="' . htmlspecialchars($link, ENT_COMPAT, 'UTF-8') . '" target="_blank"  rel="nofollow">' .
-								htmlspecialchars($label, ENT_COMPAT, 'UTF-8') . '</a>';
+								'<span class="Icon Icon-external-link"></span> ' . htmlspecialchars($label, ENT_COMPAT, 'UTF-8') . '</a>';
 							break;
 
 						case 2:

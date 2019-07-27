@@ -20,14 +20,13 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
 JHtml::_('behavior.caption');
+?>
 
-if (JFactory::getApplication()->getTemplate(true)->params->get('debug') || defined('JDEBUG') && JDEBUG) : ?>
+<?php if (JFactory::getApplication()->getTemplate(true)->params->get('debug') || defined('JDEBUG') && JDEBUG) : ?>
 <div class="Prose Alert Alert--info Alert--withIcon u-padding-r-bottom u-padding-r-right u-margin-r-bottom">
 see <a href="https://italia.github.io/design-web-toolkit/components/detail/page--section.html">https://italia.github.io/design-web-toolkit/components/detail/page--section.html</a>
 </div>
-<?php
-endif;
+<?php endif; ?>
 
-$this->subtemplatename = 'articles';
-echo JLayoutHelper::render('joomla.content.category_default', $this);
-?>
+<?php $this->subtemplatename = 'articles'; ?>
+<?php echo JLayoutHelper::render('joomla.content.category_default', $this); ?>

@@ -18,10 +18,12 @@ JHtml::_('bootstrap.framework');
 
 $app	= JFactory::getApplication();
 $params = $app->getTemplate(true)->params;
+$min = '.min';
 
 if ($params->get('debug') || defined('JDEBUG') && JDEBUG)
 {
 	JLog::addLogger(array('text_file' => $params->get('log', 'eshiol.log.php'), 'extension' => 'tpl_italiapa_file'), JLog::ALL, array('tpl_italiapa'));
+	$min = '';
 }
 JLog::addLogger(array('logger' => (null !== $params->get('logger')) ?$params->get('logger') : 'messagequeue', 'extension' => 'tpl_italiapa'), JLOG::ALL & ~JLOG::DEBUG, array('tpl_italiapa'));
 if ($params->get('phpconsole') && class_exists('JLogLoggerPhpconsole'))
@@ -35,12 +37,20 @@ JHtml::_('stylesheet', 'user.css', array('version' => 'auto', 'relative' => true
 
 // Check for a custom JS file
 JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
+
+$theme_default = $this->params->get('theme', 'italia');
+$theme = (isset($_COOKIE['theme']) && $_COOKIE['theme']) ? $_COOKIE['theme'] : $theme_default;
+$theme_path = JPATH_ROOT . '/templates/italiapa/build/build.' . $theme . '.css';
+
+if (!file_exists($theme_path)) {
+	$theme = 'italia';	
+}
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js ie89 ie8" lang="<?php echo $this->language; ?>"><![endif]-->
 <!--[if IE 9]><html class="no-js ie89 ie9" lang="<?php echo $this->language; ?>"><![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
-<html class="no-js" lang="<?php echo $this->language; ?>">
+<html class="no-js theme-<?php echo $theme; ?>" lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
 <!--<![endif]-->
 <head>
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -77,21 +87,19 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 		})();
 	</script>
 
-	<?php $theme = $this->params->get('theme', 'default'); ?>
-	<?php if ($theme != 'default') : ?>
-		<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.<?php echo $theme; ?>.css">
-	<?php elseif (file_exists(JPATH_ROOT . '/templates/italiapa/build/build.css')) : ?>
-		<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.css">	
-	<?php else: ?>
-		<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.italia.css">
-	<?php endif; ?>
+	<script>__DEFAULT_THEME__ = '<?php echo $theme_default; ?>'</script>
+	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.css">
+	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.<?php echo $theme; ?>.css" id="theme">
+
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/italiapa.css">
-
+	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/prism<?php echo $min; ?>.css">
 	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/tooltip-theme-arrows.css" />
-	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tether.min.js"></script>
-	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/drop.min.js"></script>
-	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tooltip.min.js"></script>
+	
+	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tether<?php echo $min; ?>.js"></script>
+	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/drop<?php echo $min; ?>.js"></script>
+	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tooltip<?php echo $min; ?>.js"></script>
+	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/prism<?php echo $min; ?>.js"></script>
 
 	<jdoc:include type="head" />
 
@@ -132,17 +140,17 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 <header class="Header u-hiddenPrint<?php if ($this->params->get('headroom', 0)) echo ' Headroom--fixed js-Headroom Headroom Headroom--top Headroom--not-bottom" style="position: fixed; top: 0px;'; ?>">
 
 <?php if ($this->countModules('owner') || $this->countModules('languages')) : ?>
-<div class="Header-banner">
-	<div class="Header-owner Headroom-hideme">
+<div class="Header-banner Headroom-hideme">
 	<?php if ($this->countModules('owner')) : ?>
-		<jdoc:include type="modules" name="owner" />
+		<div class="Header-owner">
+			<jdoc:include type="modules" name="owner" />
+		</div>
 	<?php endif; ?> 
 	<?php if ($this->countModules('languages')) : ?>
 		<div class="Header-languages ">
 			<jdoc:include type="modules" name="languages" />
 		</div>
 	<?php endif; ?>
-	</div>
 </div>
 <?php endif; ?>
 
@@ -151,7 +159,7 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 	<div class="u-layout-wide Grid Grid--alignMiddle u-layoutCenter">
 		<?php if ($logo = $this->params->get('logo')) : ?>
 		<div class="Header-logo Grid-cell" aria-hidden="true">
-			<a href="<?php echo $this->baseurl; ?>/" tabindex="-1">
+			<a href="<?php echo $this->baseurl; ?>/" itemprop="url">
 				<img src="<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>">
 			</a>
 		</div>
@@ -263,13 +271,13 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 
 		<?php if ($this->countModules('services') || $this->countModules('featured') || $this->countModules('news') || $this->countModules('lead') || $countFooter) : ?>
 			<?php if ($this->countModules('services') || $this->countModules('featured')) : ?>
-		<a href="#featured" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+		<a href="#featured" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 			<?php elseif ($this->countModules('news')) : ?>
-		<a href="#news" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+		<a href="#news" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 			<?php elseif ($this->countModules('lead')) : ?>
-		<a href="#lead" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+		<a href="#lead" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 			<?php elseif ($countFooter) : ?>
-		<a href="#footer" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+		<a href="#footer" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 			<?php endif; ?>
 			<span class="Icon Icon-expand u-color-grey-40"></span>
 		</a>
@@ -290,11 +298,11 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 	<jdoc:include type="modules" name="featured" />
 	<?php if ($this->countModules('news') || $this->countModules('lead') || $countFooter) : ?>
 	<?php if ($this->countModules('news')) : ?>
-	<a href="#news" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+	<a href="#news" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 	<?php elseif ($this->countModules('lead')) : ?>
-	<a href="#lead" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+	<a href="#lead" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 	<?php elseif ($countFooter) : ?>
-	<a href="#footer" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+	<a href="#footer" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 	<?php endif; ?>
 		<span class="Icon Icon-expand u-color-grey-40"></span>
 	</a>
@@ -307,9 +315,9 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 	<jdoc:include type="modules" name="news" style="lg" />
 	<?php if ($this->countModules('lead') || $countFooter) : ?>
 	<?php if ($this->countModules('lead')) : ?>
-	<a href="#lead" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+	<a href="#lead" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 	<?php elseif ($countFooter) : ?>
-	<a href="#footer" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+	<a href="#footer" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 	<?php endif; ?>
 		<span class="Icon Icon-expand u-color-grey-40"></span>
 	</a>
@@ -352,7 +360,7 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 				<div itemscope itemtype="http://schema.org/<?php echo $params->get('schema_org', 'Organization'); ?>" class="u-cf">
 			<?php endif; ?>				
 					<?php if ($logo) : ?>
-					<a href="<?php echo $this->baseurl; ?>/" tabindex="-1" itemprop="url">
+					<a href="<?php echo $this->baseurl; ?>/" itemprop="url">
 						<img class="Footer-logo" src="<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>" itemprop="logo">
 					</a>
 					<?php endif; ?>
@@ -365,22 +373,22 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 			</div>
 			<?php endif; ?>
 
-			<div class="Grid Grid--withGutter">
 			<?php if ($this->countModules('footer')) : ?>
-				<jdoc:include type="modules" name="footer" style="lg" />
+				<div class="Grid Grid--withGutter">
+					<jdoc:include type="modules" name="footer" style="lg" />
+				</div>
 			<?php endif; ?>
-			</div>
 
-			<div class="Grid Grid--withGutter">
 			<?php if ($this->countModules('footermenu')) : ?>
-				<jdoc:include type="modules" name="footermenu" style="none" />
+				<div class="Grid Grid--withGutter u-border-top-xxs">
+					<jdoc:include type="modules" name="footermenu" style="none" />
+				</div>
 			<?php endif; ?>
-			</div>
 		</footer>
 <?php endif; ?>
 
 <a href="#" title="torna all'inizio del contenuto" class="ScrollTop js-scrollTop js-scrollTo">
-	<i class="ScrollTop-icon Icon-collapse" aria-hidden="true"></i>
+	<span class="ScrollTop-icon Icon-collapse" aria-hidden="true"></span>
 	<span class="u-hiddenVisually">Torna all'inizio del contenuto</span>
 </a>
 
@@ -396,11 +404,13 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 <![endif]-->
 
 <script src="<?php echo $this->baseurl ?>/templates/italiapa/js/uuid.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/accordion.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/table.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/map.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/accordion<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/table<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/map<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/timeline<?php echo $min; ?>.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/italiapa/build/IWT.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/italiapa.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/italiapa<?php echo $min; ?>.js"></script>
 
+	<jdoc:include type="modules" name="debug" style="none" />
 </body>
 </html>
