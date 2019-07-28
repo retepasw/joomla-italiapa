@@ -321,6 +321,10 @@ mark {
     color: #65dcdf 
 }
 
+.Footer-block address {
+    color: #f5f5f0 !important
+}
+
 .Footer-socialIcons [class*=" Icon-"],
 .Footer-socialIcons [class^=Icon-] {
     background-color: #65dcdf;

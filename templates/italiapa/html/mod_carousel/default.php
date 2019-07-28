@@ -2,7 +2,6 @@
 /**
  * @package		Template ItaliaPA
  * @subpackage	mod_carousel
- * @version		3.8.0.11
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
@@ -28,15 +27,15 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 			<?php endif; ?>
 			<!-- <next / prev buttons> -->
 			<div class="Grid-cell u-layout-centerRight">
-				<button class="owl-prev u-padding-bottom-xl u-padding-right-xxl u-text-r-xl u-color-teal-50" aria-controls="carousel-<?php echo $module->id; ?>">
+				<button class="owl-prev u-padding-bottom-xl u-padding-right-xxl u-text-r-xl u-color-white" aria-controls="carousel-<?php echo $module->id; ?>">
 					<span class="u-hiddenVisually">Vai alla slide precedente</span>
 					<span class="u-alignMiddle Icon Icon-arrow-left" role="presentation"></span>
 				</button>
-				<button class="owl-next u-padding-bottom-xl u-padding-left u-text-r-xl u-color-teal-50" aria-controls="carousel-<?php echo $module->id; ?>">
+				<button class="owl-next u-padding-bottom-xl u-padding-left u-text-r-xl u-color-white" aria-controls="carousel-<?php echo $module->id; ?>">
 				  <span class="u-hiddenVisually">Vai alla slide successiva</span>
 				  <span class="u-alignMiddle Icon Icon-arrow-right" role="presentation"></span>
 				</button>
-				<p class="u-hiddenVisually">&Egrave; possibile navigare le slide utilizzando i tasti freccia</p>
+				<p class="u-hiddenVisually" aria-hidden="true">&Egrave; possibile navigare le slide utilizzando i tasti freccia</p>
 			</div>
 			<!-- </next / prev buttons> -->
 		</div>
