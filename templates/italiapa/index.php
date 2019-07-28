@@ -280,6 +280,7 @@ if (!file_exists($theme_path)) {
 		<a href="#footer" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 			<?php endif; ?>
 			<span class="Icon Icon-expand u-color-grey-40"></span>
+			<span class="u-hidden">vai alla sezione successiva</span>
 		</a>
 		<?php endif; ?>
 	
@@ -305,6 +306,7 @@ if (!file_exists($theme_path)) {
 	<a href="#footer" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 	<?php endif; ?>
 		<span class="Icon Icon-expand u-color-grey-40"></span>
+		<span class="u-hidden">vai alla sezione successiva</span>
 	</a>
 	<?php endif; ?>	
 </div>
@@ -320,6 +322,7 @@ if (!file_exists($theme_path)) {
 	<a href="#footer" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 	<?php endif; ?>
 		<span class="Icon Icon-expand u-color-grey-40"></span>
+		<span class="u-hidden">vai alla sezione successiva</span>
 	</a>
 	<?php endif; ?>	
 </div>
