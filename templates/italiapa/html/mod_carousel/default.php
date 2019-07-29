@@ -71,18 +71,33 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 		
 								case 3:
 									// Open in a popup window
-									list($width, $height, $type, $attr) = getimagesize($item->link);
-									$tmp = 'location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width='.$width.',height='.$height;
-									echo "<a href=\"" . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . "\" onclick=\"window.open(this.href, 'targetWindow', '" . $tmp . "'); return false;\">" .
-										$item->img . '</a>';
+									if ($props = @getimagesize($item->link))
+									{
+										list($width, $height, $type, $attr) = $props;
+										$tmp = 'location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width='.$width.',height='.$height;
+										echo "<a href=\"" . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . "\" onclick=\"window.open(this.href, 'targetWindow', '" . $tmp . "'); return false;\">" .
+											$item->img . '</a>';
+									}
+									else
+									{
+										echo $item->img;
+									}
 									break;
 								case 4:
 									// Open in a modal window
 									JHtml::_('behavior.modal', 'a.modal');
-									list($width, $height, $type, $attr) = getimagesize($item->link);
-									echo '<a class="modal" href="' . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . '"'.
-										' rel="{handler: \'iframe\', size: {x:' . ($width + 20) . ', y:' . ($height + 20) . '}}">' .
-										$item->img . ' </a>';
+									
+									if ($props = @getimagesize($item->link))
+									{
+										list($width, $height, $type, $attr) = $props;
+										echo '<a class="modal" href="' . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . '"'.
+											' rel="{handler: \'iframe\', size: {x:' . ($width + 20) . ', y:' . ($height + 20) . '}}">' .
+											$item->img . ' </a>';
+									}
+									else
+									{
+										echo $item->img;
+									}
 									break;
 		
 								default:
