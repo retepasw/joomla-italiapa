@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -35,10 +35,9 @@ if ($module->position == 'footer')
 <div class="search<?php echo $moduleclass_sfx; ?>">
 	<form action="<?php echo JRoute::_('index.php'); ?>" method="post" class="Form">
 		<div class="Form-field Form-field--withPlaceholder Grid" role="search">
-		<label class="u-hidden" id="mod-search-searchword<?php echo $module->id; ?>-label" for="mod-search-searchword<?php echo $module->id; ?>"><?php echo $label; ?></label>
 		<?php
-			$output = '<input name="searchword" class="Form-input Grid-cell u-sizeFill u-text-r-s" required="" id="mod-search-searchword' . $module->id . '" type="search" placeholder="' . $text . '">';
-			//$output .= '<label class="Form-label" for="mod-search-searchword' . $module->id . '">'.$text.'</label>';
+			$output = '<input name="searchword" class="Form-input Grid-cell u-sizeFill u-text-r-s" required="" id="mod-search-searchword' . $module->id . '" type="search">';
+			$output .= '<label class="Form-label' . ($button && $button_pos == 'left' ? ' u-margin-left-xxl' : '') . '" for="mod-search-searchword' . $module->id . '">'.$text.'</label>';
 
 			if ($button) :
 				if ($imagebutton) :
