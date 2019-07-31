@@ -41,9 +41,9 @@ if ($module->position == 'footer')
 
 			if ($button) :
 				if ($imagebutton) :
-					$btn_output = '<button class="Grid-cell u-sizeFit Icon-' . $button_text . ' u-background-60 u-color-white u-padding-all-s u-textWeight-700" aria-labelledby="mod-search-searchword' . $module->id . '-label" data-tooltip="' . JHtml::tooltipText($label, null, 0, 0) . '"></button>';
+					$btn_output = '<button class="Grid-cell u-sizeFit Icon-' . $button_text . ' u-background-60 u-color-white u-padding-all-s u-textWeight-700" data-tooltip="' . JHtml::tooltipText($label, null, 0, 0) . '"></button>';
 				else :
-					$btn_output = '<button class="Grid-cell u-sizeFit Icon-search u-background-60 u-color-white u-padding-all-s u-textWeight-700" aria-labelledby="mod-search-searchword' . $module->id . '-label" data-tooltip="' . JHtml::tooltipText($label, null, 0, 0) . '"></button>';
+					$btn_output = '<button class="Grid-cell u-sizeFit Icon-search u-background-60 u-color-white u-padding-all-s u-textWeight-700" data-tooltip="' . JHtml::tooltipText($label, null, 0, 0) . '"></button>';
 				endif;
 
 				switch ($button_pos) :

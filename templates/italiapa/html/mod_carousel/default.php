@@ -19,7 +19,7 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 ?>
 
 <?php if (!empty($list)) : ?>
-<section class="u-background-grey-60 u-padding-r-all <?php echo htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8'); ?>">
+<section class="u-background-carousel u-padding-r-all <?php echo htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8'); ?>">
 	<div class="u-layout-medium u-layoutCenter">
 		<div class="Grid">
 			<?php if ((bool) $module->showtitle) : ?>

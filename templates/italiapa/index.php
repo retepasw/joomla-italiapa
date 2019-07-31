@@ -346,7 +346,7 @@ https://italia.github.io/design-web-toolkit/components/detail/leads.html
 <?php endif; ?>
 
 <?php if ($countFooter) : ?>
-		<footer class="Footer u-padding-all-s u-background-95 u-hiddenPrint" id="footer">
+		<footer class="Footer u-padding-all-s u-hiddenPrint" id="footer">
 
 <?php if ($params->get('debug') || defined('JDEBUG') && JDEBUG) : ?>
 <div class="Prose Alert Alert--info Alert--withIcon u-padding-r-bottom u-padding-r-right u-margin-r-bottom">
