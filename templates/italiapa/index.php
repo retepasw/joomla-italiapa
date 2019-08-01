@@ -50,7 +50,7 @@ if (!file_exists($theme_path)) {
 <!--[if IE 8]><html class="no-js ie89 ie8" lang="<?php echo $this->language; ?>"><![endif]-->
 <!--[if IE 9]><html class="no-js ie89 ie9" lang="<?php echo $this->language; ?>"><![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
-<html class="no-js theme-<?php echo $theme; ?>" lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
+<html class="no-js theme-<?php echo $theme; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
 <!--<![endif]-->
 <head>
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
