@@ -24,7 +24,7 @@ if ($tagId = $params->get('tag_id', ''))
 	$id = ' id="' . $tagId . '"';
 }
 ?>
-<p><?php echo $module->title; ?></p>
+<p class="u-textWeight-600"><?php echo $module->title; ?></p>
 <ul class="Header-socialIcons<?php echo $class_sfx; ?>"
 	<?php echo $id; ?>>
 <?php

@@ -71,7 +71,7 @@ if (!file_exists($theme_path)) {
 		<link href='//fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700,' rel='stylesheet' type='text/css' />
 		o dal repository locale (src/fonts)
 	-->
-	<script type="text/javascript">
+	<script>
 		WebFontConfig = {
 			google: {
 				families: ['Titillium+Web:400,600,700,400italic:latin']

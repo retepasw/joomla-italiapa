@@ -25,7 +25,7 @@ if ($tagId = $params->get('tag_id', ''))
 	$id = ' id="' . $tagId . '"';
 }
 ?>
-<ul class="Grid Grid--withGutter"<?php echo $class_sfx; ?>"<?php echo $id; ?>>
+<ul class="Grid Grid--withGutter<?php echo $class_sfx; ?>"<?php echo $id; ?>>
 <?php $n = min(count($list), 12); ?>
 <?php foreach ($list as $i => &$item)
 {

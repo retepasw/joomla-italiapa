@@ -62,7 +62,7 @@ $assocParam = (JLanguageAssociations::isEnabled() && $item->params->get('show_as
 						echo $item->afterDisplayContent;
 
 						if (isset($item->link) && $item->readmore != 0 && $params->get('readmore')) :
-							echo '<a class="readmore" href="' . $item->link . '">' . $item->linkText . '</a>';
+							echo '<a class="readmore u-textWeight-600" href="' . $item->link . '">' . $item->linkText . '</a>';
 						endif;
 						?>
 						</div>
