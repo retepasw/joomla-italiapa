@@ -24,7 +24,7 @@ see <a href="https://italia.github.io/design-web-toolkit/components/detail/bread
 </div>
 <?php endif; ?>
 <?php if ($count) : ?>
-<nav <?php echo $params->get('showHere', 1) ? 'aria-label="'.JText::_('MOD_BREADCRUMBS_HERE').'"' : '' ?> role="navigation">
+<nav <?php echo $params->get('showHere', 1) ? 'aria-label="'.JText::_('MOD_BREADCRUMBS_HERE').'"' : '' ?>>
 	<ul itemscope itemtype="https://schema.org/BreadcrumbList" class="breadcrumb<?php echo $moduleclass_sfx; ?>">
 	<?php
 	// Get rid of duplicated entries on trail including home page when using multilanguage
