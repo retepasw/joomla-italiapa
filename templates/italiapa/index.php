@@ -98,7 +98,6 @@ if (!file_exists($theme_path)) {
 	
 	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tether<?php echo $min; ?>.js"></script>
 	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/drop<?php echo $min; ?>.js"></script>
-	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tooltip<?php echo $min; ?>.js"></script>
 	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/prism<?php echo $min; ?>.js"></script>
 
 	<jdoc:include type="head" />
@@ -413,6 +412,7 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 <script src="<?php echo $this->baseurl ?>/templates/italiapa/js/timeline<?php echo $min; ?>.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/italiapa/build/IWT.min.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/italiapa/js/italiapa<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tooltip<?php echo $min; ?>.js"></script>
 
 	<jdoc:include type="modules" name="debug" style="none" />
 </body>
