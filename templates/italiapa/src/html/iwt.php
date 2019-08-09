@@ -267,7 +267,24 @@ abstract class JHtmlIwt
 
 		if ($item->anchor_css)
 		{
-			$attributes['class'] = $item->anchor_css;
+			$anchor_css = explode(' ', $item->anchor_css);
+			for($i = count($anchor_css) - 1; $i >= 0; $i--)
+			{
+				if (substr($anchor_css[$i], 0, 4) == 'ipa:')
+				{
+					if (substr($anchor_css[$i], 4, 14) == 'aria-controls:')
+					{
+						$attributes['aria-controls'] = substr($anchor_css[$i], 18);
+					}
+					unset($anchor_css[$i]);
+				}
+			}
+			$anchor_css = implode(' ', $anchor_css);
+
+			if ($anchor_css)
+			{
+				$attributes['class'] = trim($anchor_css);
+			}
 		}
 
 		if ($item->anchor_rel)

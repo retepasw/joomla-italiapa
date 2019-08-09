@@ -2,7 +2,6 @@
 /**
  * @package		Template ItaliaPA
  * @subpackage	mod_carousel
- * @version		3.8.0.11
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
@@ -20,7 +19,7 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 ?>
 
 <?php if (!empty($list)) : ?>
-<section class="u-background-grey-60 u-padding-r-all <?php echo htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8'); ?>">
+<section class="u-background-carousel u-padding-r-all <?php echo htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8'); ?>">
 	<div class="u-layout-medium u-layoutCenter">
 		<div class="Grid">
 			<?php if ((bool) $module->showtitle) : ?>
@@ -28,15 +27,15 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 			<?php endif; ?>
 			<!-- <next / prev buttons> -->
 			<div class="Grid-cell u-layout-centerRight">
-				<button class="owl-prev u-padding-bottom-xl u-padding-right-xxl u-text-r-xl u-color-teal-50" aria-controls="carousel-<?php echo $module->id; ?>">
+				<button class="owl-prev u-padding-bottom-xl u-padding-right-xxl u-text-r-xl u-color-white" aria-controls="carousel-<?php echo $module->id; ?>">
 					<span class="u-hiddenVisually">Vai alla slide precedente</span>
 					<span class="u-alignMiddle Icon Icon-arrow-left" role="presentation"></span>
 				</button>
-				<button class="owl-next u-padding-bottom-xl u-padding-left u-text-r-xl u-color-teal-50" aria-controls="carousel-<?php echo $module->id; ?>">
+				<button class="owl-next u-padding-bottom-xl u-padding-left u-text-r-xl u-color-white" aria-controls="carousel-<?php echo $module->id; ?>">
 				  <span class="u-hiddenVisually">Vai alla slide successiva</span>
 				  <span class="u-alignMiddle Icon Icon-arrow-right" role="presentation"></span>
 				</button>
-				<p class="u-hiddenVisually">&Egrave; possibile navigare le slide utilizzando i tasti freccia</p>
+				<p class="u-hiddenVisually" aria-hidden="true">&Egrave; possibile navigare le slide utilizzando i tasti freccia</p>
 			</div>
 			<!-- </next / prev buttons> -->
 		</div>
@@ -72,18 +71,33 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 		
 								case 3:
 									// Open in a popup window
-									list($width, $height, $type, $attr) = getimagesize($item->link);
-									$tmp = 'location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width='.$width.',height='.$height;
-									echo "<a href=\"" . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . "\" onclick=\"window.open(this.href, 'targetWindow', '" . $tmp . "'); return false;\">" .
-										$item->img . '</a>';
+									if ($props = @getimagesize($item->link))
+									{
+										list($width, $height, $type, $attr) = $props;
+										$tmp = 'location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width='.$width.',height='.$height;
+										echo "<a href=\"" . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . "\" onclick=\"window.open(this.href, 'targetWindow', '" . $tmp . "'); return false;\">" .
+											$item->img . '</a>';
+									}
+									else
+									{
+										echo $item->img;
+									}
 									break;
 								case 4:
 									// Open in a modal window
 									JHtml::_('behavior.modal', 'a.modal');
-									list($width, $height, $type, $attr) = getimagesize($item->link);
-									echo '<a class="modal" href="' . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . '"'.
-										' rel="{handler: \'iframe\', size: {x:' . ($width + 20) . ', y:' . ($height + 20) . '}}">' .
-										$item->img . ' </a>';
+									
+									if ($props = @getimagesize($item->link))
+									{
+										list($width, $height, $type, $attr) = $props;
+										echo '<a class="modal" href="' . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . '"'.
+											' rel="{handler: \'iframe\', size: {x:' . ($width + 20) . ', y:' . ($height + 20) . '}}">' .
+											$item->img . ' </a>';
+									}
+									else
+									{
+										echo $item->img;
+									}
 									break;
 		
 								default:

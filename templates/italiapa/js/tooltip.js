@@ -75,6 +75,11 @@ var Tooltip = (function () {
     this.options = extend({}, defaults, this.options);
 
     this.drop = new _Drop(this.options);
+
+    // WCAG-A 1.3.1 Info and Relationships
+    // TODO: verificare se sia il metodo migliore
+    this.drop.open();
+    this.drop.close();
   }
 
   _createClass(Tooltip, [{

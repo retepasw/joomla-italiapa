@@ -21,17 +21,23 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
 JHtml::_('behavior.caption');
 
-// If the page class is defined, add to class as suffix.
-// It will be a separate class if the user starts it with a space
+$dispatcher = JEventDispatcher::getInstance();
+
+$this->category->text = $this->category->description;
+$dispatcher->trigger('onContentPrepare', array($this->category->extension . '.categories', &$this->category, &$this->params, 0));
+$this->category->description = $this->category->text;
+
+$results = $dispatcher->trigger('onContentAfterTitle', array($this->category->extension . '.categories', &$this->category, &$this->params, 0));
+$afterDisplayTitle = trim(implode("\n", $results));
+
+$results = $dispatcher->trigger('onContentBeforeDisplay', array($this->category->extension . '.categories', &$this->category, &$this->params, 0));
+$beforeDisplayContent = trim(implode("\n", $results));
+
+$results = $dispatcher->trigger('onContentAfterDisplay', array($this->category->extension . '.categories', &$this->category, &$this->params, 0));
+$afterDisplayContent = trim(implode("\n", $results));
 ?>
 
-<?php if (JFactory::getApplication()->getTemplate(true)->params->get('debug') || defined('JDEBUG') && JDEBUG) : ?>
-<div class="Prose Alert Alert--info Alert--withIcon u-padding-r-bottom u-padding-r-right u-margin-r-bottom">
-see <a href="https://italia.github.io/design-web-toolkit/components/detail/layout--news.html">https://italia.github.io/design-web-toolkit/components/detail/layout--default.html</a>
-</div>
-<?php endif; ?>
-
-<section class="u-layout-wide u-layout-r-withGutter u-text-r-s u-padding-r-top u-padding-r-bottom <?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Blog">
+<section class="u-layout-wide u-layout-r-withGutter u-text-r-s u-padding-r-top u-padding-r-bottom blog<?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Blog">
 	<?php if ($this->params->get('show_page_heading') != 0) : ?>
 	<div class="page-header">
 		<h2 class="u-layout-centerLeft u-text-r-s">
@@ -48,6 +54,19 @@ see <a href="https://italia.github.io/design-web-toolkit/components/detail/layou
 		</h3>
 	<?php endif; ?>
 	<?php echo $afterDisplayTitle; ?>
+
+	<?php if ($beforeDisplayContent || $afterDisplayContent || $this->params->get('show_description', 1) || $this->params->def('show_description_image', 1)) : ?>
+		<div class="category-desc clearfix">
+			<?php if ($this->params->get('show_description_image') && $this->category->getParams()->get('image')) : ?>
+				<img src="<?php echo $this->category->getParams()->get('image'); ?>" alt="<?php echo htmlspecialchars($this->category->getParams()->get('image_alt'), ENT_COMPAT, 'UTF-8'); ?>"/>
+			<?php endif; ?>
+			<?php echo $beforeDisplayContent; ?>
+			<?php if ($this->params->get('show_description') && $this->category->description) : ?>
+				<?php echo JHtml::_('content.prepare', $this->category->description, '', 'com_content.category'); ?>
+			<?php endif; ?>
+			<?php echo $afterDisplayContent; ?>
+		</div>
+	<?php endif; ?>
 
 	<?php $app = JFactory::getApplication(); ?>
 	<?php $limitstart = $app->input->get('limitstart', 0, 'uint'); ?>

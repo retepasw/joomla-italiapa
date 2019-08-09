@@ -169,7 +169,7 @@ function pagination_item_active(&$item)
 	if ($item->text == JText::_('JLIB_HTML_START'))
 	{
 		$direction = $lang->isRtl() ? 'right' : 'left';
-		$display = '<span class="material-icons u-text-r-m" role="presentation">'.($lang->isRtl() ? 'last_page' : 'first_page').'</span><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
+		$display = '<span class="material-icons u-text-r-l" role="presentation">'.($lang->isRtl() ? 'last_page' : 'first_page').'</span><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
 	}
 
 	// Check for "Prev" item
@@ -177,7 +177,7 @@ function pagination_item_active(&$item)
 	{
 		//$display = '<span class="icon-previous"></span>';
 		$direction = $lang->isRtl() ? 'right' : 'left';
-		$display = '<span class="material-icons u-text-r-m" role="presentation">chevron_'.$direction.'</span><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
+		$display = '<span class="material-icons u-text-r-l" role="presentation">chevron_'.$direction.'</span><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
 	}
 
 	// Check for "Next" item
@@ -185,7 +185,7 @@ function pagination_item_active(&$item)
 	{
 		//$display = '<span class="icon-next"></span>';
 		$direction = $lang->isRtl() ? 'left' : 'right';
-		$display = '<span class="material-icons u-text-r-m" role="presentation">chevron_'.$direction.'</span><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
+		$display = '<span class="material-icons u-text-r-l" role="presentation">chevron_'.$direction.'</span><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
 	}
 
 	// Check for "End" item
@@ -193,14 +193,14 @@ function pagination_item_active(&$item)
 	{
 		//$display = '<span class="icon-last"></span>';
 		$direction = $lang->isRtl() ? 'left' : 'right';
-		$display = '<span class="material-icons u-text-r-m" role="presentation">'.($lang->isRtl() ? 'first_page' : 'last_page').'</span><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
+		$display = '<span class="material-icons u-text-r-l" role="presentation">'.($lang->isRtl() ? 'first_page' : 'last_page').'</span><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
 	}
 
 	// If the display object isn't set already, just render the item with its text
 	if (!isset($display))
 	{
 		$liclass .= ' u-hidden u-md-inlineBlock u-lg-inlineBlock';
-		$display  = '<span class="u-text-r-m">'.$item->text.'</span>';
+		$display  = '<span class="u-text-r-m u-textWeight-600">'.$item->text.'</span>';
 		$class	= ' u-padding-r-all';
 //		$class   .= ' hidden-phone';
 	}
@@ -250,7 +250,7 @@ function pagination_item_inactive(&$item)
 		//return '<li class="active hidden-phone"><a class="u-padding-r-all u-background-50 u-color-white u-textClean u-block"><span class="u-text-r-m">' . $item->text . '</span></a></li>';
 		return '<li class="active">'
 				. '<a class="u-padding-r-all u-background-50 u-color-white u-textClean u-block">'
-				. '<span class="u-text-r-s"><span class="u-md-hidden u-lg-hidden">' . JText::_('TPL_ITALIAPA_PAGE') . ' </span>'
+				. '<span class="u-text-r-m u-textWeight-600"><span class="u-md-hidden u-lg-hidden">' . JText::_('TPL_ITALIAPA_PAGE') . ' </span>'
 				. $item->text . '</span></a></li>';
 	}
 

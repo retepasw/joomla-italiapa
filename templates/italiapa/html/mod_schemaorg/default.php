@@ -1,14 +1,11 @@
 <?php
 /**
- * @version		3.8.0 modules/mod_schemaorg/tmpl/default.php
- *
  * @package		Template ItaliaPA
  * @subpackage	mod_schemaorg
- * @since		3.7
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template Italia PA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -42,7 +39,7 @@ foreach($params->get('data') as $item)
 {
 	if ($item->title)
 	{
-		$text .= '<h3>'.$item->title.'</h3>';
+		$text .= '<div><strong>'.$item->title.'</strong></div>';
 	}
 
 	switch ($item->type) 

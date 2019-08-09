@@ -50,7 +50,7 @@ if (!file_exists($theme_path)) {
 <!--[if IE 8]><html class="no-js ie89 ie8" lang="<?php echo $this->language; ?>"><![endif]-->
 <!--[if IE 9]><html class="no-js ie89 ie9" lang="<?php echo $this->language; ?>"><![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
-<html class="no-js theme-<?php echo $theme; ?>" lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
+<html class="no-js theme-<?php echo $theme; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
 <!--<![endif]-->
 <head>
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -71,7 +71,7 @@ if (!file_exists($theme_path)) {
 		<link href='//fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700,' rel='stylesheet' type='text/css' />
 		o dal repository locale (src/fonts)
 	-->
-	<script type="text/javascript">
+	<script>
 		WebFontConfig = {
 			google: {
 				families: ['Titillium+Web:400,600,700,400italic:latin']
@@ -98,7 +98,6 @@ if (!file_exists($theme_path)) {
 	
 	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tether<?php echo $min; ?>.js"></script>
 	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/drop<?php echo $min; ?>.js"></script>
-	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tooltip<?php echo $min; ?>.js"></script>
 	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/prism<?php echo $min; ?>.js"></script>
 
 	<jdoc:include type="head" />
@@ -280,6 +279,7 @@ if (!file_exists($theme_path)) {
 		<a href="#footer" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 			<?php endif; ?>
 			<span class="Icon Icon-expand u-color-grey-40"></span>
+			<span class="u-hidden">vai alla sezione successiva</span>
 		</a>
 		<?php endif; ?>
 	
@@ -305,6 +305,7 @@ if (!file_exists($theme_path)) {
 	<a href="#footer" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 	<?php endif; ?>
 		<span class="Icon Icon-expand u-color-grey-40"></span>
+		<span class="u-hidden">vai alla sezione successiva</span>
 	</a>
 	<?php endif; ?>	
 </div>
@@ -320,6 +321,7 @@ if (!file_exists($theme_path)) {
 	<a href="#footer" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 	<?php endif; ?>
 		<span class="Icon Icon-expand u-color-grey-40"></span>
+		<span class="u-hidden">vai alla sezione successiva</span>
 	</a>
 	<?php endif; ?>	
 </div>
@@ -343,7 +345,7 @@ https://italia.github.io/design-web-toolkit/components/detail/leads.html
 <?php endif; ?>
 
 <?php if ($countFooter) : ?>
-		<footer class="Footer u-padding-all-s u-background-95 u-hiddenPrint" id="footer">
+		<footer class="Footer u-padding-all-s u-hiddenPrint" id="footer">
 
 <?php if ($params->get('debug') || defined('JDEBUG') && JDEBUG) : ?>
 <div class="Prose Alert Alert--info Alert--withIcon u-padding-r-bottom u-padding-r-right u-margin-r-bottom">
@@ -410,6 +412,7 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 <script src="<?php echo $this->baseurl ?>/templates/italiapa/js/timeline<?php echo $min; ?>.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/italiapa/build/IWT.min.js"></script>
 <script src="<?php echo $this->baseurl ?>/templates/italiapa/js/italiapa<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tooltip<?php echo $min; ?>.js"></script>
 
 	<jdoc:include type="modules" name="debug" style="none" />
 </body>
