@@ -47,11 +47,13 @@ $useDefList			  = ($params->get('show_modify_date') || $params->get('show_publis
 							<?php if ($params->get('show_title')) : ?>
 							<h3 class="u-padding-r-top u-padding-r-bottom" itemprop="headline">
 								<?php if ($params->get('link_titles') && $params->get('access-view')) : ?>
-								<a class="u-text-h4 u-textClean u-color-black" href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid, $this->item->language)); ?>" itemprop="url">
-									<?php echo $this->escape($this->item->title); ?>
-								</a>
+									<a class="u-text-h4 u-textClean u-color-black" href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid, $this->item->language)); ?>" itemprop="url">
+										<?php echo $this->escape($this->item->title); ?>
+									</a>
 								<?php else : ?>
-								<?php echo $this->escape($this->item->title); ?>
+									<span class="u-text-h4 u-linkClean u-color-black">
+										<?php echo $this->escape($this->item->title); ?>
+									</span>
 								<?php endif; ?>
 							</h3>
 							<?php endif; ?>
