@@ -39,8 +39,8 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 			</div>
 			<!-- </next / prev buttons> -->
 		</div>
-		
-		<div class="owl-carousel owl-theme" role="region" id="carousel-<?php echo $module->id; ?>" 
+
+		<div class="owl-carousel owl-theme" role="region" id="carousel-<?php echo $module->id; ?>" aria-label="carousel-<?php echo $module->title; ?>"
 			data-carousel-options='{"items":<?php echo $params->get('count', 1); ?><?php
 			echo $params->get('auto_sliding', 1) ? ',"autoplay":true,"autoplaySpeed":' . $params->get('speed', 1000) . ',"autoplayTimeout":' . $params->get('interval', 5000) : '';
 			echo $params->get('loop', 1) ? ',"loop":true' : ''; ?>,"responsive":false,"dots":true}'>
