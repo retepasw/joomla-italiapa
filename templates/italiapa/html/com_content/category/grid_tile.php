@@ -47,7 +47,9 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 			<?php echo $this->escape($this->item->title); ?>
 		</a>
 	<?php else : ?>
-		<?php echo $this->escape($this->item->title); ?>
+		<span class="u-text-h4 u-linkClean u-color-black">
+			<?php echo $this->escape($this->item->title); ?>
+		</span>
 	<?php endif; ?>
 	</h3>
 <?php endif; ?>
