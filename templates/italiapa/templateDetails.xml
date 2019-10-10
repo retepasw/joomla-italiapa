@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.0" type="template" method="upgrade">
 	<name>italiapa</name>
-	<creationDate>August 2019</creationDate>
+	<creationDate>October 2019</creationDate>
 	<author>Helios Ciancio</author>
 	<copyright>Copyright © 2017 - 2019 Helios Ciancio (eshiol.it). All
 		rights reserved.</copyright>
 	<authorEmail>info@eshiol.it</authorEmail>
 	<authorUrl>https://www.eshiol.it</authorUrl>
-	<version>3.8.0.13.4</version>
+	<version>3.8.0.14</version>
 	<description><![CDATA[
 		<h1>Template ItaliaPA for Joomla! 3.8</h1>
 		<p>Implementazione delle
