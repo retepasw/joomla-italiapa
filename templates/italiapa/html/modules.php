@@ -112,9 +112,9 @@ function modChrome_lg($module, &$params, &$attribs)
 
         if ((bool) $module->showtitle)
         {
-            if (($params->get('layout') == 'italiapa:linklist')
-            		|| ($module->position == 'right') &&  ($params->get('layout') == '_:default')
-            		|| ($module->position == 'services') &&  ($params->get('layout') == '_:default'))
+        	if (($params->get('layout') == 'italiapa:linklist') || ($params->get('layout') == 'italiapa:anac')
+            		|| ($module->position == 'right') && ($params->get('layout') == '_:default')
+            		|| ($module->position == 'services') && ($params->get('layout') == '_:default'))
             {
                 $div .= '<h3 ' . ($headerClass ? $headerClass : 'class="u-border-bottom-m"') . '>';
                 $div .= '<span class="u-block u-text-h3 ' . ($moduleClass ? $moduleClass : 'u-color-60') . ' u-textClean">' . $module->title . '</span></h3>';

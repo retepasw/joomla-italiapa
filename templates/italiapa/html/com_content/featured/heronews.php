@@ -73,8 +73,9 @@ see <a href="https://italia.github.io/design-web-toolkit/components/detail/hero-
 			<?php echo $item->introtext; ?>
 			</div>
 			<?php if (count(JModuleHelper::getModules('news'))) : ?>
-			<a href="#news" class="js-scrollTo u-linkClean Button Button--info u-text-r-xs">notizie ed eventi
-			<span class="u-padding-r-left Icon Icon-expand"></span></a>
+			<a href="#news" class="js-scrollTo u-linkClean Button Button--info u-text-r-xs">
+				<?php echo JText::_('TPL_ITALIAPA_NEWSANDEVENTS'); ?>
+				<span class="u-padding-r-left Icon Icon-expand"></span></a>
 			<?php endif; ?>
 		</div>
 	<?php endif; ?>

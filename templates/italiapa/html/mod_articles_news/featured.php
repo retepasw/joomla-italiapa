@@ -40,8 +40,14 @@ JFactory::getLanguage()->load('com_content');
 			<?php endforeach; ?>
 		</div>
 		<?php
-		if ($params->get('showLastSeparator') && is_array($params->get('catid')) && (count($params->get('catid')) == 1)) {
-			$link = JRoute::_(ContentHelperRoute::getCategoryRoute($params->get('catid')[0]));
+		if ($params->get('showLastSeparator') && is_array($params->get('catid')) && (count($params->get('catid')) == 1))
+		{
+			$link = ContentHelperRoute::getCategoryRoute($params->get('catid')[0]);			
+			foreach($params->get('tag', array()) as $k => $tag)
+			{
+				$link .= '&filter_tag[' . $k . ']=' . $tag;
+			}
+			$link = JRoute::_($link);
 			echo JLayoutHelper::render('eshiol.content.readall', array('params' => $params, 'link' => $link));
 		}
 		?>

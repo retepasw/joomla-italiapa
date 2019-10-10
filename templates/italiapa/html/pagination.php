@@ -122,7 +122,7 @@ function pagination_list_render($list)
 		}
 	}
 
-	$html = '<nav role="navigation" aria-label="Navigazione paginata" class="u-layoutCenter u-size1of2">';
+	$html = '<nav aria-label="Navigazione paginata" class="u-layoutCenter u-size1of2">';
 	$html .= '<ul class="Grid Grid--fit Grid--alignMiddle u-text-r-xxs">';
 	$html .= $list['start']['data'];
 	$html .= $list['previous']['data'];

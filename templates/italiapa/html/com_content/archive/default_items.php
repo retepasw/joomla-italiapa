@@ -46,7 +46,7 @@ $size = 'size' . (int) (12 / $columns) . 'of12';
 						<?php echo $this->escape($item->title); ?>
 					</a>
 				<?php else : ?>
-					<span class="u-text-h4 u-textClean u-color-black">
+					<span class="u-text-h4 u-linkClean u-color-black">
 						<?php echo $this->escape($item->title); ?>
 					</span>
 				<?php endif; ?>

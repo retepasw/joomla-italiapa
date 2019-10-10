@@ -27,7 +27,7 @@ $template = $app->getTemplate();
 -->
 
 <!-- <nav class="pagination-wrapper justify-content-center"> -->
-<nav role="navigation" aria-label="Navigazione paginata" class="u-padding-top-xxl">
+<nav aria-label="Navigazione paginata" class="u-padding-top-xxl">
 	<!-- <ul class="pagination"> -->
 	<ul class="Grid Grid--fit Grid--alignMiddle u-text-r-xxs">
 		<!-- <li class="page-item"> -->
