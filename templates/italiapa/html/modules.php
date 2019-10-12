@@ -104,7 +104,7 @@ function modChrome_lg($module, &$params, &$attribs)
         elseif (!in_array($module->position, $plainPositions) && !in_array($module->module, $plainModules))
         {
             $div .= '<' . $moduleTag . $moduleClass1 . '>';
-            $slash_div = '</' . $moduleTag . $moduleClass1 . '>' . $slash_div;
+            $slash_div = '</' . $moduleTag . '>' . $slash_div;
         }
 
         // Get module parameters
