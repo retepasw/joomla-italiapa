@@ -248,17 +248,25 @@ foreach ($list as $i => &$item)
 		echo '</li>';
 		for ($i = 0, $l = $item->level; $i < $item->level_diff; $i++, $l--)
 		{
-			if ($l == 3)
+			if ($l == 4)
+			{
+				echo '</ul></li>';
+			}
+			elseif ($l == 3)
 			{
 				echo '</ul></li></ul>';
 			}
 			elseif ($l == 2)
 			{
+				if ($menu[$item->parent_id]->depth == 2)
+				{
+					echo '</ul>';
+				}
 				echo '</div></li>';
 			}
 			else
 			{
-				echo '</ul></li>';
+				echo '</li>';
 			}
 		}
 	}
@@ -266,7 +274,7 @@ foreach ($list as $i => &$item)
 	elseif ($item->level == 2)
 	{
 		echo '</li>';
-		if (($item->shallower) || ($menu[$item->parent_id]->depth > 2))
+		if ($menu[$item->parent_id]->depth > 2)
 		{
 			echo '</ul>';
 		}
