@@ -127,6 +127,10 @@
 			$( this ).find( 'li ul' ).width( colWidth );
 			// $( this ).find( 'li ul' ).wrapAll( '<div></div>' );
 		} );
+
+		$( window ).on( "orientationchange", function( e ) {
+			window.location.reload();
+		} );
 	} );
 
 	/**
