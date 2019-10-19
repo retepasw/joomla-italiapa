@@ -760,3 +760,7 @@ footer input::-ms-input-placeholder { /* Microsoft Edge */
 .tooltip {
     z-index: 999999
 }
+
+.u-articleBodyHidden [itemprop=articleBody] {
+    display: none !important;
+}
