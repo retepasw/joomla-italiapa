@@ -17,7 +17,7 @@ defined('_JEXEC') or die;
 
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 ?>
-<span class="u-text-r-xxs u-textSecondary u-textWeight-400 u-lineHeight-xl u-cf">
+<span itemscope itemtype="https://schema.org/event"  class="u-text-r-xxs u-textSecondary u-textWeight-400 u-lineHeight-xl u-cf">
 	<time datetime="<?php echo JHtml::_('date', $displayData['item']->created, 'c'); ?>" itemprop="dateCreated">
 	<?php echo JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHtml::_('date', $displayData['item']->created, JText::_('DATE_FORMAT_LC3'))); ?>
 	</time>
