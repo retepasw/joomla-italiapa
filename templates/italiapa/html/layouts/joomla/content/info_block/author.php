@@ -18,7 +18,8 @@ defined('_JEXEC') or die;
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 ?>
-<span class="u-text-r-xxs u-textSecondary u-textWeight-400 u-lineHeight-xl u-cf createdby" itemprop="author" itemscope itemtype="https://schema.org/Person">
+<span itemscope itemtype="https://schema.org/Article" class="u-text-r-xxs u-textSecondary u-textWeight-400 u-lineHeight-xl u-cf createdby">
+	<span itemscope itemtype="https://schema.org/Person" itemprop="author"></span>
 	<?php $author = ($displayData['item']->created_by_alias ?: $displayData['item']->author); ?>
 	<?php $author = '<span itemprop="name">' . $author . '</span>'; ?>
 	<?php if (!empty($displayData['item']->contact_link ) && $displayData['params']->get('link_author') == true) : ?>

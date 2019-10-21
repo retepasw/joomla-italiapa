@@ -21,7 +21,7 @@ $params = $displayData['params'];
 $lang = JFactory::getLanguage();
 ?>
 
-<p class="u-textCenter u-text-md-right u-text-lg-right u-margin-r-top">
+<p itemscope itemtype="https://schema.org/category" class="u-textCenter u-text-md-right u-text-lg-right u-margin-r-top">
 	<a href="<?php echo $displayData['link']; ?>" class="u-color-50 u-textClean u-text-h4" itemprop="url">
 		<?php if ($lang->isRtl()) : ?>
 		<span class="Icon Icon-chevron-left"></span>

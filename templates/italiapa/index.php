@@ -155,7 +155,7 @@ if (!file_exists($theme_path)) {
 
 <div class="Header-navbar ">
 
-	<div class="u-layout-wide Grid Grid--alignMiddle u-layoutCenter">
+	<div itemscope itemtype="http://schema.org/Organization" class="u-layout-wide Grid Grid--alignMiddle u-layoutCenter">
 		<?php if ($logo = $this->params->get('logo')) : ?>
 		<div class="Header-logo Grid-cell" aria-hidden="true">
 			<a href="<?php echo $this->baseurl; ?>/" itemprop="url">
