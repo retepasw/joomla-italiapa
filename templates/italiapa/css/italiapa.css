@@ -760,3 +760,9 @@ footer input::-ms-input-placeholder { /* Microsoft Edge */
 .tooltip {
     z-index: 999999
 }
+
+.Masonry-item h3.u-text-h4 svg {
+	width: 48px;
+    height: 48px;
+    vertical-align: middle;
+}

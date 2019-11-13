@@ -5,7 +5,7 @@
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -112,6 +112,12 @@ if (count($this->items[$this->parent->id]) > 0) :
 		<p class="u-text-h6 u-margin-bottom-l"><a class="u-color-50 u-textClean" href="">sed vel itaque</a></p>
         -->
 		<h3 class="u-text-h4 u-margin-r-bottom">
+			<?php $pattern = '/<svg[\s>].*<\/svg>/is';
+			preg_match($pattern, $item->description, $matches);
+			if (is_array($matches) && !empty($matches)) :
+				$item->description = preg_replace($pattern, '', $item->description, 1);
+				echo $matches[0];
+			endif; ?>
 			<a class="u-text-r-m u-color-black u-textWeight-400 u-textClean" href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($item->id, $item->language)); ?>">
 				<?php echo $this->escape($item->title); ?>
 			</a>
