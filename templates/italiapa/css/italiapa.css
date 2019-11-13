@@ -761,8 +761,18 @@ footer input::-ms-input-placeholder { /* Microsoft Edge */
     z-index: 999999
 }
 
-.Masonry-item h3.u-text-h4 svg {
+.Masonry-item h3.u-text-h4 svg.Icon {
 	width: 48px;
     height: 48px;
+    margin-top: 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    margin-left: 0px;
     vertical-align: middle;
+}
+
+.Masonry-item h3.u-text-h4 svg.Top-icon {
+	width: 80px;
+    height: 80px;
+    display: block;
 }

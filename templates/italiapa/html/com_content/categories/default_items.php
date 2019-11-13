@@ -112,14 +112,16 @@ if (count($this->items[$this->parent->id]) > 0) :
 		<p class="u-text-h6 u-margin-bottom-l"><a class="u-color-50 u-textClean" href="">sed vel itaque</a></p>
         -->
 		<h3 class="u-text-h4 u-margin-r-bottom">
-			<?php $pattern = '/<svg[\s>].*<\/svg>/is';
-			preg_match($pattern, $item->description, $matches);
-			if (is_array($matches) && !empty($matches)) :
-				$item->description = preg_replace($pattern, '', $item->description, 1);
-				echo $matches[0];
-			endif; ?>
-			<a class="u-text-r-m u-color-black u-textWeight-400 u-textClean" href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($item->id, $item->language)); ?>">
-				<?php echo $this->escape($item->title); ?>
+			<a class="u-text-r-m u-color-black u-textWeight-400 u-linkClean" href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($item->id, $item->language)); ?>">
+				<?php
+				$pattern = '/<svg\s*.*\s*class\s*=\s*["\'][^"]*?Icon[^"]*?["\']\s*>.*?<\/svg>/is';
+				preg_match($pattern, $item->description, $matches);
+				if (is_array($matches) && !empty($matches)) :
+					$item->description = preg_replace($pattern, '', $item->description, 1);
+					echo $matches[0];
+				endif;
+				echo $this->escape($item->title);
+				?>
 			</a>
 		</h3>
 		<?php if ($this->params->get('show_subcat_desc_cat') == 1) : ?>
