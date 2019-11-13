@@ -152,50 +152,6 @@ foreach ($list as $i => &$item)
 		$class = 'Megamenu-item' . $class;
 	}
 
-	if (preg_match_all('/(^|\s)Icon-/', $item->menu_image_css, $matches, PREG_SET_ORDER, 0) || preg_match_all('/(^|\s)it-/', $item->menu_image_css, $matches, PREG_SET_ORDER, 0))
-	{
-		$icon = '';
-		$svg = '';
-		$menu_image_css = explode(' ', $item->menu_image_css);
-		for ($i = count($menu_image_css) - 1; $i >= 0; $i --)
-		{
-			if (substr($menu_image_css[$i], 0, 5) == 'Icon-')
-			{
-				if (file_exists(JPATH_SITE . '/templates/italiapa/src/icons/img/SVG/' . substr($menu_image_css[$i], 5) . '.svg'))
-				{
-					$svg .= ' ' . $menu_image_css[$i];
-				}
-				else
-				{
-					$icon .= ' ' . $menu_image_css[$i];
-				}
-				unset($menu_image_css[$i]);
-			}
-			elseif (substr($menu_image_css[$i], 0, 3) == 'it-')
-			{
-				if (file_exists(JPATH_SITE . '/templates/italiapa/src/icons/img/SVG/' . $menu_image_css[$i] . '.svg'))
-				{
-					$svg = '#Icon-' . $menu_image_css[$i];
-				}
-				else
-				{
-					$icon .= ' ' . $menu_image_css[$i];
-				}
-				unset($menu_image_css[$i]);
-			}
-		}
-		$item->menu_image_css = implode(' ', $menu_image_css);
-
-		if ($svg)
-		{
-			$icon = '<svg class="' . trim($icon . ' ' . $item->menu_image_css) . '"><use xlink:href="' . trim($svg) . '"></use></svg>';
-		}
-		elseif ($icon)
-		{
-			$icon = '<span class="' . trim($icon . ' ' . $item->menu_image_css) . '"></span>';
-		}
-	}
-
 	JLog::add(new JLogEntry('class: '.$class, JLog::DEBUG, 'tpl_italiapa'));
 	JLog::add(new JLogEntry('subclass: '.$subclass, JLog::DEBUG, 'tpl_italiapa'));
 	JLog::add(new JLogEntry('icon: '.$icon, JLog::DEBUG, 'tpl_italiapa'));
