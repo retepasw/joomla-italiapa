@@ -152,7 +152,7 @@ foreach ($list as $i => &$item)
 		$class = 'Megamenu-item' . $class;
 	}
 
-	if (preg_match_all('/(^|\s)Icon-/', $item->menu_image_css, $matches, PREG_SET_ORDER, 0))
+	if (preg_match_all('/(^|\s)Icon-/', $item->menu_image_css, $matches, PREG_SET_ORDER, 0) || preg_match_all('/(^|\s)it-/', $item->menu_image_css, $matches, PREG_SET_ORDER, 0))
 	{
 		$icon = '';
 		$svg = '';
@@ -171,12 +171,24 @@ foreach ($list as $i => &$item)
 				}
 				unset($menu_image_css[$i]);
 			}
+			elseif (substr($menu_image_css[$i], 0, 3) == 'it-')
+			{
+				if (file_exists(JPATH_SITE . '/templates/italiapa/src/icons/img/SVG/' . $menu_image_css[$i] . '.svg'))
+				{
+					$svg = '#Icon-' . $menu_image_css[$i];
+				}
+				else
+				{
+					$icon .= ' ' . $menu_image_css[$i];
+				}
+				unset($menu_image_css[$i]);
+			}
 		}
 		$item->menu_image_css = implode(' ', $menu_image_css);
 
 		if ($svg)
 		{
-			$icon = '<svg class="' . trim($icon . ' ' . $item->menu_image_css) . '"><use xlink:href="#' . trim($svg) . '"></use></svg>';
+			$icon = '<svg class="' . trim($icon . ' ' . $item->menu_image_css) . '"><use xlink:href="' . trim($svg) . '"></use></svg>';
 		}
 		elseif ($icon)
 		{

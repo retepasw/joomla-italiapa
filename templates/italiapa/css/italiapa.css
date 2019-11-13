@@ -760,3 +760,13 @@ footer input::-ms-input-placeholder { /* Microsoft Edge */
 .tooltip {
     z-index: 999999
 }
+
+.Megamenu li svg {
+	width: 24px;
+    height: 24px;
+    margin-top: 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    margin-left: 0px;
+    vertical-align: middle;
+}
