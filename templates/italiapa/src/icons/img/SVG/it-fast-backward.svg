@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg7"
+   version="1.1"
+   viewBox="0 0 24 24">
+  <metadata
+     id="metadata13">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>it-fast-backward</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs11" />
+  <title
+     id="title2">it-fast-backward</title>
+  <g
+     transform="translate(4.14636,0.101694)"
+     data-name="Livello 6"
+     id="Livello_6">
+    <path
+       id="path4"
+       d="M 10.25,12 15,7.23 a 0.75,0.75 0 0 0 0,-1.06 0.74,0.74 0 0 0 -1.06,0 l -4.75,4.77 a 1.51,1.51 0 0 0 0,2.12 L 14,17.83 a 0.74,0.74 0 0 0 1.06,0 0.75,0.75 0 0 0 0,-1.06 z" />
+  </g>
+  <g
+     data-name="Livello 7"
+     id="Livello_7"
+     transform="translate(-1.260836,-0.101694)">
+    <path
+       id="path5"
+       d="M 10.25,12 15,7.23 a 0.75,0.75 0 0 0 0,-1.06 0.74,0.74 0 0 0 -1.06,0 l -4.75,4.77 a 1.51,1.51 0 0 0 0,2.12 L 14,17.83 a 0.74,0.74 0 0 0 1.06,0 0.75,0.75 0 0 0 0,-1.06 z" />
+  </g>
+  <g
+     data-name="Livello 17"
+     id="Livello_17"
+     transform="rotate(-90,8.374015,15.524293)">
+    <rect
+       id="rect4"
+       rx="0.75"
+       height="1.5"
+       width="12"
+       y="11.25"
+       x="6" />
+  </g>
+</svg>
