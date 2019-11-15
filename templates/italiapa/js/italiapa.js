@@ -57,7 +57,7 @@
 						}
 					} );
 			} );
-			if ($( '#right > img:first' ).length ) {
+			if ( $( '#right > img:first' ).length ) {
 				$( '.ipa-Right:not(aside)' ).prependTo( '#right' );
 				$( 'aside.ipa-Right' ).insertAfter( '#right > img:first' );
 			} else {
@@ -66,9 +66,10 @@
 			// icons
 			$( '.ipa-Right nav' ).removeClass( 'u-floatRight' ).addClass( 'u-padding-bottom-s' );
 		}
+
 		// fields
-		$( 'dl.fields-container dd.field-entry.ipa-Right' ).each( function( index, element ) {
-			$( element ).prependTo( 'div.icons nav ul' ).replaceWith( $( '<li class="u-padding-right-xs">' + element.innerHTML + '</li>' ) );
+		$( 'article dl.fields-container dd.field-entry.ipa-Right' ).each( function( index, element ) {
+			$( element ).prependTo( 'div.icons nav>ul:first-of-type' ).replaceWith( $( '<li class="u-padding-right-xs">' + element.innerHTML + '</li>' ) );
 		} );
 
 		// theme
@@ -91,7 +92,7 @@
 
 		// cookie consent
 		eshiol.italiapa.removeCookiesConsent = function( ) {
-			console.log('removing cookies_consent cookie');
+			console.log( 'removing cookies_consent cookie' );
 			$.removeCookie( 'cookies_consent' );
 		}
 
@@ -127,4 +128,67 @@
 			// $( this ).find( 'li ul' ).wrapAll( '<div></div>' );
 		} );
 	} );
+
+	/**
+	 * Render messages send via JSON
+	 * Used by some javascripts such as validate.js
+	 *
+	 * @param   {object}  messages    JavaScript object containing the messages to render. Example:
+	 *                              var messages = {
+	 *                                  "message": ["Message one", "Message two"],
+	 *                                  "error": ["Error one", "Error two"]
+	 *                              };
+	 * @return  {void}
+	 */
+	Joomla.renderMessages = function( messages ) {
+		Joomla.removeMessages();
+
+		var messageContainer = document.getElementById( 'system-message-container' ),
+		    type, typeMessages, messagesBox, title, titleWrapper, i, messageWrapper, alertClass;
+
+		for ( type in messages ) {
+			if ( !messages.hasOwnProperty( type ) ) { continue; }
+			// Array of messages of this type
+			typeMessages = messages[ type ];
+
+			// Create the alert box
+			messagesBox = document.createElement( 'div' );
+
+			// Message class
+			alertClass = (type === 'notice') ? 'Alert-info' : 'alert-' + type;
+			alertClass = (type === 'message') ? 'Alert-success' : alertClass;
+			alertClass = (type === 'error') ? 'Alert-error Alert-danger' : alertClass;
+
+			messagesBox.className = 'Prose Alert ' + alertClass + ' Alert--withIcon u-layout-prose u-padding-r-bottom u-padding-r-right u-margin-r-bottom';
+
+			// Close button
+			var buttonWrapper = document.createElement( 'a' );
+			buttonWrapper.setAttribute('data-dismiss', 'alert');
+			buttonWrapper.className = 'Button u-border-none u-floatRight';
+			buttonWrapper.innerHTML = '<span class="u-text-r-m Icon Icon-close"></span>';
+			messagesBox.appendChild( buttonWrapper );
+
+			// Title
+			title = Joomla.JText._( type );
+
+			// Skip titles with untranslated strings
+			if ( typeof title != 'undefined' ) {
+				titleWrapper = document.createElement( 'h2' );
+				titleWrapper.className = 'u-text-h';
+				titleWrapper.innerHTML = Joomla.JText._( type );
+				messagesBox.appendChild( titleWrapper );
+			}
+
+			// Add messages to the message box
+			for ( i = typeMessages.length - 1; i >= 0; i-- ) {
+				messageWrapper = document.createElement( 'p' );
+				messageWrapper.className = 'u-text-p';
+				messageWrapper.innerHTML = typeMessages[ i ];
+				messagesBox.appendChild( messageWrapper );
+			}
+
+			messageContainer.appendChild( messagesBox );
+		}
+	};
+
 } )( jQuery );

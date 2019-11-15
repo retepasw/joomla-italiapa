@@ -330,7 +330,7 @@ abstract class JHtmlIwt
 		{
 			$link = $item->title;
 		}
-		elseif (preg_match_all('/(^|\s)Icon-/', $item->menu_image_css, $matches, PREG_SET_ORDER, 0))
+		elseif (preg_match_all('/(^|\s)Icon-/', $item->menu_image_css, $matches, PREG_SET_ORDER, 0) || preg_match_all('/(^|\s)it-/', $item->menu_image_css, $matches, PREG_SET_ORDER, 0))
 		{
 			$icon = '';
 			$svg = '';
@@ -341,7 +341,19 @@ abstract class JHtmlIwt
 				{
 					if (file_exists(JPATH_SITE . '/templates/italiapa/src/icons/img/SVG/' . substr($menu_image_css[$i], 5) . '.svg'))
 					{
-						$svg .= ' ' . $menu_image_css[$i];
+						$svg = $menu_image_css[$i];
+					}
+					else
+					{
+						$icon .= ' ' . $menu_image_css[$i];
+					}
+					unset($menu_image_css[$i]);
+				}
+				elseif (substr($menu_image_css[$i], 0, 3) == 'it-')
+				{
+					if (file_exists(JPATH_SITE . '/templates/italiapa/src/icons/img/SVG/' . $menu_image_css[$i] . '.svg'))
+					{
+						$svg = 'Icon-' . $menu_image_css[$i];
 					}
 					else
 					{
@@ -352,13 +364,14 @@ abstract class JHtmlIwt
 			}
 			$item->menu_image_css = implode(' ', $menu_image_css);
 
+			$class = trim($icon . ' ' . $item->menu_image_css);
 			if ($svg)
 			{
-				$link = '<span class="' . trim($svg) . '"><svg class="' . trim($icon . ' ' . $item->menu_image_css) . '"><use xlink:href="#' . trim($svg) . '"></use></svg></span>';
+				$link = '<span class="' . trim($svg) . '"><svg' . ($class ? ' class="' . $class . '"' : '') . '><use xlink:href="#' . trim($svg) . '"></use></svg></span>';
 			}
 			elseif ($icon)
 			{
-				$link = '<span class="' . trim($icon . ' ' . $item->menu_image_css) . '"></span>';
+				$link = '<span class="' . $class . '"></span>';
 			}
 
 			$link .= '<span class="' . ($item->params->get('menu_text', 1) ? 'image-title' : 'u-hiddenVisually') . '">' . $item->title . '</span>';

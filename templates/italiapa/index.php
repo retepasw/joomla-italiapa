@@ -108,7 +108,7 @@ if (!file_exists($theme_path)) {
 </head>
 <body class="t-Pac c-hideFocus enhanced">
 
-<?php $svg_path = JPATH_ROOT .'/templates/' . $this->template . '/src/icons/img/SVG'; ?>
+<?php $svg_path = JPATH_ROOT .'/templates/italiapa/src/icons/img/SVG'; ?>
 <?php if (file_exists($svg_path) && ($icons = array_diff(scandir($svg_path), array('..', '.')))) : ?>
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 	<defs>
@@ -116,9 +116,13 @@ if (!file_exists($theme_path)) {
 		<?php $path_parts = pathinfo($filename); ?>
 		<?php if ($path_parts['extension'] != 'svg') continue; ?>
 		<?php $iconname = $path_parts['filename']; ?>
-		<symbol id="Icon-<?php echo $iconname; ?>" viewBox="0 0 32 32">
-		<?php $icon = new SimpleXMLElement(file_get_contents(JPATH_ROOT .'/templates/' . $this->template . '/src/icons/img/SVG/' . $iconname . '.svg')); ?>
-		<?php echo $icon->title->asXML() . "\r" . $icon->path->asXML()  . "\r"; ?>
+		<?php $icon = new SimpleXMLElement(file_get_contents($svg_path . '/' . $iconname . '.svg')); ?>
+		<symbol id="Icon-<?php echo $iconname; ?>" 
+			viewBox="<?php echo isset($icon['viewBox']) ? (string) $icon['viewBox'] : '0 0 32 32'; ?>"
+			<?php echo isset($icon['style']) ? 'style="' . (string) $icon['style'] . '"' : ''; ?>>
+			<?php foreach ($icon->children() as $child) : ?>
+				<?php echo $child->asXML()  . "\r"; ?>
+			<?php endforeach; ?>
 		</symbol>
 	<?php endforeach; ?>
 	</defs>
