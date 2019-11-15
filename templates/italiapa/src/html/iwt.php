@@ -324,7 +324,7 @@ abstract class JHtmlIwt
 				$link = JHtml::_('image', $item->menu_image, $item->anchor_title);
 			}
 
-			$link .= '<span class="' . ($item->params->get('menu_text', 1) ? 'image-title' : 'u-hiddenVisually') . '">' . $item->title . '</span>';
+			$link .= '<span class="' . $item->menu_title_css . ($item->params->get('menu_text', 1) ? ' image-title' : ' u-hiddenVisually') . '">' . $item->title . '</span>';
 		}
 		elseif (! $item->menu_image_css)
 		{
@@ -374,7 +374,11 @@ abstract class JHtmlIwt
 				$link = '<span class="' . $class . '"></span>';
 			}
 
-			$link .= '<span class="' . ($item->params->get('menu_text', 1) ? 'image-title' : 'u-hiddenVisually') . '">' . $item->title . '</span>';
+			$link .= '<span class="' . $item->menu_title_css . ($item->params->get('menu_text', 1) ? ' image-title' : ' u-hiddenVisually') . '">' . $item->title . '</span>';
+		}
+		elseif ($item->menu_title_css)
+		{
+			$link = '<span class="' . $item->menu_title_css . '">' . $item->title . '</span>'; 
 		}
 		else
 		{
