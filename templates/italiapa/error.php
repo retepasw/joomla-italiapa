@@ -203,7 +203,7 @@ non funzionante</div></li>
 </header>
 
 <?php if (count($menu_modules)) : ?>
-<section class="Offcanvas Offcanvas--left Offcanvas--modal js-fr-offcanvas u-jsVisibilityHidden u-nojsDisplayNone u-hiddenPrint" id="menu">
+<section class="Offcanvas Offcanvas--<?php echo $params->get('hamburgermenu_pos', 'left')?> Offcanvas--modal js-fr-offcanvas u-jsVisibilityHidden u-nojsDisplayNone u-hiddenPrint" id="menu">
 	<h2 class="u-hiddenVisually">Menu di navigazione</h2>
 	<div class="Offcanvas-content u-background-white">
 		<div class="Offcanvas-toggleContainer u-background-70 u-jsHidden">
