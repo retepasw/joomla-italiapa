@@ -15,9 +15,8 @@
 
 defined('_JEXEC') or die;
 
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
-
 JHtml::addIncludePath(JPATH_SITE . '/components/com_finder/helpers/html');
+JHtml::addIncludePath(JPATH_THEMES . '/italiapa/html/com_finder/search');
 
 $moduleclass_sfx = $params->get('moduleclass_sfx');
 $button = $params->get('show_button', 0);
@@ -38,33 +37,91 @@ if ($module->position == 'footer')
 	}
 	$moduleclass_sfx = implode(' ', $moduleclass_sfx);
 }
+
+$script = "
+jQuery(document).ready(function() {
+	var value, searchword = jQuery('#mod-finder-searchword" . $module->id . "');
+			
+		// Get the current value.
+		value = searchword.val();
+			
+		// If the current value equals the default value, clear it.
+		searchword.on('focus', function ()
+		{
+			var el = jQuery(this);
+			
+			if (el.val() === '" . JText::_('MOD_FINDER_SEARCH_VALUE', true) . "')
+			{
+				el.val('');
+			}
+		});
+					
+		// If the current value is empty, set the previous value.
+		searchword.on('blur', function ()
+		{
+			var el = jQuery(this);
+					
+			if (!el.val())
+			{
+				el.val(value);
+			}
+		});
+					
+		jQuery('#mod-finder-searchform" . $module->id . "').on('submit', function (e)
+		{
+			e.stopPropagation();
+			var advanced = jQuery('#mod-finder-advanced" . $module->id . "');
+					
+			// Disable select boxes with no value selected.
+			if (advanced.length)
+			{
+				advanced.find('select').each(function (index, el)
+				{
+					var el = jQuery(el);
+					
+					if (!el.val())
+					{
+						el.attr('disabled', 'disabled');
+					}
+				});
+			}
+		});";
+/*
+ * This segment of code sets up the autocompleter.
+ */
+if ($params->get('show_autosuggest', 1))
+{
+	JHtml::_('script', 'jui/jquery.autocomplete.min.js', array('version' => 'auto', 'relative' => true));
+	
+	$script .= "
+	var suggest = jQuery('#mod-finder-searchword" . $module->id . "').autocomplete({
+		serviceUrl: '" . JRoute::_('index.php?option=com_finder&task=suggestions.suggest&format=json&tmpl=component') . "',
+		paramName: 'q',
+		minChars: 1,
+		maxHeight: 400,
+		width: 300,
+		zIndex: 9999,
+		deferRequestBy: 500
+	});";
+}
+
+$script .= '});';
+
+JFactory::getDocument()->addScriptDeclaration($script);
 ?>
 <div class="search<?php echo $moduleclass_sfx; ?>">
-	<form action="<?php echo JRoute::_('index.php'); ?>" method="post" class="Form">
-		<div class="Form-field Form-field--withPlaceholder Grid" role="search">
+	<form id="mod-finder-searchform<?php echo $module->id; ?>" action="<?php echo JRoute::_($route); ?>" method="get" class="Form" role="search">
+		<div class="Form-field Form-field--withPlaceholder Grid u-margin-bottom-l" role="search">
 			<?php
-				$output = '<input name="searchword" class="Form-input Grid-cell u-sizeFill u-text-r-s" required="" id="mod-search-searchword' . $module->id . '" type="search">';
-				$output .= '<label class="Form-label' . ($button && $button_pos == 'left' ? ' u-margin-left-xxl' : '') . '" for="mod-search-searchword' . $module->id . '">'.$text.'</label>';
-	
+				$output = '<input type="text" name="q" id="mod-finder-searchword' . $module->id . '" class="Form-input Grid-cell u-sizeFill u-text-r-s u-borderRadius-m" size="'
+ 					. $params->get('field_size', 20) . '" value="' . htmlspecialchars(JFactory::getApplication()->input->get('q', '', 'string'), ENT_COMPAT, 'UTF-8') . '"'
+ 					. ' placeholder="' . JText::_('MOD_FINDER_SEARCH_VALUE') . '"/>';
+ 		
 				if ($button) :
-//					if ($imagebutton) :
-//						$btn_output = '<button class="Grid-cell u-sizeFit Icon-' . $button_text . ' u-background-60 u-color-white u-padding-all-s u-textWeight-700" data-tooltip="' . JHtml::tooltipText($label, null, 0, 0) . '"></button>';
-//					else :
-						$btn_output = '<button class="Grid-cell u-sizeFit Icon-search u-background-60 u-color-white u-padding-all-s u-textWeight-700" data-tooltip="' . JHtml::tooltipText($label, null, 0, 0) . '"></button>';
-//					endif;
+					$btn_output = '<button class="Grid-cell u-sizeFit Icon-search u-background-60 u-color-white u-padding-all-s u-textWeight-700" data-tooltip="' . JHtml::tooltipText($label, null, 0, 0) . '"></button>';
 	
 					switch ($button_pos) :
-						/*
-						case 'top' :
-							$output = $btn_output . '<br />' . $output;
-							break;
-	
-						case 'news' :
-							$output .= '<br />' . $btn_output;
-							break;
-						*/
 						case 'left' :
-							// $output = $btn_output . '<div class="u-posRelative">' . $output . '</div>';
 							$output = $btn_output . $output;
 						break;
 	
@@ -84,12 +141,10 @@ if ($module->position == 'footer')
 
 				echo $output;
 			?>
-			<input type="hidden" name="task" value="search" />
-			<input type="hidden" name="option" value="com_search" />
 		</div>
 
 		<?php if ($show_advanced == 1) : ?>
-			<div id="mod-finder-advanced<?php echo $module->id; ?>">
+			<div id="mod-finder-advanced<?php echo $module->id; ?>" class="Form--spaced">
 				<?php echo JHtml::_('filter.select', $query, $params); ?>
 			</div>
 		<?php endif; ?>
