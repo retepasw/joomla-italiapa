@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -14,8 +14,6 @@
  */
 
 defined('JPATH_BASE') or die;
-
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 $metadesc = $displayData['item']->metadesc ?: JFactory::getApplication()->get('MetaDesc');
 ?>
@@ -37,7 +35,7 @@ Condividi
 */ ?>
 <li role="menuitem"><a href="#" onclick="javascript:window.open('https://wa.me/?text=' + encodeURIComponent(eshiol.location.href), '', 'width=800,height=600');"><span class="Icon Icon-whatsapp"></span><span class="u-hiddenVisually">Whatsapp</span></a></li>
 <li role="menuitem"><a href="#" onclick="javascript:window.open('https://telegram.me/share/url?url=' + encodeURIComponent(eshiol.location.href), '', 'width=800,height=600');"><svg class="Icon Icon-telegram"><use xlink:href="#Icon-telegram"></use></svg><span class="u-hiddenVisually">Telegram</span></a></li>
-<!-- 
+<!--
 <li role="menuitem"><a href="#" onclick="javascript:alert('Funzione non supportata');"><span class="Icon Icon-youtube"></span><span class="u-hiddenVisually">Youtube</span></a></li>
 <li role="menuitem"><a href="#" onclick="javascript:alert('Funzione non supportata');"><span class="Icon Icon-flickr"></span><span class="u-hiddenVisually">Flickr</span></a></li>
 <li role="menuitem"><a href="#" onclick="javascript:alert('Funzione non supportata');"><span class="Icon Icon-slideshare"></span><span class="u-hiddenVisually">Slideshare</span></a></li>
@@ -49,7 +47,7 @@ Condividi
 	$url      = 'index.php?option=com_mailto&tmpl=component&template=italiapa&link=' . MailtoHelper::addLink($link);
 
 	$text     = '<span class="u-text-r-m Icon Icon-mail"></span><span class="u-hiddenVisually">Email</span>';
-	
+
 	$status   = 'width=400,height=568,menubar=yes,resizable=yes';
 	$attribs  = array(
 	    //'class'   => 'Button Button--default u-text-r-xs u-linkClean',

@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
- * 
- * @author		Helios Ciancio <info@eshiol.it>
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
+ *
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -14,8 +14,6 @@
  */
 
 defined('_JEXEC') or die;
-
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 
@@ -30,7 +28,7 @@ foreach ($text as $key => $subtext)
 	{
 		$match = $matches[$key - 1];
 		$match = (array) JUtility::parseAttributes($match[0]);
-		
+
 		if (isset($match['alt']))
 		{
 			$title = stripslashes($match['alt']);
@@ -56,5 +54,3 @@ $t[] = (string) JHtml::_('iwt.endAccordion');
 //$t[] = '</dl>';
 
 echo implode(' ', $t);
-?>
-

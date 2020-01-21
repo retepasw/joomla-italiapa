@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -14,20 +14,13 @@
  */
 
 defined('_JEXEC') or die;
-
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
-JLog::add(new JLogEntry($module->position, JLog::DEBUG, 'tpl_italiapa'));
-
-$id = '';
-
-if ($tagId = $params->get('tag_id', ''))
-{
-    $id = ' id="' . $tagId . '"';
-}
 ?>
+
+<?php $id = ($tagId = $params->get('tag_id', '')) ? ' id="' . $tagId . '"' : ''; ?>
+
 <div class="mod-menu<?php echo htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8'); ?>">
-<?php foreach ($list as $i => &$item)
-{
+<?php foreach ($list as $i => &$item) : ?>
+<?php
     $class = 'item-' . $item->id;
 
 	if ($item->id == $default_id)
@@ -73,7 +66,7 @@ if ($tagId = $params->get('tag_id', ''))
 		$class .= ' parent';
 	}
 
-/**	
+/**
 	<a href="#options" data-menu-trigger="options" class="Button Button--info">Menu</a>
 	<div id="options" data-menu class="Dropdown-menu u-borderShadow-m u-background-white">
 	<span class="Icon-drop-down Dropdown-arrow u-color-white"></span>
@@ -110,7 +103,7 @@ if ($tagId = $params->get('tag_id', ''))
 			case 'url':
 				require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
 				break;
-	
+
 			default:
 				require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
 				break;
@@ -135,7 +128,7 @@ if ($tagId = $params->get('tag_id', ''))
 		{
 			echo str_repeat('</ul></li>', $item->level_diff);
 		}
-		else 
+		else
 		{
 			echo str_repeat('</ul></li>', $item->level_diff - 1);
 			echo '</ul></div>';
@@ -146,6 +139,6 @@ if ($tagId = $params->get('tag_id', ''))
 	{
 		echo '</li>';
 	}
-}
 ?>
+<?php endforeach; ?>
 </div>

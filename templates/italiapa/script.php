@@ -1,0 +1,300 @@
+<?php  
+/**
+ * Script file of templateName template.
+ *
+ * The name of this class is dependent on the template being installed.
+ * The class name should have the template's name, directly followed by
+ * the text InstallerScript (ex:. templateNameInstallerScript).
+ *
+ * This class will be called by Joomla!'s installer, if specified in your template's
+ * manifest file, and is used for custom automation actions in its installation process.
+ *
+ * In order to use this automation script, you should reference it in your template's
+ * manifest file as follows:
+ * script.php
+ *
+ * @package		Joomla.Site
+ * @subpackage  Templates.ItaliaPA
+ *
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
+ * @link		http://www.eshiol.it
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
+ * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
+ * Template ItaliaPA is free software. This version may have been modified
+ * pursuant to the GNU General Public License, and as distributed it includes
+ * or is derivative of works licensed under the GNU General Public License or
+ * other free or open source software licenses.
+ */
+
+// No direct access to this file
+defined('_JEXEC') or die('Restricted access');
+
+class italiapaInstallerScript
+{
+	/**
+	 * This method is called after a template is installed.
+	 *
+	 * @param  \stdClass $parent - Parent object calling this method.
+	 *
+	 * @return void
+	 */
+	public function install($parent)
+	{
+	}
+ 
+	/**
+	 * This method is called after a template is uninstalled.
+	 *
+	 * @param  \stdClass $parent - Parent object calling this method.
+	 *
+	 * @return void
+	 */
+	public function uninstall($parent) 
+	{
+	}
+
+	/**
+	 * This method is called after a template is updated.
+	 *
+	 * @param  \stdClass $parent - Parent object calling object.
+	 *
+	 * @return void
+	 */
+	public function update($parent) 
+	{
+	}
+
+	/**
+	 * Runs just before any installation action is preformed on the template.
+	 * Verifications and pre-requisites should run in this function.
+	 *
+	 * @param  string	$type	 - Type of PreFlight action. Possible values are:
+	 *							 - * install
+	 *							 - * update
+	 *							 - * discover_install
+	 * @param  \stdClass $parent - Parent object calling object.
+	 *
+	 * @return void
+	 */
+	public function preflight($type, $parent) 
+	{
+	} 
+ 
+	/**
+	 * Runs right after any installation action is preformed on the template.
+	 *
+	 * @param  string	$type	 - Type of PostFlight action. Possible values are:
+	 *							 - * install
+	 *							 - * update
+	 *							 - * discover_install
+	 * @param  \stdClass $parent - Parent object calling object.
+	 *
+	 * @return void
+	 */
+	function postflight($type, $parent)
+	{
+	    if (($type === 'install') or ($type === 'update'))
+		{
+			JTable::addIncludePath(JPATH_ROOT.'/administrator/components/com_fields/tables');
+			
+			// Initialize a new field
+			/** @type  FieldsTableField  $field  */
+			$field = JTable::getInstance('Field', 'FieldsTable');
+
+			// Check if the field archive_up exists before adding it
+			if (!$field->load(array('context' => 'com_content.article', 'name' => 'articleicon')))
+			{
+				$field->context = 'com_content.article';
+				$field->group_id = 0;
+				$field->title = 'Icon';
+				$field->name = 'articleicon';
+				$field->label = 'Icon';
+				$field->default_value = '';
+				$field->type = 'text';
+				$field->note = '';
+				$field->description = '';
+				$field->state = 1;
+				$field->required = 0;
+				$field->params = '{"hint":"","class":"","label_class":"","show_on":"","render_class":"","showlabel":"1","label_render_class":"","display":"0","layout":"","display_readonly":"2"}';
+				$field->fieldparams = '{"filter":"","maxlength":""}';
+				$field->language = '*';
+				$field->created_user_id = JFactory::getUser()->id;
+				$field->access = 1;
+
+				// Check to make sure our data is valid
+				$field->check() && $field->store(true);
+			}
+			
+			$field = JTable::getInstance('Field', 'FieldsTable');
+
+			// Check if the field archive_up exists before adding it
+			if (!$field->load(array('context' => 'com_content.categories', 'name' => 'categoryicon')))
+			{
+				$field->context = 'com_content.categories';
+				$field->group_id = 0;
+				$field->title = 'Icon';
+				$field->name = 'categoryicon';
+				$field->label = 'Icon';
+				$field->default_value = '';
+				$field->type = 'text';
+				$field->note = '';
+				$field->description = '';
+				$field->state = 1;
+				$field->required = 0;
+				$field->params = '{"hint":"","class":"","label_class":"","show_on":"","render_class":"","showlabel":"1","label_render_class":"","display":"0","layout":"","display_readonly":"2"}';
+				$field->fieldparams = '{"filter":"","maxlength":""}';
+				$field->language = '*';
+				$field->created_user_id = JFactory::getUser()->id;
+				$field->access = 1;
+				
+				// Check to make sure our data is valid
+				$field->check() && $field->store(true);
+			}
+		}
+
+		if ($type == 'update')
+		{
+			$this->updateModules(
+				array('position'=>'socials'),
+				array(),
+				array('moduleclass_sfx'=>' Header-social'),
+				array('header_tag'=>'p', 'style'=>'System-xhtml'));
+			$this->updateModules(
+				array('position'=>'news'),
+				array('layout'=>'italiapa:focus'),
+				array('moduleclass_sfx'=>' u-layout-wide u-layout-r-withGutter u-text-r-s u-padding-r-top u-padding-r-bottom',
+					'header_class'=>'u-text-h3 u-color-50'),
+				array('module_tag'=>'section', 'header_tag'=>'p', 'style'=>'System-xhtml'));
+			$this->updateModules(
+				"`position` = 'news' and `module` != 'mod_custom' and `module` != 'mod_carousel'",
+				array('layout'=>'_:default'),
+				array('moduleclass_sfx'=>' u-layout-wide u-layout-r-withGutter u-text-r-s u-padding-r-top u-padding-r-bottom',
+					'header_class'=>'u-text-h3 u-color-50'),
+				array('module_tag'=>'section', 'header_tag'=>'p', 'style'=>'System-xhtml'));
+			$this->updateModules(
+				"`position` = 'news' and `module` = 'mod_custom'",
+				array('layout'=>'_:default'),
+				array(),
+				array('module_tag'=>'section', 'header_tag'=>'p', 'style'=>'System-xhtml'),
+				array('showtitle'=>'0'));
+			$this->updateModules(
+				"`position` = 'news' and `module` = 'mod_carousel'",
+				array('layout'=>'_:default'),
+				array(),
+				array('module_tag'=>'section', 'header_tag'=>'h3', 'style'=>'0'));
+		}
+	}
+
+	/**
+	 *
+	 * @param	mixed	$where	WHERE clause
+	 * @param	array	$wherep
+	 * @param	array	$add
+	 * @param	array	$replace
+	 * @param	array	$columns
+	 *
+	 * @since   3.8.0.15
+	 */
+	private function updateModules($where, $wherep, $add, $replace, $columns = array())
+	{
+		$db    = JFactory::getDbo();
+		$query = $db->getQuery(true)
+			->select($db->quoteName('id'))
+			->select($db->quoteName('params'))
+			->from('#__modules');
+
+		if (is_array($where))
+		{
+			foreach($where as $field => $value)
+			{
+				if (substr($value, 0, 1) != '!')
+				{
+					$query->where($db->quoteName($field) . ' = ' . $db->quote($value));
+				}
+				else
+				{
+					$query->where($db->quoteName($field) . ' != ' . $db->quote(substr($value, 1)));
+				}
+			}
+		}
+		else
+		{
+			$query->where($where);
+		}
+		$db->setQuery($query);
+			
+		try
+		{
+			$rows = $db->loadObjectList();
+		}
+		catch (RuntimeException $e)
+		{
+			$rows = array();
+		}
+
+		if (empty($rows))
+		{
+			return;
+		}
+
+		foreach ($rows as $row)
+		{
+			$params = json_decode($row->params, true);
+
+			$skip = false;
+			foreach($wherep as $k => $v)
+			{
+				if (!isset($params[$k]))
+				{
+					$skip = true;
+					continue;
+				}				
+				if (substr($v, 0, 1) != '!')
+				{
+				    if ($params[$k] != $v)
+				    {
+				        $skip = true;
+				        continue;
+				    }
+				}
+				elseif ($params[$k] == substr($v, 1))
+				{
+				    $skip = true;
+				    continue;
+				}
+			}
+			if ($skip) continue;
+
+			foreach($add as $k => $v)
+			{
+				$params[$k] = empty($params[$k]) ? $v :
+					(substr($params[$k], 0, 1) == ' ' ? ' ' : '') .
+					implode(' ', array_unique(array_merge(isset($params[$k]) ? explode(' ' , $params[$k]) : array(), explode(' ' , $v))));
+			}
+
+			foreach($replace as $k => $v)
+			{
+				$params[$k] = $v;
+			}
+			$params = json_encode($params);
+
+			$query = $db->getQuery(true)
+				->update($db->quoteName('#__modules'))
+				->set($db->quoteName('params') . ' = ' . $db->quote($params))
+				->where($db->quoteName('id') . ' = ' . $row->id);
+
+			foreach ($columns as $k => $v)
+			{
+				$query->set($db->quoteName($k) . ' = ' . $db->quote($v));
+			}
+				
+			try
+			{
+				$db->setQuery($query)->execute();
+			}
+			catch (Exception $e)
+			{
+			}
+		}
+	}
+}

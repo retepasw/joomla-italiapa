@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		https://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -14,6 +14,7 @@
  */
 
 // Add JavaScript Frameworks
+JHtml::_('behavior.core');
 JHtml::_('bootstrap.framework');
 
 $app	= JFactory::getApplication();
@@ -38,13 +39,15 @@ JHtml::_('stylesheet', 'user.css', array('version' => 'auto', 'relative' => true
 // Check for a custom JS file
 JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 
-$theme_default = $this->params->get('theme', 'italia');
+$theme_default = $params->get('theme', 'italia');
 $theme = (isset($_COOKIE['theme']) && $_COOKIE['theme']) ? $_COOKIE['theme'] : $theme_default;
 $theme_path = JPATH_ROOT . '/templates/italiapa/build/build.' . $theme . '.css';
 
 if (!file_exists($theme_path)) {
 	$theme = 'italia';	
 }
+
+JFactory::getSession()->set('theme', $theme);
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js ie89 ie8" lang="<?php echo $this->language; ?>"><![endif]-->
@@ -53,6 +56,7 @@ if (!file_exists($theme_path)) {
 <html class="no-js theme-<?php echo $theme; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
 <!--<![endif]-->
 <head>
+	<meta charset="utf-8" />
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -87,6 +91,8 @@ if (!file_exists($theme_path)) {
 		})();
 	</script>
 
+	<script>var theme='<?php echo JFactory::getSession()->get('theme'); ?>';</script>
+
 	<script>__DEFAULT_THEME__ = '<?php echo $theme_default; ?>'</script>
 	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.css">
 	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.<?php echo $theme; ?>.css" id="theme">
@@ -101,10 +107,6 @@ if (!file_exists($theme_path)) {
 	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/prism<?php echo $min; ?>.js"></script>
 
 	<jdoc:include type="head" />
-
-	<?php if ($css = $this->params->get('css', '')) : ?>
-		<?php  echo '<style>' . htmlspecialchars($css) . '</style>'; ?>
-	<?php endif; ?>
 </head>
 <body class="t-Pac c-hideFocus enhanced">
 
@@ -135,12 +137,12 @@ if (!file_exists($theme_path)) {
 
 <?php if ($this->countModules('menu')) : ?>
 <ul class="Skiplinks js-fr-bypasslinks u-hiddenPrint">
-	<li><a href="#main">Vai al Contenuto</a></li>
-	<li><a class="js-fr-offcanvas-open" href="#menu" aria-controls="menu" aria-label="accedi al menu" title="accedi al menu">Vai alla navigazione del sito</a></li>
+	<li><a href="#main"><?php echo JText::_('TPL_ITALIAPA_SKIP_TO_MAIN_SECTION'); ?></a></li>
+	<li><a class="js-fr-offcanvas-open" href="#menu" aria-controls="menu" aria-label="<?php echo JText::_('TPL_ITALIAPA_OPEN_MENU'); ?>" title="<?php echo JText::_('TPL_ITALIAPA_OPEN_MENU'); ?>"><?php echo JText::_('TPL_ITALIAPA_JUMP_TO_NAV'); ?></a></li>
 </ul>
 <?php endif;?>
 
-<header class="Header u-hiddenPrint<?php if ($this->params->get('headroom', 0)) echo ' Headroom--fixed js-Headroom Headroom Headroom--top Headroom--not-bottom" style="position: fixed; top: 0px;'; ?>">
+<header class="Header u-hiddenPrint<?php if ($params->get('headroom', 0)) echo ' Headroom--fixed js-Headroom Headroom Headroom--top Headroom--not-bottom" style="position: fixed; top: 0px;'; ?>">
 
 <?php if ($this->countModules('owner') || $this->countModules('languages')) : ?>
 <div class="Header-banner Headroom-hideme">
@@ -160,7 +162,7 @@ if (!file_exists($theme_path)) {
 <div class="Header-navbar ">
 
 	<div class="u-layout-wide Grid Grid--alignMiddle u-layoutCenter">
-		<?php if ($logo = $this->params->get('logo')) : ?>
+		<?php if ($logo = $params->get('logo')) : ?>
 		<div class="Header-logo Grid-cell" aria-hidden="true">
 			<a href="<?php echo $this->baseurl; ?>/" itemprop="url">
 				<img src="<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>">
@@ -172,7 +174,7 @@ if (!file_exists($theme_path)) {
 			<h1 class="Header-titleLink">
 				<a href="<?php echo $this->baseurl; ?>/">
 					<?php echo htmlspecialchars($app->get('sitename')); ?>
-					<?php if ($subtitle = $this->params->get('subtitle')) : ?>
+					<?php if ($subtitle = $params->get('subtitle')) : ?>
 					<br><small><?php echo $subtitle; ?></small>
 					<?php endif; ?>
 				</a>
@@ -190,7 +192,7 @@ if (!file_exists($theme_path)) {
 		<div class="Header-utils Grid-cell">
 	
 			<?php if ($this->countModules('socials')) : ?>
-			<div class="Header-social Headroom-hideme">
+			<div class="Headroom-hideme">
 			<jdoc:include type="modules" name="socials" />
 			</div>
 			<?php endif; ?>
@@ -205,7 +207,7 @@ if (!file_exists($theme_path)) {
 		
 		<?php if ($this->countModules('menu')) : ?>
 		<div class="Header-toggle Grid-cell">
-			<a class="Hamburger-toggleContainer js-fr-offcanvas-open u-nojsDisplayInlineBlock u-lg-hidden u-md-hidden" href="#menu" aria-controls="menu" aria-label="accedi al menu" title="accedi al menu">
+			<a class="Hamburger-toggleContainer js-fr-offcanvas-open u-nojsDisplayInlineBlock u-lg-hidden u-md-hidden" href="#menu" aria-controls="menu" aria-label="<?php echo JText::_('TPL_ITALIAPA_OPEN_MENU'); ?>" title="<?php echo JText::_('TPL_ITALIAPA_OPEN_MENU'); ?>">
 				<span class="Hamburger-toggle" role="presentation"></span>
 				<span class="Header-toggleText" role="presentation">Menu</span>
 			</a>
@@ -232,9 +234,7 @@ if (!file_exists($theme_path)) {
 				<span class="Hamburger-toggle is-active" aria-hidden="true"></span>
 			</a>
 		</div>
-
 		<jdoc:include type="modules" name="menu" style="lg" />
-
 	</div>
 </section>
 <?php endif; ?>
@@ -272,18 +272,18 @@ if (!file_exists($theme_path)) {
 
 		<?php $countFooter = $this->countModules('footer') + $this->countModules('footerinfo') + $this->countModules('footermenu'); ?>
 
-		<?php if ($this->countModules('services') || $this->countModules('featured') || $this->countModules('news') || $this->countModules('lead') || $countFooter) : ?>
+		<?php if ($params->get('forward', 1) && ($this->countModules('services') || $this->countModules('featured') || $this->countModules('news') || $this->countModules('lead') || $countFooter)) : ?>
 			<?php if ($this->countModules('services') || $this->countModules('featured')) : ?>
-		<a href="#featured" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+				<a href="#featured" title="<?php echo JText::_('TPL_ITALIAPA_SKIP_TO_NEXT_SECTION'); ?>" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 			<?php elseif ($this->countModules('news')) : ?>
-		<a href="#news" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+				<a href="#news" title="<?php echo JText::_('TPL_ITALIAPA_SKIP_TO_NEXT_SECTION'); ?>" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 			<?php elseif ($this->countModules('lead')) : ?>
-		<a href="#lead" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+				<a href="#lead" title="<?php echo JText::_('TPL_ITALIAPA_SKIP_TO_NEXT_SECTION'); ?>" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 			<?php elseif ($countFooter) : ?>
-		<a href="#footer" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+				<a href="#footer" title="<?php echo JText::_('TPL_ITALIAPA_SKIP_TO_NEXT_SECTION'); ?>" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
 			<?php endif; ?>
 			<span class="Icon Icon-expand u-color-grey-40"></span>
-			<span class="u-hidden">vai alla sezione successiva</span>
+			<span class="u-hidden"><?php echo JText::_('TPL_ITALIAPA_SKIP_TO_NEXT_SECTION'); ?></span>
 		</a>
 		<?php endif; ?>
 	
@@ -293,73 +293,55 @@ if (!file_exists($theme_path)) {
 </div>
 
 <?php if ($this->countModules('services') || $this->countModules('featured')) : ?>
-<div class="u-layout-wide u-layoutCenter u-text-r-xl u-layout-r-withGutter u-padding-r-top" id="featured">
-	<?php if ($this->countModules('services')) : ?>
-	<div class="Grid Grid--equalHeight Grid--withGutterM" id="servizi">
-	<jdoc:include type="modules" name="services" style="lg" />
+	<div class="u-layout-wide u-layoutCenter u-text-r-xl u-layout-r-withGutter u-padding-r-top" id="featured">
+		<?php if ($this->countModules('services')) : ?>
+			<div class="Grid Grid--equalHeight Grid--withGutterM" id="servizi">
+				<jdoc:include type="modules" name="services" style="lg" />
+			</div>
+		<?php endif; ?>
+		<jdoc:include type="modules" name="featured" />
+		<?php if ($params->get('forward', 1) && ($this->countModules('news') || $this->countModules('lead') || $countFooter)) : ?>
+			<?php if ($this->countModules('news')) : ?>
+				<a href="#news" title="<?php echo JText::_('TPL_ITALIAPA_SKIP_TO_NEXT_SECTION'); ?>" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+			<?php elseif ($this->countModules('lead')) : ?>
+				<a href="#lead" title="<?php echo JText::_('TPL_ITALIAPA_SKIP_TO_NEXT_SECTION'); ?>" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+			<?php elseif ($countFooter) : ?>
+				<a href="#footer" title="<?php echo JText::_('TPL_ITALIAPA_SKIP_TO_NEXT_SECTION'); ?>" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+			<?php endif; ?>
+				<span class="Icon Icon-expand u-color-grey-40"></span>
+				<span class="u-hidden"><?php echo JText::_('TPL_ITALIAPA_SKIP_TO_NEXT_SECTION'); ?></span>
+			</a>
+		<?php endif; ?>	
 	</div>
-	<?php endif; ?>
-	<jdoc:include type="modules" name="featured" />
-	<?php if ($this->countModules('news') || $this->countModules('lead') || $countFooter) : ?>
-	<?php if ($this->countModules('news')) : ?>
-	<a href="#news" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
-	<?php elseif ($this->countModules('lead')) : ?>
-	<a href="#lead" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
-	<?php elseif ($countFooter) : ?>
-	<a href="#footer" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
-	<?php endif; ?>
-		<span class="Icon Icon-expand u-color-grey-40"></span>
-		<span class="u-hidden">vai alla sezione successiva</span>
-	</a>
-	<?php endif; ?>	
-</div>
 <?php endif; ?>
 
 <?php if ($this->countModules('news')) : ?>
-<div class="u-background-compl-10 u-layout-centerContent u-padding-r-top" id="news">
-	<jdoc:include type="modules" name="news" style="lg" />
-	<?php if ($this->countModules('lead') || $countFooter) : ?>
-	<?php if ($this->countModules('lead')) : ?>
-	<a href="#lead" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
-	<?php elseif ($countFooter) : ?>
-	<a href="#footer" title="vai alla sezione successiva" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
-	<?php endif; ?>
-		<span class="Icon Icon-expand u-color-grey-40"></span>
-		<span class="u-hidden">vai alla sezione successiva</span>
-	</a>
-	<?php endif; ?>	
-</div>
+	<div class="u-background-compl-10 u-layout-centerContent u-padding-r-top" id="news">
+		<jdoc:include type="modules" name="news" style="lg" />
+		<?php if ($params->get('forward', 1) && ($this->countModules('lead') || $countFooter)) : ?>
+			<?php if ($this->countModules('lead')) : ?>
+				<a href="#lead" title="<?php echo JText::_('TPL_ITALIAPA_SKIP_TO_NEXT_SECTION'); ?>" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+			<?php elseif ($countFooter) : ?>
+				<a href="#footer" title="<?php echo JText::_('TPL_ITALIAPA_SKIP_TO_NEXT_SECTION'); ?>" class="Forward Forward--floating js-scrollTo" aria-hidden="true">
+			<?php endif; ?>
+				<span class="Icon Icon-expand u-color-grey-40"></span>
+				<span class="u-hidden"><?php echo JText::_('TPL_ITALIAPA_SKIP_TO_NEXT_SECTION'); ?></span>
+			</a>
+		<?php endif; ?>
+	</div>
 <?php endif; ?>
 
 <?php if ($this->countModules('lead')) : ?>
-<div class="u-background-white u-color-black u-text-xxl u-padding-r-top u-padding-r-bottom">
-
-<?php if ($params->get('debug') || defined('JDEBUG') && JDEBUG) : ?>
-<div class="Prose Alert Alert--info Alert--withIcon u-padding-r-bottom u-padding-r-right u-margin-r-bottom">
-see <a href="https://italia.github.io/design-web-toolkit/components/detail/leads.html">
-https://italia.github.io/design-web-toolkit/components/detail/leads.html
-</a>
-</div>
-<?php endif; ?>
-
-	<div class="u-layout-wide u-layoutCenter u-layout-r-withGutter" id="lead">
-		<jdoc:include type="modules" name="lead" style="lg" />
+	<div class="u-background-white u-color-black u-text-xxl u-padding-r-top u-padding-r-bottom">
+		<div class="u-layout-wide u-layoutCenter u-layout-r-withGutter" id="lead">
+			<jdoc:include type="modules" name="lead" style="lg" />
+		</div>
 	</div>
-</div>
 <?php endif; ?>
 
 <?php if ($countFooter) : ?>
-		<footer class="Footer u-padding-all-s u-hiddenPrint" id="footer">
-
-<?php if ($params->get('debug') || defined('JDEBUG') && JDEBUG) : ?>
-<div class="Prose Alert Alert--info Alert--withIcon u-padding-r-bottom u-padding-r-right u-margin-r-bottom">
-see <a href="https://italia.github.io/design-web-toolkit/components/detail/footer.html">
-https://italia.github.io/design-web-toolkit/components/detail/footer.html
-</a>
-</div>
-<?php endif; ?>
-
-			<?php if ($this->countModules('footerinfo')) : ?>
+	<footer class="Footer u-padding-all-s u-hiddenPrint" id="footer">
+		<?php if ($this->countModules('footerinfo')) : ?>
 			<div itemscope itemtype="http://schema.org/<?php echo $params->get('schema_org', 'Organization'); ?>">
 				<div class="u-cf">
 			<?php else : ?>
@@ -377,25 +359,25 @@ https://italia.github.io/design-web-toolkit/components/detail/footer.html
 					<jdoc:include type="modules" name="footerinfo" style="lg" />
 				</div>
 			</div>
-			<?php endif; ?>
+		<?php endif; ?>
 
-			<?php if ($this->countModules('footer')) : ?>
-				<div class="Grid Grid--withGutter">
-					<jdoc:include type="modules" name="footer" style="lg" />
-				</div>
-			<?php endif; ?>
+		<?php if ($this->countModules('footer')) : ?>
+			<div class="Grid Grid--withGutter">
+				<jdoc:include type="modules" name="footer" style="lg" />
+			</div>
+		<?php endif; ?>
 
-			<?php if ($this->countModules('footermenu')) : ?>
-				<div class="Grid Grid--withGutter u-border-top-xxs">
-					<jdoc:include type="modules" name="footermenu" style="none" />
-				</div>
-			<?php endif; ?>
-		</footer>
+		<?php if ($this->countModules('footermenu')) : ?>
+			<div class="Grid Grid--withGutter u-border-top-xxs">
+				<jdoc:include type="modules" name="footermenu" style="none" />
+			</div>
+		<?php endif; ?>
+	</footer>
 <?php endif; ?>
 
-<a href="#" title="torna all'inizio del contenuto" class="ScrollTop js-scrollTop js-scrollTo">
+<a href="#" title="<?php echo JText::_('TPL_ITALIAPA_BACKTOTOP'); ?>" class="ScrollTop js-scrollTop js-scrollTo">
 	<span class="ScrollTop-icon Icon-collapse" aria-hidden="true"></span>
-	<span class="u-hiddenVisually">Torna all'inizio del contenuto</span>
+	<span class="u-hiddenVisually"><?php echo JText::_('TPL_ITALIAPA_BACKTOTOP'); ?></span>
 </a>
 
 <!--[if IE 8]>

@@ -1,9 +1,9 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
  * @copyright	Copyright (C) 2017 -2019 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
@@ -14,7 +14,6 @@
  */
 
 defined('_JEXEC') or die;
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 JFactory::getLanguage()->load('com_content');
 ?>
@@ -27,29 +26,24 @@ JFactory::getLanguage()->load('com_content');
 		<?php endif; ?>
 
 		<div class="Grid Grid--withGutter">
-			<?php
-			if (($n = $params->get('bootstrap_size', 0)) == 0)
-			{
-				// minimo 4 cells massimo 6 per riga
-				$n = min(6, max(4, count($list)));
-			}
-			foreach ($list as $item) : ?>
+			<?php if (($n = $params->get('bootstrap_size', 0)) == 0) : ?>
+				<?php $n = min(6, max(4, count($list))); // minimo 4 cells massimo 6 per riga ?>
+			<?php endif; ?>
+			<?php foreach ($list as $item) : ?>
 			<div class="Grid-cell u-md-size1of<?php echo $n; ?> u-lg-size1of<?php echo $n; ?>">
 				<?php require JModuleHelper::getLayoutPath('mod_articles_news', '_cell'); ?>
 			</div>
 			<?php endforeach; ?>
 		</div>
 		<?php
-		if ($params->get('showLastSeparator') && is_array($params->get('catid')) && (count($params->get('catid')) == 1))
-		{
-			$link = ContentHelperRoute::getCategoryRoute($params->get('catid')[0]);			
-			foreach($params->get('tag', array()) as $k => $tag)
-			{
+		if ($params->get('showLastSeparator') && is_array($params->get('catid')) && (count($params->get('catid')) == 1)) :
+			$link = ContentHelperRoute::getCategoryRoute($params->get('catid')[0]);
+			foreach($params->get('tag', array()) as $k => $tag) :
 				$link .= '&filter_tag[' . $k . ']=' . $tag;
-			}
+			endforeach;
 			$link = JRoute::_($link);
 			echo JLayoutHelper::render('eshiol.content.readall', array('params' => $params, 'link' => $link));
-		}
+		endif;
 		?>
 	</section>
 </div>

@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -15,10 +15,8 @@
 
 defined('_JEXEC') or die;
 
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
-
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
-// JHtml::_('formbehavior.chosen', 'select');
+ JHtml::_('formbehavior.chosen', 'select');
 JHtml::_('behavior.caption');
 ?>
 <section class="archive<?php echo $this->pageclass_sfx; ?>">
@@ -44,7 +42,7 @@ JHtml::_('behavior.caption');
 					</div>
 
 			        <button class="u-background-40 u-color-white u-padding-all-s u-text-r-m u-textNoWrap u-sizeFull u-sm-size2of12 u-md-size1of12 u-lg-size1of12"><?php echo JText::_('JGLOBAL_FILTER_BUTTON'); ?></button>
-	
+
 					<input type="hidden" name="view" value="archive" />
 					<input type="hidden" name="option" value="com_content" />
 					<input type="hidden" name="limitstart" value="0" />

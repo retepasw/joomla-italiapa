@@ -1,10 +1,16 @@
 <?php
 /**
- * @package     Joomla.Administrator
- * @subpackage  com_content
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
+ * @link		http://www.eshiol.it
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
+ * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
+ * Template ItaliaPA is free software. This version may have been modified
+ * pursuant to the GNU General Public License, and as distributed it includes
+ * or is derivative of works licensed under the GNU General Public License or
+ * other free or open source software licenses.
  */
 
 defined('_JEXEC') or die;
@@ -54,13 +60,9 @@ if (!empty($editor))
 }
 ?>
 <div class="container-popup">
-
 	<form action="<?php echo JRoute::_('index.php?option=com_content&view=articles&layout=modal&tmpl=component&function=' . $function . '&' . JSession::getFormToken() . '=1&editor=' . $editor); ?>" method="post" name="adminForm" id="adminForm" class="form-inline">
-
 		<?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
-
 		<div class="clearfix"></div>
-
 		<?php if (empty($this->items)) : ?>
 			<div class="alert alert-no-items">
 				<?php echo JText::_('JGLOBAL_NO_MATCHING_RESULTS'); ?>
@@ -173,6 +175,5 @@ if (!empty($editor))
 		<input type="hidden" name="boxchecked" value="0" />
 		<input type="hidden" name="forcedLanguage" value="<?php echo $app->input->get('forcedLanguage', '', 'CMD'); ?>" />
 		<?php echo JHtml::_('form.token'); ?>
-
 	</form>
 </div>
