@@ -17,6 +17,6 @@ defined('_JEXEC') or die;
 ?>
 <?php foreach ($this->items[$this->parent->id] as $id => $item) : ?>
 	<?php if ($this->params->get('show_empty_categories_cat') || $item->numitems || count($item->getChildren())) : ?>
-		<?php echo JLayoutHelper::render('joomla.content.category_item', array('item' => $item, 'params' => $this->params, 'extension' => 'newsfeeds')); ?> 
+		<?php echo JLayoutHelper::render('joomla.content.category_item', array('item' => $item, 'params' => $this->params, 'extension' => 'contact')); ?>
 	<?php endif; ?>
 <?php endforeach; ?>
