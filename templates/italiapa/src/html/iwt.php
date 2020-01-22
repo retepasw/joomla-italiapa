@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -13,8 +13,6 @@
  * other free or open source software licenses.
  */
 defined('JPATH_PLATFORM') or die();
-
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 /**
  * Utility class for Webtoolkit elements.
@@ -247,12 +245,8 @@ abstract class JHtmlIwt
 	 */
 	public static function getLinkAttributes ($item, $attributes = array())
 	{
-		JLog::add(new JLogEntry(__METHOD__, JLog::DEBUG, 'tpl_italiapa'));
 		if ($item->anchor_title)
 		{
-			JLog::add(new JLogEntry('anchor_title: ' . $item->anchor_title, JLog::DEBUG, 'tpl_italiapa'));
-			JLog::add(new JLogEntry('anchor_css: ' . $item->anchor_css, JLog::DEBUG, 'tpl_italiapa'));
-
 			if (preg_match_all('/(^|\s)hasPopover($|\s)/', $item->anchor_css, $matches, PREG_SET_ORDER, 0))
 			{
 				JHtml::_('bootstrap.popover');
@@ -308,6 +302,7 @@ abstract class JHtmlIwt
 			{
 				if (preg_match_all('/(^|\s)Icon-/', $item->menu_image_css, $matches, PREG_SET_ORDER, 0))
 				{
+					//TODO: da rivedere
 					$link = '<span class="' . $item->menu_image_css . '"></span>' . JHtml::_('image', $item->menu_image, $item->anchor_title) .
 							 '</span>';
 					unset($item->menu_image_css);
@@ -324,7 +319,7 @@ abstract class JHtmlIwt
 				$link = JHtml::_('image', $item->menu_image, $item->anchor_title);
 			}
 
-			$link .= '<span class="' . $item->menu_title_css . ($item->params->get('menu_text', 1) ? ' image-title' : ' u-hiddenVisually') . '">' . $item->title . '</span>';
+			$link .= '<span class="' . trim($item->menu_title_css . ($item->params->get('menu_text', 1) ? ' image-title' : ' u-hiddenVisually')) . '">' . $item->title . '</span>';
 		}
 		elseif (! $item->menu_image_css)
 		{
@@ -512,5 +507,132 @@ abstract class JHtmlIwt
 		$text = htmlentities($text, ENT_QUOTES, 'UTF-8', false);
 		
 		return $text;
+	}
+
+	/**
+	 * Process tag object
+	 * 
+	 * @param object $item	the tag to process
+	 */
+	public static function tag($item)
+	{
+		$tagParams  = new JRegistry($item->params);
+		$icon       = '';
+		$link_class = $tagParams->get('tag_link_class', 'label label-info');
+		if (preg_match_all('/(^|\s)Icon-/', $link_class, $matches, PREG_SET_ORDER, 0))
+		{
+			$svg = '';
+			$link_class = explode(' ', $link_class);
+			for ($i = count($link_class) - 1; $i >= 0; $i --)
+			{
+				$icon = array();
+				if ($link_class[$i] == 'Icon')
+				{
+					$icon[] = $link_class[$i];
+					unset($link_class[$i]);
+				}
+				elseif (substr($link_class[$i], 0, 5) == 'Icon-')
+				{
+					if (file_exists(JPATH_SITE . '/templates/italiapa/src/icons/img/SVG/' . substr($link_class[$i], 5) . '.svg'))
+					{
+						$svg .= ' ' . $link_class[$i];
+					}
+					else
+					{
+						$icon[] = $link_class[$i];
+					}
+					unset($link_class[$i]);
+				}
+			}
+			$icon = implode(' ', $icon);
+			$link_class = implode(' ', $link_class);
+			
+			if ($svg)
+			{
+				$icon = '<svg class="' . trim($icon) . '"><use xlink:href="#' . trim($svg) . '"></use></svg>';
+			}
+			elseif ($icon)
+			{
+				$icon = '<span class="' . trim($icon) . '"></span>';
+			}
+		}
+		$link_class = $link_class ? ($link_class == 'label label-info' ? 'u-textNoWrap u-textWeight-600 u-textClean u-color-white' : '') : 'u-textNoWrap u-textWeight-600 u-textClean u-color-white';
+
+		$item->icon       = $icon;
+		$item->link_class = $link_class;
+	}
+
+	/**
+	 * Retrieve the first image
+	 * 
+	 * @param string $text	the text to process
+	 * @param array $params
+	 * 
+	 */
+	public static function image($text, $params = array())
+	{
+	    $img = '';
+	    preg_match('/<img(.*)>/i', $text, $matches);
+	    if (is_array($matches) && !empty($matches))
+	    {
+	        $text = preg_replace("/<img[^>]+\>/i","",$text,1);
+	        preg_match_all('/(src|alt|title)=("[^"]*")/i',$matches[0], $attr);
+	        for ($i = 0; $i < count($attr[0]); $i++)
+	        {
+	            $params = array_merge($params, array($attr[1][$i] => substr($attr[2][$i], 1, -1)));
+	        }
+	        if (!empty($params['src']))
+	        {
+	            $img = '<img';
+    	        foreach($params as $k => $v)
+    	        {
+    	            $img .= ' ' . $k . '="' . $v . '"';
+    	        }
+    	        $img .= '>';
+	        }
+	    }
+	    return $img;
+	}
+}
+
+if (!function_exists('GUIDv4'))
+{
+	function GUIDv4 ($trim = true)
+	{
+		// Windows
+		if (function_exists('com_create_guid') === true) {
+			if ($trim === true)
+			{
+				return trim(com_create_guid(), '{}');
+			}
+			else
+			{
+				return com_create_guid();
+			}
+		}
+
+		// OSX/Linux
+		if (function_exists('openssl_random_pseudo_bytes') === true)
+		{
+			$data = openssl_random_pseudo_bytes(16);
+			$data[6] = chr(ord($data[6]) & 0x0f | 0x40);	// set version to 0100
+			$data[8] = chr(ord($data[8]) & 0x3f | 0x80);	// set bits 6-7 to 10
+			return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
+		}
+
+		// Fallback (PHP 4.2+)
+		mt_srand((double)microtime() * 10000);
+		$charid = strtolower(md5(uniqid(rand(), true)));
+		$hyphen = chr(45);                  // "-"
+		$lbrace = $trim ? "" : chr(123);    // "{"
+		$rbrace = $trim ? "" : chr(125);    // "}"
+		$guidv4 = $lbrace.
+		substr($charid,  0,  8).$hyphen.
+		substr($charid,  8,  4).$hyphen.
+		substr($charid, 12,  4).$hyphen.
+		substr($charid, 16,  4).$hyphen.
+		substr($charid, 20, 12).
+		$rbrace;
+		return $guidv4;
 	}
 }

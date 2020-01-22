@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -20,7 +20,7 @@ $linkClass = !empty($linkClass) ? $linkClass : '';
 ?>
 
 <?php foreach ($list as $item) : ?>
-	<?php $class = trim($itemClass . (($_SERVER['REQUEST_URI'] === JRoute::_(ContentHelperRoute::getCategoryRoute($item->id))) ? ' active' : '')); ?> 
+	<?php $class = trim($itemClass . (($_SERVER['REQUEST_URI'] === JRoute::_(ContentHelperRoute::getCategoryRoute($item->id))) ? ' active' : '')); ?>
 	<?php $levelup = $item->level - $startLevel - 1; ?>
 	<li<?php echo $class ? ' class="' . $class . '"' : ''; ?>>
 		<a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($item->id)); ?>"<?php echo $linkClass ? ' class="' . $linkClass . '"' : ''; ?>>

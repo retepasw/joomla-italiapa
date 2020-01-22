@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -14,8 +14,6 @@
  */
 
 defined('_JEXEC') or die;
-
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 ?>
@@ -30,11 +28,11 @@ require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 					<span class="u-hiddenVisually">webpage</span>
 				</a>
 			</li>
-		<?php endif; ?>		
+		<?php endif; ?>
 		<?php //if ($this->item->email_to && $this->item->params->get('show_email')) : ?>
 		<?php if ($this->item->email_to && $this->params->get('show_email_headings')) : ?>
 			<li class="u-inlineBlock u-margin-right-xxs">
-				<?php 
+				<?php
 				$db = JFactory::getDbo();
 				$query = $db->getQuery(true)
 					->select($db->quoteName('email_to'))
@@ -86,7 +84,7 @@ require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 				</a>
 			</li>
 		<?php endforeach; ?>
-		
+
 		<?php if ($this->item->params->get('show_telephone_headings') && !empty($this->item->telephone)) : ?>
 			<li class="u-inlineBlock u-margin-right-xxs">
 				<span class="Icon-phone u-color-white u-background-50 u-borderRadius-circle u-padding-all-xxs u-inlineBlock"
@@ -95,7 +93,7 @@ require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 				<span class="u-hiddenVisually"><?php echo JText::sprintf('COM_CONTACT_TELEPHONE_NUMBER', $this->item->telephone); ?></span>
 			</li>
 		<?php endif; ?>
-		
+
 		<?php if ($this->item->params->get('show_mobile_headings') && !empty($this->item->mobile)) : ?>
 			<li class="u-inlineBlock u-margin-right-xxs">
 				<span class="Icon-mobile u-color-white u-background-50 u-borderRadius-circle u-padding-all-xxs u-inlineBlock"

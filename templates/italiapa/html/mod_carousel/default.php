@@ -1,21 +1,19 @@
 <?php
 /**
- * @package		Template ItaliaPA
+ * @package		Joomla.Site
  * @subpackage	mod_carousel
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
- * or or is derivative of works licensed under the GNU General Public License or or
+ * or is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
  */
 
 defined('_JEXEC') or die;
-
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 ?>
 
 <?php if (!empty($list)) : ?>
@@ -44,12 +42,11 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 			data-carousel-options='{"items":<?php echo $params->get('count', 1); ?><?php
 			echo $params->get('auto_sliding', 1) ? ',"autoplay":true,"autoplaySpeed":' . $params->get('speed', 1000) . ',"autoplayTimeout":' . $params->get('interval', 5000) : '';
 			echo $params->get('loop', 1) ? ',"loop":true' : ''; ?>,"responsive":false,"dots":true}'>
-			<?php 
-			$i = 1000 * (int)$module->id; 
+			<?php
+			$i = 1000 * (int)$module->id;
 			$target_default = $params->get('target', 2);
 			?>
 			<?php foreach ($list as $item) : ?>
-			<?php JLog::add(new JLogEntry(print_r($item, true), JLog::DEBUG, 'mod_carousel')); ?>
 			<div class="Carousel-item">
 				<div class="u-color-grey-30">
 					<figure>
@@ -68,7 +65,7 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 									// Open in a new window
 									echo '<a href="' . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . '" target="_blank"  rel="nofollow">' . $item->img . '</a>';
 									break;
-		
+
 								case 3:
 									// Open in a popup window
 									if ($props = @getimagesize($item->link))
@@ -86,7 +83,7 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 								case 4:
 									// Open in a modal window
 									JHtml::_('behavior.modal', 'a.modal');
-									
+
 									if ($props = @getimagesize($item->link))
 									{
 										list($width, $height, $type, $attr) = $props;
@@ -99,7 +96,7 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 										echo $item->img;
 									}
 									break;
-		
+
 								default:
 									// Open in parent window
 									echo '<a href="' . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . '" rel="nofollow">' .
@@ -129,7 +126,7 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 		</div>
 		<!--
 		<p class="u-padding-r-top u-text-r-xl">
-			<a href="" class="u-layout-centerLeft u-padding-r-top u-text-h4 u-textWeight-700 u-color-teal-50">Vedi tutte le gallerie</a>
+			<a href="#" class="u-layout-centerLeft u-padding-r-top u-text-h4 u-textWeight-700 u-color-teal-50">Vedi tutte le gallerie</a>
 		</p>
 		-->
 	</div>

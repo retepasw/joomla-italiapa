@@ -1,47 +1,37 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
  * or is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
  */
+
 defined('_JEXEC') or die();
-
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
-JLog::add(new JLogEntry($module->position, JLog::DEBUG, 'tpl_italiapa'));
-
-$id = '';
-
-if ($tagId = $params->get('tag_id', ''))
-{
-	$id = ' id="' . $tagId . '"';
-}
-
-// The menu class is deprecated. Use nav instead
 ?>
-<?php
 
-foreach ($list as $i => &$item)
-{
+<?php $id = ($tagId = $params->get('tag_id', '')) ? ' id="' . $tagId . '"' : ''; ?>
+
+<?php foreach ($list as $i => &$item) : ?>
+<?php
 	$class = 'item-' . $item->id;
-	
+
 	if ($item->id == $default_id)
 	{
 		$class .= ' default';
 	}
-	
+
 	if ($item->id == $active_id || ($item->type === 'alias' && $item->params->get('aliasoptions') == $active_id))
 	{
 		$class .= ' current';
 	}
-	
+
 	if (in_array($item->id, $path))
 	{
 		$class .= ' active';
@@ -49,7 +39,7 @@ foreach ($list as $i => &$item)
 	elseif ($item->type === 'alias')
 	{
 		$aliasToId = $item->params->get('aliasoptions');
-		
+
 		if (count($path) > 0 && $aliasToId == $path[count($path) - 1])
 		{
 			$class .= ' active';
@@ -59,22 +49,22 @@ foreach ($list as $i => &$item)
 			$class .= ' alias-parent-active';
 		}
 	}
-	
+
 	if ($item->type === 'separator')
 	{
 		$class .= ' divider';
 	}
-	
+
 	if ($item->deeper)
 	{
 		$class .= ' deeper';
 	}
-	
+
 	if ($item->parent)
 	{
 		$class .= ' parent';
 	}
-	
+
 	switch ($item->type)
 	:
 		case 'separator':
@@ -83,11 +73,10 @@ foreach ($list as $i => &$item)
 		case 'url':
 			require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
 			break;
-		
+
 		default:
 			require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
 			break;
-	endswitch
-	;
-}
+	endswitch;
 ?>
+<?php endforeach;

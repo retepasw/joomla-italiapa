@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -15,8 +15,6 @@
 
 defined('_JEXEC') or die;
 
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
-
 JHtml::_('bootstrap.tooltip');
 
 $lang  = JFactory::getLanguage();
@@ -24,28 +22,28 @@ $lang  = JFactory::getLanguage();
 /**
 JFactory::getDocument()->addStyleDeclaration('
 .Card-image img {
-    position: relative; // allows repositioning 
-    left: 100%; // move the whole width of the image to the right 
-    margin-left: -200%; // magic! 
-    top: 100%; // move the whole width of the image to the right 
-    margin-top: -200%; // magic! 
+    position: relative; // allows repositioning
+    left: 100%; // move the whole width of the image to the right
+    margin-left: -200%; // magic!
+    top: 100%; // move the whole width of the image to the right
+    margin-top: -200%; // magic!
 }
 
-.Card-image { 
-	// whatever the dimensions you want the "cropped" image to be 
+.Card-image {
+	// whatever the dimensions you want the "cropped" image to be
 	height: 220px;
 	max-width: 400px;
 	overflow: hidden;
 	margin: 0 auto;
 }
-		
+
 .Card-image img.square {
-	width: 100%;  
+	width: 100%;
 	left: 0;
 	margin-left: 0;
 	top: 0;
 	margin-top: 0;
-	-ms-interpolation-mode: bicubic; // Scaled images look a bit better in IE now 
+	-ms-interpolation-mode: bicubic; // Scaled images look a bit better in IE now
 }
 
 .Card-image img.portrait {
@@ -54,7 +52,7 @@ JFactory::getDocument()->addStyleDeclaration('
 	left: 0;
 	top: 0;
 	margin-left: 0;
-	-ms-interpolation-mode: bicubic; // Scaled images look a bit better in IE now 
+	-ms-interpolation-mode: bicubic; // Scaled images look a bit better in IE now
 }
 
 .Card-image img.landscape {
@@ -63,13 +61,13 @@ JFactory::getDocument()->addStyleDeclaration('
 	left: 0;
 	top: 0;
 	margin-top: 0;
-	-ms-interpolation-mode: bicubic; // Scaled images look a bit better in IE now 
+	-ms-interpolation-mode: bicubic; // Scaled images look a bit better in IE now
 }
 ');
-			
+
 JFactory::getDocument()->addScriptDeclaration('
 jQuery(document).ready(function(){
-	jQuery(\'.Card-image img\').each(function() {  
+	jQuery(\'.Card-image img\').each(function() {
 		var h = jQuery(this).height(),
 			w = jQuery(this).width();
 
@@ -90,7 +88,7 @@ jQuery(document).ready(function(){
 			// pic is square
 			jQuery(this).addClass(\'square\');
 		}
-	});    
+	});
 });
 ');
 */
@@ -100,9 +98,9 @@ if (count($this->items[$this->parent->id]) > 0) :
 		if ($this->params->get('show_empty_categories_cat') || $item->numitems || count($item->getChildren())) :
 ?>
 <div class="Masonry-item js-Masonry-item">
-	<div class="u-nbfc u-borderShadow-xxs u-borderRadius-m u-color-grey-30 u-background-white">
+	<div class="u-nbfc u-borderShadow-xxs u-borderRadius-m u-color-grey-30 u-background-white u-sizeFull">
 		<?php if ($this->params->get('show_description_image') && $item->getParams()->get('image')) : ?>
-		<img src="<?php echo $item->getParams()->get('image'); ?>" 
+		<img src="<?php echo $item->getParams()->get('image'); ?>"
 			alt="<?php echo htmlspecialchars($item->getParams()->get('image_alt'), ENT_COMPAT, 'UTF-8'); ?>"
 			class="u-sizeFull"
 			/>
@@ -126,7 +124,7 @@ if (count($this->items[$this->parent->id]) > 0) :
 		</div>
 	</div>
 </div>
-<?php 
+<?php
 		endif;
 	endforeach;
 endif;

@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -14,8 +14,6 @@
  */
 
 defined('JPATH_BASE') or die;
-
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 use Joomla\Registry\Registry;
 
@@ -45,7 +43,7 @@ $class = 'Button Button--default u-text-r-xs u-linkClean';
 			<?php if ($displayData['params']->get('show_email_icon')) : ?>
 				<li class="u-padding-right-xs"><?php echo JLayoutHelper::render('eshiol.content.share', $displayData); ?></li>
 			<?php endif; ?>
-			
+
 			<?php
 			if (JComponentHelper::getComponent('com_buttons', true)->enabled)
 			{
@@ -78,7 +76,7 @@ $class = 'Button Button--default u-text-r-xs u-linkClean';
 						echo '<li class="u-padding-right-xs">' . JHtml::_('link', JRoute::_($url), $text, $attribs) . '</li>';
 					}
 				}
-				else 
+				else
 				{
 					$url  = 'index.php?option=com_buttons&view=extras&id=' . $item->id . '&buttons=report&format=csv';
 					$text = '<span class="u-text-r-m Icon Icon-download"></span>';
