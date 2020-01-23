@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -13,22 +13,15 @@
  * other free or open source software licenses.
  */
 
-defined('_JEXEC') or die;
+defined('_JEXEC') or die();
 
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
-JLog::add(new JLogEntry($module->position, JLog::DEBUG, 'tpl_italiapa'));
-
-$id = '';
-
-if ($tagId = $params->get('tag_id', ''))
-{
-	$id = ' id="' . $tagId . '"';
-}
 ?>
-<p><?php echo $module->title; ?></p>
-<ul class="Header-socialIcons<?php echo $class_sfx; ?>"<?php echo $id; ?>>
-<?php foreach ($list as $i => &$item)
-{
+
+<?php $id = ($tagId = $params->get('tag_id', '')) ? ' id="' . $tagId . '"' : ''; ?>
+
+<ul class="Header-socialIcons<?php echo $class_sfx; ?>"	<?php echo $id; ?>>
+<?php foreach ($list as $i => &$item) : ?>
+<?php
 	$class = 'item-' . $item->id;
 
 	if ($item->id == $default_id)
@@ -76,21 +69,27 @@ if ($tagId = $params->get('tag_id', ''))
 
 	echo '<li class="' . $class . '">';
 
-	switch ($item->type) :
+	$item->params->set('menu_text', 0);
+
+	switch ($item->type)
+	:
 		case 'separator':
 		case 'component':
 		case 'heading':
 		case 'url':
-		default:
-			// require JModuleHelper::getLayoutPath('mod_menu', 'socials_' . $item->type);
-			require JModuleHelper::getLayoutPath('mod_menu', 'socials_url');
+			require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
 			break;
-	endswitch;
+
+		default:
+			require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
+			break;
+	endswitch
+	;
 
 	// The next item is deeper.
 	if ($item->deeper)
 	{
-		echo '<ul role="group">';
+		echo '<ul>';
 	}
 	// The next item is shallower.
 	elseif ($item->shallower)
@@ -103,6 +102,6 @@ if ($tagId = $params->get('tag_id', ''))
 	{
 		echo '</li>';
 	}
-}
 ?>
+<?php endforeach; ?>
 </ul>

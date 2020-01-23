@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -14,8 +14,6 @@
  */
 
 defined('_JEXEC') or die;
-
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 $params				  = &$this->item->params;
 $this->item->image_class = 'u-sizeFit';
@@ -47,11 +45,13 @@ $useDefList			  = ($params->get('show_modify_date') || $params->get('show_publis
 							<?php if ($params->get('show_title')) : ?>
 							<h3 class="u-padding-r-top u-padding-r-bottom" itemprop="headline">
 								<?php if ($params->get('link_titles') && $params->get('access-view')) : ?>
-								<a class="u-text-h4 u-textClean u-color-black" href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid, $this->item->language)); ?>" itemprop="url">
-									<?php echo $this->escape($this->item->title); ?>
-								</a>
+									<a class="u-text-h4 u-textClean u-color-black" href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid, $this->item->language)); ?>" itemprop="url">
+										<?php echo $this->escape($this->item->title); ?>
+									</a>
 								<?php else : ?>
-								<?php echo $this->escape($this->item->title); ?>
+									<span class="u-text-h4 u-linkClean u-color-black">
+										<?php echo $this->escape($this->item->title); ?>
+									</span>
 								<?php endif; ?>
 							</h3>
 							<?php endif; ?>

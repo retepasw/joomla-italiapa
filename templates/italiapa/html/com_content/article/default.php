@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -14,9 +14,9 @@
  */
 
 defined('_JEXEC') or die;
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
+JHtml::_('behavior.caption');
 
 // Create shortcuts to some parameters.
 $params  = $this->item->params;
@@ -32,17 +32,28 @@ $params->set('info_block_style', 'inline');
 $assocParam = (JLanguageAssociations::isEnabled() && $params->get('show_associations'));
 JHtml::_('behavior.caption');
 
-if (JFactory::getApplication()->getTemplate(true)->params->get('debug') || defined('JDEBUG') && JDEBUG) : ?>
-<div class="Prose Alert Alert--info Alert--withIcon u-padding-r-bottom u-padding-r-right u-margin-r-bottom">
-see <a href="https://italia.github.io/design-web-toolkit/components/detail/page--default.html">
-https://italia.github.io/design-web-toolkit/components/detail/page--default.html
-</a>
-</div>
-<?php endif; ?>
+$imgfloat = empty($images->float_fulltext) ? $params->get('float_fulltext') : $images->float_fulltext;
+?>
 
 <article class="Grid <?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Article">
-	<div class="Grid-cell u-sizeFull<?php if ($params->get('access-view') && isset($images->image_fulltext) && !empty($images->image_fulltext)) echo ' u-md-size1of2 u-lg-size1of2'; ?> u-text-r-s u-padding-r-all">
-		<meta itemprop="inLanguage" content="<?php echo ($this->item->language === '*') ? JFactory::getConfig()->get('language') : $this->item->language; ?>" />
+	<?php if ($params->get('access-view') && isset($images->image_fulltext) && !empty($images->image_fulltext)) : ?>
+		<?php if ($imgfloat == 'left') : ?>
+			<div class="Grid-cell u-sizeFull u-md-size1of2 u-lg-size1of2 u-text-r-s u-padding-r-all">
+				<?php echo JLayoutHelper::render('joomla.content.full_image', $this->item); ?>
+			</div>
+			<div class="Grid-cell u-sizeFull u-md-size1of2 u-lg-size1of2 u-text-r-s u-padding-r-all">
+		<?php elseif ($imgfloat == 'none') : ?>
+			<div class="Grid-cell u-sizeFull u-md-size1of2 u-lg-size1of2 u-text-r-s u-padding-r-all">
+		<?php elseif (!count(JModuleHelper::getModules('right'))) : // && ($imgfloat == 'right')) : ?>
+			<div class="Grid-cell u-sizeFull u-md-size2of3 u-lg-size2of3 u-text-r-s u-padding-r-all">
+		<?php else : ?>
+			<div class="Grid-cell u-sizeFull u-text-r-s u-padding-r-all">
+		<?php endif; ?>
+	<?php else : ?>
+		<div class="Grid-cell u-sizeFull u-text-r-s u-padding-r-all">
+	<?php endif; ?>
+
+	<meta itemprop="inLanguage" content="<?php echo ($this->item->language === '*') ? JFactory::getConfig()->get('language') : $this->item->language; ?>" />
 		<?php
 		if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->paginationposition && $this->item->paginationrelative)
 		{
@@ -93,7 +104,7 @@ https://italia.github.io/design-web-toolkit/components/detail/page--default.html
 		<?php else : ?>
 			<?php if ($useDefList) : ?>
 				<div id="pop-print" class="u-hiddenPrint">
-					<?php 
+					<?php
 					$text = JLayoutHelper::render('joomla.content.icons.print_screen', array('params' => $params, 'legacy' => $legacy));
 					echo '<a href="#" onclick="window.print();return false;" class="Button Button--default u-text-r-xs u-linkClean">' . $text . '</a>';
 					?>
@@ -101,7 +112,7 @@ https://italia.github.io/design-web-toolkit/components/detail/page--default.html
 			<?php endif; ?>
 		<?php endif; ?>
 
-		<div class=" u-text-p">
+		<div class="u-text-p">
 			<?php if ($params->get('show_title') || $params->get('show_author')) : ?>
 			<div class="page-header">
 				<?php if ($params->get('show_title')) : ?>
@@ -121,8 +132,7 @@ https://italia.github.io/design-web-toolkit/components/detail/page--default.html
 			</div>
 			<?php endif; ?>
 
-		<?php //if ($info == 0 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
-		<?php if ($params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
+		<?php if ($info == 0 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
 			<?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
 
 			<?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
@@ -139,10 +149,9 @@ https://italia.github.io/design-web-toolkit/components/detail/page--default.html
 						<?php echo $this->item->text; ?>
 					</div>
 			<?php if (isset($this->item->toc) && $this->item->toc) : ?>
-					<?php echo $this->item->pagenavcounter; ?>
 				</div>
 
-				<aside class="Grid-cell u-sizeFull u-md-size1of4 u-lg-size1of4 u-text-r-s u-padding-r-all">
+				<aside class="ipa-Right Grid-cell u-sizeFull u-md-size1of4 u-lg-size1of4 u-text-r-s u-padding-r-all">
 					<?php echo $this->item->toc; ?>
 				</aside>
 			</div>
@@ -154,11 +163,10 @@ https://italia.github.io/design-web-toolkit/components/detail/page--default.html
 			<?php if ($useDefList) : ?>
 				<?php echo JLayoutHelper::render('joomla.content.info_block', array('item' => $this->item, 'params' => $params, 'position' => 'below')); ?>
 			<?php endif; ?>
-
-			<?php //if ($params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
-				<?php //$this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
-				<?php //echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
-			<?php //endif; ?>
+			<?php if ($params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
+				<?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
+				<?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
+			<?php endif; ?>
 		<?php endif; ?>
 
 		<?php if (isset($urls) && ((!empty($urls->urls_position) && ($urls->urls_position == '1')) || ($params->get('urls_position') == '1'))) : ?>
@@ -196,12 +204,25 @@ https://italia.github.io/design-web-toolkit/components/detail/page--default.html
 		</p>
 		<?php endif; ?>
 		<?php endif; ?>
-	</div>
 
 	<?php if ($params->get('access-view') && isset($images->image_fulltext) && !empty($images->image_fulltext)) : ?>
-	<div class="Grid-cell u-sizeFull u-md-size1of2 u-lg-size1of2 u-text-r-s u-padding-r-all">
-		<?php echo JLayoutHelper::render('joomla.content.full_image', $this->item); ?>
-	</div>
+		<?php if ($imgfloat == 'left') : ?>
+			</div>
+		<?php elseif ($imgfloat == 'none') : ?>
+			</div>
+			<div class="Grid-cell u-sizeFull u-md-size1of2 u-lg-size1of2 u-text-r-s u-padding-r-all"<?php echo !count(JModuleHelper::getModules('right')) ? ' id="right"' : '' ; ?>>
+				<?php echo JLayoutHelper::render('joomla.content.full_image', $this->item); ?>
+			</div>
+		<?php elseif (count(JModuleHelper::getModules('right'))) : // && ($imgfloat == 'right')) : ?>
+			<?php echo JLayoutHelper::render('joomla.content.full_image', array('item' => $this->item, 'options' => array('class' => 'ipa-Right'))); ?>
+		<?php else : ?>
+			</div>
+			<div class="Grid-cell u-sizeFull u-md-size1of3 u-lg-size1of3 u-text-r-s u-padding-r-all" id="right">
+				<?php echo JLayoutHelper::render('joomla.content.full_image', $this->item); ?>
+			</div>
+		<?php endif; ?>
+	<?php else : ?>
+		</div>
 	<?php endif; ?>
 
 	<?php $app = JFactory::getApplication(); ?>
@@ -221,8 +242,8 @@ https://italia.github.io/design-web-toolkit/components/detail/page--default.html
 	?>
 </article>
 
-		<?php
-		if (!empty($this->item->pagination) && $this->item->pagination && $this->item->paginationposition && !$this->item->paginationrelative) :
-			echo $this->item->pagination;
-		endif;
-		?>
+<?php
+if (!empty($this->item->pagination) && $this->item->pagination && $this->item->paginationposition && !$this->item->paginationrelative) :
+	echo $this->item->pagination;
+endif;
+?>

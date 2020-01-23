@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -14,8 +14,6 @@
  */
 
 defined('_JEXEC') or die;
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
-
 /**
  * Note that this layout opens a div with the page class suffix. If you do not use the category children
  * layout you need to close this div either by overriding this file or in your main layout.
@@ -59,20 +57,22 @@ $tagsData = $category->tags->itemTags;
 	</h1>
 <?php endif; ?>
 
+	<?php $right = count(JModuleHelper::getModules('right')); ?>
 	<section class="Grid">
-	    <div class="Grid-cell u-sizeFull u-md-size1of2 u-lg-size1of2 u-text-r-s u-padding-r-all">
-	        <div class="u-text-r-l u-layout-prose">
+	    <div class="Grid-cell u-sizeFull<?php echo ($params->get('show_description_image') && $category->getParams()->get('image') && !$right ? ' u-md-size1of2 u-lg-size1of2' : ''); ?> u-text-r-s u-padding-r-all">
+	        <div class="u-text-r-l Prose<?php echo ($params->get('show_description_image') && $category->getParams()->get('image') && !$right ? ' u-layout-prose' : ''); ?>">
 				<?php if ($params->get('show_cat_tags', 1)) : ?>
 					<?php echo JLayoutHelper::render('joomla.content.tags', $tagsData); ?>
 				<?php endif; ?>
-	
+
 				<?php if ($params->get('show_category_title', 1)) : ?>
+					<?php // TODO: show icon ?>
 					<h2 class="u-text-h2 u-margin-r-bottom">
 						<?php echo JHtml::_('content.prepare', $category->title, '', $extension . '.category.title'); ?>
 					</h2>
 				<?php endif; ?>
 				<?php echo $afterDisplayTitle; ?>
-	
+
 				<?php echo $beforeDisplayContent; ?>
 				<?php if ($params->get('show_description') && $category->description) : ?>
 					<?php echo JHtml::_('content.prepare', $category->description, '', $extension . '.category.description'); ?>
@@ -80,18 +80,18 @@ $tagsData = $category->tags->itemTags;
 				<?php echo $afterDisplayContent; ?>
 	        </div>
 	    </div>
-	
+
 		<?php if ($params->get('show_description_image') && $category->getParams()->get('image')) : ?>
-	    <div class="Grid-cell u-sizeFull u-md-size1of2 u-lg-size1of2 u-text-r-s u-padding-r-all">
+	    <div class="<?php echo $right ? 'ipa-Right u-padding-r-bottom' : 'Grid-cell u-sizeFull u-md-size1of2 u-lg-size1of2 u-text-r-s u-padding-r-all'; ?>">
 	        <img src="<?php echo $category->getParams()->get('image'); ?>" alt="<?php echo htmlspecialchars($category->getParams()->get('image_alt'), ENT_COMPAT, 'UTF-8'); ?>" class="u-sizeFull" />
 	    </div>
 		<?php endif; ?>
-	
+
 		<div class="u-sizeFull">
 		<?php echo $displayData->loadTemplate($displayData->subtemplatename); ?>
 		</div>
 
-		<?php if ($displayData->maxLevel != 0 && $displayData->get('children')) : ?>	
+		<?php if ($displayData->maxLevel != 0 && $displayData->get('children')) : ?>
 		<div class="u-sizeFull u-text-r-s u-color-70 cat-children">
 			<?php if ($params->get('show_category_heading_title_text', 1) == 1) : ?>
 				<h3 class="u-border-bottom-m">

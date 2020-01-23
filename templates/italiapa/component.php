@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		https://www.eshiol.it
- * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -13,94 +13,51 @@
  * other free or open source software licenses.
  */
 
-// Add JavaScript Frameworks
-JHtml::_('bootstrap.framework');
+defined('_JEXEC') or die;
 
-$app	= JFactory::getApplication();
+/** @var JDocumentHtml $this */
+
+$app = JFactory::getApplication();
+
 $params = $app->getTemplate(true)->params;
 
 if ($params->get('debug') || defined('JDEBUG') && JDEBUG)
 {
-    JLog::addLogger(array('text_file' => $params->get('log', 'eshiol.log.php'), 'extension' => 'tpl_italiapa_file'), JLog::ALL, array('tpl_italiapa'));
+	JLog::addLogger(array('text_file' => $params->get('log', 'eshiol.log.php'), 'extension' => 'tpl_italiapa_file'), JLog::ALL, array('tpl_italiapa'));
 }
 JLog::addLogger(array('logger' => (null !== $params->get('logger')) ?$params->get('logger') : 'messagequeue', 'extension' => 'tpl_italiapa'), JLOG::ALL & ~JLOG::DEBUG, array('tpl_italiapa'));
 if ($params->get('phpconsole') && class_exists('JLogLoggerPhpconsole'))
 {
-    JLog::addLogger(array('logger' => 'phpconsole', 'extension' => 'tpl_italiapa_phpconsole'),  JLOG::DEBUG, array('tpl_italiapa'));
+	JLog::addLogger(array('logger' => 'phpconsole', 'extension' => 'tpl_italiapa_phpconsole'),  JLOG::DEBUG, array('tpl_italiapa'));
 }
-JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
+
+// Force loading of backend global language file
+//JFactory::getLanguage()->load('joomla', JPath::clean(JPATH_ADMINISTRATOR), null, false, true);
+
+// Output as HTML5
+$this->setHtml5(true);
+
+// Add JavaScript Frameworks
+JHtml::_('bootstrap.framework');
+
+// Add html5 shiv
+JHtml::_('script', 'jui/html5.js', array('version' => 'auto', 'relative' => true, 'conditional' => 'lt IE 9'));
+
+// Add Stylesheets
+JHtml::_('stylesheet', 'component.css', array('version' => 'auto', 'relative' => true));
+
+// Load optional rtl Bootstrap css and Bootstrap bugfixes
+JHtmlBootstrap::loadCss($includeMaincss = false, $this->direction);
 ?>
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js ie89 ie8" lang="<?php echo $this->language; ?>"><![endif]-->
-<!--[if IE 9]><html class="no-js ie89 ie9" lang="<?php echo $this->language; ?>"><![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html class="no-js" lang="<?php echo $this->language; ?>">
-<!--<![endif]-->
+<html lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
 <head>
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<?php if ($app->get('debug_lang', '0') == '1' || $app->get('debug', '0') == '1') : ?>
-		<link href="<?php echo JUri::root(true); ?>/media/cms/css/debug.css" rel="stylesheet" />
-	<?php endif; ?>
-	<!--[if lt IE 9]><script src="<?php echo JUri::root(true); ?>/media/jui/js/html5.js"></script><![endif]-->
-	<!-- include html5shim per Explorer 8 -->
-	<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/vendor/modernizr.js"></script>
-
-	<script>__PUBLIC_PATH__ = '<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/'</script>
-
-	<!-- <link rel="preload" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/IWT.min.js" as="script"> -->
-	<!--
-		In alternativa a WebFontLoader ÃƒÆ’Ã‚Â¨ possibile caricare il font direttamente da Google
-		<link href='//fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700,' rel='stylesheet' type='text/css' />
-		o dal repository locale (src/fonts)
-	-->
-	<script type="text/javascript">
-		WebFontConfig = {
-			google: {
-				families: ['Titillium+Web:400,600,700,400italic:latin']
-			}
-		};
-		(function() {
-			var wf = document.createElement('script');
-			wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-			wf.type = 'text/javascript';
-			wf.async = 'true';
-			var s = document.getElementsByTagName('script')[0];
-			s.parentNode.insertBefore(wf, s);
-		})();
-	</script>
-
-	<?php $theme = $this->params->get('theme', 'build'); ?>
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/<?php echo $theme; ?>.css">
-
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/custom.css">
-
-	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/tooltip-theme-arrows.css" />
-	<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/tether.min.js"></script>
-	<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/drop.min.js"></script>
-	<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/tooltip.min.js"></script>
-
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	<jdoc:include type="head" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body class="t-Pac">
-<div id="main">
+<body class="contentpane modal<?php echo $this->direction === 'rtl' ? ' rtl' : ''; ?>">
 	<jdoc:include type="message" />
 	<jdoc:include type="component" />
-</div>
-<!--[if IE 8]>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/vendor/respond.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/vendor/rem.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/vendor/selectivizr.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/vendor/slice.js"></script>
-<![endif]-->
-
-<!--[if lte IE 9]>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/vendor/polyfill.min.js"></script>
-<![endif]-->
-
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/IWT.min.js"></script>
-
 </body>
 </html>

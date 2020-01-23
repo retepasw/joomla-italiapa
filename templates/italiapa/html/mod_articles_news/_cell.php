@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -14,7 +14,6 @@
  */
 
 defined('_JEXEC') or die;
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 $info = $item->params->get('info_block_position', 0);
 
@@ -55,18 +54,8 @@ $assocParam = (JLanguageAssociations::isEnabled() && $item->params->get('show_as
 
 						echo $item->afterDisplayContent;
 
-						if ($params->get('show_readmore') && $this->item->readmore) :
-							if ($params->get('access-view')) :
-								$link = JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid, $this->item->language));
-							else :
-								$menu = JFactory::getApplication()->getMenu();
-								$active = $menu->getActive();
-								$itemId = $active->id;
-								$link = new JUri(JRoute::_('index.php?option=com_users&view=login&Itemid=' . $itemId, false));
-								$link->setVar('return', base64_encode(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid, $this->item->language)));
-							endif;
-
-							echo JLayoutHelper::render('joomla.content.readmore', array('item' => $this->item, 'params' => $item->params, 'link' => $link));
+						if (isset($item->link) && $item->readmore != 0 && $params->get('readmore')) :
+							echo '<a class="readmore" href="' . $item->link . '">' . $item->linkText . '</a>';
 						endif;
 						?>
 					</div>

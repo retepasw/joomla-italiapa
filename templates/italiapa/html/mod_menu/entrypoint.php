@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -13,23 +13,77 @@
  * other free or open source software licenses.
  */
 
-defined('_JEXEC') or die;
+defined('_JEXEC') or die();
+?>
 
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
-JLog::add(new JLogEntry($module->position, JLog::DEBUG, 'tpl_italiapa'));
+<?php $id = ($tagId = $params->get('tag_id', '')) ? ' id="' . $tagId . '"' : ''; ?>
 
-$id = '';
+<?php
+$background = 'u-background-compl-80';
+$color      = 'u-color-white';
+$u_flex     = false;
+$u_size     = '';
 
-if ($tagId = $params->get('tag_id', ''))
+$moduleclass_sfx  = htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8');
+if ($moduleclass_sfx)
 {
-	$id = ' id="' . $tagId . '"';
+    $moduleclass_sfx_array = explode(' ', $moduleclass_sfx);
+    for ($i = count($moduleclass_sfx_array) - 1; $i >= 0; $i--)
+    {
+    	if ($moduleclass_sfx_array[$i] == 'u-flex')
+        {
+            $u_flex = true;
+            unset($moduleclass_sfx_array[$i]);
+        }
+        elseif (substr($moduleclass_sfx_array[$i], 0, 13) == 'u-background-')
+        {
+        	$background = $moduleclass_sfx_array[$i];
+        	unset($moduleclass_sfx_array[$i]);
+        }
+        elseif (substr($moduleclass_sfx_array[$i], 0, 8) == 'u-color-')
+        {
+        	$color = $moduleclass_sfx_array[$i];
+        	unset($moduleclass_sfx_array[$i]);
+        }
+    }
+    $moduleclass_sfx = trim(implode(' ', $moduleclass_sfx_array));
 }
+
+if ($class_sfx)
+{
+	$class_sfx_array = explode(' ', $class_sfx);
+	for ($i = count($class_sfx_array) - 1; $i >= 0; $i--)
+	{
+		if ($class_sfx_array[$i] == 'u-flex')
+		{
+			$u_flex = true;
+			unset($class_sfx_array[$i]);
+		}
+		elseif (substr($class_sfx_array[$i], 0, 13) == 'u-background-')
+		{
+			$background = $class_sfx_array[$i];
+			unset($class_sfx_array[$i]);
+		}
+		elseif (substr($class_sfx_array[$i], 0, 8) == 'u-color-')
+		{
+			$color = $class_sfx_array[$i];
+			unset($class_sfx_array[$i]);
+		}
+		elseif ((substr($class_sfx_array[$i], 0, 6) == 'u-size') || (substr($class_sfx_array[$i], 0, 2) == 'u-') && (substr($class_sfx_array[$i], 4, 5) == '-size'))
+		{
+			$u_size .= $class_sfx_array[$i] . ' ';
+			unset($class_sfx_array[$i]);
+		}
+	}
+	$class_sfx = trim(implode(' ', $class_sfx_array));
+}
+
+$u_size .= $u_size ? '' : 'u-md-size1of3 u-lg-size1of3 ';
 ?>
 
 <div class="Grid Grid--withGutter u-padding-r-top u-padding-r-bottom u-text-r-s <?php echo $class_sfx; ?>"<?php echo $id; ?>>
-<?php foreach ($list as $i => &$item)
-{
-	JLog::add(new JLogEntry(print_r($item, true), JLog::DEBUG, 'tpl_italiapa'));
+<?php foreach ($list as $i => &$item) : ?>
+<?php
 	if ($item->level > 2)
 	{
 		continue;
@@ -80,67 +134,92 @@ if ($tagId = $params->get('tag_id', ''))
 	{
 		$class .= ' parent';
 	}
-	$class .= ' u-flex u-flexCol';
-	
+
+	$icon            = '';
 	if ($item->level == 1)
 	{
-		echo '<div class="Grid-cell u-md-size1of3 u-lg-size1of3 ' . $class . '">';
+		$column_background = $background;
+		$column_color      = $color;
+	}
+	$item_background = $column_background;
+	$item_color      = $column_color;
+	$subclass        = '';
+	if ($item->anchor_css)
+	{
+		$anchor_css = explode(' ', $item->anchor_css);
+		for ($i = count($anchor_css) - 1; $i >= 0; $i--)
+		{
+			if ($anchor_css[$i] == 'u-flex')
+			{
+				$class .= ' u-flex';
+				unset($anchor_css[$i]);
+			}
+			elseif ($anchor_css[$i] == 'u-flexCol')
+			{
+				$class .= ' u-flexCol';
+				unset($anchor_css[$i]);
+			}
+			elseif (substr($anchor_css[$i], 0, 13) == 'u-background-')
+			{
+				$item_background = $anchor_css[$i];
+				unset($anchor_css[$i]);
+			}
+			elseif (substr($anchor_css[$i], 0, 8) == 'u-color-')
+			{
+				$item_color = $anchor_css[$i];
+				unset($anchor_css[$i]);
+			}
+			elseif (substr($anchor_css[$i], 0, 3) == 'li:')
+			{
+				$subclass = substr($anchor_css[$i], 3) . ' ' . $subclass;
+				unset($anchor_css[$i]);
+			}
+		}
+		$item->anchor_css = implode(' ', $anchor_css);
 	}
 
-	if (!$item->parent)
+	if ($item->level == 1)
 	{
-		$moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8');
-		echo '<div class="Entrypoint-item '.($item->level == 1 ? 'u-sizeFill ' : '') .($moduleclass_sfx ? $moduleclass_sfx : 'u-background-compl-80').'"><p>';
+		echo '<div class="Grid-cell ' . $u_size . $class . ($u_flex ? ' u-flex' . (($item->parent) ? ' u-flexCol' : '') : '') . '">';
+		$column_background = $item_background;
+		$column_color      = $item_color;
+	}
 
-		$icon = '';
-		if ($item->anchor_css)
+	if (! $item->parent)
+	{
+		echo '<div class="Entrypoint-item ' . ($item->level == 1 ? 'u-sizeFill ' : '') .
+			trim($subclass . ' ' . $item_background) . '"><p>';
+
+		$item->anchor_css .= (empty($item->anchor_css) ? 'u-textClean u-text-h3' : '') . ' ' . $item_color;
+
+		switch ($item->type)
 		{
-			JLog::add(new JLogEntry('anchor_css: '.print_r($item->anchor_css, true), JLog::DEBUG, 'tpl_italiapa'));
-			$anchor_css = explode(' ', $item->anchor_css);
-			for($i = 0; $i < count($anchor_css); $i++)
-			{
-				if (substr($anchor_css[$i], 0, 4) == 'Icon')
-				{
-					$icon = $icon . ' ' . $anchor_css[$i];
-					unset($anchor_css[$i]);
-				}
-			}
-			// $item->anchor_css = (substr($item->anchor_css, 0, 1) == ' ' ? ' ' : '') . implode(' ', $anchor_css);
-			$item->anchor_css = implode(' ', $anchor_css);
-		}		
-		if (!$item->anchor_css)
-		{
-			$item->anchor_css = 'u-textClean u-text-h3 u-color-white';
+			case 'separator':
+			case 'component':
+			case 'heading':
+			case 'url':
+				require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
+				break;
+
+			default:
+				require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
+				break;
 		}
-		$item->anchor_css .= $icon;
-		
-		switch ($item->type) :
-		case 'separator':
-		case 'component':
-		case 'heading':
-		case 'url':
-			require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
-			break;
-
-		default:
-			require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
-			break;
-		endswitch;
 		echo '</p></div>';
 	}
 
 	if ($item->shallower)
 	{
-//		echo '</div>';
+		// echo '</div>';
 		echo str_repeat('</div>', $item->level_diff);
 	}
 	// The next item is on the same level.
-	elseif ($item->level == 1 && !$item->parent)
+	elseif ($item->level == 1 && ! $item->parent)
 	{
 		echo '</div>';
 	}
 
 	$buffer = ob_get_flush();
-	JLog::add(new JLogEntry($buffer, JLog::DEBUG, 'tpl_italiapa'));
-}
-?></div>
+?>
+<?php endforeach; ?>
+</div>

@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -14,8 +14,6 @@
  */
 
 defined('_JEXEC') or die;
-
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 /**
  * This is a file to add template specific chrome to pagination rendering.
@@ -78,7 +76,6 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
  */
 function pagination_list_footer($list)
 {
-	JLog::add(new JLogEntry(__FUNCTION__, JLog::DEBUG, 'tpl_italiapa'));
 	$html = "<div class=\"pagination\">\n";
 	$html .= $list['pageslinks'];
 	$html .= "\n<input type=\"hidden\" name=\"" . $list['prefix'] . "limitstart\" value=\"" . $list['limitstart'] . "\" />";
@@ -98,7 +95,6 @@ function pagination_list_footer($list)
  */
 function pagination_list_render($list)
 {
-	JLog::add(new JLogEntry(__FUNCTION__, JLog::DEBUG, 'tpl_italiapa'));
 	// Calculate to display range of pages
 	$currentPage = 1;
 	$range = 1;
@@ -122,7 +118,7 @@ function pagination_list_render($list)
 		}
 	}
 
-	$html = '<nav role="navigation" aria-label="Navigazione paginata" class="u-layoutCenter u-size1of2">';
+	$html = '<nav aria-label="Navigazione paginata" class="Grid Grid--fit Grid--alignCenter u-layoutCenter">';
 	$html .= '<ul class="Grid Grid--fit Grid--alignMiddle u-text-r-xxs">';
 	$html .= $list['start']['data'];
 	$html .= $list['previous']['data'];
@@ -160,52 +156,49 @@ function pagination_list_render($list)
  */
 function pagination_item_active(&$item)
 {
-	JLog::add(new JLogEntry(__FUNCTION__, JLog::DEBUG, 'tpl_italiapa'));
 	$lang = JFactory::getLanguage();
 	$class = '';
-	$liclass = 'Grid-cell u-textCenter';
+	$liclass = 'Grid-cell u-textCenter u-margin-left-xs u-margin-right-xs';
 
 	// Check for "Start" item
 	if ($item->text == JText::_('JLIB_HTML_START'))
 	{
-		$direction = $lang->isRtl() ? 'right' : 'left';
-		$display = '<i class="material-icons u-text-r-m" role="presentation">'.($lang->isRtl() ? 'last_page' : 'first_page').'</i><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
+		$display = '<svg class="u-text-r-xs Icon"><use xlink:href="#Icon-chevron-'.($lang->isRtl() ? 'last' : 'first').'"></use></svg><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
 	}
 
 	// Check for "Prev" item
 	if ($item->text == JText::_('JPREV'))
 	{
-		//$display = '<span class="icon-previous"></span>';
-		$direction = $lang->isRtl() ? 'right' : 'left';
-		$display = '<i class="material-icons u-text-r-m" role="presentation">chevron_'.$direction.'</i><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
+		$display = '<span class="u-text-r-xs Icon Icon-chevron-'.($lang->isRtl() ? 'right' : 'left').'"></span><span class="u-hiddenVisually">'.JText::_('JPREV').'</span>';
 	}
 
 	// Check for "Next" item
 	if ($item->text == JText::_('JNEXT'))
 	{
-		//$display = '<span class="icon-next"></span>';
-		$direction = $lang->isRtl() ? 'left' : 'right';
-		$display = '<i class="material-icons u-text-r-m" role="presentation">chevron_'.$direction.'</i><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
+		$display = '<span class="u-text-r-xs Icon Icon-chevron-'.($lang->isRtl() ? 'left' : 'right').'"></span><span class="u-hiddenVisually">'.JText::_('JNEXT').'</span>';
 	}
 
 	// Check for "End" item
 	if ($item->text == JText::_('JLIB_HTML_END'))
 	{
-		//$display = '<span class="icon-last"></span>';
-		$direction = $lang->isRtl() ? 'left' : 'right';
-		$display = '<i class="material-icons u-text-r-m" role="presentation">'.($lang->isRtl() ? 'first_page' : 'last_page').'</i><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
+		$display = '<svg class="u-text-r-xs Icon"><use xlink:href="#Icon-chevron-'.($lang->isRtl() ? 'first' : 'last').'"></use></svg><span class="u-hiddenVisually">'.JText::_('JLIB_HTML_START').'</span>';
 	}
 
 	// If the display object isn't set already, just render the item with its text
 	if (!isset($display))
 	{
 		$liclass .= ' u-hidden u-md-inlineBlock u-lg-inlineBlock';
-		$display  = '<span class="u-text-r-m">'.$item->text.'</span>';
-		$class	= ' u-padding-r-all';
-//		$class   .= ' hidden-phone';
+		$display  = $item->text;
+		$class	= '';
 	}
 
-	return '<li class="' . $liclass . '"><a title="' . $item->text . '" href="' . $item->link . '" class="u-color-50 u-textClean u-block' . $class . '">' . $display . '</a></li>';
+	$Itemid = JFactory::getApplication()->input->getInt('Itemid');
+	if ($Itemid)
+	{
+		$item->link .= (strpos($item->link, '?') ? '&' : '?') . 'Itemid=' . $Itemid;
+	}
+
+	return '<li class="' . $liclass . '"><a title="' . $item->text . '" href="' . $item->link . '" class="u-color-50 u-linkClean u-block u-padding-r-all' . $class . '"><span class="u-text-r-m u-textWeight-600">' . $display . '</span></a></li>';
 }
 
 /**
@@ -219,7 +212,6 @@ function pagination_item_active(&$item)
  */
 function pagination_item_inactive(&$item)
 {
-	JLog::add(new JLogEntry(__FUNCTION__, JLog::DEBUG, 'tpl_italiapa'));
 	// Check for "Start" item
 	if ($item->text == JText::_('JLIB_HTML_START'))
 	{
@@ -247,13 +239,13 @@ function pagination_item_inactive(&$item)
 	// Check if the item is the active page
 	if (isset($item->active) && $item->active)
 	{
-		//return '<li class="active hidden-phone"><a class="u-padding-r-all u-background-50 u-color-white u-textClean u-block"><span class="u-text-r-m">' . $item->text . '</span></a></li>';
-		return '<li class="active">'
-				. '<a class="u-padding-r-all u-background-50 u-color-white u-textClean u-block">'
-				. '<span class="u-text-r-s"><span class="u-md-hidden u-lg-hidden">' . JText::_('TPL_ITALIAPA_PAGE') . ' </span>'
-				. $item->text . '</span></a></li>';
+		return '<li class="Grid-cell u-textCenter u-margin-left-xs u-margin-right-xs active">'
+				. '<span class="u-background-50 u-color-white u-linkClean u-block u-padding-r-all">'
+				. '<span class="u-text-r-m u-textWeight-600"><span class="u-md-hidden u-lg-hidden">' . JText::_('TPL_ITALIAPA_PAGE') . ' </span>'
+				. $item->text . '</span></span></li>';
 	}
 
 	// Doesn't match any other condition, render a normal item
 	return ''; //'<li class="disabled hidden-phone"><a>' . $item->text . '</a></li>';
 }
+?>

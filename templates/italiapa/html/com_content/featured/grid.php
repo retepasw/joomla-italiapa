@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -15,8 +15,6 @@
 
 defined('_JEXEC') or die;
 
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
-
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
 JHtml::_('behavior.caption');
@@ -24,12 +22,6 @@ JHtml::_('behavior.caption');
 // If the page class is defined, add to class as suffix.
 // It will be a separate class if the user starts it with a space
 ?>
-
-<?php if (JFactory::getApplication()->getTemplate(true)->params->get('debug') || defined('JDEBUG') && JDEBUG) : ?>
-<div class="Prose Alert Alert--info Alert--withIcon u-padding-r-bottom u-padding-r-right u-margin-r-bottom">
-see <a href="https://italia.github.io/design-web-toolkit/components/detail/layout--default.html">https://italia.github.io/design-web-toolkit/components/detail/layout--default.html</a>
-</div>
-<?php endif; ?>
 
 <div class="u-layout-centerContent u-background-grey-20 u-padding-r-bottom">
 	<section class="u-layout-wide">
@@ -47,14 +39,14 @@ see <a href="https://italia.github.io/design-web-toolkit/components/detail/layou
 				<?php $this->item = &$item; ?>
 				<?php echo $this->loadTemplate('lead'); ?>
 			</div>
-			
+
 			<?php if (!empty($this->intro_items)) : ?>
 			<div class="Grid-cell u-md-size1of4 u-lg-size1of4 u-padding-r-left">
 				<?php $this->item = array_shift($this->intro_items); ?>
 				<?php echo $this->loadTemplate('tile'); ?>
 			</div>
 			<?php endif; ?>
-			
+
 		<?php endforeach; ?>
 
 		<?php foreach($this->intro_items as $item) : ?>
@@ -65,11 +57,11 @@ see <a href="https://italia.github.io/design-web-toolkit/components/detail/layou
 		<?php endforeach; ?>
 
 		</div>
-	
-	<?php 
+
+	<?php
 	if ($this->params->def('show_pagination', 2) == 1  || ($this->params->get('show_pagination') == 2 && $this->pagination->pagesTotal > 1)) :
 		echo $this->pagination->getPagesLinks();
-	endif; 
+	endif;
 	?>
 
 	</section>

@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
- * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
+ * @link		https://www.eshiol.it
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -15,6 +15,8 @@
 
 defined('_JEXEC') or die;
 
+JHtml::_('behavior.core');
+
 /** @var JDocumentError $this */
 
 if (!isset($this->error))
@@ -23,29 +25,59 @@ if (!isset($this->error))
 	$this->debug = false;
 }
 
-$app = JFactory::getApplication();
-$template = $app->getTemplate(true);
-$this->params = $template->params;
+$app	= JFactory::getApplication();
+$params = $app->getTemplate(true)->params;
+$min = '.min';
+
+if ($params->get('debug') || defined('JDEBUG') && JDEBUG)
+{
+	JLog::addLogger(array('text_file' => $params->get('log', 'eshiol.log.php'), 'extension' => 'tpl_italiapa_file'), JLog::ALL, array('tpl_italiapa'));
+	$min = '';
+}
+JLog::addLogger(array('logger' => (null !== $params->get('logger')) ?$params->get('logger') : 'messagequeue', 'extension' => 'tpl_italiapa'), JLOG::ALL & ~JLOG::DEBUG, array('tpl_italiapa'));
+if ($params->get('phpconsole') && class_exists('JLogLoggerPhpconsole'))
+{
+	JLog::addLogger(array('logger' => 'phpconsole', 'extension' => 'tpl_italiapa_phpconsole'),  JLOG::DEBUG, array('tpl_italiapa'));
+}
+
+// Check for a custom CSS file
+JHtml::_('stylesheet', 'user.css', array('version' => 'auto', 'relative' => true));
+
+// Check for a custom JS file
+JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
+
+$theme_default = $params->get('theme', 'italia');
+$theme = (isset($_COOKIE['theme']) && $_COOKIE['theme']) ? $_COOKIE['theme'] : $theme_default;
+$theme_path = JPATH_ROOT . '/templates/italiapa/build/build.' . $theme . '.css';
+
+if (!file_exists($theme_path)) {
+	$theme = 'italia';
+}
+
+JFactory::getSession()->set('theme', $theme);
 ?>
 <!DOCTYPE html>
-<html lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
+<html class="no-js theme-<?php echo $theme; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
 <head>
 	<meta charset="utf-8" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<title><?php echo $this->error->getCode(); ?> - <?php echo htmlspecialchars($this->error->getMessage(), ENT_QUOTES, 'UTF-8'); ?></title>
-	<link href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/error.css" rel="stylesheet" />
+	<link href="<?php echo $this->baseurl; ?>/templates/italiapa/css/error.css" rel="stylesheet" />
 	<?php if ($this->direction === 'rtl') : ?>
-		<link href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/error_rtl.css" rel="stylesheet" />
+		<link href="<?php echo $this->baseurl; ?>/templates/italiapa/css/error_rtl.css" rel="stylesheet" />
 	<?php endif; ?>
 	<?php if ($app->get('debug_lang', '0') == '1' || $app->get('debug', '0') == '1') : ?>
 		<link href="<?php echo JUri::root(true); ?>/media/cms/css/debug.css" rel="stylesheet" />
 	<?php endif; ?>
 	<!--[if lt IE 9]><script src="<?php echo JUri::root(true); ?>/media/jui/js/html5.js"></script><![endif]-->
 	<!-- include html5shim per Explorer 8 -->
-	<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/vendor/modernizr.js"></script>
+	<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/modernizr.js"></script>
 
-	<script>__PUBLIC_PATH__ = '<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/'</script>
+	<script>__PUBLIC_PATH__ = '<?php echo $this->baseurl ?>/templates/italiapa/build/'</script>
 
-	<!-- <link rel="preload" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/IWT.min.js" as="script"> -->
+	<!-- <link rel="preload" href="<?php echo $this->baseurl ?>/templates/italiapa/build/IWT.min.js" as="script"> -->
 	<!--
 		In alternativa a WebFontLoader ÃƒÆ’Ã‚Â¨ possibile caricare il font direttamente da Google
 		<link href='//fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700,' rel='stylesheet' type='text/css' />
@@ -67,61 +99,81 @@ $this->params = $template->params;
 		})();
 	</script>
 
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/vendor.css">
-	<?php $theme = $this->params->get('theme', 'build'); ?>
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/build/<?php echo $theme; ?>.css">
+	<script>var theme='<?php echo JFactory::getSession()->get('theme'); ?>';</script>
+
+	<script>__DEFAULT_THEME__ = '<?php echo $theme_default; ?>'</script>
+	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.css">
+	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.<?php echo $theme; ?>.css" id="theme">
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/custom.css">
+	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/italiapa.css">
 
-	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/css/tooltip-theme-arrows.css" />
+	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/tooltip-theme-arrows.css" />
 
-	<script src="<?php echo $this->baseurl ?>/templates/<?php echo $template->template ?>/build/vendor/jquery.min.js"></script>
+	<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/jquery.min.js"></script>
 </head>
-<body class="t-Pac">
+<body class="t-Pac c-hideFocus enhanced">
+
+<?php $svg_path = JPATH_ROOT .'/templates/italiapa/src/icons/img/SVG'; ?>
+<?php if (file_exists($svg_path) && ($icons = array_diff(scandir($svg_path), array('..', '.')))) : ?>
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+	<?php foreach ($icons as $filename ) : ?>
+		<?php $path_parts = pathinfo($filename); ?>
+		<?php if ($path_parts['extension'] != 'svg') continue; ?>
+		<?php $iconname = $path_parts['filename']; ?>
+		<?php $icon = new SimpleXMLElement(file_get_contents($svg_path . '/' . $iconname . '.svg')); ?>
+		<symbol id="Icon-<?php echo $iconname; ?>" 
+			viewBox="<?php echo isset($icon['viewBox']) ? (string) $icon['viewBox'] : '0 0 32 32'; ?>"
+			<?php echo isset($icon['style']) ? 'style="' . (string) $icon['style'] . '"' : ''; ?>>
+			<?php foreach ($icon->children() as $child) : ?>
+				<?php echo $child->asXML()  . "\r"; ?>
+			<?php endforeach; ?>
+		</symbol>
+	<?php endforeach; ?>
+	</defs>
+</svg>
+<?php endif; ?>
 
 <?php
+$owner_modules = JModuleHelper::getModules('owner');
+$languages_modules = JModuleHelper::getModules('languages');
+
 $mainmenu_modules = JModuleHelper::getModules('mainmenu');
 $socials_modules = JModuleHelper::getModules('socials');
 $search_modules = JModuleHelper::getModules('search');
 $menu_modules = JModuleHelper::getModules('menu');
 ?>
 
-<header class="Header u-hiddenPrint">
-<?php if ($afferente = $this->params->get('afferente')) : ?>
-<div class="Header-banner">
-	<div class="Header-owner Headroom-hideme ">
-		<a href="<?php echo $this->params->get('afferente_link'); ?>"><span><?php echo $afferente; ?></span></a>
-		<div class="Header-languages ">
-			<a href="#languages" data-menu-trigger="languages" class="Header-language u-border-none u-zindex-max u-inlineBlock" aria-controls="languages" aria-haspopup="true" role="button">
-				<span class="u-hiddenVisually">lingua attiva:</span>
-				<span class="">ITA</span>
-				<!-- <span class="u-hidden u-md-inlineBlock u-lg-inlineBlock">Italiano</span> -->
-				<span class="Icon Icon-expand u-padding-left-xs"></span>
-			</a>
-			<div id="languages" data-menu="" class="Dropdown-menu Header-language-other u-jsVisibilityHidden u-nojsDisplayNone" x-placement="bottom" role="menu" aria-hidden="true" style="position: absolute; transform: translate3d(1323px, -245px, 0px); top: 0px; left: 0px; will-change: transform;">
-				<span class="Icon-drop-down Dropdown-arrow u-color-white" style="left: 58px;"></span>
-				<ul>
-					<li role="menuitem" class=""><a href="#1" class="u-padding-r-all"><span lang="en">English</span></a></li>
-					<?php if ($this->params->get('debug') || defined('JDEBUG') && JDEBUG) : ?>
-<li role="menuitem" class=""><div class="Prose Alert Alert--warning Alert--withIcon u-padding-r-bottom u-padding-r-right u-margin-r-bottom">
-non funzionante</div></li>
-<?php endif; ?>
+<header class="Header u-hiddenPrint<?php if ($params->get('headroom', 0)) echo ' Headroom--fixed js-Headroom Headroom Headroom--top Headroom--not-bottom" style="position: fixed; top: 0px;'; ?>">
 
-				</ul>
-			</div>
+<?php if (count($owner_modules) + count($languages_modules)) : ?>
+<div class="Header-banner Headroom-hideme">
+	<?php if (count($owner_modules)) : ?>
+		<div class="Header-owner">
+			<?php foreach ($owner_modules AS $module) : ?>
+				<?php echo JModuleHelper::renderModule($module, array()); ?>
+			<?php endforeach; ?>
 		</div>
-	</div>
+	<?php endif; ?>
+
+	<?php if (count($languages_modules)) : ?>
+		<div class="Header-languages">
+			<?php foreach ($languages_modules AS $module) : ?>
+				<?php echo JModuleHelper::renderModule($module, array()); ?>
+			<?php endforeach; ?>
+		</div>
+	<?php endif; ?>
 </div>
 <?php endif; ?>
 
 <div class="Header-navbar ">
 
 	<div class="u-layout-wide Grid Grid--alignMiddle u-layoutCenter">
-		<?php if ($logo = $this->params->get('logo')) : ?>
+		<?php if ($logo = $params->get('logo')) : ?>
 		<div class="Header-logo Grid-cell" aria-hidden="true">
 			<a href="<?php echo $this->baseurl; ?>/" tabindex="-1">
-				<img src="<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>">
+				<img src="<?php echo $this->baseurl; ?>/<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>">
 			</a>
 		</div>
 		<?php endif; ?>
@@ -130,48 +182,48 @@ non funzionante</div></li>
 			<h1 class="Header-titleLink">
 				<a href="<?php echo $this->baseurl; ?>/">
 					<?php echo htmlspecialchars($app->get('sitename')); ?>
-					<?php if ($subtitle = $this->params->get('subtitle')) : ?>
-					<br><small><?php echo $subtitle; ?></small>
+					<?php if ($subtitle = $params->get('subtitle')) : ?>
+						<br><small><?php echo $subtitle; ?></small>
 					<?php endif; ?>
 				</a>
 			</h1>
 		</div>
 
 		<?php if (count($search_modules)) : ?>
-		<div class="Header-searchTrigger Grid-cell">
-			<button aria-controls="header-search" class="js-Header-search-trigger Icon Icon-search" title="attiva il form di ricerca" aria-label="attiva il form di ricerca" aria-hidden="false"></button>
-			<button aria-controls="header-search" class="js-Header-search-trigger Icon Icon-close u-hidden" title="disattiva il form di ricerca" aria-label="disattiva il form di ricerca" aria-hidden="true"></button>
-		</div>
+			<div class="Header-searchTrigger Grid-cell">
+				<button aria-controls="header-search" class="js-Header-search-trigger Icon Icon-search" title="attiva il form di ricerca" aria-label="attiva il form di ricerca" aria-hidden="false"></button>
+				<button aria-controls="header-search" class="js-Header-search-trigger Icon Icon-close u-hidden" title="disattiva il form di ricerca" aria-label="disattiva il form di ricerca" aria-hidden="true"></button>
+			</div>
 		<?php endif; ?>
 
 		<?php if (count($search_modules) + count($socials_modules)) : ?>
-		<div class="Header-utils Grid-cell">
-
-			<?php if (count($socials_modules)) : ?>
-			<div class="Header-social Headroom-hideme">
-				<?php foreach ($socials_modules AS $module ) {
-					echo JModuleHelper::renderModule( $module, ['style'=>'none'] );
-				} ?>
+			<div class="Header-utils Grid-cell">
+	
+				<?php if (count($socials_modules)) : ?>
+					<div class="Headroom-hideme">
+						<?php foreach ($socials_modules AS $module) : ?>
+							<?php echo JModuleHelper::renderModule($module, array('style'=>'none')); ?>
+						<?php endforeach; ?>
+					</div>
+				<?php endif; ?>
+	
+				<?php if (count($search_modules)) : ?>
+					<div class="Header-search" id="header-search">
+						<?php foreach ($search_modules AS $module) : ?>
+							<?php echo JModuleHelper::renderModule($module, array('style'=>'none')); ?>
+						<?php endforeach; ?>
+					</div>
+				<?php endif; ?>
 			</div>
-			<?php endif; ?>
-
-			<?php if (count($search_modules)) : ?>
-			<div class="Header-search" id="header-search">
-				<?php foreach ($search_modules AS $module ) {
-					echo JModuleHelper::renderModule( $module, ['style'=>'none'] );
-				} ?>
-			</div>
-			<?php endif; ?>
-		</div>
 		<?php endif; ?>
 
 		<?php if (count($mainmenu_modules)) : ?>
-		<div class="Header-toggle Grid-cell">
-			<a class="Hamburger-toggleContainer js-fr-offcanvas-open u-nojsDisplayInlineBlock u-lg-hidden u-md-hidden" href="#menu" aria-controls="menu" aria-label="accedi al menu" title="accedi al menu">
-				<span class="Hamburger-toggle" role="presentation"></span>
-				<span class="Header-toggleText" role="presentation">Menu</span>
-			</a>
-		</div>
+			<div class="Header-toggle Grid-cell">
+				<a class="Hamburger-toggleContainer js-fr-offcanvas-open u-nojsDisplayInlineBlock u-lg-hidden u-md-hidden" href="#menu" aria-controls="menu" aria-label="accedi al menu" title="accedi al menu">
+					<span class="Hamburger-toggle" role="presentation"></span>
+					<span class="Header-toggleText" role="presentation">Menu</span>
+				</a>
+			</div>
 		<?php endif; ?>
 
 	</div>
@@ -180,15 +232,17 @@ non funzionante</div></li>
 <!-- Header-navbar -->
 
 <?php if (count($mainmenu_modules)) : ?>
-<div class="Headroom-hideme u-textCenter u-hidden u-sm-hidden u-md-block u-lg-block">
-	<?php foreach ($mainmenu_modules AS $module ) echo JModuleHelper::renderModule( $module, ['style'=>'lg'] ); ?>
-</div>
+	<div class="Headroom-hideme u-textCenter u-hidden u-sm-hidden u-md-block u-lg-block">
+		<?php foreach ($mainmenu_modules AS $module) : ?>
+			<?php echo JModuleHelper::renderModule($module, array('style'=>'lg')); ?>
+		<?php endforeach; ?>
+	</div>
 <?php endif; ?>
 
 </header>
 
 <?php if (count($menu_modules)) : ?>
-<section class="Offcanvas Offcanvas--left Offcanvas--modal js-fr-offcanvas u-jsVisibilityHidden u-nojsDisplayNone u-hiddenPrint" id="menu">
+<section class="Offcanvas Offcanvas--<?php echo $params->get('hamburgermenu_pos', 'left')?> Offcanvas--modal js-fr-offcanvas u-jsVisibilityHidden u-nojsDisplayNone u-hiddenPrint" id="menu">
 	<h2 class="u-hiddenVisually">Menu di navigazione</h2>
 	<div class="Offcanvas-content u-background-white">
 		<div class="Offcanvas-toggleContainer u-background-70 u-jsHidden">
@@ -197,8 +251,9 @@ non funzionante</div></li>
 			</a>
 		</div>
 
-		<?php foreach ($menu_modules AS $module ) echo JModuleHelper::renderModule( $module, ['style'=>'lg'] ); ?>
-
+		<?php foreach ($menu_modules AS $module) : ?>
+			<?php echo JModuleHelper::renderModule($module, array('style'=>'lg')); ?>
+		<?php endforeach;?>
 	</div>
 </section>
 <?php endif; ?>
@@ -208,13 +263,6 @@ non funzionante</div></li>
 		<div class="Grid-cell Grid-cell--center u-size10of12 u-sm-size10of12 u-md-size8of12 u-lg-size8of12">
 			<div class="ErrorPage u-textCenter u-text-xxs u-text-md-xs u-text-lg-s">
 			<?php if ($this->error->getCode() == 404) : ?>
-<?php if ($this->params->get('debug') || defined('JDEBUG') && JDEBUG) : ?>
-<div class="Prose Alert Alert--info Alert--withIcon u-padding-r-bottom u-padding-r-right u-margin-r-bottom">
-see <a href="https://italia.github.io/design-web-toolkit/components/detail/page--error_404.html">
-https://italia.github.io/design-web-toolkit/components/detail/page--error_404.html
-</a>
-</div>
-<?php endif; ?>
 				<h1 class="ErrorPage-title"><?php echo $this->error->getCode(); ?></h1>
 				<h2 class="ErrorPage-subtitle"><?php echo JText::_('JERROR_PAGE_NOT_FOUND'); ?></h2>
 				<p class="Prose u-margin-r-all"><?php echo JText::_('JERROR_LAYOUT_PAGE_NOT_FOUND'); ?></p>
@@ -264,47 +312,60 @@ https://italia.github.io/design-web-toolkit/components/detail/page--error_404.ht
 
 <?php
 $footer_modules = JModuleHelper::getModules('footer');
+$footerinfo_modules = JModuleHelper::getModules('footerinfo');
 $footermenu_modules = JModuleHelper::getModules('footermenu');
 ?>
-<?php if (count($footer_modules) + count($footermenu_modules)) : ?>
-<div class="u-background-grey-80 u-hiddenPrint">
-	<div class="u-layout-wide u-layoutCenter u-layout-r-withGutter">
-		<footer class="Footer u-padding-all-s" id="footer">
-			<div class="u-cf">
-				<?php if ($logo) : ?>
-				<img class="Footer-logo" src="<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>">
-				<?php endif; ?>
-				<p class="Footer-siteName"><?php echo htmlspecialchars($app->get('sitename')); ?></p>
-			</div>
-
+<?php if (count($footer_modules) + count($footermenu_modules) + count($footerinfo_modules)) : ?>
+	<footer class="Footer u-padding-all-s" id="footer">
+		<?php if (count($footerinfo_modules)) : ?>
+			<div itemscope itemtype="http://schema.org/<?php echo $params->get('schema_org', 'Organization'); ?>">
+				<div class="u-cf">
+		<?php else : ?>
+			<div itemscope itemtype="http://schema.org/<?php echo $params->get('schema_org', 'Organization'); ?>" class="u-cf">
+		<?php endif; ?>				
+		<?php if ($logo) : ?>
+			<a href="<?php echo $this->baseurl; ?>/" itemprop="url">
+				<img class="Footer-logo" src="<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>" itemprop="logo">
+			</a>
+		<?php endif; ?>
+			<p class="Footer-siteName" itemprop="name"><?php echo htmlspecialchars($app->get('sitename')); ?></p>
+		</div>
+		<?php if (count($footerinfo_modules)) : ?>
 			<div class="Grid Grid--withGutter">
-			<?php
-			if (count($footer_modules)) {
-				foreach ($footer_modules AS $module ) {
-					echo JModuleHelper::renderModule( $module, ['style'=>'lg'] );
-				}
-			}
-			if (count($footermenu_modules)) {
-				foreach ($footermenu_modules AS $module ) {
-					echo JModuleHelper::renderModule( $module, ['style'=>'none'] );
-				}
-			}
-			?>
+				<?php foreach ($footerinfo_modules AS $module) : ?>
+					<?php echo JModuleHelper::renderModule($module, array('style'=>'lg')); ?>
+				<?php endforeach; ?>
 			</div>
-		</footer>
-	</div>
-</div>
+		</div>
+		<?php endif; ?>
+
+		<?php if (count($footer_modules)) : ?>
+			<div class="Grid Grid--withGutter">
+				<?php foreach ($footer_modules AS $module) : ?>
+					<?php echo JModuleHelper::renderModule($module, array('style'=>'lg')); ?>
+				<?php endforeach; ?>
+			</div>
+		<?php endif; ?>
+
+		<?php if (count($footermenu_modules)) : ?>
+			<div class="Grid Grid--withGutter u-border-top-xxs">
+				<?php foreach ($footermenu_modules AS $module) : ?>
+					<?php echo JModuleHelper::renderModule($module, array('style'=>'none')); ?>
+				<?php endforeach; ?>
+			</div>
+		<?php endif; ?>
+	</footer>
 <?php endif; ?>
 
-<a href="#" title="torna all'inizio del contenuto" class="ScrollTop js-scrollTop js-scrollTo">
-	<i class="ScrollTop-icon Icon-collapse" aria-hidden="true"></i>
-	<span class="u-hiddenVisually">torna all'inizio del contenuto</span>
+<a href="#" title="<?php echo JText::_('TPL_ITALIAPA_BACKTOTOP'); ?>" class="ScrollTop js-scrollTop js-scrollTo">
+	<span class="ScrollTop-icon Icon-collapse" aria-hidden="true"></span>
+	<span class="u-hiddenVisually"><?php echo JText::_('TPL_ITALIAPA_BACKTOTOP'); ?></span>
 </a>
 
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $template->template ?>/js/uuid.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $template->template ?>/js/accordion.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $template->template ?>/js/table.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/<?php echo $template->template ?>/build/IWT.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/uuid.min.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/accordion<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/table<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/IWT.min.js"></script>
 
 </body>
 </html>

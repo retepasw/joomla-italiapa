@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -14,77 +14,53 @@
  */
 
 defined('_JEXEC') or die;
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
-// Including fallback code for the placeholder attribute in the search field.
-JHtml::_('jquery.framework');
-JHtml::_('script', 'system/html5fallback.js', array('version' => 'auto', 'relative' => true));
-
-/*
-if ($width)
+//if ($attribs['style'] != 'none')
+if ($module->position == 'footer')
 {
-	$moduleclass_sfx .= ' ' . 'mod_search' . $module->id;
-	$css = 'div.mod_search' . $module->id . ' input[type="search"]{ width:auto; }';
-	JFactory::getDocument()->addStyleDeclaration($css);
-	$width = ' size="' . $width . '"';
+	// do not use u-*-size*of*
+	$moduleclass_sfx = explode(' ', $moduleclass_sfx);
+	for ($i = count($moduleclass_sfx) - 1; $i >= 0; $i--)
+	{
+		if ((substr($moduleclass_sfx[$i], 0, 6) == 'u-size') || (substr($moduleclass_sfx[$i], 4, 5) == '-size'))
+		{
+			unset($moduleclass_sfx[$i]);
+		}
+	}
+	$moduleclass_sfx = implode(' ', $moduleclass_sfx);
 }
-else
-{
-	$width = '';
-}
- */
 ?>
-<!--
 <div class="search<?php echo $moduleclass_sfx; ?>">
--->
-
 	<form action="<?php echo JRoute::_('index.php'); ?>" method="post" class="Form">
 		<div class="Form-field Form-field--withPlaceholder Grid" role="search">
-		<?php
-//			$output = '<label for="mod-search-searchword' . $module->id . '" class="element-invisible">' . $label . '</label> ';
-//			$output .= '<input name="searchword" id="mod-search-searchword' . $module->id . '" maxlength="' . $maxlength . '"  class="inputbox search-query" type="search"' . $width;
-//			$output .= ' placeholder="' . $text . '" />';
-			$output = '<input name="searchword" class="Form-input Grid-cell u-sizeFill u-text-r-s" required="" id="mod-search-searchword' . $module->id . '">';
-			$output .= '<label class="Form-label" for="mod-search-searchword' . $module->id . '">'.$text.'</label>';
+			<?php
+				$output = '<input name="searchword" class="Form-input Grid-cell u-sizeFill u-text-r-s" required="" id="mod-search-searchword' . $module->id . '" type="search">';
+				$output .= '<label class="Form-label' . ($button && $button_pos == 'left' ? ' u-margin-left-xxl' : '') . '" for="mod-search-searchword' . $module->id . '">'.$text.'</label>';
 
-//			if ($button) :
-				$btn_output = '<button class="Grid-cell u-sizeFit Icon-search u-background-60 u-color-white u-padding-all-s u-textWeight-700" title="'.$button_text.'" aria-label="'.$button_text.'"></button>';
-/*
-				if ($imagebutton) :
-					$btn_output = ' <input type="image" alt="' . $button_text . '" class="button" src="' . $img . '" onclick="this.form.searchword.focus();"/>';
-				else :
-					$btn_output = ' <button class="button btn btn-primary" onclick="this.form.searchword.focus();">' . $button_text . '</button>';
+				if ($button) :
+					if ($imagebutton) :
+						$btn_output = '<button class="Grid-cell u-sizeFit Icon-' . $button_text . ' u-background-60 u-color-white u-padding-all-s u-textWeight-700" data-tooltip="' . JHtml::tooltipText($label, null, 0, 0) . '"></button>';
+					else :
+						$btn_output = '<button class="Grid-cell u-sizeFit Icon-search u-background-60 u-color-white u-padding-all-s u-textWeight-700" data-tooltip="' . JHtml::tooltipText($label, null, 0, 0) . '"></button>';
+					endif;
+
+					switch ($button_pos) :
+						case 'left' :
+							$output = $btn_output . $output;
+						break;
+
+						case 'right' :
+						default :
+							$output .= $btn_output;
+							break;
+					endswitch;
 				endif;
- */
-/*
-				switch ($button_pos) :
-					case 'top' :
-						$output = $btn_output . '<br />' . $output;
-						break;
 
-					case 'news' :
-						$output .= '<br />' . $btn_output;
-						break;
-
-					case 'right' :
- */
-						$output .= $btn_output;
-/*
-						break;
-
-					case 'left' :
-					default :
-						$output = $btn_output . $output;
-						break;
-				endswitch;
-			endif;
- */
-			echo $output;
-		?>
-		<input type="hidden" name="task" value="search" />
-		<input type="hidden" name="option" value="com_search" />
+				echo $output;
+			?>
+			<input type="hidden" name="task" value="search" />
+			<input type="hidden" name="option" value="com_search" />
+			<input type="hidden" name="Itemid" value="<?php echo $mitemid; ?>" />
 		</div>
 	</form>
-<!--
 </div>
--->
