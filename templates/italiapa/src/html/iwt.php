@@ -83,7 +83,7 @@ abstract class JHtmlIwt
 			// Set static array
 			static::$loaded[__METHOD__][$selector] = $opt;
 
-			return '<div class="Accordion Accordion--default fr-accordion js-fr-accordion" id="accordion-' . $selector . '" role="tablist"' . (!empty($params['multiselectable']) ? ' aria-multiselectable="' . $params['multiselectable'] . '"': '') . '>';
+			return '<div class="Accordion Accordion--default fr-accordion js-fr-accordion" id="accordion-' . $selector . '" role="tablist"' . (empty($params['multiselectable']) ? '' : ' aria-multiselectable="' . $params['multiselectable'] . '"') . '>';		
 		}
 	}
 
