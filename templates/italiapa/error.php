@@ -40,12 +40,6 @@ if ($params->get('phpconsole') && class_exists('JLogLoggerPhpconsole'))
 	JLog::addLogger(array('logger' => 'phpconsole', 'extension' => 'tpl_italiapa_phpconsole'),  JLOG::DEBUG, array('tpl_italiapa'));
 }
 
-// Check for a custom CSS file
-JHtml::_('stylesheet', 'user.css', array('version' => 'auto', 'relative' => true));
-
-// Check for a custom JS file
-JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
-
 $theme_default = $params->get('theme', 'italia');
 $theme = (isset($_COOKIE['theme']) && $_COOKIE['theme']) ? $_COOKIE['theme'] : $theme_default;
 $theme_path = JPATH_ROOT . '/templates/italiapa/build/build.' . $theme . '.css';
@@ -71,6 +65,14 @@ JFactory::getSession()->set('theme', $theme);
 	<?php if ($app->get('debug_lang', '0') == '1' || $app->get('debug', '0') == '1') : ?>
 		<link href="<?php echo JUri::root(true); ?>/media/cms/css/debug.css" rel="stylesheet" />
 	<?php endif; ?>
+	<?php if (file_exists('templates/italiapa/css/user.css')) : ?>
+		<link href="<?php echo $this->baseurl; ?>/templates/italiapa/css/user.css" rel="stylesheet" />
+	<?php endif; ?>
+	
+	<?php if (file_exists('templates/italiapa/js/js.css')) : ?>
+		<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/user.js"></script>
+	<?php endif; ?>
+
 	<!--[if lt IE 9]><script src="<?php echo JUri::root(true); ?>/media/jui/js/html5.js"></script><![endif]-->
 	<!-- include html5shim per Explorer 8 -->
 	<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/modernizr.js"></script>
