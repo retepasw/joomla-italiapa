@@ -46,23 +46,33 @@
 		// right aside
 		if ( $( '#right' ).length ) {
 			// pagebreak
-			$( 'article div div aside.ipa-Right' ).closest( 'div' ).children().each( function( index ) {
-				x = $( this );
-				$( this )
-					.attr( 'class' ).split( ' ' ).each( function( element ) {
-						if ( element.includes( '-size' ) ) {
-							x.removeClass( element );
-						}
-					} );
-			} );
+			$( 'article aside.ipa-Right' ).closest( 'div' ).children().each( function( i, el ) {
+				$.each( $( el ).attr( 'class' ).split( ' ' ), function( index, element ) {
+					if ( element.includes( '-size' ) ) {
+						$( el ).removeClass( element );
+					}
+				} );			
+			});
+
 			if ( $( '#right > img:first' ).length ) {
 				$( '.ipa-Right:not(aside)' ).prependTo( '#right' );
 				$( 'aside.ipa-Right' ).insertAfter( '#right > img:first' );
 			} else {
 				$( '.ipa-Right' ).prependTo( '#right' );
 			}
+
 			// icons
-			$( '.ipa-Right nav' ).removeClass( 'u-floatRight' ).addClass( 'u-padding-bottom-s' );
+			$( '.ipa-Right nav' ).removeClass( 'u-floatRight' );
+			
+			// fix padding
+			$( '#right' ).children().each( function( i, el ) {
+				$.each( $( el ).attr( 'class' ).split( ' ' ), function( index, element ) {
+					if ( element.includes( '-padding-' ) || element.includes( 'Grid' ) ) {
+						$( el ).removeClass( element );
+					}
+				} );
+				$( el ).addClass( 'u-padding-bottom-s' );
+			} );
 		}
 
 		// fields
