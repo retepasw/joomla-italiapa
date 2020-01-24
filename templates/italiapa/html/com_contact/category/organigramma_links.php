@@ -35,7 +35,7 @@ $db = JFactory::getDbo();
 				<span class="Icon Icon-pin u-color-white u-background-50 u-borderRadius-circle u-padding-all-xxs u-inlineBlock esh-dblclick"
 					data-tooltip="<?php echo JHtml::tooltipText($address, null, 0, 0); ?>"
 					onclick="jQuery( '#<?php echo $guid; ?>' ).toggleClass( 'u-hiddenVisually' );"
-					ondblclick="eshiol.italiapa.copy('<?php echo str_replace('<br/>', ' ' , $address); ?>', 'Indirizzo copiato negli appunti!');"
+					ondblclick="eshiol.italiapa.clipboard.write('<?php echo str_replace('<br/>', ' ' , $address); ?>', 'Indirizzo copiato negli appunti!');"
 					onmouseover="javascript:window.status='fai doppio click per copiare negli appunti';"
 					onmouseoout="javascript:window.status='';"
 					></span>
@@ -120,7 +120,7 @@ $db = JFactory::getDbo();
 				<span class="Icon-phone u-color-white u-background-50 u-borderRadius-circle u-padding-all-xxs u-inlineBlock esh-dblclick"
 					data-tooltip="<?php echo JHtml::tooltipText(JText::sprintf('COM_CONTACT_TELEPHONE_NUMBER', $this->item->telephone), null, 0, 0); ?>"
 					onclick="jQuery( '#<?php echo $guid; ?>' ).toggleClass( 'u-hiddenVisually' );"
-					ondblclick="eshiol.italiapa.copy('<?php echo $this->item->telephone; ?>', 'Numero di telefono copiato negli appunti!');"
+					ondblclick="eshiol.italiapa.clipboard.write('<?php echo $this->item->telephone; ?>', 'Numero di telefono copiato negli appunti!');"
 					onmouseover="javascript:window.status='fai doppio click per copiare negli appunti';"
 					onmouseoout="javascript:window.status='';"
 					>
@@ -135,7 +135,7 @@ $db = JFactory::getDbo();
 				<span class="Icon-mobile u-color-white u-background-50 u-borderRadius-circle u-padding-all-xxs u-inlineBlock esh-dblclick"
 					data-tooltip="<?php echo JHtml::tooltipText(JText::sprintf('COM_CONTACT_MOBILE_NUMBER', $this->item->mobile), null, 0, 0); ?>"
 					onclick="jQuery( '#<?php echo $guid; ?>' ).toggleClass( 'u-hiddenVisually' );"
-					ondblclick="eshiol.italiapa.copy('<?php echo $this->item->mobile; ?>', 'Numero di cellulare copiato negli appunti!');"
+					ondblclick="eshiol.italiapa.clipboard.write('<?php echo $this->item->mobile; ?>', 'Numero di cellulare copiato negli appunti!');"
 					onmouseover="javascript:window.status='fai doppio click per copiare negli appunti';"
 					onmouseoout="javascript:window.status='';"
 					>
@@ -150,7 +150,7 @@ $db = JFactory::getDbo();
 				<span class="Icon-fax u-color-white u-background-50 u-borderRadius-circle u-padding-all-xxs u-inlineBlock esh-dblclick"
 					data-tooltip="<?php echo JHtml::tooltipText(JText::sprintf('COM_CONTACT_FAX_NUMBER', $this->item->fax), null, 0, 0); ?>"
 					onclick="jQuery( '#<?php echo $guid; ?>' ).toggleClass( 'u-hiddenVisually' );"
-					ondblclick="eshiol.italiapa.copy('<?php echo $this->item->fax; ?>', 'Numero di fax copiato negli appunti!');"
+					ondblclick="eshiol.italiapa.clipboard.write('<?php echo $this->item->fax; ?>', 'Numero di fax copiato negli appunti!');"
 					onmouseover="javascript:window.status='fai doppio click per copiare negli appunti';"
 					onmouseoout="javascript:window.status='';"
 					>
