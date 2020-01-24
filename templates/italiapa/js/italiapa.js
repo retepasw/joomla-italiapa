@@ -144,6 +144,56 @@
 			$( this ).find( 'li ul' ).width( colWidth );
 			// $( this ).find( 'li ul' ).wrapAll( '<div></div>' );
 		} );
+		
+		// clipboard
+	    if ( typeof ( eshiol.italiapa.clipboard ) === 'undefined' ) {
+			eshiol.italiapa.clipboard = {};
+		}
+
+		eshiol.italiapa.clipboard.write = function( str, msg ) {
+			navigator.permissions.query( {name: 'clipboard-write'} ).then( function( result) {
+				if ( result.state === 'granted' ) {
+					if ( navigator.clipboard ) {
+						// Safe to use Async Clipboard API!
+						navigator.clipboard.write( [
+							new ClipboardItem( {
+								'text/plain': new Blob( [str], {type: 'text/plain'} )
+							} 
+						)] ).then( function() {
+							console.log( 'Copied to clipboard successfully!' );
+							if (msg !== undefined) {
+								alert(msg);
+							}
+						}, function( error ) {
+							console.error( 'unable to write to clipboard. Error:' );
+							console.log( error );
+						});
+					} else {
+						// Use document.execCommand() instead
+						// Create new element
+						var el = document.createElement("textarea");
+						// Set value (string to be copied)
+						el.value = str;
+						// Set non-editable to avoid focus and move outside of view
+						el.setAttribute("readonly", "");
+						el.style = {position: "absolute", left: "-9999px"};
+						document.body.appendChild(el);
+						// Select text inside element
+						el.select();
+						// Copy text to clipboard
+						document.execCommand("copy");
+						if (msg !== undefined) {
+							alert(msg);
+						}
+						// Remove temporary element
+						document.body.removeChild(el);
+					}			
+				} else {
+					console.log( 'clipboard-permissoin not granted: ' + result );
+				}
+		    } );
+		}
+
 	} );
 
 	/**
