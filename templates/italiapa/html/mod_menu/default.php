@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -14,39 +14,21 @@
  */
 
 defined('_JEXEC') or die;
+?>
 
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
-JLog::add(new JLogEntry($module->position, JLog::DEBUG, 'tpl_italiapa'));
-
-if ($module->position == 'menu')
-{
-	require JModuleHelper::getLayoutPath('mod_menu', 'treeview');
-}
-elseif ($module->position == 'mainmenu')
-{
-	require JModuleHelper::getLayoutPath('mod_menu', 'megamenu');
-}
-elseif ($module->position == 'socials')
-{
-	require JModuleHelper::getLayoutPath('mod_menu', 'socials');
-}
-elseif ($module->position == 'owner')
-{
-	require JModuleHelper::getLayoutPath('mod_menu', 'owner');
-}
-elseif ($module->position == 'languages')
-{
-	require JModuleHelper::getLayoutPath('mod_menu', 'dropdown');
-}
-else
-{
-	$id = '';
-
-	if ($tagId = $params->get('tag_id', ''))
-	{
-		$id = ' id="' . $tagId . '"';
-	}
-
+<?php if ($module->position == 'menu') : ?>
+	<?php require JModuleHelper::getLayoutPath('mod_menu', 'treeview'); ?>
+<?php elseif ($module->position == 'mainmenu') : ?>
+	<?php require JModuleHelper::getLayoutPath('mod_menu', 'megamenu'); ?>
+<?php elseif ($module->position == 'socials') : // TODO: remove default layout for position socials ?>
+	<?php require JModuleHelper::getLayoutPath('mod_menu', 'socials'); ?>
+<?php elseif ($module->position == 'owner') : ?>
+	<?php require JModuleHelper::getLayoutPath('mod_menu', 'owner'); ?>
+<?php elseif ($module->position == 'languages') : ?>
+	<?php require JModuleHelper::getLayoutPath('mod_menu', 'dropdown'); ?>
+<?php else : ?>
+	<?php $id = ($tagId = $params->get('tag_id', '')) ? ' id="' . $tagId . '"' : ''; ?>
+	<?php
 	if ($module->position == 'right')
 	{
 		if (empty($class_sfx))
@@ -63,13 +45,14 @@ else
 	{
 		$class_sfx = ' class="' . $class_sfx .'"';
 	}
-	if ($module->position != 'footermenu'): ?>
-	<nav>
+	?>
+	<?php if ($module->position != 'footermenu'): ?>
+		<nav>
 	<?php endif; ?>
 
 	<ul<?php echo $class_sfx; ?><?php echo $id; ?>>
-	<?php foreach ($list as $i => &$item)
-	{
+	<?php foreach ($list as $i => &$item) : ?>
+	<?php
 		$class = 'item-' . $item->id;
 
 		if ($item->id == $default_id)
@@ -146,10 +129,11 @@ else
 		{
 			echo '</li>';
 		}
-	}
-	?></ul>
+	?>
+	<?php endforeach; ?>
+	</ul>
+
 	<?php if ($module->position != 'footermenu'): ?>
-	</nav>
+		</nav>
 	<?php endif; ?>
-<?php
-}
+<?php endif; 

@@ -44,9 +44,9 @@
 	display: block;
 }
 
-ul.tags li:nth-child(n+2):before {
+/*ul.tags li:nth-child(n+2):before {
     content: ", ";
-}
+}*/
 
 .strike {
 	text-decoration: line-through!important;
@@ -147,24 +147,6 @@ ul.tags li:nth-child(n+2):before {
 	}
 }
 
-svg.Icon {
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    stroke-width: 0;
-    stroke: currentColor;
-    fill: currentColor;
-}
-
-svg.Icon-large {
-    display: inline-block;
-    width: 2em;
-    height: 2em;
-    stroke-width: 0;
-    stroke: currentColor;
-    fill: currentColor;
-}
-
 /* Megamenu sub-navigation panel */
 
 .Megamenu .Megamenu-subnav {
@@ -204,8 +186,8 @@ svg.Icon-large {
 }
 
 .Megamenu--default .Megamenu-item>span.separator {
-    font-weight: 600!important
-    padding-top: 1.6rem!important
+    font-weight: 600!important;
+    padding-top: 1.6rem!important;
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -234,22 +216,40 @@ svg.Icon-large {
 
 .Megamenu-item span[class*=" Icon-"], 
 .Megamenu-item span[class^=Icon-],
+/*.Megamenu-item svg[class^="Icon "],
+.Megamenu-item svg[class*=" Icon "], 
+.Megamenu-item svg[class$=" Icon"],
+.Megamenu-item svg[class=Icon],*/
+.Entrypoint-item span[class*=" Icon-"], 
+.Entrypoint-item span[class^=Icon-],
+/*.Entrypoint-item svg[class*=" Icon-"], 
+.Entrypoint-item svg[class^=Icon-],
+.Entrypoint-item svg[class$=" Icon"],
+.Entrypoint-item svg[class=Icon],*/
+/*h3 svg[class^="Icon "],
+h3 svg[class*=" Icon "], 
+h3 svg[class$=" Icon"],
+h3 svg[class=Icon] */{
+	padding-right: .5em !important;
+}
+/*
 .Megamenu-item svg[class^="Icon "],
 .Megamenu-item svg[class*=" Icon "], 
 .Megamenu-item svg[class$=" Icon"],
 .Megamenu-item svg[class=Icon],
-.Entrypoint-item span[class*=" Icon-"], 
-.Entrypoint-item span[class^=Icon-] {
-	padding-right: .5em !important;
+.Entrypoint-item svg[class^="Icon "],
+.Entrypoint-item svg[class*=" Icon "], 
+.Entrypoint-item svg[class$=" Icon"],
+.Entrypoint-item svg[class=Icon],
+h3 svg[class^="Icon "],
+h3 svg[class*=" Icon "], 
+h3 svg[class$=" Icon"],
+h3 svg[class=Icon] {
+	width: 2em;
+    height: 2em;
+    vertical-align: middle;
 }
-
-.Megamenu-item svg[class^="Icon "],
-.Megamenu-item svg[class*=" Icon "], 
-.Megamenu-item svg[class$=" Icon"],
-.Megamenu-item svg[class=Icon] {
-	width: 1.5em;
-}
-
+*/
 .Megamenu-area > a,
 .Megamenu-item > a {
 	padding-left: 0 !important;

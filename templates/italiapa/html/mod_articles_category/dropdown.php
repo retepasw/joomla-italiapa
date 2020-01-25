@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -14,8 +14,6 @@
  */
 
 defined('_JEXEC') or die;
-
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 ?>
 
 <?php if (!empty($list)) : ?>
@@ -33,7 +31,7 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 			<a href="#module_<?php echo $module->id; ?>_<?php echo $g; ?>" data-menu-trigger="module_<?php echo $module->id; ?>_<?php echo $g; ?>" class="Header-language u-border-none u-zindex-max u-inlineBlock" aria-controls="module_<?php echo $module->id; ?>_<?php echo $g; ?>" aria-haspopup="true" role="button">
 				<?php echo $group_name; ?>
 				<span class="Icon Icon-expand u-padding-left-xs"></span>
-			</a>		
+			</a>
 		<?php else : ?>
 			<a href="#module_<?php echo $module->id; ?>" data-menu-trigger="module_<?php echo $module->id; ?>_<?php echo $g; ?>" class="Header-language u-border-none u-zindex-max u-inlineBlock" aria-controls="module_<?php echo $module->id; ?>_<?php echo $g; ?>" aria-haspopup="true" role="button">
 				<?php if ($module->showtitle) : ?>
@@ -55,13 +53,13 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 								<?php echo $item->displayCategoryTitle; ?>
 							</span>
 						<?php endif; ?>
-		
+
 						<?php if ($params->get('show_tags', 0) && $item->tags->itemTags) : ?>
 							<div class="mod-articles-category-tags">
 								<?php echo JLayoutHelper::render('joomla.content.tags', $item->tags->itemTags); ?>
 							</div>
 						<?php endif; ?>
-		
+
 						<?php if ($params->get('link_titles') == 1) : ?>
 							<a class="mod-articles-category-title <?php echo $item->active; ?>" href="<?php echo $item->link; ?>" itemprop="url">
 								<span itemprop="name" class="u-cf"><?php echo $item->title; ?></span>
@@ -69,20 +67,20 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 						<?php else : ?>
 							<span itemprop="name" class="u-cf"><?php echo $item->title; ?></span>
 						<?php endif; ?>
-		
+
 						<?php if ($item->displayHits) : ?>
 							<span class="mod-articles-category-hits">
 								<meta itemprop="interactionCount" content="UserPageVisits:<?php echo $item->displayHits; ?>" />
 								[<?php echo $item->displayHits; ?>]
 							</span>
 						<?php endif; ?>
-		
+
 						<?php if ($params->get('show_author')) : ?>
 							<span class="mod-articles-category-writtenby">
 								<span itemprop="author"><?php echo $item->displayAuthorName; ?></span>
 							</span>
 						<?php endif; ?>
-		
+
 						<?php if ($item->displayDate) : ?>
 							<?php
 							switch ($params->get('show_date_field')) :
@@ -106,13 +104,13 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 								</time>
 							</span>
 						<?php endif; ?>
-		
+
 						<?php if ($params->get('show_introtext')) : ?>
 							<p class="u-textSecondary mod-articles-category-introtext">
 								<?php echo strip_tags($item->displayIntrotext); ?>
 							</p>
 						<?php endif; ?>
-		
+
 						<?php if ($params->get('show_readmore')) : ?>
 							<p class="u-textRight mod-articles-category-readmore">
 								<a class="mod-articles-category-title <?php echo $item->active; ?>" href="<?php echo $item->link; ?>" itemprop="url">
@@ -136,8 +134,8 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 						<?php endif; ?>
 					</li>
 				<?php endforeach; ?>
-			</ul>		
+			</ul>
 		</div>
 	<?php endforeach; ?>
 </div>
-<?php endif; ?>
+<?php endif;

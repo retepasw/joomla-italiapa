@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -14,8 +14,6 @@
  */
 
 defined('_JEXEC') or die;
-
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 $app = JFactory::getApplication();
 $baseurl = rtrim(JUri::root(), '/');
@@ -26,7 +24,7 @@ $template = $app->getTemplate();
 
 	<?php if ($headingtext) : ?>
 	<!-- <h3><?php echo $headingtext; ?></h3> -->
-	<h3 class="u-border-bottom-m"><span class="u-block u-text-h3 u-textClean u-color-60"><?php echo $headingtext; ?></span></h3>	
+	<h3 class="u-border-bottom-m"><span class="u-block u-text-h3 u-textClean u-color-60"><?php echo $headingtext; ?></span></h3>
 	<?php endif; ?>
 
 	<!-- <ul class="link-list"> -->

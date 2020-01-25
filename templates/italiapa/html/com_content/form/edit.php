@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -15,13 +15,14 @@
 
 defined('_JEXEC') or die;
 
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
-
 JHtml::_('behavior.tabstate');
 JHtml::_('behavior.keepalive');
 JHtml::_('behavior.formvalidator');
-//JHtml::_('formbehavior.chosen', '#jform_catid', null, array('disable_search_threshold' => 0));
-//JHtml::_('formbehavior.chosen', 'select');
+
+JHtml::_('formbehavior.chosen', '#jform_catid', null, array('disable_search_threshold' => 1));
+JHtml::_('formbehavior.chosen', '#jform_tags', null, array('placeholder_text_multiple' => JText::_('JGLOBAL_TYPE_OR_SELECT_SOME_TAGS')));
+JHtml::_('formbehavior.chosen', 'select');
+
 $this->tab_name = 'com-content-form';
 $this->ignore_fieldsets = array('image-intro', 'image-full', 'jmetadata', 'item_associations');
 
@@ -149,7 +150,7 @@ foreach ($this->form->getFieldsets() as $fieldset)
 				<?php if ($this->item->params->get('access-change')) : ?>
 					<?php echo $this->form->renderField('state'); ?>
 					<?php echo $this->form->renderField('featured'); ?>
-					<?php if ($params->get('show_publishing_options', 1) == 1) : ?>					
+					<?php if ($params->get('show_publishing_options', 1) == 1) : ?>
 						<?php echo $this->form->renderField('publish_up'); ?>
 						<?php echo $this->form->renderField('publish_down'); ?>
 					<?php endif; ?>
@@ -173,7 +174,7 @@ foreach ($this->form->getFieldsets() as $fieldset)
 				<?php echo $this->form->renderField('language'); ?>
 				</div>
 
-			<?php if ($params->get('show_publishing_options', 1) == 1) : ?>	
+			<?php if ($params->get('show_publishing_options', 1) == 1) : ?>
 				<h2 class="Accordion-header js-fr-accordion__header fr-accordion__header" id="accordion-header-<?php echo $this->tab_name; ?>-metadata">
 					<span class="Accordion-link"><?php echo JText::_('COM_CONTENT_METADATA'); ?></span>
 				</h2>

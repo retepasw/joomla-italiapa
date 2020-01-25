@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -15,8 +15,6 @@
 
 defined('JPATH_BASE') or die;
 
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
-
 if (is_array($displayData))
 {
 	$images = json_decode($displayData['item']->images);
@@ -24,7 +22,7 @@ if (is_array($displayData))
 
 	// Receive overridable options
 	$displayData['options'] = !empty($displayData['options']) ? $displayData['options'] : array();
-	
+
 	if (is_array($displayData['options']))
 	{
 		$displayData['options'] = new JRegistry($displayData['options']);

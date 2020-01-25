@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -14,17 +14,12 @@
  */
 
 defined('_JEXEC') or die;
-
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 ?>
 
 <?php
-if (!empty($feed) && is_string($feed))
-{
+if (!empty($feed) && is_string($feed)) :
 	echo $feed;
-}
-else
-{
+else :
 	$lang      = JFactory::getLanguage();
 	$myrtl     = $params->get('rssrtl', 0);
 	$direction = ' ';
@@ -60,83 +55,73 @@ else
 		$direction = ' redirect-rtl';
 	}
 
-	if ($feed !== false)
-	{
+	if ($feed !== false) :
 		// Image handling
 		$iUrl   = isset($feed->image) ? $feed->image : null;
 		$iTitle = isset($feed->imagetitle) ? $feed->imagetitle : null;
 		?>
 		<div style="direction: <?php echo $rssrtl ? 'rtl' :'ltr'; ?>; text-align: <?php echo $rssrtl ? 'right' :'left'; ?> !important" class="feed">
-		<?php
-		// Feed description
-		if ($feed->title !== null && $params->get('rsstitle', 1))
-		{
-			?>
-					<h2 class="<?php echo $direction; ?>">
-						<a href="<?php echo htmlspecialchars($rssurl, ENT_COMPAT, 'UTF-8'); ?>" target="_blank" class="Linklist-link Linklist-link--lev1">
+			<?php if ($feed->title !== null && $params->get('rsstitle', 1)) : // Feed description ?>
+				<h2 class="<?php echo $direction; ?>">
+					<a href="<?php echo htmlspecialchars($rssurl, ENT_COMPAT, 'UTF-8'); ?>" target="_blank" class="Linklist-link Linklist-link--lev1">
 						<?php echo $feed->title; ?></a>
-					</h2>
-			<?php
-		}
-		// Feed date
-		if ($params->get('rssdate', 1)) : ?>
-			<h3>
-			<?php echo JHtml::_('date', $feed->publishedDate, JText::_('DATE_FORMAT_LC3')); ?>
-			</h3>
-		<?php endif;
-		// Feed description
-		if ($params->get('rssdesc', 1))
-		{
-		?>
-			<?php echo $feed->description; ?>
-			<?php
-		}
-		// Feed image
-		if ($iUrl && $params->get('rssimage', 1)) :
-		?>
-			<img src="<?php echo $iUrl; ?>" alt="<?php echo @$iTitle; ?>"/>
-		<?php endif; ?>
+				</h2>
+			<?php endif; ?>
 
+			<?php if ($params->get('rssdate', 1)) : // Feed date ?>
+				<h3>
+					<?php echo JHtml::_('date', $feed->publishedDate, JText::_('DATE_FORMAT_LC3')); ?>
+				</h3>
+			<?php endif; ?>
 
-	<!-- Show items -->
-	<?php if (!empty($feed))
-	{ ?>
-		<ul class="Linklist Prose u-text-r-xs newsfeed<?php echo $params->get('moduleclass_sfx'); ?>">
-		<?php for ($i = 0, $max = min(count($feed), $params->get('rssitems', 3)); $i < $max; $i++) { ?>
-			<?php
-				$uri  = $feed[$i]->uri || !$feed[$i]->isPermaLink ? trim($feed[$i]->uri) : trim($feed[$i]->guid);
-				$uri  = !$uri || stripos($uri, 'http') !== 0 ? $rssurl : $uri;
-				$text = $feed[$i]->content !== '' ? trim($feed[$i]->content) : '';
-			?>
-				<li>
-					<?php if (!empty($uri)) : ?>
-						<span class="feed-link">
-						<a href="<?php echo htmlspecialchars($uri, ENT_COMPAT, 'UTF-8'); ?>" target="_blank">
-						<?php echo trim($feed[$i]->title); ?></a></span>
-					<?php else : ?>
-						<span class="feed-link"><?php echo trim($feed[$i]->title); ?></span>
-					<?php endif; ?>
-					<?php if ($params->get('rssitemdate', 0)) : ?>
-						<div class="u-textSecondary feed-item-date">
-							<time datetime="<?php echo JHtml::_('date', $date, JText::_('DATE_FORMAT_LC4')); ?>" itemprop="<?php echo $prop; ?>">
-								<?php echo JHtml::_('date', $feed[$i]->publishedDate, JText::_('DATE_FORMAT_LC3')); ?>
-							</time>
-						</div>
-					<?php endif; ?>
-					<?php if ($params->get('rssitemdesc', 1) && $text !== '') : ?>
-						<div class="u-textSecondary feed-item-description">
+			<?php if ($params->get('rssdesc', 1)) : // Feed description ?>
+				<?php echo $feed->description; ?>
+			<?php endif; ?>
+
+			<?php if ($iUrl && $params->get('rssimage', 1)) : // Feed image ?>
+				<img src="<?php echo $iUrl; ?>" alt="<?php echo @$iTitle; ?>"/>
+			<?php endif; ?>
+
+			<!-- Show items -->
+			<?php if (!empty($feed)) : ?>
+				<ul class="Linklist Prose u-text-r-xs newsfeed<?php echo $params->get('moduleclass_sfx'); ?>">
+					<?php for ($i = 0, $max = min(count($feed), $params->get('rssitems', 3)); $i < $max; $i++) : ?>
 						<?php
-							// Strip the images.
-							$text = JFilterOutput::stripImages($text);
-							$text = JHtml::_('string.truncate', $text, $params->get('word_count', 0));
-							echo strip_tags(str_replace('&apos;', "'", $text));
+							$uri  = $feed[$i]->uri || !$feed[$i]->isPermaLink ? trim($feed[$i]->uri) : trim($feed[$i]->guid);
+							$uri  = !$uri || stripos($uri, 'http') !== 0 ? $rssurl : $uri;
+							$text = $feed[$i]->content !== '' ? trim($feed[$i]->content) : '';
 						?>
-						</div>
-					<?php endif; ?>
-				</li>
-		<?php } ?>
-		</ul>
-	<?php } ?>
-	</div>
-	<?php }
-}
+						<li>
+							<?php if (!empty($uri)) : ?>
+								<span class="feed-link">
+									<a href="<?php echo htmlspecialchars($uri, ENT_COMPAT, 'UTF-8'); ?>" target="_blank">
+										<?php echo trim($feed[$i]->title); ?></a></span>
+							<?php else : ?>
+								<span class="feed-link"><?php echo trim($feed[$i]->title); ?></span>
+							<?php endif; ?>
+
+							<?php if ($params->get('rssitemdate', 0)) : ?>
+								<div class="u-textSecondary feed-item-date">
+									<time datetime="<?php echo JHtml::_('date', $date, JText::_('DATE_FORMAT_LC4')); ?>" itemprop="<?php echo $prop; ?>">
+										<?php echo JHtml::_('date', $feed[$i]->publishedDate, JText::_('DATE_FORMAT_LC3')); ?>
+									</time>
+								</div>
+							<?php endif; ?>
+
+							<?php if ($params->get('rssitemdesc', 1) && $text !== '') : ?>
+								<div class="u-textSecondary feed-item-description">
+									<?php
+										// Strip the images.
+										$text = JFilterOutput::stripImages($text);
+										$text = JHtml::_('string.truncate', $text, $params->get('word_count', 0));
+										echo strip_tags(str_replace('&apos;', "'", $text));
+									?>
+								</div>
+							<?php endif; ?>
+						</li>
+					<?php endfor; ?>
+				</ul>
+			<?php endif; ?>
+		</div>
+	<?php endif; ?>
+<?php endif;

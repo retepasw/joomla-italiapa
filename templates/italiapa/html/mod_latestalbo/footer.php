@@ -3,9 +3,9 @@
  * @package		Template ItaliaPA
  * @subpackage	tpl_italiapa
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		https://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -23,7 +23,7 @@ JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 			<?php foreach ($list as $item): ?>
 				<li class="latestnews<?php echo $moduleclass_sfx; ?>">
 					<?php if ((int) $params->get('show_catsez', 1)): ?>
-						<?php echo $item->cat; ?><br/>
+						<p class="u-text-r-xxs u-color-grey-30"><?php echo $item->cat; ?></p>
 					<?php endif; ?>
 					<a href="index.php?option=com_chronoforms5&amp;chronoform=atti_vista&amp;gcb=<?php echo $item->id; ?>" class="latestnews<?php echo $moduleclass_sfx; ?>">
 					<?php echo $item->nome; ?></a><br/>

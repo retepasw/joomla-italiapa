@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -14,8 +14,6 @@
  */
 
 defined('_JEXEC') or die;
-
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
 
 //if ($attribs['style'] != 'none')
 if ($module->position == 'footer')
@@ -35,43 +33,34 @@ if ($module->position == 'footer')
 <div class="search<?php echo $moduleclass_sfx; ?>">
 	<form action="<?php echo JRoute::_('index.php'); ?>" method="post" class="Form">
 		<div class="Form-field Form-field--withPlaceholder Grid" role="search">
-		<?php
-			$output = '<input name="searchword" class="Form-input Grid-cell u-sizeFill u-text-r-s" required="" id="mod-search-searchword' . $module->id . '" type="search">';
-			$output .= '<label class="Form-label' . ($button && $button_pos == 'left' ? ' u-margin-left-xxl' : '') . '" for="mod-search-searchword' . $module->id . '">'.$text.'</label>';
+			<?php
+				$output = '<input name="searchword" class="Form-input Grid-cell u-sizeFill u-text-r-s" required="" id="mod-search-searchword' . $module->id . '" type="search">';
+				$output .= '<label class="Form-label' . ($button && $button_pos == 'left' ? ' u-margin-left-xxl' : '') . '" for="mod-search-searchword' . $module->id . '">'.$text.'</label>';
 
-			if ($button) :
-				if ($imagebutton) :
-					$btn_output = '<button class="Grid-cell u-sizeFit Icon-' . $button_text . ' u-background-60 u-color-white u-padding-all-s u-textWeight-700" data-tooltip="' . JHtml::tooltipText($label, null, 0, 0) . '"></button>';
-				else :
-					$btn_output = '<button class="Grid-cell u-sizeFit Icon-search u-background-60 u-color-white u-padding-all-s u-textWeight-700" data-tooltip="' . JHtml::tooltipText($label, null, 0, 0) . '"></button>';
+				if ($button) :
+					if ($imagebutton) :
+						$btn_output = '<button class="Grid-cell u-sizeFit Icon-' . $button_text . ' u-background-60 u-color-white u-padding-all-s u-textWeight-700" data-tooltip="' . JHtml::tooltipText($label, null, 0, 0) . '"></button>';
+					else :
+						$btn_output = '<button class="Grid-cell u-sizeFit Icon-search u-background-60 u-color-white u-padding-all-s u-textWeight-700" data-tooltip="' . JHtml::tooltipText($label, null, 0, 0) . '"></button>';
+					endif;
+
+					switch ($button_pos) :
+						case 'left' :
+							$output = $btn_output . $output;
+						break;
+
+						case 'right' :
+						default :
+							$output .= $btn_output;
+							break;
+					endswitch;
 				endif;
 
-				switch ($button_pos) :
-/*
-					case 'top' :
-						$output = $btn_output . '<br />' . $output;
-						break;
-
-					case 'news' :
-						$output .= '<br />' . $btn_output;
-						break;
-*/
-					case 'left' :
-//						$output = $btn_output . '<div class="u-posRelative">' . $output . '</div>';
-						$output = $btn_output . $output;
-					break;
-
-					case 'right' :
-					default :
-						$output .= $btn_output;
-						break;
-				endswitch;
-			endif;
-
-			echo $output;
-		?>
-		<input type="hidden" name="task" value="search" />
-		<input type="hidden" name="option" value="com_search" />
+				echo $output;
+			?>
+			<input type="hidden" name="task" value="search" />
+			<input type="hidden" name="option" value="com_search" />
+			<input type="hidden" name="Itemid" value="<?php echo $mitemid; ?>" />
 		</div>
 	</form>
 </div>

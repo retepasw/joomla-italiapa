@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017, 2018 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -14,8 +14,6 @@
  */
 
 defined('_JEXEC') or die;
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
-
 // Note that there are certain parts of this layout used only when there is exactly one tag.
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
@@ -42,7 +40,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 		</h1>
 	<?php endif; ?>
 	<?php if ($this->params->get('show_tag_title', 1)) : ?>
-		<h2 class="u-text-h2 u-margin-r-bottom u-color-black"> 
+		<h2 class="u-text-h2 u-margin-r-bottom u-color-black">
 			<?php echo JHtml::_('content.prepare', $this->tags_title, '', 'com_tag.tag'); ?>
 		</h2>
 	<?php endif; ?>
@@ -56,7 +54,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 			</div>
 			<?php endif; ?>
 	<?php endif; ?>
-	
+
 	<?php if (!$desc && $this->params->get('tag_list_show_tag_description', 1)) : ?>
 		<?php if ($this->params->get('tag_list_description', '') > '') : ?>
 			<div class="u-textSecondary u-lineHeight-l">

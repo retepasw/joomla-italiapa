@@ -1,24 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.0" type="template" method="upgrade">
 	<name>italiapa</name>
-	<creationDate>October 2019</creationDate>
+	<creationDate>January 2020</creationDate>
 	<author>Helios Ciancio</author>
-	<copyright>Copyright © 2017 - 2019 Helios Ciancio (eshiol.it). All
-		rights reserved.</copyright>
+	<copyright>Copyright © 2017 - 2020 Helios Ciancio (eshiol.it). All rights reserved.</copyright>
 	<authorEmail>info@eshiol.it</authorEmail>
 	<authorUrl>https://www.eshiol.it</authorUrl>
 	<version>3.8.0.15</version>
-	<description><![CDATA[
-		<h1>Template ItaliaPA for Joomla! 3.8</h1>
-		<p>Implementazione delle
-		<a href="http://www.agid.gov.it/tags/linee-guida-design-pa" target="_blank">Linee guida di design per i servizi web della PA</a> basato su
-		<a href="https://italia.github.io/design-web-toolkit/" target="_blank">it Web Toolkit</a>.</p>
-		<p>Created by <a href="http://www.eshiol.it" target="_blank">Helios Ciancio <img src="https://www.eshiol.it/files/italiapa/eshiol.png" alt="eshiol.it"/></a></p>
-	]]></description>
+	<description>TPL_ITALIAPA_XML_DESCRIPTION</description>
 	<updateservers>
 		<server type="extension" priority="2" name="Template ItaliaPA">https://www.eshiol.it/files/italiapa/tpl_italiapa.xml
 		</server>
 	</updateservers>
+	<scriptfile>script.php</scriptfile>
 	<files>
 		<folder>build</folder>
 		<folder>css</folder>
@@ -29,6 +23,7 @@
 		<filename>error.php</filename>
 		<filename>favicon.ico</filename>
 		<filename>index.php</filename>
+		<filename>script.php</filename>
 		<filename>templateDetails.xml</filename>
 		<filename>template_preview.png</filename>
 		<filename>template_thumbnail.png</filename>
@@ -82,6 +77,17 @@
 					max="6"
 					step="1"
 				/>
+				<field name="hamburgermenu_pos" type="list" label="TPL_ITALIAPA_FIELD_HAMBURGERMENU_POS_LABEL"
+					description="TPL_ITALIAPA_FIELD_HAMBURGERMENU_POS_DESC" default="left"
+					filter="word">
+					<option value="left">JGLOBAL_LEFT</option>
+					<option value="right">JGLOBAL_RIGHT</option>
+				</field>
+				<field name="forward" type="radio" class="btn-group btn-group-yesno"
+					default="1" description="TPL_ITALIAPA_FIELD_FORWARD_DESC" label="TPL_ITALIAPA_FIELD_FORWARD_LABEL">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
 			</fieldset>
 			<fieldset name="advanced">
 				<field name="debug" type="radio" class="btn-group btn-group-yesno"
@@ -104,7 +110,7 @@
 				<field name="subtitle" type="text"
 					label="TPL_ITALIAPA_FIELD_SUBTITLE_LABEL" description="TPL_ITALIAPA_FIELD_SUBTITLE_LABEL" />
 				<field name="headroom" type="radio" class="btn-group btn-group-yesno"
-					default="0" description="TPL_ITALIAPA_DEBUG_HEADROOM_DESC" label="TPL_ITALIAPA_DEBUG_HEADROOM_LABEL">
+					default="0" description="TPL_ITALIAPA_FIELD_HEADROOM_DESC" label="TPL_ITALIAPA_FIELD_HEADROOM_LABEL">
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>

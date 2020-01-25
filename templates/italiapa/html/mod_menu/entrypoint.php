@@ -1,53 +1,89 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	tpl_italiapa
+ * @package		Joomla.Site
+ * @subpackage	Templates.ItaliaPA
  *
- * @author		Helios Ciancio <info@eshiol.it>
+ * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2019 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
  * or is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
  */
+
 defined('_JEXEC') or die();
-
-JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'tpl_italiapa'));
-JLog::add(new JLogEntry($module->position, JLog::DEBUG, 'tpl_italiapa'));
-
-$id = '';
-
-if ($tagId = $params->get('tag_id', ''))
-{
-	$id = ' id="' . $tagId . '"';
-}
-
-$u_flex = false;
-if ($class_sfx)
-{
-	$class_sfx = explode(' ', $class_sfx);
-	for ($i = count($class_sfx) - 1; $i >= 0; $i--)
-	{
-		if ($class_sfx[$i] == 'u-flex')
-		{
-			$u_flex = true;
-			unset($class_sfx[$i]);
-		}
-	}
-	$class_sfx = trim(implode(' ', $class_sfx));
-}
 ?>
 
-<div
-	class="Grid Grid--withGutter u-padding-r-top u-padding-r-bottom u-text-r-s <?php echo $class_sfx; ?>"
-	<?php echo $id; ?>>
-<?php
+<?php $id = ($tagId = $params->get('tag_id', '')) ? ' id="' . $tagId . '"' : ''; ?>
 
-foreach ($list as $i => &$item)
+<?php
+$background = 'u-background-compl-80';
+$color      = 'u-color-white';
+$u_flex     = false;
+$u_size     = '';
+
+$moduleclass_sfx  = htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8');
+if ($moduleclass_sfx)
 {
-	JLog::add(new JLogEntry(print_r($item, true), JLog::DEBUG, 'tpl_italiapa'));
+    $moduleclass_sfx_array = explode(' ', $moduleclass_sfx);
+    for ($i = count($moduleclass_sfx_array) - 1; $i >= 0; $i--)
+    {
+    	if ($moduleclass_sfx_array[$i] == 'u-flex')
+        {
+            $u_flex = true;
+            unset($moduleclass_sfx_array[$i]);
+        }
+        elseif (substr($moduleclass_sfx_array[$i], 0, 13) == 'u-background-')
+        {
+        	$background = $moduleclass_sfx_array[$i];
+        	unset($moduleclass_sfx_array[$i]);
+        }
+        elseif (substr($moduleclass_sfx_array[$i], 0, 8) == 'u-color-')
+        {
+        	$color = $moduleclass_sfx_array[$i];
+        	unset($moduleclass_sfx_array[$i]);
+        }
+    }
+    $moduleclass_sfx = trim(implode(' ', $moduleclass_sfx_array));
+}
+
+if ($class_sfx)
+{
+	$class_sfx_array = explode(' ', $class_sfx);
+	for ($i = count($class_sfx_array) - 1; $i >= 0; $i--)
+	{
+		if ($class_sfx_array[$i] == 'u-flex')
+		{
+			$u_flex = true;
+			unset($class_sfx_array[$i]);
+		}
+		elseif (substr($class_sfx_array[$i], 0, 13) == 'u-background-')
+		{
+			$background = $class_sfx_array[$i];
+			unset($class_sfx_array[$i]);
+		}
+		elseif (substr($class_sfx_array[$i], 0, 8) == 'u-color-')
+		{
+			$color = $class_sfx_array[$i];
+			unset($class_sfx_array[$i]);
+		}
+		elseif ((substr($class_sfx_array[$i], 0, 6) == 'u-size') || (substr($class_sfx_array[$i], 0, 2) == 'u-') && (substr($class_sfx_array[$i], 4, 5) == '-size'))
+		{
+			$u_size .= $class_sfx_array[$i] . ' ';
+			unset($class_sfx_array[$i]);
+		}
+	}
+	$class_sfx = trim(implode(' ', $class_sfx_array));
+}
+
+$u_size .= $u_size ? '' : 'u-md-size1of3 u-lg-size1of3 ';
+?>
+
+<div class="Grid Grid--withGutter u-padding-r-top u-padding-r-bottom u-text-r-s <?php echo $class_sfx; ?>"<?php echo $id; ?>>
+<?php foreach ($list as $i => &$item) : ?>
+<?php
 	if ($item->level > 2)
 	{
 		continue;
@@ -99,8 +135,15 @@ foreach ($list as $i => &$item)
 		$class .= ' parent';
 	}
 
-	$icon = '';
-	$subclass = '';
+	$icon            = '';
+	if ($item->level == 1)
+	{
+		$column_background = $background;
+		$column_color      = $color;
+	}
+	$item_background = $column_background;
+	$item_color      = $column_color;
+	$subclass        = '';
 	if ($item->anchor_css)
 	{
 		$anchor_css = explode(' ', $item->anchor_css);
@@ -116,6 +159,16 @@ foreach ($list as $i => &$item)
 				$class .= ' u-flexCol';
 				unset($anchor_css[$i]);
 			}
+			elseif (substr($anchor_css[$i], 0, 13) == 'u-background-')
+			{
+				$item_background = $anchor_css[$i];
+				unset($anchor_css[$i]);
+			}
+			elseif (substr($anchor_css[$i], 0, 8) == 'u-color-')
+			{
+				$item_color = $anchor_css[$i];
+				unset($anchor_css[$i]);
+			}
 			elseif (substr($anchor_css[$i], 0, 3) == 'li:')
 			{
 				$subclass = substr($anchor_css[$i], 3) . ' ' . $subclass;
@@ -126,20 +179,18 @@ foreach ($list as $i => &$item)
 	}
 
 	if ($item->level == 1)
-	{		
-		echo '<div class="Grid-cell u-md-size1of3 u-lg-size1of3 ' . $class . ($u_flex ? ' u-flex' . (($item->parent == 1) ? ' u-flexCol' : '') : '') . '">';
+	{
+		echo '<div class="Grid-cell ' . $u_size . $class . ($u_flex ? ' u-flex' . (($item->parent) ? ' u-flexCol' : '') : '') . '">';
+		$column_background = $item_background;
+		$column_color      = $item_color;
 	}
 
 	if (! $item->parent)
 	{
-		$moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8');
 		echo '<div class="Entrypoint-item ' . ($item->level == 1 ? 'u-sizeFill ' : '') .
-				 ($moduleclass_sfx ? $moduleclass_sfx . $subclass : ($subclass ? $subclass : 'u-background-compl-80')) . '"><p>';
+			trim($subclass . ' ' . $item_background) . '"><p>';
 
-		if (! $item->anchor_css)
-		{
-			$item->anchor_css = 'u-textClean u-text-h3 u-color-white';
-		}
+		$item->anchor_css .= (empty($item->anchor_css) ? 'u-textClean u-text-h3' : '') . ' ' . $item_color;
 
 		switch ($item->type)
 		{
@@ -169,5 +220,6 @@ foreach ($list as $i => &$item)
 	}
 
 	$buffer = ob_get_flush();
-}
-?></div>
+?>
+<?php endforeach; ?>
+</div>
