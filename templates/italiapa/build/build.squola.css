@@ -6,6 +6,9 @@ a {
 a {
   font-weight: 600!important;
 }
+ul.Linklist .osmap-item-heading {
+  font-weight: 600!important;
+}
 /** =================================
  *
  * Components
