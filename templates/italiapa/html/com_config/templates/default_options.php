@@ -32,7 +32,7 @@ JHtml::_('formbehavior.chosen', 'select');
 	<?php echo JHtml::_('iwt.endSlide'); ?>
 <?php else : ?>
 	<?php foreach ($fieldSets as $name => $fieldSet) : ?>
-		<?php $label = !empty($fieldSet->label) ? $fieldSet->label : 'TPL_ITALIAPA_FIELDSET_' . strtoupper($name); ?>
+		<?php $label = !empty($fieldSet->label) ? $fieldSet->label : 'JGLOBAL_FIELDSET_' . strtoupper($name); ?>
 		<?php echo JHtml::_('iwt.addSlide', 'templates', JText::_($label), $name); ?>
 			<?php if (isset($fieldSet->description) && trim($fieldSet->description)) : ?>
 				<div class="Prose Alert Alert--info">
