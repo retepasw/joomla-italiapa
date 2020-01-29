@@ -79,8 +79,6 @@ $assocParam = (JLanguageAssociations::isEnabled() && $params->get('show_associat
 			<?php endif; ?>
 
 			<?php echo JLayoutHelper::render('joomla.content.readmore', array('item' => $this->item, 'params' => $params, 'link' => $link)); ?>
-
-			<?php echo JLayoutHelper::render('joomla.content.readmore', array('item' => $this->item, 'params' => $params, 'link' => $link)); ?>
 		
 		<?php endif; ?>
 	</div>
