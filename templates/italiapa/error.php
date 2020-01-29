@@ -113,6 +113,49 @@ JFactory::getSession()->set('theme', $theme);
 	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/tooltip-theme-arrows.css" />
 
 	<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/jquery.min.js"></script>
+	
+	<?php
+	$owner_modules = array();
+	foreach (JModuleHelper::getModules('owner') AS $module) {
+		$owner_modules[] = JModuleHelper::renderModule($module, array());
+	}
+	$languages_modules = array();
+	foreach (JModuleHelper::getModules('languages') AS $module) {
+		$languages_modules[] = JModuleHelper::renderModule($module, array());
+	}
+	$mainmenu_modules = array();
+	foreach (JModuleHelper::getModules('mainmenu') AS $module) {
+		$mainmenu_modules[] = JModuleHelper::renderModule($module, array('style'=>'lg'));
+	}
+	$socials_modules = array();
+	foreach (JModuleHelper::getModules('socials') AS $module) {
+		$socials_modules[] = JModuleHelper::renderModule($module, array('style'=>'none'));
+	}
+	$search_modules = array();
+	foreach (JModuleHelper::getModules('search') AS $module) {
+		$search_modules[] = JModuleHelper::renderModule($module, array('style'=>'none'));
+	}
+	$menu_modules = array();
+	foreach (JModuleHelper::getModules('menu') AS $module) {
+		$menu_modules[] = JModuleHelper::renderModule($module, array('style'=>'lg'));
+	}
+	$footer_modules = array();
+	foreach (JModuleHelper::getModules('footer') AS $module) {
+		$footer_modules[] = JModuleHelper::renderModule($module, array('style'=>'lg'));
+	}
+	$footerinfo_modules = array();
+	foreach (JModuleHelper::getModules('footerinfo') AS $module) {
+		$footerinfo_modules[] = JModuleHelper::renderModule($module, array('style'=>'lg'));
+	}
+	$footermenu_modules = array();
+	foreach (JModuleHelper::getModules('footermenu') AS $module) {
+		$footermenu_modules[] = JModuleHelper::renderModule($module, array('style'=>'none'));
+	}
+	
+	$document = \JFactory::getDocument();
+	$head = new \JDocumentRendererHead($document);
+	echo $head->fetchHead($document);
+	?>
 </head>
 <body class="t-Pac c-hideFocus enhanced">
 
@@ -137,16 +180,6 @@ JFactory::getSession()->set('theme', $theme);
 </svg>
 <?php endif; ?>
 
-<?php
-$owner_modules = JModuleHelper::getModules('owner');
-$languages_modules = JModuleHelper::getModules('languages');
-
-$mainmenu_modules = JModuleHelper::getModules('mainmenu');
-$socials_modules = JModuleHelper::getModules('socials');
-$search_modules = JModuleHelper::getModules('search');
-$menu_modules = JModuleHelper::getModules('menu');
-?>
-
 <header class="Header u-hiddenPrint<?php if ($params->get('headroom', 0)) echo ' Headroom--fixed js-Headroom Headroom Headroom--top Headroom--not-bottom" style="position: fixed; top: 0px;'; ?>">
 
 <?php if (count($owner_modules) + count($languages_modules)) : ?>
@@ -154,7 +187,7 @@ $menu_modules = JModuleHelper::getModules('menu');
 	<?php if (count($owner_modules)) : ?>
 		<div class="Header-owner">
 			<?php foreach ($owner_modules AS $module) : ?>
-				<?php echo JModuleHelper::renderModule($module, array()); ?>
+				<?php echo $module; ?>
 			<?php endforeach; ?>
 		</div>
 	<?php endif; ?>
@@ -162,7 +195,7 @@ $menu_modules = JModuleHelper::getModules('menu');
 	<?php if (count($languages_modules)) : ?>
 		<div class="Header-languages">
 			<?php foreach ($languages_modules AS $module) : ?>
-				<?php echo JModuleHelper::renderModule($module, array()); ?>
+				<?php echo $module; ?>
 			<?php endforeach; ?>
 		</div>
 	<?php endif; ?>
@@ -204,7 +237,7 @@ $menu_modules = JModuleHelper::getModules('menu');
 				<?php if (count($socials_modules)) : ?>
 					<div class="Headroom-hideme">
 						<?php foreach ($socials_modules AS $module) : ?>
-							<?php echo JModuleHelper::renderModule($module, array('style'=>'none')); ?>
+							<?php echo $module; ?>
 						<?php endforeach; ?>
 					</div>
 				<?php endif; ?>
@@ -212,7 +245,7 @@ $menu_modules = JModuleHelper::getModules('menu');
 				<?php if (count($search_modules)) : ?>
 					<div class="Header-search" id="header-search">
 						<?php foreach ($search_modules AS $module) : ?>
-							<?php echo JModuleHelper::renderModule($module, array('style'=>'none')); ?>
+							<?php echo $module; ?>
 						<?php endforeach; ?>
 					</div>
 				<?php endif; ?>
@@ -236,7 +269,7 @@ $menu_modules = JModuleHelper::getModules('menu');
 <?php if (count($mainmenu_modules)) : ?>
 	<div class="Headroom-hideme u-textCenter u-hidden u-sm-hidden u-md-block u-lg-block">
 		<?php foreach ($mainmenu_modules AS $module) : ?>
-			<?php echo JModuleHelper::renderModule($module, array('style'=>'lg')); ?>
+			<?php echo $module; ?>
 		<?php endforeach; ?>
 	</div>
 <?php endif; ?>
@@ -254,7 +287,7 @@ $menu_modules = JModuleHelper::getModules('menu');
 		</div>
 
 		<?php foreach ($menu_modules AS $module) : ?>
-			<?php echo JModuleHelper::renderModule($module, array('style'=>'lg')); ?>
+			<?php echo $module; ?>
 		<?php endforeach;?>
 	</div>
 </section>
@@ -335,7 +368,7 @@ $footermenu_modules = JModuleHelper::getModules('footermenu');
 		<?php if (count($footerinfo_modules)) : ?>
 			<div class="Grid Grid--withGutter">
 				<?php foreach ($footerinfo_modules AS $module) : ?>
-					<?php echo JModuleHelper::renderModule($module, array('style'=>'lg')); ?>
+					<?php echo $module; ?>
 				<?php endforeach; ?>
 			</div>
 		</div>
@@ -344,7 +377,7 @@ $footermenu_modules = JModuleHelper::getModules('footermenu');
 		<?php if (count($footer_modules)) : ?>
 			<div class="Grid Grid--withGutter">
 				<?php foreach ($footer_modules AS $module) : ?>
-					<?php echo JModuleHelper::renderModule($module, array('style'=>'lg')); ?>
+					<?php echo $module; ?>
 				<?php endforeach; ?>
 			</div>
 		<?php endif; ?>
@@ -352,7 +385,7 @@ $footermenu_modules = JModuleHelper::getModules('footermenu');
 		<?php if (count($footermenu_modules)) : ?>
 			<div class="Grid Grid--withGutter u-border-top-xxs">
 				<?php foreach ($footermenu_modules AS $module) : ?>
-					<?php echo JModuleHelper::renderModule($module, array('style'=>'none')); ?>
+					<?php echo $module; ?>
 				<?php endforeach; ?>
 			</div>
 		<?php endif; ?>
