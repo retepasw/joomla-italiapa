@@ -49,9 +49,13 @@ if (!empty($description))
 	}
 	else
 	{
-		JHtml::_('bootstrap.tooltip', '.hasTooltip', array('placement' => 'bottom'));
-		$classes[] = 'hasTooltip';
-		$title	 = ' title="' . JHtml::tooltipText(trim($text, ':'), $description, 0) . '"';
+		// TODO: ripristinare tooltip
+		//JHtml::_('bootstrap.tooltip', '.hasTooltip', array('placement' => 'bottom'));
+		//$classes[] = 'hasTooltip';
+		//$title	 = ' title="' . JHtml::tooltipText(trim($text, ':'), $description, 0) . '"';
+		JHtml::_('bootstrap.popover', '.hasPopover', array('placement' => 'bottom'));
+		$classes[] = 'hasPopover';
+		$title	 = ' data-content="' . htmlspecialchars(trim($text, ':')) . '"';
 	}
 }
 
