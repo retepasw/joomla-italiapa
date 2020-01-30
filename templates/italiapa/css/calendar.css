@@ -1,0 +1,28 @@
+button.js-btn.btn {
+	font-weight: 600;
+	padding: .3em .6em;
+	margin: .3em .6em;
+	text-transform: uppercase;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
+button.js-btn.btn.btn-exit {
+	background-color: #b50000;
+	border: 1px solid red;
+	color: #fff;
+}
+
+button.js-btn.btn.btn-today {
+	background-color: #65dde0;
+	border: 1px solid #50d8dc;
+	color: #004a4d;
+}
+	
+button.js-btn.btn.btn-clear {
+	background-color: #fff;
+    border: 1px solid #ccc;
+    color: #003e54;
+}	
