@@ -760,3 +760,38 @@ footer input::-ms-input-placeholder { /* Microsoft Edge */
 .tooltip {
     z-index: 999999
 }
+
+/* JCE */
+.wf-editor-tabs li.nav-item,
+#editor-xtd-buttons a {
+    font-family: apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif;
+	font-size: 13px;
+    margin-right: 1em;
+    font-weight: 600;
+    padding: .6em 1.2em;
+    text-transform: uppercase;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    background-color: #fff;
+    text-decoration: none;
+}
+
+.wf-editor-tabs li.nav-item.active {
+    background-color: #004a4d;
+}
+
+.wf-editor-tabs li.nav-item.active a.nav-link.active {
+    color: #65dde0;
+}
+
+.wf-editor-tabs li.nav-item a.nav-link {
+    color: #003e54;
+}
+
+#editor-xtd-buttons {
+    claer: both;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
