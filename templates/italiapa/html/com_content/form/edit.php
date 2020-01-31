@@ -193,7 +193,7 @@ foreach ($this->form->getFieldsets() as $fieldset)
 		<div class="Grid Grid--fit Grid--withGutter u-padding-all-l">
 			<div class="Grid-cell">
 				<button type="button" class="Button Button--default u-text-r-xs" onclick="Joomla.submitbutton('article.save')">
-					<span class="Icon-ok"></span><?php echo JText::_('JSAVE') ?>
+					<span class="Icon-check"></span><?php echo JText::_('JSAVE') ?>
 				</button>
 			</div>
 			<div class="Grid-cell">
