@@ -345,11 +345,6 @@ JFactory::getSession()->set('theme', $theme);
 	</div>
 </div>
 
-<?php
-$footer_modules = JModuleHelper::getModules('footer');
-$footerinfo_modules = JModuleHelper::getModules('footerinfo');
-$footermenu_modules = JModuleHelper::getModules('footermenu');
-?>
 <?php if (count($footer_modules) + count($footermenu_modules) + count($footerinfo_modules)) : ?>
 	<footer class="Footer u-padding-all-s" id="footer">
 		<?php if (count($footerinfo_modules)) : ?>
