@@ -14,5 +14,70 @@
  */
 
 defined('_JEXEC') or die;
+?>
 
-include __DIR__ . '/default_items.php';
+<?php if ($this->debug) : ?>
+    <div class="osmap-debug-sitemap">
+        <h1><?php echo JText::_('COM_OSMAP_DEBUG_ALERT_TITLE'); ?></h1>
+        <p><?php echo JText::_('COM_OSMAP_DEBUG_ALERT'); ?></p>
+        <?php echo JText::_('COM_OSMAP_SITEMAP_ID'); ?>: <?php echo $this->sitemap->id; ?>
+    </div>
+<?php endif; ?>
+
+<section class="Grid Grid--withGutter u-padding-all-l osmap-items">
+    <?php $this->sitemap->traverse(array($this, 'registerNodeIntoList')); ?>
+    <?php // $this->renderSitemap(); ?>
+    <?php
+    	if (!empty($this->menus))
+    	{
+    		$columns = max((int)$this->params->get('columns', 1), 1);
+
+    		foreach ($this->menus as $menuType => $menu)
+    		{
+    			echo '<div class="Grid-cell ' . 'u-md-size1of2 u-lg-size1of' . (JModuleHelper::getModules('right') ? '2' : '3') . '">';
+
+    			if (isset($menu->menuItemTitle)
+    				&& $this->showMenuTitles
+    				&& !empty($menu->children))
+    			{
+    				if ($this->debug)
+    				{
+    					$debug = sprintf('<div><span>%s:</span>&nbsp;%s: %s</div>',
+    						JText::_('COM_OSMAP_MENUTYPE'),
+    						$menu->menuItemId,
+    						$menu->menuItemType);
+    				}
+
+    				echo sprintf(
+    					$this->titleTag,
+    					\JApplicationHelper::stringURLSafe($menu->menuItemType),
+    					$menu->menuItemTitle,
+    					empty($debug) ? '' : $debug);
+    			}
+
+    			ob_start();
+    			$this->printMenu($menu, $columns);
+    			$text = ob_get_contents();
+    			ob_end_clean();
+
+    			$text = preg_replace(
+    				'/<span class="osmap-item-heading">(.*)<\/span>/mU',
+    				'<a class="osmap-item-heading" href="#">\\1</a>',
+    				$text);
+
+    			if ($this->ulTag)
+    			{
+    				$text = str_replace('<ul class="', $this->ulTag, $text);
+    			}
+
+    			echo $text . '</div>';
+    		}
+    	}
+    ?>
+</section>
+
+<?php if ($this->debug) : ?>
+    <div class="osmap-debug-items-count">
+        <?php echo JText::_('COM_OSMAP_SITEMAP_ITEMS_COUNT'); ?>: <?php echo $this->generalCounter; ?>
+    </div>
+<?php endif; ?>

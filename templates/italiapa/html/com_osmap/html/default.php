@@ -37,8 +37,8 @@ if ($layout = $this->getLayout() == 'default')
 
 // If debug is enabled, use text content type
 if ($this->debug) {
-    OSMap\Factory::getApplication()->input->set('tmpl', 'component');
-    JHtml::stylesheet('media/com_osmap/css/sitemap_html_debug.min.css');
+	OSMap\Factory::getApplication()->input->set('tmpl', 'component');
+	JHtml::stylesheet('media/com_osmap/css/sitemap_html_debug.min.css');
 }
 
 // Check if we have parameters from a menu, acknowledging we have a menu
