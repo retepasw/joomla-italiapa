@@ -35,9 +35,30 @@ $class = empty($options['class']) ? '' : ' ' . $options['class'];
 $rel   = empty($options['rel']) ? '' : ' ' . $options['rel'];
 ?>
 <div class="Form-field<?php echo $class; ?>"<?php echo $rel; ?>>
-	<?php if (empty($options['hiddenLabel'])) {
-		echo $label;
-	} ?>
-	<?php //echo $input; ?>
+	<?php if (empty($options['hiddenLabel'])) : ?>
+		<?php echo $label; ?>
+	<?php endif; ?>
+<?php
+	preg_match('/^\s*<(?:select) [^>]*>/m', $input, $matches, PREG_OFFSET_CAPTURE); 
+	if (!empty($matches))
+	{
+		// field based on the select tag
+		preg_match('/^\s*<(?:select) [^>]*class="([^"]*)"[^>]*>/m', $input, $matches, PREG_OFFSET_CAPTURE); 
+		
+		if (empty($matches))
+		{
+			// the field does not have the class attribute
+			$input = preg_replace('/^(\s*<(?:select)\s*[^>]*)>/m', '\\1 class="Form-input">', $input, 1, $count);
+		}
+		elseif (!in_array('Form-input', explode(' ', $matches[1][0])))
+		{
+			// the field doesn't have the Form-input class
+			$input = preg_replace(
+				'/^(\s*<(?:select) [^>]*class="[^"]*)"([^>]*)>/m',
+				'\\1 Form-input ' . $matches[1][0] . '"',
+				$input, 1, $count);
+		}
+	}
+?>
 	<?php print_r($input); ?>
 </div>
