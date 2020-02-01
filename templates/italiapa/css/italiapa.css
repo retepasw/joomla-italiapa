@@ -2,21 +2,21 @@
 
 @media screen and (max-width: 767px) {
   .u-xs-hidden {
-    display: none !important;
+	display: none !important;
   }
 }
 
 .card-white img {
-    /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    background-color:white;
-    border-radius: 5px;
+	/* Add shadows to create the "card" effect */
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+	background-color:white;
+	border-radius: 5px;
 }
 
 /* On mouse-over, add a deeper shadow */
 .card-white:hover img {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .Dl--striped dt:nth-of-type(odd),
@@ -45,7 +45,7 @@
 }
 
 /*ul.tags li:nth-child(n+2):before {
-    content: ", ";
+	content: ", ";
 }*/
 
 .strike {
@@ -186,8 +186,8 @@
 }
 
 .Megamenu--default .Megamenu-item>span.separator {
-    font-weight: 600!important;
-    padding-top: 1.6rem!important;
+	font-weight: 600!important;
+	padding-top: 1.6rem!important;
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -246,8 +246,8 @@ h3 svg[class*=" Icon "],
 h3 svg[class$=" Icon"],
 h3 svg[class=Icon] {
 	width: 2em;
-    height: 2em;
-    vertical-align: middle;
+	height: 2em;
+	vertical-align: middle;
 }
 */
 .Megamenu-area > a,
@@ -265,16 +265,16 @@ h3 svg[class=Icon] {
 }
 
 .Megamenu--default ul>li ul>li {
-    padding-bottom: .8rem!important;
+	padding-bottom: .8rem!important;
 }
 
 .Megamenu--default ul>li ul>li {
-    padding-top: .4rem!important;
+	padding-top: .4rem!important;
 }
 
 .Megamenu--default ul>li ul>li a {
-    color: #30373d!important;
-    text-decoration: none!important;
+	color: #30373d!important;
+	text-decoration: none!important;
 }
 
 header.Headroom .Megamenu-subnav {
@@ -421,9 +421,9 @@ header.Headroom .Megamenu-subnav {
 
 .ipa-copyright {
 	color: rgba(255, 255, 255, 0.75);
-    text-align: right;
-    padding-top: 2em;
-    padding-right: 5em;
+	text-align: right;
+	padding-top: 2em;
+	padding-right: 5em;
 	font-family: Iceland;
 }
 
@@ -462,111 +462,111 @@ header.Headroom .Megamenu-subnav {
 }
 
 .Share.is-pressed, .Share:active {
-    box-shadow: none;
+	box-shadow: none;
 }
 
 .Share-revealText {
-    padding-left: 1.3em!important;
-    padding-right: 1.3em!important;
+	padding-left: 1.3em!important;
+	padding-right: 1.3em!important;
 }
 
 .icons nav.Navscroll ul {
-    overflow: hidden;
+	overflow: hidden;
 }
 
 .news-theme .owl-nav {
-    text-align: center;
-    -webkit-tap-highlight-color: transparent
+	text-align: center;
+	-webkit-tap-highlight-color: transparent
 }
 
 .news-theme .owl-nav .owl-prev {
-    position: absolute;
-    top: 50%;
-    left: -1rem;
-    opacity: 0.2;
-    filter: alpha(opacity=20); /* For IE8 and earlier */
+	position: absolute;
+	top: 50%;
+	left: -1rem;
+	opacity: 0.2;
+	filter: alpha(opacity=20); /* For IE8 and earlier */
 }
 
 
 .news-theme .owl-nav .owl-next {
-    position: absolute;
-    top: 50%;
-    right: -1rem;
-    opacity: 0.2;
-    filter: alpha(opacity=20); /* For IE8 and earlier */
+	position: absolute;
+	top: 50%;
+	right: -1rem;
+	opacity: 0.2;
+	filter: alpha(opacity=20); /* For IE8 and earlier */
 }
 
 .news-theme .owl-nav .owl-next:hover,
 .news-theme .owl-nav .owl-prev:hover {
-    opacity: 1;
-    filter: alpha(opacity=100); /* For IE8 and earlier */
+	opacity: 1;
+	filter: alpha(opacity=100); /* For IE8 and earlier */
 }
 
 .news-theme .owl-nav [class*='owl-'] {
-    color: #000;
-/*    font-size: 1.68em; */
-    font-size: 5rem!important;
-    margin: 0;
-    padding: 0;
-    background: 0;
-    display: inline-block;
-    cursor: pointer;
-    font-style: normal!important;
-    font-weight: normal!important;
-    font-variant: normal!important;
-    text-transform: none!important;
-    speak: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale
+	color: #000;
+/*	font-size: 1.68em; */
+	font-size: 5rem!important;
+	margin: 0;
+	padding: 0;
+	background: 0;
+	display: inline-block;
+	cursor: pointer;
+	font-style: normal!important;
+	font-weight: normal!important;
+	font-variant: normal!important;
+	text-transform: none!important;
+	speak: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale
 }
 
 .news-theme .owl-nav [class*='owl-']:hover {
-    background: 0;
-    color: #000;
-    text-decoration: none
+	background: 0;
+	color: #000;
+	text-decoration: none
 }
 
 .news-theme .owl-nav .disabled {
-    opacity: .5;
-    cursor: default
+	opacity: .5;
+	cursor: default
 }
 
 .news-theme .owl-nav.disabled+.owl-dots {
-    margin-top: 10px
+	margin-top: 10px
 }
 
 .news-theme .owl-dots {
-    text-align: center;
-    -webkit-tap-highlight-color: transparent
+	text-align: center;
+	-webkit-tap-highlight-color: transparent
 }
 
 .news-theme .owl-dots .owl-dot {
-    display: inline-block;
-    zoom: 1;
-    *display: inline
+	display: inline-block;
+	zoom: 1;
+	*display: inline
 }
 
 .news-theme .owl-dots .owl-dot span {
-    width: 19px;
-    height: 19px;
-    margin: 0 4px;
-    background: #a5a5a5;
-    display: block;
-    -webkit-backface-visibility: visible;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
-    border: 3px solid #a5a5a5
+	width: 19px;
+	height: 19px;
+	margin: 0 4px;
+	background: #a5a5a5;
+	display: block;
+	-webkit-backface-visibility: visible;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	border: 3px solid #a5a5a5
 }
 
 .news-theme .owl-dots .owl-dot:hover span {
-    background: #fff
+	background: #fff
 }
 
 .news-theme .owl-dots .owl-dot.active span {
-    background: #fff;
-    border-color: #06c
+	background: #fff;
+	border-color: #06c
 }
 
 dl.tabs {
@@ -643,14 +643,14 @@ footer input::-ms-input-placeholder { /* Microsoft Edge */
 }
 
 .contact dt {
-    clear: left;
+	clear: left;
 	float: left;
-    line-height: 2em;
-    width: 50%;
-    padding-right: 1em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+	line-height: 2em;
+	width: 50%;
+	padding-right: 1em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .contact dd {
@@ -660,7 +660,7 @@ footer input::-ms-input-placeholder { /* Microsoft Edge */
 
 .contact-address dt,
 .contact-misc dt {
-    text-align: right;
+	text-align: right;
 	width: 64px;
 }
 
@@ -705,30 +705,30 @@ footer input::-ms-input-placeholder { /* Microsoft Edge */
 
 .contact-links .Icon-earth {
 	background: transparent!important;
-    margin: 0!important;
-    padding: 0!important;
+	margin: 0!important;
+	padding: 0!important;
 }
 
 .contact-links .Icon-earth svg.Icon {
-    width: 26px;
-    height: 26px;
-    top: 5px;
-    position: relative;
+	width: 26px;
+	height: 26px;
+	top: 5px;
+	position: relative;
 }
 
 .contact .fr-accordion {
-    margin-top: 2rem;
+	margin-top: 2rem;
 }
 
 .contact .fr-accordion button {
-    margin-right: 1em;
-    margin-bottom: 0.5em;
+	margin-right: 1em;
+	margin-bottom: 0.5em;
 }
 
 .contact .fr-accordion button[aria-selected="true"] {
-    background-color: #004a4d;
-    border-color: #000;
-    color: #65dde0;
+	background-color: #004a4d;
+	border-color: #000;
+	color: #65dde0;
 }
 
 .Header-owner {
@@ -758,7 +758,44 @@ footer input::-ms-input-placeholder { /* Microsoft Edge */
 }
 
 .tooltip {
-    z-index: 999999
+	z-index: 999999
+}
+
+/* JCE */
+.wf-editor-tabs li.nav-item,
+#editor-xtd-buttons a {
+	font-family: apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif;
+	font-size: 13px;
+	display: inline-block;
+	margin-right: 1em;
+	margin-top: 1em;
+	font-weight: 600;
+	padding: .6em 1.2em;
+	text-transform: uppercase;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	vertical-align: middle;
+	white-space: nowrap;
+	background-color: #fff;
+	text-decoration: none;
+}
+
+.wf-editor-tabs li.nav-item.active {
+	background-color: #004a4d;
+}
+
+.wf-editor-tabs li.nav-item.active a.nav-link.active {
+	color: #65dde0;
+}
+
+.wf-editor-tabs li.nav-item a.nav-link {
+	color: #003e54;
+}
+
+#editor-xtd-buttons {
+	claer: both;
+	margin-top: 1em;
+	margin-bottom: 1em;
 }
 
 /* IcoMoon icons */
