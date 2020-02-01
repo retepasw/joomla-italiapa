@@ -73,7 +73,8 @@ $attributes = array();
 
 empty($size)      ? null : $attributes['size'] = $size;
 empty($maxlength) ? null : $attributes['maxlength'] = ' maxlength="' . $maxLength . '"';
-empty($class)     ? null : $attributes['class'] = $class;
+//empty($class)     ? null : $attributes['class'] = $class;
+$attributes['class'] =  trim('Form-input u-sizeFill js-Datepicker ' . $class);
 !$readonly        ? null : $attributes['readonly'] = 'readonly';
 !$disabled        ? null : $attributes['disabled'] = 'disabled';
 empty($onchange)  ? null : $attributes['onchange'] = $onchange;
@@ -97,19 +98,42 @@ if (is_array($attributes))
 {
 	$attributes = ArrayHelper::toString($attributes);
 }
+
+$cssFileExt = ($direction === 'rtl') ? '-rtl.css' : '.css';
+
+// Load polyfills for older IE
+JHtml::_('behavior.polyfill', array('event', 'classlist', 'map'), 'lte IE 11');
+
+// The static assets for the calendar
+JHtml::_('script', $localesPath, false, true, false, false, true);
+JHtml::_('script', $helperPath, false, true, false, false, true);
+JHtml::_('script', 'system/fields/calendar.min.js', false, true, false, false, true);
+JHtml::_('stylesheet', 'system/fields/calendar' . $cssFileExt, array(), true);
+JHtml::_('stylesheet', 'calendar.min.css', array(), true);
 ?>
-<div class="Grid Grid--alignMiddle Grid--fit Grid--withGutter">
-	<div class="Grid-cell u-size10of12">
-		<input type="text" id="<?php echo $id; ?>" name="<?php
-			echo $name; ?>" value="<?php
-			echo htmlspecialchars(($value !== '0000-00-00 00:00:00') ? $value : '', ENT_COMPAT, 'UTF-8'); ?>" <?php echo $attributes; ?>
-			<?php echo !empty($hint) ? 'placeholder="' . htmlspecialchars($hint, ENT_COMPAT, 'UTF-8') . '"' : ''; ?> data-alt-value="<?php
-			echo htmlspecialchars($value, ENT_COMPAT, 'UTF-8'); ?>" autocomplete="off"/>
-	</div>
-	<div class="Grid-cell u-size2of12">
-		<button type="button" aria-controls="<?php echo $id; ?>"<?php echo ($readonly || $disabled) ? ' class="u-hidden"' : ''; ?>>
-			<span class="u-hiddenVisually">Seleziona la data</span>
-			<span class="Icon-calendar u-text-r-l"></span>
-		</button>
-	</div>
+<div class="Grid field-calendar">
+	<input class="Form-input u-sizeFill" type="text" id="<?php echo $id; ?>"
+		name="<?php echo $name; ?>"
+		value="<?php echo htmlspecialchars(($value !== '0000-00-00 00:00:00') ? $value : '', ENT_COMPAT, 'UTF-8'); ?>"
+		<?php echo $attributes; ?>
+		<?php echo !empty($hint) ? 'placeholder="' . htmlspecialchars($hint, ENT_COMPAT, 'UTF-8') . '"' : ''; ?>
+		data-alt-value="<?php echo htmlspecialchars($value, ENT_COMPAT, 'UTF-8'); ?>" autocomplete="off" />
+	<button type="button" class="<?php echo ($readonly || $disabled) ? 'u-hidden' : 'Grid-cell u-sizeFit u-margin-left-l'; ?>"
+		id="<?php echo  $id; ?>_btn"
+		data-inputfield="<?php echo $id; ?>"
+		data-dayformat="<?php echo $format; ?>"
+		data-button="<?php echo $id; ?>_btn"
+		data-firstday="<?php echo JFactory::getLanguage()->getFirstDay(); ?>"
+		data-weekend="<?php echo JFactory::getLanguage()->getWeekEnd(); ?>"
+		data-today-btn="<?php echo $todaybutton; ?>"
+		data-week-numbers="<?php echo $weeknumbers; ?>"
+		data-show-time="<?php echo $showtime; ?>"
+		data-show-others="<?php echo $filltable; ?>"
+		data-time-24="<?php echo $timeformat; ?>"
+		data-only-months-nav="<?php echo $singleheader; ?>"
+		<?php echo isset($minYear) && strlen($minYear) ? 'data-min-year="' . $minYear . '"' : ''; ?>
+		<?php echo isset($maxYear) && strlen($maxYear) ? 'data-max-year="' . $maxYear . '"' : ''; ?>
+		><span class="u-hiddenVisually"><?php echo JText::_('JLIB_HTML_BEHAVIOR_OPEN_CALENDAR'); ?></span>
+		<span class="Icon-calendar u-text-r-l"></span>
+	</button>
 </div>
