@@ -22,14 +22,14 @@ JHtml::_('behavior.formvalidator');
 
 JFactory::getDocument()->addScriptDeclaration("
 	jQuery(function ($) {
-      $('div.Form-field > select').each(function(i, item) {
-          $(item).addClass('Form-input');
-      });
+		$('div.Form-field > select').each(function(i, item) {
+			$(item).addClass('Form-input');
+		});
 	});
 ");
 ?>
 
-<div class="request-form<?php echo $this->pageclass_sfx; ?>">
+<div class="request-confirm<?php echo $this->pageclass_sfx; ?>">
 	<?php if ($this->params->get('show_page_heading')) : ?>
 		<div class="page-header">
 			<h1 class="u-text-h1 u-margin-r-bottom">
@@ -37,24 +37,18 @@ JFactory::getDocument()->addScriptDeclaration("
 			</h1>
 		</div>
 	<?php endif; ?>
-	<?php if ($this->sendMailEnabled) : ?>
-		<form action="<?php echo JRoute::_('index.php?option=com_privacy&task=request.submit'); ?>" method="post" class="Form Form--spaced u-padding-all-xl u-background-grey-10 u-text-r-xs u-layout-prose form-validate form-horizontal well">
-			<?php foreach ($this->form->getFieldsets() as $fieldset) : ?>
-				<fieldset class="Form-fieldset">
-					<?php if (!empty($fieldset->label)) : ?>
-						<legend class="Form-legend"><?php echo JText::_($fieldset->label); ?></legend>
-					<?php endif; ?>
-					<?php echo $this->form->renderFieldset($fieldset->name); ?>
-				</fieldset>
-			<?php endforeach; ?>
-            <div class="Form-field Grid-cell u-textRight">
-                <button type="submit" class="Button Button--default u-text-xs"><?php echo JText::_('JSUBMIT'); ?></button>
-            </div>
-			<?php echo JHtml::_('form.token'); ?>
-		</form>
-	<?php else : ?>
-		<div class="Prose Alert Alert--warning Alert--withIcon u-padding-r-bottom u-padding-r-right u-margin-r-bottom">
-			<p><?php echo JText::_('COM_PRIVACY_WARNING_CANNOT_CREATE_REQUEST_WHEN_SENDMAIL_DISABLED'); ?></p>
+	<form action="<?php echo JRoute::_('index.php?option=com_privacy&task=request.submit'); ?>" method="post" class="Form Form--spaced u-padding-all-xl u-background-grey-10 u-text-r-xs u-layout-prose form-validate form-horizontal well">
+		<?php foreach ($this->form->getFieldsets() as $fieldset) : ?>
+			<fieldset class="Form-fieldset">
+				<?php if (!empty($fieldset->label)) : ?>
+					<legend class="Form-legend"><?php echo JText::_($fieldset->label); ?></legend>
+				<?php endif; ?>
+				<?php echo $this->form->renderFieldset($fieldset->name); ?>
+			</fieldset>
+		<?php endforeach; ?>
+		<div class="Form-field Grid-cell u-textRight">
+			<button type="submit" class="Button Button--default u-text-xs"><?php echo JText::_('JSUBMIT'); ?></button>
 		</div>
-	<?php endif; ?>
+		<?php echo JHtml::_('form.token'); ?>
+	</form>
 </div>
