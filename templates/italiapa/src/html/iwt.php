@@ -63,8 +63,9 @@ abstract class JHtmlIwt
 	{
 		if (! isset(static::$loaded[__METHOD__][$selector]))
 		{
-			$opt['active'] = (string) $params['active'];
-
+			$opt['active']          = isset($params['active']) ? (string) $params['active'] : '';
+			$opt['multiselectable'] = isset($params['multiselectable']) ? (string) $params['multiselectable'] : '';
+			
 			if ($opt['active'])
 			{
 				// Build the script.
@@ -83,7 +84,7 @@ abstract class JHtmlIwt
 			// Set static array
 			static::$loaded[__METHOD__][$selector] = $opt;
 
-			return '<div class="Accordion Accordion--default fr-accordion js-fr-accordion" id="accordion-' . $selector . '" role="tablist"' . (empty($params['multiselectable']) ? '' : ' aria-multiselectable="' . $params['multiselectable'] . '"') . '>';		
+			return '<div class="Accordion Accordion--default fr-accordion js-fr-accordion" id="accordion-' . $selector . '" role="tablist"' . ($opt['multiselectable'] ? ' aria-multiselectable="' . $opt['multiselectable'] . '"': '') . '>';
 		}
 	}
 
