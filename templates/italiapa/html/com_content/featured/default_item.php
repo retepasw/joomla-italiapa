@@ -61,7 +61,7 @@ $imgfloat = empty($images->float_intro) ? $params->get('float_intro') : $images-
 			</h2>
 			<?php endif; ?>
 
-			<div class="u-text-p u-textSecondary">
+			<div class="u-text-p u-textSecondary" itemprop="articleBody">
 				<?php
 				if (!$params->get('show_intro'))
 				{

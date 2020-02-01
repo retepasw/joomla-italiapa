@@ -35,7 +35,7 @@ $results = $dispatcher->trigger('onContentAfterDisplay', array($this->category->
 $afterDisplayContent = trim(implode("\n", $results));
 ?>
 
-<section class="u-layout-wide u-layout-r-withGutter u-text-r-s u-padding-r-top u-padding-r-bottom blog<?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Blog">
+<section class="u-layout-wide u-layout-r-withGutter u-text-r-s u-padding-r-top u-padding-r-bottom blog <?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Blog">
 	<?php if ($this->params->get('show_page_heading') != 0) : ?>
 		<div class="page-header">
 			<h2 class="u-layout-centerLeft u-text-r-s">

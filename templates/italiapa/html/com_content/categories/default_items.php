@@ -116,7 +116,7 @@ if (count($this->items[$this->parent->id]) > 0) :
 		</h3>
 		<?php if ($this->params->get('show_subcat_desc_cat') == 1) : ?>
 			<?php if ($item->description) : ?>
-				<div class="u-text-p u-textSecondary">
+				<div class="u-text-p u-textSecondary" itemprop="articleBody">
 					<?php echo JHtml::_('content.prepare', $item->description, '', 'com_content.categories'); ?>
 				</div>
 			<?php endif; ?>

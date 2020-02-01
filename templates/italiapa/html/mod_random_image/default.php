@@ -14,9 +14,15 @@
  */
 
 defined('_JEXEC') or die;
+
+$moduleclass_sfx = $moduleclass_sfx ?: ' Arrange-sizeFill';
 ?>
-<?php foreach ($this->items[$this->parent->id] as $id => $item) : ?>
-	<?php if ($this->params->get('show_empty_categories_cat') || $item->numitems || count($item->getChildren())) : ?>
-		<?php echo JLayoutHelper::render('joomla.content.category_item', array('item' => $item, 'params' => $this->params, 'extension' => 'newsfeeds')); ?> 
-	<?php endif; ?>
-<?php endforeach; ?>
+<div class="random-image<?php echo $moduleclass_sfx; ?>" data-tooltip="<?php echo JHtml::tooltipText(pathinfo($image->name)['filename'], 0); ?>">
+<?php if ($link) : ?>
+<a href="<?php echo $link; ?>">
+<?php endif; ?>
+	<?php echo JHtml::_('image', $image->folder . '/' . htmlspecialchars($image->name, ENT_COMPAT, 'UTF-8'), null, array('width' => $image->width, 'height' => $image->height)); ?>
+<?php if ($link) : ?>
+</a>
+<?php endif; ?>
+</div>

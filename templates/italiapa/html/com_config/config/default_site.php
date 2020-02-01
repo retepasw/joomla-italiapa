@@ -14,9 +14,12 @@
  */
 
 defined('_JEXEC') or die;
+
+require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 ?>
-<?php foreach ($this->items[$this->parent->id] as $id => $item) : ?>
-	<?php if ($this->params->get('show_empty_categories_cat') || $item->numitems || count($item->getChildren())) : ?>
-		<?php echo JLayoutHelper::render('joomla.content.category_item', array('item' => $item, 'params' => $this->params, 'extension' => 'newsfeeds')); ?> 
-	<?php endif; ?>
-<?php endforeach; ?>
+<?php echo JHtml::_('iwt.addSlide', 'config', JText::_('COM_CONFIG_SITE_SETTINGS'), 'site'); ?>
+	<?php foreach ($this->form->getFieldset('site') as $field) : ?>
+		<?php $field->class = implode(' ', array_unique(array_merge(explode(' ', $field->class), array('Form-input')))); ?>
+		<?php echo $field->renderField(); ?>
+	<?php endforeach; ?>
+<?php echo JHtml::_('iwt.endSlide'); ?>

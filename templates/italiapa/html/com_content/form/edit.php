@@ -193,12 +193,12 @@ foreach ($this->form->getFieldsets() as $fieldset)
 		<div class="Grid Grid--fit Grid--withGutter u-padding-all-l">
 			<div class="Grid-cell">
 				<button type="button" class="Button Button--default u-text-r-xs" onclick="Joomla.submitbutton('article.save')">
-					<span class="icon-ok"></span><?php echo JText::_('JSAVE') ?>
+					<span class="Icon-check"></span><?php echo JText::_('JSAVE') ?>
 				</button>
 			</div>
 			<div class="Grid-cell">
 				<button type="button" class="Button Button--danger u-text-r-xs" onclick="Joomla.submitbutton('article.cancel')">
-					<span class="icon-cancel"></span><?php echo JText::_('JCANCEL') ?>
+					<span class="Icon-cancel"></span><?php echo JText::_('JCANCEL') ?>
 				</button>
 			</div>
 			<?php if ($params->get('save_history', 0) && $this->item->id) : ?>

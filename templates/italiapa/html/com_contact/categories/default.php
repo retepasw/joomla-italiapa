@@ -14,9 +14,17 @@
  */
 
 defined('_JEXEC') or die;
+
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
+JHtml::_('behavior.caption');
+JHtml::_('behavior.core');
+
 ?>
-<?php foreach ($this->items[$this->parent->id] as $id => $item) : ?>
-	<?php if ($this->params->get('show_empty_categories_cat') || $item->numitems || count($item->getChildren())) : ?>
-		<?php echo JLayoutHelper::render('joomla.content.category_item', array('item' => $item, 'params' => $this->params, 'extension' => 'newsfeeds')); ?> 
-	<?php endif; ?>
-<?php endforeach; ?>
+<section class="u-layout-wide u-layout-r-withGutter u-text-r-s u-padding-r-top u-padding-r-bottom categories-list<?php echo $this->pageclass_sfx; ?>">
+	<div class="u-padding-r-top u-padding-r-bottom"><div class="u-text-r-s">
+		<?php echo JLayoutHelper::render('joomla.content.categories_default', $this); ?>
+    </div></div>
+    <div class="Grid Grid--withGutterM">
+   		<?php echo $this->loadTemplate('items'); ?>
+	</div>
+</section>
