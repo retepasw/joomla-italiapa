@@ -1541,3 +1541,20 @@ footer input::-ms-input-placeholder { /* Microsoft Edge */
 .icon-expired:before {
 	content: "\4b";
 }
+
+.tip-wrap {
+	max-width: 220px;
+	padding: 3px 8px;
+	color: #000;
+	text-align: center;
+	text-decoration: none;
+	background-color: #fff;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	z-index: 100;
+}
+
+.tip-text {
+	text-align: left;
+}
