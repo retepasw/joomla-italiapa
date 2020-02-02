@@ -1,7 +1,7 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	plg_system_ipatinymce
+ * @package		Joomla.Plugins
+ * @subpackage	System.IpaTinyMCE
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
