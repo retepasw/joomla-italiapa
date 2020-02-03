@@ -22,9 +22,13 @@ $assocParam = (JLanguageAssociations::isEnabled() && $item->params->get('show_as
 ?>
 				<div class="u-nbfc u-borderShadow-xxs u-borderRadius-m u-color-gray-30 u-background-white u-sizeFull">
 					<?php $images = json_decode($item->images); ?>
-					<?php if (isset($images->image_intro) && !empty($images->image_intro)) : ?>
-					<?php echo JLayoutHelper::render('joomla.content.intro_image', $item); ?>
+					
+					<?php if (($params->get('img_intro_full') == 'intro') && isset($images->image_intro) && !empty($images->image_intro)) : ?>
+						<?php echo JLayoutHelper::render('joomla.content.intro_image', $item); ?>
+					<?php elseif (($params->get('img_intro_full') == 'full') && isset($images->image_full) && !empty($images->image_full)) : ?>
+						<?php echo JLayoutHelper::render('joomla.content.full_image', $item); ?>
 					<?php endif; ?>
+					
 					<div class="u-text-r-l u-padding-r-all u-layout-prose">
 						<?php
 						$useDefList = ($item->params->get('show_modify_date') || $item->params->get('show_publish_date') || $item->params->get('show_create_date') || $item->params->get('show_hits') || $item->params->get('show_category') || $item->params->get('show_parent_category') || $item->params->get('show_author') || $assocParam);
