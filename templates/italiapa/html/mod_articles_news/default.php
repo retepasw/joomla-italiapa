@@ -17,6 +17,8 @@ defined('_JEXEC') or die;
 
 if ($module->position == 'featured') :
 	require 'featured.php';
+elseif ($module->position == 'top') :
+	require 'horizontal.php';
 else : //if ($module->position == 'news') :
 	require 'focus.php';
 endif;
