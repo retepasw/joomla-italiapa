@@ -18,6 +18,8 @@ defined('_JEXEC') or die;
 
 <?php $id = ($tagId = $params->get('tag_id', '')) ? ' id="' . $tagId . '"' : ''; ?>
 
+<?php $class_sfx = trim(implode(' ', array_unique(explode(' ', 'Arrange-sizeFill ' . $class_sfx)))); ?>
+
 <ul class="Grid Grid--withGutter<?php echo $class_sfx; ?>"<?php echo $id; ?>>
 <?php $n = min(count($list), 12); ?>
 <?php foreach ($list as $i => &$item) : ?>

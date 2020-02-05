@@ -49,9 +49,10 @@ if ($moduleclass_sfx)
     $moduleclass_sfx = trim(implode(' ', $moduleclass_sfx_array));
 }
 
-if ($class_sfx)
-{
-	$class_sfx_array = explode(' ', $class_sfx);
+$class_sfx = 'Arrange-sizeFill ' . $class_sfx;
+//if ($class_sfx)
+//{
+	$class_sfx_array = array_unique(explode(' ', $class_sfx));
 	for ($i = count($class_sfx_array) - 1; $i >= 0; $i--)
 	{
 		if ($class_sfx_array[$i] == 'u-flex')
@@ -75,8 +76,9 @@ if ($class_sfx)
 			unset($class_sfx_array[$i]);
 		}
 	}
+
 	$class_sfx = trim(implode(' ', $class_sfx_array));
-}
+//}
 
 $u_size .= $u_size ? '' : 'u-md-size1of3 u-lg-size1of3 ';
 ?>
