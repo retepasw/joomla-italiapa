@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension version="3.9" type="plugin" group="system" method="upgrade">
+	<name>plg_system_italiapa</name>
+	<author>Helios Ciancio</author>
+	<creationDate>February 2020</creationDate>
+	<copyright>(C) 2017 - 2020 Helios Ciancio. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3</license>
+	<authorEmail>info@eshiol.it</authorEmail>
+	<authorUrl>www.eshiol.it</authorUrl>
+	<version>3.9.0</version>
+	<description>PLG_SYSTEM_ITALIAPA_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="italiapa">italiapa.php</filename>
+		<folder>forms</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.plg_system_italiapa.ini</language>
+		<language tag="en-GB">en-GB.plg_system_italiapa.sys.ini</language>
+		<language tag="it-IT">it-IT.plg_system_italiapa.ini</language>
+		<language tag="it-IT">it-IT.plg_system_italiapa.sys.ini</language>
+	</languages>
+</extension>

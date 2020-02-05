@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fields name="params">
+		<fieldset name="advanced">
+			<field name="carousel_count" type="integer" label="PLG_SYSTEM_ITALIAPA_CAROUSEL_COUNT_LABEL" description="PLG_SYSTEM_ITALIAPA_CAROUSEL_COUNT_DESC" first="1" last="12" step="1"
+				showon="layout:italiapa:carousel" />
+			<field name="carousel_layout" type="list" label="PLG_SYSTEM_ITALIAPA_CAROUSEL_LAYOUT_LABEL" description="PLG_SYSTEM_ITALIAPA_CAROUSEL_LAYOUT_DESC"
+				showon="layout:italiapa:carousel">
+				<option value="">JDEFAULT</option>
+				<option value="_card">PLG_SYSTEM_ITALIAPA_CAROUSEL_LAYOUT_CARD</option>
+				<option value="_hcell">PLG_SYSTEM_ITALIAPA_CAROUSEL_LAYOUT_CELL</option>
+			</field>
+			<field name="carousel_show_controls" type="radio" label="PLG_SYSTEM_ITALIAPA_CAROUSEL_SHOW_CONTROLS_LABEL" description="PLG_SYSTEM_ITALIAPA_CAROUSEL_SHOW_CONTROLS_DESC" class="btn-group btn-group-yesno" default="1"
+				showon="layout:italiapa:carousel">
+				<option value="1">JSHOW</option>
+				<option value="0">JHIDE</option>
+			</field>
+			<field name="carousel_show_indicators" type="radio" label="PLG_SYSTEM_ITALIAPA_CAROUSEL_SHOW_INDICATORS_LABEL" description="PLG_SYSTEM_ITALIAPA_CAROUSEL_SHOW_INDICATORS_DESC" class="btn-group btn-group-yesno" default="1"
+				showon="layout:italiapa:carousel">
+				<option value="1">JSHOW</option>
+				<option value="0">JHIDE</option>
+			</field>
+			<field name="carousel_auto_sliding" type="radio" label="PLG_SYSTEM_ITALIAPA_CAROUSEL_AUTO_SLIDING_LABEL" description="PLG_SYSTEM_ITALIAPA_CAROUSEL_AUTO_SLIDING_DESC" class="btn-group btn-group-yesno" default="1"
+				showon="layout:italiapa:carousel">
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+			<field name="carousel_interval" type="text" label="PLG_SYSTEM_ITALIAPA_CAROUSEL_INTERVAL_LABEL" description="PLG_SYSTEM_ITALIAPA_CAROUSEL_INTERVAL_DESC" default="5000" filter="integer"
+				showon="layout:italiapa:carousel[AND]carousel_auto_sliding:1" />				
+			<field name="carousel_speed" type="text" label="PLG_SYSTEM_ITALIAPA_CAROUSEL_SPEED_LABEL" description="PLG_SYSTEM_ITALIAPA_CAROUSEL_SPEED_DESC" default="1000" filter="integer"
+				showon="layout:italiapa:carousel[AND]carousel_auto_sliding:1" />				
+			<field name="carousel_lazy" type="radio" label="PLG_SYSTEM_ITALIAPA_CAROUSEL_LAZY_LABEL" description="PLG_SYSTEM_ITALIAPA_CAROUSEL_LAZY_DESC" class="btn-group btn-group-yesno" default="1"
+				showon="layout:italiapa:carousel">
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+		</fieldset>
+	</fields>
+</form>
