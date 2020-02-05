@@ -55,7 +55,7 @@ if (!empty($description))
 		//$title	 = ' title="' . JHtml::tooltipText(trim($text, ':'), $description, 0) . '"';
 		JHtml::_('bootstrap.popover', '.hasPopover', array('placement' => 'bottom'));
 		$classes[] = 'hasPopover';
-		$title	 = ' data-content="' . htmlspecialchars(trim($text, ':')) . '"';		
+		$title	 = ' data-content="' . htmlspecialchars(trim($text, ':')) . '"';
 	}
 }
 
