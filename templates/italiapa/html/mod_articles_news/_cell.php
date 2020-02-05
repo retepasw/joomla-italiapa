@@ -20,43 +20,50 @@ $info = $item->params->get('info_block_position', 0);
 // Check if associations are implemented. If they are, define the parameter.
 $assocParam = (JLanguageAssociations::isEnabled() && $item->params->get('show_associations'));
 ?>
-				<div class="u-color-grey-30 u-border-top-xxs u-padding-right-xxl u-padding-r-all">
-					<?php
-					$useDefList = ($item->params->get('show_modify_date') || $item->params->get('show_publish_date') || $item->params->get('show_create_date') || $item->params->get('show_hits') || $item->params->get('show_category') || $item->params->get('show_parent_category') || $item->params->get('show_author') || $assocParam);
+<?php $images = json_decode($item->images); ?>
+<?php if (($params->get('img_intro_full') == 'intro') && isset($images->image_intro) && !empty($images->image_intro)) : ?>
+	<?php echo JLayoutHelper::render('joomla.content.intro_image', $item); ?>
+<?php elseif (($params->get('img_intro_full') == 'full') && isset($images->image_full) && !empty($images->image_full)) : ?>
+	<?php echo JLayoutHelper::render('joomla.content.full_image', $item); ?>
+<?php endif; ?>
+<div class="u-color-grey-30 u-border-top-xxs u-padding-right-xxl u-padding-r-all">
+	<?php
+	$useDefList = ($item->params->get('show_modify_date') || $item->params->get('show_publish_date') || $item->params->get('show_create_date') || $item->params->get('show_hits') || $item->params->get('show_category') || $item->params->get('show_parent_category') || $item->params->get('show_author') || $assocParam);
 
-					if ($useDefList && ($info == 0 || $info == 2)) :
-						echo JLayoutHelper::render('joomla.content.info_block', array('item' => $item, 'params' => $item->params, 'position' => 'above'));
-					endif;
-					?>
+	if ($useDefList && ($info == 0 || $info == 2)) :
+		echo JLayoutHelper::render('joomla.content.info_block', array('item' => $item, 'params' => $item->params, 'position' => 'above'));
+	endif;
+	?>
 
-					<?php if ($params->get('item_title')) : ?>
-					<h3 class="u-padding-r-top u-padding-r-bottom">
-						<?php if ($item->link !== '' && $params->get('link_titles')) : ?>
-						<a class="u-text-h4 u-textClean u-color-black" href="<?php echo $item->link; ?>">
-							<?php echo $item->title; ?>
-						</a>
-						<?php else : ?>
-							<span class="u-text-h4 u-textClean u-color-black"><?php echo $item->title; ?></span>
-						<?php endif; ?>
-					</h3>
-					<?php endif; ?>
-					<div class="u-lineHeight-l u-text-r-xs u-textSecondary u-padding-r-right">
-						<?php
-						if (!$params->get('intro_only')) :
-							echo $item->afterDisplayTitle;
-						endif;
+	<?php if ($params->get('item_title')) : ?>
+	<h3 class="u-padding-r-top u-padding-r-bottom">
+		<?php if ($item->link !== '' && $params->get('link_titles')) : ?>
+		<a class="u-text-h4 u-textClean u-color-black" href="<?php echo $item->link; ?>">
+			<?php echo $item->title; ?>
+		</a>
+		<?php else : ?>
+			<span class="u-text-h4 u-textClean u-color-black"><?php echo $item->title; ?></span>
+		<?php endif; ?>
+	</h3>
+	<?php endif; ?>
 
-						echo $item->beforeDisplayContent;
+	<div class="u-lineHeight-l u-text-r-xs u-textSecondary u-padding-r-right">
+		<?php
+		if (!$params->get('intro_only')) :
+			echo $item->afterDisplayTitle;
+		endif;
 
-						if ($params->get('show_introtext', '1')) :
-							echo $item->introtext;
-						endif;
+		echo $item->beforeDisplayContent;
 
-						echo $item->afterDisplayContent;
+		if ($params->get('show_introtext', '1')) :
+			echo $item->introtext;
+		endif;
 
-						if (isset($item->link) && $item->readmore != 0 && $params->get('readmore')) :
-							echo '<a class="readmore" href="' . $item->link . '">' . $item->linkText . '</a>';
-						endif;
-						?>
-					</div>
-				</div>
+		echo $item->afterDisplayContent;
+
+		if (isset($item->link) && $item->readmore != 0 && $params->get('readmore')) :
+			echo '<a class="readmore" href="' . $item->link . '">' . $item->linkText . '</a>';
+		endif;
+		?>
+	</div>
+</div>
