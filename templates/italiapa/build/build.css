@@ -7009,73 +7009,73 @@ ul.Linklist .osmap-item-heading {
   text-decoration: none !important;
 }
 ul.circle {
-  list-style-type: circle;
+  list-style-type: circle!important;
 }
 ul.disc {
-  list-style-type: disc;
+  list-style-type: disc!important;
 }
 ul.square {
-  list-style-type: square;
+  list-style-type: square!important;
 }
 ol.armenian {
-  list-style-type: armenian;
+  list-style-type: armenian!important;
 }
 ol.cjk-ideographic {
-  list-style-type: cjk-ideographic;
+  list-style-type: cjk-ideographic!important;
 }
 ol.decimal {
-  list-style-type: decimal;
+  list-style-type: decimal!important;
 }
 ol.decimal-leading-zero {
-  list-style-type: decimal-leading-zero;
+  list-style-type: decimal-leading-zero!important;
 }
 ol.georgian {
-  list-style-type: georgian;
+  list-style-type: georgian!important;
 }
 ol.hebrew {
-  list-style-type: hebrew;
+  list-style-type: hebrew!important;
 }
 ol.hiragana {
-  list-style-type: hiragana;
+  list-style-type: hiragana!important;
 }
 ol.hiragana-iroha {
-  list-style-type: hiragana-iroha;
+  list-style-type: hiragana-iroha!important;
 }
 ol.katakana {
-  list-style-type: katakana;
+  list-style-type: katakana!important;
 }
 ol.katakana-iroha {
-  list-style-type: katakana-iroha;
+  list-style-type: katakana-iroha!important;
 }
 ol.lower-alpha {
-  list-style-type: lower-alpha;
+  list-style-type: lower-alpha!important;
 }
 ol.lower-greek {
-  list-style-type: lower-greek;
+  list-style-type: lower-greek!important;
 }
 ol.lower-latin {
-  list-style-type: lower-latin;
+  list-style-type: lower-latin!important;
 }
 ol.lower-roman {
-  list-style-type: lower-roman;
+  list-style-type: lower-roman!important;
 }
 ol.upper-alpha {
-  list-style-type: upper-alpha;
+  list-style-type: upper-alpha!important;
 }
 ol.upper-greek {
-  list-style-type: upper-greek;
+  list-style-type: upper-greek!important;
 }
 ol.upper-latin {
-  list-style-type: upper-latin;
+  list-style-type: upper-latin!important;
 }
 ol.upper-roman {
-  list-style-type: upper-roman;
+  list-style-type: upper-roman!important;
 }
 ol.none {
-  list-style-type: none;
+  list-style-type: none!important;
 }
 ol.inherit {
-  list-style-type: inherit;
+  list-style-type: inherit!important;
 }
 ul.circle,
 ul.disc,
