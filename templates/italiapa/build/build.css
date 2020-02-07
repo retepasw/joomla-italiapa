@@ -7099,10 +7099,18 @@ ol.upper-greek,
 ol.upper-latin,
 ol.upper-roman,
 ol.none,
-ol.inherit {
+ol.inherit,
+[itemprop=articleBody] ul,
+[itemprop=articleBody] ol {
   margin-block-end: 18px;
   margin-block-start: 18px;
   margin-inline-end: 0px;
   margin-inline-start: 0px;
   padding-inline-start: 40px;
+}
+[itemprop=articleBody] ul {
+  list-style-type: disc;
+}
+[itemprop=articleBody] ol {
+  list-style-type: decimal;
 }
