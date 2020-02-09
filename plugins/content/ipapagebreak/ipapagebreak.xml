@@ -7,7 +7,7 @@
   <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3</license>
   <authorEmail>info@eshiol.it</authorEmail>
   <authorUrl>www.eshiol.it</authorUrl>
-  <version>3.8.0.16</version>
+  <version>3.9.0.16</version>
   <description>PLG_CONTENT_IPAPAGEBREAK_XML_DESCRIPTION</description>
   <scriptfile>script.php</scriptfile>
   <updateservers>
