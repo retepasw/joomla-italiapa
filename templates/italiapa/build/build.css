@@ -7008,3 +7008,109 @@ ul.Linklist .osmap-item-heading {
   padding-bottom: 1em !important;
   text-decoration: none !important;
 }
+ul.circle {
+  list-style-type: circle!important;
+}
+ul.disc {
+  list-style-type: disc!important;
+}
+ul.square {
+  list-style-type: square!important;
+}
+ol.armenian {
+  list-style-type: armenian!important;
+}
+ol.cjk-ideographic {
+  list-style-type: cjk-ideographic!important;
+}
+ol.decimal {
+  list-style-type: decimal!important;
+}
+ol.decimal-leading-zero {
+  list-style-type: decimal-leading-zero!important;
+}
+ol.georgian {
+  list-style-type: georgian!important;
+}
+ol.hebrew {
+  list-style-type: hebrew!important;
+}
+ol.hiragana {
+  list-style-type: hiragana!important;
+}
+ol.hiragana-iroha {
+  list-style-type: hiragana-iroha!important;
+}
+ol.katakana {
+  list-style-type: katakana!important;
+}
+ol.katakana-iroha {
+  list-style-type: katakana-iroha!important;
+}
+ol.lower-alpha {
+  list-style-type: lower-alpha!important;
+}
+ol.lower-greek {
+  list-style-type: lower-greek!important;
+}
+ol.lower-latin {
+  list-style-type: lower-latin!important;
+}
+ol.lower-roman {
+  list-style-type: lower-roman!important;
+}
+ol.upper-alpha {
+  list-style-type: upper-alpha!important;
+}
+ol.upper-greek {
+  list-style-type: upper-greek!important;
+}
+ol.upper-latin {
+  list-style-type: upper-latin!important;
+}
+ol.upper-roman {
+  list-style-type: upper-roman!important;
+}
+ol.none {
+  list-style-type: none!important;
+}
+ol.inherit {
+  list-style-type: inherit!important;
+}
+ul.circle,
+ul.disc,
+ul.square,
+ol.armenian,
+ol.cjk-ideographic,
+ol.decimal,
+ol.decimal-leading-zero,
+ol.georgian,
+ol.hebrew,
+ol.hiragana,
+ol.hiragana-iroha,
+ol.katakana,
+ol.katakana-iroha,
+ol.lower-alpha,
+ol.lower-greek,
+ol.lower-latin,
+ol.lower-roman,
+ol.upper-alpha,
+ol.upper-greek,
+ol.upper-latin,
+ol.upper-roman,
+ol.none,
+ol.inherit,
+[itemprop=articleBody] ul,
+[itemprop=articleBody] ol {
+  margin-block-end: 18px;
+  margin-block-start: 18px;
+  margin-inline-end: 0px;
+  margin-inline-start: 0px;
+  padding-inline-start: 40px;
+}
+[itemprop=articleBody] ul {
+  list-style-type: disc;
+}
+[itemprop=articleBody] ol {
+  list-style-type: decimal;
+}
