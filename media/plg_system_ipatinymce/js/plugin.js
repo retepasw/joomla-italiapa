@@ -1,5 +1,5 @@
 ;(typeof(tinymce) !== 'undefined') && tinymce.PluginManager.add('ipa', function (editor, url) {
-	console.log('TinyMCE for ItaliaPA v.3.8.0.11');
+	console.log('TinyMCE for ItaliaPA v.3.9.0.16');
 
 	var pluginOptions = Joomla.getOptions ? Joomla.getOptions('plg_system_ipatinymce', {})
 			:  (Joomla.optionsStorage.plg_system_ipatinymce || {}),

@@ -22,7 +22,7 @@
 	    if ( typeof ( eshiol.italiapa ) === 'undefined' ) {
 			eshiol.italiapa = {};
 		}
-		eshiol.italiapa.version = '3.8.0.16';
+		eshiol.italiapa.version = '3.9.0.16';
 
 		// Banner
 		console.log( "  _____ _        _ _       _____\n |_   _| |      | (_)     |  __ \\ /\\\n   | | | |_ __ _| |_  __ _| |__) /  \\\n   | | | __/ _` | | |/ _` |  ___/ /\\ \\\n  _| |_| || (_| | | | (_| | |  / ____ \\\n |_____|\\__\\__,_|_|_|\\__,_|_| /_/    \\_\\ " + eshiol.italiapa.version + "\n\nbased on Web Toolkit (https://italia.github.io/design-web-toolkit/)\nCopyright (c) 2017-2020, Helios Ciancio (https://www.eshiol.it)" );

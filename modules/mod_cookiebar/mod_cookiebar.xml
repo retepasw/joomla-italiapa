@@ -2,12 +2,12 @@
 <extension type="module" version="3.7" client="site" method="upgrade">
   <name>mod_cookiebar</name>
   <author>Helios Ciancio</author>
-  <creationDate>July 2019</creationDate>
-  <copyright>(C) 2017 - 2019 Helios Ciancio. All rights reserved.</copyright>
+  <creationDate>February 2020</creationDate>
+  <copyright>(C) 2017 - 2020 Helios Ciancio. All rights reserved.</copyright>
   <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3</license>
   <authorEmail>info@eshiol.it</authorEmail>
   <authorUrl>www.eshiol.it</authorUrl>
-  <version>3.8.2</version>
+  <version>3.9.0.16</version>
   <description>MOD_COOKIEBAR_XML_DESCRIPTION</description>
   <updateservers>
     <server type="extension" priority="2" name="Template ItaliaPA - Cookiebar Module">https://www.eshiol.it/files/italiapa/mod_cookiebar.xml</server>
