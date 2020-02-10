@@ -15,9 +15,9 @@
   </updateservers>
   <files>
     <folder type="template" id="italiapa">tpl_italiapa-3.9.0.16.zip</folder>
-    <folder type="plugin" id="iapagebreak" group="content">plg_content_ipapagebreak-3.9.0.16.zip</folder>
-    <folder type="plugin" id="ipatinymce" group="system">plg_system_ipatinymce-3.9.0.16.zip</folder>
-    <folder type="plugin" id="italiapa" group="system">plg_system_italiapa-3.9.0.16.zip</folder>
+    <folder type="plugin" group="content" id="ipagebreak">plg_content_ipapagebreak-3.9.0.16.zip</folder>
+    <folder type="plugin" group="system" id="ipatinymce">plg_system_ipatinymce-3.9.0.16.zip</folder>
+    <folder type="plugin" group="system" id="italiapa">plg_system_italiapa-3.9.0.16.zip</folder>
     <folder type="module" id="carousel">mod_carousel-3.9.0.16.zip</folder>
     <folder type="module" id="cookiebar">mod_cookiebar-3.9.0.16.zip</folder>
     <folder type="module" id="schemaorg">mod_schemaorg-3.9.0.16.zip</folder>
