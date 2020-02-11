@@ -118,7 +118,7 @@ function pagination_list_render($list)
 		}
 	}
 
-	$html = '<nav aria-label="Navigazione paginata" class="Grid Grid--fit Grid--alignCenter u-layoutCenter">';
+	$html = '<nav role="navigation" aria-label="' . JText::_('TPL_ITALIAPA_PAGINGBAR') . '" class="Grid Grid--fit Grid--alignCenter u-layoutCenter">';
 	$html .= '<ul class="Grid Grid--fit Grid--alignMiddle u-text-r-xxs">';
 	$html .= $list['start']['data'];
 	$html .= $list['previous']['data'];
