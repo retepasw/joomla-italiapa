@@ -7114,3 +7114,8 @@ ol.inherit,
 [itemprop=articleBody] ol {
   list-style-type: decimal;
 }
+nav[role=navigation] ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

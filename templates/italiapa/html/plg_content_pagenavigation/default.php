@@ -17,7 +17,7 @@ defined('_JEXEC') or die;
 
 $lang = JFactory::getLanguage(); ?>
 
-<nav aria-label="Navigazione paginata" class="Grid Grid--fit Grid--alignCenter u-layoutCenter">
+<nav role="navigation" aria-label="<?php echo JText::_('TPL_ITALIAPA_PAGINGBAR'); ?>" class="Grid Grid--fit Grid--alignCenter u-layoutCenter">
 	<ul class="Grid Grid--fit Grid--alignMiddle u-text-r-xxs">
 	<?php if ($row->prev) : ?>
 		<li class="Grid-cell u-textCenter">

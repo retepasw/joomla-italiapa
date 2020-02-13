@@ -21,7 +21,7 @@ $template = $app->getTemplate();
 $lang     = JFactory::getLanguage();
 ?>
 
-<nav aria-label="Navigazione paginata" class="u-padding-top-xxl">
+<nav role="navigation" aria-label="<?php echo JText::_('TPL_ITALIAPA_PAGINGBAR'); ?>" class="u-padding-top-xxl">
 	<ul class="Grid Grid--fit Grid--alignMiddle u-text-r-xxs">
 		<li class="Grid-cell u-textCenter">
 			<?php if ($links['previous']) : ?>
