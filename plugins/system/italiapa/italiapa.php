@@ -106,5 +106,25 @@ class PlgSystemItaliaPA extends JPlugin
 				$form->loadFile('carousel', false);
 			}
 		}
+		elseif ($formName == 'com_config.modules')
+		{
+			if (JFactory::getApplication()->isAdmin())
+			{
+				return;
+			}
+			
+			// fix modal_menu field
+			foreach ($form->getFieldsets() as $fieldset)
+			{
+				$fields = $form->getFieldset($fieldset->name);
+				foreach ($fields as $field)
+				{
+					if ($field->getAttribute('type') == 'modal_menu')
+					{
+						$form->setFieldAttribute($field->getAttribute('name'), 'type', 'menuitem', 'params');
+					}
+				}
+			}
+		}
 	}
 }
