@@ -20,9 +20,9 @@ extract($displayData);
 /**
  * Layout variables
  * ---------------------
- * 	$options		 : (array)  Optional parameters
- * 	$label		   : (string) The html code for the label (not required if $options['hiddenLabel'] is true)
- * 	$input		   : (string) The input field html code
+ * 	$options       : (array)  Optional parameters
+ * 	$label         : (string) The html code for the label (not required if $options['hiddenLabel'] is true)
+ * 	$input         : (string) The input field html code
  */
 
 if (!empty($options['showonEnabled']))
@@ -49,14 +49,6 @@ $rel   = empty($options['rel']) ? '' : ' ' . $options['rel'];
 		{
 			// the field does not have the class attribute
 			$input = preg_replace('/^(\s*<(?:select)\s*[^>]*)>/m', '\\1 class="Form-input">', $input, 1, $count);
-		}
-		elseif (!in_array('Form-input', explode(' ', $matches[1][0])))
-		{
-			// the field doesn't have the Form-input class
-			$input = preg_replace(
-				'/^(\s*<(?:select) [^>]*class="[^"]*)"([^>]*)>/m',
-				'\\1 Form-input ' . $matches[1][0] . '"',
-				$input, 1, $count);
 		}
 	}
 ?>
