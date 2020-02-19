@@ -139,17 +139,17 @@ JFactory::getDocument()->addScriptDeclaration("
 	<?php echo JHtml::_('form.token'); ?>
 
 	<div class="Grid Grid--fit Grid--withGutter u-padding-all-l" role="toolbar" aria-label="<?php echo JText::_('JTOOLBAR'); ?>">
-		<div class="Grid-cell">
+		<div class="Grid-cell u-textCenter">
 			<button type="button" class="Button Button--default u-text-r-xs" onclick="Joomla.submitbutton('config.save.modules.apply')">
 				<span class="icon-ok"></span><?php echo JText::_('JAPPLY') ?>
 			</button>
 		</div>
-		<div class="Grid-cell">
+		<div class="Grid-cell u-textCenter">
 			<button type="button" class="Button Button--default u-text-r-xs" onclick="Joomla.submitbutton('config.save.modules.save')">
 				<span class="icon-ok"></span><?php echo JText::_('JSAVE') ?>
 			</button>
 		</div>
-		<div class="Grid-cell">
+		<div class="Grid-cell u-textCenter">
 			<button type="button" class="Button Button--danger u-text-r-xs" onclick="Joomla.submitbutton('config.cancel.modules')">
 				<span class="icon-cancel"></span><?php echo JText::_('JCANCEL') ?>
 			</button>
