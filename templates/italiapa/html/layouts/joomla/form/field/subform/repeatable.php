@@ -52,12 +52,12 @@ $sublayout = empty($groupByFieldset) ? 'section' : 'section-byfieldsets';
 			data-minimum="<?php echo $min; ?>" data-maximum="<?php echo $max; ?>"
 		>
 			<?php if (!empty($buttons['add'])) : ?>
-			<div class="Grid Grid--alignRight">
-				<a href="#" class="Grid-cell u-sizeFit u-linkClean u-margin-left-l u-margin-top-xs group-add group-add-<?php echo $unique_subform_id; ?>">
-					<span class="u-hiddenVisually"><?php echo JText::_('JGLOBAL_FIELD_ADD'); ?></span>
-					<svg class="Icon u-text-r-l u-margin-top-xs"><use xlink:href="#Icon-it-plus"></use></svg>
-				</a>
-			</div>
+				<div class="Grid Grid--alignRight">
+					<a href="#" class="Grid-cell u-sizeFit u-linkClean u-margin-left-l u-margin-top-xs hasTooltip group-add group-add-<?php echo $unique_subform_id; ?>" data-title="<?php echo JText::_('JGLOBAL_FIELD_ADD'); ?>">
+						<span class="u-hiddenVisually"><?php echo JText::_('JGLOBAL_FIELD_ADD'); ?></span>
+						<svg class="Icon u-text-r-l u-margin-top-xs"><use xlink:href="#Icon-it-plus"></use></svg>
+					</a>
+				</div>
 			<?php endif; ?>
 		<?php
 		foreach ($forms as $k => $form) :

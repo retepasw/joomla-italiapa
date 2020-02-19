@@ -32,26 +32,26 @@ extract($displayData);
 	data-group="<?php echo $group; ?>"
 >
 	<?php if (!empty($buttons)) : ?>
-	<div class="Grid Grid--alignRight">
-		<?php if (!empty($buttons['add'])) : ?>
-			<a href="#" class="Grid-cell u-sizeFit u-linkClean u-margin-left-l u-margin-top-xs group-add group-add-<?php echo $unique_subform_id; ?>">
-				<span class="u-hiddenVisually"><?php echo JText::_('JGLOBAL_FIELD_ADD'); ?></span>
-				<svg class="Icon u-text-r-l u-margin-top-xs"><use xlink:href="#Icon-it-plus"></use></svg>
-			</a>
-		<?php endif; ?>
-		<?php if (!empty($buttons['remove'])) : ?>
-			<a href="#" class="Grid-cell u-sizeFit u-linkClean u-margin-left-l u-margin-top-xs group-remove group-remove-<?php echo $unique_subform_id; ?>">
-				<span class="u-hiddenVisually"><?php echo JText::_('JGLOBAL_FIELD_REMOVE'); ?></span>
-				<svg class="Icon u-text-r-l u-margin-top-xs"><use xlink:href="#Icon-it-minus"></use></svg>
-			</a>
-		<?php endif; ?>
-		<?php if (!empty($buttons['move'])) : ?>
-			<a href="#" class="Grid-cell u-sizeFit u-linkClean u-margin-left-l u-margin-top-xs group-move group-move-<?php echo $unique_subform_id; ?>">
-				<span class="u-hiddenVisually"><?php echo JText::_('JGLOBAL_FIELD_MOVE'); ?></span>
-				<svg class="Icon u-text-r-l u-margin-top-xs"><use xlink:href="#Icon-it-maximize-alt"></use></svg>
-			</a>
-		<?php endif; ?>
-	</div>
+		<div class="Grid Grid--alignRight">
+			<?php if (!empty($buttons['add'])) : ?>
+				<a class="Grid-cell u-sizeFit u-linkClean u-margin-left-l u-margin-top-xs hasTooltip group-add group-add-<?php echo $unique_subform_id; ?>" data-title="<?php echo JText::_('JGLOBAL_FIELD_ADD'); ?>">
+					<span class="u-hiddenVisually"><?php echo JText::_('JGLOBAL_FIELD_ADD'); ?></span>
+					<svg class="Icon u-text-r-l u-margin-top-xs"><use xlink:href="#Icon-it-plus"></use></svg>
+				</a>
+			<?php endif; ?>
+			<?php if (!empty($buttons['remove'])) : ?>
+				<a href="#" class="Grid-cell u-sizeFit u-linkClean u-margin-left-l u-margin-top-xs hasTooltip group-remove group-remove-<?php echo $unique_subform_id; ?>" data-title="<?php echo JText::_('JGLOBAL_FIELD_REMOVE'); ?>">
+					<span class="u-hiddenVisually"><?php echo JText::_('JGLOBAL_FIELD_REMOVE'); ?></span>
+					<svg class="Icon u-text-r-l u-margin-top-xs"><use xlink:href="#Icon-it-minus"></use></svg>
+				</a>
+			<?php endif; ?>
+			<?php if (!empty($buttons['move'])) : ?>
+				<a href="#" class="Grid-cell u-sizeFit u-linkClean u-margin-left-l u-margin-top-xs hasTooltip group-move group-move-<?php echo $unique_subform_id; ?>" data-title="<?php echo JText::_('JGLOBAL_FIELD_MOVE'); ?>">
+					<span class="u-hiddenVisually"><?php echo JText::_('JGLOBAL_FIELD_MOVE'); ?></span>
+					<svg class="Icon u-text-r-l u-margin-top-xs"><use xlink:href="#Icon-it-maximize-alt"></use></svg>
+				</a>
+			<?php endif; ?>
+		</div>
 	<?php endif; ?>
 	<div class="row-fluid">
 <?php foreach ($form->getFieldsets() as $fieldset) : ?>
