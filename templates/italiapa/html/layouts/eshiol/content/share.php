@@ -43,8 +43,8 @@ Condividi
 <?php
     JLoader::register('MailtoHelper', JPATH_SITE . '/components/com_mailto/helpers/mailto.php');
 
-	$link     = JRoute::_(ContentHelperRoute::getArticleRoute($displayData['item']->slug, $displayData['item']->catid, $displayData['item']->language), false);
-	$url      = 'index.php?option=com_mailto&tmpl=component&template=italiapa&link=' . MailtoHelper::addLink($link);
+    $link     = JUri::getInstance()->toString(array('scheme', 'host', 'port')) . JRoute::_(ContentHelperRoute::getArticleRoute($displayData['item']->slug, $displayData['item']->catid, $displayData['item']->language), false);
+    $url      = 'index.php?option=com_mailto&tmpl=component&template=italiapa&link=' . MailtoHelper::addLink($link);
 
 	$text     = '<span class="u-text-r-m Icon Icon-mail"></span><span class="u-hiddenVisually">Email</span>';
 
