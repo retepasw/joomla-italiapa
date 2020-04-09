@@ -26,7 +26,7 @@ JHtml::_('behavior.caption');
 		$item = $this->lead_items[0];
 		$images = json_decode($item->images);
 		$document = JFactory::getDocument();
-		$style = ".Hero {background-image: url('".htmlspecialchars($images->image_intro, ENT_COMPAT, 'UTF-8')."') !important;}";
+		$style = ".Hero {background-image: url('" . JUri::root(true) . '/' . htmlspecialchars($images->image_intro, ENT_COMPAT, 'UTF-8') . "') !important;}";
 		$document->addStyleDeclaration($style);
 	?>
 		<div class="Hero-content">
