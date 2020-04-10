@@ -2,6 +2,8 @@
 /**
  * @package		Joomla.Site
  * @subpackage	Templates.ItaliaPA
+ * 
+ * @version		__DEPLOY_VERSION__
  *
  * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		https://www.eshiol.it

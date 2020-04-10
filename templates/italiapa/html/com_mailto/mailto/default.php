@@ -3,6 +3,8 @@
  * @package		Joomla.Site
  * @subpackage	Templates.ItaliaPA
  *
+ * @version		__DEPLOY_VERSION__
+ *
  * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
  * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
@@ -12,6 +14,7 @@
  * or is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
  */
+
 defined('_JEXEC') or die();
 
 JHtml::_('behavior.core');
