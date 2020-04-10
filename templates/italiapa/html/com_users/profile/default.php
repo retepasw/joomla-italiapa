@@ -3,6 +3,8 @@
  * @package		Joomla.Site
  * @subpackage	Templates.ItaliaPA
  *
+ * @version		__DEPLOY_VERSION__
+ *
  * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
  * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
@@ -13,7 +15,7 @@
  * other free or open source software licenses.
  */
 
-defined('JPATH_BASE') or die;
+defined('_JEXEC') or die;
 ?>
 <div class="Form Form--spaced u-padding-all-xl u-background-grey-10 u-text-r-xs u-layout-prose profile<?php echo $this->pageclass_sfx; ?>">
 	<?php if ($this->params->get('show_page_heading')) : ?>

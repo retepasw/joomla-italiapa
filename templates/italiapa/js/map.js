@@ -2,6 +2,8 @@
  * @package		Joomla.Site
  * @subpackage	Templates.ItaliaPA
  *
+ * @version		__DEPLOY_VERSION__
+ *
  * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
  * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
