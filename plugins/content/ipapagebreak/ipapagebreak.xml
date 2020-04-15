@@ -2,7 +2,7 @@
 <extension version="3.1" type="plugin" group="content" method="upgrade">
   <name>plg_content_ipapagebreak</name>
   <author>Helios Ciancio</author>
-  <creationDate>February 2020</creationDate>
+  <creationDate>April 2020</creationDate>
   <copyright>(C) 2017 - 2020 Helios Ciancio. All rights reserved.</copyright>
   <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3</license>
   <authorEmail>info@eshiol.it</authorEmail>

@@ -2,7 +2,7 @@
 <extension type="module" version="3.7" client="site" method="upgrade">
 	<name>mod_carousel</name>
 	<author>Helios Ciancio</author>
-  <creationDate>February 2020</creationDate>
+  <creationDate>April 2020</creationDate>
   <copyright>(C) 2017 - 2020 Helios Ciancio. All rights reserved.</copyright>
   <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3</license>
   <authorEmail>info@eshiol.it</authorEmail>
