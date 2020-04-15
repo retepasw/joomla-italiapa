@@ -870,14 +870,22 @@ footer input::-ms-input-placeholder { /* Microsoft Edge */
 .icon-arrow-left-2:before {
 	content: "\e00c";
 }
+.icon-arrow-up-3 {
+    padding-left: 0.5em;
+}
 .icon-arrow-up-3:before {
-	content: "\e00f";
+    content: "\23f7";
+    font-family: "ita";
 }
 .icon-arrow-right-3:before {
 	content: "\e010";
 }
+.icon-arrow-down-3 {
+    padding-left: 0.5em;
+}
 .icon-arrow-down-3:before {
-	content: "\e011";
+	content: "\23f6";
+    font-family: "ita";
 }
 .icon-arrow-left-3:before {
 	content: "\e012";
