@@ -3258,7 +3258,7 @@ ul {
 .Footer-block li,
 .Footer-subBlock,
 .Leads-link,
-.Linklist li,
+.Linklist li:not(:first-child),
 .u-border-top-xxs {
   border-top: 0.1rem solid currentColor !important;
 }
@@ -7021,13 +7021,13 @@ ol.armenian {
   list-style-type: armenian!important;
 }
 ol.cjk-ideographic {
-  list-style-type: cjk-ideographic!important;
+  list-style-type: cjk-ideographic !important;
 }
 ol.decimal {
   list-style-type: decimal!important;
 }
 ol.decimal-leading-zero {
-  list-style-type: decimal-leading-zero!important;
+  list-style-type: decimal-leading-zero !important;
 }
 ol.georgian {
   list-style-type: georgian!important;
@@ -7039,37 +7039,37 @@ ol.hiragana {
   list-style-type: hiragana!important;
 }
 ol.hiragana-iroha {
-  list-style-type: hiragana-iroha!important;
+  list-style-type: hiragana-iroha !important;
 }
 ol.katakana {
   list-style-type: katakana!important;
 }
 ol.katakana-iroha {
-  list-style-type: katakana-iroha!important;
+  list-style-type: katakana-iroha !important;
 }
 ol.lower-alpha {
-  list-style-type: lower-alpha!important;
+  list-style-type: lower-alpha !important;
 }
 ol.lower-greek {
-  list-style-type: lower-greek!important;
+  list-style-type: lower-greek !important;
 }
 ol.lower-latin {
-  list-style-type: lower-latin!important;
+  list-style-type: lower-latin !important;
 }
 ol.lower-roman {
-  list-style-type: lower-roman!important;
+  list-style-type: lower-roman !important;
 }
 ol.upper-alpha {
-  list-style-type: upper-alpha!important;
+  list-style-type: upper-alpha !important;
 }
 ol.upper-greek {
-  list-style-type: upper-greek!important;
+  list-style-type: upper-greek !important;
 }
 ol.upper-latin {
-  list-style-type: upper-latin!important;
+  list-style-type: upper-latin !important;
 }
 ol.upper-roman {
-  list-style-type: upper-roman!important;
+  list-style-type: upper-roman !important;
 }
 ol.none {
   list-style-type: none!important;
