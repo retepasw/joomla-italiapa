@@ -4,7 +4,7 @@
   <author>Helios Ciancio</author>
   <creationDate>February 2020</creationDate>
   <packagename>italiapa</packagename>
-  <version>3.9.0.16</version>
+  <version>3.9.0.17</version>
   <url>http://www.eshiol.it</url>
   <copyright><![CDATA[(C) 2017 - 2020 Helios Ciancio <info (at) eshiol (dot) it> (https://www.eshiol.it). All Rights Reserved.]]></copyright>
   <packager>Helios Ciancio</packager>
@@ -14,13 +14,13 @@
     <server type="extension" priority="2" name="J2XML">https://www.eshiol.it/files/italiapa/italiapa.xml</server>
   </updateservers>
   <files>
-    <folder type="template" id="italiapa">tpl_italiapa-3.9.0.16.zip</folder>
-    <folder type="plugin" group="content" id="ipagebreak">plg_content_ipapagebreak-3.9.0.16.zip</folder>
-    <folder type="plugin" group="system" id="ipatinymce">plg_system_ipatinymce-3.9.0.16.zip</folder>
-    <folder type="plugin" group="system" id="italiapa">plg_system_italiapa-3.9.0.16.zip</folder>
-    <folder type="module" id="carousel">mod_carousel-3.9.0.16.zip</folder>
-    <folder type="module" id="cookiebar">mod_cookiebar-3.9.0.16.zip</folder>
-    <folder type="module" id="schemaorg">mod_schemaorg-3.9.0.16.zip</folder>
+    <folder type="template" id="italiapa">tpl_italiapa-3.9.0.17.zip</folder>
+    <folder type="plugin" group="content" id="ipagebreak">plg_content_ipapagebreak-3.9.0.17.zip</folder>
+    <folder type="plugin" group="system" id="ipatinymce">plg_system_ipatinymce-3.9.0.17.zip</folder>
+    <folder type="plugin" group="system" id="italiapa">plg_system_italiapa-3.9.0.17.zip</folder>
+    <folder type="module" id="carousel">mod_carousel-3.9.0.17.zip</folder>
+    <folder type="module" id="cookiebar">mod_cookiebar-3.9.0.17.zip</folder>
+    <folder type="module" id="schemaorg">mod_schemaorg-3.9.0.17.zip</folder>
   </files>
   <languages folder="language">
     <language tag="en-GB">en-GB/en-GB.pkg_italiapa.sys.ini</language>

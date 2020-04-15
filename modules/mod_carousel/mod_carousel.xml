@@ -7,7 +7,7 @@
   <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3</license>
   <authorEmail>info@eshiol.it</authorEmail>
   <authorUrl>www.eshiol.it</authorUrl>
-  <version>3.9.0.16</version>
+  <version>3.9.0.17</version>
 	<description>MOD_CAROUSEL_XML_DESCRIPTION</description>
 	<updateservers>
 		<server type="extension" priority="2" name="Italia Template - Carousel Module">https://www.eshiol.it/files/italiapa/mod_carousel.xml</server>
