@@ -1639,3 +1639,14 @@ footer input::-ms-input-placeholder { /* Microsoft Edge */
 	border-width: 0 5px 5px;
 	border-bottom-color: #000;
 }
+
+dl.stats-module dt {
+	font-weight: bolder;
+	float: left;
+	width: 50%;
+}
+dl.stats-module dd {
+	text-align: right;
+	float:right;
+	width: 50%;
+}
