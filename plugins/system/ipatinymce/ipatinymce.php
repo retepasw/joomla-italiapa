@@ -3,6 +3,8 @@
  * @package		Joomla.Plugins
  * @subpackage	System.IpaTinyMCE
  *
+ * @version		__DEPLOY_VERSION__
+ *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
  * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved

@@ -1,7 +1,7 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	plg_content_ipapagebreak
+ * @package		Joomla.Plugins
+ * @subpackage	Content.Ipapagebreak
  *
  * @version		__DEPLOY_VERSION__
  *
