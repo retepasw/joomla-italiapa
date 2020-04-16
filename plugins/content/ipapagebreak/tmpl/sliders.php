@@ -3,6 +3,8 @@
  * @package		Template ItaliaPA
  * @subpackage	plg_content_ipapagebreak
  * 
+ * @version		__DEPLOY_VERSION__
+ *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
  * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
@@ -12,11 +14,9 @@
  * or is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
  */
-
-defined('_JEXEC') or die;
+defined('_JEXEC') or die();
 
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'plg_content_ipapagebreak'));
-
 
 $t[] = $text[0];
 
