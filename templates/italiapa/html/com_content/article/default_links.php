@@ -14,7 +14,7 @@
  * or is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
  */
-efined('_JEXEC') or die;
+defined('_JEXEC') or die;
 
 // Create shortcut
 $urls = json_decode($this->item->urls);
