@@ -870,14 +870,22 @@ footer input::-ms-input-placeholder { /* Microsoft Edge */
 .icon-arrow-left-2:before {
 	content: "\e00c";
 }
+.icon-arrow-up-3 {
+    padding-left: 0.5em;
+}
 .icon-arrow-up-3:before {
-	content: "\e00f";
+    content: "\23f7";
+    font-family: "ita";
 }
 .icon-arrow-right-3:before {
 	content: "\e010";
 }
+.icon-arrow-down-3 {
+    padding-left: 0.5em;
+}
 .icon-arrow-down-3:before {
-	content: "\e011";
+	content: "\23f6";
+    font-family: "ita";
 }
 .icon-arrow-left-3:before {
 	content: "\e012";
@@ -1638,4 +1646,15 @@ footer input::-ms-input-placeholder { /* Microsoft Edge */
 	margin-left: -5px;
 	border-width: 0 5px 5px;
 	border-bottom-color: #000;
+}
+
+dl.stats-module dt {
+	font-weight: bolder;
+	float: left;
+	width: 50%;
+}
+dl.stats-module dd {
+	text-align: right;
+	float:right;
+	width: 50%;
 }

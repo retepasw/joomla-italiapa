@@ -444,7 +444,8 @@ option:hover {
 .Footer-subTitle {
   color: #FFFFFF;
 }
-.Footer-block address {
+.Footer-block address,
+.Footer-block dl {
   color: #f5f5f0;
 }
 .Footer-block li {
@@ -600,249 +601,6 @@ option:hover {
 /** @define borders */
 .u-borderSoftFocus:focus {
   box-shadow: 0 0 3px 3px hsl(181.48514851, 100%, 39.60784314%) inset !important;
-}
-/** @define Color */
-/* Color primary */
-.u-color-5 {
-  color: #aec9e4 !important;
-}
-.u-color-10 {
-  color: #80b0df !important;
-}
-.u-color-20 {
-  color: #4c96e0 !important;
-}
-.u-color-30 {
-  color: #197de0 !important;
-}
-.u-color-40 {
-  color: #0e5eae !important;
-}
-.u-color-50 {
-  color: #004A93 !important;
-}
-.u-color-60 {
-  color: #003d7a !important;
-}
-.u-color-70 {
-  color: #003060 !important;
-}
-.u-color-80 {
-  color: #002346 !important;
-}
-.u-color-90 {
-  color: #00172d !important;
-}
-.u-color-95 {
-  color: #000a13 !important;
-}
-.u-color-none {
-  color: transparent !important;
-}
-.u-color-compl {
-  color: hsl(29.79591837, 100%, 70%) !important;
-}
-.u-color-compl-5 {
-  color: hsl(29.79591837, 20%, 95%) !important;
-}
-.u-color-compl-10 {
-  color: hsl(29.79591837, 30%, 90%) !important;
-}
-.u-color-compl-80 {
-  color: hsl(29.79591837, 100%, 28.82352941%) !important;
-}
-.u-background-5 {
-  background-color: #aec9e4 !important;
-}
-.u-background-10 {
-  background-color: #80b0df !important;
-}
-.u-background-20 {
-  background-color: #4c96e0 !important;
-}
-.u-background-30 {
-  background-color: #197de0 !important;
-}
-.u-background-40 {
-  background-color: #0e5eae !important;
-}
-.u-background-50 {
-  background-color: #004A93 !important;
-}
-.u-background-60 {
-  background-color: #003d7a !important;
-}
-.u-background-70 {
-  background-color: #003060 !important;
-}
-.u-background-80 {
-  background-color: #002346 !important;
-}
-.u-background-90 {
-  background-color: #00172d !important;
-}
-.u-background-95 {
-  background-color: #000a13 !important;
-}
-.u-background-none,
-.Megamenu-item > a:focus {
-  background-color: transparent !important;
-}
-.u-background-compl {
-  background-color: hsl(29.79591837, 100%, 70%) !important;
-}
-.u-background-compl-5 {
-  background-color: hsl(29.79591837, 20%, 95%) !important;
-}
-.u-background-compl-10 {
-  background-color: hsl(29.79591837, 30%, 90%) !important;
-}
-.u-background-compl-80 {
-  background-color: hsl(29.79591837, 100%, 28.82352941%) !important;
-}
-.u-border-color-5 {
-  border-color: #aec9e4;
-}
-.u-border-color-10 {
-  border-color: #80b0df;
-}
-.u-border-color-20 {
-  border-color: #4c96e0;
-}
-.u-border-color-30 {
-  border-color: #197de0;
-}
-.u-border-color-40 {
-  border-color: #0e5eae;
-}
-.u-border-color-50 {
-  border-color: #004A93;
-}
-.u-border-color-60 {
-  border-color: #003d7a;
-}
-.u-border-color-70 {
-  border-color: #003060;
-}
-.u-border-color-80 {
-  border-color: #002346;
-}
-.u-border-color-90 {
-  border-color: #00172d;
-}
-.u-border-color-95 {
-  border-color: #000a13;
-}
-.u-border-color-none {
-  border-color: transparent;
-}
-.u-border-color-compl {
-  border-color: hsl(29.79591837, 100%, 70%);
-}
-.u-border-color-compl-5 {
-  border-color: hsl(29.79591837, 20%, 95%);
-}
-.u-border-color-compl-10 {
-  border-color: hsl(29.79591837, 30%, 90%);
-}
-.u-border-color-compl-80 {
-  border-color: hsl(29.79591837, 100%, 28.82352941%);
-}
-.u-fill-5 {
-  fill: #aec9e4;
-}
-.u-fill-10 {
-  fill: #80b0df;
-}
-.u-fill-20 {
-  fill: #4c96e0;
-}
-.u-fill-30 {
-  fill: #197de0;
-}
-.u-fill-40 {
-  fill: #0e5eae;
-}
-.u-fill-50 {
-  fill: #004A93;
-}
-.u-fill-60 {
-  fill: #003d7a;
-}
-.u-fill-70 {
-  fill: #003060;
-}
-.u-fill-80 {
-  fill: #002346;
-}
-.u-fill-90 {
-  fill: #00172d;
-}
-.u-fill-95 {
-  fill: #000a13;
-}
-.u-fill-none {
-  fill: transparent;
-}
-.u-fill-compl {
-  fill: hsl(29.79591837, 100%, 70%);
-}
-.u-fill-compl-5 {
-  fill: hsl(29.79591837, 20%, 95%);
-}
-.u-fill-compl-10 {
-  fill: hsl(29.79591837, 30%, 90%);
-}
-.u-fill-compl-80 {
-  fill: hsl(29.79591837, 100%, 28.82352941%);
-}
-.u-stroke-5 {
-  stroke: #aec9e4;
-}
-.u-stroke-10 {
-  stroke: #80b0df;
-}
-.u-stroke-20 {
-  stroke: #4c96e0;
-}
-.u-stroke-30 {
-  stroke: #197de0;
-}
-.u-stroke-40 {
-  stroke: #0e5eae;
-}
-.u-stroke-50 {
-  stroke: #004A93;
-}
-.u-stroke-60 {
-  stroke: #003d7a;
-}
-.u-stroke-70 {
-  stroke: #003060;
-}
-.u-stroke-80 {
-  stroke: #002346;
-}
-.u-stroke-90 {
-  stroke: #00172d;
-}
-.u-stroke-95 {
-  stroke: #000a13;
-}
-.u-stroke-none {
-  stroke: transparent;
-}
-.u-stroke-compl {
-  stroke: hsl(29.79591837, 100%, 70%);
-}
-.u-stroke-compl-5 {
-  stroke: hsl(29.79591837, 20%, 95%);
-}
-.u-stroke-compl-10 {
-  stroke: hsl(29.79591837, 30%, 90%);
-}
-.u-stroke-compl-80 {
-  stroke: hsl(29.79591837, 100%, 28.82352941%);
 }
 /** @define text */
 .u-textSecondary,
@@ -1013,6 +771,55 @@ http://clrs.cc/
 .u-background-focus {
   background-color: #ff8c00 !important;
 }
+.u-background-5 {
+  background-color: #aec9e4 !important;
+}
+.u-background-10 {
+  background-color: #80b0df !important;
+}
+.u-background-20 {
+  background-color: #4c96e0 !important;
+}
+.u-background-30 {
+  background-color: #197de0 !important;
+}
+.u-background-40 {
+  background-color: #0e5eae !important;
+}
+.u-background-50 {
+  background-color: #004A93 !important;
+}
+.u-background-60 {
+  background-color: #003d7a !important;
+}
+.u-background-70 {
+  background-color: #003060 !important;
+}
+.u-background-80 {
+  background-color: #002346 !important;
+}
+.u-background-90 {
+  background-color: #00172d !important;
+}
+.u-background-95 {
+  background-color: #000a13 !important;
+}
+.u-background-none,
+.Megamenu-item > a:focus {
+  background-color: transparent !important;
+}
+.u-background-compl {
+  background-color: hsl(29.79591837, 100%, 70%) !important;
+}
+.u-background-compl-5 {
+  background-color: hsl(29.79591837, 20%, 95%) !important;
+}
+.u-background-compl-10 {
+  background-color: hsl(29.79591837, 30%, 90%) !important;
+}
+.u-background-compl-80 {
+  background-color: hsl(29.79591837, 100%, 28.82352941%) !important;
+}
 /* Colors .color */
 .u-color-navy {
   color: #001F3F !important;
@@ -1103,6 +910,54 @@ http://clrs.cc/
 }
 .u-color-focus {
   color: #ff8c00 !important;
+}
+.u-color-5 {
+  color: #aec9e4 !important;
+}
+.u-color-10 {
+  color: #80b0df !important;
+}
+.u-color-20 {
+  color: #4c96e0 !important;
+}
+.u-color-30 {
+  color: #197de0 !important;
+}
+.u-color-40 {
+  color: #0e5eae !important;
+}
+.u-color-50 {
+  color: #004A93 !important;
+}
+.u-color-60 {
+  color: #003d7a !important;
+}
+.u-color-70 {
+  color: #003060 !important;
+}
+.u-color-80 {
+  color: #002346 !important;
+}
+.u-color-90 {
+  color: #00172d !important;
+}
+.u-color-95 {
+  color: #000a13 !important;
+}
+.u-color-none {
+  color: transparent !important;
+}
+.u-color-compl {
+  color: hsl(29.79591837, 100%, 70%) !important;
+}
+.u-color-compl-5 {
+  color: hsl(29.79591837, 20%, 95%) !important;
+}
+.u-color-compl-10 {
+  color: hsl(29.79591837, 30%, 90%) !important;
+}
+.u-color-compl-80 {
+  color: hsl(29.79591837, 100%, 28.82352941%) !important;
 }
 /* Border colors 
    Use with another border utility that sets border-width and style 
@@ -1199,6 +1054,54 @@ http://clrs.cc/
 .u-border-focus {
   border-color: #ff8c00 !important;
 }
+.u-border-5 {
+  border-color: #aec9e4;
+}
+.u-border-10 {
+  border-color: #80b0df;
+}
+.u-border-20 {
+  border-color: #4c96e0;
+}
+.u-border-30 {
+  border-color: #197de0;
+}
+.u-border-40 {
+  border-color: #0e5eae;
+}
+.u-border-50 {
+  border-color: #004A93;
+}
+.u-border-60 {
+  border-color: #003d7a;
+}
+.u-border-70 {
+  border-color: #003060;
+}
+.u-border-80 {
+  border-color: #002346;
+}
+.u-border-90 {
+  border-color: #00172d;
+}
+.u-border-95 {
+  border-color: #000a13;
+}
+.u-border-none {
+  border-color: transparent;
+}
+.u-border-compl {
+  border-color: hsl(29.79591837, 100%, 70%);
+}
+.u-border-compl-5 {
+  border-color: hsl(29.79591837, 20%, 95%);
+}
+.u-border-compl-10 {
+  border-color: hsl(29.79591837, 30%, 90%);
+}
+.u-border-compl-80 {
+  border-color: hsl(29.79591837, 100%, 28.82352941%);
+}
 /* Fills for SVG .fill-color */
 .u-fill-navy {
   fill: #001F3F !important;
@@ -1290,6 +1193,54 @@ http://clrs.cc/
 .u-fill-focus {
   fill: #ff8c00 !important;
 }
+.u-fill-5 {
+  fill: #aec9e4;
+}
+.u-fill-10 {
+  fill: #80b0df;
+}
+.u-fill-20 {
+  fill: #4c96e0;
+}
+.u-fill-30 {
+  fill: #197de0;
+}
+.u-fill-40 {
+  fill: #0e5eae;
+}
+.u-fill-50 {
+  fill: #004A93;
+}
+.u-fill-60 {
+  fill: #003d7a;
+}
+.u-fill-70 {
+  fill: #003060;
+}
+.u-fill-80 {
+  fill: #002346;
+}
+.u-fill-90 {
+  fill: #00172d;
+}
+.u-fill-95 {
+  fill: #000a13;
+}
+.u-fill-none {
+  fill: transparent;
+}
+.u-fill-compl {
+  fill: hsl(29.79591837, 100%, 70%);
+}
+.u-fill-compl-5 {
+  fill: hsl(29.79591837, 20%, 95%);
+}
+.u-fill-compl-10 {
+  fill: hsl(29.79591837, 30%, 90%);
+}
+.u-fill-compl-80 {
+  fill: hsl(29.79591837, 100%, 28.82352941%);
+}
 /* Strokes for SVG .stroke- */
 .u-stroke-navy {
   stroke: #001F3F !important;
@@ -1380,4 +1331,191 @@ http://clrs.cc/
 }
 .u-stroke-focus {
   stroke: #ff8c00 !important;
+}
+.u-stroke-5 {
+  stroke: #aec9e4;
+}
+.u-stroke-10 {
+  stroke: #80b0df;
+}
+.u-stroke-20 {
+  stroke: #4c96e0;
+}
+.u-stroke-30 {
+  stroke: #197de0;
+}
+.u-stroke-40 {
+  stroke: #0e5eae;
+}
+.u-stroke-50 {
+  stroke: #004A93;
+}
+.u-stroke-60 {
+  stroke: #003d7a;
+}
+.u-stroke-70 {
+  stroke: #003060;
+}
+.u-stroke-80 {
+  stroke: #002346;
+}
+.u-stroke-90 {
+  stroke: #00172d;
+}
+.u-stroke-95 {
+  stroke: #000a13;
+}
+.u-stroke-none {
+  stroke: transparent;
+}
+.u-stroke-compl {
+  stroke: hsl(29.79591837, 100%, 70%);
+}
+.u-stroke-compl-5 {
+  stroke: hsl(29.79591837, 20%, 95%);
+}
+.u-stroke-compl-10 {
+  stroke: hsl(29.79591837, 30%, 90%);
+}
+.u-stroke-compl-80 {
+  stroke: hsl(29.79591837, 100%, 28.82352941%);
+}
+/* half background */
+.u-background-half-navy {
+  background: linear-gradient(#001F3F 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-blue {
+  background: linear-gradient(#0074D9 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-aqua {
+  background: linear-gradient(#7FDBFF 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-teal {
+  background: linear-gradient(#39CCCC 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-olive {
+  background: linear-gradient(#3D9970 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-green {
+  background: linear-gradient(#2ECC40 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-lime {
+  background: linear-gradient(#01FF70 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-yellow {
+  background: linear-gradient(#FFDC00 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-orange {
+  background: linear-gradient(#FF851B 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-red {
+  background: linear-gradient(#FF4136 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-fuchsia {
+  background: linear-gradient(#F012BE 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-purple {
+  background: linear-gradient(#B10DC9 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-maroon {
+  background: linear-gradient(#85144B 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-white {
+  background: linear-gradient(#FFFFFF 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-gray {
+  background: linear-gradient(#AAAAAA 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-silver {
+  background: linear-gradient(#DDDDDD 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-black {
+  background: linear-gradient(#111111 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-grey-10 {
+  background: linear-gradient(#f5f5f0 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-grey-15 {
+  background: linear-gradient(#f6f9fc 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-grey-20 {
+  background: linear-gradient(#eee 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-grey-30 {
+  background: linear-gradient(#ddd 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-grey-40 {
+  background: linear-gradient(#a5abb0 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-grey-50 {
+  background: linear-gradient(#5a6772 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-grey-60 {
+  background: linear-gradient(#444e57 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-grey-80 {
+  background: linear-gradient(#30373d 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-grey-90 {
+  background: linear-gradient(#1c2024 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-teal-30 {
+  background: linear-gradient(#00c5ca 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-teal-50 {
+  background: linear-gradient(#65dcdf 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-teal-70 {
+  background: linear-gradient(#004a4d 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-focus {
+  background: linear-gradient(#ff8c00 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-5 {
+  background: linear-gradient(#aec9e4 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-10 {
+  background: linear-gradient(#80b0df 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-20 {
+  background: linear-gradient(#4c96e0 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-30 {
+  background: linear-gradient(#197de0 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-40 {
+  background: linear-gradient(#0e5eae 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-50 {
+  background: linear-gradient(#004A93 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-60 {
+  background: linear-gradient(#003d7a 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-70 {
+  background: linear-gradient(#003060 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-80 {
+  background: linear-gradient(#002346 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-90 {
+  background: linear-gradient(#00172d 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-95 {
+  background: linear-gradient(#000a13 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-none {
+  background: transparent !important;
+}
+.u-background-half-compl {
+  background: linear-gradient(hsl(29.79591837, 100%, 70%) 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-compl-5 {
+  background: linear-gradient(hsl(29.79591837, 20%, 95%) 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-compl-10 {
+  background: linear-gradient(hsl(29.79591837, 30%, 90%) 50%, transparent 50%) no-repeat !important;
+}
+.u-background-half-compl-80 {
+  background: linear-gradient(hsl(29.79591837, 100%, 28.82352941%) 50%, transparent 50%) no-repeat !important;
 }
