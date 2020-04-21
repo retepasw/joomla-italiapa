@@ -4,6 +4,7 @@
  * @subpackage	Templates.ItaliaPA
  *
  * @version		__DEPLOY_VERSION__
+ * @since		__DEPLOY_VERSION__
  *
  * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		http://www.eshiol.it
@@ -19,37 +20,20 @@ defined('_JEXEC') or die;
 ?>
 
 <?php if (!empty($list)) : ?>
-<section class="u-background-carousel u-padding-r-all <?php echo htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8'); ?>">
+<section class="u-padding-r-all <?php echo htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8'); ?>">
 	<div class="u-layout-medium u-layoutCenter">
-		<?php if ((bool) $module->showtitle || $params->get('show_controls', 1)) : ?>
+		<?php if ((bool) $module->showtitle) : ?>
 			<div class="Grid">
-				<?php if ((bool) $module->showtitle) : ?>
-					<h2 id="carousel-heading-<?php echo $module->id; ?>" class="Grid-cell u-text-h2 u-color-white u-layout-centerLeft"><?php echo $module->title; ?></h2>
-				<?php endif; ?>
-				
-				<?php if ($params->get('show_controls', 1)) : ?>
-					<!-- <next / prev buttons> -->
-					<div class="Grid-cell u-layout-centerRight">
-						<button class="owl-prev u-padding-bottom-xl u-padding-right-xxl u-text-r-xl u-color-white" aria-controls="carousel-<?php echo $module->id; ?>">
-							<span class="u-hiddenVisually">Vai alla slide precedente</span>
-							<span class="u-alignMiddle Icon Icon-arrow-left" role="presentation"></span>
-						</button>
-						<button class="owl-next u-padding-bottom-xl u-padding-left u-text-r-xl u-color-white" aria-controls="carousel-<?php echo $module->id; ?>">
-						  <span class="u-hiddenVisually">Vai alla slide successiva</span>
-						  <span class="u-alignMiddle Icon Icon-arrow-right" role="presentation"></span>
-						</button>
-						<p class="u-hiddenVisually" aria-hidden="true">&Egrave; possibile navigare le slide utilizzando i tasti freccia</p>
-					</div>
-					<!-- </next / prev buttons> -->
-				<?php endif; ?>
+				<h2 id="carousel-heading-<?php echo $module->id; ?>" class="Grid-cell u-text-h2 u-layout-centerLeft"><?php echo $module->title; ?></h2>
 			</div>
 		<?php endif; ?>
 
-		<div class="owl-carousel owl-theme" role="region" id="carousel-<?php echo $module->id; ?>" aria-label="carousel-<?php echo $module->title; ?>"
+		<div class="owl-carousel news-theme" role="region" id="carousel-<?php echo $module->id; ?>" aria-label="carousel-<?php echo $module->title; ?>"
 			data-carousel-options='{"items":<?php echo $params->get('count', 1); ?><?php
 			echo $params->get('auto_sliding', 1) ? ',"autoplay":true,"autoplaySpeed":' . $params->get('speed', 1000) . ',"autoplayTimeout":' . $params->get('interval', 5000) : '';
 			echo $params->get('lazy', 1) ? ',"lazyLoad":true' : '';
 			echo $params->get('loop', 1) ? ',"loop":true' : '';
+			echo $params->get('show_controls', 1) ? ',"nav":true' : '';
 			echo $params->get('show_indicators', 1) ? ',"dots":true' : ''; ?>,"responsive":false}'>
 			<?php
 			$i = 1000 * (int)$module->id;
