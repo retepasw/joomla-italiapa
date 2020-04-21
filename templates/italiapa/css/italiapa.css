@@ -569,6 +569,21 @@ header.Headroom .Megamenu-subnav {
 	border-color: #06c
 }
 
+.owl-theme .owl-dots {
+	text-align: center;
+}
+.owl-theme button.owl-dot {
+	background: #a5a5a5;
+	width: 2em;
+	height: 0.4em;
+	margin-right: 1em;
+	margin-left: 1em;
+}
+.owl-theme button.owl-dot:hover,
+.owl-theme button.owl-dot.active {
+	background: #fff
+}
+
 dl.tabs {
 	float: left;
 	margin-bottom: 1rem;
