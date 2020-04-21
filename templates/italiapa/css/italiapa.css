@@ -482,7 +482,7 @@ header.Headroom .Megamenu-subnav {
 .news-theme .owl-nav .owl-prev {
 	position: absolute;
 	top: 50%;
-	left: -1rem;
+	left: -2rem;
 	opacity: 0.2;
 	filter: alpha(opacity=20); /* For IE8 and earlier */
 }
@@ -491,7 +491,7 @@ header.Headroom .Megamenu-subnav {
 .news-theme .owl-nav .owl-next {
 	position: absolute;
 	top: 50%;
-	right: -1rem;
+	right: -2rem;
 	opacity: 0.2;
 	filter: alpha(opacity=20); /* For IE8 and earlier */
 }
