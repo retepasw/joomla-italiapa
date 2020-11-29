@@ -28,7 +28,7 @@ foreach ($text as $key => $subtext)
 	{
 		$match = $matches[$key - 1];
 		$match = (array) JUtility::parseAttributes($match[0]);
-		
+
 		if (isset($match['alt']))
 		{
 			$title = stripslashes($match['alt']);
@@ -41,10 +41,10 @@ foreach ($text as $key => $subtext)
 		{
 			$title = JText::sprintf('PLG_CONTENT_PAGEBREAK_PAGE_NUM', $key + 1);
 		}
-		
+
 		$t[] = (string) JHtml::_($style . '.panel', $title, 'article' . $row->id . '-' . $style . $key);
 	}
-	
+
 	$t[] = (string) $subtext;
 }
 

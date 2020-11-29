@@ -28,7 +28,7 @@ $this->levelcat = $this->parent->level;
 	<div class="organigramma-lev1">
 		<div class="Grid">
 			<?php // echo JLayoutHelper::render('joomla.content.categories_default', $this); ?>
-			<?php echo $this->loadTemplate('items'); ?>		
+			<?php echo $this->loadTemplate('items'); ?>
 		</div>
 	</div>
 </div>

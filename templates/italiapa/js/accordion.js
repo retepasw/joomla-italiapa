@@ -47,9 +47,9 @@ $('dl.Accordion').replaceWith(function(){
 		});
 		$x.attr('id','accordion-panel-'+$(this).parent().attr('id')+i)
 		i++;
-		return $x;		
+		return $x;
 	});
-	
+
 	var i = 0;
 	$(this).find('dt').replaceWith(function(){
 		console.log($(this).parent().attr('id'));
@@ -70,7 +70,7 @@ $('dl.Accordion').replaceWith(function(){
 		});
 		$x.attr('id','accordion-header-'+$(this).parent().attr('id')+i)
 		i++;
-		return $x;		
+		return $x;
 	});
 
 	$x = $('<div/>')
@@ -79,5 +79,5 @@ $('dl.Accordion').replaceWith(function(){
 		$x.attr(attribute.name, attribute.value);
 	});
 	$x.addClass('fr-accordion js-fr-accordion')
-	return $x;		
+	return $x;
 });

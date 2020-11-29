@@ -98,7 +98,7 @@ class italiapaInstallerScript
 	    if (($type === 'install') or ($type === 'update'))
 		{
 			JTable::addIncludePath(JPATH_ROOT.'/administrator/components/com_fields/tables');
-			
+
 			// Initialize a new field
 			/** @type  FieldsTableField  $field  */
 			$field = JTable::getInstance('Field', 'FieldsTable');
@@ -126,7 +126,7 @@ class italiapaInstallerScript
 				// Check to make sure our data is valid
 				$field->check() && $field->store(true);
 			}
-			
+
 			$field = JTable::getInstance('Field', 'FieldsTable');
 
 			// Check if the field archive_up exists before adding it
@@ -148,7 +148,7 @@ class italiapaInstallerScript
 				$field->language = '*';
 				$field->created_user_id = JFactory::getUser()->id;
 				$field->access = 1;
-				
+
 				// Check to make sure our data is valid
 				$field->check() && $field->store(true);
 			}
@@ -224,7 +224,7 @@ class italiapaInstallerScript
 			$query->where($where);
 		}
 		$db->setQuery($query);
-			
+
 		try
 		{
 			$rows = $db->loadObjectList();
@@ -250,7 +250,7 @@ class italiapaInstallerScript
 				{
 					$skip = true;
 					continue;
-				}				
+				}
 				if (substr($v, 0, 1) != '!')
 				{
 				    if ($params[$k] != $v)
@@ -289,7 +289,7 @@ class italiapaInstallerScript
 			{
 				$query->set($db->quoteName($k) . ' = ' . $db->quote($v));
 			}
-				
+
 			try
 			{
 				$db->setQuery($query)->execute();

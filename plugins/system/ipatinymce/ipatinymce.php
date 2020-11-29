@@ -30,7 +30,7 @@ class PlgSystemIpatinymce extends JPlugin
 	 * @var    boolean
 	 */
 	protected $autoloadLanguage = true;
-	
+
 	/**
 	 * Constructor
 	 *
@@ -40,7 +40,7 @@ class PlgSystemIpatinymce extends JPlugin
 	function __construct(&$subject, $config)
 	{
 		parent::__construct($subject, $config);
-		
+
 		if ($this->params->get('debug') || defined('JDEBUG') && JDEBUG)
 		{
 			JLog::addLogger(array('text_file' => $this->params->get('log', 'eshiol.log.php'), 'extension' => 'plg_system_ipatinymce_file'), JLog::ALL, array('plg_system_ipatinymce'));

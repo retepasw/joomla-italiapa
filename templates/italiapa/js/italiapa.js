@@ -74,7 +74,7 @@
 					if ( element.includes( '-size' ) ) {
 						$( el ).removeClass( element );
 					}
-				} );			
+				} );
 			});
 
 			if ( $( '#right > img:first' ).length ) {
@@ -86,7 +86,7 @@
 
 			// icons
 			$( '.ipa-Right nav' ).removeClass( 'u-floatRight' );
-			
+
 			// fix padding
 			$( '#right' ).children().each( function( i, el ) {
 				$.each( $( el ).attr( 'class' ).split( ' ' ), function( index, element ) {
@@ -117,7 +117,7 @@
 			    if ( http.status != 404 ) {
 					$.cookie( 'theme', theme, { path: '/' } );
 				    document.getElementById( 'theme' ).setAttribute( 'href', __PUBLIC_PATH__ + 'build.' + theme + '.css' );
-				}				
+				}
 			}
 			$.each(	$( 'html' ).attr( 'class' ).split( ' ' ), function( index, element ) {
 		    	if ( element.substring( 0, 6 ) == 'theme-' ) {
@@ -164,7 +164,7 @@
 			$( this ).find( 'li ul' ).width( colWidth );
 			// $( this ).find( 'li ul' ).wrapAll( '<div></div>' );
 		} );
-		
+
 		// clipboard
 	    if ( typeof ( eshiol.italiapa.clipboard ) === 'undefined' ) {
 			eshiol.italiapa.clipboard = {};
@@ -207,7 +207,7 @@
 						}
 						// Remove temporary element
 						document.body.removeChild(el);
-					}			
+					}
 				} else {
 					console.log( 'clipboard-permissoin not granted: ' + result );
 				}

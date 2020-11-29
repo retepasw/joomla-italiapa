@@ -445,7 +445,7 @@ header.Headroom .Megamenu-subnav {
 	.ipa-copyright {
 		text-align:left;
 	}
-	
+
 	.ipa-copyright>span {
 		display:block;
 		margin-top:1em
@@ -650,7 +650,7 @@ footer input::-ms-input-placeholder { /* Microsoft Edge */
 }
 
 .mod-languages .Navscroll ul li a.lang-active {
-	border-bottom: solid 3px #ff8c00;	
+	border-bottom: solid 3px #ff8c00;
 }
 
 .mod-languages .Navscroll ul {

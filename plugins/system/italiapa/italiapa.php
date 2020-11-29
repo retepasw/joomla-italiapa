@@ -98,13 +98,13 @@ class PlgSystemItaliaPA extends JPlugin
 			{
 				$data = (object) $data;
 			}
-			
+
 			Form::addFormPath(dirname(__FILE__) . '/forms');
 
 			if ($data->module == 'mod_articles_news')
 			{
 				Form::addFormPath(dirname(__FILE__) . '/forms');
-				
+
 				$form->loadFile('carousel', false);
 			}
 		}
@@ -114,7 +114,7 @@ class PlgSystemItaliaPA extends JPlugin
 			{
 				return;
 			}
-			
+
 			// fix modal_menu field
 			foreach ($form->getFieldsets() as $fieldset)
 			{
