@@ -79,9 +79,9 @@ JFactory::getDocument()->addScriptDeclaration("
 		<?php echo JHtml::_('iwt.startAccordion', 'modules', array('multiselectable'=>true)); ?>
 
 			<?php echo JHtml::_('iwt.addSlide', 'modules', JText::_('COM_CONFIG_MODULES_SETTINGS_TITLE'), 'default'); ?>
-	
+
 				<?php echo $this->form->renderField('title'); ?>
-	
+
 				<div class="Form-field">
 					<?php echo $this->form->getLabel('position'); ?>
 					<?php echo $this->loadTemplate('positions'); ?>
@@ -90,7 +90,7 @@ JFactory::getDocument()->addScriptDeclaration("
 				<?php if (JFactory::getUser()->authorise('core.edit.state', 'com_modules.module.' . $this->item['id'])) : ?>
 					<?php echo $this->form->renderField('published'); ?>
 				<?php endif ?>
-	
+
 				<?php $field = $this->form->getField('publish_up'); ?>
 				<?php $field->class = implode(' ', array_unique(array_merge(explode(' ', $field->class), array('Form-input')))); ?>
 				<?php echo $field->renderField(); ?>
@@ -98,11 +98,11 @@ JFactory::getDocument()->addScriptDeclaration("
 				<?php $field->class = implode(' ', array_unique(array_merge(explode(' ', $field->class), array('Form-input')))); ?>
 				<?php echo $field->renderField(); ?>
 
-				
+
 				<?php $field = $this->form->getField('access'); ?>
 				<?php $field->class = implode(' ', array_unique(array_merge(explode(' ', $field->class), array('Form-input')))); ?>
 				<?php echo $field->renderField(); ?>
-				
+
 				<?php echo $this->form->renderField('ordering'); ?>
 
 				<?php $field = $this->form->getField('language'); ?>

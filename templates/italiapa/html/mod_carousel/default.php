@@ -26,7 +26,7 @@ defined('_JEXEC') or die;
 				<?php if ((bool) $module->showtitle) : ?>
 					<h2 id="carousel-heading-<?php echo $module->id; ?>" class="Grid-cell u-text-h2 u-color-white u-layout-centerLeft"><?php echo $module->title; ?></h2>
 				<?php endif; ?>
-				
+
 				<?php if ($params->get('show_controls', 1)) : ?>
 					<!-- <next / prev buttons> -->
 					<div class="Grid-cell u-layout-centerRight">

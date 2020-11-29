@@ -54,13 +54,13 @@ $pageClass = $this->params->get('pageclass_sfx');
    					<?php echo JHtml::_('content.prepare', $this->category->description, '', 'com_newsfeeds.category'); ?>
    				</div>
 			<?php endif; ?>
-		</div>	   				
+		</div>	   
 	<?php elseif ($this->params->get('show_description_image') && $this->category->getParams()->get('image')) : ?>
    		<div class="Grid category-desc">
    			<div class="Grid-cell u-sizeFull u-md-size1of3 u-lg-size1of3 u-text-r-s u-padding-r-all">
    				<img src="<?php echo $this->category->getParams()->get('image'); ?>" class="u-sizeFull"/>
 			</div>
-		</div>	   				
+		</div>	   
 	<?php endif; ?>
 
 	<?php echo $this->loadTemplate('items'); ?>

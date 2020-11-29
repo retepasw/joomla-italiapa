@@ -67,7 +67,7 @@ abstract class JHtmlIwt
 		{
 			$opt['active']          = isset($params['active']) ? (string) $params['active'] : '';
 			$opt['multiselectable'] = isset($params['multiselectable']) ? (string) $params['multiselectable'] : '';
-			
+
 			if ($opt['active'])
 			{
 				// Build the script.
@@ -288,7 +288,7 @@ abstract class JHtmlIwt
 		{
 			$attributes['rel'] = $item->anchor_rel;
 		}
-		
+
 		return $attributes;
 	}
 
@@ -393,7 +393,7 @@ abstract class JHtmlIwt
 			}
 		}
 		$item->anchor_css = implode(' ', $anchor_css);
-		
+
 		return $link;
 	}
 
@@ -424,17 +424,17 @@ abstract class JHtmlIwt
 			// In that case we don't use link - so convert $mail back to utf-8.
 			$mail = JStringPunycode::emailToUTF8($mail);
 		}
-		
+
 		// Convert mail
 		$mail = static::convertEncoding($mail);
-		
+
 		// Random hash
 		$rand = md5($mail . mt_rand(1, 100000));
-		
+
 		// Split email by @ symbol
 		$mail       = explode('@', $mail);
 		$mail_parts = explode('.', $mail[1]);
-		
+
 		if ($mailto)
 		{
 			// Special handling when mail text is different from mail address
@@ -443,7 +443,7 @@ abstract class JHtmlIwt
 				// Convert text - here is the right place
 				//				$text = static::convertEncoding($text);
 				$text = str_replace('\'', '\\\'', $text);
-				
+
 				if ($email)
 				{
 					// Split email by @ symbol
@@ -456,7 +456,7 @@ abstract class JHtmlIwt
 				{
 					$tmpScript = "var addy_text" . $rand . " = '" . $text . "';";
 				}
-				
+
 				$tmpScript .= "document.getElementById('cloak" . $rand . "').innerHTML += '<a data-tooltip=\'<strong>e-mail: ' + addy" . $rand
 				. " + '</strong>\' ' + path + '\'' + prefix + ':' + addy"
 						. $rand . " + '\'>' + addy_text" . $rand . " + '<\/a>';";
@@ -472,7 +472,7 @@ abstract class JHtmlIwt
 		{
 			$tmpScript = "document.getElementById('cloak" . $rand . "').innerHTML += addy" . $rand . ";";
 		}
-		
+
 		$script       = "
 				document.getElementById('cloak" . $rand . "').innerHTML = '';
 				var prefix = '&#109;a' + 'i&#108;' + '&#116;o';
@@ -481,13 +481,13 @@ abstract class JHtmlIwt
 				addy" . $rand . " = addy" . $rand . " + '" . implode("' + '&#46;' + '", $mail_parts) . "';
 				$tmpScript
 		";
-				
+
 				// TODO: Use inline script for now
 				$inlineScript = "<script type='text/javascript'>" . $script . "</script>";
-				
+
 				return '<span id="cloak' . $rand . '">' . JText::_('JLIB_HTML_CLOAKING') . '</span>' . $inlineScript;
 	}
-	
+
 	/**
 	 * Convert encoded text
 	 *
@@ -500,7 +500,7 @@ abstract class JHtmlIwt
 	protected static function convertEncoding($text)
 	{
 		$text = html_entity_decode($text);
-		
+
 		// Replace vowels with character encoding
 		$text = str_replace('a', '&#97;', $text);
 		$text = str_replace('e', '&#101;', $text);
@@ -508,7 +508,7 @@ abstract class JHtmlIwt
 		$text = str_replace('o', '&#111;', $text);
 		$text = str_replace('u', '&#117;', $text);
 		$text = htmlentities($text, ENT_QUOTES, 'UTF-8', false);
-		
+
 		return $text;
 	}
 
@@ -549,7 +549,7 @@ abstract class JHtmlIwt
 			}
 			$icon = implode(' ', $icon);
 			$link_class = implode(' ', $link_class);
-			
+
 			if ($svg)
 			{
 				$icon = '<svg class="' . trim($icon) . '"><use xlink:href="#' . trim($svg) . '"></use></svg>';

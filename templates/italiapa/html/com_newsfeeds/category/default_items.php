@@ -51,7 +51,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
     			<?php endif; ?>
     		</div>
 		<?php endif; ?>
-		
+
 		<div class="Grid Grid--withGutter">
 			<?php foreach ($this->items as $i => $item) : ?>
 	            <div class="Grid-cell u-md-size1of3 u-lg-size1of3 u-flex u-flexCol">
@@ -63,7 +63,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
         						<?php // echo JText::sprintf('COM_NEWSFEEDS_NUM_ARTICLES_COUNT', $item->numarticles); ?>
         						[<?php echo $item->numarticles; ?>]
         					</span>
-						<?php endif; ?>				
+						<?php endif; ?>
 						</p>
 						<?php if ($this->params->get('show_link')) : ?>
         					<?php $link = JStringPunycode::urlToUTF8($item->link); ?>

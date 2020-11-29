@@ -39,7 +39,7 @@ if ($this->maxLevelcat != 0 && count($this->items[$this->parent->id]) > 0) : ?>
 						<div class="Organigramma Organigramma-verticalonly <?php echo $line; ?> halfdownline highlight">
 							<div class="Organigramma-empty"></div>
 						</div>
-					</div>	
+					</div>
 					<div class="Grid-cell">
 						<?php $class = ''; ?>
 						<?php if ($this->maxLevelcat > 1 && count($item->getChildren()) > 0) : ?>
@@ -48,7 +48,7 @@ if ($this->maxLevelcat != 0 && count($this->items[$this->parent->id]) > 0) : ?>
 									<?php $class = ' Organigramma-multicol'; ?>
 								<?php endif; ?>
 							<?php endforeach; ?>
-						<?php endif; ?>	
+						<?php endif; ?>
 						<div class="Organigramma<?php echo $class; ?> updownline highlight">
 							<div class="Organigramma-content">
 								<div class="Organigramma-padding">
@@ -68,7 +68,7 @@ if ($this->maxLevelcat != 0 && count($this->items[$this->parent->id]) > 0) : ?>
 						$this->parent = $item->getParent();
 						$this->maxLevelcat++;
 					endif;
-					?>	
+					?>
 				</div>
 
 				<div class="organigramma-mobile">
@@ -87,7 +87,7 @@ if ($this->maxLevelcat != 0 && count($this->items[$this->parent->id]) > 0) : ?>
 								$this->parent = $item->getParent();
 								$this->maxLevelcat++;
 								?>
-							<?php endif; ?>	
+							<?php endif; ?>
                         </div>
                     </div>
 				</div>

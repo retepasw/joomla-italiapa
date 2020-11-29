@@ -372,22 +372,22 @@
 			selectedElm = editor.selection.getStart();
 
 			parent = editor.dom.getParent(selectedElm, selector);
-			
+
 			state = !parent;
 			ctrl.disabled(state);
 
 			active = isMulti(parent);
 			ctrl.active(!state && active);
-			
+
 			editor.selection.selectorChanged(selector, function(state) {
 				selectedElm = editor.selection.getStart();
 
 				parent = editor.dom.getParent(selectedElm, selector);
-				
+
 				state = !parent;
 				ctrl.disabled(state);
 
-				active = isMulti(parent);				
+				active = isMulti(parent);
 				ctrl.active(!state && active);
 			});
 		}
@@ -423,7 +423,7 @@
 	}
 
 	function isMulti(elm) {
-		var multi;	
+		var multi;
 		if (elm && elm.nodeName === 'DL' && editor.dom.hasClass(elm, 'Accordion')) {
 			if (!elm.hasAttribute('aria-multiselectable')) {
 				multi = true;

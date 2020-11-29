@@ -94,7 +94,7 @@ $mparams = $this->params;
 							<?php if (empty($item->email_to) && !empty($user->email)) : ?>
 								<?php $item->email_to = $user->email; ?>
 							<?php endif; ?>
-						<?php endif; ?>						
+						<?php endif; ?>
 					</div>
 				<?php endif; ?>
 

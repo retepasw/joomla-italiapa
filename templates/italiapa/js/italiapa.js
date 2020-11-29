@@ -24,7 +24,7 @@
 	    if ( typeof ( eshiol.italiapa ) === 'undefined' ) {
 			eshiol.italiapa = {};
 		}
-		eshiol.italiapa.version = '3.9.0.16';
+		eshiol.italiapa.version = '__DEPLOY_VERSION__';
 
 		// Banner
 		console.log( "  _____ _        _ _       _____\n |_   _| |      | (_)     |  __ \\ /\\\n   | | | |_ __ _| |_  __ _| |__) /  \\\n   | | | __/ _` | | |/ _` |  ___/ /\\ \\\n  _| |_| || (_| | | | (_| | |  / ____ \\\n |_____|\\__\\__,_|_|_|\\__,_|_| /_/    \\_\\ " + eshiol.italiapa.version + "\n\nbased on Web Toolkit (https://italia.github.io/design-web-toolkit/)\nCopyright (c) 2017-2020, Helios Ciancio (https://www.eshiol.it)" );
@@ -74,7 +74,7 @@
 					if ( element.includes( '-size' ) ) {
 						$( el ).removeClass( element );
 					}
-				} );			
+				} );
 			});
 
 			if ( $( '#right > img:first' ).length ) {
@@ -86,7 +86,7 @@
 
 			// icons
 			$( '.ipa-Right nav' ).removeClass( 'u-floatRight' );
-			
+
 			// fix padding
 			$( '#right' ).children().each( function( i, el ) {
 				$.each( $( el ).attr( 'class' ).split( ' ' ), function( index, element ) {
@@ -117,7 +117,7 @@
 			    if ( http.status != 404 ) {
 					$.cookie( 'theme', theme, { path: '/' } );
 				    document.getElementById( 'theme' ).setAttribute( 'href', __PUBLIC_PATH__ + 'build.' + theme + '.css' );
-				}				
+				}
 			}
 			$.each(	$( 'html' ).attr( 'class' ).split( ' ' ), function( index, element ) {
 		    	if ( element.substring( 0, 6 ) == 'theme-' ) {
@@ -164,7 +164,7 @@
 			$( this ).find( 'li ul' ).width( colWidth );
 			// $( this ).find( 'li ul' ).wrapAll( '<div></div>' );
 		} );
-		
+
 		// clipboard
 	    if ( typeof ( eshiol.italiapa.clipboard ) === 'undefined' ) {
 			eshiol.italiapa.clipboard = {};
@@ -207,7 +207,7 @@
 						}
 						// Remove temporary element
 						document.body.removeChild(el);
-					}			
+					}
 				} else {
 					console.log( 'clipboard-permissoin not granted: ' + result );
 				}

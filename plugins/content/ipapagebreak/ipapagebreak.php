@@ -1,7 +1,9 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	plg_content_ipapagebreak
+ * @package		Joomla.Plugins
+ * @subpackage	Content.Ipapagebreak
+ * 
+ * @version		__DEPLOY_VERSION__
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
@@ -12,8 +14,7 @@
  * or or is derivative of works licensed under the GNU General Public License or or
  * other free or open source software licenses.
  */
-
-defined('_JEXEC') or die;
+defined('_JEXEC') or die();
 
 use Joomla\String\StringHelper;
 
@@ -28,42 +29,63 @@ jimport('joomla.utilities.utility');
  * or
  * <code><hr class="system-pagebreak" alt="The first page" /></code>
  * or
- * <code><hr class="system-pagebreak" title="The page title" alt="The first page" /></code>
+ * <code><hr class="system-pagebreak" title="The page title" alt="The first
+ * page" /></code>
  * or
- * <code><hr class="system-pagebreak" alt="The first page" title="The page title" /></code>
+ * <code><hr class="system-pagebreak" alt="The first page" title="The page
+ * title" /></code>
  *
- * @since  1.6
+ * @since 1.6
  */
 class PlgContentIpapagebreak extends JPlugin
 {
+
 	/**
 	 * Load the language file on instantiation.
 	 *
-	 * @var    boolean
-	 * @since  3.1
+	 * @var boolean
+	 * @since 3.1
 	 */
 	protected $autoloadLanguage = true;
 
 	/**
 	 * Constructor.
 	 *
-	 * @param   object  &$subject  The object to observe.
-	 * @param   array   $config    An optional associative array of configuration settings.
-	 *
-	 * @since   3.8.0.9
+	 * @param
+	 *        	object &$subject The object to observe.
+	 * @param array $config
+	 *        	An optional associative array of configuration settings.
+	 *        
+	 * @since 3.8.0.9
 	 */
-	public function __construct(&$subject, $config)
+	public function __construct (&$subject, $config)
 	{
 		parent::__construct($subject, $config);
 
 		if ($this->params->get('debug') || defined('JDEBUG') && JDEBUG)
 		{
-			JLog::addLogger(array('text_file' => $this->params->get('log', 'eshiol.log.php'), 'extension' => 'plg_content_ipapagebreak_file'), JLog::ALL, array('plg_content_ipapagebreak'));
+			JLog::addLogger(array(
+					'text_file' => $this->params->get('log', 'eshiol.log.php'),
+					'extension' => 'plg_content_ipapagebreak_file'
+			), JLog::ALL, array(
+					'plg_content_ipapagebreak'
+			));
 		}
-		JLog::addLogger(array('logger' => (null !== $this->params->get('logger')) ? $this->params->get('logger') : 'messagequeue', 'extension' => 'plg_content_ipapagebreak'), JLOG::ALL & ~JLOG::DEBUG, array('plg_content_ipapagebreak'));
+		JLog::addLogger(
+				array(
+						'logger' => (null !== $this->params->get('logger')) ? $this->params->get('logger') : 'messagequeue',
+						'extension' => 'plg_content_ipapagebreak'
+				), JLOG::ALL & ~ JLOG::DEBUG, array(
+						'plg_content_ipapagebreak'
+				));
 		if ($this->params->get('phpconsole') && class_exists('JLogLoggerPhpconsole'))
 		{
-			JLog::addLogger(array('logger' => 'phpconsole', 'extension' => 'plg_content_ipapagebreak_phpconsole'),  JLOG::DEBUG, array('plg_content_ipapagebreak'));
+			JLog::addLogger(array(
+					'logger' => 'phpconsole',
+					'extension' => 'plg_content_ipapagebreak_phpconsole'
+			), JLOG::DEBUG, array(
+					'plg_content_ipapagebreak'
+			));
 		}
 		JLog::add(new JLogEntry(__METHOD__, JLog::DEBUG, 'plg_content_ipapagebreak'));
 
@@ -71,24 +93,30 @@ class PlgContentIpapagebreak extends JPlugin
 	}
 
 	/**
-	 * Plugin that adds a pagebreak into the text and truncates text at that point
+	 * Plugin that adds a pagebreak into the text and truncates text at that
+	 * point
 	 *
-	 * @param   string   $context  The context of the content being passed to the plugin.
-	 * @param   object   &$row     The article object.  Note $article->text is also available
-	 * @param   mixed    &$params  The article params
-	 * @param   integer  $page     The 'page' number
-	 *
-	 * @return  mixed  Always returns void or true
-	 *
-	 * @since   1.6
+	 * @param string $context
+	 *        	The context of the content being passed to the plugin.
+	 * @param
+	 *        	object &$row The article object. Note $article->text is also
+	 *        	available
+	 * @param
+	 *        	mixed &$params The article params
+	 * @param integer $page
+	 *        	The 'page' number
+	 *        
+	 * @return mixed Always returns void or true
+	 *        
+	 * @since 1.6
 	 */
-	public function onContentPrepare($context, &$row, &$params, $page = 0)
+	public function onContentPrepare ($context, &$row, &$params, $page = 0)
 	{
 		JLog::add(new JLogEntry(__METHOD__, JLog::DEBUG, 'plg_content_ipapagebreak'));
 
 		$canProceed = $context === 'com_content.article';
 
-		if (!$canProceed)
+		if (! $canProceed)
 		{
 			return;
 		}
@@ -112,7 +140,7 @@ class PlgContentIpapagebreak extends JPlugin
 		$print = $input->getBool('print');
 		$showall = $input->getBool('showall');
 
-		if (!$this->params->get('enabled', 1))
+		if (! $this->params->get('enabled', 1))
 		{
 			$print = true;
 		}
@@ -124,7 +152,8 @@ class PlgContentIpapagebreak extends JPlugin
 			return true;
 		}
 
-		// Simple performance check to determine whether bot should process further.
+		// Simple performance check to determine whether bot should process
+		// further.
 		if (StringHelper::strpos($row->text, 'class="system-pagebreak') === false)
 		{
 			if ($page > 0)
@@ -138,7 +167,7 @@ class PlgContentIpapagebreak extends JPlugin
 		$view = $input->getString('view');
 		$full = $input->getBool('fullview');
 
-		if (!$page)
+		if (! $page)
 		{
 			$page = 0;
 		}
@@ -150,7 +179,8 @@ class PlgContentIpapagebreak extends JPlugin
 			return;
 		}
 
-		// Load plugin language files only when needed (ex: not needed if no system-pagebreak class exists).
+		// Load plugin language files only when needed (ex: not needed if no
+		// system-pagebreak class exists).
 		$this->loadLanguage();
 
 		// Find all instances of plugin and put in $matches.
@@ -180,7 +210,7 @@ class PlgContentIpapagebreak extends JPlugin
 		// Split the text around the plugin.
 		$text = preg_split($regex, $row->text);
 
-		if (!isset($text[$page]))
+		if (! isset($text[$page]))
 		{
 			throw new Exception(JText::_('JERROR_PAGE_NOT_FOUND'), 404);
 		}
@@ -191,7 +221,7 @@ class PlgContentIpapagebreak extends JPlugin
 		// We have found at least one plugin, therefore at least 2 pages.
 		if ($n > 1)
 		{
-			$title  = $this->params->get('title', 1);
+			$title = $this->params->get('title', 1);
 			$hasToc = $this->params->get('multipage_toc', 1);
 
 			// Adds heading or title to <site> Title.
@@ -248,7 +278,8 @@ class PlgContentIpapagebreak extends JPlugin
 
 					if ($page < $n - 1)
 					{
-						$links['next'] = JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catid, $row->language) . '&limitstart=' . ($page + 1));
+						$links['next'] = JRoute::_(
+								ContentHelperRoute::getArticleRoute($row->slug, $row->catid, $row->language) . '&limitstart=' . ($page + 1));
 					}
 
 					if ($page > 0)
@@ -267,11 +298,11 @@ class PlgContentIpapagebreak extends JPlugin
 					ob_start();
 					include $path;
 					$navigation = ob_get_clean();
-					//$navigation = $this->_createNavigation($row, $page, $n);
+					// $navigation = $this->_createNavigation($row, $page, $n);
 				}
 
 				// Page links shown at bottom of page if TOC disabled.
-				if (!$hasToc)
+				if (! $hasToc)
 				{
 					$navigation = $pageNav->getPagesLinks();
 				}
@@ -288,24 +319,29 @@ class PlgContentIpapagebreak extends JPlugin
 	/**
 	 * Creates a Table of Contents for the pagebreak
 	 *
-	 * @param   object   &$row      The article object.  Note $article->text is also available
-	 * @param   array    &$matches  Array of matches of a regex in onContentPrepare
-	 * @param   integer  &$page     The 'page' number
+	 * @param
+	 *        	object &$row The article object. Note $article->text is also
+	 *        	available
+	 * @param
+	 *        	array &$matches Array of matches of a regex in
+	 *        	onContentPrepare
+	 * @param
+	 *        	integer &$page The 'page' number
+	 *        
+	 * @return void
 	 *
-	 * @return  void
-	 *
-	 * @since  1.6
+	 * @since 1.6
 	 */
-	protected function _createToc(&$row, &$matches, &$page)
+	protected function _createToc (&$row, &$matches, &$page)
 	{
 		JLog::add(new JLogEntry(__METHOD__, JLog::DEBUG, 'plg_content_ipapagebreak'));
 
-		$heading     = isset($row->title) ? $row->title : JText::_('PLG_CONTENT_PAGEBREAK_NO_TITLE');
-		$input       = JFactory::getApplication()->input;
-		$limitstart  = $input->getUInt('limitstart', 0);
-		$showall     = $input->getInt('showall', 0);
+		$heading = isset($row->title) ? $row->title : JText::_('PLG_CONTENT_PAGEBREAK_NO_TITLE');
+		$input = JFactory::getApplication()->input;
+		$limitstart = $input->getUInt('limitstart', 0);
+		$showall = $input->getInt('showall', 0);
 		$headingtext = '';
-		$list        = array();
+		$list = array();
 
 		if ($this->params->get('article_index', 1) == 1)
 		{
@@ -318,11 +354,11 @@ class PlgContentIpapagebreak extends JPlugin
 		}
 
 		// TOC first Page link.
-		$list[1]          = new stdClass;
+		$list[1] = new stdClass();
 		$list[1]->liClass = ($limitstart === 0 && $showall === 0) ? 'toclink active' : 'toclink';
-		$list[1]->class   = $list[1]->liClass;
-		$list[1]->link    = JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catid, $row->language));
-		$list[1]->title   = $heading;
+		$list[1]->class = $list[1]->liClass;
+		$list[1]->link = JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catid, $row->language));
+		$list[1]->title = $heading;
 
 		$i = 2;
 
@@ -350,22 +386,22 @@ class PlgContentIpapagebreak extends JPlugin
 				$title = JText::sprintf('PLG_CONTENT_PAGEBREAK_PAGE_NUM', $i);
 			}
 
-			$list[$i]          = new stdClass;
-			$list[$i]->link    = JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catid, $row->language) . '&limitstart=' . ($i - 1));
-			$list[$i]->title   = $title;
+			$list[$i] = new stdClass();
+			$list[$i]->link = JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catid, $row->language) . '&limitstart=' . ($i - 1));
+			$list[$i]->title = $title;
 			$list[$i]->liClass = ($limitstart === $i - 1) ? 'active' : '';
-			$list[$i]->class   = ($limitstart === $i - 1) ? 'toclink active' : 'toclink';
+			$list[$i]->class = ($limitstart === $i - 1) ? 'toclink active' : 'toclink';
 
-			$i++;
+			$i ++;
 		}
 
 		if ($this->params->get('showall'))
 		{
-			$list[$i]          = new stdClass;
-			$list[$i]->link    = JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catid, $row->language) . '&showall=1');
+			$list[$i] = new stdClass();
+			$list[$i]->link = JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catid, $row->language) . '&showall=1');
 			$list[$i]->liClass = ($showall === 1) ? 'active' : '';
-			$list[$i]->class   = ($showall === 1) ? 'toclink active' : 'toclink';
-			$list[$i]->title   = JText::_('PLG_CONTENT_PAGEBREAK_ALL_PAGES');
+			$list[$i]->class = ($showall === 1) ? 'toclink active' : 'toclink';
+			$list[$i]->title = JText::_('PLG_CONTENT_PAGEBREAK_ALL_PAGES');
 		}
 
 		$path = JPluginHelper::getLayoutPath('content', 'ipapagebreak', 'toc');
@@ -377,15 +413,19 @@ class PlgContentIpapagebreak extends JPlugin
 	/**
 	 * Creates the navigation for the item
 	 *
-	 * @param   object  &$row  The article object.  Note $article->text is also available
-	 * @param   int     $page  The total number of pages
-	 * @param   int     $n     The page number
+	 * @param
+	 *        	object &$row The article object. Note $article->text is also
+	 *        	available
+	 * @param int $page
+	 *        	The total number of pages
+	 * @param int $n
+	 *        	The page number
+	 *        
+	 * @return void
 	 *
-	 * @return  void
-	 *
-	 * @since   1.6
+	 * @since 1.6
 	 */
-	protected function _createNavigation(&$row, $page, $n)
+	protected function _createNavigation (&$row, $page, $n)
 	{
 		JLog::add(new JLogEntry(__METHOD__, JLog::DEBUG, 'plg_content_ipapagebreak'));
 

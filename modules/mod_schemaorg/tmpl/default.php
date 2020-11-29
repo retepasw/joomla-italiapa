@@ -38,7 +38,7 @@ foreach($params->get('data') as $item)
 	}
 
 	switch ($item->type) 
-	{		
+	{
 		case 'addressLocality':
 			if ($previous == 'postalCode')
 			{
@@ -80,7 +80,7 @@ foreach($params->get('data') as $item)
 			if (in_array($previous, $postalAddress))
 			{
 				$text .= '</div>';
-			}			
+			}
 			$text .= '<span itemprop="'.$item->type.'">'.$item->text.'</span>';
 			break;
 		case 'addressRegion':
@@ -94,7 +94,7 @@ foreach($params->get('data') as $item)
 			}
 			break;
 	}
-	
+
 	$previous = $item->type;
 }
 

@@ -67,25 +67,25 @@ $menu   = hierarchical_array_from_array($list, $params->get('startLevel', 1));
 	<ul class="Megamenu-list Megamenu<?php echo $class_sfx; ?>"<?php echo $id; ?>>
 		<?php $parent_id = 0; ?>
 		<?php $groups    = \JFactory::getUser()->getAuthorisedViewLevels(); ?>
-		
+
 		<?php foreach ($list as $i => &$item) : ?>
 			<?php if (!in_array($item->access, $groups)) continue; ?>
 			<?php
 //				ob_start();
-			
+
 				$class = ' item-' . $item->id;
 				$subclass = '';
-			
+
 				if ($item->id == $default_id)
 				{
 					$class .= ' default';
 				}
-			
+
 				if ($item->id == $active_id || ($item->type === 'alias' && $item->params->get('aliasoptions') == $active_id))
 				{
 					$class .= ' current';
 				}
-			
+
 				if (in_array($item->id, $path))
 				{
 					$class .= ' active';
@@ -93,7 +93,7 @@ $menu   = hierarchical_array_from_array($list, $params->get('startLevel', 1));
 				elseif ($item->type === 'alias')
 				{
 					$aliasToId = $item->params->get('aliasoptions');
-			
+
 					if (count($path) > 0 && $aliasToId == $path[count($path) - 1])
 					{
 						$class .= ' active';
@@ -103,22 +103,22 @@ $menu   = hierarchical_array_from_array($list, $params->get('startLevel', 1));
 						$class .= ' alias-parent-active';
 					}
 				}
-			
+
 				if ($item->type === 'separator')
 				{
 					$class .= ' divider';
 				}
-			
+
 				if ($item->deeper)
 				{
 					$class .= ' deeper';
 				}
-			
+
 				if ($item->parent)
 				{
 					$class .= ' parent';
 				}
-			
+
 				$icon = '';
 				$columns = '';
 				if ($item->anchor_css)
@@ -139,12 +139,12 @@ $menu   = hierarchical_array_from_array($list, $params->get('startLevel', 1));
 					}
 					$item->anchor_css = (substr($item->anchor_css, 0, 1) == ' ' ? ' ' : '') . implode(' ', $anchor_css);
 				}
-			
+
 				if (!$item->anchor_css)
 				{
 					$class = 'Megamenu-item' . $class;
 				}
-			
+
 				if (preg_match_all('/(^|\s)Icon-/', $item->menu_image_css, $matches, PREG_SET_ORDER, 0))
 				{
 					$icon = '';
@@ -166,7 +166,7 @@ $menu   = hierarchical_array_from_array($list, $params->get('startLevel', 1));
 						}
 					}
 					$item->menu_image_css = implode(' ', $menu_image_css);
-			
+
 					if ($svg)
 					{
 						$icon = '<svg class="' . trim($icon . ' ' . $item->menu_image_css) . '"><use xlink:href="#' . trim($svg) . '"></use></svg>';
@@ -176,7 +176,7 @@ $menu   = hierarchical_array_from_array($list, $params->get('startLevel', 1));
 						$icon = '<span class="' . trim($icon . ' ' . $item->menu_image_css) . '"></span>';
 					}
 				}
-			
+
 				if ($item->level == 1)
 				{
 					echo '<li' . ($class || $subclass ? ' class="' . $class . ' ' . $subclass . '"' : '') .
@@ -205,20 +205,20 @@ $menu   = hierarchical_array_from_array($list, $params->get('startLevel', 1));
 				{
 					echo $icon;
 				}
-			
+
 				switch ($item->type) :
 					case 'separator':
 					case 'heading':
 					case 'component':
 						require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
 						break;
-			
+
 					case 'url':
 					default:
 						require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
 						break;
 				endswitch;
-			
+
 				// The next item is deeper.
 				if ($item->deeper)
 				{
@@ -272,7 +272,7 @@ $menu   = hierarchical_array_from_array($list, $params->get('startLevel', 1));
 				{
 					echo '</li>';
 				}
-			
+
 //				$buffer = ob_get_flush();
 			?>
 		<?php endforeach; ?>

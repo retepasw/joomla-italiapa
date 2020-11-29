@@ -70,7 +70,7 @@ JFactory::getSession()->set('theme', $theme);
 	<?php if (file_exists('templates/italiapa/css/user.css')) : ?>
 		<link href="<?php echo $this->baseurl; ?>/templates/italiapa/css/user.css" rel="stylesheet" />
 	<?php endif; ?>
-	
+
 	<?php if (file_exists('templates/italiapa/js/js.css')) : ?>
 		<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/user.js"></script>
 	<?php endif; ?>
@@ -115,7 +115,7 @@ JFactory::getSession()->set('theme', $theme);
 	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/tooltip-theme-arrows.css" />
 
 	<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/jquery.min.js"></script>
-	
+
 	<?php
 	$owner_modules = array();
 	foreach (JModuleHelper::getModules('owner') AS $module) {
@@ -153,7 +153,7 @@ JFactory::getSession()->set('theme', $theme);
 	foreach (JModuleHelper::getModules('footermenu') AS $module) {
 		$footermenu_modules[] = JModuleHelper::renderModule($module, array('style'=>'none'));
 	}
-	
+
 	$document = \JFactory::getDocument();
 	$head = new \JDocumentRendererHead($document);
 	echo $head->fetchHead($document);
@@ -235,7 +235,7 @@ JFactory::getSession()->set('theme', $theme);
 
 		<?php if (count($search_modules) + count($socials_modules)) : ?>
 			<div class="Header-utils Grid-cell">
-	
+
 				<?php if (count($socials_modules)) : ?>
 					<div class="Headroom-hideme">
 						<?php foreach ($socials_modules AS $module) : ?>
@@ -243,7 +243,7 @@ JFactory::getSession()->set('theme', $theme);
 						<?php endforeach; ?>
 					</div>
 				<?php endif; ?>
-	
+
 				<?php if (count($search_modules)) : ?>
 					<div class="Header-search" id="header-search">
 						<?php foreach ($search_modules AS $module) : ?>
@@ -354,7 +354,7 @@ JFactory::getSession()->set('theme', $theme);
 				<div class="u-cf">
 		<?php else : ?>
 			<div itemscope itemtype="http://schema.org/<?php echo $params->get('schema_org', 'Organization'); ?>" class="u-cf">
-		<?php endif; ?>				
+		<?php endif; ?>
 		<?php if ($logo) : ?>
 			<a href="<?php echo $this->baseurl; ?>/" itemprop="url">
 				<img class="Footer-logo" src="<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>" itemprop="logo">

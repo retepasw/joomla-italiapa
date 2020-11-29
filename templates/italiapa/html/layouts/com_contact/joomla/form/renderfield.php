@@ -138,13 +138,13 @@ if (! function_exists('setAttribute'))
 
 
 if (! function_exists('getAttribute'))
-{	
+{
 	function getAttribute ($htmlString, $attributeName)
 	{
 		$pattern = '/' . $attributeName . '="([^"]*)"/';
 
 		$attribute = preg_match($pattern, $htmlString, $matches) ? $matches[1] : '';
-		
+
 		return $attribute;
 	}
 }

@@ -46,7 +46,7 @@ $rel   = empty($options['rel']) ? '' : ' ' . $options['rel'];
 	{
 		// field based on the select tag
 		preg_match('/^\s*<(?:select) [^>]*class="([^"]*)"[^>]*>/m', $input, $matches, PREG_OFFSET_CAPTURE); 
-		
+
 		if (empty($matches))
 		{
 			// the field does not have the class attribute

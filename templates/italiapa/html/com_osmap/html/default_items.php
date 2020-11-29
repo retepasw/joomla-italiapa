@@ -63,7 +63,7 @@ defined('_JEXEC') or die;
     			ob_end_clean();
 
     			echo $this->ulTag ? str_replace('<ul class="', $this->ulTag, $text) : $text;
-    			
+    
     			echo '</div>';
     		}
     	}

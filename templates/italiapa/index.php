@@ -46,7 +46,7 @@ $theme = (isset($_COOKIE['theme']) && $_COOKIE['theme']) ? $_COOKIE['theme'] : $
 $theme_path = JPATH_ROOT . '/templates/italiapa/build/build.' . $theme . '.css';
 
 if (!file_exists($theme_path)) {
-	$theme = 'italia';	
+	$theme = 'italia';
 }
 
 JFactory::getSession()->set('theme', $theme);
@@ -103,7 +103,7 @@ JFactory::getSession()->set('theme', $theme);
 	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/italiapa.css">
 	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/prism<?php echo $min; ?>.css">
 	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/tooltip-theme-arrows.css" />
-	
+
 	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tether<?php echo $min; ?>.js"></script>
 	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/drop<?php echo $min; ?>.js"></script>
 	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/prism<?php echo $min; ?>.js"></script>
@@ -182,23 +182,23 @@ JFactory::getSession()->set('theme', $theme);
 				</a>
 			</h1>
 		</div>
-	
+
 		<?php if ($this->countModules('search')) : ?>
 		<div class="Header-searchTrigger Grid-cell">
 			<button aria-controls="header-search" class="js-Header-search-trigger Icon Icon-search" title="attiva il form di ricerca" aria-label="attiva il form di ricerca" aria-hidden="false"></button>
 			<button aria-controls="header-search" class="js-Header-search-trigger Icon Icon-close u-hidden" title="disattiva il form di ricerca" aria-label="disattiva il form di ricerca" aria-hidden="true"></button>
 		</div>
 		<?php endif; ?>
-	
+
 		<?php if ($this->countModules('search') + $this->countModules('socials')) : ?>
 		<div class="Header-utils Grid-cell">
-	
+
 			<?php if ($this->countModules('socials')) : ?>
 			<div class="Headroom-hideme">
 			<jdoc:include type="modules" name="socials" />
 			</div>
 			<?php endif; ?>
-	
+
 			<?php if ($this->countModules('search')) : ?>
 			<div class="Header-search" id="header-search">
 			<jdoc:include type="modules" name="search" style="none" />
@@ -206,7 +206,7 @@ JFactory::getSession()->set('theme', $theme);
 			<?php endif; ?>
 		</div>
 		<?php endif; ?>
-		
+
 		<?php if ($this->countModules('menu')) : ?>
 		<div class="Header-toggle Grid-cell">
 			<a class="Hamburger-toggleContainer js-fr-offcanvas-open u-nojsDisplayInlineBlock u-lg-hidden u-md-hidden" href="#menu" aria-controls="menu" aria-label="<?php echo JText::_('TPL_ITALIAPA_OPEN_MENU'); ?>" title="<?php echo JText::_('TPL_ITALIAPA_OPEN_MENU'); ?>">
@@ -260,10 +260,10 @@ JFactory::getSession()->set('theme', $theme);
 		<?php if ($this->countModules('right')) : ?>
 		<div class="Grid Grid--withGutter">
 			<div class="Grid-cell u-md-size8of12 u-lg-size8of12">
-		<?php endif; ?>	
+		<?php endif; ?>
 				<jdoc:include type="message" />
 				<jdoc:include type="component" />
-	
+
 		<?php if ($this->countModules('right')) : ?>
 			</div>
 			<div id="right" class="Grid-cell u-sizeFull u-md-size4of12 u-lg-size4of12">
@@ -288,7 +288,7 @@ JFactory::getSession()->set('theme', $theme);
 			<span class="u-hidden"><?php echo JText::_('TPL_ITALIAPA_SKIP_TO_NEXT_SECTION'); ?></span>
 		</a>
 		<?php endif; ?>
-	
+
 	<?php if ($app->input->get('layout', 'default', 'raw') != 'italiapa:heronews') : ?>
 	</div>
 	<?php endif; ?>
@@ -313,7 +313,7 @@ JFactory::getSession()->set('theme', $theme);
 				<span class="Icon Icon-expand u-color-grey-40"></span>
 				<span class="u-hidden"><?php echo JText::_('TPL_ITALIAPA_SKIP_TO_NEXT_SECTION'); ?></span>
 			</a>
-		<?php endif; ?>	
+		<?php endif; ?>
 	</div>
 <?php endif; ?>
 
@@ -348,7 +348,7 @@ JFactory::getSession()->set('theme', $theme);
 				<div class="u-cf">
 			<?php else : ?>
 				<div itemscope itemtype="http://schema.org/<?php echo $params->get('schema_org', 'Organization'); ?>" class="u-cf">
-			<?php endif; ?>				
+			<?php endif; ?>
 					<?php if ($logo) : ?>
 					<a href="<?php echo $this->baseurl; ?>/" itemprop="url">
 						<img class="Footer-logo" src="<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>" itemprop="logo">

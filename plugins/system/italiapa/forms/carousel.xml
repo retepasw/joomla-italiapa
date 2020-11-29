@@ -26,9 +26,9 @@
 				<option value="0">JNO</option>
 			</field>
 			<field name="carousel_interval" type="text" label="PLG_SYSTEM_ITALIAPA_CAROUSEL_INTERVAL_LABEL" description="PLG_SYSTEM_ITALIAPA_CAROUSEL_INTERVAL_DESC" default="5000" filter="integer"
-				showon="layout:italiapa:carousel[AND]carousel_auto_sliding:1" />				
+				showon="layout:italiapa:carousel[AND]carousel_auto_sliding:1" />
 			<field name="carousel_speed" type="text" label="PLG_SYSTEM_ITALIAPA_CAROUSEL_SPEED_LABEL" description="PLG_SYSTEM_ITALIAPA_CAROUSEL_SPEED_DESC" default="1000" filter="integer"
-				showon="layout:italiapa:carousel[AND]carousel_auto_sliding:1" />				
+				showon="layout:italiapa:carousel[AND]carousel_auto_sliding:1" />
 			<field name="carousel_lazy" type="radio" label="PLG_SYSTEM_ITALIAPA_CAROUSEL_LAZY_LABEL" description="PLG_SYSTEM_ITALIAPA_CAROUSEL_LAZY_DESC" class="btn-group btn-group-yesno" default="1"
 				showon="layout:italiapa:carousel">
 				<option value="1">JYES</option>

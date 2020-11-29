@@ -47,7 +47,7 @@ require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
     				<?php echo $this->escape($this->params->get('page_heading')); ?>
     			</h1>
     		<?php endif; ?>
-    		
+    
 			<h2 class="u-layout-centerLeft u-text-r-s">
     			<?php if ($this->item->published == 0) : ?>
     				<span class="label label-warning"><?php echo JText::_('JUNPUBLISHED'); ?></span>
@@ -85,7 +85,7 @@ require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 	           			<div class="Grid-cell u-sizeFull <?php echo (empty($image_second) ? 'u-md-size1of2 u-lg-size1of2' : 'u-md-size1of3 u-lg-size1of3'); ?> u-text-r-s">
 	           				<?php echo $image_first; ?>
 	           			</div>
-					<?php endif; ?>	           		
+					<?php endif; ?>	           
 				<?php endif; ?>
 
         		<!-- Show second Image from Component -->
@@ -94,8 +94,8 @@ require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 	           			<div class="Grid-cell u-sizeFull <?php echo (empty($image_first) ? 'u-md-size1of2 u-lg-size1of2' : 'u-md-size1of3 u-lg-size1of3'); ?> u-text-r-s">
 	           				<?php echo $image_second; ?>
 	           			</div>
-					<?php endif; ?>	           		
-				<?php endif; ?>	           		
+					<?php endif; ?>	           
+				<?php endif; ?>	           
 
            		<!-- Show Description from Component -->
 				<?php if (!empty($image_first) && !empty($image_second)) : ?>
@@ -129,8 +129,8 @@ require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 	           			<div class="Grid-cell u-sizeFull <?php echo (empty($image_second) ? 'u-md-size1of2 u-lg-size1of2' : 'u-md-size1of3 u-lg-size1of3'); ?> u-text-r-s">
 	           				<?php echo $image_first; ?>
 	           			</div>
-					<?php endif; ?>	           		
-				<?php endif; ?>	           		
+					<?php endif; ?>	           
+				<?php endif; ?>	           
 
         		<!-- Show second Image from Component -->
 				<?php if (!empty($image_second)) : ?>
@@ -142,7 +142,7 @@ require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 	           			<div class="Grid-cell u-sizeFull <?php echo (empty($image_first) ? 'u-md-size1of2 u-lg-size1of2' : 'u-md-size1of3 u-lg-size1of3'); ?> u-text-r-s">
 	           				<?php echo $image_second; ?>
 	           			</div>
-					<?php endif; ?>	           		
+					<?php endif; ?>	           
 				<?php endif; ?>
 
 				<div class="Grid-cell u-sizeFull<?php echo (isset($this->rssDoc->image, $this->rssDoc->imagetitle) && $this->params->get('show_feed_image') ? ' u-md-size1of2 u-lg-size1of2' : ''); ?> u-text-r-s">
@@ -159,7 +159,7 @@ require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 				</div>
 			</div>
 
-    		<!-- Show items -->    		
+    		<!-- Show items -->    
     		<?php if (!empty($this->rssDoc[0])) : ?>
     			<div class="Grid Grid--withGutterM">
     				<?php for ($i = 0; $i < $this->item->numarticles; $i++) : ?>
@@ -204,7 +204,7 @@ require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
             						<?php else : ?>
             							<h3 class="u-text-h4 u-margin-r-bottom u-text-r-m u-color-black u-textWeight-400 u-linkClean feed-link"><?php echo trim($this->rssDoc[$i]->title); ?></h3>
             						<?php endif; ?>
-            						
+            
             						<?php if ($this->params->get('show_item_description') && $text !== '') : ?>
             							<div class="u-text-p u-textSecondary">
     										<?php $text = JFilterOutput::stripImages($text); ?>

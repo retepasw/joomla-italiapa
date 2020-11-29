@@ -1,7 +1,9 @@
 <?php
 /**
- * @package		Template ItaliaPA
- * @subpackage	plg_content_ipapagebreak
+ * @package		Joomla.Plugins
+ * @subpackage	Content.Ipapagebreak
+ *
+ * @version		__DEPLOY_VERSION__
  *
  * @author		Helios Ciancio <info@eshiol.it>
  * @link		http://www.eshiol.it
@@ -12,48 +14,57 @@
  * or or is derivative of works licensed under the GNU General Public License or or
  * other free or open source software licenses.
  */
-
-// no direct access
-defined('_JEXEC') or die('Restricted access.');
+defined('_JEXEC') or die();
 
 use Joomla\CMS\Factory;
 
 class PlgContentIpapagebreakInstallerScript
 {
+
 	/**
 	 * Called after any type of action
 	 *
-	 * @param   string      $action     Which action is happening (install|uninstall|discover_install|update)
-	 * @param   JInstaller  $installer  The class calling this method
-	 *
-	 * @return  boolean  True on success
-	 *
-	 * @since   3.7
+	 * @param string $action
+	 *        	Which action is happening
+	 *        	(install|uninstall|discover_install|update)
+	 * @param JInstaller $installer
+	 *        	The class calling this method
+	 *        
+	 * @return boolean True on success
+	 *        
+	 * @since 3.7
 	 */
-	public function postflight($action, $installer)
+	public function postflight ($action, $installer)
 	{
 		JLog::add(new JLogEntry(__METHOD__, JLog::DEBUG, 'plg_content_ipapagebreak'));
-	
+
 		if (($action === 'install') or ($action === 'update'))
 		{
 			if ((new JVersion())->isCompatible('4'))
 			{
 				$db = Factory::getDbo();
-				
-				/** @type  FieldTable  $field  */
+
+				/**
+				 * @type FieldTable $field
+				 */
 				$field = new \Joomla\Component\Fields\Administrator\Table\FieldTable($db);
 			}
 			elseif ((new JVersion())->isCompatible('3.7'))
 			{
-				JTable::addIncludePath(JPATH_ROOT.'/administrator/components/com_fields/tables');
+				JTable::addIncludePath(JPATH_ROOT . '/administrator/components/com_fields/tables');
 
 				// Initialize a new field
-				/** @type  FieldsTableField  $field  */
+				/**
+				 * @type FieldsTableField $field
+				 */
 				$field = JTable::getInstance('Field', 'FieldsTable');
 			}
 
 			// Check if the field archive_up exists before adding it
-			if (!$field->load(array('context' => 'com_content.article', 'name' => 'plg-content-ipapagebreak-style')))
+			if (! $field->load(array(
+					'context' => 'com_content.article',
+					'name' => 'plg-content-ipapagebreak-style'
+			)))
 			{
 				$field->context = 'com_content.article';
 				$field->group_id = 0;
@@ -71,24 +82,30 @@ class PlgContentIpapagebreakInstallerScript
 				$field->language = '*';
 				$field->created_user_id = JFactory::getUser()->id;
 				$field->access = 1;
-				
+
 				// Check to make sure our data is valid
-				if (!$field->check())
+				if (! $field->check())
 				{
-					JLog::add(new JLogEntry(JText::sprintf('PLG_CONTENT_IPAPAGEBREAK_CREATE_FIELD_ERROR', $field->getError()), JLog::DEBUG, 'plg_content_ipapagebreak'));
+					JLog::add(
+							new JLogEntry(JText::sprintf('PLG_CONTENT_IPAPAGEBREAK_CREATE_FIELD_ERROR', $field->getError()), JLog::DEBUG,
+									'plg_content_ipapagebreak'));
 					JFactory::getApplication()->enqueueMessage(JText::sprintf('PLG_CONTENT_IPAPAGEBREAK_CREATE_FIELD_ERROR', $field->getError()));
 
 					return false;
 				}
 				// Now store the category
-				if (!$field->store(true))
+				if (! $field->store(true))
 				{
-					JLog::add(new JLogEntry(JText::sprintf('PLG_CONTENT_IPAPAGEBREAK_CREATE_FIELD_ERROR', $field->getError()), JLog::DEBUG, 'plg_content_ipapagebreak'));
+					JLog::add(
+							new JLogEntry(JText::sprintf('PLG_CONTENT_IPAPAGEBREAK_CREATE_FIELD_ERROR', $field->getError()), JLog::DEBUG,
+									'plg_content_ipapagebreak'));
 					JFactory::getApplication()->enqueueMessage(JText::sprintf('PLG_CONTENT_IPAPAGEBREAK_CREATE_FIELD_ERROR', $field->getError()));
 
 					return false;
 				}
-				JLog::add(new JLogEntry(JText::sprintf('PLG_CONTENT_IPAPAGEBREAK_CREATE_FIELD_OK', $field->title), JLog::DEBUG, 'plg_content_ipapagebreak'));
+				JLog::add(
+						new JLogEntry(JText::sprintf('PLG_CONTENT_IPAPAGEBREAK_CREATE_FIELD_OK', $field->title), JLog::DEBUG,
+								'plg_content_ipapagebreak'));
 			}
 
 			if ($action == 'install')

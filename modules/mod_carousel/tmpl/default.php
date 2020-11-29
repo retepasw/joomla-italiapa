@@ -109,7 +109,7 @@ $span = ($n == 1) ? '' : ' class="span' . ( ( int ) 12 / $n ) . '"';
 						<p>
 							<?php if (isset($item->icon) && $item->icon) : ?>
 								<span class="icon-<?php echo $item->icon; ?>"></span>
-							<?php endif; ?>						
+							<?php endif; ?>
 							<?php echo $item->description; ?>
 						</p>
 					</figcaption>

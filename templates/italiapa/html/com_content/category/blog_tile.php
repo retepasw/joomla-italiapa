@@ -30,14 +30,14 @@ $assocParam = (JLanguageAssociations::isEnabled() && $params->get('show_associat
 	<?php // Todo Not that elegant would be nice to group the params ?>
 	<?php $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_date') || $params->get('show_create_date')
 		|| $params->get('show_hits') || $params->get('show_category') || $params->get('show_parent_category') || $params->get('show_author') || $assocParam); ?>
-	
+
 	<?php if ($useDefList && ($info == 0 || $info == 2)) : ?>
 		<?php echo JLayoutHelper::render('joomla.content.info_block', array('item' => $this->item, 'params' => $params, 'position' => 'above')); ?>
 		<?php if ($info == 0 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
 			<?php echo JLayoutHelper::render('joomla.content.tags', $this->item->tags->itemTags); ?>
 		<?php endif; ?>
 	<?php endif; ?>
-	
+
 	<?php if ($params->get('show_title')) : ?>
 		<h3 class="u-padding-r-top u-padding-r-bottom" itemprop="headline">
 			<?php if ($params->get('link_titles') && $params->get('access-view')) : ?>
@@ -81,7 +81,7 @@ $assocParam = (JLanguageAssociations::isEnabled() && $params->get('show_associat
 			<?php endif; ?>
 
 			<?php echo JLayoutHelper::render('joomla.content.readmore', array('item' => $this->item, 'params' => $params, 'link' => $link)); ?>
-		
+
 		<?php endif; ?>
 	</div>
 </div>

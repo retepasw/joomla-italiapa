@@ -43,7 +43,7 @@ JFactory::getDocument()->addScriptDeclaration("
 			<?php echo $this->loadTemplate('options'); ?>
 		<?php echo JHtml::_('iwt.endAccordion'); ?>
 	</fieldset>
-	
+
 	<input type="hidden" name="task" value="" />
 	<?php echo JHtml::_('form.token'); ?>
 
