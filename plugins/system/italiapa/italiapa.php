@@ -129,4 +129,31 @@ class PlgSystemItaliaPA extends JPlugin
 			}
 		}
 	}
+
+	/**
+	 * After Initialise Event.
+	 *
+	 * @return  void
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	public function onAfterInitialise()
+	{
+	    JLoader::registerNamespace('Italiapa', __DIR__ . '/src/italiapa', false, false, 'psr4');
+	    
+	    $template = \JFactory::getApplication()->getTemplate();
+	    if ($template == 'italiapa')
+	    {
+	        // overwrite original Joomla
+	        $loader = require JPATH_LIBRARIES . '/vendor/autoload.php';
+	        // update class maps
+	        $classMap = $loader->getClassMap();
+	        $classMap['Joomla\CMS\Form\Form'] = __DIR__ . '/src/joomla/src/Form/Form.php';
+	        
+	        // for overwrite html class
+	        \JLoader::registerPrefix('J', __DIR__ . '/src/joomla3/cms', false, true);
+	        
+	        $loader->addClassMap($classMap);
+	    }
+	}
 }
