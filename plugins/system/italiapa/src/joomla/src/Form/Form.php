@@ -44,7 +44,7 @@ class Form extends _JForm
 	 */
 	public function load($data, $replace = true, $xpath = false)
 	{
-		if ($this->name == 'com_privacy.request')
+		if (in_array($this->name, array('com_privacy.request', 'com_contact.contact')))
 		{
 			$template = \JFactory::getApplication()->getTemplate();
 			if (file_exists(JPATH_THEMES . '/' . $template . '/html/fields/consentbox.php'))
