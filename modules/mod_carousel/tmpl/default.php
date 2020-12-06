@@ -2,7 +2,8 @@
 /**
  * @package		Template ItaliaPA
  * @subpackage	mod_carousel
- * @version		3.8.3
+ * 
+ * @version		__DEPLOY_VERSION__
  * @since		3.8
  *
  * @author		Helios Ciancio <info@eshiol.it>
@@ -11,12 +12,15 @@
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
- * or or is derivative of works licensed under the GNU General Public License or or
+ * or is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
  */
 
 defined('_JEXEC') or die;
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'mod_carousel'));
+
+use Joomla\CMS\Environment\Browser;
+\JLoader::import('joomla.environment.browser');
 
 $min = ($params->get('debug') || defined('JDEBUG') && JDEBUG) ? '' : '.min';
 
@@ -79,8 +83,16 @@ $span = ($n == 1) ? '' : ' class="span' . ( ( int ) 12 / $n ) . '"';
 
 							case 3:
 								// Open in a popup window
-								list($width, $height, $type, $attr) = getimagesize($item->link);
-								$tmp = 'location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width='.$width.',height='.$height;
+							    if ($props = @getimagesize($item->link))
+							    {
+							        list($width, $height, $type, $attr) = $props;
+							        $tmp = 'location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width='.$width.',height='.$height;
+							    }
+							    else
+							    {
+							        $tmp = 'location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=screen.width/2,height=screen.height/2';
+							    }
+
 								echo "<a href=\"" . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . "\" onclick=\"window.open(this.href, 'targetWindow', '" . $tmp . "'); return false;\">" .
 									$item->img . '</a>';
 								break;
@@ -88,10 +100,19 @@ $span = ($n == 1) ? '' : ' class="span' . ( ( int ) 12 / $n ) . '"';
 							case 4:
 								// Open in a modal window
 								JHtml::_('behavior.modal', 'a.modal');
-								list($width, $height, $type, $attr) = getimagesize($item->link);
-								echo '<a class="modal" href="' . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . '"'.
-									' rel="{handler: \'iframe\', size: {x:' . ($width + 20) . ', y:' . ($height + 20) . '}}">' .
-									$item->img . ' </a>';
+
+								if ($props = @getimagesize($item->link))
+								{
+								    list($width, $height, $type, $attr) = $props;
+								    $rel = ' rel="{handler:\'iframe\',size:{x:' . ($width + 20) . ',y:' . ($height + 20) . '}}"';
+								}
+								else
+								{
+								    $rel = ' rel="{handler:\'iframe\',size:{x:screen.width/2,y:screen.height/2}}"';
+								}
+								
+								echo '<a class="modal" href="' . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . '"' . $rel . '>' .
+								    $item->img . ' </a>';
 								break;
 
 							default:
