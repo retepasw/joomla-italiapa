@@ -61,10 +61,10 @@ $modalAttributes = array(
 			{
 				echo JLayoutHelper::render('joomla.modal.header', $displayData);
 			}
-		
+
 			// Body
 			echo JLayoutHelper::render('joomla.modal.body', $displayData);
-		
+
 			// Footer
 			if (!isset($params['closeButton']) || isset($params['footer']) || $params['closeButton'])
 			{
