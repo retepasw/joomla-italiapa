@@ -46,12 +46,12 @@ class JFormFieldConsentBox extends _JFormFieldConsentBox
 		{
 			return '';
 		}
-		
+
 		$data = $this->getLayoutData();
-		
+
 		// Forcing the Alias field to display the tip below
 		$position = $this->element['name'] == 'alias' ? ' data-placement="bottom" ' : '';
-		
+
 		// When we have an article let's add the modal and make the title clickable
 		if ($data['articleid'])
 		{
@@ -88,7 +88,7 @@ class JFormFieldConsentBox extends _JFormFieldConsentBox
 	{
 		$modalHtml  = '';
 		$layoutData = $this->getLayoutData();
-		
+
 		if ($this->articleid)
 		{
 			$modalParams['title']  = $layoutData['label'];
@@ -98,9 +98,9 @@ class JFormFieldConsentBox extends _JFormFieldConsentBox
 			$article = JTable::getInstance("content");
 			$article->load($this->articleid);
 
-			$modalHtml = HTMLHelper::_('bootstrap.renderModal', 'modal-' . $this->id, $modalParams, $article->get('introtext'));
+			$modalHtml = HTMLHelper::_('bootstrap.renderModal', 'modal-' . $this->id, $modalParams, JHtml::_('content.prepare', $article->get('introtext') . $article->get('fulltext')));
 		}
-		
+
 		return $modalHtml . parent::getInput();
 	}
 }
