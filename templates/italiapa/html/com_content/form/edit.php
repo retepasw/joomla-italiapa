@@ -3,13 +3,13 @@
  * @package		Joomla.Site
  * @subpackage	Templates.ItaliaPA
  *
- * @version		__DEPLOY_VERSION__
+ * @version     __DEPLOY_VERSION__
  *
- * @author		Helios Ciancio <info (at) eshiol (dot) it>
- * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
- * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
- * Template ItaliaPA is free software. This version may have been modified
+ * @author      Helios Ciancio <info (at) eshiol (dot) it>
+ * @link        http://www.eshiol.it
+ * @copyright   Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
+ * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
+ * Template ItaliaPA  is  free  software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
  * or is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
@@ -194,8 +194,13 @@ foreach ($this->form->getFieldsets() as $fieldset)
 		</fieldset>
 		<div class="Grid Grid--fit Grid--withGutter u-padding-all-l">
 			<div class="Grid-cell">
+				<button type="button" class="Button Button--default u-text-r-xs" onclick="Joomla.submitbutton('article.apply')">
+					<span class="Icon-check"></span><?php echo JText::_('JAPPLY') ?>
+				</button>
+			</div>
+			<div class="Grid-cell">
 				<button type="button" class="Button Button--default u-text-r-xs" onclick="Joomla.submitbutton('article.save')">
-					<span class="Icon-check"></span><?php echo JText::_('JSAVE') ?>
+					<span class="Icon-check"></span><?php echo JText::_('TPL_ITALIAPA_BUTTONS_SAVE') ?>
 				</button>
 			</div>
 			<div class="Grid-cell">
