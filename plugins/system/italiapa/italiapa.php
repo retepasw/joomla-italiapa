@@ -3,13 +3,13 @@
  * @package     Joomla.Plugins
  * @subpackage  System.ItaliaPA
  *
- * @version		__DEPLOY_VERSION__
+ * @version     __DEPLOY_VERSION__
  *
- * @author		Helios Ciancio <info (at) eshiol (dot) it>
- * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
- * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
- * Template ItaliaPA is free software. This version may have been modified
+ * @author      Helios Ciancio <info (at) eshiol (dot) it>
+ * @link        http://www.eshiol.it
+ * @copyright   Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
+ * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
+ * Template ItaliaPA  is  free  software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
  * or is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
@@ -127,6 +127,27 @@ class PlgSystemItaliaPA extends JPlugin
 					}
 				}
 			}
+		}
+		elseif ($formName == 'com_menus.item')
+		{
+			// If we are on the save command, no data is passed to $data variable, we need to get it directly from request
+			$jformData = $this->app->input->get('jform', array(), 'array');
+
+			if ($jformData && !$data)
+			{
+				$data = $jformData;
+			}
+
+			if (is_array($data))
+			{
+				$data = (object) $data;
+			}
+
+			Form::addFormPath(dirname(__FILE__) . '/forms');
+			$form->loadFile(
+					$data->request['option'] . '_' .
+					$data->request['view'] . '_' .
+					$data->request['layout'], false);
 		}
 	}
 }
