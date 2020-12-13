@@ -1673,3 +1673,7 @@ dl.stats-module dd {
 	float:right;
 	width: 50%;
 }
+.Leads-link:after{
+	content: none!important;
+    margin-left: 0!important;
+}
