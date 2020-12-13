@@ -78,33 +78,36 @@ defined('_JEXEC') or die;
 
 								case 3:
 									// Open in a popup window
-									if ($props = @getimagesize($item->link))
-									{
-										list($width, $height, $type, $attr) = $props;
-										$tmp = 'location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width='.$width.',height='.$height;
-										echo "<a href=\"" . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . "\" onclick=\"window.open(this.href, 'targetWindow', '" . $tmp . "'); return false;\">" .
-											$item->img . '</a>';
-									}
-									else
-									{
-										echo $item->img;
-									}
+								    if ($props = @getimagesize($item->link))
+								    {
+								        list($width, $height, $type, $attr) = $props;
+								        $tmp = 'location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width='.$width.',height='.$height;
+								    }
+								    else
+							    	{
+								        $tmp = 'location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=screen.width/2,height=screen.height/2';
+								    }
+
+									echo "<a href=\"" . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . "\" onclick=\"window.open(this.href, 'targetWindow', '" . $tmp . "'); return false;\">" .
+										$item->img . '</a>';
 									break;
+
 								case 4:
 									// Open in a modal window
 									JHtml::_('behavior.modal', 'a.modal');
 
 									if ($props = @getimagesize($item->link))
 									{
-										list($width, $height, $type, $attr) = $props;
-										echo '<a class="modal" href="' . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . '"'.
-											' rel="{handler: \'iframe\', size: {x:' . ($width + 20) . ', y:' . ($height + 20) . '}}">' .
-											$item->img . ' </a>';
+									    list($width, $height, $type, $attr) = $props;
+									    $rel = ' rel="{handler:\'iframe\',size:{x:' . ($width + 20) . ',y:' . ($height + 20) . '}}"';
 									}
 									else
 									{
-										echo $item->img;
+									    $rel = ' rel="{handler:\'iframe\',size:{x:screen.width/2,y:screen.height/2}}"';
 									}
+								
+									echo '<a class="modal" href="' . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . '"' . $rel . '>' .
+									    $item->img . ' </a>';
 									break;
 
 								default:
@@ -114,7 +117,7 @@ defined('_JEXEC') or die;
 									break;
 							}
 						} else {
-							echo $item->img;
+						    echo $item->img;
 						}
 						?>
 						<figcaption class="u-padding-r-top">
