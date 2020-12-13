@@ -20,7 +20,8 @@ defined('_JEXEC') or die;
 
 <?php $id = ($tagId = $params->get('tag_id', '')) ? ' id="' . $tagId . '"' : ''; ?>
 
-<?php $class_sfx = trim(implode(' ', array_unique(explode(' ', 'Arrange-sizeFill ' . $class_sfx)))); ?>
+<?php $class_sfx = (empty($class_sfx) || (substr($class_sfx, 0, 1) == ' ') ? ' ' : '') .
+		trim(implode(' ', array_unique(explode(' ', $class_sfx . ' Arrange-sizeFill')))); ?>
 
 <ul class="Grid Grid--withGutter<?php echo $class_sfx; ?>"<?php echo $id; ?>>
 <?php $n = min(count($list), 12); ?>
