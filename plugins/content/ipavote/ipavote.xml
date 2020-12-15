@@ -17,7 +17,7 @@
 		<filename plugin="ipavote">ipavote.php</filename>
 		<folder>tmpl</folder>
 	</files>
-	<languages>
+	<languages folder="language">
 		<language tag="en-GB">en-GB.plg_content_ipavote.ini</language>
 		<language tag="en-GB">en-GB.plg_content_ipavote.sys.ini</language>
 		<language tag="it-IT">it-IT.plg_content_ipavote.ini</language>
