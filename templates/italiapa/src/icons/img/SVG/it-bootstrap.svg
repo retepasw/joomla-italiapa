@@ -10,46 +10,9 @@
    height="2142.1609"
    width="2133.3333"
    version="1.1">
-  <title
-     id="title4492">it-bootstrap</title>
-  <defs
-     id="defs4">
-    <linearGradient
-       id="linearGradient3820">
-      <stop
-         offset="0"
-         style="stop-color:#070135;stop-opacity:1"
-         id="stop3822" />
-      <stop
-         offset="1"
-         style="stop-color:#612d50;stop-opacity:1"
-         id="stop3824" />
-    </linearGradient>
-    <linearGradient
-       gradientTransform="matrix(1.0666667,0,0,1.0666667,-55.466667,0)"
-       gradientUnits="userSpaceOnUse"
-       xlink:href="#linearGradient3820"
-       id="linearGradient3834"
-       y2="432.48389"
-       x2="427.37671"
-       y1="547.20599"
-       x1="314.62408" />
-  </defs>
-  <metadata
-     id="metadata7">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title>it-bootstrap</dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
+  <title>it-bootstrap</title>
   <g
-     transform="matrix(15.623041,0,0,15.623041,-4253.4426,-7087.8757)"
-     id="layer1">
+     transform="matrix(15.623041,0,0,15.623041,-4253.4426,-7087.8757)">
     <rect
        style="fill:url(#linearGradient3834);fill-opacity:1;stroke:none;stroke-width:1.06666672"
        id="rect3050"
@@ -60,11 +23,9 @@
        width="136.55046" />
     <g
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:109.79650116px;line-height:100%;font-family:Sans;-inkscape-font-specification:Sans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none"
-       id="text3836"
        transform="scale(1.0052013,0.99482561)">
       <path
          style="font-weight:bold;line-height:100%;font-family:Sans;-inkscape-font-specification:'Sans Bold';fill:#ffffff;stroke-width:1.06666672"
-         id="path3841"
          d="m 339.7935,515.37628 c 3.46922,5e-5 6.09976,-0.76242 7.89163,-2.28743 1.79177,-1.52489 2.68767,-3.77419 2.68772,-6.74791 -5e-5,-2.93547 -0.89595,-5.16571 -2.68772,-6.69072 -1.79187,-1.56301 -4.42241,-2.34455 -7.89163,-2.34462 h -12.18054 v 18.07068 h 12.18054 m 0.74342,37.34225 c 4.42231,10e-6 7.73907,-0.93402 9.9503,-2.8021 2.24925,-1.86805 3.3739,-4.68921 3.37396,-8.46348 -6e-5,-3.69798 -1.10565,-6.46195 -3.31676,-8.29193 -2.21124,-1.86803 -5.54707,-2.80205 -10.0075,-2.8021 h -12.92396 v 22.35961 h 12.92396 m 20.47247,-30.70872 c 4.72728,1.3725 8.38715,3.90774 10.97966,7.6057 2.59233,3.69805 3.88854,8.23477 3.88861,13.6102 -7e-5,8.23475 -2.78311,14.37267 -8.34911,18.41378 -5.56613,4.04112 -14.02961,6.06168 -25.39043,6.06168 h -36.54165 v -85.37822 h 33.05332 c 11.85644,9e-5 20.43428,1.79191 25.73356,5.37546 5.33725,3.58371 8.00591,9.32133 8.00599,17.21289 -8e-5,4.15555 -0.97223,7.70106 -2.91647,10.63653 -1.94438,2.89746 -4.76554,5.05146 -8.46348,6.46198" />
     </g>
   </g>
