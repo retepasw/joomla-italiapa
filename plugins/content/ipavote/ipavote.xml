@@ -2,7 +2,7 @@
 <extension version="3.1" type="plugin" group="content" method="upgrade">
 	<name>PLG_CONTENT_IPAVOTE</name>
 	<author>Helios Ciancio</author>
-	<creationDate>December 2020</creationDate>
+	<creationDate>__DEPLOY_DATE__</creationDate>
 	<copyright>(C) 2020 Helios Ciancio. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3</license>
 	<authorEmail>info@eshiol.it</authorEmail>

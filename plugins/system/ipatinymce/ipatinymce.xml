@@ -2,12 +2,12 @@
 <extension version="3.1" type="plugin" group="system" method="upgrade">
 	<name>plg_system_ipatinymce</name>
 	<author>Helios Ciancio</author>
-	<creationDate>April 2020</creationDate>
+	<creationDate>__DEPLOY_DATE__</creationDate>
 	<copyright>(C) 2017 - 2020 Helios Ciancio. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3</license>
 	<authorEmail>info@eshiol.it</authorEmail>
 	<authorUrl>www.eshiol.it</authorUrl>
-	<version>3.9.0.17</version>
+	<version>__DEPLOY_VERSION__</version>
 	<description>PLG_SYSTEM_IPATINYMCE_XML_DESCRIPTION</description>
 	<scriptfile>script.php</scriptfile>
 	<updateservers>
