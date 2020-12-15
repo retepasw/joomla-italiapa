@@ -19,20 +19,37 @@ defined('_JEXEC') or die;
 ?>
 
 <?php if (!empty($list)) : ?>
-<section class="u-padding-r-all <?php echo htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8'); ?>">
+<section class="u-background-carousel u-padding-r-all <?php echo htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8'); ?>">
 	<div class="u-layout-medium u-layoutCenter">
-		<?php if ((bool) $module->showtitle) : ?>
+		<?php if ((bool) $module->showtitle || $params->get('show_controls', 1)) : ?>
 			<div class="Grid">
-				<h2 id="carousel-heading-<?php echo $module->id; ?>" class="Grid-cell u-text-h2 u-layout-centerLeft"><?php echo $module->title; ?></h2>
+				<?php if ((bool) $module->showtitle) : ?>
+					<h2 id="carousel-heading-<?php echo $module->id; ?>" class="Grid-cell u-text-h2 u-color-white u-layout-centerLeft"><?php echo $module->title; ?></h2>
+				<?php endif; ?>
+
+				<?php if ($params->get('show_controls', 1)) : ?>
+					<!-- <next / prev buttons> -->
+					<div class="Grid-cell u-layout-centerRight">
+						<button class="owl-prev u-padding-bottom-xl u-padding-right-xxl u-text-r-xl u-color-white" aria-controls="carousel-<?php echo $module->id; ?>">
+							<span class="u-hiddenVisually">Vai alla slide precedente</span>
+							<span class="u-alignMiddle Icon Icon-arrow-left" role="presentation"></span>
+						</button>
+						<button class="owl-next u-padding-bottom-xl u-padding-left u-text-r-xl u-color-white" aria-controls="carousel-<?php echo $module->id; ?>">
+						  <span class="u-hiddenVisually">Vai alla slide successiva</span>
+						  <span class="u-alignMiddle Icon Icon-arrow-right" role="presentation"></span>
+						</button>
+						<p class="u-hiddenVisually" aria-hidden="true">&Egrave; possibile navigare le slide utilizzando i tasti freccia</p>
+					</div>
+					<!-- </next / prev buttons> -->
+				<?php endif; ?>
 			</div>
 		<?php endif; ?>
 
-		<div class="owl-carousel news-theme" role="region" id="carousel-<?php echo $module->id; ?>" aria-label="carousel-<?php echo $module->title; ?>"
+		<div class="owl-carousel owl-theme" role="region" id="carousel-<?php echo $module->id; ?>" aria-label="carousel-<?php echo $module->title; ?>"
 			data-carousel-options='{"items":<?php echo $params->get('count', 1); ?><?php
 			echo $params->get('auto_sliding', 1) ? ',"autoplay":true,"autoplaySpeed":' . $params->get('speed', 1000) . ',"autoplayTimeout":' . $params->get('interval', 5000) : '';
 			echo $params->get('lazy', 1) ? ',"lazyLoad":true' : '';
 			echo $params->get('loop', 1) ? ',"loop":true' : '';
-			echo $params->get('show_controls', 1) ? ',"nav":true' : '';
 			echo $params->get('show_indicators', 1) ? ',"dots":true' : ''; ?>,"responsive":false}'>
 			<?php
 			$i = 1000 * (int)$module->id;
@@ -56,7 +73,8 @@ defined('_JEXEC') or die;
 							{
 								case 2:
 									// Open in a new window
-									echo '<a href="' . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . '" target="_blank"  rel="nofollow">' . $item->img . '</a>';
+								    echo '<a href="' . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . '" target="_blank"  rel="nofollow">' . $item->img . '</a>';
+								    $caption = '<a href="' . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . '" target="_blank"  rel="nofollow" class="u-color-teal-50 u-text-r-xxs u-textWeight-700">' . $item->caption . '</a>';
 									break;
 
 								case 3:
@@ -73,6 +91,8 @@ defined('_JEXEC') or die;
 
 									echo "<a href=\"" . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . "\" onclick=\"window.open(this.href, 'targetWindow', '" . $tmp . "'); return false;\">" .
 										$item->img . '</a>';
+									$caption = "<a href=\"" . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . "\" onclick=\"window.open(this.href, 'targetWindow', '" . $tmp . "'); return false;\" class=\"u-color-teal-50 u-text-r-xxs u-textWeight-700\">" .
+										$item->caption . '</a>';
 									break;
 
 								case 4:
@@ -91,28 +111,43 @@ defined('_JEXEC') or die;
 								
 									echo '<a class="modal" href="' . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . '"' . $rel . '>' .
 									    $item->img . ' </a>';
-									break;
+								    $caption = '<a class="modal u-color-teal-50 u-text-r-xxs u-textWeight-700" href="' . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . '"' . $rel . '>' .
+									    $item->caption . ' </a>';
+								    break;
 
 								default:
 									// Open in parent window
 									echo '<a href="' . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . '" rel="nofollow">' .
 										$item->img . ' </a>';
+									$caption = '<a href="' . htmlspecialchars($item->link, ENT_COMPAT, 'UTF-8') . '" rel="nofollow" class="u-color-teal-50 u-text-r-xxs u-textWeight-700">' .
+										$item->caption . ' </a>';
 									break;
 							}
 						} else {
 						    echo $item->img;
+						    $caption = $item->caption;
 						}
 						?>
 						<figcaption class="u-padding-r-top">
-							<p class="u-color-teal-50 u-text-r-xxs u-textWeight-700 u-padding-bottom-s"><?php echo $item->caption; ?></p>
-							<div class="Grid">
-								<?php if ($item->icon) : ?>
-									<span class="Grid-cell u-sizeFit Icon-<?php echo $item->icon; ?> u-color-white u-floatLeft u-text-r-l" aria-hidden="true"></span>
+							<?php if ($item->caption) : ?>
+								<?php if ($item->link) : ?>
+									<p class="u-padding-bottom-s"><?php echo $caption; ?></p>
+								<?php else : ?>
+									<p class="u-color-teal-50 u-text-r-xxs u-textWeight-700 u-padding-bottom-s"><?php echo $item->caption; ?></p>
 								<?php endif; ?>
-								<h3 id="desc-<?php echo $i; ?>" class="Grid-cell u-sizeFill u-padding-left-s u-lineHeight-l u-color-white u-text-r-xs u-textWeight-700">
-									<?php echo $item->description; ?>
-								</h3>
-							</div>
+							<?php endif; ?>
+							<?php if ($item->icon || $item->description) : ?>
+    							<div class="Grid">
+    								<?php if ($item->icon) : ?>
+    									<span class="Grid-cell u-sizeFit Icon-<?php echo $item->icon; ?> u-color-white u-floatLeft u-text-r-l" aria-hidden="true"></span>
+    								<?php endif; ?>
+    								<?php if ($item->description) : ?>
+    									<h3 id="desc-<?php echo $i; ?>" class="Grid-cell u-sizeFill u-padding-left-s u-lineHeight-l u-color-white u-text-r-xs u-textWeight-700">
+    										<?php echo $item->description; ?>
+    									</h3>
+    								<?php endif; ?>
+    							</div>
+							<?php endif; ?>
 						</figcaption>
 					</figure>
 				</div>

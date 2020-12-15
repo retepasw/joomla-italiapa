@@ -17,8 +17,9 @@
 
 defined('_JEXEC') or die;
 
-$columnClass = !empty($columnClass) ? ' ' . $columnClass : '';
-$itemClass   = !empty($itemClass) ? ' ' . $itemClass : '';
+$columnClass  = !empty($columnClass) ? ' ' . $columnClass : '';
+$itemClass    = !empty($itemClass) ? ' ' . $itemClass : '';
+$singleColumn = !empty($singleColumn) ? $singleColumn : false;
 ?>
 
 <?php if (($singleColumn === false) || $params->get('show_children', 0)) : ?>

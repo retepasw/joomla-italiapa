@@ -128,6 +128,54 @@ class PlgSystemItaliaPA extends JPlugin
 				}
 			}
 		}
+		elseif ($formName == 'com_menus.item')
+		{
+			// If we are on the save command, no data is passed to $data variable, we need to get it directly from request
+			$jformData = $this->app->input->get('jform', array(), 'array');
+
+			if ($jformData && !$data)
+			{
+				$data = $jformData;
+			}
+
+			if (is_array($data))
+			{
+				$data = (object) $data;
+			}
+
+			Form::addFormPath(dirname(__FILE__) . '/forms');
+			$form->loadFile(
+					$data->request['option'] . '_' .
+					$data->request['view'] . '_' .
+					$data->request['layout'], false);
+		}
+	}
+
+	/**
+	 * After Initialise Event.
+	 *
+	 * @return  void
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	public function onAfterInitialise()
+	{
+	    JLoader::registerNamespace('Italiapa', __DIR__ . '/src/italiapa', false, false, 'psr4');
+	    
+	    $template = \JFactory::getApplication()->getTemplate();
+	    if ($template == 'italiapa')
+	    {
+	        // overwrite original Joomla
+	        $loader = require JPATH_LIBRARIES . '/vendor/autoload.php';
+	        // update class maps
+	        $classMap = $loader->getClassMap();
+	        $classMap['Joomla\CMS\Form\Form'] = __DIR__ . '/src/joomla/src/Form/Form.php';
+	        
+	        // for overwrite html class
+	        \JLoader::registerPrefix('J', __DIR__ . '/src/joomla3/cms', false, true);
+	        
+	        $loader->addClassMap($classMap);
+	    }
 	}
 
 	/**

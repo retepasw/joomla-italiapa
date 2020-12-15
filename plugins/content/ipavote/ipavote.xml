@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="content" method="upgrade">
+	<name>PLG_CONTENT_IPAVOTE</name>
+	<author>Helios Ciancio</author>
+	<creationDate>December 2020</creationDate>
+	<copyright>(C) 2020 Helios Ciancio. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3</license>
+	<authorEmail>info@eshiol.it</authorEmail>
+	<authorUrl>www.eshiol.it</authorUrl>
+	<version>__DEPLOY_VERSION__</version>
+	<description>PLG_CONTENT_IPAVOTE_XML_DESCRIPTION</description>
+	<scriptfile>script.php</scriptfile>
+	<updateservers>
+		<server type="extension" priority="2" name="ItaliaPA Template - Content - Vote for ItaliaPA Plugin">https://www.eshiol.it/files/italiapa/plg_content_ipavote.xml</server>
+	</updateservers>
+	<files>
+		<filename plugin="ipavote">ipavote.php</filename>
+		<folder>tmpl</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.plg_content_ipavote.ini</language>
+		<language tag="en-GB">en-GB.plg_content_ipavote.sys.ini</language>
+		<language tag="it-IT">it-IT.plg_content_ipavote.ini</language>
+		<language tag="it-IT">it-IT.plg_content_ipavote.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="position"
+					type="list"
+					label="PLG_CONTENT_IPAVOTE_POSITION_LABEL"
+					description="PLG_CONTENT_IPAVOTE_POSITION_DESC"
+					default="top"
+					>
+					<option value="top">PLG_CONTENT_IPAVOTE_TOP</option>
+					<option value="bottom">PLG_CONTENT_IPAVOTE_BOTTOM</option>
+				</field>
+				<field
+					name="style"
+					type="list"
+					label="PLG_CONTENT_IPAVOTE_STYLE_LABEL"
+					description="PLG_CONTENT_IPAVOTE_STYLE_DESC"
+					default=""
+					>
+					<option value="">JDEFAULT</option>
+					<option value="helpful">PLG_CONTENT_IPAVOTE_HELPFUL</option>
+				</field>
+			</fieldset>
+			<fieldset
+				name="debug"
+				label="PLG_CONTENT_IPAVOTE_DEBUG_LABEL"
+				>
+				<field 
+					name="debug" 
+					type="radio" 
+					default="0" 
+					class="btn-group btn-group-yesno" 
+					description="PLG_CONTENT_IPAVOTE_DEBUG_SYSTEM_DESC" 
+					label="PLG_CONTENT_IPAVOTE_DEBUG_SYSTEM_LABEL"
+					>
+					<option 
+						value="1">JYES
+					</option>
+					<option 
+						value="0">JNO
+					</option>
+				</field>
+				<field 
+					name="log" 
+					type="text" 
+					description="PLG_CONTENT_IPAVOTE_DEBUG_FILENAME_DESC" 
+					label="PLG_CONTENT_IPAVOTE_DEBUG_FILENAME_LABEL" 
+					default="eshiol.log.php" 
+					showon="debug:1"
+					/>
+				<field 
+					name="phpconsole" 
+					type="radio" 
+					class="btn-group btn-group-yesno" 
+					default="0" 
+					description="PLG_CONTENT_IPAVOTE_DEBUG_PHPCONSOLE_DESC" 
+					label="PLG_CONTENT_IPAVOTE_DEBUG_PHPCONSOLE_LABEL"
+					>
+					<option 
+						value="1">JYES
+					</option>
+					<option 
+						value="0">JNO
+					</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

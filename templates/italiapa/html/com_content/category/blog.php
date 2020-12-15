@@ -1,15 +1,15 @@
 <?php
 /**
- * @package		Joomla.Site
- * @subpackage	Templates.ItaliaPA
+ * @package     Joomla.Plugins
+ * @subpackage  System.ItaliaPA
  *
- * @version		__DEPLOY_VERSION__
+ * @version     __DEPLOY_VERSION__
  *
- * @author		Helios Ciancio <info (at) eshiol (dot) it>
- * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
- * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
- * Template ItaliaPA is free software. This version may have been modified
+ * @author      Helios Ciancio <info (at) eshiol (dot) it>
+ * @link        http://www.eshiol.it
+ * @copyright   Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
+ * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
+ * Template ItaliaPA  is  free  software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
  * or is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
@@ -73,7 +73,14 @@ $afterDisplayContent = trim(implode("\n", $results));
 	<?php $limitstart = $app->input->get('limitstart', 0, 'uint'); ?>
 
 	<?php if ($limitstart == 0) : ?>
-		<div class="owl-carousel news-theme" role="region" id="carousel-main" data-carousel-options='{"items":1,"responsive":false,"autoplay":true,"loop":true,"dots":true,"nav":true}'>
+		<div class="owl-carousel news-theme" role="region" id="carousel-main"
+			aria-label="carousel-main"
+			data-carousel-options='{"items":1<?php 
+			echo $this->params->get('carousel_auto_sliding', 1) ? ',"autoplay":true,"autoplaySpeed":' . $this->params->get('carousel_speed', 1000) . ',"autoplayTimeout":' . $this->params->get('carousel_interval', 5000) : '';
+			echo $this->params->get('carousel_lazy', 1) ? ',"lazyLoad":true' : '';
+			echo $this->params->get('carousel_loop', 1) ? ',"loop":true' : '';
+			echo $this->params->get('carousel_show_controls', 1) ? ',"nav":true' : '';
+			echo $this->params->get('carousel_show_indicators', 1) ? ',"dots":true' : ''; ?>,"responsive":false}'>
 			<?php foreach($this->lead_items as $item) : ?>
 				<div<?php echo $item->state == 0 ? ' class=\"system-unpublished\"' : null; ?> itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
 					<?php $this->item = &$item; ?>

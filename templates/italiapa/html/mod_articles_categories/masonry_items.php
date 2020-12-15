@@ -43,13 +43,13 @@ $lang  = JFactory::getLanguage();
 				<?php echo $item->title; ?>
 			</a>
 		</h3>
-		<?php //if ($this->params->get('show_subcat_desc_cat') == 1) : ?>
+		<?php if ($params->get('show_description')) : ?>
 			<?php if ($item->description) : ?>
 				<div class="u-text-p u-textSecondary">
 					<?php echo $item->description; ?>
 				</div>
 			<?php endif; ?>
-		<?php //endif; ?>
+		<?php endif; ?>
 		</div>
 	</div>
 </div>
