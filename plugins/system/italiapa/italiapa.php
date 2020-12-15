@@ -9,10 +9,10 @@
  * @link        http://www.eshiol.it
  * @copyright   Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
- * Template ItaliaPA  is  free  software. This version may have been modified
- * pursuant to the GNU General Public License, and as distributed it includes
- * or is derivative of works licensed under the GNU General Public License or
- * other free or open source software licenses.
+ * Joomla.Plugins.System.ItaliaPA  is  a  free  software. This version may have
+ * been modified pursuant to the GNU General Public License, and as distributed
+ * it includes  or is derivative of works licensed under the GNU General Public
+ * License or other free or open source software licenses.
  */
 
 defined('_JEXEC') or die;
@@ -160,46 +160,22 @@ class PlgSystemItaliaPA extends JPlugin
 	 */
 	public function onAfterInitialise()
 	{
-	    JLoader::registerNamespace('Italiapa', __DIR__ . '/src/italiapa', false, false, 'psr4');
-	    
-	    $template = \JFactory::getApplication()->getTemplate();
-	    if ($template == 'italiapa')
-	    {
-	        // overwrite original Joomla
-	        $loader = require JPATH_LIBRARIES . '/vendor/autoload.php';
-	        // update class maps
-	        $classMap = $loader->getClassMap();
-	        $classMap['Joomla\CMS\Form\Form'] = __DIR__ . '/src/joomla/src/Form/Form.php';
-	        
-	        // for overwrite html class
-	        \JLoader::registerPrefix('J', __DIR__ . '/src/joomla3/cms', false, true);
-	        
-	        $loader->addClassMap($classMap);
-	    }
-	}
-
-	/**
-	 * After Initialise Event.
-	 *
-	 * @return  void
-	 *
-	 * @since   __DEPLOY_VERSION__
-	 */
-	public function onAfterInitialise()
-	{
-	    JLoader::registerNamespace('Italiapa', __DIR__ . '/src/italiapa', false, false, 'psr4');
-	    
-	    $template = JFactory::getApplication()->getTemplate();
-	    if ($template == 'italiapa')
-	    {
-	        // overwrite original Joomla
-	        $loader = require JPATH_LIBRARIES . '/vendor/autoload.php';
-	        // update class maps
-	        $classMap = $loader->getClassMap();
-	        $classMap['ContentControllerArticle'] = __DIR__ . '/src/joomla3/components/com_content/controllers/article.php';
-	        $classMap['Joomla\CMS\MVC\Controller\FormController'] = __DIR__ . '/src/joomla/src/MVC/Controller/FormCOntroller.php';
-
-	        $loader->addClassMap($classMap);
-	    }
+		JLoader::registerNamespace('Italiapa', __DIR__ . '/src/italiapa', false, false, 'psr4');
+		
+		$template = \JFactory::getApplication()->getTemplate();
+		if ($template == 'italiapa')
+		{
+			// overwrite original Joomla
+			$loader = require JPATH_LIBRARIES . '/vendor/autoload.php';
+			// update class maps
+			$classMap = $loader->getClassMap();
+			$classMap['Joomla\CMS\Form\Form'] = __DIR__ . '/src/joomla/src/Form/Form.php';
+			$classMap['Joomla\CMS\MVC\Controller\FormController'] = __DIR__ . '/src/joomla/src/MVC/Controller/FormCOntroller.php';
+			
+			// for overwrite html class
+			\JLoader::registerPrefix('J', __DIR__ . '/src/joomla3/cms', false, true);
+			
+			$loader->addClassMap($classMap);
+		}
 	}
 }

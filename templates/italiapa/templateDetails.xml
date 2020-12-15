@@ -1,131 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.0" type="template" method="upgrade">
-	<name>italiapa</name>
-	<creationDate>April 2020</creationDate>
-	<author>Helios Ciancio</author>
-	<copyright>Copyright © 2017 - 2020 Helios Ciancio (eshiol.it). All rights reserved.</copyright>
-	<authorEmail>info@eshiol.it</authorEmail>
-	<authorUrl>https://www.eshiol.it</authorUrl>
-	<version>3.9.0.17</version>
-	<description>TPL_ITALIAPA_XML_DESCRIPTION</description>
-	<updateservers>
-		<server type="extension" priority="2" name="Template ItaliaPA">https://www.eshiol.it/files/italiapa/tpl_italiapa.xml
+  <name>italiapa</name>
+  <creationDate>__DEPLOY_DATE__</creationDate>
+  <author>Helios Ciancio</author>
+  <copyright>Copyright © 2017 - 2020 Helios Ciancio (eshiol.it). All rights reserved.</copyright>
+  <authorEmail>info@eshiol.it</authorEmail>
+  <authorUrl>https://www.eshiol.it</authorUrl>
+  <version>__DEPLOY_VERSION__</version>
+  <description>TPL_ITALIAPA_XML_DESCRIPTION</description>
+  <updateservers>
+    <server type="extension" priority="2" name="Template ItaliaPA">https://www.eshiol.it/files/italiapa/tpl_italiapa.xml
 		</server>
-	</updateservers>
-	<scriptfile>script.php</scriptfile>
-	<files>
-		<folder>build</folder>
-		<folder>css</folder>
-		<folder>html</folder>
-		<folder>js</folder>
-		<folder>src</folder>
-		<filename>component.php</filename>
-		<filename>error.php</filename>
-		<filename>favicon.ico</filename>
-		<filename>index.php</filename>
-		<filename>script.php</filename>
-		<filename>templateDetails.xml</filename>
-		<filename>template_preview.png</filename>
-		<filename>template_thumbnail.png</filename>
-	</files>
-	<languages folder="language">
-		<language tag="en-GB">en-GB/en-GB.tpl_italiapa.ini</language>
-		<language tag="en-GB">en-GB/en-GB.tpl_italiapa.sys.ini</language>
-		<language tag="it-IT">it-IT/it-IT.tpl_italiapa.ini</language>
-		<language tag="it-IT">it-IT/it-IT.tpl_italiapa.sys.ini</language>
-	</languages>
-	<positions>
-		<position>breadcrumb</position>
-		<position>cookiebar</position>
-		<position>featured</position>
-		<position>footer</position>
-		<position>footerinfo</position>
-		<position>footermenu</position>
-		<position>languages</position>
-		<position>lead</position>
-		<position>mainmenu</position>
-		<position>menu</position>
-		<position>news</position>
-		<position>owner</position>
-		<position>right</position>
-		<position>search</position>
-		<position>services</position>
-		<position>socials</position>
-		<position>top</position>
-	</positions>
-	<config>
-		<fields name="params">
-			<fieldset name="basic">
-				<field name="theme" type="list" label="TPL_ITALIAPA_FIELD_THEME_LABEL"
-					description="TPL_ITALIAPA_FIELD_THEME_DESC" default="default"
-					filter="word">
-					<option value="default">TPL_ITALIAPA_THEME_DEFAULT</option>
-					<option value="none">TPL_ITALIAPA_THEME_NONE</option>
-					<option value="italia">TPL_ITALIAPA_THEME_ITALIA</option>
-					<option value="italiaaa">TPL_ITALIAPA_THEME_ITALIAAA</option>
-					<option value="scuola">TPL_ITALIAPA_THEME_SCHOOL</option>
-					<option value="squola">TPL_ITALIAPA_THEME_SCHOOLUNOFFICIAL</option>
-				</field>
-				<field 
-					name="num_columns" 
-					type="number"
-					label="JGLOBAL_NUM_COLUMNS_LABEL"
-					description="JGLOBAL_NUM_COLUMNS_DESC"
-					size="3"
-					useglobal="true"
-					min="1"
-					max="6"
-					step="1"
-				/>
-				<field name="hamburgermenu_pos" type="list" label="TPL_ITALIAPA_FIELD_HAMBURGERMENU_POS_LABEL"
-					description="TPL_ITALIAPA_FIELD_HAMBURGERMENU_POS_DESC" default="left"
-					filter="word">
-					<option value="left">JGLOBAL_LEFT</option>
-					<option value="right">JGLOBAL_RIGHT</option>
-				</field>
-				<field name="forward" type="radio" class="btn-group btn-group-yesno"
-					default="1" description="TPL_ITALIAPA_FIELD_FORWARD_DESC" label="TPL_ITALIAPA_FIELD_FORWARD_LABEL">
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
-				</field>
-			</fieldset>
-			<fieldset name="advanced">
-				<field name="debug" type="radio" class="btn-group btn-group-yesno"
-					default="0" description="TPL_ITALIAPA_DEBUG_SYSTEM_DESC" label="TPL_ITALIAPA_DEBUG_SYSTEM_LABEL">
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
-				</field>
-				<field name="log" type="text" label="TPL_ITALIAPA_DEBUG_FILENAME_LABEL"
-					description="TPL_ITALIAPA_DEBUG_FILENAME_DESC" default="eshiol.log.php"
-					showon="debug:1" />
-				<field name="phpconsole" type="radio" class="btn-group btn-group-yesno"
-					default="0" description="TPL_ITALIAPA_DEBUG_PHPCONSOLE_DESC" label="TPL_ITALIAPA_DEBUG_PHPCONSOLE_LABEL">
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
-				</field>
-			</fieldset>
-			<fieldset name="header" type="upload_func" label="Header">
-				<field name="logo" type="media" label="TPL_ITALIAPA_FIELD_LOGO_LABEL"
-					description="TPL_ITALIAPA_FIELD_LOGO_LABEL" />
-				<field name="subtitle" type="text"
-					label="TPL_ITALIAPA_FIELD_SUBTITLE_LABEL" description="TPL_ITALIAPA_FIELD_SUBTITLE_LABEL" />
-				<field name="headroom" type="radio" class="btn-group btn-group-yesno"
-					default="0" description="TPL_ITALIAPA_FIELD_HEADROOM_DESC" label="TPL_ITALIAPA_FIELD_HEADROOM_LABEL">
-					<option value="1">JYES</option>
-					<option value="0">JNO</option>
-				</field>
-			</fieldset>
-			<fieldset name="microdata" label="TPL_ITALIAPA_MICRODATA_LABEL">
-				<field name="schema_org" type="list"
-					label="TPL_ITALIAPA_SCHEMA_ORGANIZATION_LABEL" description="TPL_ITALIAPA_SCHEMA_ORGANIZATION_DESC"
-					default="Organization" filter="options">
-					<option value="Organization">TPL_ITALIAPA_SCHEMA_ORGANIZATION</option>
-					<option value="GovernmentOrganization">TPL_ITALIAPA_SCHEMA_GOVERNMENTORGANIZATION
+  </updateservers>
+  <scriptfile>script.php</scriptfile>
+  <files>
+    <folder>build</folder>
+    <folder>css</folder>
+    <folder>html</folder>
+    <folder>js</folder>
+    <folder>src</folder>
+    <filename>component.php</filename>
+    <filename>error.php</filename>
+    <filename>favicon.ico</filename>
+    <filename>index.php</filename>
+    <filename>script.php</filename>
+    <filename>templateDetails.xml</filename>
+    <filename>template_preview.png</filename>
+    <filename>template_thumbnail.png</filename>
+  </files>
+  <languages folder="language">
+    <language tag="en-GB">en-GB/en-GB.tpl_italiapa.ini</language>
+    <language tag="en-GB">en-GB/en-GB.tpl_italiapa.sys.ini</language>
+    <language tag="it-IT">it-IT/it-IT.tpl_italiapa.ini</language>
+    <language tag="it-IT">it-IT/it-IT.tpl_italiapa.sys.ini</language>
+  </languages>
+  <positions>
+    <position>breadcrumb</position>
+    <position>cookiebar</position>
+    <position>featured</position>
+    <position>footer</position>
+    <position>footerinfo</position>
+    <position>footermenu</position>
+    <position>languages</position>
+    <position>lead</position>
+    <position>mainmenu</position>
+    <position>menu</position>
+    <position>news</position>
+    <position>owner</position>
+    <position>right</position>
+    <position>search</position>
+    <position>services</position>
+    <position>socials</position>
+    <position>top</position>
+  </positions>
+  <config>
+    <fields name="params">
+      <fieldset name="basic">
+        <field name="theme" type="list" label="TPL_ITALIAPA_FIELD_THEME_LABEL" description="TPL_ITALIAPA_FIELD_THEME_DESC" default="default" filter="word">
+          <option value="default">TPL_ITALIAPA_THEME_DEFAULT</option>
+          <option value="none">TPL_ITALIAPA_THEME_NONE</option>
+          <option value="italia">TPL_ITALIAPA_THEME_ITALIA</option>
+          <option value="italiaaa">TPL_ITALIAPA_THEME_ITALIAAA</option>
+          <option value="scuola">TPL_ITALIAPA_THEME_SCHOOL</option>
+          <option value="squola">TPL_ITALIAPA_THEME_SCHOOLUNOFFICIAL</option>
+        </field>
+        <field name="num_columns" type="number" label="JGLOBAL_NUM_COLUMNS_LABEL" description="JGLOBAL_NUM_COLUMNS_DESC" size="3" useglobal="true" min="1" max="6" step="1"/>
+        <field name="hamburgermenu_pos" type="list" label="TPL_ITALIAPA_FIELD_HAMBURGERMENU_POS_LABEL" description="TPL_ITALIAPA_FIELD_HAMBURGERMENU_POS_DESC" default="left" filter="word">
+          <option value="left">JGLOBAL_LEFT</option>
+          <option value="right">JGLOBAL_RIGHT</option>
+        </field>
+        <field name="forward" type="radio" class="btn-group btn-group-yesno" default="1" description="TPL_ITALIAPA_FIELD_FORWARD_DESC" label="TPL_ITALIAPA_FIELD_FORWARD_LABEL">
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
+      </fieldset>
+      <fieldset name="advanced">
+        <field name="debug" type="radio" class="btn-group btn-group-yesno" default="0" description="TPL_ITALIAPA_DEBUG_SYSTEM_DESC" label="TPL_ITALIAPA_DEBUG_SYSTEM_LABEL">
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
+        <field name="log" type="text" label="TPL_ITALIAPA_DEBUG_FILENAME_LABEL" description="TPL_ITALIAPA_DEBUG_FILENAME_DESC" default="eshiol.log.php" showon="debug:1"/>
+        <field name="phpconsole" type="radio" class="btn-group btn-group-yesno" default="0" description="TPL_ITALIAPA_DEBUG_PHPCONSOLE_DESC" label="TPL_ITALIAPA_DEBUG_PHPCONSOLE_LABEL">
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
+      </fieldset>
+      <fieldset name="header" type="upload_func" label="Header">
+        <field name="logo" type="media" label="TPL_ITALIAPA_FIELD_LOGO_LABEL" description="TPL_ITALIAPA_FIELD_LOGO_LABEL"/>
+        <field name="subtitle" type="text" label="TPL_ITALIAPA_FIELD_SUBTITLE_LABEL" description="TPL_ITALIAPA_FIELD_SUBTITLE_LABEL"/>
+        <field name="headroom" type="radio" class="btn-group btn-group-yesno" default="0" description="TPL_ITALIAPA_FIELD_HEADROOM_DESC" label="TPL_ITALIAPA_FIELD_HEADROOM_LABEL">
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
+      </fieldset>
+      <fieldset name="microdata" label="TPL_ITALIAPA_MICRODATA_LABEL">
+        <field name="schema_org" type="list" label="TPL_ITALIAPA_SCHEMA_ORGANIZATION_LABEL" description="TPL_ITALIAPA_SCHEMA_ORGANIZATION_DESC" default="Organization" filter="options">
+          <option value="Organization">TPL_ITALIAPA_SCHEMA_ORGANIZATION</option>
+          <option value="GovernmentOrganization">TPL_ITALIAPA_SCHEMA_GOVERNMENTORGANIZATION
 					</option>
-					<option value="EducationalOrganization">TPL_ITALIAPA_SCHEMA_EDUCATIONALORGANIZATION
+          <option value="EducationalOrganization">TPL_ITALIAPA_SCHEMA_EDUCATIONALORGANIZATION
 					</option>
-				</field>
-			</fieldset>
-		</fields>
-	</config>
+        </field>
+      </fieldset>
+    </fields>
+  </config>
 </extension>
