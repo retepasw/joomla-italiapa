@@ -152,13 +152,13 @@ class PlgSystemItaliaPA extends JPlugin
 	}
 
 	/**
-	 * After Initialise Event.
+	 * After Route Event.
 	 *
 	 * @return  void
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
-	public function onAfterInitialise()
+	public function onAfterRoute()
 	{
 		JLoader::registerNamespace('Italiapa', __DIR__ . '/src/italiapa', false, false, 'psr4');
 		
@@ -170,7 +170,7 @@ class PlgSystemItaliaPA extends JPlugin
 			// update class maps
 			$classMap = $loader->getClassMap();
 			$classMap['Joomla\CMS\Form\Form'] = __DIR__ . '/src/joomla/src/Form/Form.php';
-			$classMap['Joomla\CMS\MVC\Controller\FormController'] = __DIR__ . '/src/joomla/src/MVC/Controller/FormCOntroller.php';
+			$classMap['Joomla\CMS\MVC\Controller\FormController'] = __DIR__ . '/src/joomla/src/MVC/Controller/FormController.php';
 			
 			// for overwrite html class
 			\JLoader::registerPrefix('J', __DIR__ . '/src/joomla3/cms', false, true);
