@@ -340,7 +340,7 @@ JFactory::getSession()->set('theme', $theme);
 						<?php $this->setError($this->error); ?>
 					<?php endif; ?>
 				<?php endif; ?>
-				<div>
+				</div>
 			<?php endif; ?>
 			</div>
 		</div>
