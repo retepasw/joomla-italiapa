@@ -24,21 +24,38 @@ $description      = $this->params->get('all_tags_description');
 $descriptionImage = $this->params->get('all_tags_description_image');
 
 ?>
-<section class="tag-category<?php echo $this->pageclass_sfx; ?>">
-	<?php if ($this->params->get('show_page_heading')) : ?>
-		<h2 class="u-text-h2 u-margin-r-bottom u-color-black">
-			<?php echo $this->escape($this->params->get('page_heading')); ?>
-		</h2>
+<section class="Grid tag-category<?php echo $this->pageclass_sfx; ?>">
+	<?php $img = null;?>
+	<?php if ($descriptionImage) : ?>
+		<?php $img = '<img src="' . htmlspecialchars($descriptionImage, ENT_COMPAT, 'UTF-8') . '" alt="' . htmlspecialchars($this->params->get('page_heading')). '" class="u-sizeFull" />'; ?>
 	<?php endif; ?>
-	<?php if ($this->params->get('all_tags_show_description_image') && !empty($descriptionImage)) : ?>
-		<div>
-			<img src="<?php echo $descriptionImage; ?>" class="u-sizeFull" />
+
+	<?php $size = 'u-sizeFull' . ($img && ($this->params->get('show_page_heading') || !empty($description)) ? ' u-md-size1of2 u-lg-size1of2' : '' ); ?>
+
+	<?php if ($this->params->get('show_page_heading') || !empty($description)) : ?>
+		<div class="Grid-cell <?php echo $size; ?> u-text-r-s u-padding-r-all">
+			<div class="u-text-r-l u-layout-prose">
+				<?php if ($this->params->get('show_page_heading')) : ?>
+					<h2 class="u-text-h2 u-margin-r-bottom u-color-black">
+						<?php echo $this->escape($this->params->get('page_heading')); ?>
+					</h2>
+				<?php endif; ?>
+				<?php if (!empty($description)) : ?>
+					<div class="u-textSecondary u-lineHeight-l">
+						<?php echo JHtml::_('content.prepare', $description, '', 'com_tags.tag'); ?>
+					</div>
+				<?php endif; ?>
+			</div>
 		</div>
 	<?php endif; ?>
-	<?php if (!empty($description)) : ?>
-		<div class="u-textSecondary u-lineHeight-l">
-			<?php echo $description; ?>
+
+	<?php if ($img) : ?>
+		<div class="Grid-cell <?php echo $size; ?> u-text-r-s u-padding-r-all">
+			<?php echo $img; ?>
 		</div>
 	<?php endif; ?>
-	<?php echo $this->loadTemplate('items'); ?>
+
+   	<div class="Grid-cell u-sizeFull u-text-r-s u-padding-r-all">
+		<?php echo $this->loadTemplate('items'); ?>
+	</div>
 </section>
