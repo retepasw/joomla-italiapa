@@ -18,7 +18,6 @@
 defined('_JEXEC') or die;
 
 JHtml::_('behavior.core');
-JHtml::_('formbehavior.chosen', 'select');
 
 $n         = count($this->items);
 $listOrder = $this->escape($this->state->get('list.ordering'));
@@ -35,7 +34,7 @@ JFactory::getDocument()->addScriptDeclaration("
 <?php if ($this->params->get('filter_field') || $this->params->get('show_pagination_limit')) : ?>
 <div class="u-color-grey-30 u-border-top-xxs u-border-bottom-xxs">
 	<form action="<?php echo htmlspecialchars(JUri::getInstance()->toString()); ?>" method="post" name="adminForm" id="adminForm" class="Form Form--ultraLean">
-		<div class="Grid">
+		<div class="Grid Grid--alignRight">
 			<legend class="u-hiddenVisually"><?php echo JText::_('COM_TAGS_FORM_FILTER_LEGEND'); ?></legend>
 			<?php if ($this->params->get('filter_field')) : ?>
 			<div class="Form-field Grid-cell u-sizeFull u-sm-size6of12 u-md-size4of12 u-lg-size8of12 u-border-right-xxs u-border-top-xxs">
@@ -66,7 +65,9 @@ JFactory::getDocument()->addScriptDeclaration("
 			<input type="hidden" name="limitstart" value="" />
 			<input type="hidden" name="task" value="" />
 
-			<button type="submit" name="filter_submit" class="u-lg-size2of12 u-background-40 u-color-white u-padding-all-s u-text-r-m u-textNoWrap <?php echo $class; ?>"><?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?></button>
+			<?php if ($this->params->get('filter_field')) : ?>
+				<button type="submit" name="filter_submit" class="u-lg-size2of12 u-background-40 u-color-white u-padding-all-s u-text-r-m u-textNoWrap <?php echo $class; ?>"><?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?></button>
+			<?php endif; ?>
 		</div>
 	</form>
 </div>
