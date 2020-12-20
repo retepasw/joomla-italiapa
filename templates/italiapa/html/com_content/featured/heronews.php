@@ -35,7 +35,7 @@ JHtml::_('behavior.caption');
 	<?php $limitstart = $app->input->get('limitstart', 0, 'uint'); ?>
 
 	<?php if ($limitstart == 0) : ?>
-		<div class="owl-carousel news-theme" role="region" id="carousel-main"
+		<div class="owl-carousel heronews-theme" role="region" id="carousel-main"
 			aria-label="carousel-main"
 			data-carousel-options='{"items":1<?php 
 			echo $this->params->get('carousel_auto_sliding', 1) ? ',"autoplay":true,"autoplaySpeed":' . $this->params->get('carousel_speed', 1000) . ',"autoplayTimeout":' . $this->params->get('carousel_interval', 5000) : '';
