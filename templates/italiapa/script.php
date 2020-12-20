@@ -152,6 +152,32 @@ class italiapaInstallerScript
 				// Check to make sure our data is valid
 				$field->check() && $field->store(true);
 			}
+
+			$field = JTable::getInstance('Field', 'FieldsTable');
+
+			// Check if the field archive_up exists before adding it
+			if (!$field->load(array('context' => 'com_content.article', 'name' => 'image-heronews')))
+			{
+				$field->context = 'com_content.article';
+				$field->group_id = 0;
+				$field->title = 'Immagine Hero news';
+				$field->name = 'image-heronews';
+				$field->label = 'Immagine Hero news';
+				$field->default_value = '';
+				$field->type = 'media';
+				$field->note = '';
+				$field->description = 'Seleziona o carica un\'immagine per gli articoli visualizzati in stile articoli in evidenza (layout: Hero news)';
+				$field->state = 1;
+				$field->required = 0;
+				$field->params = '{"hint":"","class":"","label_class":"","show_on":"","render_class":"","showlabel":"1","label_render_class":"","display":"0","layout":"","display_readonly":"2"}';
+				$field->fieldparams = '{"directory":"","preview":"","image_class":""}';
+				$field->language = '*';
+				$field->created_user_id = JFactory::getUser()->id;
+				$field->access = 1;
+
+				// Check to make sure our data is valid
+				$field->check() && $field->store(true);
+			}
 		}
 
 		if ($type == 'update')
