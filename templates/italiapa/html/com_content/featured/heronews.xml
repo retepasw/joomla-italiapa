@@ -154,6 +154,28 @@
 				<option value="0">JHIDE</option>
 				<option value="1">JSHOW</option>
 			</field>
+
+			<field type="spacer" hr="true"/>
+			<field name="carousel_show_controls" type="radio" label="TPL_ITALIAPA_CAROUSEL_SHOW_CONTROLS_LABEL" description="TPL_ITALIAPA_CAROUSEL_SHOW_CONTROLS_DESC" class="btn-group btn-group-yesno" default="1">
+				<option value="1">JSHOW</option>
+				<option value="0">JHIDE</option>
+			</field>
+			<field name="carousel_show_indicators" type="radio" label="TPL_ITALIAPA_CAROUSEL_SHOW_INDICATORS_LABEL" description="TPL_ITALIAPA_CAROUSEL_SHOW_INDICATORS_DESC" class="btn-group btn-group-yesno" default="1">
+				<option value="1">JSHOW</option>
+				<option value="0">JHIDE</option>
+			</field>
+			<field name="carousel_auto_sliding" type="radio" label="TPL_ITALIAPA_CAROUSEL_AUTO_SLIDING_LABEL" description="TPL_ITALIAPA_CAROUSEL_AUTO_SLIDING_DESC" class="btn-group btn-group-yesno" default="1">
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+			<field name="carousel_interval" type="text" label="TPL_ITALIAPA_CAROUSEL_INTERVAL_LABEL" description="TPL_ITALIAPA_CAROUSEL_INTERVAL_DESC" default="5000" filter="integer"
+				showon="carousel_auto_sliding:1" />
+			<field name="carousel_speed" type="text" label="TPL_ITALIAPA_CAROUSEL_SPEED_LABEL" description="TPL_ITALIAPA_CAROUSEL_SPEED_DESC" default="1000" filter="integer"
+				showon="carousel_auto_sliding:1" />
+			<field name="carousel_lazy" type="radio" label="TPL_ITALIAPA_CAROUSEL_LAZY_LABEL" description="TPL_ITALIAPA_CAROUSEL_LAZY_DESC" class="btn-group btn-group-yesno" default="1">
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
 	</fieldset>
 
 	<fieldset name="article" label="COM_CONTENT_ATTRIBS_FIELDSET_LABEL">
