@@ -474,9 +474,26 @@ header.Headroom .Megamenu-subnav {
 	overflow: hidden;
 }
 
+.featured-theme .owl-nav,
 .news-theme .owl-nav {
 	text-align: center;
 	-webkit-tap-highlight-color: transparent
+}
+
+.featured-theme .owl-nav .owl-prev {
+	position: absolute;
+	top: 50%;
+	left: 2rem;
+	opacity: 0.8;
+	filter: alpha(opacity=80); /* For IE8 and earlier */
+}
+
+.featured-theme .owl-nav .owl-next {
+	position: absolute;
+	top: 50%;
+	right: 2rem;
+	opacity: 0.8;
+	filter: alpha(opacity=80); /* For IE8 and earlier */
 }
 
 .news-theme .owl-nav .owl-prev {
@@ -487,7 +504,6 @@ header.Headroom .Megamenu-subnav {
 	filter: alpha(opacity=20); /* For IE8 and earlier */
 }
 
-
 .news-theme .owl-nav .owl-next {
 	position: absolute;
 	top: 50%;
@@ -496,12 +512,15 @@ header.Headroom .Megamenu-subnav {
 	filter: alpha(opacity=20); /* For IE8 and earlier */
 }
 
+.featured-theme .owl-nav .owl-next:hover,
+.featured-theme .owl-nav .owl-prev:hover,
 .news-theme .owl-nav .owl-next:hover,
 .news-theme .owl-nav .owl-prev:hover {
 	opacity: 1;
 	filter: alpha(opacity=100); /* For IE8 and earlier */
 }
 
+.featured-theme .owl-nav [class*='owl-'],
 .news-theme .owl-nav [class*='owl-'] {
 	color: #000;
 /*	font-size: 1.68em; */
@@ -521,12 +540,14 @@ header.Headroom .Megamenu-subnav {
 	-moz-osx-font-smoothing: grayscale
 }
 
+.featured-theme .owl-nav [class*='owl-']:hover,
 .news-theme .owl-nav [class*='owl-']:hover {
 	background: 0;
 	color: #000;
 	text-decoration: none
 }
 
+.featured-theme .owl-nav .disabled,
 .news-theme .owl-nav .disabled {
 	opacity: .5;
 	cursor: default
@@ -536,17 +557,20 @@ header.Headroom .Megamenu-subnav {
 	margin-top: 10px
 }
 
+.featured-theme .owl-dots,
 .news-theme .owl-dots {
 	text-align: center;
 	-webkit-tap-highlight-color: transparent
 }
 
+.featured-theme .owl-dots .owl-dot,
 .news-theme .owl-dots .owl-dot {
 	display: inline-block;
 	zoom: 1;
 	*display: inline
 }
 
+.featured-theme .owl-dots .owl-dot span,
 .news-theme .owl-dots .owl-dot span {
 	width: 19px;
 	height: 19px;
@@ -560,10 +584,13 @@ header.Headroom .Megamenu-subnav {
 	border: 3px solid #a5a5a5
 }
 
+.featured-theme .owl-dots .owl-dot:hover span,
 .news-theme .owl-dots .owl-dot:hover span {
 	background: #fff
 }
 
+
+.featured-theme .owl-dots .owl-dot.active span,
 .news-theme .owl-dots .owl-dot.active span {
 	background: #fff;
 	border-color: #06c

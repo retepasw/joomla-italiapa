@@ -36,7 +36,7 @@ JHtml::_('behavior.caption');
 	<?php $limitstart = $app->input->get('limitstart', 0, 'uint'); ?>
 
 	<?php if ($limitstart == 0) : ?>
-	<div class="owl-carousel news-theme" role="region" id="carousel-main" data-carousel-options='{"items":1,"responsive":false,"autoplay":true,"loop":true,"dots":true,"nav":true}'>
+	<div class="owl-carousel featured-theme" role="region" id="carousel-main" data-carousel-options='{"items":1,"responsive":false,"autoplay":true,"loop":true,"dots":true,"nav":true}'>
 		<?php foreach($this->lead_items as $item) : ?>
 		<div<?php echo $item->state == 0 ? ' class=\"system-unpublished\"' : null; ?> itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
 			<?php $this->item = &$item; ?>
