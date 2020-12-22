@@ -38,9 +38,9 @@ JFactory::getDocument()->addScriptDeclaration("
 			<legend class="u-hiddenVisually"><?php echo JText::_('COM_TAGS_FORM_FILTER_LEGEND'); ?></legend>
 			<?php if ($this->params->get('filter_field')) : ?>
 			
-			<?php $size = 'u-sizeFull ' . ($this->params->get('show_pagination_limit') ? 'u-sm-size6of12 u-md-size4of12 u-lg-size8of12' : 'u-sm-size10of12 u-md-size7of12 u-lg-size10of12'); ?>
+			<?php $size = 'u-sizeFull ' . ($this->params->get('show_pagination_limit') ? 'u-sm-size8of12 u-md-size8of12 u-lg-size8of12' : 'u-sm-size10of12 u-md-size10of12 u-lg-size10of12'); ?>
 
-			<div class="Form-field Grid-cell <?php echo $size; ?>">
+			<div class="Form-field Grid-cell <?php echo $size; ?> u-border-left-xxs u-border-right-xxs">
 				<input class="Form-input u-text-r-s u-padding-r-all u-color-black" type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape($this->state->get('list.filter')); ?>" class="Form-input u-color-grey-90 <?php echo $class; ?>" onchange="document.adminForm.submit();" title="<?php echo JText::_('COM_TAGS_FILTER_SEARCH_DESC'); ?>" placeholder="<?php echo JText::_('COM_TAGS_TITLE_FILTER_LABEL'); ?>" />
 				<label class="Form-label u-color-grey-90 u-text-r-m u-hiddenVisually" for="filter-search">
 					<?php echo JText::_('COM_TAGS_TITLE_FILTER_LABEL'); ?>
@@ -49,7 +49,7 @@ JFactory::getDocument()->addScriptDeclaration("
 			<?php endif; ?>
 
 			<?php if ($this->params->get('show_pagination_limit')) : ?>
-				<div class="Form-field Grid-cell u-sizeFull u-sm-size4of12 u-md-size3of12 u-lg-size2of12 u-border-left-xxs<?php echo !$this->params->get('filter_field') ? ' u-border-right-xxs' : ''; ?>">
+				<div class="Form-field Grid-cell u-sizeFull u-sm-size2of12 u-md-size2of12 u-lg-size2of12 u-border-left-xxs<?php echo !$this->params->get('filter_field') ? '' : ' u-border-top-xxs'; ?> u-border-right-xxs">
 					<label for="limit" class="Form-label u-hiddenVisually">
 						<?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>
 					</label>
@@ -64,7 +64,7 @@ JFactory::getDocument()->addScriptDeclaration("
 			<?php endif; ?>
 
 			<?php if ($this->params->get('filter_field')) : ?>
-				<button type="submit" name="filter_submit" class="u-lg-size2of12 u-background-40 u-color-white u-padding-all-s u-text-r-m u-textNoWrap <?php echo $class; ?>"><?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?></button>
+				<button type="submit" name="filter_submit" class="u-sizeFull u-sm-size2of12 u-md-size2of12 u-lg-size2of12 u-background-40 u-color-white u-padding-all-s u-text-r-m u-textNoWrap <?php echo $class; ?>"><?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?></button>
 			<?php endif; ?>
 
 			<input type="hidden" name="filter_order" value="" />
