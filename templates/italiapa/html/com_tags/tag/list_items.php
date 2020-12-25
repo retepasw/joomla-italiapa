@@ -18,6 +18,7 @@
 defined('_JEXEC') or die;
 
 JHtml::_('behavior.core');
+JHtml::_('formbehavior.chosen', 'select');
 
 $n         = count($this->items);
 $listOrder = $this->escape($this->state->get('list.ordering'));
