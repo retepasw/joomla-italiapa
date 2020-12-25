@@ -475,12 +475,19 @@ header.Headroom .Megamenu-subnav {
 }
 
 .featured-theme .owl-nav,
+.heronews-theme .owl-nav,
 .news-theme .owl-nav {
 	text-align: center;
 	-webkit-tap-highlight-color: transparent
 }
 
-.featured-theme .owl-nav .owl-prev {
+.featured-theme .owl-nav .owl-prev,
+.featured-theme .owl-nav .owl-next {
+	filter: invert(1);
+}
+
+.featured-theme .owl-nav .owl-prev,
+.heronews-theme .owl-nav .owl-prev {
 	position: absolute;
 	top: 50%;
 	left: 2rem;
@@ -488,7 +495,8 @@ header.Headroom .Megamenu-subnav {
 	filter: alpha(opacity=80); /* For IE8 and earlier */
 }
 
-.featured-theme .owl-nav .owl-next {
+.featured-theme .owl-nav .owl-next,
+.heronews-theme .owl-nav .owl-next {
 	position: absolute;
 	top: 50%;
 	right: 2rem;
@@ -514,6 +522,8 @@ header.Headroom .Megamenu-subnav {
 
 .featured-theme .owl-nav .owl-next:hover,
 .featured-theme .owl-nav .owl-prev:hover,
+.heronews-theme .owl-nav .owl-next:hover,
+.heronews-theme .owl-nav .owl-prev:hover,
 .news-theme .owl-nav .owl-next:hover,
 .news-theme .owl-nav .owl-prev:hover {
 	opacity: 1;
@@ -521,6 +531,7 @@ header.Headroom .Megamenu-subnav {
 }
 
 .featured-theme .owl-nav [class*='owl-'],
+.heronews-theme .owl-nav [class*='owl-'],
 .news-theme .owl-nav [class*='owl-'] {
 	color: #000;
 /*	font-size: 1.68em; */
@@ -541,6 +552,7 @@ header.Headroom .Megamenu-subnav {
 }
 
 .featured-theme .owl-nav [class*='owl-']:hover,
+.heronews-theme .owl-nav [class*='owl-']:hover,
 .news-theme .owl-nav [class*='owl-']:hover {
 	background: 0;
 	color: #000;
@@ -548,6 +560,7 @@ header.Headroom .Megamenu-subnav {
 }
 
 .featured-theme .owl-nav .disabled,
+.heronews-theme .owl-nav .disabled,
 .news-theme .owl-nav .disabled {
 	opacity: .5;
 	cursor: default
@@ -558,12 +571,14 @@ header.Headroom .Megamenu-subnav {
 }
 
 .featured-theme .owl-dots,
+.heronews-theme .owl-dots,
 .news-theme .owl-dots {
 	text-align: center;
 	-webkit-tap-highlight-color: transparent
 }
 
 .featured-theme .owl-dots .owl-dot,
+.heronews-theme .owl-dots .owl-dot,
 .news-theme .owl-dots .owl-dot {
 	display: inline-block;
 	zoom: 1;
@@ -571,6 +586,7 @@ header.Headroom .Megamenu-subnav {
 }
 
 .featured-theme .owl-dots .owl-dot span,
+.heronews-theme .owl-dots .owl-dot span,
 .news-theme .owl-dots .owl-dot span {
 	width: 19px;
 	height: 19px;
@@ -585,12 +601,14 @@ header.Headroom .Megamenu-subnav {
 }
 
 .featured-theme .owl-dots .owl-dot:hover span,
+.heronews-theme .owl-dots .owl-dot:hover span,
 .news-theme .owl-dots .owl-dot:hover span {
 	background: #fff
 }
 
 
 .featured-theme .owl-dots .owl-dot.active span,
+.heronews-theme .owl-dots .owl-dot.active span,
 .news-theme .owl-dots .owl-dot.active span {
 	background: #fff;
 	border-color: #06c
