@@ -18,7 +18,7 @@
 defined('_JEXEC') or die;
 
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
- JHtml::_('formbehavior.chosen', 'select');
+JHtml::_('formbehavior.chosen', 'select');
 JHtml::_('behavior.caption');
 ?>
 <section class="archive<?php echo $this->pageclass_sfx; ?>">
