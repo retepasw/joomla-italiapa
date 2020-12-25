@@ -147,7 +147,7 @@ class PlgSystemItaliaPA extends JPlugin
 			$form->loadFile(
 					$data->request['option'] . '_' .
 					$data->request['view'] . '_' .
-					$data->request['layout'], false);
+					($data->request['layout'] ?: 'default'));
 		}
 	}
 
