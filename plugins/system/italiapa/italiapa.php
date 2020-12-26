@@ -171,7 +171,8 @@ class PlgSystemItaliaPA extends JPlugin
 			$classMap = $loader->getClassMap();
 			$classMap['Joomla\CMS\Form\Form'] = __DIR__ . '/src/joomla/src/Form/Form.php';
 			$classMap['Joomla\CMS\MVC\Controller\FormController'] = __DIR__ . '/src/joomla/src/MVC/Controller/FormController.php';
-			
+			$classMap['JFormFieldCheckbox'] = __DIR__ . '/src/joomla/joomla/form/fields/checkbox.php';
+
 			// for overwrite html class
 			\JLoader::registerPrefix('J', __DIR__ . '/src/joomla3/cms', false, true);
 			
