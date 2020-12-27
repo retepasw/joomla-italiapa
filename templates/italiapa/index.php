@@ -35,6 +35,9 @@ if ($params->get('phpconsole') && class_exists('JLogLoggerPhpconsole'))
 }
 JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 
+// IcoMoon Joomla 2.0
+JHtml::_('stylesheet', 'icomoon-joomla.css', array('version' => 'auto', 'relative' => true));
+
 // Check for a custom CSS file
 JHtml::_('stylesheet', 'user.css', array('version' => 'auto', 'relative' => true));
 

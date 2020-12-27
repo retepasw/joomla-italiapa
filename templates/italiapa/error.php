@@ -42,6 +42,9 @@ if ($params->get('phpconsole') && class_exists('JLogLoggerPhpconsole'))
 	JLog::addLogger(array('logger' => 'phpconsole', 'extension' => 'tpl_italiapa_phpconsole'),  JLOG::DEBUG, array('tpl_italiapa'));
 }
 
+// IcoMoon Joomla 2.0
+JHtml::_('stylesheet', 'icomoon-joomla.css', array('version' => 'auto', 'relative' => true));
+
 $theme_default = $params->get('theme', 'italia');
 $theme = (isset($_COOKIE['theme']) && $_COOKIE['theme']) ? $_COOKIE['theme'] : $theme_default;
 $theme_path = JPATH_ROOT . '/templates/italiapa/build/build.' . $theme . '.css';

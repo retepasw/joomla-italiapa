@@ -374,6 +374,28 @@ abstract class JHtmlIwt
 
 			$link .= '<span class="' . $item->menu_title_css . ($item->params->get('menu_text', 1) ? ' image-title' : ' u-hiddenVisually') . '">' . $item->title . '</span>';
 		}
+		elseif (preg_match_all('/(^|\s)icon-/', $item->menu_image_css, $matches, PREG_SET_ORDER, 0))
+		{
+			$icon = '';
+			$menu_image_css = explode(' ', $item->menu_image_css);
+			for ($i = count($menu_image_css) - 1; $i >= 0; $i --)
+			{
+				if (substr($menu_image_css[$i], 0, 5) == 'icon-')
+				{
+					$icon .= ' ' . $menu_image_css[$i];
+					unset($menu_image_css[$i]);
+				}
+			}
+			$item->menu_image_css = implode(' ', $menu_image_css);
+
+			$class = trim($icon . ' ' . $item->menu_image_css);
+			if ($icon)
+			{
+				$link = '<span class="' . $class . '" data-icon></span>';
+			}
+
+			$link .= '<span class="' . $item->menu_title_css . ($item->params->get('menu_text', 1) ? ' image-title' : ' u-hiddenVisually') . '">' . $item->title . '</span>';
+		}
 		elseif ($item->menu_title_css)
 		{
 			$link = '<span class="' . $item->menu_title_css . '">' . $item->title . '</span>'; 
