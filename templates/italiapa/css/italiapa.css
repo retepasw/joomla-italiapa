@@ -573,6 +573,8 @@ header.Headroom .Megamenu-subnav {
 .featured-theme .owl-dots,
 .heronews-theme .owl-dots,
 .news-theme .owl-dots {
+	padding-bottom: 6px;
+	padding-top: 10px;
 	text-align: center;
 	-webkit-tap-highlight-color: transparent
 }
