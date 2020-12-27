@@ -977,5 +977,9 @@ dl.stats-module dd {
 
 .Megamenu ul.Megamenu-subnavGroup ul span.image-title {
     position: absolute;
-    left: 32px;
+    left: 2em;
+}
+
+.Megamenu-item>a {
+	margin-left: 0.5em;
 }

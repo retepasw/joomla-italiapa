@@ -179,6 +179,11 @@ $menu   = hierarchical_array_from_array($list, $params->get('startLevel', 1));
 
 				if ($item->level == 1)
 				{
+					if ($item->menu_image_css)
+					{
+						$icon = '<span class="' . $item->menu_image_css . '"></span>';
+						$item->menu_image_css = '';
+					}
 					echo '<li' . ($class || $subclass ? ' class="' . $class . ' ' . $subclass . '"' : '') .
 						(!$item->deeper ? ' role="presentation"' : '') .
 						($item->type == 'separator' ? ' role="presentation"' : '') .
