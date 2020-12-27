@@ -233,6 +233,28 @@ h3 svg[class=Icon] */{
 	padding-right: .5em !important;
 }
 /*
+.Megamenu ul.Megamenu-subnavGroup {
+    position: relative;
+}
+*/
+.Megamenu ul.Megamenu-subnavGroup ul {
+    position: relative;
+}
+
+.Megamenu ul.Megamenu-subnavGroup ul ul {
+    margin-left: 1em
+}
+
+.Megamenu ul.Megamenu-subnavGroup ul span.image-title {
+    position: absolute;
+    left: 2em;
+}
+
+.Megamenu-item>span:first-child {
+    width: 4rem!important;
+}
+
+/*
 .Megamenu-item svg[class^="Icon "],
 .Megamenu-item svg[class*=" Icon "], 
 .Megamenu-item svg[class$=" Icon"],
@@ -969,17 +991,4 @@ dl.stats-module dd {
 .Leads-link:after{
 	content: none!important;
     margin-left: 0!important;
-}
-
-.Megamenu ul.Megamenu-subnavGroup {
-    position: relative;
-}
-
-.Megamenu ul.Megamenu-subnavGroup ul span.image-title {
-    position: absolute;
-    left: 2em;
-}
-
-.Megamenu-item>a {
-	margin-left: 0.5em;
 }

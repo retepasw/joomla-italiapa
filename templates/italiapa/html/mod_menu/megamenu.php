@@ -170,10 +170,12 @@ $menu   = hierarchical_array_from_array($list, $params->get('startLevel', 1));
 					if ($svg)
 					{
 						$icon = '<svg class="' . trim($icon . ' ' . $item->menu_image_css) . '"><use xlink:href="#' . trim($svg) . '"></use></svg>';
+						$item->menu_image_css = '';
 					}
 					elseif ($icon)
 					{
 						$icon = '<span class="' . trim($icon . ' ' . $item->menu_image_css) . '"></span>';
+						$item->menu_image_css = '';
 					}
 				}
 
