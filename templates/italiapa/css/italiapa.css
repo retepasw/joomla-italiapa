@@ -971,7 +971,7 @@ dl.stats-module dd {
     margin-left: 0!important;
 }
 
-[class^="icon-"],
-[class*=" icon-"] {
-	margin-right: .5em;
+Megamenu li span.image-title {
+    margin-left: 0.5em;
 }
+
