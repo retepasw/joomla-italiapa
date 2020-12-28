@@ -247,7 +247,11 @@ h3 svg[class=Icon] */{
 
 .Megamenu ul.Megamenu-subnavGroup ul span.image-title {
     position: absolute;
-    left: 2em;
+    left: 1.5em;
+}
+
+.Megamenu ul.Megamenu-subnavGroup span.image-title {
+	margin-left: 0.25em;
 }
 
 .Megamenu-item>span:first-child {
