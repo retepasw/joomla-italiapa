@@ -7,7 +7,7 @@
  *
  * @author		Helios Ciancio <info (at) eshiol (dot) it>
  * @link		https://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
+ * @copyright	Copyright (C) 2017 - 2021 Helios Ciancio. All Rights Reserved
  * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -29,7 +29,7 @@ if (!isset($this->error))
 
 $app	= JFactory::getApplication();
 $params = $app->getTemplate(true)->params;
-$min = '.min';
+$min    = '.min';
 
 if ($params->get('debug') || defined('JDEBUG') && JDEBUG)
 {
@@ -80,38 +80,13 @@ JFactory::getSession()->set('theme', $theme);
 	<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/modernizr.js"></script>
 
 	<script>__PUBLIC_PATH__ = '<?php echo $this->baseurl ?>/templates/italiapa/build/'</script>
-
-	<!-- <link rel="preload" href="<?php echo $this->baseurl ?>/templates/italiapa/build/IWT.min.js" as="script"> -->
-	<!--
-		In alternativa a WebFontLoader ÃƒÆ’Ã‚Â¨ possibile caricare il font direttamente da Google
-		<link href='//fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700,' rel='stylesheet' type='text/css' />
-		o dal repository locale (src/fonts)
-	-->
-	<script type="text/javascript">
-		WebFontConfig = {
-			google: {
-				families: ['Titillium+Web:400,600,700,400italic:latin']
-			}
-		};
-		(function() {
-			var wf = document.createElement('script');
-			wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-			wf.type = 'text/javascript';
-			wf.async = 'true';
-			var s = document.getElementsByTagName('script')[0];
-			s.parentNode.insertBefore(wf, s);
-		})();
-	</script>
-
-	<script>var theme='<?php echo JFactory::getSession()->get('theme'); ?>';</script>
-
 	<script>__DEFAULT_THEME__ = '<?php echo $theme_default; ?>'</script>
 	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.css">
 	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.<?php echo $theme; ?>.css" id="theme">
-
+	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/media/jui/css/icomoon.css">
+	<link href='//fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700,' rel='stylesheet' type='text/css' />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/italiapa.css">
-
 	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/tooltip-theme-arrows.css" />
 
 	<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/jquery.min.js"></script>
