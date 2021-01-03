@@ -519,7 +519,15 @@ option:hover {
   background-color: #FFFFFF;
   color: #06c;
 }
+.Header-socialIcons [class^="icon-"] {
+  background-color: #FFFFFF;
+  color: #06c;
+}
 .Header-socialIcons [class*=" Icon-"] {
+  background-color: #FFFFFF;
+  color: #06c;
+}
+.Header-socialIcons [class*=" icon-"] {
   background-color: #FFFFFF;
   color: #06c;
 }

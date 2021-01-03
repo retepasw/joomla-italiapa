@@ -488,11 +488,15 @@ ul {
 .Footer-socialIcons > li,
 .Footer-socialIcons [class*=" Icon-"],
 .Footer-socialIcons [class^=Icon-],
+.Footer-socialIcons [class*=" icon-"],
+.Footer-socialIcons [class^=icon-],
 .Form-fieldset > legend,
 .Header-language-other a,
 .Header-socialIcons > li,
 .Header-socialIcons [class*=" Icon-"],
 .Header-socialIcons [class^=Icon-],
+.Header-socialIcons [class*=" icon-"],
+.Header-socialIcons [class^=icon-],
 .Header-titleLink a,
 .Header-toggle > *,
 .Megamenu-item,
@@ -3382,8 +3386,12 @@ ul {
 .Dot,
 .Footer-socialIcons [class*=" Icon-"],
 .Footer-socialIcons [class^=Icon-],
+.Footer-socialIcons [class*=" icon-"],
+.Footer-socialIcons [class^=icon-],
 .Header-socialIcons [class*=" Icon-"],
 .Header-socialIcons [class^=Icon-],
+.Header-socialIcons [class*=" icon-"],
+.Header-socialIcons [class^=icon-],
 .ScrollTop,
 .Timeline-point-content,
 .u-borderRadius-circle {
@@ -3660,6 +3668,8 @@ ul {
 .Header-search,
 .Header-socialIcons [class*=" Icon-"],
 .Header-socialIcons [class^=Icon-],
+.Header-socialIcons [class*=" icon-"],
+.Header-socialIcons [class^=icon-],
 .u-padding-all-xxs {
   padding: 0.4rem !important;
 }
@@ -4668,11 +4678,17 @@ ul {
 .u-textWeight-300 {
   font-weight: 300 !important;
 }
+.Footer-socialIcons [class*=" icon-"],
+.Footer-socialIcons [class^=icon-],
 .Footer-subTitle,
 .Form-field--withPlaceholder .Form-label,
 .Header-titleLink small,
 .Headroom--fixed.Headroom--not-top .Header-titleLink a,
 .Headroom--pinned.Headroom--not-top .Header-titleLink a,
+.Header-socialIcons [class*=" icon-"],
+.Header-socialIcons [class^=icon-],
+.Megamenu [class*=" icon-"],
+.Megamenu [class^=icon-],
 .Prose > h5,
 .Share-revealText,
 .u-text-h5,
@@ -4797,8 +4813,18 @@ ul {
   speak: none;
   text-transform: none;
 }
+.Footer-socialIcons [class^="icon-"],
+.Footer-socialIcons [class*=" icon-"],
+.Header-socialIcons [class^="icon-"],
+.Header-socialIcons [class*=" icon-"] {
+  width: 2.6rem;
+  height: 2.6rem;
+  line-height: 1.8rem;
+}
 .Header-socialIcons span[class*=" Icon-"],
 .Header-socialIcons span[class^=Icon-],
+.Header-socialIcons [class*=" icon-"],
+.Header-socialIcons span[class^=icon-],
 .Megamenu-item span[class*=" Icon-"],
 .Megamenu-item span[class^=Icon-],
 .Entrypoint-item span[class*=" Icon-"],
@@ -5645,6 +5671,30 @@ option:hover {
 .Linklist-link.is-expanded {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctitle%3Ecollapse%3C/title%3E%3Cpath d='M28.267 25.867L32 22.134l-16-16-16 16 3.733 3.733L16 13.6l12.267 12.267z'/%3E%3C/svg%3E");
 }
+/* investigare il suo utilizzo
+[data-columns]:before {
+    content: "1 .u-floatLeft.u-sizeFull";
+    display: none
+}
+
+@media screen and (min-width:768px) and (max-width:991px) {
+    [data-columns]:before {
+        content: "1 .u-floatLeft.u-sizeFull"
+    }
+}
+
+@media screen and (min-width:992px) and (max-width:1365px) {
+    [data-columns]:before {
+        content: "2 .u-floatLeft.u-size1of2"
+    }
+}
+
+@media screen and (min-width:1366px) {
+    [data-columns]:before {
+        content: "3 .u-floatLeft.u-size1of3"
+    }
+}
+*/
 .Megamenu-item:hover,
 .Megamenu-item > a:hover {
   cursor: pointer !important;
