@@ -83,6 +83,7 @@ JFactory::getSession()->set('theme', $theme);
 	<script>__DEFAULT_THEME__ = '<?php echo $theme_default; ?>'</script>
 	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.css">
 	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.<?php echo $theme; ?>.css" id="theme">
+	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/ita.css">
 	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/media/jui/css/icomoon.css">
 	<link href='//fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700,' rel='stylesheet' type='text/css' />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

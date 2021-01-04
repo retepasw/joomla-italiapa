@@ -4678,17 +4678,11 @@ ul {
 .u-textWeight-300 {
   font-weight: 300 !important;
 }
-.Footer-socialIcons [class*=" icon-"],
-.Footer-socialIcons [class^=icon-],
 .Footer-subTitle,
 .Form-field--withPlaceholder .Form-label,
 .Header-titleLink small,
 .Headroom--fixed.Headroom--not-top .Header-titleLink a,
 .Headroom--pinned.Headroom--not-top .Header-titleLink a,
-.Header-socialIcons [class*=" icon-"],
-.Header-socialIcons [class^=icon-],
-.Megamenu [class*=" icon-"],
-.Megamenu [class^=icon-],
 .Prose > h5,
 .Share-revealText,
 .u-text-h5,
@@ -4791,13 +4785,6 @@ ul {
 .u-zindex-max {
   z-index: 999999;
 }
-@font-face {
-  font-family: ita;
-  font-style: normal;
-  font-weight: 400;
-  src: url(../build/assets/5d3ff71c.eot?v2);
-  src: url(../build/assets/5d3ff71c.eot?v2#iefix) format("embedded-opentype"), url(../build/assets/602e9d03.ttf?v2) format("truetype"), url(../build/assets/80f3eca6.woff?v2) format("woff"), url(../build/assets/87b8d325.svg?v2#ita) format("svg");
-}
 .Icon,
 .Megamenu--default .Megamenu-list > li > a[aria-expanded=false]:after,
 .Megamenu--default .Megamenu-list > li > a[aria-expanded=true]:after,
@@ -4830,6 +4817,10 @@ ul {
 .Entrypoint-item span[class*=" Icon-"],
 .Entrypoint-item span[class^=Icon-] {
   margin-right: 0.2em;
+}
+.Megamenu-item span[class*=" icon-"],
+.Megamenu-item span[class^=icon-] {
+  margin-right: 0.5em;
 }
 .Icon:before,
 .Megamenu--default .Megamenu-list > li > a[aria-expanded=false]:after:before,
