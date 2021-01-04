@@ -1,14 +1,14 @@
 <?php
 /**
- * @package		Joomla.Site
- * @subpackage	Templates.ItaliaPA
+ * @package     Joomla.Site
+ * @subpackage  Templates.ItaliaPA
  *
- * @version		__DEPLOY_VERSION__
+ * @version     __DEPLOY_VERSION__
  *
- * @author		Helios Ciancio <info (at) eshiol (dot) it>
- * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
- * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
+ * @author      Helios Ciancio <info (at) eshiol (dot) it>
+ * @link        http://www.eshiol.it
+ * @copyright   Copyright (C) 2017 - 2021 Helios Ciancio. All Rights Reserved
+ * @license	    http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
  * or is derivative of works licensed under the GNU General Public License or
@@ -65,7 +65,7 @@ JLoader::register('FieldsHelper', JPATH_ADMINISTRATOR . '/components/com_fields/
 							<?php $jcFields = FieldsHelper::getFields('com_content.article', $item, true); ?>
 							<?php foreach ($jcFields as $jcField) : ?>
 								<?php if (($jcField->name == 'articleicon') && $jcField->rawvalue): ?>
-									<?php $icon = '<svg class="Icon"><use xlink:href="#' . $jcField->rawvalue . '"></use></svg> '; ?>
+									<?php $icon = '<span class="' . $jcField->rawvalue . '"></span> '; ?>
 								<?php endif; ?>
 							<?php endforeach; ?>
 
@@ -138,7 +138,7 @@ JLoader::register('FieldsHelper', JPATH_ADMINISTRATOR . '/components/com_fields/
 										<?php echo JText::_('MOD_ARTICLES_CATEGORY_READ_MORE'); ?>
 										<?php echo JHtml::_('string.truncate', $item->title, $params->get('readmore_limit')); ?>
 									<?php endif; ?>
-									<span class="Icon Icon-chevron-right"></span>
+									<span class="icon-chevron-right"></span>
 								</a>
 							</p>
 						<?php endif; ?>
