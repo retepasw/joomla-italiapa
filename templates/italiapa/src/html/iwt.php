@@ -303,19 +303,9 @@ abstract class JHtmlIwt
 		{
 			if ($item->menu_image_css)
 			{
-				if (preg_match_all('/(^|\s)Icon-/', $item->menu_image_css, $matches, PREG_SET_ORDER, 0))
-				{
-					//TODO: da rivedere
-					$link = '<span class="' . $item->menu_image_css . '"></span>' . JHtml::_('image', $item->menu_image, $item->anchor_title) .
-							 '</span>';
-					unset($item->menu_image_css);
-				}
-				else
-				{
 					$link = JHtml::_('image', $item->menu_image, $item->anchor_title, array(
 							'class' => $item->menu_image_css
 					));
-				}
 			}
 			else
 			{
@@ -328,51 +318,10 @@ abstract class JHtmlIwt
 		{
 			$link = $item->title;
 		}
-		elseif (preg_match_all('/(^|\s)Icon-/', $item->menu_image_css, $matches, PREG_SET_ORDER, 0) || preg_match_all('/(^|\s)it-/', $item->menu_image_css, $matches, PREG_SET_ORDER, 0))
+		elseif ($item->menu_image_css)
 		{
-			$icon = '';
-			$svg = '';
-			$menu_image_css = explode(' ', $item->menu_image_css);
-			for ($i = count($menu_image_css) - 1; $i >= 0; $i --)
-			{
-				if (substr($menu_image_css[$i], 0, 5) == 'Icon-')
-				{
-					if (file_exists(JPATH_SITE . '/templates/italiapa/src/icons/img/SVG/' . substr($menu_image_css[$i], 5) . '.svg'))
-					{
-						$svg = $menu_image_css[$i];
-					}
-					else
-					{
-						$icon .= ' ' . $menu_image_css[$i];
-					}
-					unset($menu_image_css[$i]);
-				}
-				elseif (substr($menu_image_css[$i], 0, 3) == 'it-')
-				{
-					if (file_exists(JPATH_SITE . '/templates/italiapa/src/icons/img/SVG/' . $menu_image_css[$i] . '.svg'))
-					{
-						$svg = 'Icon-' . $menu_image_css[$i];
-					}
-					else
-					{
-						$icon .= ' ' . $menu_image_css[$i];
-					}
-					unset($menu_image_css[$i]);
-				}
-			}
-			$item->menu_image_css = implode(' ', $menu_image_css);
-
-			$class = trim($icon . ' ' . $item->menu_image_css);
-			if ($svg)
-			{
-				$link = '<span class="' . trim($svg) . '"><svg' . ($class ? ' class="' . $class . '"' : '') . '><use xlink:href="#' . trim($svg) . '"></use></svg></span>';
-			}
-			elseif ($icon)
-			{
-				$link = '<span class="' . $class . '"></span>';
-			}
-
-			$link .= '<span class="' . $item->menu_title_css . ($item->params->get('menu_text', 1) ? ' image-title' : ' u-hiddenVisually') . '">' . $item->title . '</span>';
+			$link = '<span class="' . $item->menu_image_css . '"></span>';
+			$link .= '<span class="' . trim($item->menu_title_css . ($item->params->get('menu_text', 1) ? ' image-title' : ' u-hiddenVisually')) . '">' . $item->title . '</span>';
 		}
 		elseif ($item->menu_title_css)
 		{
