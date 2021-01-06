@@ -1,13 +1,13 @@
 /**
- * @package		Joomla.Site
- * @subpackage	Templates.ItaliaPA
+ * @package     Joomla.Site
+ * @subpackage  Templates.ItaliaPA
  *
- * @version		__DEPLOY_VERSION__
+ * @version     __DEPLOY_VERSION__
  *
- * @author		Helios Ciancio <info (at) eshiol (dot) it>
- * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
- * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
+ * @author      Helios Ciancio <info (at) eshiol (dot) it>
+ * @link        https://www.eshiol.it
+ * @copyright   Copyright (C) 2017 - 2021 Helios Ciancio. All rights reserved
+ * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
  * is derivative of works licensed under the GNU General Public License
@@ -27,7 +27,7 @@
 		eshiol.italiapa.version = '__DEPLOY_VERSION__';
 
 		// Banner
-		console.log( "  _____ _        _ _       _____\n |_   _| |      | (_)     |  __ \\ /\\\n   | | | |_ __ _| |_  __ _| |__) /  \\\n   | | | __/ _` | | |/ _` |  ___/ /\\ \\\n  _| |_| || (_| | | | (_| | |  / ____ \\\n |_____|\\__\\__,_|_|_|\\__,_|_| /_/    \\_\\ " + eshiol.italiapa.version + "\n\nbased on Web Toolkit (https://italia.github.io/design-web-toolkit/)\nCopyright (c) 2017-2020, Helios Ciancio (https://www.eshiol.it)" );
+		console.log( "  _____ _        _ _       _____\n |_   _| |      | (_)     |  __ \\ /\\\n   | | | |_ __ _| |_  __ _| |__) /  \\\n   | | | __/ _` | | |/ _` |  ___/ /\\ \\\n  _| |_| || (_| | | | (_| | |  / ____ \\\n |_____|\\__\\__,_|_|_|\\__,_|_| /_/    \\_\\ " + eshiol.italiapa.version + "\n\nbased on Web Toolkit (https://italia.github.io/design-web-toolkit/)\nCopyright (c) 2017 - 2021, Helios Ciancio (https://www.eshiol.it)" );
 
 		const copyright = '<style>' +
 			'.ipa-copyright{position:unset!important;display:block!important;color:rgba(255,255,255,0.75);text-align:right;padding-top:2em;padding-right:5em;font-family:Iceland}' +
@@ -37,7 +37,7 @@
 			'@media screen and (max-width:767px){.ipa-copyright{text-align:left}.ipa-copyright>span{display:block;margin-top:1em}}' +
 			'</style>' +
 			'<div class="ipa-copyright">' + 
-			'<span>Powered by <a href="https://www.eshiol.it/it/template-italiapa.html" title="Template ItaliaPA &copy; 2017 - 2020 Helios Ciancio. All rights reserved." target="_blank" rel="external">ItaliaPA ' + 
+			'<span>Powered by <a href="https://www.eshiol.it/it/template-italiapa.html" title="Template ItaliaPA &copy; 2017 - 2021 Helios Ciancio. All rights reserved." target="_blank" rel="external">ItaliaPA ' + 
 			'<span style="background: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAQCAYAAACm53kpAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4gwNCxsFdcv1AQAAA7VJREFUWMPN12mIVmUUB/Df6OA2GspEKpWWZU2UZBRuLVZa2opStHyzlAqyPhSoUISEFpltUKB+iGhVLBpMyMg2mxaCFmjIoqICyYKcmWwbdfTty/+ty+V9ZzQh5sDDfe59znnuOf/7P+c8t6FSqagjy3EmrtD/ZRG2YGzuG0vrf2E+XkdbcWFAnQ0fw95suLCfBz8Bt6AVp8bnbvRk7McfOB1LMQdHVo0bSgxYhGm5NmEf3seXWIdt/RSEu7EC9+BKvJXAq3IAR+AzzMQpWI/VVQBeQAfux44YzcalOA+b0Y4ZGBbEi/IRvgu9Bge8hsJ6N+Zmj8Ul22a8hmcxKM4OL+l04xJsr/FuCfzezFsxr4bObGzNfDMur+bKSEwMIjtwThjQhjtwF1bipoDRgzH4qbD59/gzjNmJF2s4cC4+Dg134uk834WuzLehBatr2LfEp4tD+zWFtSLYX9dhSVNh/p5CsejCU7gI1+FhLEieDAt1pse5dbgtCH4SUODTsGcWHghzvskX7bHfeANtx8A4ezuOKgS6FY+GHQtwTEFXQP81bBkTP4fXAarxIFJmUFl5IlYluONxLb7F6IwPCsajUxM21tjwjYCxD/f9szrQ9ADdlCLUXnJ+cK6P46Tkc1nmJFVgXJ3gD1kGFIDowDOh+6R8jSH4JTqT8XbovTwtpZb8nOCrQcwKgI+EUSvTYepJT53nQw5C55ClsVBkunFcis0q7MYSnI93sSnz0zCqlz2bUkuex7JU4/kBpK2P9lvO58PROSQGzMRVYcGrCX5a6kAXnsNXKWSTSy2mnozE1QF5cfK338mAOFql+I+ZP5H7JfgwFXc7Hkp6dPay594A2pz+/EOKYkd/BKDaBc6qHgzSRm7M2vCkxiScjCnJ6Y05VCzKPntyPTsV/J2cLa7P85txYVKpluwpHVpqyYFe4vj9v9oXc3FFcuvNAn1n5H/g80Jv70oKbCjYzsUr6a9f4BrcWlhfm8r/cu7LKXQZjsbQdIRRqUfVMRYj0iHK9s0BekoKZW/2J8ZmXy0A2sOEl3BnvuSI1ASpB2sDztRSF2gPY1rs15KjZkcKYlPWtmBpj57V6QbFAIamYJ6RNtyZr1oduxP0uNiML9jvykFsYYI9Ifa7C6MTlfg1If8FNf8FijIVNwSUTTn5resjpS7Ag6kXO3OYqVbt7jhRCWPW1+jly8K81ug1lNKkIWeOeXXs18TftlKrbMBvhbT/9/2VSqWv8WSlUhl3EHrVcexh6vyv9n8DKS+vqL7NXR4AAAAASUVORK5CYII=&quot;) left center no-repeat; width: 64px; height: 16px; display: inline-block;">&nbsp;</span> ' +
 			'eshiol.it</a></span></div>'
 

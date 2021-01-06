@@ -1,14 +1,14 @@
 <?php
 /**
- * @package		Joomla.Site
- * @subpackage	Templates.ItaliaPA
+ * @package     Joomla.Site
+ * @subpackage  Templates.ItaliaPA
  *
- * @version		__DEPLOY_VERSION__
+ * @version     __DEPLOY_VERSION__
  *
- * @author		Helios Ciancio <info (at) eshiol (dot) it>
- * @link		http://www.eshiol.it
- * @copyright	Copyright (C) 2017 - 2020 Helios Ciancio. All Rights Reserved
- * @license		http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
+ * @author      Helios Ciancio <info (at) eshiol (dot) it>
+ * @link        https://www.eshiol.it
+ * @copyright   Copyright (C) 2017 - 2021 Helios Ciancio. All rights reserved
+ * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
  * or is derivative of works licensed under the GNU General Public License or
@@ -119,7 +119,6 @@ $menu   = hierarchical_array_from_array($list, $params->get('startLevel', 1));
 					$class .= ' parent';
 				}
 
-				$icon = '';
 				$columns = '';
 				if ($item->anchor_css)
 				{
@@ -145,38 +144,6 @@ $menu   = hierarchical_array_from_array($list, $params->get('startLevel', 1));
 					$class = 'Megamenu-item' . $class;
 				}
 
-				if (preg_match_all('/(^|\s)Icon-/', $item->menu_image_css, $matches, PREG_SET_ORDER, 0))
-				{
-					$icon = '';
-					$svg = '';
-					$menu_image_css = explode(' ', $item->menu_image_css);
-					for ($i = count($menu_image_css) - 1; $i >= 0; $i --)
-					{
-						if (substr($menu_image_css[$i], 0, 5) == 'Icon-')
-						{
-							if (file_exists(JPATH_SITE . '/templates/italiapa/src/icons/img/SVG/' . substr($menu_image_css[$i], 5) . '.svg'))
-							{
-								$svg .= ' ' . $menu_image_css[$i];
-							}
-							else
-							{
-								$icon .= ' ' . $menu_image_css[$i];
-							}
-							unset($menu_image_css[$i]);
-						}
-					}
-					$item->menu_image_css = implode(' ', $menu_image_css);
-
-					if ($svg)
-					{
-						$icon = '<svg class="' . trim($icon . ' ' . $item->menu_image_css) . '"><use xlink:href="#' . trim($svg) . '"></use></svg>';
-					}
-					elseif ($icon)
-					{
-						$icon = '<span class="' . trim($icon . ' ' . $item->menu_image_css) . '"></span>';
-					}
-				}
-
 				if ($item->level == 1)
 				{
 					echo '<li' . ($class || $subclass ? ' class="' . $class . ' ' . $subclass . '"' : '') .
@@ -200,10 +167,6 @@ $menu   = hierarchical_array_from_array($list, $params->get('startLevel', 1));
 				else
 				{
 					echo '<li' . ($subclass ? ' class="' . $subclass . '"' : '') . '>';
-				}
-				if ($icon)
-				{
-					echo $icon;
 				}
 
 				switch ($item->type) :
