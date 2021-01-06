@@ -4822,6 +4822,11 @@ ul {
 .Megamenu-item span[class^=icon-] {
   margin-right: 0.5em;
 }
+.Megamenu-item span[class*=" icon-"]:before,
+.Megamenu-item span[class^=icon-]:before
+{
+	font-weight: initial;
+}
 .Icon:before,
 .Megamenu--default .Megamenu-list > li > a[aria-expanded=false]:after:before,
 .Megamenu--default .Megamenu-list > li > a[aria-expanded=true]:after:before {
@@ -7068,6 +7073,8 @@ nav[role=navigation] ul {
   padding: 0;
 }
 .categories-module [class*=" icon-"],
-.categories-module [class^=icon-] {
+.categories-module [class^=icon-],
+.category-module [class*=" icon-"],
+.category-module [class^=icon-] {
 	margin-right: 0.5em;
 }

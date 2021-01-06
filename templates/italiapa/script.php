@@ -31,6 +31,8 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\MVC\Model\BaseDatabaseModel;
+
 class italiapaInstallerScript
 {
 	/**
@@ -178,6 +180,7 @@ class italiapaInstallerScript
 				// Check to make sure our data is valid
 				$field->check() && $field->store(true);
 			}
+			$imageHeronewsId = $field->id;
 		}
 
 		if ($type == 'update')
@@ -210,6 +213,37 @@ class italiapaInstallerScript
 				array('layout'=>'_:default'),
 				array(),
 				array('module_tag'=>'section', 'header_tag'=>'h3', 'style'=>'0'));
+
+			/* copy image_intro to image-heronews for featured articles */
+			$db = JFactory::getDbo();
+			$query = $db->getQuery(true);
+
+			$query->select('a.id, a.images')
+				->from('#__content AS a')
+				->join('INNER', '#__content_frontpage AS fp ON fp.content_id = a.id');
+
+			$db->setQuery($query);
+
+			if ($items = $db->loadObjectList())
+			{
+				JModelLegacy::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_fields/models', 'FieldsModel');
+
+				/** @var FieldsModelField $model */
+				$model = BaseDatabaseModel::getInstance('Field', 'FieldsModel', array('ignore_request' => true));
+
+				foreach ($items as &$item)
+				{
+					$obj = json_decode($item->images);
+					if ($obj->image_intro)
+					{
+						$imageHeronews = $model->getFieldValue($imageHeronewsId, $item->id);
+						if (empty($imageHeronews))
+						{
+							$model->setFieldValue($imageHeronewsId, $item->id, $obj->image_intro);
+						}
+					}
+				}
+			}
 		}
 	}
 
