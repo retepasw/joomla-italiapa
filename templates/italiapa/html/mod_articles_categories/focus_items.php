@@ -21,7 +21,7 @@ JHtml::_('bootstrap.tooltip');
 
 $lang  = JFactory::getLanguage();
 ?>
-<div class="Grid Grid--withGutter">
+<div class="Grid Grid--withGutter categories-module">
 	<?php foreach ($list as $item) : ?>
 		<div class="Grid-cell <?php echo $responsiveClass ?: 'u-md-size1of3 u-lg-size1of3'; ?> u-flex u-margin-r-bottom u-flexJustifyCenter">
 			<div class="u-nbfc u-borderShadow-m u-borderRadius-m u-color-grey-30 u-background-white Arrange-sizeFill">
