@@ -7072,6 +7072,8 @@ nav[role=navigation] ul {
   margin: 0;
   padding: 0;
 }
+.categories-module [class*=" icon-"],
+.categories-module [class^=icon-],
 .category-module [class*=" icon-"],
 .category-module [class^=icon-] {
 	margin-right: 0.5em;

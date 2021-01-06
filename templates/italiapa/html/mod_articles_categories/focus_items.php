@@ -6,8 +6,8 @@
  * @version     __DEPLOY_VERSION__
  *
  * @author      Helios Ciancio <info (at) eshiol (dot) it>
- * @link        https://www.eshiol.it
- * @copyright   Copyright (C) 2017 - 2021 Helios Ciancio. All rights reserved
+ * @link        http://www.eshiol.it
+ * @copyright   Copyright (C) 2017 - 2021 Helios Ciancio. All Rights Reserved
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -21,7 +21,7 @@ JHtml::_('bootstrap.tooltip');
 
 $lang  = JFactory::getLanguage();
 ?>
-<div class="Grid Grid--withGutter">
+<div class="Grid Grid--withGutter categories-module">
 	<?php foreach ($list as $item) : ?>
 		<div class="Grid-cell <?php echo $responsiveClass ?: 'u-md-size1of3 u-lg-size1of3'; ?> u-flex u-margin-r-bottom u-flexJustifyCenter">
 			<div class="u-nbfc u-borderShadow-m u-borderRadius-m u-color-grey-30 u-background-white Arrange-sizeFill">
@@ -30,7 +30,7 @@ $lang  = JFactory::getLanguage();
 					<?php $jcFields = FieldsHelper::getFields('com_content.categories', $item, true); ?>
 					<?php foreach ($jcFields as $jcField) : ?>
 						<?php if (($jcField->name == 'categoryicon') && $jcField->rawvalue): ?>
-							<?php $icon = '<svg class="Icon"><use xlink:href="#' . $jcField->rawvalue . '"></use></svg> '; ?>
+							<?php $icon = '<span class="' . $jcField->rawvalue . '"></span> '; ?>
 						<?php endif; ?>
 					<?php endforeach; ?>
 					<h3 class="u-text-h4 u-margin-r-bottom">
