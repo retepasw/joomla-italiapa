@@ -6,7 +6,7 @@
   <packagename>italiapa</packagename>
   <version>__DEPLOY_VERSION__</version>
   <url>http://www.eshiol.it</url>
-  <copyright><![CDATA[(C) 2017 - 2020 Helios Ciancio <info (at) eshiol (dot) it> (https://www.eshiol.it). All Rights Reserved.]]></copyright>
+  <copyright><![CDATA[(C) 2017 - 2021 Helios Ciancio <info (at) eshiol (dot) it> (https://www.eshiol.it). All rights reserved.]]></copyright>
   <packager>Helios Ciancio</packager>
   <packagerurl>http://www.eshiol.it/</packagerurl>
   <description>PKG_ITALIAPA_XML_DESCRIPTION</description>
@@ -14,14 +14,14 @@
     <server type="extension" priority="2" name="J2XML">https://www.eshiol.it/files/italiapa/italiapa.xml</server>
   </updateservers>
   <files>
-    <folder type="template" id="italiapa">tpl_italiapa-__DEPLOY_VERSION__.zip</folder>
-    <folder type="plugin" group="content" id="ipapagebreak">plg_content_ipapagebreak-__DEPLOY_VERSION__.zip</folder>
-    <folder type="plugin" group="content" id="ipavote">plg_content_ipavote-__DEPLOY_VERSION__.zip</folder>
-    <folder type="plugin" group="system" id="ipatinymce">plg_system_ipatinymce-__DEPLOY_VERSION__.zip</folder>
-    <folder type="plugin" group="system" id="italiapa">plg_system_italiapa-__DEPLOY_VERSION__.zip</folder>
-    <folder type="module" id="carousel">mod_carousel-__DEPLOY_VERSION__.zip</folder>
-    <folder type="module" id="cookiebar">mod_cookiebar-__DEPLOY_VERSION__.zip</folder>
-    <folder type="module" id="schemaorg">mod_schemaorg-__DEPLOY_VERSION__.zip</folder>
+    <folder type="template" id="italiapa">tpl_italiapa.zip</folder>
+    <folder type="plugin" group="content" id="ipapagebreak">plg_content_ipapagebreak.zip</folder>
+    <folder type="plugin" group="content" id="ipavote">plg_content_ipavote.zip</folder>
+    <folder type="plugin" group="system" id="ipatinymce">plg_system_ipatinymce.zip</folder>
+    <folder type="plugin" group="system" id="italiapa">plg_system_italiapa.zip</folder>
+    <folder type="module" id="carousel">mod_carousel.zip</folder>
+    <folder type="module" id="cookiebar">mod_cookiebar.zip</folder>
+    <folder type="module" id="schemaorg">mod_schemaorg.zip</folder>
   </files>
   <languages folder="language">
     <language tag="en-GB">en-GB/en-GB.pkg_italiapa.sys.ini</language>

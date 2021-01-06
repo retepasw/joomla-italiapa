@@ -488,11 +488,15 @@ ul {
 .Footer-socialIcons > li,
 .Footer-socialIcons [class*=" Icon-"],
 .Footer-socialIcons [class^=Icon-],
+.Footer-socialIcons [class*=" icon-"],
+.Footer-socialIcons [class^=icon-],
 .Form-fieldset > legend,
 .Header-language-other a,
 .Header-socialIcons > li,
 .Header-socialIcons [class*=" Icon-"],
 .Header-socialIcons [class^=Icon-],
+.Header-socialIcons [class*=" icon-"],
+.Header-socialIcons [class^=icon-],
 .Header-titleLink a,
 .Header-toggle > *,
 .Megamenu-item,
@@ -2220,7 +2224,6 @@ ul {
 .Headroom--pinned.Headroom--not-top .Header-titleLink,
 .Megamenu--default .Megamenu-area,
 .Megamenu-item,
-.Megamenu-item > a,
 .Megamenu-list,
 .Timeline,
 .Timeline-point-content,
@@ -3383,8 +3386,12 @@ ul {
 .Dot,
 .Footer-socialIcons [class*=" Icon-"],
 .Footer-socialIcons [class^=Icon-],
+.Footer-socialIcons [class*=" icon-"],
+.Footer-socialIcons [class^=icon-],
 .Header-socialIcons [class*=" Icon-"],
 .Header-socialIcons [class^=Icon-],
+.Header-socialIcons [class*=" icon-"],
+.Header-socialIcons [class^=icon-],
 .ScrollTop,
 .Timeline-point-content,
 .u-borderRadius-circle {
@@ -3661,6 +3668,8 @@ ul {
 .Header-search,
 .Header-socialIcons [class*=" Icon-"],
 .Header-socialIcons [class^=Icon-],
+.Header-socialIcons [class*=" icon-"],
+.Header-socialIcons [class^=icon-],
 .u-padding-all-xxs {
   padding: 0.4rem !important;
 }
@@ -3865,6 +3874,10 @@ ul {
 .u-margin-bottom-xs {
   margin-bottom: 0.8rem !important;
 }
+.Megamenu--default .Megamenu-subnavGroup > li > ul > li > ul {
+  margin-left: 1em;
+  padding-right: 1em;
+}
 .Form--spaced .Form-fieldset,
 .Form--spaced .Form-legend,
 .Header-social,
@@ -3992,7 +4005,7 @@ ul {
 }
 .Footer-logo,
 .Megamenu--default .Megamenu-subnav,
-.Megamenu-item > a,
+.Megamenu-item > a[aria-controls],
 .u-padding-right-xl {
   padding-right: 3.2rem !important;
 }
@@ -4082,7 +4095,7 @@ ul {
 .u-padding-r-right {
   padding-right: 1em !important;
 }
-.Megamenu--default .Megamenu-subnavGroup > li,
+.Megamenu--default .Megamenu-subnavGroup,
 .Spid-button > img,
 .u-margin-r-right {
   margin-right: 1em !important;
@@ -4772,13 +4785,6 @@ ul {
 .u-zindex-max {
   z-index: 999999;
 }
-@font-face {
-  font-family: ita;
-  font-style: normal;
-  font-weight: 400;
-  src: url(assets/5d3ff71c.eot?v2);
-  src: url(assets/5d3ff71c.eot?v2#iefix) format("embedded-opentype"), url(assets/602e9d03.ttf?v2) format("truetype"), url(assets/80f3eca6.woff?v2) format("woff"), url(assets/87b8d325.svg?v2#ita) format("svg");
-}
 .Icon,
 .Megamenu--default .Megamenu-list > li > a[aria-expanded=false]:after,
 .Megamenu--default .Megamenu-list > li > a[aria-expanded=true]:after,
@@ -4794,13 +4800,27 @@ ul {
   speak: none;
   text-transform: none;
 }
+.Footer-socialIcons [class^="icon-"],
+.Footer-socialIcons [class*=" icon-"],
+.Header-socialIcons [class^="icon-"],
+.Header-socialIcons [class*=" icon-"] {
+  width: 2.6rem;
+  height: 2.6rem;
+  line-height: 1.8rem;
+}
 .Header-socialIcons span[class*=" Icon-"],
 .Header-socialIcons span[class^=Icon-],
+.Header-socialIcons [class*=" icon-"],
+.Header-socialIcons span[class^=icon-],
 .Megamenu-item span[class*=" Icon-"],
 .Megamenu-item span[class^=Icon-],
 .Entrypoint-item span[class*=" Icon-"],
 .Entrypoint-item span[class^=Icon-] {
   margin-right: 0.2em;
+}
+.Megamenu-item span[class*=" icon-"],
+.Megamenu-item span[class^=icon-] {
+  margin-right: 0.5em;
 }
 .Icon:before,
 .Megamenu--default .Megamenu-list > li > a[aria-expanded=false]:after:before,
@@ -5642,25 +5662,30 @@ option:hover {
 .Linklist-link.is-expanded {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Ctitle%3Ecollapse%3C/title%3E%3Cpath d='M28.267 25.867L32 22.134l-16-16-16 16 3.733 3.733L16 13.6l12.267 12.267z'/%3E%3C/svg%3E");
 }
+/* investigare il suo utilizzo
 [data-columns]:before {
-  content: "1 .u-floatLeft.u-sizeFull";
-  display: none;
-}
-@media screen and (min-width: 768px) and (max-width: 991px) {
-  [data-columns]:before {
     content: "1 .u-floatLeft.u-sizeFull";
-  }
+    display: none
 }
-@media screen and (min-width: 992px) and (max-width: 1365px) {
-  [data-columns]:before {
-    content: "2 .u-floatLeft.u-size1of2";
-  }
+
+@media screen and (min-width:768px) and (max-width:991px) {
+    [data-columns]:before {
+        content: "1 .u-floatLeft.u-sizeFull"
+    }
 }
-@media screen and (min-width: 1366px) {
-  [data-columns]:before {
-    content: "3 .u-floatLeft.u-size1of3";
-  }
+
+@media screen and (min-width:992px) and (max-width:1365px) {
+    [data-columns]:before {
+        content: "2 .u-floatLeft.u-size1of2"
+    }
 }
+
+@media screen and (min-width:1366px) {
+    [data-columns]:before {
+        content: "3 .u-floatLeft.u-size1of3"
+    }
+}
+*/
 .Megamenu-item:hover,
 .Megamenu-item > a:hover {
   cursor: pointer !important;
@@ -6229,83 +6254,6 @@ option:hover {
     max-width: 960px !important;
     padding-top: 0 !important;
   }
-}
-@font-face {
-  font-family: Titillium Web;
-  font-style: normal;
-  font-weight: 200;
-  src: url(assets/f9590cfa.eot);
-  src: local("Titillium WebThin"), local("TitilliumWeb-Thin"), url(assets/f9590cfa.eot?#iefix) format("embedded-opentype"), url(assets/a25ed60b.woff2) format("woff2"), url(assets/22b1b8f5.woff) format("woff"), url(assets/c13a61c1.ttf) format("truetype"), url(assets/9fcfcd6.svg#TitilliumWeb) format("svg");
-}
-@font-face {
-  font-family: Titillium Web;
-  font-style: italic;
-  font-weight: 200;
-  src: url(assets/504525.eot);
-  src: local("Titillium WebThin Italic"), local("TitilliumWeb-ThinItalic"), url(assets/504525.eot?#iefix) format("embedded-opentype"), url(assets/3a877a39.woff2) format("woff2"), url(assets/238b91af.woff) format("woff"), url(assets/2977192b.ttf) format("truetype"), url(assets/fc8a4fe3.svg#TitilliumWeb) format("svg");
-}
-@font-face {
-  font-family: Titillium Web;
-  font-style: normal;
-  font-weight: 300;
-  src: url(assets/b6ff4eba.eot);
-  src: local("Titillium WebLight"), local("TitilliumWeb-Light"), url(assets/b6ff4eba.eot?#iefix) format("embedded-opentype"), url(assets/16b92940.woff2) format("woff2"), url(assets/96162ca5.woff) format("woff"), url(assets/dc7fbd69.ttf) format("truetype"), url(assets/dbd61fc0.svg#TitilliumWeb) format("svg");
-}
-@font-face {
-  font-family: Titillium Web;
-  font-style: italic;
-  font-weight: 300;
-  src: url(assets/c07c2b9f.eot);
-  src: local("Titillium WebLight Italic"), local("TitilliumWeb-LightItalic"), url(assets/c07c2b9f.eot?#iefix) format("embedded-opentype"), url(assets/f034d79e.woff2) format("woff2"), url(assets/1accf2ab.woff) format("woff"), url(assets/e9b25832.ttf) format("truetype"), url(assets/faa34760.svg#TitilliumWeb) format("svg");
-}
-@font-face {
-  font-family: Titillium Web;
-  font-style: normal;
-  font-weight: 400;
-  src: url(assets/2284b50d.eot);
-  src: local("Titillium Web"), local("TitilliumWeb-Regular"), url(assets/2284b50d.eot?#iefix) format("embedded-opentype"), url(assets/7bd7ab8.woff2) format("woff2"), url(assets/d2e55a5d.woff) format("woff"), url(assets/a97cdcb3.ttf) format("truetype"), url(assets/9b3eedce.svg#TitilliumWeb) format("svg");
-}
-@font-face {
-  font-family: Titillium Web;
-  font-style: italic;
-  font-weight: 400;
-  src: url(assets/ddeb63dd.eot);
-  src: local("Titillium WebItalic"), local("TitilliumWeb-Italic"), url(assets/ddeb63dd.eot?#iefix) format("embedded-opentype"), url(assets/50a27d00.woff2) format("woff2"), url(assets/d3d2c8b1.woff) format("woff"), url(assets/57234de4.ttf) format("truetype"), url(assets/d872d8a8.svg#TitilliumWeb) format("svg");
-}
-@font-face {
-  font-family: Titillium Web;
-  font-style: normal;
-  font-weight: 600;
-  src: url(assets/6abda3d1.eot);
-  src: local("Titillium WebSemiBold"), local("TitilliumWeb-SemiBold"), url(assets/6abda3d1.eot?#iefix) format("embedded-opentype"), url(assets/e118c4ee.woff2) format("woff2"), url(assets/4038fe53.woff) format("woff"), url(assets/770d33d.ttf) format("truetype"), url(assets/c043c2bb.svg#TitilliumWeb) format("svg");
-}
-@font-face {
-  font-family: Titillium Web;
-  font-style: italic;
-  font-weight: 600;
-  src: url(assets/c70259cc.eot);
-  src: local("Titillium WebSemiBold Italic"), local("TitilliumWeb-SemiBoldItalic"), url(assets/c70259cc.eot?#iefix) format("embedded-opentype"), url(assets/cc25a29b.woff2) format("woff2"), url(assets/dfcbe087.woff) format("woff"), url(assets/8d874f0c.ttf) format("truetype"), url(assets/7133e3d3.svg#TitilliumWeb) format("svg");
-}
-@font-face {
-  font-family: Titillium Web;
-  font-style: normal;
-  font-weight: 700;
-  src: url(assets/acdbb2cc.eot);
-  src: local("Titillium WebBold"), local("TitilliumWeb-Bold"), url(assets/acdbb2cc.eot?#iefix) format("embedded-opentype"), url(assets/391ea788.woff2) format("woff2"), url(assets/b256e941.woff) format("woff"), url(assets/c1c9a0e9.ttf) format("truetype"), url(assets/ebbcf518.svg#TitilliumWeb) format("svg");
-}
-@font-face {
-  font-family: Titillium Web;
-  font-style: italic;
-  font-weight: 700;
-  src: url(assets/49c3decd.eot);
-  src: local("Titillium WebBold Italic"), local("TitilliumWeb-BoldItalic"), url(assets/49c3decd.eot?#iefix) format("embedded-opentype"), url(assets/8fd3f15f.woff2) format("woff2"), url(assets/db76688d.woff) format("woff"), url(assets/6472f989.ttf) format("truetype"), url(assets/18ee2cd3.svg#TitilliumWeb) format("svg");
-}
-@font-face {
-  font-family: Titillium Web;
-  font-style: normal;
-  font-weight: 900;
-  src: url(assets/1d9c8caa.eot);
-  src: local("Titillium WebBlack"), local("TitilliumWeb-Black"), url(assets/1d9c8caa.eot?#iefix) format("embedded-opentype"), url(assets/92b04d4e.woff2) format("woff2"), url(assets/acbcd48b.woff) format("woff"), url(assets/bac51c96.ttf) format("truetype"), url(assets/ab177a8a.svg#TitilliumWeb) format("svg");
 }
 .t-Pac {
   font-family: Titillium Web, HelveticaNeue-Light, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
