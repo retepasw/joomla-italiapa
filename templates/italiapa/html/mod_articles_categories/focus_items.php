@@ -38,9 +38,9 @@ $lang  = JFactory::getLanguage();
 							<?php echo $icon . $item->title; ?>
 						</a>
 					</h3>
-					<?php if ($item->description) : ?>
+					<?php if ($params->get('show_description', 0) && $item->description) : ?>
 						<div class="u-text-p u-textSecondary">
-							<?php echo $item->description; ?>
+							<?php echo JHtml::_('content.prepare', $item->description, $item->getParams(), 'mod_articles_categories.content'); ?>
 						</div>
 					<?php endif; ?>
 				</div>
