@@ -137,23 +137,38 @@
 		$( 'footer ul.Footer-links:gt(0)' ).remove( ).children( 'li' ).appendTo( 'footer ul.Footer-links:eq(0)' );
 
 		// megamenu multi-column
-		$( 'ul.columns[data-columns]' ).each( function( ) {
+		$( '.js-megamenu ul.columns[data-columns]' ).each( function( ) {
 			columns = $( this ).attr( 'data-columns' );
 			colWidth = $( this ).width();
 			$( this ).width( columns * colWidth );
 
-			$( this ).find( 'li' ).eq( 0 ).children().not( 'ul' ).wrapAll( '<div></div>' );
-
 			// split the first ul
 			var ul = $( this ).find( 'ul' ).eq( 0 );
-			var colSize = Math.ceil( ul.find( 'li' ).size( ) / columns);
 
-			ul.find( 'li' ).each( function( i ) {
-				j = Math.floor( i / colSize );
-				if ( j > 0 ) {
-					$( this ).addClass( 'column-' + j );
-				}
-			} );
+			if ( ul.find( '>li.column-break' ).length == columns - 1 ) {
+				j = 0;
+				ul.find( '>li' ).each( function( i ) {
+					if ( $( this ).hasClass( 'column-break' ) ) {
+						j++;
+						$( this ).remove();
+					} else if ( j > 0 ) {
+						$( this ).addClass( 'column-' + j );
+					}
+				} );
+			} else {
+				var colSize = Math.ceil( ul.find( 'li' ).size( ) / columns);
+				i = 0; j = 0;
+				ul.find( '>li' ).each( function( ) {
+					if ( j > 0 ) {
+						$( this ).addClass( 'column-' + j );
+					}
+					i = i + 1 + $( this ).find( '>ul>li' ).length;
+					if (i >= colSize) {
+						j = j + 1;
+						i = 0;
+					}
+				} );
+			}
 
 			for ( j = columns - 1; j > 0; j-- ) {
 				ul.find( '.column-' + j ).removeClass( 'column-' + j ).insertAfter( ul ).wrapAll( '<ul></ul>' );
