@@ -35,22 +35,26 @@ JHtml::_('behavior.caption');
 	<?php $limitstart = $app->input->get('limitstart', 0, 'uint'); ?>
 
 	<?php if ($limitstart == 0) : ?>
-		<div class="owl-carousel heronews-theme" role="region" id="carousel-main"
-			aria-label="carousel-main"
-			data-carousel-options='{"items":1<?php 
-			echo $this->params->get('carousel_auto_sliding', 1) ? ',"autoplay":true,"autoplaySpeed":' . $this->params->get('carousel_speed', 1000) . ',"autoplayTimeout":' . $this->params->get('carousel_interval', 5000) : '';
-			echo $this->params->get('carousel_lazy', 1) ? ',"lazyLoad":true' : '';
-			echo $this->params->get('carousel_loop', 1) ? ',"loop":true' : '';
-			echo $this->params->get('carousel_show_controls', 1) ? ',"nav":true' : '';
-			echo $this->params->get('carousel_show_indicators', 1) ? ',"dots":true' : ''; ?>,"responsive":false}'>
-		<?php foreach($this->lead_items as $item) : ?>
-		<div<?php echo $item->state == 0 ? ' class=\"system-unpublished\"' : null; ?> itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-			<?php $this->item = &$item; ?>
-			<?php echo $this->loadTemplate('item'); ?>
-		</div>
-		<?php endforeach; ?>
-	</div>
-	<?php endif; ?>
+		<?php if (count($this->lead_items) > 1) : ?>		
+    		<div class="owl-carousel heronews-theme" role="region" id="carousel-main"
+    			aria-label="carousel-main"
+    			data-carousel-options='{"items":1<?php 
+    			echo $this->params->get('carousel_auto_sliding', 1) ? ',"autoplay":true,"autoplaySpeed":' . $this->params->get('carousel_speed', 1000) . ',"autoplayTimeout":' . $this->params->get('carousel_interval', 5000) : '';
+    			echo $this->params->get('carousel_lazy', 1) ? ',"lazyLoad":true' : '';
+    			echo $this->params->get('carousel_loop', 1) ? ',"loop":true' : '';
+    			echo $this->params->get('carousel_show_controls', 1) ? ',"nav":true' : '';
+    			echo $this->params->get('carousel_show_indicators', 1) ? ',"dots":true' : ''; ?>,"responsive":false}'>
+		<?php endif; ?>
+   		<?php foreach($this->lead_items as $item) : ?>
+    		<div<?php echo $item->state == 0 ? ' class=\"system-unpublished\"' : null; ?> itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    			<?php $this->item = &$item; ?>
+    			<?php echo $this->loadTemplate('item'); ?>
+    		</div>
+    	<?php endforeach; ?>
+		<?php if (count($this->lead_items) > 1) : ?>		
+        	</div>
+    	<?php endif; ?>
+   	<?php endif; ?>
 
 	<?php $items = ($limitstart == 0) ? $this->intro_items : array_merge($this->lead_items, $this->intro_items); ?>
 	<?php if (count($items)) : ?>
