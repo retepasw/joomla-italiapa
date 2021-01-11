@@ -112,11 +112,14 @@ class PlgContentIpavote extends JPlugin
 			$params = new \JRegistry();
 		}
 
-		foreach ($row->jcfields as $jcField)
+		if (isset($row->jcfields))
 		{
-			if (($jcField->name == 'plg-content-ipavote-position') && $jcField->rawvalue[0])
+			foreach ($row->jcfields as $jcField)
 			{
-				$params->set('vote_position', $jcField->rawvalue[0]);
+				if (($jcField->name == 'plg-content-ipavote-position') && $jcField->rawvalue[0])
+				{
+					$params->set('vote_position', $jcField->rawvalue[0]);
+				}
 			}
 		}
 
@@ -192,12 +195,15 @@ class PlgContentIpavote extends JPlugin
 
 		$style = $this->params->get('style', 'default');
 
-		foreach ($row->jcfields as $jcField)
+		if (isset($row->jcfields))
 		{
-			if (($jcField->name == 'plg-content-ipavote-style') && $jcField->rawvalue[0])
+			foreach ($row->jcfields as $jcField)
 			{
-				$style = $jcField->rawvalue[0];
-				break;
+				if (($jcField->name == 'plg-content-ipavote-style') && $jcField->rawvalue[0])
+				{
+					$style = $jcField->rawvalue[0];
+					break;
+				}
 			}
 		}
 		JLog::add(new JLogEntry('style: ' . $style, JLog::DEBUG, 'plg_content_ipavote'));
