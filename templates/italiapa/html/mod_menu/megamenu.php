@@ -77,8 +77,12 @@ $menu = hierarchical_array_from_array($list, $nodes, $params->get('startLevel', 
 
 if (!function_exists('megamenu'))
 {
-	function megamenu($menu, $nodes)
+	function megamenu($menu, $nodes, $options)
 	{
+		$default_id = $options['default_id'];
+		$active_id = $options['active_id'];
+		$path = $options['path'];
+
 		foreach ($menu as $i => $item)
 		{
 			$class = ' item-' . $item->id;
@@ -197,7 +201,7 @@ if (!function_exists('megamenu'))
 				{
 					echo '<ul>';
 				}
-				megamenu($item->child, $nodes);
+				megamenu($item->child, $nodes, $options);
 				if ($item->level == 1)
 				{
 					echo '</div>';
@@ -221,6 +225,6 @@ if (!function_exists('megamenu'))
 
 <div class="Megamenu Megamenu--default js-megamenu">
   <ul class="Megamenu-list Megamenu">
-	<?php megamenu($menu, $nodes); ?>
+	<?php megamenu($menu, $nodes, ['default_id' => $default_id, 'active_id' => $active_id, 'path' => $path]); ?>
   </ul>
 </div>
