@@ -21,8 +21,8 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 JHtml::_('bootstrap.tooltip');
 
 // Create some shortcuts.
-$params	= &$this->item->params;
-$n		 = count($this->items);
+$params    = &$this->item->params;
+$n         = count($this->items);
 $listOrder = $this->escape($this->state->get('list.ordering'));
 $listDirn  = $this->escape($this->state->get('list.direction'));
 
@@ -42,7 +42,7 @@ if (!empty($this->items))
 }
 
 $headerClass = $this->params->get('show_headings') != 1 ? ' u-hiddenVisually' : '';
-$class = "u-text-r-xs u-padding-all-xs";
+$class = "u-text-r-xs u-padding-r-all";
 ?>
 <!--
 <div class="Grid-cell u-sizeFull u-md-size4of12 u-lg-size4of12">
@@ -84,7 +84,7 @@ $class = "u-text-r-xs u-padding-all-xs";
 					<?php
 						echo str_replace(
 							'class="inputbox input-mini"',
-							'class="Form-input u-color-grey-90 u-text-r-s u-padding-r-all"',
+							'class="Form-input u-color-grey-90 ' . $class . '"',
 							$this->pagination->getLimitBox()
 							);
 					?>
