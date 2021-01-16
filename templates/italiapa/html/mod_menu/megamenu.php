@@ -152,7 +152,7 @@ if (!function_exists('megamenu'))
 			}
 			elseif ($item->level == 2)
 			{
-				if (!$item->footer)
+				if (!$item->footer && $nodes[$item->parent_id]->depth > 2)
 				{
 					echo '<ul class="Megamenu-subnavGroup' . ($item->cols > 1 ? ' columns" data-columns="' . $item->cols : '') . '">';
 				}
