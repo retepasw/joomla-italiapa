@@ -58,28 +58,29 @@ JHtml::_('behavior.caption');
 
 	<?php $items = ($limitstart == 0) ? $this->intro_items : array_merge($this->lead_items, $this->intro_items); ?>
 	<?php if (count($items)) : ?>
-		<div class="u-layout-centerContent u-background-grey-20">
-			<div class="Grid Grid--withGutter">
-				<?php $c = (int) $this->columns; ?>
-				<?php foreach ($items as $item) : ?>
-					<div class="Grid-cell u-md-size1of<?php echo $c; ?> u-lg-size1of<?php echo $c; ?> u-padding-r-left<?php echo $item->state == 0 ? ' system-unpublished' : null; ?>"
-						itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-						<?php $this->item = &$item; ?>
-						<?php echo $this->loadTemplate('tile'); ?>
-					</div>
-				<?php endforeach; ?>
+		<div class="u-layout-wide u-layoutCenter u-layout-withGutter u-padding-r-top">
+			<div class="u-layout-centerContent u-background-grey-20">
+				<div class="Grid Grid--withGutter">
+					<?php $c = (int) $this->columns; ?>
+					<?php foreach ($items as $item) : ?>
+						<div class="Grid-cell u-md-size1of<?php echo $c; ?> u-lg-size1of<?php echo $c; ?> u-padding-r-left<?php echo $item->state == 0 ? ' system-unpublished' : null; ?>"
+							itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+							<?php $this->item = &$item; ?>
+							<?php echo $this->loadTemplate('tile'); ?>
+						</div>
+					<?php endforeach; ?>
+				</div>
 			</div>
 		</div>
 	<?php endif; ?>
 
 	<?php if (!empty($this->link_items)) : ?>
-	<div class="u-layout-wide u-layoutCenter u-layout-withGutter u-padding-r-top u-padding-bottom-xxl">
-	<?php echo $this->loadTemplate('links'); ?>
-	</div>
+		<div class="u-layout-wide u-layoutCenter u-layout-withGutter u-padding-r-top u-padding-bottom-xxl">
+			<?php echo $this->loadTemplate('links'); ?>
+		</div>
 	<?php endif; ?>
 
 	<?php if ($this->params->def('show_pagination', 2) == 1  || ($this->params->get('show_pagination') == 2 && $this->pagination->pagesTotal > 1)) : ?>
 		<?php echo $this->pagination->getPagesLinks(); ?>
 	<?php endif; ?>
-
 </section>
