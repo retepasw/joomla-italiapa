@@ -145,9 +145,9 @@ class PlgSystemItaliaPA extends JPlugin
 
 			Form::addFormPath(dirname(__FILE__) . '/forms');
 			$form->loadFile(
-					$data->request['option'] . '_' .
-					$data->request['view'] . '_' .
-					($data->request['layout'] ?: 'default'));
+					(isset($data->request['option']) ? $data->request['option'] : ''). '_' .
+					(isset($data->request['view']) ? $data->request['view'] : '') . '_' .
+					(isset($data->request['layout']) ? $data->request['layout'] : 'default'));
 		}
 	}
 
