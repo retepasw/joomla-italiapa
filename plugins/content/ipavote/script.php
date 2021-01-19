@@ -166,12 +166,12 @@ class PlgContentIpavoteInstallerScript
 				// Enable plugin
 				$db = JFactory::getDbo();
 				$query = $db->getQuery(true);
-				$query->update($db->quoteName('#__extensions'))
+				/*$query->update($db->quoteName('#__extensions'))
 					->set($db->quoteName('enabled') . ' = 0')
 					->where($db->quoteName('type') . ' = ' . $db->quote('plugin'))
 					->where($db->quoteName('folder') . ' = ' . $db->quote('content'))
 					->where($db->quoteName('element') . ' = ' . $db->quote('vote'));
-				$db->setQuery($query)->execute();
+				$db->setQuery($query)->execute();*/
 				$query->clear()
 					->update($db->quoteName('#__extensions'))
 					->set($db->quoteName('enabled') . ' = 1')

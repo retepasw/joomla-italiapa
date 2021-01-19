@@ -239,6 +239,8 @@ class PlgContentIpavote extends JPlugin
 			$html .= ob_get_clean();
 		}
 
+		/* Disable the option show_vote to prevent the plugin Content - Vote from showing its voting area */
+		$params->set('show_vote', false);
 		return $html;
 	}
 }
