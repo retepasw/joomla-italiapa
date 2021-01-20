@@ -19,14 +19,7 @@ defined('JPATH_BASE') or die;
 
 $xreference = $displayData['item']->xreference;
 $metadata = new JRegistry($displayData['item']->metadata);
-if ($data = $metadata->get('data'))
-{
-    $xreference_link = $data->xreference;
-}
-else
-{
-    $xreference_link = null;
-}
+$xreference_link = $metadata->get('xreference');
 ?>
 <?php if ($xreference || $xreference_link) : ?>
 	<span class="u-text-r-xxs u-textSecondary u-textWeight-400 u-lineHeight-xl u-cf">
