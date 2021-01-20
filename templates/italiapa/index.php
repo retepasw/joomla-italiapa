@@ -21,7 +21,7 @@ JHtml::_('bootstrap.framework');
 
 $app	= JFactory::getApplication();
 $params = $app->getTemplate(true)->params;
-$min = '.min';
+$min    = '.min';
 
 if ($params->get('debug') || defined('JDEBUG') && JDEBUG)
 {
@@ -50,6 +50,26 @@ if (!file_exists($theme_path)) {
 }
 
 JFactory::getSession()->set('theme', $theme);
+
+/** @var JDocumentHtml $this */
+$this->baseurl = JURI::root();
+
+JHtml::_('stylesheet', $this->baseurl . '/templates/italiapa/build/build' . $min . '.css', array('version' => 'auto', 'relative' => true));
+JHtml::_('stylesheet', $this->baseurl . '/templates/italiapa/build/build.' . $theme . $min . '.css', array('version' => 'auto', 'relative' => true, 'id'=>'theme'));
+JHtml::_('stylesheet', 'italiapa' . $min . '.css', array('version' => 'auto', 'relative' => true));
+
+JHtml::_('stylesheet', 'prism' . $min . '.css', array('version' => 'auto', 'relative' => true));
+JHtml::_('stylesheet', 'tooltip-theme-arrows' . $min . '.css', array('version' => 'auto', 'relative' => true));
+
+// Check for a custom CSS file
+JHtml::_('stylesheet', 'user.css', array('version' => 'auto', 'relative' => true));
+
+JHtml::_('script', 'tether' . $min . '.js', array('version' => 'auto', 'relative' => true));
+JHtml::_('script', 'drop' . $min . '.js', array('version' => 'auto', 'relative' => true));
+JHtml::_('script', 'prism' . $min . '.js', array('version' => 'auto', 'relative' => true));
+
+// Check for a custom JS file
+JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js ie89 ie8" lang="<?php echo $this->language; ?>"><![endif]-->
@@ -71,19 +91,9 @@ JFactory::getSession()->set('theme', $theme);
 
 	<script>__PUBLIC_PATH__ = '<?php echo $this->baseurl ?>/templates/italiapa/build/'</script>
 	<script>__DEFAULT_THEME__ = '<?php echo $theme_default; ?>'</script>
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.css">
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.<?php echo $theme; ?>.css" id="theme">
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/ita.css">
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/media/jui/css/icomoon.css">
+
 	<link href='//fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700,' rel='stylesheet' type='text/css' />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/italiapa.css">
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/prism<?php echo $min; ?>.css">
-	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/tooltip-theme-arrows.css" />
-
-	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tether<?php echo $min; ?>.js"></script>
-	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/drop<?php echo $min; ?>.js"></script>
-	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/prism<?php echo $min; ?>.js"></script>
 
 	<jdoc:include type="head" />
 </head>
