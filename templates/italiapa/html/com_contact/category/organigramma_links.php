@@ -49,7 +49,7 @@ $db = JFactory::getDbo();
 			<li class="u-inlineBlock u-margin-right-xxs">
 				<a href="<?php echo $this->item->webpage; ?>" target="_blank" rel="noopener noreferrer" itemprop="url">
 					<span data-tooltip="<?php echo JHtml::tooltipText('webpage: ' . $this->item->webpage, null, 0, 0); ?>"
-					class="Icon-earth u-color-50"><svg class="Icon"><use xlink:href="#Icon-earth"></use></svg></span>
+					class="Icon-earth u-color-50"></span>
 					<span class="u-hiddenVisually1><?php echo $this->item->webpage; ?></span>
 				</a>
 			</li>
@@ -104,13 +104,12 @@ $db = JFactory::getDbo();
 				$label = $link;
 				$icon = 'link';
 			}
-			$svg = JPATH_SITE . '/templates/italiapa/src/icons/img/SVG/' . $icon . '.svg';
 			?>
 			<li class="u-inlineBlock u-margin-right-xxs">
 				<a href="<?php echo $link; ?>" itemprop="url" rel="nofollow" target="_blank">
 					<?php $class = ($icon == 'earth' ? ' u-color-50 ' : ' u-color-white u-background-50 u-borderRadius-circle u-padding-all-xxs u-inlineBlock'); ?>
 					<span data-tooltip="<?php echo JHtml::tooltipText($label . ': ' . $link, null, 0, 0); ?>"
-						class="Icon-<?php echo $icon . (file_exists($svg) ? $class . '"><svg class="Icon"><use xlink:href="#Icon-'. $icon . '"></use></svg' : ' Icon' . $class . '"'); ?>></span>
+						class="Icon-<?php echo $icon . $class; ?>"></span>
 					<span class="u-hiddenVisually"><?php echo $label; ?></span>
 				</a>
 			</li>
