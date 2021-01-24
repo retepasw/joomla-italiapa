@@ -54,8 +54,8 @@ JFactory::getSession()->set('theme', $theme);
 /** @var JDocumentHtml $this */
 $this->baseurl = JURI::root();
 
-JHtml::_('stylesheet', $this->baseurl . '/templates/italiapa/build/build' . $min . '.css', array('version' => 'auto', 'relative' => true));
-JHtml::_('stylesheet', $this->baseurl . '/templates/italiapa/build/build.' . $theme . $min . '.css', array('version' => 'auto', 'relative' => true, 'id'=>'theme'));
+JHtml::_('stylesheet', $this->baseurl . 'templates/italiapa/build/build' . $min . '.css', array('version' => 'auto', 'relative' => true));
+JHtml::_('stylesheet', $this->baseurl . 'templates/italiapa/build/build.' . $theme . $min . '.css', array('version' => 'auto', 'relative' => true, 'id'=>'theme'));
 JHtml::_('stylesheet', 'italiapa' . $min . '.css', array('version' => 'auto', 'relative' => true));
 
 JHtml::_('stylesheet', 'prism' . $min . '.css', array('version' => 'auto', 'relative' => true));
@@ -87,9 +87,9 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 	<?php endif; ?>
 	<!--[if lt IE 9]><script src="<?php echo JUri::root(true); ?>/media/jui/js/html5.js"></script><![endif]-->
 	<!-- include html5shim per Explorer 8 -->
-	<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/modernizr.js"></script>
+	<script src="<?php echo $this->baseurl ?>templates/italiapa/build/vendor/modernizr.js"></script>
 
-	<script>__PUBLIC_PATH__ = '<?php echo $this->baseurl ?>/templates/italiapa/build/'</script>
+	<script>__PUBLIC_PATH__ = '<?php echo $this->baseurl ?>templates/italiapa/build/'</script>
 	<script>__DEFAULT_THEME__ = '<?php echo $theme_default; ?>'</script>
 
 	<link href='//fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700,' rel='stylesheet' type='text/css' />
@@ -153,7 +153,7 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 	<div class="u-layout-wide Grid Grid--alignMiddle u-layoutCenter">
 		<?php if ($logo = $params->get('logo')) : ?>
 		<div class="Header-logo Grid-cell" aria-hidden="true">
-			<a href="<?php echo $this->baseurl; ?>/" itemprop="url">
+			<a href="<?php echo $this->baseurl; ?>" itemprop="url">
 				<img src="<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>">
 			</a>
 		</div>
@@ -161,7 +161,7 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 
 		<div class="Header-title Grid-cell">
 			<h1 class="Header-titleLink">
-				<a href="<?php echo $this->baseurl; ?>/">
+				<a href="<?php echo $this->baseurl; ?>">
 					<?php echo htmlspecialchars($app->get('sitename')); ?>
 					<?php if ($subtitle = $params->get('subtitle')) : ?>
 					<br><small><?php echo $subtitle; ?></small>
@@ -337,7 +337,7 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 				<div itemscope itemtype="http://schema.org/<?php echo $params->get('schema_org', 'Organization'); ?>" class="u-cf">
 			<?php endif; ?>
 					<?php if ($logo) : ?>
-					<a href="<?php echo $this->baseurl; ?>/" itemprop="url">
+					<a href="<?php echo $this->baseurl; ?>" itemprop="url">
 						<img class="Footer-logo" src="<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>" itemprop="logo">
 					</a>
 					<?php endif; ?>
@@ -370,24 +370,24 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 </a>
 
 <!--[if IE 8]>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/respond.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/rem.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/selectivizr.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/slice.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/build/vendor/respond.min.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/build/vendor/rem.min.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/build/vendor/selectivizr.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/build/vendor/slice.js"></script>
 <![endif]-->
 
 <!--[if lte IE 9]>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/polyfill.min.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/build/vendor/polyfill.min.js"></script>
 <![endif]-->
 
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/uuid.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/accordion<?php echo $min; ?>.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/table<?php echo $min; ?>.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/map<?php echo $min; ?>.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/timeline<?php echo $min; ?>.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/IWT.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/italiapa<?php echo $min; ?>.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tooltip<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/js/uuid.min.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/js/accordion<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/js/table<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/js/map<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/js/timeline<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/build/IWT.min.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/js/italiapa<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/js/tooltip<?php echo $min; ?>.js"></script>
 
 	<jdoc:include type="modules" name="debug" style="none" />
 </body>
