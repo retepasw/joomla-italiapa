@@ -151,6 +151,11 @@
 	color: #363430;
 }
 
+dl {
+	border-left: dotted #aaa 2px;
+	padding: 3px;
+}
+
 dt::before {
 	content: "dt: ";
 	color: #aaa;
@@ -161,12 +166,11 @@ dd::before {
 	content: "dd: ";
 	color: #aaa;
 	font-size: 8px;
-	padding-left: 40px;
+	margin-left: -2em;
 }
 
-dl {
-	border-left: dotted #aaa 2px;
-	padding: 3px;
+dd {
+	padding-left: 3em;
 }
 
 dl.Accordion dt::before {
