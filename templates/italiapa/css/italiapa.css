@@ -2084,6 +2084,12 @@ footer input::-ms-input-placeholder {
   font-size: 1.4em;
   vertical-align: text-top;
 }
+.contact-links .Icon-earth svg.Icon {
+  width: 26px;
+  height: 26px;
+  top: 5px;
+  position: relative;
+}
 .contact .fr-accordion {
   margin-top: 2rem;
 }
