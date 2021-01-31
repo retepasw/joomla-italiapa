@@ -21,7 +21,7 @@ JHtml::_('bootstrap.framework');
 
 $app	= JFactory::getApplication();
 $params = $app->getTemplate(true)->params;
-$min = '.min';
+$min    = '.min';
 
 if ($params->get('debug') || defined('JDEBUG') && JDEBUG)
 {
@@ -50,6 +50,26 @@ if (!file_exists($theme_path)) {
 }
 
 JFactory::getSession()->set('theme', $theme);
+
+/** @var JDocumentHtml $this */
+$this->baseurl = JURI::root();
+
+JHtml::_('stylesheet', $this->baseurl . 'templates/italiapa/build/build' . $min . '.css', array('version' => 'auto', 'relative' => true));
+JHtml::_('stylesheet', $this->baseurl . 'templates/italiapa/build/build.' . $theme . $min . '.css', array('version' => 'auto', 'relative' => true, 'id'=>'theme'));
+JHtml::_('stylesheet', 'italiapa' . $min . '.css', array('version' => 'auto', 'relative' => true));
+
+JHtml::_('stylesheet', 'prism' . $min . '.css', array('version' => 'auto', 'relative' => true));
+JHtml::_('stylesheet', 'tooltip-theme-arrows' . $min . '.css', array('version' => 'auto', 'relative' => true));
+
+// Check for a custom CSS file
+JHtml::_('stylesheet', 'user.css', array('version' => 'auto', 'relative' => true));
+
+JHtml::_('script', 'tether' . $min . '.js', array('version' => 'auto', 'relative' => true));
+JHtml::_('script', 'drop' . $min . '.js', array('version' => 'auto', 'relative' => true));
+JHtml::_('script', 'prism' . $min . '.js', array('version' => 'auto', 'relative' => true));
+
+// Check for a custom JS file
+JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js ie89 ie8" lang="<?php echo $this->language; ?>"><![endif]-->
@@ -67,23 +87,13 @@ JFactory::getSession()->set('theme', $theme);
 	<?php endif; ?>
 	<!--[if lt IE 9]><script src="<?php echo JUri::root(true); ?>/media/jui/js/html5.js"></script><![endif]-->
 	<!-- include html5shim per Explorer 8 -->
-	<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/modernizr.js"></script>
+	<script src="<?php echo $this->baseurl ?>templates/italiapa/build/vendor/modernizr.js"></script>
 
-	<script>__PUBLIC_PATH__ = '<?php echo $this->baseurl ?>/templates/italiapa/build/'</script>
+	<script>__PUBLIC_PATH__ = '<?php echo $this->baseurl ?>templates/italiapa/build/'</script>
 	<script>__DEFAULT_THEME__ = '<?php echo $theme_default; ?>'</script>
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.css">
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/build/build.<?php echo $theme; ?>.css" id="theme">
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/ita.css">
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/media/jui/css/icomoon.css">
+
 	<link href='//fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700,' rel='stylesheet' type='text/css' />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/italiapa.css">
-	<link media="all" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/prism<?php echo $min; ?>.css">
-	<link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/italiapa/css/tooltip-theme-arrows.css" />
-
-	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tether<?php echo $min; ?>.js"></script>
-	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/drop<?php echo $min; ?>.js"></script>
-	<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/prism<?php echo $min; ?>.js"></script>
 
 	<jdoc:include type="head" />
 </head>
@@ -143,7 +153,7 @@ JFactory::getSession()->set('theme', $theme);
 	<div class="u-layout-wide Grid Grid--alignMiddle u-layoutCenter">
 		<?php if ($logo = $params->get('logo')) : ?>
 		<div class="Header-logo Grid-cell" aria-hidden="true">
-			<a href="<?php echo $this->baseurl; ?>/" itemprop="url">
+			<a href="<?php echo $this->baseurl; ?>" itemprop="url">
 				<img src="<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>">
 			</a>
 		</div>
@@ -151,7 +161,7 @@ JFactory::getSession()->set('theme', $theme);
 
 		<div class="Header-title Grid-cell">
 			<h1 class="Header-titleLink">
-				<a href="<?php echo $this->baseurl; ?>/">
+				<a href="<?php echo $this->baseurl; ?>">
 					<?php echo htmlspecialchars($app->get('sitename')); ?>
 					<?php if ($subtitle = $params->get('subtitle')) : ?>
 					<br><small><?php echo $subtitle; ?></small>
@@ -327,7 +337,7 @@ JFactory::getSession()->set('theme', $theme);
 				<div itemscope itemtype="http://schema.org/<?php echo $params->get('schema_org', 'Organization'); ?>" class="u-cf">
 			<?php endif; ?>
 					<?php if ($logo) : ?>
-					<a href="<?php echo $this->baseurl; ?>/" itemprop="url">
+					<a href="<?php echo $this->baseurl; ?>" itemprop="url">
 						<img class="Footer-logo" src="<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>" itemprop="logo">
 					</a>
 					<?php endif; ?>
@@ -360,24 +370,24 @@ JFactory::getSession()->set('theme', $theme);
 </a>
 
 <!--[if IE 8]>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/respond.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/rem.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/selectivizr.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/slice.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/build/vendor/respond.min.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/build/vendor/rem.min.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/build/vendor/selectivizr.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/build/vendor/slice.js"></script>
 <![endif]-->
 
 <!--[if lte IE 9]>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/vendor/polyfill.min.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/build/vendor/polyfill.min.js"></script>
 <![endif]-->
 
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/uuid.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/accordion<?php echo $min; ?>.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/table<?php echo $min; ?>.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/map<?php echo $min; ?>.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/timeline<?php echo $min; ?>.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/build/IWT.min.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/italiapa<?php echo $min; ?>.js"></script>
-<script src="<?php echo $this->baseurl ?>/templates/italiapa/js/tooltip<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/js/uuid.min.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/js/accordion<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/js/table<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/js/map<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/js/timeline<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/build/IWT.min.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/js/italiapa<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/js/tooltip<?php echo $min; ?>.js"></script>
 
 	<jdoc:include type="modules" name="debug" style="none" />
 </body>

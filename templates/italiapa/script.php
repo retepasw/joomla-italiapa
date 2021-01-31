@@ -66,6 +66,7 @@ class italiapaInstallerScript
 	 */
 	public function update($parent) 
 	{
+		$this->deleteUnexistingFiles();
 	}
 
 	/**
@@ -359,4 +360,56 @@ class italiapaInstallerScript
 			}
 		}
 	}
+
+	/**
+	 * Delete files that should not exist
+	 *
+	 * @return  void
+	 */
+	public function deleteUnexistingFiles()
+	{
+		$files = array(
+			/*
+			 * ItaliaPA 3.9 beta 1
+			 */
+			'/html/com_content/featured/default.xml',
+			'/html/layout/com_contact/field/render.php',
+			'/html/layout/com_contact/fields/render.php',
+			/*
+			 * ItaliaPA 3.9 beta 2
+			 */
+			'/css/ita.css',
+		);
+		
+		// TODO There is an issue while deleting folders using the ftp mode
+		$folders = array(
+			/*
+			 * ItaliaPA 3.9 beta 1
+			 */
+			'/build/assets',
+			'/html/layout/com_contact/field',
+			'/html/layout/com_contact/fields',
+		);
+		
+		jimport('joomla.filesystem.file');
+		
+		foreach ($files as $file)
+		{
+			if (JFile::exists(JPATH_ROOT . $file) && !JFile::delete(JPATH_ROOT . $file))
+			{
+				echo JText::sprintf('FILES_JOOMLA_ERROR_FILE_FOLDER', $file) . '<br />';
+			}
+		}
+		
+		jimport('joomla.filesystem.folder');
+		
+		foreach ($folders as $folder)
+		{
+			if (JFolder::exists(JPATH_ROOT . $folder) && !JFolder::delete(JPATH_ROOT . $folder))
+			{
+				echo JText::sprintf('FILES_JOOMLA_ERROR_FILE_FOLDER', $folder) . '<br />';
+			}
+		}
+	}
+	
 }
