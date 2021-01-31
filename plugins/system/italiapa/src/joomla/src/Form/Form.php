@@ -51,7 +51,7 @@ class Form extends _JForm
 			{
 				if (gettype($data) == 'object')
 				{
-					if ($data->xpath('//form/fieldset[@name="default"]')[0])
+					if ($data->xpath('//form/fieldset[@name="default"]'))
 					{
 						$data->xpath('//form/fieldset[@name="default"]')[0]->attributes()['addfilepath'] = 'addfieldpath="/templates/italiapa/html/fields"';
 					}
