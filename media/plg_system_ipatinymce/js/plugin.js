@@ -613,7 +613,7 @@
 		});
 
 		editor.on('keyup', function (e) {
-			if (e.keyCode == 13) {
+			if ((e.keyCode == 13) && !e.shiftKey) {
 				// consecutive enter keys will split definition lists
 				var item, dom = editor.dom, sel = editor.selection;
 				item = dom.getParent(sel.getNode(), 'dt,dd');
