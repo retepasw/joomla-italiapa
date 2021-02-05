@@ -104,7 +104,7 @@
 		} );
 
 		// theme
-		eshiol.italiapa.setTheme = function( theme ) {
+		eshiol.italiapa.setTheme = eshiol.italiapa.setTheme || function( theme ) {
 			if ( theme == 'default' ) {
 				$.removeCookie( 'theme' );
 			    document.getElementById( 'theme' ).setAttribute( 'href', __PUBLIC_PATH__ + 'build.' + __DEFAULT_THEME__ + '.css' );

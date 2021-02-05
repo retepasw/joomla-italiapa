@@ -54,8 +54,8 @@ JFactory::getSession()->set('theme', $theme);
 /** @var JDocumentHtml $this */
 $this->baseurl = JURI::root();
 
-JHtml::_('stylesheet', $this->baseurl . 'templates/italiapa/build/build' . $min . '.css', array('version' => 'auto', 'relative' => true));
-JHtml::_('stylesheet', $this->baseurl . 'templates/italiapa/build/build.' . $theme . $min . '.css', array('version' => 'auto', 'relative' => true, 'id'=>'theme'));
+JHtml::_('stylesheet', 'templates/italiapa/build/build' . $min . '.css', array('version' => 'auto'));
+JHtml::_('stylesheet', 'templates/italiapa/build/build.' . $theme . $min . '.css', array('version' => 'auto'), array('id'=>'theme'));
 JHtml::_('stylesheet', 'italiapa' . $min . '.css', array('version' => 'auto', 'relative' => true));
 
 JHtml::_('stylesheet', 'prism' . $min . '.css', array('version' => 'auto', 'relative' => true));

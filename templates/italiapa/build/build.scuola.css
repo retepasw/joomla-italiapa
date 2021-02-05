@@ -320,9 +320,6 @@ option:hover {
 .Megamenu--default .Megamenu-item > * {
   color: #C02A41;
 }
-/* .Megamenu--default .Megamenu-item span [class^="Icon-"],
-.Megamenu--default .Megamenu-item span [class*=" Icon-"],
-.Megamenu--default .Megamenu-item ul li svg.Icon, */
 .Megamenu--default .Megamenu-item ul li {
   color: #30373d !important;
   /* @color-primary; */
