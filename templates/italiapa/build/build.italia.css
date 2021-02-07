@@ -484,6 +484,10 @@ option:hover {
 .Header-titleLink small {
   color: #FFFFFF;
 }
+.u-background-grey-10 .Header-titleLink a,
+.u-background-grey-10 .Header-titleLink small {
+  color: #06c;
+}
 /* Search button for small screens
 	========================================== */
 .Header-searchTrigger button {

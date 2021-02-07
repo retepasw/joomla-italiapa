@@ -320,9 +320,6 @@ option:hover {
 .Megamenu--default .Megamenu-item > * {
   color: #006156;
 }
-/* .Megamenu--default .Megamenu-item span [class^="Icon-"],
-.Megamenu--default .Megamenu-item span [class*=" Icon-"],
-.Megamenu--default .Megamenu-item ul li svg.Icon, */
 .Megamenu--default .Megamenu-item ul li {
   color: #30373d !important;
   /* @color-primary; */
@@ -494,6 +491,10 @@ option:hover {
   color: #006156;
 }
 .Header-titleLink small {
+  color: #006156;
+}
+.u-background-grey-10 .Header-titleLink a,
+.u-background-grey-10 .Header-titleLink small {
   color: #006156;
 }
 /* Search button for small screens
