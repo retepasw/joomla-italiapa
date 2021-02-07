@@ -15,21 +15,32 @@
  * other free or open source software licenses.
  */
 
+use Joomla\CMS\Filesystem\Path;
+
 // Add JavaScript Frameworks
 JHtml::_('behavior.core');
 JHtml::_('bootstrap.framework');
 
-/*
-$trusted = (JPluginHelper::isEnabled('twofactorauth', 'trust')
-    && PlgTwofactorauthTrust::isActive()
-    && PlgTwofactorauthTrust::checkCookie());
-JText::script('TPL_ITALIAPA_UNTRUST_THIS_BROWSER');
-*/
+$trusted = false;
+if (JPluginHelper::isEnabled('twofactorauth', 'trust'))
+{
+	$file  = Path::clean(JPATH_ROOT . '/plugins/twofactorauth/trust/trust.php');
+	if (file_exists($file))
+	{
+		require_once JPATH_ROOT . '/plugins/twofactorauth/trust/trust.php';
+		if (PlgTwofactorauthTrust::isActive() && PlgTwofactorauthTrust::checkCookie())
+		{
+			$trusted = true;
+			JText::script('TPL_ITALIAPA_UNTRUST_THIS_BROWSER');
+		}
+	}
+}
+
 $twofactormethods = JAuthenticationHelper::getTwoFactorMethods();
 
 $app	= JFactory::getApplication();
 $params = $app->getTemplate(true)->params;
-$min    = '.min';
+$min	= '.min';
 
 if ($params->get('debug') || defined('JDEBUG') && JDEBUG)
 {
@@ -93,84 +104,106 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 
 	<div class="Grid offline u-margin-top-xxl">
 		<div class="Grid-cell Grid-cell--center u-layout-prose">
-        	<div class="Grid u-layout-wide u-layoutCenter u-margin-bottom-l">
-        		<?php if ($logo = $params->get('logo')) : ?>
-        		<div class="Header-logo Grid-cell" aria-hidden="true">
-        			<a href="<?php echo $this->baseurl; ?>" itemprop="url">
-        				<img src="<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>">
-        			</a>
-        		</div>
-        		<?php endif; ?>
-        
-        		<div class="Header-title Grid-cell">
-        			<h1 class="Header-titleLink">
-        				<a href="<?php echo $this->baseurl; ?>">
-        					<?php echo htmlspecialchars($app->get('sitename')); ?>
-        					<?php if ($subtitle = $params->get('subtitle')) : ?>
-        					<br><small><?php echo $subtitle; ?></small>
-        					<?php endif; ?>
-        				</a>
-        			</h1>
-        		</div>
-        	</div>
+			<div class="Grid u-layout-wide u-layoutCenter u-margin-bottom-l">
+				<?php if ($logo = $params->get('logo')) : ?>
+				<div class="Header-logo Grid-cell" aria-hidden="true">
+					<a href="<?php echo $this->baseurl; ?>" itemprop="url">
+						<img src="<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>">
+					</a>
+				</div>
+				<?php endif; ?>
 
-            <form action="<?php echo JRoute::_('index.php?option=com_users&task=user.login'); ?>" method="post"
-            	class="form-validate form-horizontal well Form Form--spaced u-padding-all-xl u-background-grey-10 u-text-r-xs">
-        
-        		<?php if ($app->get('display_offline_message', 1) == 1 && str_replace(' ', '', $app->get('offline_message')) !== '') : ?>
-        			<div class="Prose Alert Alert--info">
-        				<p><?php echo $app->get('offline_message'); ?></p>
-        			</div>
-        		<?php elseif ($app->get('display_offline_message', 1) == 2) : ?>
-        			<div class="Prose Alert Alert--info">
-        				<p><?php echo JText::_('JOFFLINE_MESSAGE'); ?></p>
-        			</div>
-        		<?php endif; ?>
-        
-        		<fieldset class="Form-fieldset">
-                    <div class="control-group">
-                        <div class="control-label">
-                        	<label id="username-lbl" for="username" class="Form-label required invalid"><?php echo JText::_('JGLOBAL_USERNAME'); ?><span class="star">&nbsp;*</span></label>
-                        </div>
-                        <div class="controls">
-                        	<input type="text" name="username" id="username" value="" class="Form-input Form-input validate-username required invalid" size="25" required="required" aria-required="true" autofocus="" aria-invalid="true">
-                        </div>
-                    </div>
-        
-                    <div class="control-group">
-                        <div class="control-label">
-                        	<label id="password-lbl" for="password" class="Form-label required invalid"><?php echo JText::_('JGLOBAL_PASSWORD'); ?><span class="star">&nbsp;*</span></label>
-                        </div>
-                        <div class="controls">
-                        	<input type="password" name="password" id="password" value="" class="Form-input Form-input validate-password required invalid" size="25" required="required" aria-required="true" autofocus="" aria-invalid="true">
-                        </div>
-                    </div>
-        
-        			<?php if (count($twofactormethods) > 1) : ?>
-                        <div class="Form-field">
-                        	<div class="control-group">
-                        		<div class="control-label">
-                        			<label id="secretkey-lbl" for="secretkey" class="Form-label"><?php echo JText::_('JGLOBAL_SECRETKEY'); ?></label>
-                        			<span class="optional">(optional)</span>
-                        		</div>
-                        		<div class="controls">
-                        			<input type="text" name="secretkey" id="secretkey" value="" autocomplete="one-time-code" class="Form-input Form-input" size="25" placeholder="" aria-invalid="false">
-                        		</div>
-                        	</div>
-                        </div>
-        			<?php endif; ?>
-        
-             		<div class="Form-field Grid-cell u-textRight">
-            			<button type="submit" class="Button Button--default u-text-xs"><?php echo JText::_('JLOGIN'); ?></button>
-            		</div>
-        
-        			<input type="hidden" name="option" value="com_users" />
-        			<input type="hidden" name="task" value="user.login" />
-        			<input type="hidden" name="return" value="<?php echo base64_encode(JUri::base()); ?>" />
-        			<?php echo JHtml::_('form.token'); ?>
-        		</fieldset>
-        	</form>
-        </div>
+				<div class="Header-title Grid-cell">
+					<h1 class="Header-titleLink">
+						<a href="<?php echo $this->baseurl; ?>">
+							<?php echo htmlspecialchars($app->get('sitename')); ?>
+							<?php if ($subtitle = $params->get('subtitle')) : ?>
+							<br><small><?php echo $subtitle; ?></small>
+							<?php endif; ?>
+						</a>
+					</h1>
+				</div>
+			</div>
+
+			<form action="<?php echo JRoute::_('index.php?option=com_users&task=user.login'); ?>" method="post"
+				class="form-validate form-horizontal well Form Form--spaced u-padding-all-xl u-background-grey-10 u-text-r-xs">
+
+				<?php if ($app->get('display_offline_message', 1) == 1 && str_replace(' ', '', $app->get('offline_message')) !== '') : ?>
+					<div class="Prose Alert Alert--info">
+						<p><?php echo $app->get('offline_message'); ?></p>
+					</div>
+				<?php elseif ($app->get('display_offline_message', 1) == 2) : ?>
+					<div class="Prose Alert Alert--info">
+						<p><?php echo JText::_('JOFFLINE_MESSAGE'); ?></p>
+					</div>
+				<?php endif; ?>
+
+				<fieldset class="Form-fieldset">
+					<div class="control-group">
+						<div class="control-label">
+							<label id="username-lbl" for="username" class="Form-label required invalid"><?php echo JText::_('JGLOBAL_USERNAME'); ?><span class="star">&nbsp;*</span></label>
+						</div>
+						<div class="controls">
+							<input type="text" name="username" id="username" value="" autocomplete="username" class="Form-input Form-input validate-username required invalid" size="25" required="required" aria-required="true" autofocus="" aria-invalid="true">
+						</div>
+					</div>
+
+					<div class="control-group">
+						<div class="control-label">
+							<label id="password-lbl" for="password" class="Form-label required invalid"><?php echo JText::_('JGLOBAL_PASSWORD'); ?><span class="star">&nbsp;*</span></label>
+						</div>
+						<div class="controls">
+							<input type="password" name="password" id="password" autocomplete="current-password" value="" class="Form-input Form-input validate-password required invalid" size="25" required="required" aria-required="true" autofocus="" aria-invalid="true">
+						</div>
+					</div>
+
+					<?php $tfa = JAuthenticationHelper::getTwoFactorMethods(); ?>
+					<?php $this->tfa = is_array($tfa) && count($tfa) > 1; ?>
+					<?php if ($this->tfa) : ?>
+						<div class="Form-field">
+							<div class="control-group">
+								<div class="control-label">
+									<?php if ($trusted) : ?>
+										<div class="u-floatRight">
+											<a href="#" class="2fa-untrust">
+												<?php echo JText::_('TPL_ITALIAPA_UNTRUST_THIS_BROWSER'); ?>
+												<svg class="u-text-r-m Icon Icon-unlink" style="margin-right: 0.25em;"><use xlink:href="#Icon-unlink"></use></svg>
+												<span class="u-hiddenVisually"><?php echo JText::_('TPL_ITALIAPA_UNTRUST_THIS_BROWSER'); ?></span>
+												</a>
+										</div>
+									<?php endif; ?>
+									<label id="secretkey-lbl" for="secretkey" class="Form-label">Secret Key</label>
+									<span class="optional">(optional)</span>
+								</div>
+								<div class="controls">
+									<input type="text" name="secretkey" id="secretkey" value="" autocomplete="one-time-code" class="Form-input Form-input" size="25"
+									<?php echo $trusted ? 'readonly' : ''; ?>
+									placeholder="<?php echo $trusted ? JText::_('PLG_TWOFACTORAUTH_TRUST_TRUSTED_BROWSER') : ''; ?>"
+									aria-invalid="false">
+								</div>
+							</div>
+						</div>
+					<?php endif; ?>
+
+					<?php if (JPluginHelper::isEnabled('twofactorauth', 'trust') && PlgTwofactorauthTrust::isActive()) : ?>
+						<fieldset id="form-login-trust" class="Form-field Form-field--choose Grid-cell">
+							<label class="Form-label" for="trust">
+							<input type="checkbox" class="Form-input" id="trust" name="trust" value="yes"<?php echo $trusted ? ' checked onclick="return false;"' : ''; ?>>
+							<span class="Form-fieldIcon" role="presentation"></span><?php echo JText::_('PLG_TWOFACTORAUTH_TRUST_TRUSTED_BROWSER'); ?></label>
+						</fieldset>
+					<?php endif; ?>
+
+			 		<div class="Form-field Grid-cell u-textRight">
+						<button type="submit" class="Button Button--default u-text-xs"><?php echo JText::_('JLOGIN'); ?></button>
+					</div>
+
+					<input type="hidden" name="option" value="com_users" />
+					<input type="hidden" name="task" value="user.login" />
+					<input type="hidden" name="return" value="<?php echo base64_encode(JUri::base()); ?>" />
+					<?php echo JHtml::_('form.token'); ?>
+				</fieldset>
+			</form>
+		</div>
 	</div>
 </body>
 </html>
