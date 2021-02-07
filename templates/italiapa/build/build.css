@@ -422,6 +422,7 @@ ul {
 }
 .Header-logo,
 .Header-logo img,
+.Header-logo svg,
 .Megamenu-list,
 .Share-reveal > a > span,
 .Share > ul > li > a,
@@ -3672,6 +3673,10 @@ ul {
 .u-padding-all-xxs {
   padding: 0.4rem !important;
 }
+.Header-socialIcons [class*=" Icon-"] svg,
+.Header-socialIcons [class^=Icon-] svg {
+  padding: 0 !important;
+}
 .Footer-socialIcons [class*=" Icon-"],
 .Footer-socialIcons [class^=Icon-],
 .u-padding-all-xs {
@@ -3747,6 +3752,18 @@ ul {
 .Megamenu-item > *,
 .u-padding-top-s {
   padding-top: 1.6rem !important;
+}
+.Megamenu-item:first-child > svg {
+  width: 4rem!important;
+}
+.Megamenu-area > svg,
+.Megamenu-item > svg {
+  padding-top: 1.6rem;
+  height: 3.6rem !important;
+  width: 5.6rem !important;
+}
+.Megamenu-area > svg {
+  margin-top: -1.6rem !important;
 }
 .u-padding-top-m {
   padding-top: 2rem !important;
@@ -3999,6 +4016,7 @@ ul {
   margin-right: 0 !important;
 }
 .Dot,
+.tags svg.Icon,
 .u-margin-right-xxs {
   margin-right: 0.4rem !important;
 }
@@ -4291,8 +4309,6 @@ ul {
   .Footer-link,
   .Footer-socialIcons [class*=" Icon-"],
   .Footer-socialIcons [class^=Icon-],
-  .Footer-socialIcons [class*=" icon-"],
-  .Footer-socialIcons [class^=icon-],
   .Megamenu--default .Megamenu-subnavGroup > li > a,
   .Megamenu--default .Megamenu-subnavGroup > li > div > a,
   .Prose > h5,
@@ -4399,8 +4415,6 @@ ul {
   .Footer-link,
   .Footer-socialIcons [class*=" Icon-"],
   .Footer-socialIcons [class^=Icon-],
-  .Footer-socialIcons [class*=" icon-"],
-  .Footer-socialIcons [class^=icon-],
   .Headroom--fixed.Headroom--not-top .Header-titleLink a,
   .Headroom--pinned.Headroom--not-top .Header-titleLink a,
   .Megamenu--default .Megamenu-subnavGroup > li > a,
@@ -4509,8 +4523,6 @@ ul {
   .Footer-link,
   .Footer-socialIcons [class*=" Icon-"],
   .Footer-socialIcons [class^=Icon-],
-  .Footer-socialIcons [class*=" icon-"],
-  .Footer-socialIcons [class^=icon-],
   .Megamenu--default .Megamenu-subnavGroup > li > a,
   .Megamenu--default .Megamenu-subnavGroup > li > div > a,
   .Prose > h5,
@@ -4788,14 +4800,6 @@ ul {
   speak: none;
   text-transform: none;
 }
-svg.Icon {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor;
-}
 .Footer-socialIcons [class^="icon-"],
 .Footer-socialIcons [class*=" icon-"],
 .Header-socialIcons [class^="icon-"],
@@ -4804,26 +4808,22 @@ svg.Icon {
   height: 2.6rem;
   line-height: 1.8rem;
 }
-.Header-socialIcons [class*=" Icon-"],
-.Header-socialIcons [class^=Icon-],
+.Header-socialIcons span[class*=" Icon-"],
+.Header-socialIcons span[class^=Icon-],
 .Header-socialIcons [class*=" icon-"],
-.Header-socialIcons [class^=icon-],
-.Megamenu-item [class*=" Icon-"],
-.Megamenu-item [class^=Icon-],
-.Entrypoint-item [class*=" Icon-"],
-.Entrypoint-item [class^=Icon-] {
+.Header-socialIcons span[class^=icon-],
+.Megamenu-item span[class*=" Icon-"],
+.Megamenu-item span[class^=Icon-],
+.Entrypoint-item span[class*=" Icon-"],
+.Entrypoint-item span[class^=Icon-] {
   margin-right: 0.2em;
 }
-.category-module [class*=" icon-"],
-.category-module [class^=icon-],
-.categories-module [class*=" icon-"],
-.categories-module [class^=icon-],
-.Megamenu-item [class*=" icon-"],
-.Megamenu-item [class^=icon-] {
+.Megamenu-item span[class*=" icon-"],
+.Megamenu-item span[class^=icon-] {
   margin-right: 0.5em;
 }
-.Megamenu-item [class*=" icon-"]:before,
-.Megamenu-item [class^=icon-]:before {
+.Megamenu-item span[class*=" icon-"]:before,
+.Megamenu-item span[class^=icon-]:before {
   font-weight: initial;
 }
 .Icon:before,
@@ -5633,17 +5633,17 @@ option:hover {
   transform: rotate(-45deg);
 }
 .Hero {
-  /*background: url(//placehold.it/2000x500?text=placeholder);*/
+  background: url(//placehold.it/2000x500?text=placeholder);
   background-size: cover;
   height: 30em;
 }
 .Hero-content {
   opacity: 0.95;
 }
-/*.Leads-link:after {
-    content: " › ";
-    margin-left: .2em
-}*/
+.Leads-link:after {
+  content: " › ";
+  margin-left: 0.2em;
+}
 .Linklist ul ul ul > li > a {
   padding-left: 2.5em;
 }
@@ -6375,10 +6375,33 @@ a.icon[target=_blank]:after {
   text-transform: none;
   white-space: pre;
 }
-.Megamenu li li [class*=" Icon-"]:before,
-.Megamenu li li [class^=Icon-]:before {
+.Megamenu li li svg {
+  width: 24px;
+  height: 24px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  vertical-align: middle;
+}
+.Megamenu li li span[class*=" Icon-"]:before,
+.Megamenu li li span[class^=Icon-]:before {
   padding-right: 3px;
   padding-left: 5px;
+}
+svg.Icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+svg.Icon-large {
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
 }
 .Form-field .chzn-container {
   background-color: white!important;
@@ -7042,4 +7065,10 @@ nav[role=navigation] ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+.categories-module [class*=" icon-"],
+.categories-module [class^=icon-],
+.category-module [class*=" icon-"],
+.category-module [class^=icon-] {
+  margin-right: 0.5em;
 }
