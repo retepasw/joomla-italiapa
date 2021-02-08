@@ -1427,6 +1427,7 @@ ul {
 }
 .Header-logo,
 .Header-toggle,
+.offline .Header-logo,
 .u-size1of6,
 .u-size2of12 {
   -webkit-flex-basis: auto !important;
@@ -1542,6 +1543,7 @@ ul {
   flex-basis: auto !important;
   width: 80% !important;
 }
+.offline .Header-title,
 .u-size5of6,
 .u-size10of12 {
   -webkit-flex-basis: auto !important;
@@ -3679,6 +3681,7 @@ ul {
 }
 .Footer-socialIcons [class*=" Icon-"],
 .Footer-socialIcons [class^=Icon-],
+.offline .Header-logo,
 .u-padding-all-xs {
   padding: 0.8rem !important;
 }
@@ -4823,9 +4826,8 @@ ul {
   margin-right: 0.5em;
 }
 .Megamenu-item span[class*=" icon-"]:before,
-.Megamenu-item span[class^=icon-]:before
-{
-	font-weight: initial;
+.Megamenu-item span[class^=icon-]:before {
+  font-weight: initial;
 }
 .Icon:before,
 .Megamenu--default .Megamenu-list > li > a[aria-expanded=false]:after:before,
@@ -7076,5 +7078,5 @@ nav[role=navigation] ul {
 .categories-module [class^=icon-],
 .category-module [class*=" icon-"],
 .category-module [class^=icon-] {
-	margin-right: 0.5em;
+  margin-right: 0.5em;
 }
