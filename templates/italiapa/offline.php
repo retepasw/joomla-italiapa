@@ -192,16 +192,16 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 							<span class="Form-fieldIcon" role="presentation"></span><?php echo JText::_('PLG_TWOFACTORAUTH_TRUST_TRUSTED_BROWSER'); ?></label>
 						</fieldset>
 					<?php endif; ?>
-
-			 		<div class="Form-field Grid-cell u-textRight">
-						<button type="submit" class="Button Button--default u-text-xs"><?php echo JText::_('JLOGIN'); ?></button>
-					</div>
-
-					<input type="hidden" name="option" value="com_users" />
-					<input type="hidden" name="task" value="user.login" />
-					<input type="hidden" name="return" value="<?php echo base64_encode(JUri::base()); ?>" />
-					<?php echo JHtml::_('form.token'); ?>
 				</fieldset>
+
+		 		<div class="Form-field Grid-cell u-textRight">
+					<button type="submit" class="Button Button--default u-text-xs"><?php echo JText::_('JLOGIN'); ?></button>
+				</div>
+
+				<input type="hidden" name="option" value="com_users" />
+				<input type="hidden" name="task" value="user.login" />
+				<input type="hidden" name="return" value="<?php echo base64_encode(JUri::base()); ?>" />
+				<?php echo JHtml::_('form.token'); ?>
 			</form>
 		</div>
 	</div>
