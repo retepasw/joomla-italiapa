@@ -25,18 +25,16 @@ if (!function_exists('hierarchical_array_from_array'))
 	{
 		$tree  = array();
 		$level--;
-			foreach ($farray as &$node)
+		foreach ($farray as &$node)
 		{
 			$node->child = array();
 			$node->cols = 1;
-			$node->depth = 1;
 			$node->level -= $level;
 			$node->footer = false;
 
 			if (array_key_exists($node->parent_id, $nodes))
 			{
 				$nodes[$node->parent_id]->child[] = $node;
-				$nodes[$node->parent_id]->depth = max(array_map(function($o) { return $o->depth; }, $nodes[$node->parent_id]->child)) + 1;
 				if ($node->anchor_css)
 				{
 					$anchor_css = explode(' ', $node->anchor_css);
@@ -85,7 +83,7 @@ if (!function_exists('megamenu'))
 
 		foreach ($menu as $i => $item)
 		{
-			$class = ' item-' . $item->id;
+		    $class = ' item-' . $item->id;
 			$subclass = '';
 			if ($item->id == $default_id)
 			{
@@ -152,7 +150,7 @@ if (!function_exists('megamenu'))
 			}
 			elseif ($item->level == 2)
 			{
-				if (!$item->footer && $nodes[$item->parent_id]->depth > 2)
+				if (!$item->footer)
 				{
 					echo '<ul class="Megamenu-subnavGroup' . ($item->cols > 1 ? ' columns" data-columns="' . $item->cols : '') . '">';
 				}
