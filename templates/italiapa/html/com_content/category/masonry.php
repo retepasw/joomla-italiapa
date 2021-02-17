@@ -25,8 +25,8 @@ JHtml::_('behavior.caption');
 // It will be a separate class if the user starts it with a space
 ?>
 
-<div class="u-background-grey-20 u-layout-centerContent u-cf">
-	<section class="js-Masonry-container u-layout-medium <?php echo $this->pageclass_sfx; ?>" data-columns itemscope itemtype="https://schema.org/Blog">
+<div class="u-background-grey-20 u-layout-centerContent u-cf u-padding-bottom-l u-padding-top-l">
+	<section class="js-Masonry-container u-layout-medium u-cf <?php echo $this->pageclass_sfx; ?>" data-columns itemscope itemtype="https://schema.org/Blog">
 		<?php if ($this->params->get('show_page_heading') != 0) : ?>
 		    <h2 class="u-layout-centerLeft u-text-r-s">
 				<?php echo $this->escape($this->params->get('page_heading')); ?>
@@ -48,9 +48,9 @@ JHtml::_('behavior.caption');
 				tutti i contenuti <span class="Icon Icon-chevron-right"></a>
 		</p>
 		-->
-
-		<?php if ($this->params->def('show_pagination', 2) == 1  || ($this->params->get('show_pagination') == 2 && $this->pagination->pagesTotal > 1)) : ?>
-			<?php echo $this->pagination->getPagesLinks(); ?>
-		<?php endif; ?>
 	</section>
+
+	<?php if ($this->params->def('show_pagination', 2) == 1  || ($this->params->get('show_pagination') == 2 && $this->pagination->pagesTotal > 1)) : ?>
+		<?php echo $this->pagination->getPagesLinks(); ?>
+	<?php endif; ?>
 </div>
