@@ -5636,16 +5636,11 @@ option:hover {
   transform: rotate(-45deg);
 }
 .Hero {
-  background: url(//placehold.it/2000x500?text=placeholder);
   background-size: cover;
   height: 30em;
 }
 .Hero-content {
   opacity: 0.95;
-}
-.Leads-link:after {
-  content: " › ";
-  margin-left: 0.2em;
 }
 .Linklist ul ul ul > li > a {
   padding-left: 2.5em;
