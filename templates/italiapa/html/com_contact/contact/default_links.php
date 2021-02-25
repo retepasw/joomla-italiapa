@@ -78,9 +78,8 @@ require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 
 		<?php if ($this->contact->params->get('show_telephone_headings') && !empty($this->contact->telephone)) : ?>
 			<li class="u-inlineBlock u-margin-right-xxs">
-				<span class="Icon-phone u-color-white u-background-50 u-borderRadius-circle u-padding-all-xxs u-inlineBlock"
-					data-tooltip="<?php echo JHtml::tooltipText(JText::sprintf('COM_CONTACT_TELEPHONE_NUMBER', $this->contact->telephone), null, 0, 0); ?>">
-					<svg class="Icon"><use xlink:href="#Icon-phone"></use></svg></span>
+				<span data-tooltip="<?php echo JHtml::tooltipText(JText::sprintf('COM_CONTACT_TELEPHONE_NUMBER', $this->contact->telephone), null, 0, 0); ?>"
+					class="Icon-phone u-color-white u-background-50 u-borderRadius-circle u-padding-all-xxs u-inlineBlock"></span>
 				<span class="u-hiddenVisually"><?php echo JText::sprintf('COM_CONTACT_TELEPHONE_NUMBER', $this->contact->telephone); ?></span>
 			</li>
 		<?php endif; ?>

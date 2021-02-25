@@ -118,14 +118,12 @@ $db = JFactory::getDbo();
 		<?php if ($this->item->telephone && (true || $this->item->params->get('show_telephone_headings'))) : ?>
 			<?php $guid = GUIDv4(); ?>
 			<li class="u-inlineBlock u-margin-right-xxs">
-				<span class="Icon-phone u-color-white u-background-50 u-borderRadius-circle u-padding-all-xxs u-inlineBlock esh-dblclick"
-					data-tooltip="<?php echo JHtml::tooltipText(JText::sprintf('COM_CONTACT_TELEPHONE_NUMBER', $this->item->telephone), null, 0, 0); ?>"
+				<span data-tooltip="<?php echo JHtml::tooltipText(JText::sprintf('COM_CONTACT_TELEPHONE_NUMBER', $this->item->telephone), null, 0, 0); ?>"
+					class="Icon-phone u-color-white u-background-50 u-borderRadius-circle u-padding-all-xxs u-inlineBlock esh-dblclick"
 					onclick="jQuery( '#<?php echo $guid; ?>' ).toggleClass( 'u-hiddenVisually' );"
 					ondblclick="eshiol.italiapa.clipboard.write('<?php echo $this->item->telephone; ?>', 'Numero di telefono copiato negli appunti!');"
 					onmouseover="javascript:window.status='fai doppio click per copiare negli appunti';"
-					onmouseoout="javascript:window.status='';"
-					>
-					<svg class="Icon"><use xlink:href="#Icon-phone"></use></svg></span>
+					onmouseoout="javascript:window.status='';"></span>
 				<span id="<?php echo $guid; ?>" class="u-hiddenVisually"><?php echo $this->item->telephone; ?></span>
 			</li>
 		<?php endif; ?>

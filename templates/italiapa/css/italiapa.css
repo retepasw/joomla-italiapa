@@ -1537,9 +1537,6 @@
   display: block;
 }
 /* Megamenu multi-column */
-.Megamenu ul.Megamenu-subnavGroup.columns > li {
-  width: 100%;
-}
 .Megamenu ul.Megamenu-subnavGroup.columns > li > a {
   display: block;
 }
