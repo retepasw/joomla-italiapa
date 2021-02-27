@@ -35,12 +35,6 @@ if ($params->get('phpconsole') && class_exists('JLogLoggerPhpconsole'))
 }
 JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 
-// Check for a custom CSS file
-JHtml::_('stylesheet', 'user.css', array('version' => 'auto', 'relative' => true));
-
-// Check for a custom JS file
-JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
-
 $theme_default = $params->get('theme', 'italia');
 $theme = (isset($_COOKIE['theme']) && $_COOKIE['theme']) ? $_COOKIE['theme'] : $theme_default;
 $theme_path = JPATH_ROOT . '/templates/italiapa/build/build.' . $theme . '.css';
