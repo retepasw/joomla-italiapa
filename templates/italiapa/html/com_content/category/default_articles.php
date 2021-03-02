@@ -21,7 +21,6 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 JHtml::_('bootstrap.tooltip');
 
 // Create some shortcuts.
-$params    = &$this->item->params;
 $n         = count($this->items);
 $listOrder = $this->escape($this->state->get('list.ordering'));
 $listDirn  = $this->escape($this->state->get('list.direction'));
@@ -277,7 +276,7 @@ $tot = 6 + 4 * (
 			<?php if ($isEditable) : ?>
 				<td class="list-edit">
 					<?php if ($article->params->get('access-edit')) : ?>
-						<?php echo JHtml::_('icon.edit', $article, $params); ?>
+						<?php echo JHtml::_('icon.edit', $article, $this->params); ?>
 					<?php endif; ?>
 				</td>
 			<?php endif; ?>
