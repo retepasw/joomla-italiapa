@@ -145,7 +145,7 @@ $imgfloat = empty($images->float_fulltext) ? $params->get('float_fulltext') : $i
 
 			<?php if (isset($this->item->toc) && $this->item->toc) : ?>
 			<div class="Grid">
-				<div class="Grid-cell u-sizeFull u-md-size3of4 u-lg-size3of4 u-text-r-s u-padding-r-all">
+				<div class="Grid-cell u-sizeFull u-md-size3of4 u-lg-size3of4">
 			<?php endif; ?>
 					<div class="u-textSecondary u-lineHeight-l" itemprop="articleBody">
 						<?php echo $this->item->text; ?>
