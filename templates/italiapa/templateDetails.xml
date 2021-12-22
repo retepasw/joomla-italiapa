@@ -9,8 +9,7 @@
   <version>__DEPLOY_VERSION__</version>
   <description>TPL_ITALIAPA_XML_DESCRIPTION</description>
   <updateservers>
-    <server type="extension" priority="2" name="Template ItaliaPA">https://www.eshiol.it/files/italiapa/tpl_italiapa.xml
-		</server>
+    <server type="extension" priority="2" name="Template ItaliaPA">https://www.eshiol.it/files/italiapa/tpl_italiapa.xml</server>
   </updateservers>
   <scriptfile>script.php</scriptfile>
   <files>
@@ -24,6 +23,7 @@
     <filename>error.php</filename>
     <filename>favicon.ico</filename>
     <filename>index.php</filename>
+    <filename>offline.php</filename>
     <filename>script.php</filename>
     <filename>templateDetails.xml</filename>
     <filename>template_preview.png</filename>
