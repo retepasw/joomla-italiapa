@@ -75,7 +75,6 @@ $class = 'Button Button--default u-text-r-xs u-linkClean';
 						$url  = ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language);
 						$url .= '&buttons=report';
 						$text = '<span data-tooltip="' . JHtml::tooltipText(JText::_('TPL_ITALIAPA_BUTTONS_REPORT'), null, 0, 0) . '" data-tooltip-position="bottom center"><span class="u-text-r-m Icon Icon-list"></span></span>';
-						$attribs['title']   = JText::_('TPL_ITALIAPA_BUTTONS_REPORT');
 						$attribs['rel']     = 'nofollow';
 						$attribs['class']   = $class;
 						echo '<li class="u-padding-right-xs">' . JHtml::_('link', JRoute::_($url), $text, $attribs) . '</li>';
@@ -85,14 +84,12 @@ $class = 'Button Button--default u-text-r-xs u-linkClean';
 				{
 					$url  = 'index.php?option=com_buttons&view=extras&id=' . $item->id . '&buttons=report&format=csv';
 					$text = '<span data-tooltip="' . JHtml::tooltipText(JText::_('TPL_ITALIAPA_BUTTONS_CSV'), null, 0, 0) . '" data-tooltip-position="bottom center"><span class="u-text-r-m Icon Icon-download"></span></span>';
-					$attribs['title']   = JText::_('TPL_ITALIAPA_BUTTONS_CSV');
 					$attribs['rel']     = 'nofollow';
 					$attribs['class']   = $class;
 					echo '<li class="u-padding-right-xs">' . JHtml::_('link', JRoute::_($url), $text, $attribs) . '</li>';
 
 					$url  = ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language);
 					$text = '<span data-tooltip="' . JHtml::tooltipText(JText::_('TPL_ITALIAPA_BUTTONS_CLOSE'), null, 0, 0) . '" data-tooltip-position="bottom center"><span class="u-text-r-m Icon Icon-close"></span></span>';
-					$attribs['title']   = JText::_('TPL_ITALIAPA_BUTTONS_CLOSE');
 					$attribs['rel']     = 'nofollow';
 					$attribs['class']   = $class;
 					echo '<li class="u-padding-right-xs">' . JHtml::_('link', JRoute::_($url), $text, $attribs) . '</li>';
