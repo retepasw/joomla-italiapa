@@ -38,17 +38,9 @@ $class = 'Button Button--default u-text-r-xs u-linkClean';
 		<?php if ($canEdit || $displayData['params']->get('show_print_icon') || $displayData['params']->get('show_email_icon')) : ?>
 		<nav class="Navscroll u-floatRight">
 			<ul>
-			<?php // Note the actions class is deprecated. Use dropdown-menu instead. ?>
-			<?php if ($displayData['params']->get('show_print_icon')) : ?>
-				<li class="u-padding-right-xs"><?php echo preg_replace("/title=\"[\\s\\S]*?\"/", '', JHtml::_('icon.print_popup', $displayData['item'], $displayData['params'], array('class' => $class))); ?></li>
-			<?php endif; ?>
-			<?php if ($displayData['params']->get('show_email_icon')) : ?>
-				<li class="u-padding-right-xs"><?php echo JLayoutHelper::render('eshiol.content.share', $displayData); ?></li>
-			<?php endif; ?>
 
+			<?php if (JComponentHelper::getComponent('com_buttons', true)->enabled) : ?>
 			<?php
-			if (JComponentHelper::getComponent('com_buttons', true)->enabled)
-			{
 				$item = $displayData['item'];
 				$authorisedViewLevels = JFactory::getUser()->getAuthorisedViewLevels();
 				$report_access = false;
@@ -64,14 +56,25 @@ $class = 'Button Button--default u-text-r-xs u-linkClean';
 				}
 				$params = new JRegistry();
 				$params->loadString($item->attribs);
-
+				?>
+				<?php if ($displayData['params']->get('show_print_icon')) : ?>
+					<?php $button = JHtml::_('icon.print_popup', $displayData['item'], $displayData['params'], array('class' => $class)); ?>
+					<?php if (JFactory::getApplication()->input->getString('buttons') == 'report') : ?>
+						<?php $button = str_replace('&amp;tmpl=component&amp;print=1&amp;layout=default', '&amp;tmpl=component&amp;print=1&amp;layout=default&amp;buttons=report', $button); ?>
+					<?php endif; ?>
+					<li class="u-padding-right-xs"><?php echo preg_replace("/title=\"[\\s\\S]*?\"/", '', $button); ?></li>
+				<?php endif; ?>
+				<?php if ($displayData['params']->get('show_email_icon')) : ?>
+					<li class="u-padding-right-xs"><?php echo JLayoutHelper::render('eshiol.content.share', $displayData); ?></li>
+				<?php endif; ?>
+				<?php
 				if (JFactory::getApplication()->input->getString('buttons') != 'report')
 				{
 					if ($report_access)
 					{
 						$url  = ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language);
 						$url .= '&buttons=report';
-						$text = '<span class="u-text-r-m Icon Icon-list"></span>';
+						$text = '<span data-tooltip="' . JHtml::tooltipText(JText::_('TPL_ITALIAPA_BUTTONS_REPORT'), null, 0, 0) . '" data-tooltip-position="bottom center"><span class="u-text-r-m Icon Icon-list"></span></span>';
 						$attribs['title']   = JText::_('TPL_ITALIAPA_BUTTONS_REPORT');
 						$attribs['rel']     = 'nofollow';
 						$attribs['class']   = $class;
@@ -81,22 +84,28 @@ $class = 'Button Button--default u-text-r-xs u-linkClean';
 				else
 				{
 					$url  = 'index.php?option=com_buttons&view=extras&id=' . $item->id . '&buttons=report&format=csv';
-					$text = '<span class="u-text-r-m Icon Icon-download"></span>';
+					$text = '<span data-tooltip="' . JHtml::tooltipText(JText::_('TPL_ITALIAPA_BUTTONS_CSV'), null, 0, 0) . '" data-tooltip-position="bottom center"><span class="u-text-r-m Icon Icon-download"></span></span>';
 					$attribs['title']   = JText::_('TPL_ITALIAPA_BUTTONS_CSV');
 					$attribs['rel']     = 'nofollow';
 					$attribs['class']   = $class;
 					echo '<li class="u-padding-right-xs">' . JHtml::_('link', JRoute::_($url), $text, $attribs) . '</li>';
 
 					$url  = ContentHelperRoute::getArticleRoute($item->slug, $item->catid, $item->language);
-					$text = '<span class="u-text-r-m Icon Icon-close"></span>';
+					$text = '<span data-tooltip="' . JHtml::tooltipText(JText::_('TPL_ITALIAPA_BUTTONS_CLOSE'), null, 0, 0) . '" data-tooltip-position="bottom center"><span class="u-text-r-m Icon Icon-close"></span></span>';
 					$attribs['title']   = JText::_('TPL_ITALIAPA_BUTTONS_CLOSE');
 					$attribs['rel']     = 'nofollow';
 					$attribs['class']   = $class;
 					echo '<li class="u-padding-right-xs">' . JHtml::_('link', JRoute::_($url), $text, $attribs) . '</li>';
 				}
-			}
 			?>
-
+			<?php else: ?>
+				<?php if ($displayData['params']->get('show_print_icon')) : ?>
+					<li class="u-padding-right-xs"><?php echo preg_replace("/title=\"[\\s\\S]*?\"/", '', JHtml::_('icon.print_popup', $displayData['item'], $displayData['params'], array('class' => $class))); ?></li>
+				<?php endif; ?>
+				<?php if ($displayData['params']->get('show_email_icon')) : ?>
+					<li class="u-padding-right-xs"><?php echo JLayoutHelper::render('eshiol.content.share', $displayData); ?></li>
+				<?php endif; ?>
+			<?php endif; ?>
 			<?php if ($canEdit) : ?>
 				<li class="u-padding-right-xs"><?php echo preg_replace("/title=\"[\\s\\S]*?\"/", '', JHtml::_('icon.edit', $displayData['item'], $displayData['params'], array('class' => $class))); ?></li>
 			<?php endif; ?>
