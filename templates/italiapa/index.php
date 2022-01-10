@@ -243,7 +243,16 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 			<div class="Grid-cell u-md-size8of12 u-lg-size8of12">
 		<?php endif; ?>
 				<jdoc:include type="message" />
+				
+				<?php if ($this->countModules('main-top')) : ?>
+					<jdoc:include type="modules" name="main-top" style="none" />				
+				<?php endif; ?>
+				
 				<jdoc:include type="component" />
+
+				<?php if ($this->countModules('main-bottom')) : ?>
+					<jdoc:include type="modules" name="main-bottom" style="none" />				
+				<?php endif; ?>
 
 		<?php if ($this->countModules('right')) : ?>
 			</div>
