@@ -46,7 +46,7 @@ defined('_JEXEC') or die;
 						$item->img = '<img class="u-sizeFull'
  							. ($params->get('lazy', 1) ? ' owl-lazy" data-' : '" ')
  							. 'src="' . JUri::root(true) . '/' . htmlspecialchars($item->image, ENT_COMPAT, 'UTF-8') . '" '
-							. 'title="' . htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8') . '" '
+							. 'data-tooltip="' . htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8') . '" '
 							. 'alt="' . htmlspecialchars($item->description, ENT_COMPAT, 'UTF-8') . '" />';
 						if ($item->link)
 						{
