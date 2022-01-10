@@ -258,7 +258,7 @@ abstract class JHtmlIwt
 			}
 			else
 			{
-				$attributes['title'] = $item->anchor_title;
+				$attributes['data-tooltip'] = $item->anchor_title;
 			}
 		}
 
