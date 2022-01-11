@@ -45,12 +45,14 @@ defined('_JEXEC') or die;
 			</div>
 		<?php endif; ?>
 
+		<?php $count = $params->get('count', 1); ?>
 		<div class="owl-carousel owl-theme" role="region" id="carousel-<?php echo $module->id; ?>" aria-label="carousel-<?php echo $module->title; ?>"
-			data-carousel-options='{"items":<?php echo $params->get('count', 1); ?><?php
+			data-carousel-options='{<?php
+			echo ($count > 0) ? '"items":' . $count . ',"responsive":false,"lazyLoad":true' : '';
 			echo $params->get('auto_sliding', 1) ? ',"autoplay":true,"autoplaySpeed":' . $params->get('speed', 1000) . ',"autoplayTimeout":' . $params->get('interval', 5000) : '';
-			echo $params->get('lazy', 1) ? ',"lazyLoad":true' : '';
 			echo $params->get('loop', 1) ? ',"loop":true' : '';
-			echo $params->get('show_indicators', 1) ? ',"dots":true' : ''; ?>,"responsive":false}'>
+			echo $params->get('show_indicators', 1) ? ',"dots":true' : '';
+			?>}'>
 			<?php
 			$i = 1000 * (int)$module->id;
 			$target_default = $params->get('target', 2);
@@ -61,7 +63,7 @@ defined('_JEXEC') or die;
 					<figure>
 						<?php
 						$item->img = '<img class="u-sizeFull'
- 							. ($params->get('lazy', 1) ? ' owl-lazy" data-' : '" ')
+					 		. (($count > 0) ? ' owl-lazy" data-' : '" ')
  							. 'src="' . JUri::root(true) . '/' . htmlspecialchars($item->image, ENT_COMPAT, 'UTF-8') . '" '
 							. 'title="' . htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8') . '" '
 							. 'alt="' . htmlspecialchars($item->description, ENT_COMPAT, 'UTF-8') . '" />';
