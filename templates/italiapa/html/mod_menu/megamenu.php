@@ -140,10 +140,7 @@ if (!function_exists('megamenu'))
 				}
 				$item->anchor_css = (substr($item->anchor_css, 0, 1) == ' ' ? ' ' : '') . implode(' ', $anchor_css);
 			}
-			if (!$item->anchor_css)
-			{
-				$class = 'Megamenu-item' . $class;
-			}
+			$class = 'Megamenu-item' . $class;
 			if ($item->level == 1)
 			{
 				$class = ($class || $subclass ? ' class="' . $class . ' ' . $subclass . '"' : '');
