@@ -37,5 +37,5 @@ if ($item->anchor_css)
 ?>
 
 <<?php echo $item->deeper ? 'a href="#"' : 'span'; ?> class="nav-header <?php echo $item->anchor_css; ?>"
-	<?php echo $item->anchor_title ? ' title="' . $item->anchor_title . '"' : ''; ?>><?php echo JHtml::_('iwt.linkType', $item); ?>
+	<?php echo $item->anchor_title ? ' data-tooltip="' . $item->anchor_title . '"' : ''; ?>><?php echo JHtml::_('iwt.linkType', $item); ?>
 </<?php echo $item->deeper ? 'a' : 'span'; ?>>
