@@ -63,7 +63,7 @@
 					var node =
 						'<a href="#' + id + '" class="Tooltip-toggle u-textClean u-padding-right-xs u-padding-left-xs' +
 						' u-background-teal-50 u-color-black" data-menu-trigger="' + id + '">' + text + '</a>' +
-						'<span id="' + id + '" data-menu class="Dropdown-menu u-borderShadow-m u-background-teal-70 u-color-white u-layout-prose' +
+						'<span id="' + id + '" data-menu aria-hidden="true" class="Dropdown-menu u-borderShadow-m u-background-teal-70 u-color-white u-layout-prose' +
 						' u-padding-r-all u-borderRadius-l">' +
 						tooltipNode +
 						'</span>';
