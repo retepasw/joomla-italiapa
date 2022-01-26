@@ -53,6 +53,8 @@
     <position>services</position>
     <position>socials</position>
     <position>top</position>
+    <position>main-top</position>
+    <position>main-bottom</position>
   </positions>
   <config>
     <fields name="params">
