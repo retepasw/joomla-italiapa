@@ -19,9 +19,9 @@ defined('_JEXEC') or die;
 
 /** @var JDocumentHtml $this */
 
-$app = JFactory::getApplication();
-
+$app	= JFactory::getApplication();
 $params = $app->getTemplate(true)->params;
+$min    = '.min';
 
 if ($params->get('debug') || defined('JDEBUG') && JDEBUG)
 {
@@ -47,6 +47,23 @@ JHtml::_('script', 'jui/html5.js', array('version' => 'auto', 'relative' => true
 
 // Add Stylesheets
 JHtml::_('stylesheet', 'component.css', array('version' => 'auto', 'relative' => true));
+
+$theme_default = $params->get('theme', 'italia');
+$theme = (isset($_COOKIE['theme']) && $_COOKIE['theme']) ? $_COOKIE['theme'] : $theme_default;
+$theme_path = JPATH_ROOT . '/templates/italiapa/build/build.' . $theme . '.css';
+
+if (!file_exists($theme_path)) {
+	$theme = 'italia';
+}
+
+JFactory::getSession()->set('theme', $theme);
+
+/** @var JDocumentHtml $this */
+$this->baseurl = JURI::root();
+
+JHtml::_('stylesheet', 'templates/italiapa/build/build' . $min . '.css', array('version' => 'auto'));
+JHtml::_('stylesheet', 'templates/italiapa/build/build.' . $theme . $min . '.css', array('version' => 'auto'), array('id'=>'theme'));
+JHtml::_('stylesheet', 'italiapa' . $min . '.css', array('version' => 'auto', 'relative' => true));
 
 // Load optional rtl Bootstrap css and Bootstrap bugfixes
 JHtmlBootstrap::loadCss($includeMaincss = false, $this->direction);
