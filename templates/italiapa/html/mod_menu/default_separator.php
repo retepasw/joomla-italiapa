@@ -18,7 +18,7 @@ defined('_JEXEC') or die();
 
 require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 
-$title      = $item->anchor_title ? ' title="' . $item->anchor_title . '"' : '';
+$title      = $item->anchor_title ? ' data-tooltip="' . $item->anchor_title . '"' : '';
 $anchor_css = $item->anchor_css ? ' ' . $item->anchor_css : '';
 
 if ($item->level == 1)
