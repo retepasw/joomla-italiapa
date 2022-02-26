@@ -7,7 +7,7 @@
  *
  * @author      Helios Ciancio <info (at) eshiol (dot) it>
  * @link        https://www.eshiol.it
- * @copyright   Copyright (C) 2017 - 2021 Helios Ciancio. All rights reserved
+ * @copyright   Copyright (C) 2017 - 2022 Helios Ciancio. All rights reserved
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -45,7 +45,7 @@ function modChrome_lg($module, &$params, &$attribs)
     elseif ($module->position == 'mainmenu')
     {
         $moduleTag   = 'nav';
-        $moduleClass1 = 'u-textCenter u-hidden u-sm-hidden u-md-block u-lg-block '.$moduleClass;
+        $moduleClass1 = 'u-textCenter u-hidden u-sm-hidden u-md-block u-lg-block ' . $moduleClass;
     }
     elseif ($module->position == 'lead')
     {
@@ -61,23 +61,30 @@ function modChrome_lg($module, &$params, &$attribs)
     	$moduleClass = implode(' ', $moduleClass);
 
         $moduleTag   = 'section';
-        $moduleClass1 = 'u-padding-r-top u-padding-r-bottom '.$moduleClass;
+        $moduleClass1 = 'u-padding-r-top u-padding-r-bottom ' . $moduleClass;
         $headerTag   = 'h2';
-        $headerClass = 'u-text-h3 u-layout-centerLeft '.$headerClass;
+        $headerClass = 'u-text-h3 u-layout-centerLeft ' . $headerClass;
     }
     elseif (($module->position == 'footer') || ($module->position == 'footerinfo'))
     {
-        $moduleClass1 = 'Footer-block Grid-cell '.$moduleClass;
+        $moduleClass1 = 'Footer-block Grid-cell ' . $moduleClass;
         $headerTag   = 'h2';
-        $headerClass = 'Footer-blockTitle '.$headerClass;
+        $headerClass = 'Footer-blockTitle ' . $headerClass;
     }
     elseif ($module->position == 'services')
     {
-        $moduleClass1 = 'u-sizeFull u-text-r-s '.($moduleClass ?: 'u-color-60');
+        $moduleClass1 = 'u-sizeFull u-text-r-s ' . ($moduleClass ?: 'u-color-60');
         $headerTag   = 'h3';
     }
-    $moduleClass1 = !empty($moduleClass1) ? ' class="' . htmlspecialchars($moduleClass1, ENT_COMPAT, 'UTF-8') . '"' : '';
-    $headerClass = !empty($headerClass) ? ' class="' . htmlspecialchars($headerClass, ENT_COMPAT, 'UTF-8') . '"' : '';
+    if (!empty($moduleClass1))
+    {
+        $moduleClass1 = ' class="' . trim(htmlspecialchars($moduleClass1, ENT_COMPAT, 'UTF-8')) . '"';
+    }
+    elseif (!empty($moduleClass))
+    {
+        $moduleClass1 = ' class="' . trim(htmlspecialchars($moduleClass, ENT_COMPAT, 'UTF-8')) . '"';
+    }
+    $headerClass = !empty($headerClass) ? ' class="' . trim(htmlspecialchars($headerClass, ENT_COMPAT, 'UTF-8')) . '"' : '';
 
     $plainPositions = array('footermenu', 'news');
     $plainModules = array('mod_carousel');
