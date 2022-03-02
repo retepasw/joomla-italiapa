@@ -22,10 +22,12 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 JHtml::_('behavior.caption');
 ?>
 
+<?php $count = $params->get('carousel_count', 1); ?>
 <section class="u-text-r-s u-padding-r-top u-padding-r-bottom blog" itemscope itemtype="https://schema.org/Blog">
 	<div class="owl-carousel news-theme" role="region" id="carousel-<?php echo $module->id; ?>"
 		aria-label="carousel-<?php echo $module->title; ?>"
-		data-carousel-options='{"items":<?php echo $params->get('carousel_count', 1);
+		data-carousel-options='{<?php
+		echo ($count > 0) ? '"items":' . $count . ',"responsive":false' : '';
 		echo $params->get('carousel_auto_sliding', 1) ? ',"autoplay":true,"autoplaySpeed":' . $params->get('carousel_speed', 1000) . ',"autoplayTimeout":' . $params->get('carousel_interval', 5000) : '';
 		echo $params->get('carousel_lazy', 1) ? ',"lazyLoad":true' : '';
 		echo $params->get('carousel_loop', 1) ? ',"loop":true' : '';
