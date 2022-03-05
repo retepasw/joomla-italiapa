@@ -368,6 +368,8 @@ class italiapaInstallerScript
 	 */
 	public function deleteUnexistingFiles()
 	{
+	    $base = JPATH_BASE . '/templates/italiapa';
+
 		$files = array(
 			/*
 			 * ItaliaPA 3.9 beta 1
@@ -403,21 +405,20 @@ class italiapaInstallerScript
 
 		foreach ($files as $file)
 		{
-			if (JFile::exists(JPATH_ROOT . $file) && !JFile::delete(JPATH_ROOT . $file))
-			{
-				echo JText::sprintf('FILES_JOOMLA_ERROR_FILE_FOLDER', $file) . '<br />';
-			}
+		    if (JFile::exists($base . $file) && !JFile::delete($base . $file))
+		    {
+		        \JFactory::getApplication()->enqueueMessage(JText::sprintf('FILES_JOOMLA_ERROR_FILE_FOLDER', $file));
+		    }
 		}
 
 		jimport('joomla.filesystem.folder');
 
 		foreach ($folders as $folder)
 		{
-			if (JFolder::exists(JPATH_ROOT . $folder) && !JFolder::delete(JPATH_ROOT . $folder))
-			{
-				echo JText::sprintf('FILES_JOOMLA_ERROR_FILE_FOLDER', $folder) . '<br />';
-			}
+		    if (JFolder::exists($base . $folder) && !JFolder::delete($base . $folder))
+		    {
+		        \JFactory::getApplication()->enqueueMessage(JText::sprintf('FILES_JOOMLA_ERROR_FILE_FOLDER', $folder));
+		    }
 		}
 	}
-	
 }
