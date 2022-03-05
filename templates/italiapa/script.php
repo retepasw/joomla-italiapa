@@ -20,7 +20,7 @@
  *
  * @author      Helios Ciancio <info (at) eshiol (dot) it>
  * @link        https://www.eshiol.it
- * @copyright   Copyright (C) 2017 - 2021 Helios Ciancio. All rights reserved
+ * @copyright   Copyright (C) 2017 - 2022 Helios Ciancio. All rights reserved
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -379,8 +379,16 @@ class italiapaInstallerScript
 			 * ItaliaPA 3.9 beta 2
 			 */
 			'/css/ita.css',
+		    /*
+		     * ItaliaPA 3.9 stable
+		     */
+		    '/css/custom.css',
+			'/html/com_content/category/news.php',
+		    '/html/com_content/category/news.xml',
+			'/html/com_content/category/news_item.php',
+		    '/html/mod_menu/socials_url.php',
 		);
-		
+
 		// TODO There is an issue while deleting folders using the ftp mode
 		$folders = array(
 			/*
@@ -390,9 +398,9 @@ class italiapaInstallerScript
 			'/html/layout/com_contact/field',
 			'/html/layout/com_contact/fields',
 		);
-		
+
 		jimport('joomla.filesystem.file');
-		
+
 		foreach ($files as $file)
 		{
 			if (JFile::exists(JPATH_ROOT . $file) && !JFile::delete(JPATH_ROOT . $file))
@@ -400,9 +408,9 @@ class italiapaInstallerScript
 				echo JText::sprintf('FILES_JOOMLA_ERROR_FILE_FOLDER', $file) . '<br />';
 			}
 		}
-		
+
 		jimport('joomla.filesystem.folder');
-		
+
 		foreach ($folders as $folder)
 		{
 			if (JFolder::exists(JPATH_ROOT . $folder) && !JFolder::delete(JPATH_ROOT . $folder))
