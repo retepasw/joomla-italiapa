@@ -27,12 +27,12 @@ JHtml::_('behavior.caption');
 	<div class="owl-carousel news-theme" role="region" id="carousel-<?php echo $module->id; ?>"
 		aria-label="carousel-<?php echo $module->title; ?>"
 		data-carousel-options='{<?php
-		echo ($count > 0) ? '"items":' . $count . ',"responsive":false' : '';
-		echo $params->get('carousel_auto_sliding', 1) ? ',"autoplay":true,"autoplaySpeed":' . $params->get('carousel_speed', 1000) . ',"autoplayTimeout":' . $params->get('carousel_interval', 5000) : '';
+		echo ($count > 0) ? '"items":' . $count . ',"responsive":false,' : '';
+		echo $params->get('carousel_auto_sliding', 1) ? '"autoplay":true,"autoplaySpeed":' . $params->get('carousel_speed', 1000) . ',"autoplayTimeout":' . $params->get('carousel_interval', 5000) : '';
 		echo $params->get('carousel_lazy', 1) ? ',"lazyLoad":true' : '';
 		echo $params->get('carousel_loop', 1) ? ',"loop":true' : '';
 		echo $params->get('carousel_show_controls', 1) ? ',"nav":true' : '';
-		echo $params->get('carousel_show_indicators', 1) ? ',"dots":true' : ''; ?>,"responsive":false}'>
+		echo $params->get('carousel_show_indicators', 1) ? ',"dots":true' : ''; ?>}'>
 		<?php foreach ($list as $item) : ?>
 			<div<?php echo $item->state == 0 ? ' class=\"system-unpublished\"' : null; ?> itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
 				<?php require JModuleHelper::getLayoutPath('mod_articles_news', $params->get('carousel_layout', ($module->position == 'right' || $params->get('carousel_count', 1) > 1) ? '_card' : '_hcell')); ?>
