@@ -30,10 +30,28 @@ defined('_JEXEC') or die;
 		<?php $count = $params->get('count', 1); ?>
 		<div class="owl-carousel news-theme" role="region" id="carousel-<?php echo $module->id; ?>" aria-label="carousel-<?php echo $module->title; ?>"
 			data-carousel-options='{<?php
-			echo ($count > 0) ? '"items":' . $count . ',"responsive":false,"lazyLoad":true' : '';
-			echo $params->get('auto_sliding', 1) ? ',"autoplay":true,"autoplaySpeed":' . $params->get('speed', 1000) . ',"autoplayTimeout":' . $params->get('interval', 5000) : '';
-			echo $params->get('loop', 1) ? ',"loop":true' : '';
-			echo $params->get('show_indicators', 1) ? ',"dots":true' : '';
+				$options = [];
+				if ($count > 0) 
+				{
+					$options[] = '"items":' . $count;
+					$options[] = '"responsive":false';
+					$options[] = '"lazyLoad":true';
+				}
+				if ($params->get('auto_sliding', 1))
+				{
+					$options[] = '"autoplay":true';
+					$options[] = '"autoplaySpeed":' . $params->get('speed', 1000);
+					$options[] = '"autoplayTimeout":' . $params->get('interval', 5000);
+				}
+				if ($params->get('loop', 1))
+				{
+					$options[] = '"loop":true';
+				}
+				if ($params->get('show_indicators', 1))
+				{
+					$options[] = '"dots":true';
+				}
+				echo implode(',', $options);
 			?>}'>
 			<?php
 			$i = 1000 * (int)$module->id;
