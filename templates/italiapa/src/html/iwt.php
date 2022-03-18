@@ -7,7 +7,7 @@
  * 
  * @author      Helios Ciancio <info (at) eshiol (dot) it>
  * @link        https://www.eshiol.it
- * @copyright   Copyright (C) 2017 - 2021 Helios Ciancio. All rights reserved
+ * @copyright   Copyright (C) 2017 - 2022 Helios Ciancio. All rights reserved
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -156,7 +156,8 @@ abstract class JHtmlIwt
 	{
 		if (! isset(static::$loaded[__METHOD__][$selector]))
 		{
-			$opt['active'] = (string) $params['active'];
+			// Setup options object
+			$opt['active'] = (isset($params['active']) && $params['active']) ? (string) $params['active'] : '';
 
 			// Set static array
 			static::$loaded[__METHOD__][$selector] = $opt;
