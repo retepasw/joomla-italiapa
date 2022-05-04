@@ -107,7 +107,7 @@ $imgfloat = empty($images->float_fulltext) ? $params->get('float_fulltext') : $i
 			<?php if ($useDefList) : ?>
 				<div id="pop-print" class="u-hiddenPrint">
 					<?php
-					$text = JLayoutHelper::render('joomla.content.icons.print_screen', array('params' => $params, 'legacy' => $legacy));
+					$text = JLayoutHelper::render('joomla.content.icons.print_screen', array('params' => $params));
 					echo '<a href="#" onclick="window.print();return false;" class="Button Button--default u-text-r-xs u-linkClean">' . $text . '</a>';
 					?>
 				</div>
