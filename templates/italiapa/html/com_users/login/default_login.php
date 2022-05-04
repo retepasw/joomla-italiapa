@@ -139,8 +139,8 @@ JText::script('TPL_ITALIAPA_UNTRUST_THIS_BROWSER');
 		<div class="Form-field Grid-cell u-textRight">
 			<button type="submit" class="Button Button--default u-text-xs"><?php echo JText::_('JLOGIN'); ?></button>
 		</div>
-		<?php $return = $this->form->getValue('return'); ?>
-		<?php $return = empty($return) ? $this->params->get('login_redirect_url', $this->params->get('login_redirect_menuitem')) : JUri::root() . '/' . $return; ?> 
+		<?php $return = $this->form->getValue('return', '', $this->params->get('login_redirect_url', $this->params->get('login_redirect_menuitem'))); ?>
+		<input type="hidden" name="clean_return" value="<?php echo $return; ?>" />
 		<input type="hidden" name="return" value="<?php echo base64_encode($return); ?>" />
 		<?php echo JHtml::_('form.token'); ?>
 	</form>
