@@ -81,9 +81,16 @@ class JFormFieldCheckbox extends _JFormFieldCheckbox
 	public function setup(SimpleXMLElement $element, $value, $group = null)
 	{
 		$attributes = $element->attributes();
-		if (isset($attributes['hiddenLabel'])) {
+		if (isset($attributes['hiddenLabel']))
+		{
+			if (!empty($attributes['hiddenLabel']))
+			{
+				$element['label'] = "";
+			}
 			$attributes->hiddenLabel = true;
-		} else {
+		}
+		else
+		{
 			$element->addAttribute('hiddenLabel', true);
 		}
 
