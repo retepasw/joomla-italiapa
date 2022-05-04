@@ -3,7 +3,9 @@
 	<fields name="params">
 		<fieldset name="advanced">
 			<field name="carousel_count" type="integer" label="PLG_SYSTEM_ITALIAPA_CAROUSEL_COUNT_LABEL" description="PLG_SYSTEM_ITALIAPA_CAROUSEL_COUNT_DESC" first="1" last="12" step="1"
-				showon="layout:italiapa:carousel" />
+				showon="layout:italiapa:carousel">
+				<option value="0">PLG_SYSTEM_ITALIAPA_CAROUSEL_RESPONSIVE</option>
+			</field>
 			<field name="carousel_layout" type="list" label="PLG_SYSTEM_ITALIAPA_CAROUSEL_LAYOUT_LABEL" description="PLG_SYSTEM_ITALIAPA_CAROUSEL_LAYOUT_DESC"
 				showon="layout:italiapa:carousel">
 				<option value="">JDEFAULT</option>
