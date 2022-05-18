@@ -76,6 +76,10 @@
           <option value="1">JYES</option>
           <option value="0">JNO</option>
         </field>
+        <field name="copyright" type="radio" class="btn-group btn-group-yesno" default="1" description="TPL_ITALIAPA_FIELD_COPYRIGHT_DESC" label="TPL_ITALIAPA_FIELD_COPYRIGHT_LABEL">
+          <option value="1">JYES</option>
+          <option value="0">JNO</option>
+        </field>
       </fieldset>
       <fieldset name="advanced">
         <field name="debug" type="radio" class="btn-group btn-group-yesno" default="0" description="TPL_ITALIAPA_DEBUG_SYSTEM_DESC" label="TPL_ITALIAPA_DEBUG_SYSTEM_LABEL">

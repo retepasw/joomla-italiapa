@@ -2259,3 +2259,33 @@ dl.stats-module dd {
   float: right;
   width: 50%;
 }
+.ipa-copyright {
+	position:unset!important;
+	display:block!important;
+	color:rgba(255,255,255,0.75);
+	text-align:right;
+	padding-top:2em;
+	padding-right:5em;
+	font-family:Iceland
+}
+.ipa-copyright a {
+	text-decoration:none;
+	font-weight:bold
+}
+.ipa-copyright img {
+	vertical-align:bottom
+}
+@media screen and (min-width:768px) {
+	.ipa-copyright>a:nth-of-type(1) {
+		float:left
+	}
+}
+@media screen and (max-width:767px) {
+	.ipa-copyright {
+		text-align:left
+	}
+	.ipa-copyright>span {
+		display:block;
+		margin-top:1em
+	}
+}
