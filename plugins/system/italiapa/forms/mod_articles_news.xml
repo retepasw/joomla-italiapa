@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fields name="params">
+		<fieldset name="basic">
+			<field name="show_tags" type="radio" label="JGLOBAL_SHOW_TAGS_LABEL" description="JGLOBAL_SHOW_TAGS_DESC" class="btn-group btn-group-yesno" default="0">
+				<option value="1">JSHOW</option>
+				<option value="0">JHIDE</option>
+			</field>
+		</fieldset>
+	</fields>
+</form>
