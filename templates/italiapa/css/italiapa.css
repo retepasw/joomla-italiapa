@@ -2259,6 +2259,12 @@ dl.stats-module dd {
   float: right;
   width: 50%;
 }
+.chzn-container-active.chzn-with-drop .chzn-single,
+.chzn-container-single .chzn-single {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
 .ipa-copyright {
 	position:unset!important;
 	display:block!important;
