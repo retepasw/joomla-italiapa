@@ -55,6 +55,15 @@ $assocParam = (JLanguageAssociations::isEnabled() && $item->params->get('show_as
 			echo $item->afterDisplayTitle;
 		endif;
 
+		if ($params->get('show_tags', 0)) :
+			$itemtags = (new JHelperTags)->getItemTags('com_content.article', $item->id);
+			if ($itemtags) : ?>
+				<div class="mod-articles-news-tags">
+					<?php echo JLayoutHelper::render('joomla.content.tags', $itemtags); ?>
+				</div>
+			<?php endif;
+		endif;
+
 		echo $item->beforeDisplayContent;
 
 		if ($params->get('show_introtext', '1')) :

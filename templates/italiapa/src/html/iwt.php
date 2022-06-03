@@ -170,7 +170,7 @@ abstract class JHtmlIwt
 	    	    });
 	        });');
 
-			return '<div class="fr-accordion js-fr-accordion" id="accordion-' . $selector . '" role="tablist" aria-multiselectable="false">';
+			return '<div class="fr-accordion js-fr-accordion" id="accordion-' . $selector . '" role="tablist" aria-multiselectable="false" aria-closable="false">';
 		}
 	}
 

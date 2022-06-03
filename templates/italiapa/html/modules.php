@@ -29,6 +29,7 @@ function modChrome_lg($module, &$params, &$attribs)
     $moduleClass	=
         htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8').
         ($bootstrapSize == 0 ? '' : ' u-md-size'.$bootstrapSize.'of12 u-lg-size'.$bootstrapSize.'of12');
+    $moduleClass1 = '';
 
     $headerTag	    = htmlspecialchars($params->get('header_tag', 'h3'), ENT_COMPAT, 'UTF-8');
     $headerClass	= htmlspecialchars($params->get('header_class'), ENT_COMPAT, 'UTF-8');
