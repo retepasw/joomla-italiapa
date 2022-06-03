@@ -101,13 +101,11 @@ class PlgSystemItaliaPA extends JPlugin
 
 			Form::addFormPath(dirname(__FILE__) . '/forms');
 
+			$form->loadFile($data->module, false);
+
 			if ($data->module == 'mod_articles_news')
 			{
 				$form->loadFile('carousel', false);
-			}
-			else
-			{
-				$form->loadFile($data->module, false);
 			}
 		}
 		elseif ($formName == 'com_config.modules')
