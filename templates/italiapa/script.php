@@ -389,6 +389,11 @@ class italiapaInstallerScript
 		    '/html/com_content/category/news.xml',
 			'/html/com_content/category/news_item.php',
 		    '/html/mod_menu/socials_url.php',
+
+		    '/fonts/ita.eot',
+		    '/fonts/ita.svg',
+		    '/fonts/ita.ttf',
+		    '/fonts/ita.woff',
 		);
 
 		// TODO There is an issue while deleting folders using the ftp mode
