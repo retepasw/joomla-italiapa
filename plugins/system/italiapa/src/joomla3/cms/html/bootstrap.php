@@ -7,7 +7,7 @@
  *
  * @author      Helios Ciancio <info (at) eshiol (dot) it>
  * @link        http://www.eshiol.it
- * @copyright   Copyright (C) 2017 - 2021 Helios Ciancio. All rights reserved
+ * @copyright   Copyright (C) 2017 - 2022 Helios Ciancio. All rights reserved
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Joomla.Plugins.System.ItaliaPA  is  a  free  software. This version may have
  * been modified pursuant to the GNU General Public License, and as distributed

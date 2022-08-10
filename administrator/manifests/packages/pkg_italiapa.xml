@@ -6,7 +6,7 @@
   <packagename>italiapa</packagename>
   <version>__DEPLOY_VERSION__</version>
   <url>http://www.eshiol.it</url>
-  <copyright><![CDATA[(C) 2017 - 2021 Helios Ciancio <info (at) eshiol (dot) it> (https://www.eshiol.it). All rights reserved.]]></copyright>
+  <copyright><![CDATA[(C) 2017 - 2022 Helios Ciancio <info (at) eshiol (dot) it> (https://www.eshiol.it). All rights reserved.]]></copyright>
   <packager>Helios Ciancio</packager>
   <packagerurl>http://www.eshiol.it/</packagerurl>
   <description>PKG_ITALIAPA_XML_DESCRIPTION</description>
