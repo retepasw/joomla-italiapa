@@ -73,7 +73,6 @@ JHtmlBootstrap::loadCss($includeMaincss = false, $this->direction);
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	<jdoc:include type="head" />
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body class="contentpane modal<?php echo $this->direction === 'rtl' ? ' rtl' : ''; ?>">
 	<jdoc:include type="message" />

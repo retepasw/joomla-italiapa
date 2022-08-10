@@ -95,9 +95,6 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 	<script>__PUBLIC_PATH__ = '<?php echo $this->baseurl ?>templates/italiapa/build/'</script>
 	<script>__DEFAULT_THEME__ = '<?php echo $theme_default; ?>'</script>
 
-	<link href='//fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700,' rel='stylesheet' type='text/css' />
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
 	<jdoc:include type="head" />
 </head>
 <body class="t-Pac c-hideFocus enhanced">
