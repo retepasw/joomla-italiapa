@@ -2382,6 +2382,7 @@ dl.stats-module dd {
     border: 0;
     box-shadow: none;
     padding: 0;
+}
 .ipa-copyright {
 	position:unset!important;
 	display:block!important;
@@ -2411,4 +2412,8 @@ dl.stats-module dd {
 		display:block;
 		margin-top:1em
 	}
+}
+[itemprop="articleBody"] img {
+  max-width: 100%;
+  height: auto;
 }
