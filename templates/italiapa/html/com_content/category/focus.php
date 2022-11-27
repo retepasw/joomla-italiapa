@@ -89,6 +89,7 @@ $afterDisplayContent = trim(implode("\n", $results));
 			</div>
 		</div>
 	</div>
+
 	<div class=" u-background-compl-10 u-layout-centerContent u-padding-r-top">
 		<section class="u-layout-wide u-layout-r-withGutter u-text-r-s u-padding-r-top u-padding-r-bottom <?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Blog">
 			<?php if ($this->params->get('show_page_heading') != 0) : ?>
