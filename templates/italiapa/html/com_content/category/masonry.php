@@ -119,4 +119,4 @@ $afterDisplayContent = trim(implode("\n", $results));
 			<?php echo $this->pagination->getPagesLinks(); ?>
 		<?php endif; ?>
 	</div>
-</div>
+
