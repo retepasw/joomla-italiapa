@@ -252,9 +252,9 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 				<?php endif; ?>
 
 		<?php if ($this->countModules('right')) : ?>
-			</div>
-			<div id="right" class="Grid-cell u-sizeFull u-md-size4of12 u-lg-size4of12">
-				<jdoc:include type="modules" name="right" style="lg" />
+				<div id="right" class="Grid-cell u-sizeFull u-md-size4of12 u-lg-size4of12">
+					<jdoc:include type="modules" name="right" style="lg" />
+				</div>
 			</div>
 		</div>
 		<?php endif; ?>
