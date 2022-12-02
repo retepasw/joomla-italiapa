@@ -122,4 +122,3 @@ $afterDisplayContent = trim(implode("\n", $results));
 		<?php endif; ?>
 		</section>
 	</div>
-</div>
