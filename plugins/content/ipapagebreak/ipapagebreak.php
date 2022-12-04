@@ -79,15 +79,6 @@ class PlgContentIpapagebreak extends JPlugin
 				), JLOG::ALL & ~ JLOG::DEBUG, array(
 						'plg_content_ipapagebreak'
 				));
-		if ($this->params->get('phpconsole') && class_exists('JLogLoggerPhpconsole'))
-		{
-			JLog::addLogger(array(
-					'logger' => 'phpconsole',
-					'extension' => 'plg_content_ipapagebreak_phpconsole'
-			), JLOG::DEBUG, array(
-					'plg_content_ipapagebreak'
-			));
-		}
 		JLog::add(new JLogEntry(__METHOD__, JLog::DEBUG, 'plg_content_ipapagebreak'));
 
 		JFactory::getLanguage()->load('plg_content_pagebreak', JPATH_ADMINISTRATOR);
@@ -123,13 +114,16 @@ class PlgContentIpapagebreak extends JPlugin
 		}
 
 		$style = $this->params->get('style', 'pages');
-		$fields = FieldsHelper::getFields('com_content.article', $row);
-		foreach ($fields as $field)
+		if (JPluginHelper::getPlugin('system', 'fields'))
 		{
-			if (($field->name == 'plg-content-ipapagebreak-style') && $field->rawvalue)
+			$fields = FieldsHelper::getFields('com_content.article', $row);
+			foreach ($fields as $field)
 			{
-				$style = $field->rawvalue;
-				break;
+				if (($field->name == 'plg-content-ipapagebreak-style') && $field->rawvalue)
+				{
+					$style = $field->rawvalue;
+					break;
+				}
 			}
 		}
 
