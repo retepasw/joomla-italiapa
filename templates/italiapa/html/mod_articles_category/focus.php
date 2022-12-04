@@ -28,8 +28,6 @@ for ($i = count($moduleclass_sfx) - 1; $i >= 0; $i--)
 	}
 }
 $moduleclass_sfx = (substr($params->get('moduleclass_sfx'), 0, 1) == ' ' ? ' ' : '') . implode(' ', $moduleclass_sfx);
-
-JLoader::register('FieldsHelper', JPATH_ADMINISTRATOR . '/components/com_fields/helpers/fields.php');
 ?>
 <div class="Grid Grid--withGutter category-module mod-list">
 	<?php $i = 1; ?>
@@ -61,13 +59,15 @@ JLoader::register('FieldsHelper', JPATH_ADMINISTRATOR . '/components/com_fields/
 						<?php endif; ?>
 
 						<h3 class="u-text-h4 u-margin-r-bottom">
-							<?php $icon = ''; ?>
-							<?php $jcFields = FieldsHelper::getFields('com_content.article', $item, true); ?>
-							<?php foreach ($jcFields as $jcField) : ?>
-								<?php if (($jcField->name == 'articleicon') && $jcField->rawvalue): ?>
-									<?php $icon = '<span class="' . $jcField->rawvalue . '"></span> '; ?>
-								<?php endif; ?>
-							<?php endforeach; ?>
+							<?php if (JPluginHelper::getPlugin('system', 'fields')) : ?>
+								<?php $icon = ''; ?>
+								<?php $jcFields = FieldsHelper::getFields('com_content.article', $item, true); ?>
+								<?php foreach ($jcFields as $jcField) : ?>
+									<?php if (($jcField->name == 'articleicon') && $jcField->rawvalue): ?>
+										<?php $icon = '<span class="' . $jcField->rawvalue . '"></span> '; ?>
+									<?php endif; ?>
+								<?php endforeach; ?>
+							<?php endif; ?>
 
 							<?php if ($params->get('link_titles') == 1) : ?>
 								<a class="mod-articles-category-title u-text-r-m u-color-95 u-textWeight-400 u-textClean <?php echo $item->active; ?>" href="<?php echo $item->link; ?>" itemprop="url">
