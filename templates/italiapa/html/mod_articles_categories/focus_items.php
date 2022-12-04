@@ -26,13 +26,15 @@ $lang  = JFactory::getLanguage();
 		<div class="Grid-cell <?php echo $responsiveClass ?: 'u-md-size1of3 u-lg-size1of3'; ?> u-flex u-margin-r-bottom u-flexJustifyCenter">
 			<div class="u-nbfc u-borderShadow-m u-borderRadius-m u-color-grey-30 u-background-white Arrange-sizeFill">
 				<div class="u-text-r-l u-padding-r-all u-layout-prose">
-					<?php $icon = ''; ?>
-					<?php $jcFields = FieldsHelper::getFields('com_content.categories', $item, true); ?>
-					<?php foreach ($jcFields as $jcField) : ?>
-						<?php if (($jcField->name == 'categoryicon') && $jcField->rawvalue): ?>
-							<?php $icon = '<span class="' . $jcField->rawvalue . '"></span> '; ?>
-						<?php endif; ?>
-					<?php endforeach; ?>
+					<?php if (JPluginHelper::getPlugin('system', 'fields')) : ?>
+						<?php $icon = ''; ?>
+						<?php $jcFields = FieldsHelper::getFields('com_content.categories', $item, true); ?>
+						<?php foreach ($jcFields as $jcField) : ?>
+							<?php if (($jcField->name == 'categoryicon') && $jcField->rawvalue): ?>
+								<?php $icon = '<span class="' . $jcField->rawvalue . '"></span> '; ?>
+							<?php endif; ?>
+						<?php endforeach; ?>
+					<?php endif; ?>
 					<h3 class="u-text-h4 u-margin-r-bottom">
 						<a class="u-text-r-m u-color-95 u-textWeight-400 u-textClean" href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($item->id, $item->language)); ?>">
 							<?php echo $icon . $item->title; ?>
