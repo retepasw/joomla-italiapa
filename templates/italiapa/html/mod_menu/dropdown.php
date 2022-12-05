@@ -68,31 +68,46 @@ defined('_JEXEC') or die;
 		$class .= ' parent';
 	}
 
-/**
-	<a href="#options" data-menu-trigger="options" class="Button Button--info">Menu</a>
-	<div id="options" data-menu class="Dropdown-menu u-borderShadow-m u-background-white">
-	<span class="Icon-drop-down Dropdown-arrow u-color-white"></span>
-	<ul class="Linklist">
-	<li><a href="#" class="u-color-50 u-padding-r-all">Tempore accusamus eaque rerum est.</a></li>
-	<li><a href="#" class="u-color-50 u-padding-r-all">Ut adipisci iure tempore ullam laborum.</a></li>
-	<li><a href="#" class="u-color-50 u-padding-r-all">Consequuntur est et quo ullam aut omnis aut et.</a></li>
-	<li><a href="#" class="u-color-50 u-padding-r-all">Et vitae qui ullam quis alias quibusdam quos.</a></li>
-	</ul>
-	</div>
-*/
-
 	if ($item->level == 1)
 	{
 		if ($module->position == 'languages')
 		{
 			$item->anchor_css = "Header-language " . $item->anchor_css;
+			if ($item->type == 'separator')
+			{
+				$item->anchor_css .= ' separator';
+			}
+			elseif ($item->type == 'heading')
+			{
+				$item->anchor_css .= ' heading';
+			}
 		}
-		$item->attributes = array(		'data-menu-trigger'=>'item-' . $module->id . '-' . $item->id,
-			'aria-controls'=>'item-' . $module->id . '-' . $item->id,
-			'aria-haspopup'=>'true',
-			'role'=>'button');
-		$item->flink = '#item-' . $module->id . '-' . $item->id;
-		require JModuleHelper::getLayoutPath('mod_menu', 'dropdown_url');
+
+		// The item has no children - the next item is on the same level.
+		if (!$item->deeper && !$item->shallower)
+		{
+			switch ($item->type) :
+				case 'separator':
+				case 'component':
+				case 'heading':
+				case 'url':
+					require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
+					break;
+	
+				default:
+					require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
+					break;
+			endswitch;
+		}
+		else
+		{
+			$item->attributes = array(		'data-menu-trigger'=>'item-' . $module->id . '-' . $item->id,
+				'aria-controls'=>'item-' . $module->id . '-' . $item->id,
+				'aria-haspopup'=>'true',
+				'role'=>'button');
+			$item->flink = '#item-' . $module->id . '-' . $item->id;
+			require JModuleHelper::getLayoutPath('mod_menu', 'dropdown_url');
+		}
 	}
 	else
 	{
