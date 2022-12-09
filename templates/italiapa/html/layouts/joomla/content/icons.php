@@ -39,7 +39,9 @@ $class = 'Button Button--default u-text-r-xs u-linkClean';
 		<nav class="Navscroll u-floatRight">
 			<ul>
 
-			<?php if (JComponentHelper::getComponent('com_buttons', true)->enabled) : ?>
+			<?php $option = JFactory::getApplication()->input->getString('option'); ?>
+			<?php $view   = JFactory::getApplication()->input->getString('view'); ?>
+			<?php if (JComponentHelper::getComponent('com_buttons', true)->enabled && ($option === 'com_content') && ($view == 'article')) :				
 			<?php
 				$item = $displayData['item'];
 				$authorisedViewLevels = JFactory::getUser()->getAuthorisedViewLevels();
