@@ -73,15 +73,6 @@ class PlgContentIpavote extends JPlugin
 				), JLOG::ALL & ~ JLOG::DEBUG, array(
 						'plg_content_ipavote'
 				));
-		if ($this->params->get('phpconsole') && class_exists('JLogLoggerPhpconsole'))
-		{
-			JLog::addLogger(array(
-					'logger' => 'phpconsole',
-					'extension' => 'plg_content_ipavote_phpconsole'
-			), JLOG::DEBUG, array(
-					'plg_content_ipavote'
-			));
-		}
 		JLog::add(new JLogEntry(__METHOD__, JLog::DEBUG, 'plg_content_ipavote'));
 
 		$this->votingPosition = $this->params->get('position', 'top');
