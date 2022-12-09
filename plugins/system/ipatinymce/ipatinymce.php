@@ -46,10 +46,6 @@ class PlgSystemIpatinymce extends JPlugin
 			JLog::addLogger(array('text_file' => $this->params->get('log', 'eshiol.log.php'), 'extension' => 'plg_system_ipatinymce_file'), JLog::ALL, array('plg_system_ipatinymce'));
 		}
 		JLog::addLogger(array('logger' => (null !== $this->params->get('logger')) ? $this->params->get('logger') : 'messagequeue', 'extension' => 'plg_system_ipatinymce'), JLOG::ALL & ~JLOG::DEBUG, array('plg_system_ipatinymce'));
-		if ($this->params->get('phpconsole') && class_exists('JLogLoggerPhpconsole'))
-		{
-			JLog::addLogger(array('logger' => 'phpconsole', 'extension' => 'plg_system_ipatinymce_phpconsole'),  JLOG::DEBUG, array('plg_system_ipatinymce'));
-		}
 		JLog::add(new JLogEntry(__METHOD__, JLog::DEBUG, 'plg_system_ipatinymce'));
 	}
 
