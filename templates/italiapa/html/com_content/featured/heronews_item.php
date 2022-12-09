@@ -20,13 +20,16 @@ defined('_JEXEC') or die;
 <div class="Carousel-item Grid Hero Hero-<?php echo $this->item->id; ?>">
 	<div class="Grid-cell u-sizeFull">
 		<?php
-			foreach ($this->item->jcfields as $jcField)
+			if (JPluginHelper::getPlugin('system', 'fields'))
 			{
-				if (($jcField->name == 'image-heronews') && $jcField->rawvalue)
+				foreach ($this->item->jcfields as $jcField)
 				{
-					JFactory::getDocument()->addStyleDeclaration(
-							".Hero-" . $this->item->id . " {background-image: url('" . JUri::root(true) . '/' . htmlspecialchars($jcField->rawvalue, ENT_COMPAT, 'UTF-8') . "') !important;}"
-							);
+					if (($jcField->name == 'image-heronews') && $jcField->rawvalue)
+					{
+						JFactory::getDocument()->addStyleDeclaration(
+								".Hero-" . $this->item->id . " {background-image: url('" . JUri::root(true) . '/' . htmlspecialchars($jcField->rawvalue, ENT_COMPAT, 'UTF-8') . "') !important;}"
+								);
+					}
 				}
 			}
 		?>
