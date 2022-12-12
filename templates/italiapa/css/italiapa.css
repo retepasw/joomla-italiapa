@@ -2269,7 +2269,7 @@ footer input::-ms-input-placeholder {
   color: #003e54;
 }
 #editor-xtd-buttons {
-  claer: both;
+  clear: both;
   margin-top: 1em;
   margin-bottom: 1em;
 }
@@ -2382,6 +2382,7 @@ dl.stats-module dd {
     border: 0;
     box-shadow: none;
     padding: 0;
+}
 .ipa-copyright {
 	position:unset!important;
 	display:block!important;
@@ -2411,4 +2412,20 @@ dl.stats-module dd {
 		display:block;
 		margin-top:1em
 	}
+}
+
+/* category view services */
+body.services #main :has(>.services) {
+  margin-left: 0!important;
+  margin-right: 0!important;
+  max-width: 100%!important;
+  padding-left: 0!important;
+  padding-right: 0!important;
+}
+body.services #main section.services>div:not(.u-layout-wide.u-layoutCenter) {
+  background-color: #eee;
+}
+body.services #featured {
+  padding-left: 0!important;
+  padding-right: 0!important;
 }
