@@ -41,8 +41,7 @@ $class = 'Button Button--default u-text-r-xs u-linkClean';
 
 			<?php $option = JFactory::getApplication()->input->getString('option'); ?>
 			<?php $view   = JFactory::getApplication()->input->getString('view'); ?>
-			<?php if (JComponentHelper::getComponent('com_buttons', true)->enabled && ($option === 'com_content') && ($view == 'article')) :				
-			<?php
+			<?php if (JComponentHelper::getComponent('com_buttons', true)->enabled && ($option === 'com_content') && ($view == 'article')) :
 				$item = $displayData['item'];
 				$authorisedViewLevels = JFactory::getUser()->getAuthorisedViewLevels();
 				$report_access = false;
