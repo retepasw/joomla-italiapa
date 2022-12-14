@@ -49,10 +49,6 @@
           <option value="0">JNO</option>
         </field>
         <field name="log" type="text" label="MOD_COOKIEBAR_DEBUG_FILENAME_LABEL" description="MOD_COOKIEBAR_DEBUG_FILENAME_DESC" default="eshiol.log.php" showon="debug:1"/>
-        <field name="phpconsole" type="radio" class="btn-group btn-group-yesno" default="0" description="MOD_COOKIEBAR_DEBUG_PHPCONSOLE_DESC" label="MOD_COOKIEBAR_DEBUG_PHPCONSOLE_LABEL">
-          <option value="1">JYES</option>
-          <option value="0">JNO</option>
-        </field>
       </fieldset>
     </fields>
   </config>
