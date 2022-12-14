@@ -48,10 +48,6 @@ if ($params->get('debug') || defined('JDEBUG') && JDEBUG)
 	$min = '';
 }
 JLog::addLogger(array('logger' => (null !== $params->get('logger')) ?$params->get('logger') : 'messagequeue', 'extension' => 'tpl_italiapa'), JLOG::ALL & ~JLOG::DEBUG, array('tpl_italiapa'));
-if ($params->get('phpconsole') && class_exists('JLogLoggerPhpconsole'))
-{
-	JLog::addLogger(array('logger' => 'phpconsole', 'extension' => 'tpl_italiapa_phpconsole'),  JLOG::DEBUG, array('tpl_italiapa'));
-}
 JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 
 $theme_default = $params->get('theme', 'italia');
