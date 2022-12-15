@@ -79,15 +79,6 @@ class PlgContentIpapagebreak extends JPlugin
 				), JLOG::ALL & ~ JLOG::DEBUG, array(
 						'plg_content_ipapagebreak'
 				));
-		if ($this->params->get('phpconsole') && class_exists('JLogLoggerPhpconsole'))
-		{
-			JLog::addLogger(array(
-					'logger' => 'phpconsole',
-					'extension' => 'plg_content_ipapagebreak_phpconsole'
-			), JLOG::DEBUG, array(
-					'plg_content_ipapagebreak'
-			));
-		}
 		JLog::add(new JLogEntry(__METHOD__, JLog::DEBUG, 'plg_content_ipapagebreak'));
 
 		JFactory::getLanguage()->load('plg_content_pagebreak', JPATH_ADMINISTRATOR);

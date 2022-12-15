@@ -22,10 +22,6 @@ if ($params->get('debug') || defined('JDEBUG') && JDEBUG)
 	JLog::addLogger(array('text_file' => $params->get('log', 'eshiol.log.php'), 'extension' => 'mod_carousel_file'), JLog::ALL, array('mod_carousel'));
 }
 JLog::addLogger(array('logger' => (null !== $params->get('logger')) ? $params->get('logger') : 'messagequeue', 'extension' => 'mod_carousel'), JLOG::ALL & ~JLOG::DEBUG, array('mod_carousel'));
-if ($params->get('phpconsole') && class_exists('JLogLoggerPhpconsole'))
-{
-	JLog::addLogger(array('logger' => 'phpconsole', 'extension' => 'mod_carousel_phpconsole'),  JLOG::DEBUG, array('mod_carousel'));
-}
 JLog::add(new JLogEntry(__FILE__, JLog::DEBUG, 'mod_carousel'));
 
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8');

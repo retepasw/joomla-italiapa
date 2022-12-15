@@ -19,9 +19,10 @@ defined('_JEXEC') or die;
 
 // Create a shortcut for params.
 $params  = &$this->item->params;
+$urls    = json_decode($this->item->urls);
 $images  = json_decode($this->item->images);
 $canEdit = $this->item->params->get('access-edit');
-$info	= $this->item->params->get('info_block_position', 0);
+$info    = $this->item->params->get('info_block_position', 0);
 
 // Check if associations are implemented. If they are, define the parameter.
 $assocParam = (JLanguageAssociations::isEnabled() && $params->get('show_associations'));
@@ -72,6 +73,10 @@ $assocParam = (JLanguageAssociations::isEnabled() && $params->get('show_associat
 				<?php endif; ?>
 			<?php endif; ?>
 
+			<?php if ($this->params->get('show_urls', 0) && isset($urls) && ($params->get('urls_position') == '0')) : ?>
+				<?php echo $this->loadTemplate('links'); ?>
+			<?php endif; ?>
+
 			<?php if ($params->get('show_readmore') && $this->item->readmore) :
 				if ($params->get('access-view')) :
 					$link = JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid, $this->item->language));
@@ -87,6 +92,9 @@ $assocParam = (JLanguageAssociations::isEnabled() && $params->get('show_associat
 
 			<?php endif; ?>
 
+			<?php if ($this->params->get('show_urls', 0) && isset($urls) && ($params->get('urls_position') == '1')) : ?>
+				<?php echo $this->loadTemplate('links'); ?>
+			<?php endif; ?>
 		</div>
 
 	</div>
