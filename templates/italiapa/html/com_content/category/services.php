@@ -43,7 +43,7 @@ $results = $dispatcher->trigger('onContentAfterDisplay', array($this->category->
 $afterDisplayContent = trim(implode("\n", $results));
 ?>
 
-<section class="Grid services <?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Blog">
+<section class="Grid <?php echo $this->pageclass_sfx ?: 'services'; ?>" itemscope itemtype="https://schema.org/Blog">
 	<div class="Grid-cell u-sizeFull u-layout-wide u-layoutCenter">
 		<?php if ($this->params->get('show_description_image') && $this->category->getParams()->get('image')) : ?>
 			<div class="Grid-cell u-sizeFull u-md-size1of2 u-lg-size1of2 u-text-r-s u-padding-r-all">

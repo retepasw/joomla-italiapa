@@ -2422,7 +2422,7 @@ dl.stats-module dd {
 }
 
 /* category view services */
-body.services #main :has(>.services) {
+body.services #main :has(>section.services[itemtype="https://schema.org/Blog"]) {
   margin-left: 0!important;
   margin-right: 0!important;
   max-width: 100%!important;
