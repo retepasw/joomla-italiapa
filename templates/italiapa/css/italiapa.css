@@ -2421,6 +2421,11 @@ dl.stats-module dd {
 	}
 }
 
+[itemprop="articleBody"] img {
+  max-width: 100%;
+  height: auto;
+}
+
 /* category view services */
 body.services #main :has(>.services) {
   margin-left: 0!important;
