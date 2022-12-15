@@ -2420,3 +2420,7 @@ dl.stats-module dd {
 		margin-top:1em
 	}
 }
+[itemprop="articleBody"] img {
+  max-width: 100%;
+  height: auto;
+}
