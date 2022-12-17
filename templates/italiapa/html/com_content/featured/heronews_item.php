@@ -20,7 +20,7 @@ defined('_JEXEC') or die;
 <div class="Carousel-item Grid Hero Hero-<?php echo $this->item->id; ?>">
 	<div class="Grid-cell u-sizeFull">
 		<?php
-			if (JPluginHelper::getPlugin('system', 'fields'))
+			if (JPluginHelper::isEnabled('system', 'fields'))
 			{
 				foreach ($this->item->jcfields as $jcField)
 				{
