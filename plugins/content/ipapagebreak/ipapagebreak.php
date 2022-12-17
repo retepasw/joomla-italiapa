@@ -114,7 +114,7 @@ class PlgContentIpapagebreak extends JPlugin
 		}
 
 		$style = $this->params->get('style', 'pages');
-		if (JPluginHelper::getPlugin('system', 'fields'))
+		if (JPluginHelper::isEnabled('system', 'fields'))
 		{
 			$fields = FieldsHelper::getFields('com_content.article', $row);
 			foreach ($fields as $field)
