@@ -394,6 +394,13 @@ class italiapaInstallerScript
 		    '/fonts/ita.svg',
 		    '/fonts/ita.ttf',
 		    '/fonts/ita.woff',
+
+		    /*
+		     * ItaliaPA 3.10.1
+		     */
+			'/fonts/Iceland/Iceland-Regular.ttf',
+			'/fonts/Iceland/Iceland-Regular.woff',
+			'/fonts/Iceland/Iceland-Regular.woff2',
 		);
 
 		// TODO There is an issue while deleting folders using the ftp mode
