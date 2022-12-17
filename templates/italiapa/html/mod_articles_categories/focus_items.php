@@ -27,7 +27,7 @@ $lang  = JFactory::getLanguage();
 			<div class="u-nbfc u-borderShadow-m u-borderRadius-m u-color-grey-30 u-background-white Arrange-sizeFill">
 				<div class="u-text-r-l u-padding-r-all u-layout-prose">
 					<?php $icon = ''; ?>
-					<?php if (JPluginHelper::getPlugin('system', 'fields')) : ?>
+					<?php if (JPluginHelper::isEnabled('system', 'fields')) : ?>
 						<?php $jcFields = FieldsHelper::getFields('com_content.categories', $item, true); ?>
 						<?php foreach ($jcFields as $jcField) : ?>
 							<?php if (($jcField->name == 'categoryicon') && $jcField->rawvalue): ?>
