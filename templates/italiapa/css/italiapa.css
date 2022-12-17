@@ -2276,7 +2276,7 @@ footer input::-ms-input-placeholder {
   color: #003e54;
 }
 #editor-xtd-buttons {
-  claer: both;
+  clear: both;
   margin-top: 1em;
   margin-bottom: 1em;
 }
@@ -2420,7 +2420,24 @@ dl.stats-module dd {
 		margin-top:1em
 	}
 }
+
 [itemprop="articleBody"] img {
   max-width: 100%;
   height: auto;
+}
+
+/* category view services */
+body.services #main :has( > section.services[itemtype="https://schema.org/Blog"]) {
+	margin-left: 0!important;
+	margin-right: 0!important;
+	max-width: 100%!important;
+	padding-left: 0!important;
+	padding-right: 0!important;
+}
+body.services #main section.services[itemtype="https://schema.org/Blog"] > div:not(.u-layout-wide.u-layoutCenter) {
+	background-color: #eee;
+}
+body.services #featured {
+	padding-left: 0!important;
+	padding-right: 0!important;
 }
