@@ -59,8 +59,8 @@ $moduleclass_sfx = (substr($params->get('moduleclass_sfx'), 0, 1) == ' ' ? ' ' :
 						<?php endif; ?>
 
 						<h3 class="u-text-h4 u-margin-r-bottom">
+							<?php $icon = ''; ?>
 							<?php if (JPluginHelper::getPlugin('system', 'fields')) : ?>
-								<?php $icon = ''; ?>
 								<?php $jcFields = FieldsHelper::getFields('com_content.article', $item, true); ?>
 								<?php foreach ($jcFields as $jcField) : ?>
 									<?php if (($jcField->name == 'articleicon') && $jcField->rawvalue): ?>
