@@ -21,23 +21,6 @@ JHtml::_('bootstrap.tooltip');
 
 require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 
-if ($item->anchor_css)
-{
-	$anchor_css = explode(' ', $item->anchor_css);
-	for($i = count($anchor_css) - 1; $i >= 0; $i--)
-	{
-		if (substr($anchor_css[$i], 0, 4) == 'ipa:')
-		{
-			if (substr($anchor_css[$i], 4) == 'theme')
-			{
-				$item->flink = 'javascript:eshiol.italiapa.setTheme(\'' . substr($item->flink, 1)  . '\');';
-			}
-			unset($anchor_css[$i]);
-		}
-	}
-	$item->anchor_css = (substr($item->anchor_css, 0, 1) == ' ' ? ' ' : '') . implode(' ', $anchor_css);
-}
-
 $attributes = JHtml::_('iwt.getLinkAttributes', $item, isset($item->attributes) && is_array($item->attributes) ? $item->attributes : array());
 
 if ($item->browserNav == 1)
@@ -57,21 +40,6 @@ if (isset($item->anchor_title) && $item->anchor_title)
 	$attributes['data-tooltip'] = $item->anchor_title;
 }
 
-if ($item->menu_text)
-{
-	$title = JHtml::_('iwt.linkType', $item) . $item->deeper ? '<span class="Icon Icon-expand u-padding-left-xs"></span>' : '';
-}
-elseif ($item->menu_image_css)
-{
-	$title = JHtml::_('iwt.linkType', $item);
-}
-elseif ($item->deeper)
-{
-	$title =  '<span class="Icon Icon-expand u-padding-left-xs"></span>';
-}
-else
-{
-	$title = JHtml::_('iwt.linkType', $item);
-}
+$title = JHtml::_('iwt.linkType', $item) . ($item->deeper ? '<span class="Icon Icon-expand u-padding-left-xs"></span>' : '');
 
 echo JHtml::_('link', JFilterOutput::ampReplace(htmlspecialchars($item->flink, ENT_COMPAT, 'UTF-8', false)), $title, $attributes);
