@@ -89,8 +89,8 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 	$pageclass = "";
 
 	if (is_object($menu)) :
-		$params    = new JRegistry($menu->params);
-		$pageclass = $params->get('pageclass_sfx');
+		$mparams    = new JRegistry($menu->params);
+		$pageclass = $mparams->get('pageclass_sfx');
 	endif; 
 ?>
 <body class="t-Pac c-hideFocus enhanced <?php echo $pageclass ? htmlspecialchars($pageclass) : ''; ?>">
