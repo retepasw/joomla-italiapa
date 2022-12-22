@@ -74,21 +74,6 @@
 					default="eshiol.log.php" 
 					showon="debug:1"
 					/>
-				<field 
-					name="phpconsole" 
-					type="radio" 
-					class="btn-group btn-group-yesno" 
-					default="0" 
-					description="PLG_CONTENT_IPAVOTE_DEBUG_PHPCONSOLE_DESC" 
-					label="PLG_CONTENT_IPAVOTE_DEBUG_PHPCONSOLE_LABEL"
-					>
-					<option 
-						value="1">JYES
-					</option>
-					<option 
-						value="0">JNO
-					</option>
-				</field>
 			</fieldset>
 		</fields>
 	</config>

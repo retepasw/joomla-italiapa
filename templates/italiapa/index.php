@@ -29,10 +29,6 @@ if ($params->get('debug') || defined('JDEBUG') && JDEBUG)
 	$min = '';
 }
 JLog::addLogger(array('logger' => (null !== $params->get('logger')) ?$params->get('logger') : 'messagequeue', 'extension' => 'tpl_italiapa'), JLOG::ALL & ~JLOG::DEBUG, array('tpl_italiapa'));
-if ($params->get('phpconsole') && class_exists('JLogLoggerPhpconsole'))
-{
-	JLog::addLogger(array('logger' => 'phpconsole', 'extension' => 'tpl_italiapa_phpconsole'),  JLOG::DEBUG, array('tpl_italiapa'));
-}
 JLog::add(new JLogEntry('Template ItaliaPA', JLog::DEBUG, 'tpl_italiapa'));
 
 $theme_default = $params->get('theme', 'italia');
@@ -88,8 +84,16 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 
 	<jdoc:include type="head" />
 </head>
-<body class="t-Pac c-hideFocus enhanced">
+<?php
+	$menu      = JFactory::getApplication()->getMenu()->getActive();
+	$pageclass = "";
 
+	if (is_object($menu)) :
+		$params    = new JRegistry($menu->params);
+		$pageclass = $params->get('pageclass_sfx');
+	endif; 
+?>
+<body class="t-Pac c-hideFocus enhanced <?php echo $pageclass ? htmlspecialchars($pageclass) : ''; ?>">
 <?php $svg_path = JPATH_ROOT .'/templates/italiapa/src/icons/img/SVG'; ?>
 <?php if (file_exists($svg_path) && ($icons = array_diff(scandir($svg_path), array('..', '.')))) : ?>
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

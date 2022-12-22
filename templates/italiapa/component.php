@@ -28,10 +28,6 @@ if ($params->get('debug') || defined('JDEBUG') && JDEBUG)
 	JLog::addLogger(array('text_file' => $params->get('log', 'eshiol.log.php'), 'extension' => 'tpl_italiapa_file'), JLog::ALL, array('tpl_italiapa'));
 }
 JLog::addLogger(array('logger' => (null !== $params->get('logger')) ?$params->get('logger') : 'messagequeue', 'extension' => 'tpl_italiapa'), JLOG::ALL & ~JLOG::DEBUG, array('tpl_italiapa'));
-if ($params->get('phpconsole') && class_exists('JLogLoggerPhpconsole'))
-{
-	JLog::addLogger(array('logger' => 'phpconsole', 'extension' => 'tpl_italiapa_phpconsole'),  JLOG::DEBUG, array('tpl_italiapa'));
-}
 
 // Force loading of backend global language file
 //JFactory::getLanguage()->load('joomla', JPath::clean(JPATH_ADMINISTRATOR), null, false, true);
