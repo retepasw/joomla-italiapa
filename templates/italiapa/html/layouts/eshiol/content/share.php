@@ -21,31 +21,7 @@ $metadesc = $displayData['item']->metadesc ?: JFactory::getApplication()->get('M
 $params = $displayData['params'];
 ?>
 
-<style>
-.Share {
-  list-style-type: none;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-<?php if ($params->get('show_icons')) : ?>
-.Share li {
-	display: inline-block;
-	padding: 1em!important;
-}
-.Share li a {
-	text-decoration: none!important;
-	color: white;
-}
-<?php else: ?>
-.Share li {
-	padding-left: 1em!important;
-	padding-right: 1em!important;
-}
-<?php endif; ?>
-</style>
-
-<a href="#share-options" data-menu-trigger="share-options" data-menu-placement="bottom center" class="Button Button--default u-text-r-xs u-linkClean"
+<a href="#share-options" data-menu-trigger="share-options" data-menu-placement="<?php echo ($params->get('show_icons') ? 'bottom-end' : 'bottom'); ?>" class="Button Button--default u-text-r-xs u-linkClean"
 	data-tooltip="<?php echo JText::_('JGLOBAL_SHARE') ?>" data-tooltip-position="top center">
 	<?php if ($params->get('show_icons')) : ?>
 		<span class="u-text-r-m Icon Icon-share"></span>
@@ -58,7 +34,7 @@ $params = $displayData['params'];
 <?php if ($params->get('show_icons')) : ?>
 <div id="share-options" data-menu class="Dropdown-menu u-borderShadow-m u-borderRadius-m u-background-grey-80">
 	<span class="Icon-drop-down Dropdown-arrow u-color-grey-80"></span>
-	<ul class="Share">
+	<ul class="Share icons">
 <?php else: ?>
 <div id="share-options" data-menu class="Dropdown-menu u-borderShadow-m u-background-white">
 	<span class="Icon-drop-down Dropdown-arrow u-color-white"></span>
@@ -89,7 +65,7 @@ $params = $displayData['params'];
 			<?php endif; ?>
 		</a></li>
 		<li role="menuitem"><a href="#" onclick="javascript:window.open('https://telegram.me/share/url?url=' + encodeURIComponent(eshiol.location.href), '', 'width=800,height=600');"
-			data-tooltip="<?php echo JText::_('JGLOBAL_SHARE_TELEGRAM_TOOLTIP') ?>" data-tooltip-position="bottom center">
+			data-tooltip="<?php echo JText::_('JGLOBAL_SHARE_TELEGRAM_TOOLTIP') ?>" data-tooltip-position="bottom right">
 			<?php if ($params->get('show_icons')) : ?>
 				<span class="u-text-r-m Icon Icon-telegram"></span><span class="u-hiddenVisually"><?php echo JText::_('JGLOBAL_SHARE_TELEGRAM') ?></span>
 			<?php else: ?>
@@ -112,6 +88,7 @@ $params = $displayData['params'];
 			$attribs  = array(
 			    //'class'   => 'Button Button--default u-text-r-xs u-linkClean',
 				'data-tooltip' => JText::_('JGLOBAL_EMAIL_TITLE'),
+				'data-tooltip-position' => 'bottom right',
 				'onclick' => "window.open(this.href,'win2','" . $status . "'); return false;",
 				'rel'     => 'nofollow'
 		    );

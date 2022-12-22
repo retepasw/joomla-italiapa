@@ -216,6 +216,8 @@
 		};
 		$('a:external').attr('target', '_blank');
 
+		// fix share button
+		window.scroll(0, 1);
 	} );
 
 	/**

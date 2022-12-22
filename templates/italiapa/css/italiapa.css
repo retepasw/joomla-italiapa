@@ -2382,6 +2382,7 @@ dl.stats-module dd {
     border: 0;
     box-shadow: none;
     padding: 0;
+}
 .ipa-copyright {
 	position:unset!important;
 	display:block!important;
@@ -2411,4 +2412,29 @@ dl.stats-module dd {
 		display:block;
 		margin-top:1em
 	}
+}
+
+/* share button */
+.Share {
+  list-style-type: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.Share.icons li {
+	display: inline-block;
+	padding: 1em!important;
+}
+.Share.icons li a {
+	text-decoration: none!important;
+	color: white;
+}
+.Share.Linklist li {
+	padding-left: 1em!important;
+	padding-right: 1em!important;
+}
+
+#share-options {
+    top: 5px !important;
+    z-index: 39 !important;
 }
