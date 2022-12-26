@@ -2311,10 +2311,14 @@ footer input::-ms-input-placeholder {
   border-color: #000;
   color: #65dde0;
 }
+.Header-banner {
+  padding-bottom: 0.8em;
+  padding-top: 0.8em;
+}
 .Header-owner {
   float: left;
-  padding-bottom: 0.8em !important;
-  padding-top: 0.8em !important;
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
 }
 .Header-owner > * {
   font-size: 1.4rem !important;
@@ -2337,17 +2341,6 @@ footer input::-ms-input-placeholder {
 .Header-languages span[class*=" Icon-"],
 .Header-languages span[class^=Icon-] {
   padding-right: 1rem !important;
-}
-@media screen and (min-width: 992px) {
-  .Header-languages {
-    padding-bottom: 0.8em !important;
-    padding-top: 0.8em !important;
-  }
-}
-@media screen and (max-width: 991px) {
-  .Header-languages {
-    padding-bottom: 0.4em !important;
-  }
 }
 .Header-languages > *:not(:last-child) {
   border-right: 0.2rem solid currentColor !important;
