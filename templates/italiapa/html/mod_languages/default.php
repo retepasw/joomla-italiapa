@@ -42,10 +42,9 @@ if ($params->get('dropdown', 1) && !$params->get('dropdownimage', 0))
 				<?php echo HTMLHelper::_('image', 'mod_languages/' . $language->image . '.gif', $language->title_native, null, true) . '&nbsp;'; ?>
 			<?php endif; ?>
 			<?php if ($params->get('full_name', 1)) : ?>
-			<span class=""><?php echo $language->title_native; ?></span>
+				<span><?php echo preg_replace('/\((.*)\)/i', '<span class="u-hidden u-md-inline u-lg-inline">($1)</span>', $language->title_native); ?></span>
 			<?php else : ?>
-			<span class=""><?php echo strtoupper($language->sef); ?></span>
-			<!-- <span class="u-hidden u-md-inlineBlock u-lg-inlineBlock"><?php echo $language->title_native; ?></span> -->
+				<span><?php echo strtoupper($language->sef); ?></span>
 			<?php endif; ?>
 		<?php endif; ?>
 	<?php endforeach; ?>
