@@ -18,47 +18,81 @@
 defined('JPATH_BASE') or die;
 
 $metadesc = $displayData['item']->metadesc ?: JFactory::getApplication()->get('MetaDesc');
+$params = $displayData['params'];
 ?>
-<div class="Share Button" style="position:static!important;border:none!important;">
-<div class="Share-reveal js-Share">
-<a href="#share-options" class="Share-revealText" data-menu-trigger="share-options" data-menu-inline="" aria-controls="share-options" aria-haspopup="true" role="button">
-<span class="Share-revealIcon Icon Icon-share"></span>
-Condividi
+
+<a href="#share-options" data-menu-trigger="share-options" data-menu-placement="<?php echo ($params->get('show_icons') ? 'bottom-end' : 'bottom'); ?>" class="Button Button--default u-text-r-xs u-linkClean"
+	data-tooltip="<?php echo JText::_('JGLOBAL_SHARE') ?>" data-tooltip-position="top center">
+	<?php if ($params->get('show_icons')) : ?>
+		<span class="u-text-r-m Icon Icon-share"></span>
+		<span class="u-hidden"><?php echo JText::_('JGLOBAL_SHARE') ?></span>
+	<?php else: ?>
+		<?php echo JText::_('JGLOBAL_SHARE') ?>
+	<?php endif; ?>
 </a>
-</div>
 
-<ul id="share-options" class="Dropdown-menu" data-menu="" role="menu" aria-hidden="true">
-<li role="menuitem"><a href="#" onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(eshiol.location.href), '', 'width=800,height=600');"><span class="Icon Icon-facebook"></span><span class="u-hiddenVisually">Facebook</span></a></li>
-<li role="menuitem"><a href="#" onclick="javascript:window.open('https://www.twitter.com/share?text=<?php echo urlencode($metadesc)?>&url=' + encodeURIComponent(eshiol.location.href), '', 'width=800,height=600');"><span class="Icon Icon-twitter"></span><span class="u-hiddenVisually">Twitter</span></a></li>
-<?php /**
-<li role="menuitem"><a href="#" onclick="javascript:window.open('https://plus.google.com/share?url=' + encodeURIComponent(eshiol.location.href), '', 'width=800,height=600');"><span class="Icon Icon-googleplus"></span><span class="u-hiddenVisually">Google Plus</span></a></li>
-<li role="menuitem"><a href="#" onclick="javascript:window.open('https://api.whatsapp.com/send?phone=whatsappphonenumber&text=' + encodeURIComponent(eshiol.location.href), '', 'width=800,height=600');"><span class="Icon Icon-whatsapp"></span><span class="u-hiddenVisually">Whatsapp</span></a></li>
-<li role="menuitem"><a href="#" onclick="javascript:window.open('https://' + ( Modernizr.touch ? 'api.whatsapp.com/send?phone=whatsappphonenumber&' : 'wa.me/?' ) + 'text=' + encodeURIComponent(eshiol.location.href), '', 'width=800,height=600');"><span class="Icon Icon-whatsapp"></span><span class="u-hiddenVisually">Whatsapp</span></a></li>
-*/ ?>
-<li role="menuitem"><a href="#" onclick="javascript:window.open('https://wa.me/?text=' + encodeURIComponent(eshiol.location.href), '', 'width=800,height=600');"><span class="Icon Icon-whatsapp"></span><span class="u-hiddenVisually">Whatsapp</span></a></li>
-<li role="menuitem"><a href="#" onclick="javascript:window.open('https://telegram.me/share/url?url=' + encodeURIComponent(eshiol.location.href), '', 'width=800,height=600');"><svg class="Icon Icon-telegram"><use xlink:href="#Icon-telegram"></use></svg><span class="u-hiddenVisually">Telegram</span></a></li>
-<!--
-<li role="menuitem"><a href="#" onclick="javascript:alert('Funzione non supportata');"><span class="Icon Icon-youtube"></span><span class="u-hiddenVisually">Youtube</span></a></li>
-<li role="menuitem"><a href="#" onclick="javascript:alert('Funzione non supportata');"><span class="Icon Icon-flickr"></span><span class="u-hiddenVisually">Flickr</span></a></li>
-<li role="menuitem"><a href="#" onclick="javascript:alert('Funzione non supportata');"><span class="Icon Icon-slideshare"></span><span class="u-hiddenVisually">Slideshare</span></a></li>
--->
-<?php
-    JLoader::register('MailtoHelper', JPATH_SITE . '/components/com_mailto/helpers/mailto.php');
+<?php if ($params->get('show_icons')) : ?>
+<div id="share-options" data-menu class="Dropdown-menu u-borderShadow-m u-borderRadius-m u-background-grey-80">
+	<span class="Icon-drop-down Dropdown-arrow u-color-grey-80"></span>
+	<ul class="Share icons">
+<?php else: ?>
+<div id="share-options" data-menu class="Dropdown-menu u-borderShadow-m u-background-white">
+	<span class="Icon-drop-down Dropdown-arrow u-color-white"></span>
+	<ul class="Share Linklist">
+<?php endif; ?>
+		<li role="menuitem"><a href="#" onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(eshiol.location.href), '', 'width=800,height=600');"
+			data-tooltip="<?php echo JText::_('JGLOBAL_SHARE_FACEBOOK_TOOLTIP') ?>" data-tooltip-position="bottom center">
+			<?php if ($params->get('show_icons')) : ?>
+				<span class="u-text-r-m Icon Icon-facebook"></span><span class="u-hiddenVisually"><?php echo JText::_('JGLOBAL_SHARE_FACEBOOK') ?></span>
+			<?php else: ?>
+				Facebook
+			<?php endif; ?>
+		</a></li>
+		<li role="menuitem"><a href="#" onclick="javascript:window.open('https://t.me/share/url?url=' + encodeURIComponent(eshiol.location.href) + '&text=<?php echo urlencode($metadesc)?>', '', 'width=800,height=600');"
+			data-tooltip="<?php echo JText::_('JGLOBAL_SHARE_TWITTER_TOOLTIP') ?>" data-tooltip-position="bottom center">
+			<?php if ($params->get('show_icons')) : ?>
+				<span class="u-text-r-m Icon Icon-twitter"></span><span class="u-hiddenVisually"><?php echo JText::_('JGLOBAL_SHARE_TWITTER') ?></span>
+			<?php else: ?>
+				Twitter
+			<?php endif; ?>
+		</a></li>
+		<li role="menuitem"><a href="#" onclick="javascript:window.open('https://wa.me/?text=' + encodeURIComponent(eshiol.location.href), '', 'width=800,height=600');"
+			data-tooltip="<?php echo JText::_('JGLOBAL_SHARE_WHATSAPP_TOOLTIP') ?>" data-tooltip-position="bottom center">
+			<?php if ($params->get('show_icons')) : ?>
+				<span class="u-text-r-m Icon Icon-whatsapp"></span><span class="u-hiddenVisually"><?php echo JText::_('JGLOBAL_SHARE_WHATSAPP') ?></span>
+			<?php else: ?>
+				Whatsapp
+			<?php endif; ?>
+		</a></li>
+		<li role="menuitem"><a href="#" onclick="javascript:window.open('https://telegram.me/share/url?url=' + encodeURIComponent(eshiol.location.href), '', 'width=800,height=600');"
+			data-tooltip="<?php echo JText::_('JGLOBAL_SHARE_TELEGRAM_TOOLTIP') ?>" data-tooltip-position="bottom right">
+			<?php if ($params->get('show_icons')) : ?>
+				<span class="u-text-r-m Icon Icon-telegram"></span><span class="u-hiddenVisually"><?php echo JText::_('JGLOBAL_SHARE_TELEGRAM') ?></span>
+			<?php else: ?>
+				Telegram
+			<?php endif; ?>
+		</a></li>
+		<?php
+		    JLoader::register('MailtoHelper', JPATH_SITE . '/components/com_mailto/helpers/mailto.php');
+		
+		    $link     = JUri::getInstance()->toString(array('scheme', 'host', 'port')) . JRoute::_(ContentHelperRoute::getArticleRoute($displayData['item']->slug, $displayData['item']->catid, $displayData['item']->language), false);
+		    $url      = 'index.php?option=com_mailto&tmpl=component&template=italiapa&link=' . MailtoHelper::addLink($link);
 
-    $link     = JUri::getInstance()->toString(array('scheme', 'host', 'port')) . JRoute::_(ContentHelperRoute::getArticleRoute($displayData['item']->slug, $displayData['item']->catid, $displayData['item']->language), false);
-    $url      = 'index.php?option=com_mailto&tmpl=component&template=italiapa&link=' . MailtoHelper::addLink($link);
-
-	$text     = '<span class="u-text-r-m Icon Icon-mail"></span><span class="u-hiddenVisually">Email</span>';
-
-	$status   = 'width=400,height=568,menubar=yes,resizable=yes';
-	$attribs  = array(
-	    //'class'   => 'Button Button--default u-text-r-xs u-linkClean',
-		'title'   => JText::_('JGLOBAL_EMAIL_TITLE'),
-		'onclick' => "window.open(this.href,'win2','" . $status . "'); return false;",
-		'rel'     => 'nofollow'
-    );
-?>
-<li role="menuitem"><?php echo JHtml::_('link', JRoute::_($url), $text, $attribs); ?></li>
-
-</ul>
+		    if ($params->get('show_icons')) :
+				$text     = '<span class="u-text-r-m Icon Icon-mail"></span><span class="u-hiddenVisually">' . JText::_('JGLOBAL_EMAIL') . '</span>';
+			else:
+			$text     = JText::_('JGLOBAL_EMAIL');
+			endif;
+				
+			$status   = 'width=400,height=568,menubar=yes,resizable=yes';
+			$attribs  = array(
+			    //'class'   => 'Button Button--default u-text-r-xs u-linkClean',
+				'data-tooltip' => JText::_('JGLOBAL_EMAIL_TITLE'),
+				'data-tooltip-position' => 'bottom right',
+				'onclick' => "window.open(this.href,'win2','" . $status . "'); return false;",
+				'rel'     => 'nofollow'
+		    );
+		?>
+		<li role="menuitem"><?php echo JHtml::_('link', JRoute::_($url), $text, $attribs); ?></li>
+	</ul>
 </div>
