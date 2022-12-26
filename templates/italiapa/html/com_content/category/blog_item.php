@@ -30,13 +30,13 @@ $imgfloat = empty($images->float_intro) ? $params->get('float_intro') : $images-
 ?>
 <div class="Carousel-item Grid">
 
-	<?php if ($images->image_intro && $imgfloat == 'left') : ?>
+	<?php if (!empty($images->image_intro) && $imgfloat == 'left') : ?>
 		<div class="Grid-cell u-sizeFull u-md-size1of2 u-lg-size1of2 u-text-r-s u-padding-r-all">
 			<?php echo JLayoutHelper::render('joomla.content.intro_image', $this->item); ?>
 		</div>
 	<?php endif; ?>
 
-	<div class="Grid-cell u-sizeFull<?php echo ($images->image_intro ? ' u-md-size1of2 u-lg-size1of2' : ''); ?> u-text-r-s u-padding-r-all">
+	<div class="Grid-cell u-sizeFull<?php echo (!empty($images->image_intro) ? ' u-md-size1of2 u-lg-size1of2' : ''); ?> u-text-r-s u-padding-r-all">
 		<?php // Todo Not that elegant would be nice to group the params ?>
 		<?php $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_date') || $params->get('show_create_date')
 			|| $params->get('show_hits') || $params->get('show_category') || $params->get('show_parent_category') || $params->get('show_author') || $assocParam); ?>
@@ -98,7 +98,7 @@ $imgfloat = empty($images->float_intro) ? $params->get('float_intro') : $images-
 		</div>
 	</div>
 
-	<?php if ($images->image_intro && $imgfloat != 'left') : ?>
+	<?php if (!empty($images->image_intro) && $imgfloat != 'left') : ?>
 		<div class="Grid-cell u-sizeFull u-md-size1of2 u-lg-size1of2 u-text-r-s u-padding-r-all">
 			<?php echo JLayoutHelper::render('joomla.content.intro_image', $this->item); ?>
 		</div>

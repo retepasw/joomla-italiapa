@@ -114,13 +114,16 @@ class PlgContentIpapagebreak extends JPlugin
 		}
 
 		$style = $this->params->get('style', 'pages');
-		$fields = FieldsHelper::getFields('com_content.article', $row);
-		foreach ($fields as $field)
+		if (JPluginHelper::isEnabled('system', 'fields'))
 		{
-			if (($field->name == 'plg-content-ipapagebreak-style') && $field->rawvalue)
+			$fields = FieldsHelper::getFields('com_content.article', $row);
+			foreach ($fields as $field)
 			{
-				$style = $field->rawvalue;
-				break;
+				if (($field->name == 'plg-content-ipapagebreak-style') && $field->rawvalue)
+				{
+					$style = $field->rawvalue;
+					break;
+				}
 			}
 		}
 
