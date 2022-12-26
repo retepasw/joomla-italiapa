@@ -18,23 +18,6 @@ defined('_JEXEC') or die();
 
 require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 
-if ($item->anchor_css)
-{
-	$anchor_css = explode(' ', $item->anchor_css);
-	for($i = count($anchor_css) - 1; $i >= 0; $i--)
-	{
-		if (substr($anchor_css[$i], 0, 4) == 'ipa:')
-		{
-			if (substr($anchor_css[$i], 4) == 'theme')
-			{
-				$item->flink = 'javascript:eshiol.italiapa.setTheme(\'' . substr($item->flink, 1)  . '\');';
-			}
-			unset($anchor_css[$i]);
-		}
-	}
-	$item->anchor_css = (substr($item->anchor_css, 0, 1) == ' ' ? ' ' : '') . implode(' ', $anchor_css);
-}
-
 $attributes = JHtml::_('iwt.getLinkAttributes', $item);
 
 if ($item->browserNav == 1)

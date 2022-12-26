@@ -17,23 +17,6 @@
 defined('_JEXEC') or die();
 
 require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
-
-if ($item->anchor_css)
-{
-	$anchor_css = explode(' ', $item->anchor_css);
-	for($i = count($anchor_css) - 1; $i >= 0; $i--)
-	{
-		if (substr($anchor_css[$i], 0, 4) == 'ipa:')
-		{
-			if (substr($anchor_css[$i], 4) == 'user-username')
-			{
-				$item->title = $user = JFactory::getUser()->name;
-			}
-			unset($anchor_css[$i]);
-		}
-	}
-	$item->anchor_css = implode(' ', $anchor_css);
-}
 ?>
 
 <<?php echo $item->deeper ? 'a href="#"' : 'span'; ?> class="nav-header <?php echo $item->anchor_css; ?>"

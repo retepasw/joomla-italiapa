@@ -274,6 +274,15 @@ abstract class JHtmlIwt
 					{
 						$attributes['aria-controls'] = substr($anchor_css[$i], 18);
 					}
+					elseif (substr($anchor_css[$i], 4) == 'theme')
+					{
+						$item->flink = 'javascript:eshiol.italiapa.setTheme(\'' . substr($item->flink, 1)  . '\');';
+					}
+					elseif (substr($anchor_css[$i], 4) == 'user-username')
+					{
+						$item->title = $user = JFactory::getUser()->name;
+					}
+
 					unset($anchor_css[$i]);
 				}
 			}
