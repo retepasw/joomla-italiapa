@@ -217,7 +217,9 @@
 		$('a:external').attr('target', '_blank');
 
 		// fix share button
-		window.scroll(0, 1);
+		setTimeout(function(){
+			window.scroll(0, 0);
+		}, 100);
 	} );
 
 	/**

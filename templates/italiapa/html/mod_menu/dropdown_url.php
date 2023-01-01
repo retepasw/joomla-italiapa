@@ -29,7 +29,7 @@ if ($item->browserNav == 1)
 }
 elseif ($item->browserNav == 2)
 {
-	$options = 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,' . $params->get('window_open');
+	$options = 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,' . $item->params->get('window_open');
 
 	$attributes['onclick'] = "window.open(this.href, 'targetWindow', '" . $options . "'); return false;";
 }

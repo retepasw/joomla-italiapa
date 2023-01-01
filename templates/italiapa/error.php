@@ -42,10 +42,6 @@ $theme_default = $params->get('theme', 'italia');
 $theme = (isset($_COOKIE['theme']) && $_COOKIE['theme']) ? $_COOKIE['theme'] : $theme_default;
 $theme_path = JPATH_ROOT . '/templates/italiapa/build/build.' . $theme . '.css';
 
-if (!file_exists($theme_path)) {
-	$theme = 'italia';
-}
-
 JFactory::getSession()->set('theme', $theme);
 ?>
 <!DOCTYPE html>

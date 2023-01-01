@@ -2529,28 +2529,25 @@ dl.stats-module dd {
     margin-top: 1em;
   }
 }
-
 [itemprop="articleBody"] img {
   max-width: 100%;
   height: auto;
 }
-
 /* category view services */
 body.services #main :has( > section.services[itemtype="https://schema.org/Blog"]) {
-	margin-left: 0!important;
-	margin-right: 0!important;
-	max-width: 100%!important;
-	padding-left: 0!important;
-	padding-right: 0!important;
+  margin-left: 0!important;
+  margin-right: 0!important;
+  max-width: 100%!important;
+  padding-left: 0!important;
+  padding-right: 0!important;
 }
 body.services #main section.services[itemtype="https://schema.org/Blog"] > div:not(.u-layout-wide.u-layoutCenter) {
-	background-color: #eee;
+  background-color: #eee;
 }
 body.services #featured {
-	padding-left: 0!important;
-	padding-right: 0!important;
+  padding-left: 0!important;
+  padding-right: 0!important;
 }
-
 /* share button */
 .Share {
   list-style-type: none;
@@ -2559,19 +2556,18 @@ body.services #featured {
   padding: 0;
 }
 .Share.icons li {
-	display: inline-block;
-	padding: 1em!important;
+  display: inline-block;
+  padding: 1em!important;
 }
 .Share.icons li a {
-	text-decoration: none!important;
-	color: white;
+  text-decoration: none!important;
+  color: white;
 }
 .Share.Linklist li {
-	padding-left: 1em!important;
-	padding-right: 1em!important;
+  padding-left: 1em!important;
+  padding-right: 1em!important;
 }
-
 #share-options {
-    top: 5px !important;
-    z-index: 39 !important;
+  top: 5px !important;
+  z-index: 39 !important;
 }
