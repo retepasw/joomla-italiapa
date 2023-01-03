@@ -61,8 +61,8 @@
   <config>
     <fields name="params">
       <fieldset name="basic">
-        <field name="theme" type="list" label="TPL_ITALIAPA_FIELD_THEME_LABEL" description="TPL_ITALIAPA_FIELD_THEME_DESC" default="default" filter="word">
-          <option value="default">TPL_ITALIAPA_THEME_DEFAULT</option>
+        <field name="theme" type="list" label="TPL_ITALIAPA_FIELD_THEME_LABEL" description="TPL_ITALIAPA_FIELD_THEME_DESC" default="italia" filter="word">
+          <option value="italia">TPL_ITALIAPA_THEME_DEFAULT</option>
           <option value="none">TPL_ITALIAPA_THEME_NONE</option>
           <option value="italia">TPL_ITALIAPA_THEME_ITALIA</option>
           <option value="italiaaa">TPL_ITALIAPA_THEME_ITALIAAA</option>

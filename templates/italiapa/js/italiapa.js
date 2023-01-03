@@ -216,9 +216,12 @@
 		};
 		$('a:external').attr('target', '_blank');
 
-		// fix share button
+		// fix scroll
 		setTimeout(function(){
-			window.scroll(0, 0);
+			window.scroll(0, 1);
+			setTimeout(function(){
+				window.scroll(0, 0);
+			}, 100);
 		}, 100);
 	} );
 
