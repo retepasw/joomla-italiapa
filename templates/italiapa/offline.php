@@ -94,24 +94,28 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 	<div class="Grid offline u-margin-top-xxl">
 		<div class="Grid-cell Grid-cell--center u-layout-prose">
 			<div class="Grid u-layout-wide u-layoutCenter u-margin-bottom-l">
-				<?php if ($logo = $params->get('logo')) : ?>
-				<div class="Header-logo Grid-cell" aria-hidden="true">
-					<a href="<?php echo $this->baseurl; ?>" itemprop="url">
-						<img src="<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>">
-					</a>
-				</div>
-				<?php endif; ?>
+				<?php if ($app->get('offline_image') && file_exists($app->get('offline_image'))) : ?>
+					<div class="Grid-cell u-textCenter">
+							<img src="<?php echo $app->get('offline_image'); ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>" class="u-textCenter" />
+					</div>
+				<?php else: ?>
+					<?php if ($logo = $params->get('logo')) : ?>
+						<div class="Header-logo Grid-cell" aria-hidden="true">
+								<img src="<?php echo $logo; ?>" alt="<?php echo htmlspecialchars($app->get('sitename')); ?>">
+						</div>
+					<?php endif; ?>
 
-				<div class="Header-title Grid-cell">
-					<h1 class="Header-titleLink">
-						<a href="<?php echo $this->baseurl; ?>">
-							<?php echo htmlspecialchars($app->get('sitename')); ?>
-							<?php if ($subtitle = $params->get('subtitle')) : ?>
-							<br><small><?php echo $subtitle; ?></small>
-							<?php endif; ?>
-						</a>
-					</h1>
-				</div>
+					<div class="Header-title Grid-cell">
+						<h1 class="Header-titleLink">
+							<a href="<?php echo $this->baseurl; ?>">
+								<?php echo htmlspecialchars($app->get('sitename')); ?>
+								<?php if ($subtitle = $params->get('subtitle')) : ?>
+								<br><small><?php echo $subtitle; ?></small>
+								<?php endif; ?>
+							</a>
+						</h1>
+					</div>
+				<?php endif; ?>
 			</div>
 
 			<form action="<?php echo JRoute::_('index.php?option=com_users&task=user.login'); ?>" method="post"
