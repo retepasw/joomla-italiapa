@@ -2571,3 +2571,7 @@ body.services #featured {
   top: 5px !important;
   z-index: 39 !important;
 }
+
+.jmoddiv {
+  padding-right: 1.5em;
+}
