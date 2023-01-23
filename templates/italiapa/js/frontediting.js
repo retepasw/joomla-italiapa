@@ -41,18 +41,24 @@
 
 domReady( function( event ) {
 	[].forEach.call( document.querySelectorAll( ".jmoddiv" ), function( el ) {
-	    el.addEventListener( "mouseenter", e => {
-	        [].forEach.call( document.querySelectorAll( ".btn.jmodedit>span.icon-edit" ), function( btn ) {
-                fc = string2rgb( getColor( btn ) );
-                bc = getComputerBackgroundColor( btn );
-                if ( isTransparent( bc ) ) {
-                    bc = getBackgroundColor( el );
-                }
-                bc = string2rgb( bc );
-                if ( deltaE( rgb2lab( bc ), rgb2lab( fc ) ) < 50 ) {
-                    btn.style.color = '#fff';
-                }
-            } );
-        } );
-    } );
+		bc = getBackgroundColor( el );
+		if ( isTransparent( bc ) ) {
+			bc = getBackgroundColor( el.firstElementChild );
+			el.style.backgroundColor = bc;
+		}
+
+		el.addEventListener( "mouseenter", e => {
+			[].forEach.call( document.querySelectorAll( ".btn.jmodedit>span.icon-edit" ), function( btn ) {
+				fc = string2rgb( getColor( btn ) );
+				bc = getComputerBackgroundColor( btn );
+				if ( isTransparent( bc ) ) {
+					bc = getBackgroundColor( el );
+				}
+				bc = string2rgb( bc );
+				if ( deltaE( rgb2lab( bc ), rgb2lab( fc ) ) < 50 ) {
+					btn.style.color = '#fff';
+				}
+			} );
+		} );
+	} );
 } );
