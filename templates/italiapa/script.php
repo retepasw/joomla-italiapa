@@ -20,7 +20,7 @@
  *
  * @author      Helios Ciancio <info (at) eshiol (dot) it>
  * @link        https://www.eshiol.it
- * @copyright   Copyright (C) 2017 - 2022 Helios Ciancio. All rights reserved
+ * @copyright   Copyright (C) 2017 - 2023 Helios Ciancio. All rights reserved
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -31,6 +31,7 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\Model\BaseDatabaseModel;
 
 class italiapaInstallerScript
@@ -123,7 +124,7 @@ class italiapaInstallerScript
 				$field->params = '{"hint":"","class":"","label_class":"","show_on":"","render_class":"","showlabel":"1","label_render_class":"","display":"0","layout":"","display_readonly":"2"}';
 				$field->fieldparams = '{"filter":"","maxlength":""}';
 				$field->language = '*';
-				$field->created_user_id = JFactory::getUser()->id;
+				$field->created_user_id = Factory::getUser()->id;
 				$field->access = 1;
 
 				// Check to make sure our data is valid
@@ -149,7 +150,7 @@ class italiapaInstallerScript
 				$field->params = '{"hint":"","class":"","label_class":"","show_on":"","render_class":"","showlabel":"1","label_render_class":"","display":"0","layout":"","display_readonly":"2"}';
 				$field->fieldparams = '{"filter":"","maxlength":""}';
 				$field->language = '*';
-				$field->created_user_id = JFactory::getUser()->id;
+				$field->created_user_id = Factory::getUser()->id;
 				$field->access = 1;
 
 				// Check to make sure our data is valid
@@ -175,7 +176,7 @@ class italiapaInstallerScript
 				$field->params = '{"hint":"","class":"","label_class":"","show_on":"","render_class":"","showlabel":"1","label_render_class":"","display":"0","layout":"","display_readonly":"2"}';
 				$field->fieldparams = '{"directory":"","preview":"","image_class":""}';
 				$field->language = '*';
-				$field->created_user_id = JFactory::getUser()->id;
+				$field->created_user_id = Factory::getUser()->id;
 				$field->access = 1;
 
 				// Check to make sure our data is valid
@@ -216,7 +217,7 @@ class italiapaInstallerScript
 				array('module_tag'=>'section', 'header_tag'=>'h3', 'style'=>'0'));
 
 			/* copy image_intro to image-heronews for featured articles */
-			$db = JFactory::getDbo();
+			$db = Factory::getDbo();
 			$query = $db->getQuery(true);
 
 			$query->select('a.id, a.images')
@@ -260,7 +261,7 @@ class italiapaInstallerScript
 	 */
 	private function updateModules($where, $wherep, $add, $replace, $columns = array())
 	{
-		$db    = JFactory::getDbo();
+		$db    = Factory::getDbo();
 		$query = $db->getQuery(true)
 			->select($db->quoteName('id'))
 			->select($db->quoteName('params'))
@@ -368,7 +369,7 @@ class italiapaInstallerScript
 	 */
 	public function deleteUnexistingFiles()
 	{
-	    $base = JPATH_BASE . '/templates/italiapa';
+	    $base = JPATH_ROOT . '/templates/italiapa';
 
 		$files = array(
 			/*
@@ -401,6 +402,16 @@ class italiapaInstallerScript
 			'/fonts/Iceland/Iceland-Regular.ttf',
 			'/fonts/Iceland/Iceland-Regular.woff',
 			'/fonts/Iceland/Iceland-Regular.woff2',
+
+		    /*
+		     * ItaliaPA 3.10.2 beta 3
+		     */
+			'/html/com_users/login/nocredentials.php',
+			'/html/com_users/login/nocredentials.xml',
+			'/html/com_users/login/nocredentials_login.php',
+			'/html/com_users/login/spid.php',
+			'/html/com_users/login/spid.xml',
+			'/html/com_users/login/spid_login.php',
 		);
 
 		// TODO There is an issue while deleting folders using the ftp mode
@@ -413,23 +424,37 @@ class italiapaInstallerScript
 			'/html/layout/com_contact/fields',
 		);
 
-		jimport('joomla.filesystem.file');
+		Factory::getLanguage()->load('tpl_italiapa', JPATH_SITE);
 
+		jimport('joomla.filesystem.file');
 		foreach ($files as $file)
 		{
-		    if (JFile::exists($base . $file) && !JFile::delete($base . $file))
-		    {
-		        \JFactory::getApplication()->enqueueMessage(JText::sprintf('FILES_JOOMLA_ERROR_FILE_FOLDER', $file));
-		    }
+		    if (JFile::exists($base . $file))
+			{
+				if (JFile::delete($base . $file))
+				{
+					Factory::getApplication()->enqueueMessage(JText::sprintf('TPL_ITALIAPA_FILE_DELETED', $file));
+				}
+				else
+				{
+					Factory::getApplication()->enqueueMessage(JText::sprintf('FILES_JOOMLA_ERROR_FILE_FOLDER', $file));
+				}
+			}
 		}
 
 		jimport('joomla.filesystem.folder');
-
 		foreach ($folders as $folder)
 		{
-		    if (JFolder::exists($base . $folder) && !JFolder::delete($base . $folder))
-		    {
-		        \JFactory::getApplication()->enqueueMessage(JText::sprintf('FILES_JOOMLA_ERROR_FILE_FOLDER', $folder));
+		    if (JFolder::exists($base . $folder))
+			{
+				if (JFolder::delete($base . $folder))
+				{
+					Factory::getApplication()->enqueueMessage(JText::sprintf('TPL_ITALIAPA_FOLDER_DELETED', $folder));
+				}
+				else
+			    {
+			        Factory::getApplication()->enqueueMessage(JText::sprintf('FILES_JOOMLA_ERROR_FILE_FOLDER', $folder));
+				}
 		    }
 		}
 	}
