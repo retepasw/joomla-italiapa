@@ -48,7 +48,7 @@ JHtml::_('bootstrap.tooltip');
 	</script>
 
 	<form id="member-profile" action="<?php echo JRoute::_('index.php?option=com_users&task=profile.save'); ?>" method="post" enctype="multipart/form-data"
-		class="form-validate form-horizontal well Form Form--spaced u-padding-all-xl u-background-grey-10 u-text-r-xs u-layout-prose">
+		class="form-validate form-horizontal well Form Form--spaced u-padding-all-xl u-background-grey-10 u-text-r-xs u-layout-small">
 		<?php
 		$layout = new JLayoutFile('eshiol.form.renderform', $basePath = null);
 		echo $layout->render(['form' => $this->form]);
