@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fields name="params">
+		<fieldset name="basic">
+			<field 
+				name="MjAyMzAxMjYyMTU3MzU" 
+				type="spacer"
+				hr="true"
+			/>
+
+			<field
+				name="login_joomla"
+				type="list"
+				label="PLG_SYSTEM_ITALIAPA_LOGIN_JOOMLA_LABEL"
+				description="PLG_SYSTEM_ITALIAPA_LOGIN_JOOMLA_DESC"
+				default="1">
+				<option value="0">JNONE</option>
+				<option value="1">PLG_SYSTEM_ITALIAPA_LOGIN_JOOMLA_FIRST</option>
+				<option value="2">PLG_SYSTEM_ITALIAPA_LOGIN_JOOMLA_LAST</option>
+			</field>
+		</fieldset>
+	</fields>
+</form>
