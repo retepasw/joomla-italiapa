@@ -54,7 +54,7 @@ require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 		foreach (ModuleHelper::getModules('login') AS $module)
 		{
 			$alias = $module->title;
-			$alias = ApplicationHelper::stringURLSafe($alias, $this->language);
+			$alias = ApplicationHelper::stringURLSafe($alias);
 			if (trim(str_replace('-', '', $alias)) == '')
 			{
 				$alias = Factory::getDate()->format('Y-m-d-H-i-s');
