@@ -97,7 +97,8 @@ ul.Linklist .osmap-item-heading {
   color: #004a4d !important;
 }
 .Button--default:focus,
-.Button--default:hover {
+.Button--default:hover,
+.Button--default[aria-selected=true] {
   background-color: #3bd4d7;
   border-color: #29cbd0;
 }
@@ -123,7 +124,8 @@ ul.Linklist .osmap-item-heading {
   color: #fff !important;
 }
 .Button--danger:focus,
-.Button--danger:hover {
+.Button--danger:hover,
+.Button--danger[aria-selected=true] {
   background-color: #820000;
   border-color: #cc0000;
 }
@@ -149,7 +151,8 @@ ul.Linklist .osmap-item-heading {
   color: #003e54 !important;
 }
 .Button--info:focus,
-.Button--info:hover {
+.Button--info:hover,
+.Button--info[aria-selected=true] {
   background-color: #e6e6e6;
   border-color: #b3b3b3;
 }
