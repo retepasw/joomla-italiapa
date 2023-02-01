@@ -78,7 +78,7 @@ foreach ($form->getFieldsets() as $fieldset)
 					$layout = new JLayoutFile('eshiol.form.field.helpsite');
 					echo $layout->render($data);
 				}
-				elseif (in_array($field->type, ['Spacer', 'Captcha']))
+				elseif (in_array($field->type, ['Spacer', 'Captcha', 'Note']))
 				{
 					$class = $field->class;
 					$field->class = '';
