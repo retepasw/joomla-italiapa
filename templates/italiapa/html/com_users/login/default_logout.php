@@ -17,9 +17,12 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Router\Route;
 
-JHtml::_('behavior.keepalive');
-JHtml::_('behavior.formvalidator');
+HtmlHelper::_('behavior.keepalive');
+HtmlHelper::_('behavior.formvalidator');
 ?>
 
 <div class="remind<?php echo $this->pageclass_sfx; ?>">
@@ -29,7 +32,7 @@ JHtml::_('behavior.formvalidator');
 	</h1>
 	<?php endif; ?>
 
-	<form action="<?php echo JRoute::_('index.php?option=com_users&task=user.logout'); ?>" method="post"
+	<form action="<?php echo Route::_('index.php?option=com_users&task=user.logout'); ?>" method="post"
 		class="form-horizontal well Form Form--spaced u-padding-all-xl u-background-grey-10 u-text-r-xs u-layout-prose">
 
 		<?php if (($this->params->get('logoutdescription_show') == 1 && str_replace(' ', '', $this->params->get('logout_description')) != '') || $this->params->get('logout_image') != '') : ?>
@@ -41,7 +44,7 @@ JHtml::_('behavior.formvalidator');
 			<?php endif; ?>
 
 			<?php if ($this->params->get('logout_image') != '') : ?>
-				<img src="<?php echo $this->escape($this->params->get('logout_image')); ?>" class="logout-image" alt="<?php echo JText::_('COM_USERS_LOGIN_IMAGE_ALT'); ?>"/>
+				<img src="<?php echo $this->escape($this->params->get('logout_image')); ?>" class="logout-image" alt="<?php echo Text::_('COM_USERS_LOGIN_IMAGE_ALT'); ?>"/>
 			<?php endif; ?>
 
 		<?php if (($this->params->get('logoutdescription_show') == 1 && str_replace(' ', '', $this->params->get('logout_description')) != '') || $this->params->get('logout_image') != '') : ?>
@@ -49,7 +52,7 @@ JHtml::_('behavior.formvalidator');
 		<?php endif; ?>
 
 		<div class="Form-field Grid-cell u-textRight">
-			<button type="submit" class="Button Button--default u-text-xs"><?php echo JText::_('JLOGOUT'); ?></button>
+			<button type="submit" class="Button Button--default u-text-xs"><?php echo Text::_('JLOGOUT'); ?></button>
 		</div>
 
 		<?php if ($this->params->get('logout_redirect_url')) : ?>
@@ -57,6 +60,6 @@ JHtml::_('behavior.formvalidator');
 		<?php else : ?>
 			<input type="hidden" name="return" value="<?php echo base64_encode($this->params->get('logout_redirect_menuitem', $this->form->getValue('return'))); ?>" />
 		<?php endif; ?>
-		<?php echo JHtml::_('form.token'); ?>
+		<?php echo HtmlHelper::_('form.token'); ?>
 	</form>
 </div>
