@@ -37,8 +37,9 @@ require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 	<?php endif; ?>
 
 	<?php
+		$tparams = Factory::getApplication()->getTemplate(true)->params;
 		// Load Joomla Login Form as First (0: None - 1: First - 2: Last)
-		if ($this->params->get('login_joomla', 1) == 1)
+		if ($this->params->get('login_joomla', $tparams->get('login_joomla', 1)) == 1)
 		{
 			ob_start();
 			echo $this->loadTemplate('joomla');
@@ -68,7 +69,7 @@ require_once JPATH_BASE . '/templates/italiapa/src/html/iwt.php';
 		}
 
 		// Load Joomla Login Form as Last (0: None - 1: First - 2: Last)
-		if ($this->params->get('login_joomla', 1) == 2)
+		if ($this->params->get('login_joomla', $tparams->get('login_joomla', 1)) == 2)
 		{
 			ob_start();
 			echo $this->loadTemplate('joomla');

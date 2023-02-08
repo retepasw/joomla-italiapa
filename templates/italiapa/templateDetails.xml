@@ -69,6 +69,16 @@
           <option value="scuola">TPL_ITALIAPA_THEME_SCHOOL</option>
           <option value="squola">TPL_ITALIAPA_THEME_SCHOOLUNOFFICIAL</option>
         </field>
+        <field
+          name="login_joomla"
+          type="list"
+          label="TPL_ITALIAPA_LOGIN_JOOMLA_LABEL"
+          description="TPL_ITALIAPA_LOGIN_JOOMLA_DESC"
+          default="1">
+          <option value="0">JNONE</option>
+          <option value="1">TPL_ITALIAPA_LOGIN_JOOMLA_FIRST</option>
+          <option value="2">TPL_ITALIAPA_LOGIN_JOOMLA_LAST</option>
+        </field>
         <field name="num_columns" type="number" label="JGLOBAL_NUM_COLUMNS_LABEL" description="JGLOBAL_NUM_COLUMNS_DESC" size="3" useglobal="true" min="1" max="6" step="1"/>
         <field name="hamburgermenu_pos" type="list" label="TPL_ITALIAPA_FIELD_HAMBURGERMENU_POS_LABEL" description="TPL_ITALIAPA_FIELD_HAMBURGERMENU_POS_DESC" default="left" filter="word">
           <option value="left">JGLOBAL_LEFT</option>
