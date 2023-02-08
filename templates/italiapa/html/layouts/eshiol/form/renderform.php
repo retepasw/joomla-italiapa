@@ -31,6 +31,7 @@ foreach ($form->getFieldsets() as $fieldset)
 		{
 			echo '<legend class="Form-legend">' . JText::_($fieldset->label) . '</legend>';
 		}
+		echo '<div class="Grid Grid--withGutter">';
 		// Iterate through the fields in the set and display them.
 		foreach ($fields as $field)
 		{
@@ -41,11 +42,6 @@ foreach ($form->getFieldsets() as $fieldset)
 			}
 			else
 			{
-				if (!in_array($field->type, ['Spacer', 'Captcha']))
-				{
-					$field->class = 'Form-input ' . $field->class;
-				}
-
 				if (in_array($field->type, ['Helpsite']))
 				{
 					if ($field->hidden)
@@ -82,12 +78,21 @@ foreach ($form->getFieldsets() as $fieldset)
 					$layout = new JLayoutFile('eshiol.form.field.helpsite');
 					echo $layout->render($data);
 				}
+				elseif (in_array($field->type, ['Spacer', 'Captcha', 'Note']))
+				{
+					$class = $field->class;
+					$field->class = '';
+					echo $field->renderField(['class' => $class]);
+				}
 				else
 				{
-					echo $field->renderField();
+					$class = 'Grid-cell ' . $field->class;
+					$field->class = 'Form-input';
+					echo $field->renderField(['class' => $class]);
 				}
 			}
 		}
+		echo '</div>';
 		echo '</fieldset>';
 	}
 }

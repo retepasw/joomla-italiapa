@@ -2579,4 +2579,6 @@ body.services #featured {
 .Form-input[readonly][required] {
   opacity: 0.5;
   cursor: default;
+.jmoddiv {
+  padding-right: 1.5em;
 }
