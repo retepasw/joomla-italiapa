@@ -398,6 +398,8 @@ JHtml::_('script', 'user.js', array('version' => 'auto', 'relative' => true));
 <script src="<?php echo $this->baseurl ?>templates/italiapa/build/IWT.min.js"></script>
 <script src="<?php echo $this->baseurl ?>templates/italiapa/js/italiapa<?php echo $min; ?>.js"></script>
 <script src="<?php echo $this->baseurl ?>templates/italiapa/js/tooltip<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/js/colors<?php echo $min; ?>.js"></script>
+<script src="<?php echo $this->baseurl ?>templates/italiapa/js/frontediting<?php echo $min; ?>.js"></script>
 
 	<jdoc:include type="modules" name="debug" style="none" />
 </body>
