@@ -112,6 +112,7 @@ JHtml::_('bootstrap.tooltip');
 			<button type="button" class="Button Button--default u-text-xs" onclick="location.href='<?php echo JRoute::_(''); ?>';"><?php echo JText::_('JCANCEL'); ?></button>
 			<input type="hidden" name="option" value="com_users" />
 			<input type="hidden" name="task" value="profile.save" />
+			<input type="hidden" name="return" value="<?php echo base64_decode(JFactory::getApplication()->input->get('return', null, 'base64')); ?>" />
 		</div>
 		<?php echo JHtml::_('form.token'); ?>
 	</form>
