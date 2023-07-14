@@ -9,10 +9,6 @@
   <authorUrl>www.eshiol.it</authorUrl>
   <version>__DEPLOY_VERSION__</version>
   <description>MOD_CAROUSEL_XML_DESCRIPTION</description>
-  <updateservers>
-    <server type="extension" priority="2" name="Italia Template - Carousel Module">https://www.eshiol.it/files/italiapa/mod_carousel.xml</server>
-  </updateservers>
-  <description>MOD_CAROUSEL_XML_DESCRIPTION</description>
   <files>
     <filename module="mod_carousel">mod_carousel.php</filename>
     <filename>image.xml</filename>

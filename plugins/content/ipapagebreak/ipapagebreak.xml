@@ -10,10 +10,6 @@
   <version>__DEPLOY_VERSION__</version>
   <description>PLG_CONTENT_IPAPAGEBREAK_XML_DESCRIPTION</description>
   <scriptfile>script.php</scriptfile>
-  <updateservers>
-    <server type="extension" priority="2" name="ItaliaPA Template - Content - Page Break for ItaliaPA Plugin">https://www.eshiol.it/files/italiapa/plg_content_ipapagebreak.xml</server>
-  </updateservers>
-
   <files>
     <filename plugin="ipapagebreak">ipapagebreak.php</filename>
     <folder>tmpl</folder>

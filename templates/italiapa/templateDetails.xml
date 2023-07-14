@@ -8,9 +8,6 @@
   <authorUrl>https://www.eshiol.it</authorUrl>
   <version>__DEPLOY_VERSION__</version>
   <description>TPL_ITALIAPA_XML_DESCRIPTION</description>
-  <updateservers>
-    <server type="extension" priority="2" name="Template ItaliaPA">https://www.eshiol.it/files/italiapa/tpl_italiapa.xml</server>
-  </updateservers>
   <scriptfile>script.php</scriptfile>
   <files>
     <folder>build</folder>

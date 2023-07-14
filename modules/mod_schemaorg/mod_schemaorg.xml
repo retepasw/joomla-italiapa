@@ -9,9 +9,6 @@
   <authorUrl>www.eshiol.it</authorUrl>
   <version>__DEPLOY_VERSION__</version>
   <description>mod_schemaorg_xml_description</description>
-  <updateservers>
-    <server type="extension" priority="2" name="Italia Template - Schema.org Module">https://www.eshiol.it/files/italiapa/mod_schemaorg.xml</server>
-  </updateservers>
   <files>
     <filename module="mod_schemaorg">mod_schemaorg.php</filename>
     <filename>item.xml</filename>

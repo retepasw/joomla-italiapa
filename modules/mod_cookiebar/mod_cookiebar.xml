@@ -9,10 +9,6 @@
   <authorUrl>www.eshiol.it</authorUrl>
   <version>__DEPLOY_VERSION__</version>
   <description>MOD_COOKIEBAR_XML_DESCRIPTION</description>
-  <updateservers>
-    <server type="extension" priority="2" name="Template ItaliaPA - Cookiebar Module">https://www.eshiol.it/files/italiapa/mod_cookiebar.xml</server>
-  </updateservers>
-  <description>MOD_COOKIEBAR_XML_DESCRIPTION</description>
   <files>
     <filename module="mod_cookiebar">mod_cookiebar.php</filename>
     <folder>tmpl</folder>
