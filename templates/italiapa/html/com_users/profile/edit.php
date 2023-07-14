@@ -7,7 +7,7 @@
  *
  * @author      Helios Ciancio <info (at) eshiol (dot) it>
  * @link        https://www.eshiol.it
- * @copyright   Copyright (C) 2017 - 2022 Helios Ciancio. All rights reserved
+ * @copyright   Copyright (C) 2017 - 2023 Helios Ciancio. All rights reserved
  * @license     http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3
  * Template ItaliaPA is free software. This version may have been modified
  * pursuant to the GNU General Public License, and as distributed it includes
@@ -112,8 +112,7 @@ JHtml::_('bootstrap.tooltip');
 			<button type="button" class="Button Button--default u-text-xs" onclick="location.href='<?php echo JRoute::_(''); ?>';"><?php echo JText::_('JCANCEL'); ?></button>
 			<input type="hidden" name="option" value="com_users" />
 			<input type="hidden" name="task" value="profile.save" />
-			<input type="hidden" name="return" value="<?php echo base64_decode(JFactory::getApplication()->input->get('return', null, 'base64')); ?>" />
-		</div>
+			<input type="hidden" name="return" value="<?php echo base64_encode(JFactory::getApplication()->getUserState('com_users.edit.profile.redirect')); ?>" />		</div>
 		<?php echo JHtml::_('form.token'); ?>
 	</form>
 </div>

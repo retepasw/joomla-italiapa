@@ -10,9 +10,6 @@
 	<version>__DEPLOY_VERSION__</version>
 	<description>PLG_SYSTEM_IPATINYMCE_XML_DESCRIPTION</description>
 	<scriptfile>script.php</scriptfile>
-	<updateservers>
-		<server type="extension" priority="2" name="Template ItaliaPA - System - TinyMCE for ItaliaPA">https://www.eshiol.it/files/italiapa/plg_system_ipatinymce.xml</server>
-	</updateservers>
 	<files>
 		<filename plugin="ipatinymce">ipatinymce.php</filename>
 	</files>

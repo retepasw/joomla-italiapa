@@ -10,9 +10,6 @@
 	<version>__DEPLOY_VERSION__</version>
 	<description>PLG_CONTENT_IPAVOTE_XML_DESCRIPTION</description>
 	<scriptfile>script.php</scriptfile>
-	<updateservers>
-		<server type="extension" priority="2" name="ItaliaPA Template - Content - Vote for ItaliaPA Plugin">https://www.eshiol.it/files/italiapa/plg_content_ipavote.xml</server>
-	</updateservers>
 	<files>
 		<filename plugin="ipavote">ipavote.php</filename>
 		<folder>tmpl</folder>

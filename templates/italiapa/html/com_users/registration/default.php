@@ -29,7 +29,7 @@ JHtml::_('behavior.formvalidator');
 	<?php endif; ?>
 
 	<form id="member-registration" action="<?php echo JRoute::_('index.php?option=com_users&task=registration.register'); ?>" method="post" enctype="multipart/form-data"
-		class="form-validate form-horizontal well Form Form--spaced u-padding-all-xl u-background-grey-10 u-text-r-xs u-layout-prose">
+		class="form-validate form-horizontal well Form Form--spaced u-padding-all-xl u-background-grey-10 u-text-r-xs u-layout-small">
 		<?php
 		$layout = new JLayoutFile('eshiol.form.renderform', $basePath = null);
 		echo $layout->render(['form' => $this->form]);
