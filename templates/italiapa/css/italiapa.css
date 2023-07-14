@@ -2576,9 +2576,11 @@ body.services #featured {
   line-height: inherit!important;
 }
 .Form-field.disabled,
+.Form-input[readonly],
 .Form-input[readonly][required] {
   opacity: 0.5;
   cursor: default;
+}
 .jmoddiv {
   padding-right: 1.5em;
 }
